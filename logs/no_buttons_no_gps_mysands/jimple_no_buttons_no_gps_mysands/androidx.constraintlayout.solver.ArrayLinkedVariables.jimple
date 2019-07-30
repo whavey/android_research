@@ -1,0 +1,2136 @@
+public class androidx.constraintlayout.solver.ArrayLinkedVariables extends java.lang.Object
+{
+    private static final boolean DEBUG;
+    private static final boolean FULL_NEW_CHECK;
+    private static final int NONE;
+    private int ROW_SIZE;
+    private androidx.constraintlayout.solver.SolverVariable candidate;
+    int currentSize;
+    private int[] mArrayIndices;
+    private int[] mArrayNextIndices;
+    private float[] mArrayValues;
+    private final androidx.constraintlayout.solver.Cache mCache;
+    private boolean mDidFillOnce;
+    private int mHead;
+    private int mLast;
+    private final androidx.constraintlayout.solver.ArrayRow mRow;
+
+    void <init>(androidx.constraintlayout.solver.ArrayRow, androidx.constraintlayout.solver.Cache)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.ArrayRow $r1;
+        androidx.constraintlayout.solver.Cache $r2;
+        int $i0;
+        int[] $r3;
+        float[] $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.ArrayRow;
+
+        $r2 := @parameter1: androidx.constraintlayout.solver.Cache;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = 0;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE> = 8;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.SolverVariable candidate> = null;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $r3 = newarray (int)[$i0];
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices> = $r3;
+
+        $r3 = newarray (int)[$i0];
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices> = $r3;
+
+        $r4 = newarray (float)[$i0];
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues> = $r4;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = -1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = -1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 0;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow> = $r1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache> = $r2;
+
+        return;
+    }
+
+    private boolean isNew(androidx.constraintlayout.solver.SolverVariable, androidx.constraintlayout.solver.LinearSystem)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.SolverVariable $r1;
+        androidx.constraintlayout.solver.LinearSystem $r2;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $r2 := @parameter1: androidx.constraintlayout.solver.LinearSystem;
+
+        $i0 = $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        if $i0 > 1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    final void add(androidx.constraintlayout.solver.SolverVariable, float, boolean)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.SolverVariable $r1;
+        float $f0, $f1;
+        boolean $z0;
+        byte $b0;
+        int $i1, $i2, $i3, $i4, $i5;
+        float[] $r2;
+        int[] $r3;
+        androidx.constraintlayout.solver.ArrayRow $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $f0 := @parameter1: float;
+
+        $z0 := @parameter2: boolean;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 != 0 goto label01;
+
+        return;
+
+     label01:
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        if $i1 != -1 goto label02;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = 0;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $r2[$i1] = $f0;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $r3[$i1] = $i2;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $r3[$i1] = -1;
+
+        $i1 = $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        $i1 = $i1 + 1;
+
+        $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount> = $i1;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.SolverVariable: void addToRow(androidx.constraintlayout.solver.ArrayRow)>($r4);
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i1 = $i1 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = $i1;
+
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 != 0 goto label20;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $i1 = $i1 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i1;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = lengthof $r3;
+
+        if $i1 < $i2 goto label20;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 1;
+
+        $i1 = lengthof $r3;
+
+        $i1 = $i1 - 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i1;
+
+        return;
+
+     label02:
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = -1;
+
+        $i3 = 0;
+
+     label03:
+        if $i2 == -1 goto label10;
+
+        $i4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i3 >= $i4 goto label10;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i4 = $r3[$i2];
+
+        $i5 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i4 != $i5 goto label08;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f1 = $r2[$i2];
+
+        $f0 = $f1 + $f0;
+
+        $r2[$i2] = $f0;
+
+        $f0 = $r2[$i2];
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 != 0 goto label20;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        if $i2 != $i3 goto label04;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r3[$i2];
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = $i1;
+
+        goto label05;
+
+     label04:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i3 = $r3[$i2];
+
+        $r3[$i1] = $i3;
+
+     label05:
+        if $z0 == 0 goto label06;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.SolverVariable: void removeFromRow(androidx.constraintlayout.solver.ArrayRow)>($r4);
+
+     label06:
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 == 0 goto label07;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i2;
+
+     label07:
+        $i1 = $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        $i1 = $i1 - 1;
+
+        $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount> = $i1;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i1 = $i1 - 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = $i1;
+
+        return;
+
+     label08:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i4 = $r3[$i2];
+
+        $i5 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i4 >= $i5 goto label09;
+
+        $i1 = $i2;
+
+     label09:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i2 = $r3[$i2];
+
+        $i3 = $i3 + 1;
+
+        goto label03;
+
+     label10:
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $i2 = $i3 + 1;
+
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 == 0 goto label12;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r3[$i3];
+
+        if $i2 != -1 goto label11;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        goto label12;
+
+     label11:
+        $i2 = lengthof $r3;
+
+     label12:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = lengthof $r3;
+
+        if $i2 < $i3 goto label15;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i4 = lengthof $r3;
+
+        if $i3 >= $i4 goto label15;
+
+        $i3 = 0;
+
+     label13:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i4 = lengthof $r3;
+
+        if $i3 >= $i4 goto label15;
+
+        $i4 = $r3[$i3];
+
+        if $i4 != -1 goto label14;
+
+        $i2 = $i3;
+
+        goto label15;
+
+     label14:
+        $i3 = $i3 + 1;
+
+        goto label13;
+
+     label15:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = lengthof $r3;
+
+        if $i2 < $i3 goto label16;
+
+        $i2 = lengthof $r3;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $i3 = $i3 * 2;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE> = $i3;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 0;
+
+        $i3 = $i2 + -1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $r2 = staticinvoke <java.util.Arrays: float[] copyOf(float[],int)>($r2, $i3);
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues> = $r2;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $r3 = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>($r3, $i3);
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices> = $r3;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $r3 = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>($r3, $i3);
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices> = $r3;
+
+     label16:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $r3[$i2] = $i3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $r2[$i2] = $f0;
+
+        if $i1 == -1 goto label17;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i3 = $r3[$i1];
+
+        $r3[$i2] = $i3;
+
+        $r3[$i1] = $i2;
+
+        goto label18;
+
+     label17:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $r3[$i2] = $i1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = $i2;
+
+     label18:
+        $i1 = $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        $i1 = $i1 + 1;
+
+        $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount> = $i1;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.SolverVariable: void addToRow(androidx.constraintlayout.solver.ArrayRow)>($r4);
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i1 = $i1 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = $i1;
+
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 != 0 goto label19;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $i1 = $i1 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i1;
+
+     label19:
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = lengthof $r3;
+
+        if $i1 < $i2 goto label20;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 1;
+
+        $i1 = lengthof $r3;
+
+        $i1 = $i1 - 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i1;
+
+     label20:
+        return;
+    }
+
+    androidx.constraintlayout.solver.SolverVariable chooseSubject(androidx.constraintlayout.solver.LinearSystem)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.LinearSystem $r1;
+        androidx.constraintlayout.solver.SolverVariable $r2, $r3, $r8;
+        float $f0, $f1, $f2, $f3;
+        boolean $z0, $z1, $z2;
+        int $i0, $i1, $i2;
+        float[] $r4;
+        androidx.constraintlayout.solver.Cache $r5;
+        androidx.constraintlayout.solver.SolverVariable[] $r6;
+        int[] $r7;
+        byte $b3;
+        androidx.constraintlayout.solver.ArrayRow $r9;
+        androidx.constraintlayout.solver.SolverVariable$Type $r10, $r11;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.LinearSystem;
+
+        $r2 = null;
+
+        $r3 = null;
+
+        $f0 = 0.0F;
+
+        $f1 = 0.0F;
+
+        $z0 = 0;
+
+        $z1 = 0;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label01:
+        if $i0 == -1 goto label10;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label10;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f2 = $r4[$i0];
+
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r6 = $r5.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r7[$i0];
+
+        $r8 = $r6[$i2];
+
+        $b3 = $f2 cmpg 0.0F;
+
+        if $b3 >= 0 goto label02;
+
+        $f3 = neg 0.001F;
+
+        $b3 = $f2 cmpl $f3;
+
+        if $b3 <= 0 goto label03;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $r4[$i0] = 0.0F;
+
+        $f2 = 0.0F;
+
+        $r9 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r8.<androidx.constraintlayout.solver.SolverVariable: void removeFromRow(androidx.constraintlayout.solver.ArrayRow)>($r9);
+
+        goto label03;
+
+     label02:
+        $b3 = $f2 cmpg 0.001F;
+
+        if $b3 >= 0 goto label03;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $r4[$i0] = 0.0F;
+
+        $f2 = 0.0F;
+
+        $r9 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r8.<androidx.constraintlayout.solver.SolverVariable: void removeFromRow(androidx.constraintlayout.solver.ArrayRow)>($r9);
+
+     label03:
+        $b3 = $f2 cmpl 0.0F;
+
+        if $b3 == 0 goto label09;
+
+        $r10 = $r8.<androidx.constraintlayout.solver.SolverVariable: androidx.constraintlayout.solver.SolverVariable$Type mType>;
+
+        $r11 = <androidx.constraintlayout.solver.SolverVariable$Type: androidx.constraintlayout.solver.SolverVariable$Type UNRESTRICTED>;
+
+        if $r10 != $r11 goto label06;
+
+        if $r3 != null goto label04;
+
+        $r3 = $r8;
+
+        $f0 = $f2;
+
+        $z0 = specialinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean isNew(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.LinearSystem)>($r8, $r1);
+
+        goto label09;
+
+     label04:
+        $b3 = $f0 cmpl $f2;
+
+        if $b3 <= 0 goto label05;
+
+        $r3 = $r8;
+
+        $f0 = $f2;
+
+        $z0 = specialinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean isNew(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.LinearSystem)>($r8, $r1);
+
+        goto label09;
+
+     label05:
+        if $z0 != 0 goto label09;
+
+        $z2 = specialinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean isNew(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.LinearSystem)>($r8, $r1);
+
+        if $z2 == 0 goto label09;
+
+        $r3 = $r8;
+
+        $f0 = $f2;
+
+        $z0 = 1;
+
+        goto label09;
+
+     label06:
+        if $r3 != null goto label09;
+
+        $b3 = $f2 cmpg 0.0F;
+
+        if $b3 >= 0 goto label09;
+
+        if $r2 != null goto label07;
+
+        $r2 = $r8;
+
+        $f1 = $f2;
+
+        $z1 = specialinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean isNew(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.LinearSystem)>($r8, $r1);
+
+        goto label09;
+
+     label07:
+        $b3 = $f1 cmpl $f2;
+
+        if $b3 <= 0 goto label08;
+
+        $r2 = $r8;
+
+        $f1 = $f2;
+
+        $z1 = specialinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean isNew(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.LinearSystem)>($r8, $r1);
+
+        goto label09;
+
+     label08:
+        if $z1 != 0 goto label09;
+
+        $z2 = specialinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean isNew(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.LinearSystem)>($r8, $r1);
+
+        if $z2 == 0 goto label09;
+
+        $r2 = $r8;
+
+        $f1 = $f2;
+
+        $z1 = 1;
+
+     label09:
+        $r7 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r7[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label10:
+        if $r3 == null goto label11;
+
+        return $r3;
+
+     label11:
+        return $r2;
+    }
+
+    public final void clear()
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int $i0, $i1, $i2;
+        androidx.constraintlayout.solver.Cache $r1;
+        androidx.constraintlayout.solver.SolverVariable[] $r2;
+        int[] $r3;
+        androidx.constraintlayout.solver.SolverVariable $r4;
+        androidx.constraintlayout.solver.ArrayRow $r5;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label1:
+        if $i0 == -1 goto label3;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label3;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r2 = $r1.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r3[$i0];
+
+        $r4 = $r2[$i2];
+
+        if $r4 == null goto label2;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.SolverVariable: void removeFromRow(androidx.constraintlayout.solver.ArrayRow)>($r5);
+
+     label2:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r3[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = -1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = -1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 0;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = 0;
+
+        return;
+    }
+
+    final boolean containsKey(androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.SolverVariable $r1;
+        int $i0, $i1, $i2, $i3;
+        int[] $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        if $i1 != -1 goto label1;
+
+        return 0;
+
+     label1:
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i2 = 0;
+
+     label2:
+        if $i1 == -1 goto label4;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i2 >= $i0 goto label4;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = $r2[$i1];
+
+        $i0 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i3 != $i0 goto label3;
+
+        return 1;
+
+     label3:
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r2[$i1];
+
+        $i2 = $i2 + 1;
+
+        goto label2;
+
+     label4:
+        return 0;
+    }
+
+    public void display()
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int $i0, $i1;
+        java.io.PrintStream $r1;
+        androidx.constraintlayout.solver.SolverVariable $r2;
+        java.lang.StringBuilder $r3;
+        float $f0;
+        java.lang.String $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void print(java.lang.String)>("{ ");
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $r2 = virtualinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.SolverVariable getVariable(int)>($i1);
+
+        if $r2 != null goto label2;
+
+        goto label3;
+
+     label2:
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" = ");
+
+        $f0 = virtualinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float getVariableValue(int)>($i1);
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.io.PrintStream: void print(java.lang.String)>($r4);
+
+     label3:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label4:
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void println(java.lang.String)>(" }");
+
+        return;
+    }
+
+    void divideByAmount(float)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        float $f0, $f1;
+        int $i0, $i1, $i2;
+        float[] $r1;
+        int[] $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $f0 := @parameter0: float;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label1:
+        if $i0 == -1 goto label2;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label2;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f1 = $r1[$i0];
+
+        $f1 = $f1 / $f0;
+
+        $r1[$i0] = $f1;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r2[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public final float get(androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.SolverVariable $r1;
+        int $i0, $i1, $i2, $i3;
+        int[] $r2;
+        float[] $r3;
+        float $f0;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i2 = 0;
+
+     label1:
+        if $i1 == -1 goto label3;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i2 >= $i0 goto label3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = $r2[$i1];
+
+        $i0 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i3 != $i0 goto label2;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r3[$i1];
+
+        return $f0;
+
+     label2:
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r2[$i1];
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label3:
+        return 0.0F;
+    }
+
+    androidx.constraintlayout.solver.SolverVariable getPivotCandidate()
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int $i0, $i1, $i2, $i4;
+        androidx.constraintlayout.solver.SolverVariable $r1, $r6;
+        float[] $r2;
+        float $f0;
+        byte $b3;
+        androidx.constraintlayout.solver.Cache $r3;
+        androidx.constraintlayout.solver.SolverVariable[] $r4;
+        int[] $r5;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.SolverVariable candidate>;
+
+        if $r1 != null goto label4;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i2 = 0;
+
+        $r1 = null;
+
+     label1:
+        if $i1 == -1 goto label4;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i2 >= $i0 goto label4;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r2[$i1];
+
+        $b3 = $f0 cmpg 0.0F;
+
+        if $b3 >= 0 goto label3;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r4 = $r3.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i0 = $r5[$i1];
+
+        $r6 = $r4[$i0];
+
+        if $r1 == null goto label2;
+
+        $i4 = $r1.<androidx.constraintlayout.solver.SolverVariable: int strength>;
+
+        $i0 = $r6.<androidx.constraintlayout.solver.SolverVariable: int strength>;
+
+        if $i4 >= $i0 goto label3;
+
+     label2:
+        $r1 = $r6;
+
+     label3:
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r5[$i1];
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label4:
+        return $r1;
+    }
+
+    androidx.constraintlayout.solver.SolverVariable getPivotCandidate(boolean[], androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        boolean[] $r1;
+        androidx.constraintlayout.solver.SolverVariable $r2, $r3, $r8;
+        int $i0, $i1, $i2;
+        float $f0, $f1;
+        float[] $r4;
+        byte $b3;
+        androidx.constraintlayout.solver.Cache $r5;
+        androidx.constraintlayout.solver.SolverVariable[] $r6;
+        int[] $r7;
+        boolean $z0;
+        androidx.constraintlayout.solver.SolverVariable$Type $r9, $r10;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: boolean[];
+
+        $r2 := @parameter1: androidx.constraintlayout.solver.SolverVariable;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+        $r3 = null;
+
+        $f0 = 0.0F;
+
+     label1:
+        if $i0 == -1 goto label5;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label5;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f1 = $r4[$i0];
+
+        $b3 = $f1 cmpg 0.0F;
+
+        if $b3 >= 0 goto label4;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r6 = $r5.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r7[$i0];
+
+        $r8 = $r6[$i2];
+
+        if $r1 == null goto label2;
+
+        $i2 = $r8.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $z0 = $r1[$i2];
+
+        if $z0 != 0 goto label4;
+
+     label2:
+        if $r8 == $r2 goto label4;
+
+        $r9 = $r8.<androidx.constraintlayout.solver.SolverVariable: androidx.constraintlayout.solver.SolverVariable$Type mType>;
+
+        $r10 = <androidx.constraintlayout.solver.SolverVariable$Type: androidx.constraintlayout.solver.SolverVariable$Type SLACK>;
+
+        if $r9 == $r10 goto label3;
+
+        $r9 = $r8.<androidx.constraintlayout.solver.SolverVariable: androidx.constraintlayout.solver.SolverVariable$Type mType>;
+
+        $r10 = <androidx.constraintlayout.solver.SolverVariable$Type: androidx.constraintlayout.solver.SolverVariable$Type ERROR>;
+
+        if $r9 != $r10 goto label4;
+
+     label3:
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f1 = $r4[$i0];
+
+        $b3 = $f1 cmpg $f0;
+
+        if $b3 >= 0 goto label4;
+
+        $f0 = $f1;
+
+        $r3 = $r8;
+
+     label4:
+        $r7 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r7[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label5:
+        return $r3;
+    }
+
+    final androidx.constraintlayout.solver.SolverVariable getVariable(int)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int $i0, $i1, $i2, $i3;
+        androidx.constraintlayout.solver.Cache $r1;
+        androidx.constraintlayout.solver.SolverVariable[] $r2;
+        int[] $r3;
+        androidx.constraintlayout.solver.SolverVariable $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i2 = 0;
+
+     label1:
+        if $i1 == -1 goto label3;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i2 >= $i3 goto label3;
+
+        if $i2 != $i0 goto label2;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r2 = $r1.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i0 = $r3[$i1];
+
+        $r4 = $r2[$i0];
+
+        return $r4;
+
+     label2:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r3[$i1];
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label3:
+        return null;
+    }
+
+    final float getVariableValue(int)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int $i0, $i1, $i2, $i3;
+        float[] $r1;
+        float $f0;
+        int[] $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i2 = 0;
+
+     label1:
+        if $i1 == -1 goto label3;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i2 >= $i3 goto label3;
+
+        if $i2 != $i0 goto label2;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r1[$i1];
+
+        return $f0;
+
+     label2:
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r2[$i1];
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label3:
+        return 0.0F;
+    }
+
+    boolean hasAtLeastOnePositiveVariable()
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int $i0, $i1, $i2;
+        float[] $r1;
+        float $f0;
+        byte $b3;
+        int[] $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label1:
+        if $i0 == -1 goto label3;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label3;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r1[$i0];
+
+        $b3 = $f0 cmpl 0.0F;
+
+        if $b3 <= 0 goto label2;
+
+        return 1;
+
+     label2:
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r2[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    void invert()
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int $i0, $i1, $i2;
+        float[] $r1;
+        float $f0;
+        int[] $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label1:
+        if $i0 == -1 goto label2;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label2;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r1[$i0];
+
+        $f0 = $f0 * -1.0F;
+
+        $r1[$i0] = $f0;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r2[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public final void put(androidx.constraintlayout.solver.SolverVariable, float)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.SolverVariable $r1;
+        float $f0;
+        int $i0, $i2, $i3, $i4, $i5;
+        byte $b1;
+        float[] $r2;
+        int[] $r3;
+        androidx.constraintlayout.solver.ArrayRow $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $f0 := @parameter1: float;
+
+        $b1 = $f0 cmpl 0.0F;
+
+        if $b1 != 0 goto label01;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float remove(androidx.constraintlayout.solver.SolverVariable,boolean)>($r1, 1);
+
+        return;
+
+     label01:
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        if $i2 != -1 goto label02;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = 0;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $r2[$i2] = $f0;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $r3[$i2] = $i3;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $r3[$i2] = -1;
+
+        $i2 = $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        $i2 = $i2 + 1;
+
+        $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount> = $i2;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.SolverVariable: void addToRow(androidx.constraintlayout.solver.ArrayRow)>($r4);
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i2 = $i2 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = $i2;
+
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 != 0 goto label17;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $i2 = $i2 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i2;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = lengthof $r3;
+
+        if $i2 < $i3 goto label17;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 1;
+
+        $i2 = lengthof $r3;
+
+        $i2 = $i2 - 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i2;
+
+        return;
+
+     label02:
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i2 = -1;
+
+        $i4 = 0;
+
+     label03:
+        if $i3 == -1 goto label06;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i4 >= $i0 goto label06;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i0 = $r3[$i3];
+
+        $i5 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i0 != $i5 goto label04;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $r2[$i3] = $f0;
+
+        return;
+
+     label04:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i0 = $r3[$i3];
+
+        $i5 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i0 >= $i5 goto label05;
+
+        $i2 = $i3;
+
+     label05:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i3 = $r3[$i3];
+
+        $i4 = $i4 + 1;
+
+        goto label03;
+
+     label06:
+        $i4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $i3 = $i4 + 1;
+
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 == 0 goto label08;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = $r3[$i4];
+
+        if $i3 != -1 goto label07;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        goto label08;
+
+     label07:
+        $i3 = lengthof $r3;
+
+     label08:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i4 = lengthof $r3;
+
+        if $i3 < $i4 goto label11;
+
+        $i4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i0 = lengthof $r3;
+
+        if $i4 >= $i0 goto label11;
+
+        $i4 = 0;
+
+     label09:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i0 = lengthof $r3;
+
+        if $i4 >= $i0 goto label11;
+
+        $i0 = $r3[$i4];
+
+        if $i0 != -1 goto label10;
+
+        $i3 = $i4;
+
+        goto label11;
+
+     label10:
+        $i4 = $i4 + 1;
+
+        goto label09;
+
+     label11:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i4 = lengthof $r3;
+
+        if $i3 < $i4 goto label12;
+
+        $i3 = lengthof $r3;
+
+        $i4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $i4 = $i4 * 2;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE> = $i4;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 0;
+
+        $i4 = $i3 + -1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i4;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $i4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $r2 = staticinvoke <java.util.Arrays: float[] copyOf(float[],int)>($r2, $i4);
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues> = $r2;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $r3 = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>($r3, $i4);
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices> = $r3;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int ROW_SIZE>;
+
+        $r3 = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>($r3, $i4);
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices> = $r3;
+
+     label12:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i4 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $r3[$i3] = $i4;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $r2[$i3] = $f0;
+
+        if $i2 == -1 goto label13;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i4 = $r3[$i2];
+
+        $r3[$i3] = $i4;
+
+        $r3[$i2] = $i3;
+
+        goto label14;
+
+     label13:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $r3[$i3] = $i2;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = $i3;
+
+     label14:
+        $i2 = $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        $i2 = $i2 + 1;
+
+        $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount> = $i2;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.SolverVariable: void addToRow(androidx.constraintlayout.solver.ArrayRow)>($r4);
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i2 = $i2 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = $i2;
+
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 != 0 goto label15;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $i2 = $i2 + 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i2;
+
+     label15:
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = lengthof $r3;
+
+        if $i2 < $i3 goto label16;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 1;
+
+     label16:
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = lengthof $r3;
+
+        if $i2 < $i3 goto label17;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce> = 1;
+
+        $i2 = lengthof $r3;
+
+        $i2 = $i2 - 1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i2;
+
+     label17:
+        return;
+    }
+
+    public final float remove(androidx.constraintlayout.solver.SolverVariable, boolean)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        androidx.constraintlayout.solver.SolverVariable $r1, $r2;
+        boolean $z0;
+        int $i0, $i1, $i2, $i3, $i4;
+        int[] $r3;
+        androidx.constraintlayout.solver.ArrayRow $r4;
+        float[] $r5;
+        float $f0;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.SolverVariable candidate>;
+
+        if $r2 != $r1 goto label1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.SolverVariable candidate> = null;
+
+     label1:
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        if $i0 != -1 goto label2;
+
+        return 0.0F;
+
+     label2:
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = -1;
+
+        $i2 = 0;
+
+     label3:
+        if $i0 == -1 goto label9;
+
+        $i3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i2 >= $i3 goto label9;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i3 = $r3[$i0];
+
+        $i4 = $r1.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i3 != $i4 goto label8;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        if $i0 != $i2 goto label4;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i1 = $r3[$i0];
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead> = $i1;
+
+        goto label5;
+
+     label4:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i2 = $r3[$i0];
+
+        $r3[$i1] = $i2;
+
+     label5:
+        if $z0 == 0 goto label6;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.ArrayRow mRow>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.SolverVariable: void removeFromRow(androidx.constraintlayout.solver.ArrayRow)>($r4);
+
+     label6:
+        $i1 = $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        $i1 = $i1 + -1;
+
+        $r1.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount> = $i1;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        $i1 = $i1 + -1;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize> = $i1;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $r3[$i0] = -1;
+
+        $z0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: boolean mDidFillOnce>;
+
+        if $z0 == 0 goto label7;
+
+        $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mLast> = $i0;
+
+     label7:
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r5[$i0];
+
+        return $f0;
+
+     label8:
+        $i1 = $i0;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r3[$i0];
+
+        $i2 = $i2 + 1;
+
+        goto label3;
+
+     label9:
+        return 0.0F;
+    }
+
+    int sizeInBytes()
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        int[] $r1;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i0 = lengthof $r1;
+
+        $i0 = $i0 * 4;
+
+        $i0 = $i0 * 3;
+
+        $i0 = $i0 + 36;
+
+        return $i0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0;
+        java.lang.String $r1;
+        int $i0, $i1, $i2;
+        java.lang.StringBuilder $r2;
+        float[] $r3;
+        float $f0;
+        androidx.constraintlayout.solver.Cache $r4;
+        androidx.constraintlayout.solver.SolverVariable[] $r5;
+        int[] $r6;
+        androidx.constraintlayout.solver.SolverVariable $r7;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 = "";
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label1:
+        if $i0 == -1 goto label2;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label2;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" -> ");
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r3[$i0];
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r4 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r5 = $r4.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r6 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r6[$i0];
+
+        $r7 = $r5[$i2];
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r6[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return $r1;
+    }
+
+    final void updateFromRow(androidx.constraintlayout.solver.ArrayRow, androidx.constraintlayout.solver.ArrayRow, boolean)
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0, $r6;
+        androidx.constraintlayout.solver.ArrayRow $r1, $r2;
+        boolean $z0;
+        int $i0, $i1, $i2, $i3;
+        int[] $r3;
+        androidx.constraintlayout.solver.SolverVariable $r4;
+        float[] $r5;
+        float $f0, $f1, $f2;
+        androidx.constraintlayout.solver.Cache $r7;
+        androidx.constraintlayout.solver.SolverVariable[] $r8;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.ArrayRow;
+
+        $r2 := @parameter1: androidx.constraintlayout.solver.ArrayRow;
+
+        $z0 := @parameter2: boolean;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label1:
+        if $i0 == -1 goto label6;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label6;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r3[$i0];
+
+        $r4 = $r2.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.SolverVariable variable>;
+
+        $i3 = $r4.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if $i2 != $i3 goto label5;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r5[$i0];
+
+        $r4 = $r2.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.SolverVariable variable>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float remove(androidx.constraintlayout.solver.SolverVariable,boolean)>($r4, $z0);
+
+        $r6 = $r2.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.ArrayLinkedVariables variables>;
+
+        $i0 = $r6.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label2:
+        if $i0 == -1 goto label3;
+
+        $i2 = $r6.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label3;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r8 = $r7.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r3 = $r6.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r3[$i0];
+
+        $r4 = $r8[$i2];
+
+        $r5 = $r6.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f1 = $r5[$i0];
+
+        $f1 = $f1 * $f0;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: void add(androidx.constraintlayout.solver.SolverVariable,float,boolean)>($r4, $f1, $z0);
+
+        $r3 = $r6.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r3[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label3:
+        $f1 = $r1.<androidx.constraintlayout.solver.ArrayRow: float constantValue>;
+
+        $f2 = $r2.<androidx.constraintlayout.solver.ArrayRow: float constantValue>;
+
+        $f0 = $f2 * $f0;
+
+        $f0 = $f1 + $f0;
+
+        $r1.<androidx.constraintlayout.solver.ArrayRow: float constantValue> = $f0;
+
+        if $z0 == 0 goto label4;
+
+        $r4 = $r2.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.SolverVariable variable>;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.SolverVariable: void removeFromRow(androidx.constraintlayout.solver.ArrayRow)>($r1);
+
+     label4:
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+        goto label1;
+
+     label5:
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r3[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label6:
+        return;
+    }
+
+    void updateFromSystem(androidx.constraintlayout.solver.ArrayRow, androidx.constraintlayout.solver.ArrayRow[])
+    {
+        androidx.constraintlayout.solver.ArrayLinkedVariables $r0, $r9;
+        androidx.constraintlayout.solver.ArrayRow $r1, $r8;
+        androidx.constraintlayout.solver.ArrayRow[] $r2;
+        int $i0, $i1, $i2;
+        androidx.constraintlayout.solver.Cache $r3;
+        androidx.constraintlayout.solver.SolverVariable[] $r4;
+        int[] $r5;
+        androidx.constraintlayout.solver.SolverVariable $r6;
+        float[] $r7;
+        float $f0, $f1, $f2;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.ArrayLinkedVariables;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.ArrayRow;
+
+        $r2 := @parameter1: androidx.constraintlayout.solver.ArrayRow[];
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label1:
+        if $i0 == -1 goto label5;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label5;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r4 = $r3.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r5[$i0];
+
+        $r6 = $r4[$i2];
+
+        $i2 = $r6.<androidx.constraintlayout.solver.SolverVariable: int definitionId>;
+
+        if $i2 == -1 goto label4;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f0 = $r7[$i0];
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: float remove(androidx.constraintlayout.solver.SolverVariable,boolean)>($r6, 1);
+
+        $i0 = $r6.<androidx.constraintlayout.solver.SolverVariable: int definitionId>;
+
+        $r8 = $r2[$i0];
+
+        $z0 = $r8.<androidx.constraintlayout.solver.ArrayRow: boolean isSimpleDefinition>;
+
+        if $z0 != 0 goto label3;
+
+        $r9 = $r8.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.ArrayLinkedVariables variables>;
+
+        $i0 = $r9.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+     label2:
+        if $i0 == -1 goto label3;
+
+        $i2 = $r9.<androidx.constraintlayout.solver.ArrayLinkedVariables: int currentSize>;
+
+        if $i1 >= $i2 goto label3;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: androidx.constraintlayout.solver.Cache mCache>;
+
+        $r4 = $r3.<androidx.constraintlayout.solver.Cache: androidx.constraintlayout.solver.SolverVariable[] mIndexedVariables>;
+
+        $r5 = $r9.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayIndices>;
+
+        $i2 = $r5[$i0];
+
+        $r6 = $r4[$i2];
+
+        $r7 = $r9.<androidx.constraintlayout.solver.ArrayLinkedVariables: float[] mArrayValues>;
+
+        $f1 = $r7[$i0];
+
+        $f1 = $f1 * $f0;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: void add(androidx.constraintlayout.solver.SolverVariable,float,boolean)>($r6, $f1, 1);
+
+        $r5 = $r9.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r5[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label3:
+        $f1 = $r1.<androidx.constraintlayout.solver.ArrayRow: float constantValue>;
+
+        $f2 = $r8.<androidx.constraintlayout.solver.ArrayRow: float constantValue>;
+
+        $f0 = $f2 * $f0;
+
+        $f0 = $f1 + $f0;
+
+        $r1.<androidx.constraintlayout.solver.ArrayRow: float constantValue> = $f0;
+
+        $r6 = $r8.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.SolverVariable variable>;
+
+        virtualinvoke $r6.<androidx.constraintlayout.solver.SolverVariable: void removeFromRow(androidx.constraintlayout.solver.ArrayRow)>($r1);
+
+        $i0 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int mHead>;
+
+        $i1 = 0;
+
+        goto label1;
+
+     label4:
+        $r5 = $r0.<androidx.constraintlayout.solver.ArrayLinkedVariables: int[] mArrayNextIndices>;
+
+        $i0 = $r5[$i0];
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label5:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.ArrayLinkedVariables: int NONE> = -1;
+
+        <androidx.constraintlayout.solver.ArrayLinkedVariables: boolean FULL_NEW_CHECK> = 0;
+
+        <androidx.constraintlayout.solver.ArrayLinkedVariables: boolean DEBUG> = 0;
+
+        return;
+    }
+}

@@ -1,0 +1,138 @@
+class androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler extends android.os.Handler
+{
+    final androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0;
+
+    void <init>(androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase)
+    {
+        androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler $r0;
+        androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase $r1;
+
+        $r0 := @this: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler;
+
+        $r1 := @parameter0: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase;
+
+        $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0> = $r1;
+
+        specialinvoke $r0.<android.os.Handler: void <init>()>();
+
+        return;
+    }
+
+    void <init>(androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase, android.os.Handler)
+    {
+        androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler $r0;
+        android.os.Handler $r1;
+        android.os.Looper $r2;
+        androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase $r3;
+
+        $r0 := @this: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler;
+
+        $r3 := @parameter0: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase;
+
+        $r1 := @parameter1: android.os.Handler;
+
+        $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0> = $r3;
+
+        $r2 = virtualinvoke $r1.<android.os.Handler: android.os.Looper getLooper()>();
+
+        specialinvoke $r0.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler $r0;
+        android.os.Message $r1;
+        java.lang.String $r2;
+        int $i0;
+        androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase $r3;
+        android.view.GestureDetector$OnDoubleTapListener $r4;
+        boolean $z0;
+        android.view.MotionEvent $r5;
+        java.lang.RuntimeException $r6;
+        java.lang.StringBuilder $r7;
+        android.view.GestureDetector$OnGestureListener $r8;
+
+        $r0 := @this: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler;
+
+        $r1 := @parameter0: android.os.Message;
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        if $i0 == 1 goto label4;
+
+        if $i0 == 2 goto label3;
+
+        if $i0 != 3 goto label2;
+
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        $r4 = $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: android.view.GestureDetector$OnDoubleTapListener mDoubleTapListener>;
+
+        if $r4 == null goto label5;
+
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        $z0 = $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: boolean mStillDown>;
+
+        if $z0 != 0 goto label1;
+
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        $r4 = $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: android.view.GestureDetector$OnDoubleTapListener mDoubleTapListener>;
+
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        $r5 = $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: android.view.MotionEvent mCurrentDownEvent>;
+
+        interfaceinvoke $r4.<android.view.GestureDetector$OnDoubleTapListener: boolean onSingleTapConfirmed(android.view.MotionEvent)>($r5);
+
+        return;
+
+     label1:
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: boolean mDeferConfirmSingleTap> = 1;
+
+        return;
+
+     label2:
+        $r6 = new java.lang.RuntimeException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown message ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.RuntimeException: void <init>(java.lang.String)>($r2);
+
+        throw $r6;
+
+     label3:
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        virtualinvoke $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: void dispatchLongPress()>();
+
+        return;
+
+     label4:
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        $r8 = $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: android.view.GestureDetector$OnGestureListener mListener>;
+
+        $r3 = $r0.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler: androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0>;
+
+        $r5 = $r3.<androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase: android.view.MotionEvent mCurrentDownEvent>;
+
+        interfaceinvoke $r8.<android.view.GestureDetector$OnGestureListener: void onShowPress(android.view.MotionEvent)>($r5);
+
+     label5:
+        return;
+    }
+}

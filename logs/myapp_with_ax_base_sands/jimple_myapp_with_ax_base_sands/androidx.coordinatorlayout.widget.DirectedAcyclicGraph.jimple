@@ -1,0 +1,487 @@
+public final class androidx.coordinatorlayout.widget.DirectedAcyclicGraph extends java.lang.Object
+{
+    private final androidx.collection.SimpleArrayMap mGraph;
+    private final androidx.core.util.Pools$Pool mListPool;
+    private final java.util.ArrayList mSortResult;
+    private final java.util.HashSet mSortTmpMarked;
+
+    public void <init>()
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        androidx.core.util.Pools$SimplePool $r1;
+        androidx.collection.SimpleArrayMap $r2;
+        java.util.ArrayList $r3;
+        java.util.HashSet $r4;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new androidx.core.util.Pools$SimplePool;
+
+        specialinvoke $r1.<androidx.core.util.Pools$SimplePool: void <init>(int)>(10);
+
+        $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.core.util.Pools$Pool mListPool> = $r1;
+
+        $r2 = new androidx.collection.SimpleArrayMap;
+
+        specialinvoke $r2.<androidx.collection.SimpleArrayMap: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph> = $r2;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.ArrayList mSortResult> = $r3;
+
+        $r4 = new java.util.HashSet;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.HashSet mSortTmpMarked> = $r4;
+
+        return;
+    }
+
+    private void dfs(java.lang.Object, java.util.ArrayList, java.util.HashSet)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.lang.Object $r1, $r5;
+        java.util.ArrayList $r2, $r6;
+        java.util.HashSet $r3;
+        boolean $z0;
+        androidx.collection.SimpleArrayMap $r4;
+        int $i0, $i1;
+        java.lang.RuntimeException $r7;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.util.ArrayList;
+
+        $r3 := @parameter2: java.util.HashSet;
+
+        $z0 = virtualinvoke $r2.<java.util.ArrayList: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $z0 = virtualinvoke $r3.<java.util.HashSet: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label4;
+
+        virtualinvoke $r3.<java.util.HashSet: boolean add(java.lang.Object)>($r1);
+
+        $r4 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r5 = virtualinvoke $r4.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r6 = (java.util.ArrayList) $r5;
+
+        if $r6 == null goto label3;
+
+        $i0 = 0;
+
+        $i1 = virtualinvoke $r6.<java.util.ArrayList: int size()>();
+
+     label2:
+        if $i0 >= $i1 goto label3;
+
+        $r5 = virtualinvoke $r6.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        specialinvoke $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: void dfs(java.lang.Object,java.util.ArrayList,java.util.HashSet)>($r5, $r2, $r3);
+
+        $i0 = $i0 + 1;
+
+        goto label2;
+
+     label3:
+        virtualinvoke $r3.<java.util.HashSet: boolean remove(java.lang.Object)>($r1);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return;
+
+     label4:
+        $r7 = new java.lang.RuntimeException;
+
+        specialinvoke $r7.<java.lang.RuntimeException: void <init>(java.lang.String)>("This graph contains cyclic dependencies");
+
+        throw $r7;
+    }
+
+    private java.util.ArrayList getEmptyList()
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.util.ArrayList $r1;
+        java.lang.Object $r2;
+        androidx.core.util.Pools$Pool $r3;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.core.util.Pools$Pool mListPool>;
+
+        $r2 = interfaceinvoke $r3.<androidx.core.util.Pools$Pool: java.lang.Object acquire()>();
+
+        $r1 = (java.util.ArrayList) $r2;
+
+        if $r1 != null goto label1;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+     label1:
+        return $r1;
+    }
+
+    private void poolList(java.util.ArrayList)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.util.ArrayList $r1;
+        androidx.core.util.Pools$Pool $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.util.ArrayList;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.core.util.Pools$Pool mListPool>;
+
+        interfaceinvoke $r2.<androidx.core.util.Pools$Pool: boolean release(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void addEdge(java.lang.Object, java.lang.Object)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.lang.Object $r1, $r2, $r4;
+        androidx.collection.SimpleArrayMap $r3;
+        boolean $z0;
+        java.util.ArrayList $r5, $r6;
+        java.lang.IllegalArgumentException $r7;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $z0 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: boolean containsKey(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $z0 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: boolean containsKey(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label2;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r4 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r5 = (java.util.ArrayList) $r4;
+
+        if $r5 != null goto label1;
+
+        $r6 = specialinvoke $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.ArrayList getEmptyList()>();
+
+        $r5 = $r6;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        virtualinvoke $r3.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r6);
+
+     label1:
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r2);
+
+        return;
+
+     label2:
+        $r7 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r7.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("All nodes must be present in the graph before being added as an edge");
+
+        throw $r7;
+    }
+
+    public void addNode(java.lang.Object)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.lang.Object $r1;
+        boolean $z0;
+        androidx.collection.SimpleArrayMap $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $z0 = virtualinvoke $r2.<androidx.collection.SimpleArrayMap: boolean containsKey(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        virtualinvoke $r2.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, null);
+
+     label1:
+        return;
+    }
+
+    public void clear()
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        int $i0, $i1;
+        androidx.collection.SimpleArrayMap $r1;
+        java.lang.Object $r2;
+        java.util.ArrayList $r3;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $i0 = 0;
+
+        $r1 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $i1 = virtualinvoke $r1.<androidx.collection.SimpleArrayMap: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label3;
+
+        $r1 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r2 = virtualinvoke $r1.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($i0);
+
+        $r3 = (java.util.ArrayList) $r2;
+
+        if $r3 == null goto label2;
+
+        specialinvoke $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: void poolList(java.util.ArrayList)>($r3);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r1 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        virtualinvoke $r1.<androidx.collection.SimpleArrayMap: void clear()>();
+
+        return;
+    }
+
+    public boolean contains(java.lang.Object)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.lang.Object $r1;
+        boolean $z0;
+        androidx.collection.SimpleArrayMap $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $z0 = virtualinvoke $r2.<androidx.collection.SimpleArrayMap: boolean containsKey(java.lang.Object)>($r1);
+
+        return $z0;
+    }
+
+    public java.util.List getIncomingEdges(java.lang.Object)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.lang.Object $r1;
+        androidx.collection.SimpleArrayMap $r2;
+        java.util.List $r3;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r1 = virtualinvoke $r2.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r3 = (java.util.List) $r1;
+
+        return $r3;
+    }
+
+    public java.util.List getOutgoingEdges(java.lang.Object)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.lang.Object $r1, $r4;
+        java.util.ArrayList $r2, $r5;
+        int $i0, $i1;
+        androidx.collection.SimpleArrayMap $r3;
+        boolean $z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = null;
+
+        $i0 = 0;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $i1 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label4;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r4 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($i0);
+
+        $r5 = (java.util.ArrayList) $r4;
+
+        if $r5 == null goto label3;
+
+        $z0 = virtualinvoke $r5.<java.util.ArrayList: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label3;
+
+        if $r2 != null goto label2;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+     label2:
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r4 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: java.lang.Object keyAt(int)>($i0);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r4);
+
+     label3:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label4:
+        return $r2;
+    }
+
+    public java.util.ArrayList getSortedList()
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.util.ArrayList $r1;
+        java.util.HashSet $r2;
+        int $i0, $i1;
+        androidx.collection.SimpleArrayMap $r3;
+        java.lang.Object $r4;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.ArrayList mSortResult>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.HashSet mSortTmpMarked>;
+
+        virtualinvoke $r2.<java.util.HashSet: void clear()>();
+
+        $i0 = 0;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $i1 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r4 = virtualinvoke $r3.<androidx.collection.SimpleArrayMap: java.lang.Object keyAt(int)>($i0);
+
+        $r1 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.ArrayList mSortResult>;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.HashSet mSortTmpMarked>;
+
+        specialinvoke $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: void dfs(java.lang.Object,java.util.ArrayList,java.util.HashSet)>($r4, $r1, $r2);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        $r1 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: java.util.ArrayList mSortResult>;
+
+        return $r1;
+    }
+
+    public boolean hasOutgoingEdges(java.lang.Object)
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        java.lang.Object $r1, $r3;
+        int $i0, $i1;
+        androidx.collection.SimpleArrayMap $r2;
+        java.util.ArrayList $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $i0 = 0;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $i1 = virtualinvoke $r2.<androidx.collection.SimpleArrayMap: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label3;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $r3 = virtualinvoke $r2.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($i0);
+
+        $r4 = (java.util.ArrayList) $r3;
+
+        if $r4 == null goto label2;
+
+        $z0 = virtualinvoke $r4.<java.util.ArrayList: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    int size()
+    {
+        androidx.coordinatorlayout.widget.DirectedAcyclicGraph $r0;
+        int $i0;
+        androidx.collection.SimpleArrayMap $r1;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.DirectedAcyclicGraph;
+
+        $r1 = $r0.<androidx.coordinatorlayout.widget.DirectedAcyclicGraph: androidx.collection.SimpleArrayMap mGraph>;
+
+        $i0 = virtualinvoke $r1.<androidx.collection.SimpleArrayMap: int size()>();
+
+        return $i0;
+    }
+}

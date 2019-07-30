@@ -1,0 +1,313 @@
+public final class androidx.core.view.inputmethod.InputConnectionCompat extends java.lang.Object
+{
+    private static final java.lang.String COMMIT_CONTENT_ACTION;
+    private static final java.lang.String COMMIT_CONTENT_CONTENT_URI_KEY;
+    private static final java.lang.String COMMIT_CONTENT_DESCRIPTION_KEY;
+    private static final java.lang.String COMMIT_CONTENT_FLAGS_KEY;
+    private static final java.lang.String COMMIT_CONTENT_LINK_URI_KEY;
+    private static final java.lang.String COMMIT_CONTENT_OPTS_KEY;
+    private static final java.lang.String COMMIT_CONTENT_RESULT_RECEIVER;
+    public static final int INPUT_CONTENT_GRANT_READ_URI_PERMISSION;
+
+    public void <init>()
+    {
+        androidx.core.view.inputmethod.InputConnectionCompat $r0;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputConnectionCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean commitContent(android.view.inputmethod.InputConnection, android.view.inputmethod.EditorInfo, androidx.core.view.inputmethod.InputContentInfoCompat, int, android.os.Bundle)
+    {
+        android.view.inputmethod.InputConnection $r0;
+        android.view.inputmethod.EditorInfo $r1;
+        androidx.core.view.inputmethod.InputContentInfoCompat $r2;
+        int $i0, $i1, $i2;
+        android.os.Bundle $r3, $r9;
+        java.lang.String $r4;
+        android.content.ClipDescription $r5;
+        boolean $z0, $z1;
+        java.lang.String[] $r6;
+        java.lang.Object $r7;
+        android.view.inputmethod.InputContentInfo $r8;
+        android.net.Uri $r10;
+
+        $r0 := @parameter0: android.view.inputmethod.InputConnection;
+
+        $r1 := @parameter1: android.view.inputmethod.EditorInfo;
+
+        $r2 := @parameter2: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $i0 := @parameter3: int;
+
+        $r3 := @parameter4: android.os.Bundle;
+
+        $r5 = virtualinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat: android.content.ClipDescription getDescription()>();
+
+        $z0 = 0;
+
+        $r6 = staticinvoke <androidx.core.view.inputmethod.EditorInfoCompat: java.lang.String[] getContentMimeTypes(android.view.inputmethod.EditorInfo)>($r1);
+
+        $i1 = lengthof $r6;
+
+        $i2 = 0;
+
+     label1:
+        if $i2 >= $i1 goto label3;
+
+        $r4 = $r6[$i2];
+
+        $z1 = virtualinvoke $r5.<android.content.ClipDescription: boolean hasMimeType(java.lang.String)>($r4);
+
+        if $z1 == 0 goto label2;
+
+        $z0 = 1;
+
+        goto label3;
+
+     label2:
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label3:
+        if $z0 != 0 goto label4;
+
+        return 0;
+
+     label4:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 25 goto label5;
+
+        $r7 = virtualinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat: java.lang.Object unwrap()>();
+
+        $r8 = (android.view.inputmethod.InputContentInfo) $r7;
+
+        $z0 = interfaceinvoke $r0.<android.view.inputmethod.InputConnection: boolean commitContent(android.view.inputmethod.InputContentInfo,int,android.os.Bundle)>($r8, $i0, $r3);
+
+        return $z0;
+
+     label5:
+        $r9 = new android.os.Bundle;
+
+        specialinvoke $r9.<android.os.Bundle: void <init>()>();
+
+        $r10 = virtualinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat: android.net.Uri getContentUri()>();
+
+        virtualinvoke $r9.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_URI", $r10);
+
+        $r5 = virtualinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat: android.content.ClipDescription getDescription()>();
+
+        virtualinvoke $r9.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_DESCRIPTION", $r5);
+
+        $r10 = virtualinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat: android.net.Uri getLinkUri()>();
+
+        virtualinvoke $r9.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_LINK_URI", $r10);
+
+        virtualinvoke $r9.<android.os.Bundle: void putInt(java.lang.String,int)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_FLAGS", $i0);
+
+        virtualinvoke $r9.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_OPTS", $r3);
+
+        $z0 = interfaceinvoke $r0.<android.view.inputmethod.InputConnection: boolean performPrivateCommand(java.lang.String,android.os.Bundle)>("androidx.core.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT", $r9);
+
+        return $z0;
+    }
+
+    public static android.view.inputmethod.InputConnection createWrapper(android.view.inputmethod.InputConnection, android.view.inputmethod.EditorInfo, androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener)
+    {
+        android.view.inputmethod.InputConnection $r0;
+        android.view.inputmethod.EditorInfo $r1;
+        androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener $r2;
+        androidx.core.view.inputmethod.InputConnectionCompat$2 $r3;
+        java.lang.String[] $r4;
+        int $i0;
+        androidx.core.view.inputmethod.InputConnectionCompat$1 $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        $r0 := @parameter0: android.view.inputmethod.InputConnection;
+
+        $r1 := @parameter1: android.view.inputmethod.EditorInfo;
+
+        $r2 := @parameter2: androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener;
+
+        if $r0 == null goto label5;
+
+        if $r1 == null goto label4;
+
+        if $r2 == null goto label3;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r5 = new androidx.core.view.inputmethod.InputConnectionCompat$1;
+
+        specialinvoke $r5.<androidx.core.view.inputmethod.InputConnectionCompat$1: void <init>(android.view.inputmethod.InputConnection,boolean,androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener)>($r0, 0, $r2);
+
+        return $r5;
+
+     label1:
+        $r4 = staticinvoke <androidx.core.view.inputmethod.EditorInfoCompat: java.lang.String[] getContentMimeTypes(android.view.inputmethod.EditorInfo)>($r1);
+
+        $i0 = lengthof $r4;
+
+        if $i0 != 0 goto label2;
+
+        return $r0;
+
+     label2:
+        $r3 = new androidx.core.view.inputmethod.InputConnectionCompat$2;
+
+        specialinvoke $r3.<androidx.core.view.inputmethod.InputConnectionCompat$2: void <init>(android.view.inputmethod.InputConnection,boolean,androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener)>($r0, 0, $r2);
+
+        return $r3;
+
+     label3:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("onCommitContentListener must be non-null");
+
+        throw $r6;
+
+     label4:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("editorInfo must be non-null");
+
+        throw $r6;
+
+     label5:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("inputConnection must be non-null");
+
+        throw $r6;
+    }
+
+    static boolean handlePerformPrivateCommand(java.lang.String, android.os.Bundle, androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener)
+    {
+        java.lang.String $r0;
+        android.os.Bundle $r1;
+        androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener $r2;
+        androidx.core.view.inputmethod.InputContentInfoCompat $r3;
+        boolean $z0;
+        byte $b0;
+        android.os.ResultReceiver $r4, $r6;
+        android.os.Parcelable $r5;
+        android.net.Uri $r7, $r9;
+        android.content.ClipDescription $r8;
+        int $i1;
+        java.lang.Throwable $r10;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: android.os.Bundle;
+
+        $r2 := @parameter2: androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean equals(java.lang.CharSequence,java.lang.CharSequence)>("androidx.core.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT", $r0);
+
+        $b0 = 0;
+
+        if $z0 != 0 goto label01;
+
+        return 0;
+
+     label01:
+        if $r1 != null goto label02;
+
+        return 0;
+
+     label02:
+        $r4 = null;
+
+     label03:
+        $r5 = virtualinvoke $r1.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_RESULT_RECEIVER");
+
+        $r6 = (android.os.ResultReceiver) $r5;
+
+     label04:
+        $r4 = $r6;
+
+     label05:
+        $r5 = virtualinvoke $r1.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_URI");
+
+        $r7 = (android.net.Uri) $r5;
+
+        $r5 = virtualinvoke $r1.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_DESCRIPTION");
+
+        $r8 = (android.content.ClipDescription) $r5;
+
+        $r5 = virtualinvoke $r1.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_LINK_URI");
+
+        $r9 = (android.net.Uri) $r5;
+
+        $i1 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_FLAGS");
+
+        $r5 = virtualinvoke $r1.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_OPTS");
+
+        $r1 = (android.os.Bundle) $r5;
+
+        $r3 = new androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        specialinvoke $r3.<androidx.core.view.inputmethod.InputContentInfoCompat: void <init>(android.net.Uri,android.content.ClipDescription,android.net.Uri)>($r7, $r8, $r9);
+
+        $z0 = interfaceinvoke $r2.<androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener: boolean onCommitContent(androidx.core.view.inputmethod.InputContentInfoCompat,int,android.os.Bundle)>($r3, $i1, $r1);
+
+     label06:
+        if $r6 == null goto label11;
+
+        if $z0 == 0 goto label07;
+
+        $b0 = 1;
+
+     label07:
+        virtualinvoke $r6.<android.os.ResultReceiver: void send(int,android.os.Bundle)>($b0, null);
+
+        return $z0;
+
+     label08:
+        $r10 := @caughtexception;
+
+        if $r4 == null goto label10;
+
+        goto label09;
+
+     label09:
+        virtualinvoke $r4.<android.os.ResultReceiver: void send(int,android.os.Bundle)>($b0, null);
+
+     label10:
+        throw $r10;
+
+     label11:
+        return $z0;
+
+        catch java.lang.Throwable from label03 to label04 with label08;
+        catch java.lang.Throwable from label05 to label06 with label08;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.view.inputmethod.InputConnectionCompat: int INPUT_CONTENT_GRANT_READ_URI_PERMISSION> = 1;
+
+        <androidx.core.view.inputmethod.InputConnectionCompat: java.lang.String COMMIT_CONTENT_RESULT_RECEIVER> = "androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_RESULT_RECEIVER";
+
+        <androidx.core.view.inputmethod.InputConnectionCompat: java.lang.String COMMIT_CONTENT_OPTS_KEY> = "androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_OPTS";
+
+        <androidx.core.view.inputmethod.InputConnectionCompat: java.lang.String COMMIT_CONTENT_LINK_URI_KEY> = "androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_LINK_URI";
+
+        <androidx.core.view.inputmethod.InputConnectionCompat: java.lang.String COMMIT_CONTENT_FLAGS_KEY> = "androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_FLAGS";
+
+        <androidx.core.view.inputmethod.InputConnectionCompat: java.lang.String COMMIT_CONTENT_DESCRIPTION_KEY> = "androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_DESCRIPTION";
+
+        <androidx.core.view.inputmethod.InputConnectionCompat: java.lang.String COMMIT_CONTENT_CONTENT_URI_KEY> = "androidx.core.view.inputmethod.InputConnectionCompat.CONTENT_URI";
+
+        <androidx.core.view.inputmethod.InputConnectionCompat: java.lang.String COMMIT_CONTENT_ACTION> = "androidx.core.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT";
+
+        return;
+    }
+}

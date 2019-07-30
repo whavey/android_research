@@ -1,0 +1,5 @@
+public interface  androidx.appcompat.app.ActionBar$OnNavigationListener extends java.lang.Object
+{
+
+    public abstract boolean onNavigationItemSelected(int, long);
+}

@@ -1,0 +1,58 @@
+class androidx.appcompat.widget.AppCompatTextHelper$1 extends androidx.core.content.res.ResourcesCompat$FontCallback
+{
+    final androidx.appcompat.widget.AppCompatTextHelper this$0;
+    final java.lang.ref.WeakReference val$textViewWeak;
+
+    void <init>(androidx.appcompat.widget.AppCompatTextHelper, java.lang.ref.WeakReference)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper$1 $r0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+        java.lang.ref.WeakReference $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatTextHelper$1;
+
+        $r1 := @parameter0: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $r2 := @parameter1: java.lang.ref.WeakReference;
+
+        $r0.<androidx.appcompat.widget.AppCompatTextHelper$1: androidx.appcompat.widget.AppCompatTextHelper this$0> = $r1;
+
+        $r0.<androidx.appcompat.widget.AppCompatTextHelper$1: java.lang.ref.WeakReference val$textViewWeak> = $r2;
+
+        specialinvoke $r0.<androidx.core.content.res.ResourcesCompat$FontCallback: void <init>()>();
+
+        return;
+    }
+
+    public void onFontRetrievalFailed(int)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper$1 $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatTextHelper$1;
+
+        $i0 := @parameter0: int;
+
+        return;
+    }
+
+    public void onFontRetrieved(android.graphics.Typeface)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper$1 $r0;
+        android.graphics.Typeface $r1;
+        androidx.appcompat.widget.AppCompatTextHelper $r2;
+        java.lang.ref.WeakReference $r3;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatTextHelper$1;
+
+        $r1 := @parameter0: android.graphics.Typeface;
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatTextHelper$1: androidx.appcompat.widget.AppCompatTextHelper this$0>;
+
+        $r3 = $r0.<androidx.appcompat.widget.AppCompatTextHelper$1: java.lang.ref.WeakReference val$textViewWeak>;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatTextHelper: void onAsyncTypefaceReceived(java.lang.ref.WeakReference,android.graphics.Typeface)>($r3, $r1);
+
+        return;
+    }
+}

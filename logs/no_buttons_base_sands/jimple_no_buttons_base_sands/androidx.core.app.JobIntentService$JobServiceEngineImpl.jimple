@@ -1,0 +1,195 @@
+final class androidx.core.app.JobIntentService$JobServiceEngineImpl extends android.app.job.JobServiceEngine implements androidx.core.app.JobIntentService$CompatJobEngine
+{
+    static final boolean DEBUG;
+    static final java.lang.String TAG;
+    final java.lang.Object mLock;
+    android.app.job.JobParameters mParams;
+    final androidx.core.app.JobIntentService mService;
+
+    void <init>(androidx.core.app.JobIntentService)
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl $r0;
+        androidx.core.app.JobIntentService $r1;
+        java.lang.Object $r2;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl;
+
+        $r1 := @parameter0: androidx.core.app.JobIntentService;
+
+        specialinvoke $r0.<android.app.job.JobServiceEngine: void <init>(android.app.Service)>($r1);
+
+        $r2 = new java.lang.Object;
+
+        specialinvoke $r2.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: java.lang.Object mLock> = $r2;
+
+        $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: androidx.core.app.JobIntentService mService> = $r1;
+
+        return;
+    }
+
+    public android.os.IBinder compatGetBinder()
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl $r0;
+        android.os.IBinder $r1;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl;
+
+        $r1 = virtualinvoke $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: android.os.IBinder getBinder()>();
+
+        return $r1;
+    }
+
+    public androidx.core.app.JobIntentService$GenericWorkItem dequeueWork()
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl $r0;
+        java.lang.Object $r1;
+        android.app.job.JobParameters $r2;
+        android.app.job.JobWorkItem $r3;
+        android.content.Intent $r4;
+        androidx.core.app.JobIntentService $r5;
+        java.lang.ClassLoader $r6;
+        androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem $r7;
+        java.lang.Throwable $r8, $r9;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl;
+
+        $r1 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: java.lang.Object mLock>;
+
+        entermonitor $r1;
+
+     label01:
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: android.app.job.JobParameters mParams>;
+
+        if $r2 != null goto label03;
+
+        exitmonitor $r1;
+
+     label02:
+        return null;
+
+     label03:
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: android.app.job.JobParameters mParams>;
+
+        $r3 = virtualinvoke $r2.<android.app.job.JobParameters: android.app.job.JobWorkItem dequeueWork()>();
+
+     label04:
+        exitmonitor $r1;
+
+     label05:
+        if $r3 == null goto label06;
+
+        $r4 = virtualinvoke $r3.<android.app.job.JobWorkItem: android.content.Intent getIntent()>();
+
+        $r5 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: androidx.core.app.JobIntentService mService>;
+
+        $r6 = virtualinvoke $r5.<androidx.core.app.JobIntentService: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r4.<android.content.Intent: void setExtrasClassLoader(java.lang.ClassLoader)>($r6);
+
+        $r7 = new androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem;
+
+        specialinvoke $r7.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: void <init>(androidx.core.app.JobIntentService$JobServiceEngineImpl,android.app.job.JobWorkItem)>($r0, $r3);
+
+        return $r7;
+
+     label06:
+        return null;
+
+     label07:
+        $r8 := @caughtexception;
+
+        $r9 = $r8;
+
+        goto label09;
+
+     label08:
+        $r9 := @caughtexception;
+
+     label09:
+        exitmonitor $r1;
+
+     label10:
+        throw $r9;
+
+     label11:
+        $r9 := @caughtexception;
+
+        goto label09;
+
+        catch java.lang.Throwable from label01 to label02 with label08;
+        catch java.lang.Throwable from label03 to label04 with label08;
+        catch java.lang.Throwable from label04 to label05 with label07;
+        catch java.lang.Throwable from label09 to label10 with label11;
+    }
+
+    public boolean onStartJob(android.app.job.JobParameters)
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl $r0;
+        android.app.job.JobParameters $r1;
+        androidx.core.app.JobIntentService $r2;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl;
+
+        $r1 := @parameter0: android.app.job.JobParameters;
+
+        $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: android.app.job.JobParameters mParams> = $r1;
+
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: androidx.core.app.JobIntentService mService>;
+
+        virtualinvoke $r2.<androidx.core.app.JobIntentService: void ensureProcessorRunningLocked(boolean)>(0);
+
+        return 1;
+    }
+
+    public boolean onStopJob(android.app.job.JobParameters)
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl $r0;
+        android.app.job.JobParameters $r1;
+        java.lang.Object $r2;
+        boolean $z0;
+        androidx.core.app.JobIntentService $r3;
+        java.lang.Throwable $r4;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl;
+
+        $r1 := @parameter0: android.app.job.JobParameters;
+
+        $r3 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: androidx.core.app.JobIntentService mService>;
+
+        $z0 = virtualinvoke $r3.<androidx.core.app.JobIntentService: boolean doStopCurrentWork()>();
+
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: java.lang.Object mLock>;
+
+        entermonitor $r2;
+
+     label1:
+        $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl: android.app.job.JobParameters mParams> = null;
+
+        exitmonitor $r2;
+
+     label2:
+        return $z0;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label4:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.JobIntentService$JobServiceEngineImpl: java.lang.String TAG> = "JobServiceEngineImpl";
+
+        <androidx.core.app.JobIntentService$JobServiceEngineImpl: boolean DEBUG> = 0;
+
+        return;
+    }
+}

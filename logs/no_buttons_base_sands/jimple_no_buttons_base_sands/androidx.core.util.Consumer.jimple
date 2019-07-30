@@ -1,0 +1,5 @@
+public interface  androidx.core.util.Consumer extends java.lang.Object
+{
+
+    public abstract void accept(java.lang.Object);
+}

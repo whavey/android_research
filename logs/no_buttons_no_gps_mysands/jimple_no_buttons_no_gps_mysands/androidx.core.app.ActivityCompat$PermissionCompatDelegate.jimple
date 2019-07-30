@@ -1,0 +1,7 @@
+public interface  androidx.core.app.ActivityCompat$PermissionCompatDelegate extends java.lang.Object
+{
+
+    public abstract boolean onActivityResult(android.app.Activity, int, int, android.content.Intent);
+
+    public abstract boolean requestPermissions(android.app.Activity, java.lang.String[], int);
+}

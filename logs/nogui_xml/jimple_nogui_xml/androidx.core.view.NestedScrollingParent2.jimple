@@ -1,0 +1,13 @@
+public interface  androidx.core.view.NestedScrollingParent2 extends java.lang.Object implements androidx.core.view.NestedScrollingParent
+{
+
+    public abstract void onNestedPreScroll(android.view.View, int, int, int[], int);
+
+    public abstract void onNestedScroll(android.view.View, int, int, int, int, int);
+
+    public abstract void onNestedScrollAccepted(android.view.View, android.view.View, int, int);
+
+    public abstract boolean onStartNestedScroll(android.view.View, android.view.View, int, int);
+
+    public abstract void onStopNestedScroll(android.view.View, int);
+}

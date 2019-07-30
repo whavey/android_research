@@ -1,0 +1,7 @@
+public interface  androidx.appcompat.view.menu.MenuPresenter$Callback extends java.lang.Object
+{
+
+    public abstract void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder, boolean);
+
+    public abstract boolean onOpenSubMenu(androidx.appcompat.view.menu.MenuBuilder);
+}

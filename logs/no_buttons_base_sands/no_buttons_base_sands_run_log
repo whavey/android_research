@@ -1,0 +1,161 @@
+Results: 
+	App: no_buttons.apk
+	Sources_and_sinks_file: sourcesandsinks.txt
+	Sinks:
+		Statement:
+			- virtualinvoke $r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.intent.action.TIME_SET") 
+		Method:
+			- <androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void setup()>
+		Statement:
+			- virtualinvoke $r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.intent.action.TIMEZONE_CHANGED") 
+		Method:
+			- <androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void setup()>
+		Statement:
+			- staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r5) 
+		Method:
+			- <androidx.fragment.app.FragmentManagerImpl: void moveToState(androidx.fragment.app.Fragment,int,int,int,boolean)>
+		Statement:
+			- staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r5) 
+		Method:
+			- <androidx.fragment.app.FragmentManagerImpl: void moveToState(androidx.fragment.app.Fragment,int,int,int,boolean)>
+		Statement:
+			- virtualinvoke $r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.intent.action.TIME_TICK") 
+		Method:
+			- <androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void setup()>
+		Statement:
+			- staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r5) 
+		Method:
+			- <androidx.fragment.app.FragmentManagerImpl: void moveToState(androidx.fragment.app.Fragment,int,int,int,boolean)>
+		Statement:
+			- virtualinvoke $r1.<android.os.Bundle: void putInt(java.lang.String,int)>("android:target_state", $i0) 
+		Method:
+			- <androidx.fragment.app.FragmentManagerImpl: void putFragment(android.os.Bundle,java.lang.String,androidx.fragment.app.Fragment)>
+		Statement:
+			- virtualinvoke $r1.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android:support:fragments", $r2) 
+		Method:
+			- <androidx.fragment.app.Fragment: void performSaveInstanceState(android.os.Bundle)>
+		Statement:
+			- virtualinvoke $r5.<android.content.Context: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r2, $r1) 
+		Method:
+			- <androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void setup()>
+	Sources:
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>

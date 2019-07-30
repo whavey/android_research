@@ -1,0 +1,234 @@
+public final class androidx.core.widget.CompoundButtonCompat extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private static java.lang.reflect.Field sButtonDrawableField;
+    private static boolean sButtonDrawableFieldFetched;
+
+    private void <init>()
+    {
+        androidx.core.widget.CompoundButtonCompat $r0;
+
+        $r0 := @this: androidx.core.widget.CompoundButtonCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.graphics.drawable.Drawable getButtonDrawable(android.widget.CompoundButton)
+    {
+        android.widget.CompoundButton $r0;
+        int $i0;
+        android.graphics.drawable.Drawable $r1;
+        boolean $z0;
+        java.lang.Class $r2;
+        java.lang.reflect.Field $r3;
+        java.lang.Throwable $r4, $r6;
+        java.lang.Object $r5;
+
+        $r0 := @parameter0: android.widget.CompoundButton;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label01;
+
+        $r1 = virtualinvoke $r0.<android.widget.CompoundButton: android.graphics.drawable.Drawable getButtonDrawable()>();
+
+        return $r1;
+
+     label01:
+        $z0 = <androidx.core.widget.CompoundButtonCompat: boolean sButtonDrawableFieldFetched>;
+
+        if $z0 != 0 goto label08;
+
+        $r2 = class "Landroid/widget/CompoundButton;";
+
+     label02:
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mButtonDrawable");
+
+     label03:
+        <androidx.core.widget.CompoundButtonCompat: java.lang.reflect.Field sButtonDrawableField> = $r3;
+
+        $r3 = <androidx.core.widget.CompoundButtonCompat: java.lang.reflect.Field sButtonDrawableField>;
+
+     label04:
+        virtualinvoke $r3.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label05:
+        goto label07;
+
+     label06:
+        $r4 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("CompoundButtonCompat", "Failed to retrieve mButtonDrawable field", $r4);
+
+     label07:
+        <androidx.core.widget.CompoundButtonCompat: boolean sButtonDrawableFieldFetched> = 1;
+
+     label08:
+        $r3 = <androidx.core.widget.CompoundButtonCompat: java.lang.reflect.Field sButtonDrawableField>;
+
+        if $r3 == null goto label12;
+
+     label09:
+        $r5 = virtualinvoke $r3.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($r0);
+
+     label10:
+        $r1 = (android.graphics.drawable.Drawable) $r5;
+
+        return $r1;
+
+     label11:
+        $r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("CompoundButtonCompat", "Failed to get button drawable via reflection", $r6);
+
+        <androidx.core.widget.CompoundButtonCompat: java.lang.reflect.Field sButtonDrawableField> = null;
+
+     label12:
+        return null;
+
+        catch java.lang.NoSuchFieldException from label02 to label03 with label06;
+        catch java.lang.NoSuchFieldException from label04 to label05 with label06;
+        catch java.lang.IllegalAccessException from label09 to label10 with label11;
+    }
+
+    public static android.content.res.ColorStateList getButtonTintList(android.widget.CompoundButton)
+    {
+        android.widget.CompoundButton $r0;
+        int $i0;
+        android.content.res.ColorStateList $r1;
+        boolean $z0;
+        androidx.core.widget.TintableCompoundButton $r2;
+
+        $r0 := @parameter0: android.widget.CompoundButton;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.widget.CompoundButton: android.content.res.ColorStateList getButtonTintList()>();
+
+        return $r1;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.TintableCompoundButton;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.widget.TintableCompoundButton) $r0;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.widget.TintableCompoundButton: android.content.res.ColorStateList getSupportButtonTintList()>();
+
+        return $r1;
+
+     label2:
+        return null;
+    }
+
+    public static android.graphics.PorterDuff$Mode getButtonTintMode(android.widget.CompoundButton)
+    {
+        android.widget.CompoundButton $r0;
+        int $i0;
+        android.graphics.PorterDuff$Mode $r1;
+        boolean $z0;
+        androidx.core.widget.TintableCompoundButton $r2;
+
+        $r0 := @parameter0: android.widget.CompoundButton;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.widget.CompoundButton: android.graphics.PorterDuff$Mode getButtonTintMode()>();
+
+        return $r1;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.TintableCompoundButton;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.widget.TintableCompoundButton) $r0;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.widget.TintableCompoundButton: android.graphics.PorterDuff$Mode getSupportButtonTintMode()>();
+
+        return $r1;
+
+     label2:
+        return null;
+    }
+
+    public static void setButtonTintList(android.widget.CompoundButton, android.content.res.ColorStateList)
+    {
+        android.widget.CompoundButton $r0;
+        android.content.res.ColorStateList $r1;
+        int $i0;
+        boolean $z0;
+        androidx.core.widget.TintableCompoundButton $r2;
+
+        $r0 := @parameter0: android.widget.CompoundButton;
+
+        $r1 := @parameter1: android.content.res.ColorStateList;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.widget.CompoundButton: void setButtonTintList(android.content.res.ColorStateList)>($r1);
+
+        return;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.TintableCompoundButton;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.widget.TintableCompoundButton) $r0;
+
+        interfaceinvoke $r2.<androidx.core.widget.TintableCompoundButton: void setSupportButtonTintList(android.content.res.ColorStateList)>($r1);
+
+     label2:
+        return;
+    }
+
+    public static void setButtonTintMode(android.widget.CompoundButton, android.graphics.PorterDuff$Mode)
+    {
+        android.widget.CompoundButton $r0;
+        android.graphics.PorterDuff$Mode $r1;
+        int $i0;
+        boolean $z0;
+        androidx.core.widget.TintableCompoundButton $r2;
+
+        $r0 := @parameter0: android.widget.CompoundButton;
+
+        $r1 := @parameter1: android.graphics.PorterDuff$Mode;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.widget.CompoundButton: void setButtonTintMode(android.graphics.PorterDuff$Mode)>($r1);
+
+        return;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.TintableCompoundButton;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.widget.TintableCompoundButton) $r0;
+
+        interfaceinvoke $r2.<androidx.core.widget.TintableCompoundButton: void setSupportButtonTintMode(android.graphics.PorterDuff$Mode)>($r1);
+
+     label2:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.widget.CompoundButtonCompat: java.lang.String TAG> = "CompoundButtonCompat";
+
+        return;
+    }
+}

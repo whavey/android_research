@@ -1,0 +1,854 @@
+public class androidx.constraintlayout.solver.widgets.Barrier extends androidx.constraintlayout.solver.widgets.Helper
+{
+    public static final int BOTTOM;
+    public static final int LEFT;
+    public static final int RIGHT;
+    public static final int TOP;
+    private boolean mAllowsGoneWidget;
+    private int mBarrierType;
+    private java.util.ArrayList mNodes;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        java.util.ArrayList $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.Helper: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType> = 0;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>(int)>(4);
+
+        $r0.<androidx.constraintlayout.solver.widgets.Barrier: java.util.ArrayList mNodes> = $r1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.Barrier: boolean mAllowsGoneWidget> = 1;
+
+        return;
+    }
+
+    public void addToSolver(androidx.constraintlayout.solver.LinearSystem)
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        androidx.constraintlayout.solver.LinearSystem $r1;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor[] $r2;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r3, $r4;
+        androidx.constraintlayout.solver.SolverVariable $r5, $r10;
+        boolean $z0, $z1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] $r6;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r7;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $r8, $r9;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.LinearSystem;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r2[0] = $r3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r2[2] = $r3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r2[1] = $r3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r2[3] = $r3;
+
+        $i1 = 0;
+
+     label01:
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $i0 = lengthof $r2;
+
+        if $i1 >= $i0 goto label02;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $r3 = $r2[$i1];
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $r4 = $r2[$i1];
+
+        $r5 = virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.SolverVariable createObjectVariable(java.lang.Object)>($r4);
+
+        $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable> = $r5;
+
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label02:
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i1 < 0 goto label22;
+
+        if $i1 >= 4 goto label22;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        $r3 = $r2[$i1];
+
+        $z0 = 0;
+
+        $i1 = 0;
+
+     label03:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mWidgetsCount>;
+
+        if $i1 >= $i0 goto label09;
+
+        $r6 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        $r7 = $r6[$i1];
+
+        $z1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: boolean mAllowsGoneWidget>;
+
+        if $z1 != 0 goto label04;
+
+        $z1 = virtualinvoke $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: boolean allowedInBarrier()>();
+
+        if $z1 != 0 goto label04;
+
+        goto label08;
+
+     label04:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i0 == 0 goto label05;
+
+        if $i0 != 1 goto label06;
+
+     label05:
+        $r8 = virtualinvoke $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        $r9 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $r8 != $r9 goto label06;
+
+        $z0 = 1;
+
+        goto label09;
+
+     label06:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i0 == 2 goto label07;
+
+        if $i0 != 3 goto label08;
+
+     label07:
+        $r8 = virtualinvoke $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        $r9 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $r8 != $r9 goto label08;
+
+        $z0 = 1;
+
+        goto label09;
+
+     label08:
+        $i1 = $i1 + 1;
+
+        goto label03;
+
+     label09:
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i1 == 0 goto label11;
+
+        if $i1 != 1 goto label10;
+
+        goto label11;
+
+     label10:
+        $r7 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        $r8 = virtualinvoke $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        $r9 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r8 != $r9 goto label12;
+
+        $z0 = 0;
+
+        goto label12;
+
+     label11:
+        $r7 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        $r8 = virtualinvoke $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        $r9 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r8 != $r9 goto label12;
+
+        $z0 = 0;
+
+     label12:
+        $i1 = 0;
+
+     label13:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mWidgetsCount>;
+
+        if $i1 >= $i0 goto label18;
+
+        $r6 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        $r7 = $r6[$i1];
+
+        $z1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: boolean mAllowsGoneWidget>;
+
+        if $z1 != 0 goto label14;
+
+        $z1 = virtualinvoke $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: boolean allowedInBarrier()>();
+
+        if $z1 != 0 goto label14;
+
+        goto label17;
+
+     label14:
+        $r2 = $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        $r4 = $r2[$i0];
+
+        $r5 = virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.SolverVariable createObjectVariable(java.lang.Object)>($r4);
+
+        $r2 = $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        $r4 = $r2[$i0];
+
+        $r4.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable> = $r5;
+
+        if $i0 == 0 goto label16;
+
+        if $i0 != 2 goto label15;
+
+        goto label16;
+
+     label15:
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: void addGreaterBarrier(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,boolean)>($r10, $r5, $z0);
+
+        goto label17;
+
+     label16:
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: void addLowerBarrier(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,boolean)>($r10, $r5, $z0);
+
+     label17:
+        $i1 = $i1 + 1;
+
+        goto label13;
+
+     label18:
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i1 != 0 goto label19;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 6);
+
+        if $z0 != 0 goto label22;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        $r3 = $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 5);
+
+        return;
+
+     label19:
+        if $i1 != 1 goto label20;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 6);
+
+        if $z0 != 0 goto label22;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        $r3 = $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 5);
+
+        return;
+
+     label20:
+        if $i1 != 2 goto label21;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 6);
+
+        if $z0 != 0 goto label22;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        $r3 = $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 5);
+
+        return;
+
+     label21:
+        if $i1 != 3 goto label22;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 6);
+
+        if $z0 != 0 goto label22;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r5 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        $r3 = $r7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r10 = $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.ArrayRow addEquality(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable,int,int)>($r5, $r10, 0, 5);
+
+     label22:
+        return;
+    }
+
+    public boolean allowedInBarrier()
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        return 1;
+    }
+
+    public boolean allowsGoneWidget()
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        z0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: boolean mAllowsGoneWidget>;
+
+        return z0;
+    }
+
+    public void analyze(int)
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r2;
+        boolean $z0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r3;
+        androidx.constraintlayout.solver.widgets.ResolutionAnchor $r4, $r5;
+        java.util.ArrayList $r6;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] $r7;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        if $r1 != null goto label01;
+
+        return;
+
+     label01:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        $r2 = (androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer) $r1;
+
+        $z0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean optimizeFor(int)>(2);
+
+        if $z0 != 0 goto label02;
+
+        return;
+
+     label02:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i0 == 0 goto label06;
+
+        if $i0 == 1 goto label05;
+
+        if $i0 == 2 goto label04;
+
+        if $i0 == 3 goto label03;
+
+        return;
+
+     label03:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r4 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label07;
+
+     label04:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r4 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label07;
+
+     label05:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r4 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label07;
+
+     label06:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r4 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+     label07:
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void setType(int)>(5);
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i0 == 0 goto label09;
+
+        if $i0 != 1 goto label08;
+
+        goto label09;
+
+     label08:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+        goto label10;
+
+     label09:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+     label10:
+        $r6 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: java.util.ArrayList mNodes>;
+
+        virtualinvoke $r6.<java.util.ArrayList: void clear()>();
+
+        $i0 = 0;
+
+     label11:
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mWidgetsCount>;
+
+        if $i0 >= $i1 goto label19;
+
+        $r7 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        $r1 = $r7[$i0];
+
+        $z0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: boolean mAllowsGoneWidget>;
+
+        if $z0 != 0 goto label12;
+
+        $z0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: boolean allowedInBarrier()>();
+
+        if $z0 != 0 goto label12;
+
+        goto label18;
+
+     label12:
+        $r5 = null;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i1 == 0 goto label16;
+
+        if $i1 == 1 goto label15;
+
+        if $i1 == 2 goto label14;
+
+        if $i1 == 3 goto label13;
+
+        goto label17;
+
+     label13:
+        $r3 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label17;
+
+     label14:
+        $r3 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label17;
+
+     label15:
+        $r3 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label17;
+
+     label16:
+        $r3 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r5 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+     label17:
+        if $r5 == null goto label18;
+
+        $r6 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: java.util.ArrayList mNodes>;
+
+        virtualinvoke $r6.<java.util.ArrayList: boolean add(java.lang.Object)>($r5);
+
+        virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void addDependent(androidx.constraintlayout.solver.widgets.ResolutionNode)>($r4);
+
+     label18:
+        $i0 = $i0 + 1;
+
+        goto label11;
+
+     label19:
+        return;
+    }
+
+    public void resetResolutionNodes()
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        java.util.ArrayList $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.Helper: void resetResolutionNodes()>();
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: java.util.ArrayList mNodes>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        return;
+    }
+
+    public void resolve()
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        float $f0, $f1;
+        int $i0, $i1, $i2;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r1;
+        androidx.constraintlayout.solver.widgets.ResolutionAnchor $r2, $r3, $r6;
+        java.util.ArrayList $r4;
+        java.lang.Object $r5;
+        byte $b3;
+        androidx.constraintlayout.solver.Metrics $r7;
+        long $l4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        $f0 = 0.0F;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i0 == 0 goto label04;
+
+        if $i0 == 1 goto label03;
+
+        if $i0 == 2 goto label02;
+
+        if $i0 == 3 goto label01;
+
+        return;
+
+     label01:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label05;
+
+     label02:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        $f0 = 3.4028235E38F;
+
+        goto label05;
+
+     label03:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        goto label05;
+
+     label04:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        $f0 = 3.4028235E38F;
+
+     label05:
+        $r4 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: java.util.ArrayList mNodes>;
+
+        $i0 = virtualinvoke $r4.<java.util.ArrayList: int size()>();
+
+        $r2 = null;
+
+        $i1 = 0;
+
+     label06:
+        if $i1 >= $i0 goto label11;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: java.util.ArrayList mNodes>;
+
+        $r5 = virtualinvoke $r4.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r6 = (androidx.constraintlayout.solver.widgets.ResolutionAnchor) $r5;
+
+        $i2 = $r6.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: int state>;
+
+        if $i2 == 1 goto label07;
+
+        return;
+
+     label07:
+        $i2 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i2 == 0 goto label09;
+
+        if $i2 != 2 goto label08;
+
+        goto label09;
+
+     label08:
+        $f1 = $r6.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: float resolvedOffset>;
+
+        $b3 = $f1 cmpl $f0;
+
+        if $b3 <= 0 goto label10;
+
+        $f0 = $r6.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: float resolvedOffset>;
+
+        $r2 = $r6.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor resolvedTarget>;
+
+        goto label10;
+
+     label09:
+        $f1 = $r6.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: float resolvedOffset>;
+
+        $b3 = $f1 cmpg $f0;
+
+        if $b3 >= 0 goto label10;
+
+        $f0 = $r6.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: float resolvedOffset>;
+
+        $r2 = $r6.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor resolvedTarget>;
+
+     label10:
+        $i1 = $i1 + 1;
+
+        goto label06;
+
+     label11:
+        $r7 = staticinvoke <androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.Metrics getMetrics()>();
+
+        if $r7 == null goto label12;
+
+        $r7 = staticinvoke <androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.Metrics getMetrics()>();
+
+        $l4 = $r7.<androidx.constraintlayout.solver.Metrics: long barrierConnectionResolved>;
+
+        $l4 = $l4 + 1L;
+
+        $r7.<androidx.constraintlayout.solver.Metrics: long barrierConnectionResolved> = $l4;
+
+     label12:
+        $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor resolvedTarget> = $r2;
+
+        $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: float resolvedOffset> = $f0;
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void didResolve()>();
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType>;
+
+        if $i0 == 0 goto label16;
+
+        if $i0 == 1 goto label15;
+
+        if $i0 == 2 goto label14;
+
+        if $i0 == 3 goto label13;
+
+        return;
+
+     label13:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>($r2, $f0);
+
+        return;
+
+     label14:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>($r2, $f0);
+
+        return;
+
+     label15:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>($r2, $f0);
+
+        return;
+
+     label16:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>($r2, $f0);
+
+        return;
+    }
+
+    public void setAllowsGoneWidget(boolean)
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.constraintlayout.solver.widgets.Barrier: boolean mAllowsGoneWidget> = $z0;
+
+        return;
+    }
+
+    public void setBarrierType(int)
+    {
+        androidx.constraintlayout.solver.widgets.Barrier $r0;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Barrier;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.constraintlayout.solver.widgets.Barrier: int mBarrierType> = $i0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.widgets.Barrier: int TOP> = 2;
+
+        <androidx.constraintlayout.solver.widgets.Barrier: int RIGHT> = 1;
+
+        <androidx.constraintlayout.solver.widgets.Barrier: int LEFT> = 0;
+
+        <androidx.constraintlayout.solver.widgets.Barrier: int BOTTOM> = 3;
+
+        return;
+    }
+}

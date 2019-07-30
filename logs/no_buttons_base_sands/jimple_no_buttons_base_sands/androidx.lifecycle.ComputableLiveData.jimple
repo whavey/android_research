@@ -1,0 +1,104 @@
+public abstract class androidx.lifecycle.ComputableLiveData extends java.lang.Object
+{
+    final java.util.concurrent.atomic.AtomicBoolean mComputing;
+    final java.util.concurrent.Executor mExecutor;
+    final java.util.concurrent.atomic.AtomicBoolean mInvalid;
+    final java.lang.Runnable mInvalidationRunnable;
+    final androidx.lifecycle.LiveData mLiveData;
+    final java.lang.Runnable mRefreshRunnable;
+
+    public void <init>()
+    {
+        androidx.lifecycle.ComputableLiveData $r0;
+        java.util.concurrent.Executor $r1;
+
+        $r0 := @this: androidx.lifecycle.ComputableLiveData;
+
+        $r1 = staticinvoke <androidx.arch.core.executor.ArchTaskExecutor: java.util.concurrent.Executor getIOThreadExecutor()>();
+
+        specialinvoke $r0.<androidx.lifecycle.ComputableLiveData: void <init>(java.util.concurrent.Executor)>($r1);
+
+        return;
+    }
+
+    public void <init>(java.util.concurrent.Executor)
+    {
+        androidx.lifecycle.ComputableLiveData $r0;
+        java.util.concurrent.Executor $r1;
+        java.util.concurrent.atomic.AtomicBoolean $r2;
+        androidx.lifecycle.ComputableLiveData$2 $r3;
+        androidx.lifecycle.ComputableLiveData$3 $r4;
+        androidx.lifecycle.ComputableLiveData$1 $r5;
+
+        $r0 := @this: androidx.lifecycle.ComputableLiveData;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r2.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(1);
+
+        $r0.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid> = $r2;
+
+        $r2 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r2.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        $r0.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing> = $r2;
+
+        $r3 = new androidx.lifecycle.ComputableLiveData$2;
+
+        specialinvoke $r3.<androidx.lifecycle.ComputableLiveData$2: void <init>(androidx.lifecycle.ComputableLiveData)>($r0);
+
+        $r0.<androidx.lifecycle.ComputableLiveData: java.lang.Runnable mRefreshRunnable> = $r3;
+
+        $r4 = new androidx.lifecycle.ComputableLiveData$3;
+
+        specialinvoke $r4.<androidx.lifecycle.ComputableLiveData$3: void <init>(androidx.lifecycle.ComputableLiveData)>($r0);
+
+        $r0.<androidx.lifecycle.ComputableLiveData: java.lang.Runnable mInvalidationRunnable> = $r4;
+
+        $r0.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.Executor mExecutor> = $r1;
+
+        $r5 = new androidx.lifecycle.ComputableLiveData$1;
+
+        specialinvoke $r5.<androidx.lifecycle.ComputableLiveData$1: void <init>(androidx.lifecycle.ComputableLiveData)>($r0);
+
+        $r0.<androidx.lifecycle.ComputableLiveData: androidx.lifecycle.LiveData mLiveData> = $r5;
+
+        return;
+    }
+
+    protected abstract java.lang.Object compute();
+
+    public androidx.lifecycle.LiveData getLiveData()
+    {
+        androidx.lifecycle.ComputableLiveData $r0;
+        androidx.lifecycle.LiveData r1;
+
+        $r0 := @this: androidx.lifecycle.ComputableLiveData;
+
+        r1 = $r0.<androidx.lifecycle.ComputableLiveData: androidx.lifecycle.LiveData mLiveData>;
+
+        return r1;
+    }
+
+    public void invalidate()
+    {
+        androidx.lifecycle.ComputableLiveData $r0;
+        java.lang.Runnable $r1;
+        androidx.arch.core.executor.ArchTaskExecutor $r2;
+
+        $r0 := @this: androidx.lifecycle.ComputableLiveData;
+
+        $r2 = staticinvoke <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor getInstance()>();
+
+        $r1 = $r0.<androidx.lifecycle.ComputableLiveData: java.lang.Runnable mInvalidationRunnable>;
+
+        virtualinvoke $r2.<androidx.arch.core.executor.ArchTaskExecutor: void executeOnMainThread(java.lang.Runnable)>($r1);
+
+        return;
+    }
+}

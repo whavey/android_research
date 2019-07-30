@@ -1,0 +1,199 @@
+public class androidx.core.app.FrameMetricsAggregator extends java.lang.Object
+{
+    public static final int ANIMATION_DURATION;
+    public static final int ANIMATION_INDEX;
+    public static final int COMMAND_DURATION;
+    public static final int COMMAND_INDEX;
+    private static final boolean DBG;
+    public static final int DELAY_DURATION;
+    public static final int DELAY_INDEX;
+    public static final int DRAW_DURATION;
+    public static final int DRAW_INDEX;
+    public static final int EVERY_DURATION;
+    public static final int INPUT_DURATION;
+    public static final int INPUT_INDEX;
+    private static final int LAST_INDEX;
+    public static final int LAYOUT_MEASURE_DURATION;
+    public static final int LAYOUT_MEASURE_INDEX;
+    public static final int SWAP_DURATION;
+    public static final int SWAP_INDEX;
+    public static final int SYNC_DURATION;
+    public static final int SYNC_INDEX;
+    private static final java.lang.String TAG;
+    public static final int TOTAL_DURATION;
+    public static final int TOTAL_INDEX;
+    private androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance;
+
+    public void <init>()
+    {
+        androidx.core.app.FrameMetricsAggregator $r0;
+
+        $r0 := @this: androidx.core.app.FrameMetricsAggregator;
+
+        specialinvoke $r0.<androidx.core.app.FrameMetricsAggregator: void <init>(int)>(1);
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        androidx.core.app.FrameMetricsAggregator $r0;
+        int $i0, $i1;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl $r1;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl $r2;
+
+        $r0 := @this: androidx.core.app.FrameMetricsAggregator;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 24 goto label1;
+
+        $r1 = new androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl;
+
+        specialinvoke $r1.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void <init>(int)>($i0);
+
+        $r0.<androidx.core.app.FrameMetricsAggregator: androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance> = $r1;
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl;
+
+        specialinvoke $r2.<androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl: void <init>()>();
+
+        $r0.<androidx.core.app.FrameMetricsAggregator: androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance> = $r2;
+
+        return;
+    }
+
+    public void add(android.app.Activity)
+    {
+        androidx.core.app.FrameMetricsAggregator $r0;
+        android.app.Activity $r1;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl $r2;
+
+        $r0 := @this: androidx.core.app.FrameMetricsAggregator;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 = $r0.<androidx.core.app.FrameMetricsAggregator: androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance>;
+
+        virtualinvoke $r2.<androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl: void add(android.app.Activity)>($r1);
+
+        return;
+    }
+
+    public android.util.SparseIntArray[] getMetrics()
+    {
+        androidx.core.app.FrameMetricsAggregator $r0;
+        android.util.SparseIntArray[] $r1;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl $r2;
+
+        $r0 := @this: androidx.core.app.FrameMetricsAggregator;
+
+        $r2 = $r0.<androidx.core.app.FrameMetricsAggregator: androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance>;
+
+        $r1 = virtualinvoke $r2.<androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl: android.util.SparseIntArray[] getMetrics()>();
+
+        return $r1;
+    }
+
+    public android.util.SparseIntArray[] remove(android.app.Activity)
+    {
+        androidx.core.app.FrameMetricsAggregator $r0;
+        android.app.Activity $r1;
+        android.util.SparseIntArray[] $r2;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl $r3;
+
+        $r0 := @this: androidx.core.app.FrameMetricsAggregator;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r3 = $r0.<androidx.core.app.FrameMetricsAggregator: androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance>;
+
+        $r2 = virtualinvoke $r3.<androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl: android.util.SparseIntArray[] remove(android.app.Activity)>($r1);
+
+        return $r2;
+    }
+
+    public android.util.SparseIntArray[] reset()
+    {
+        androidx.core.app.FrameMetricsAggregator $r0;
+        android.util.SparseIntArray[] $r1;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl $r2;
+
+        $r0 := @this: androidx.core.app.FrameMetricsAggregator;
+
+        $r2 = $r0.<androidx.core.app.FrameMetricsAggregator: androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance>;
+
+        $r1 = virtualinvoke $r2.<androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl: android.util.SparseIntArray[] reset()>();
+
+        return $r1;
+    }
+
+    public android.util.SparseIntArray[] stop()
+    {
+        androidx.core.app.FrameMetricsAggregator $r0;
+        android.util.SparseIntArray[] $r1;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl $r2;
+
+        $r0 := @this: androidx.core.app.FrameMetricsAggregator;
+
+        $r2 = $r0.<androidx.core.app.FrameMetricsAggregator: androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl mInstance>;
+
+        $r1 = virtualinvoke $r2.<androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl: android.util.SparseIntArray[] stop()>();
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.FrameMetricsAggregator: int TOTAL_DURATION> = 1;
+
+        <androidx.core.app.FrameMetricsAggregator: java.lang.String TAG> = "FrameMetrics";
+
+        <androidx.core.app.FrameMetricsAggregator: int SYNC_INDEX> = 4;
+
+        <androidx.core.app.FrameMetricsAggregator: int SYNC_DURATION> = 16;
+
+        <androidx.core.app.FrameMetricsAggregator: int SWAP_INDEX> = 6;
+
+        <androidx.core.app.FrameMetricsAggregator: int SWAP_DURATION> = 64;
+
+        <androidx.core.app.FrameMetricsAggregator: int LAYOUT_MEASURE_INDEX> = 2;
+
+        <androidx.core.app.FrameMetricsAggregator: int LAYOUT_MEASURE_DURATION> = 4;
+
+        <androidx.core.app.FrameMetricsAggregator: int LAST_INDEX> = 8;
+
+        <androidx.core.app.FrameMetricsAggregator: int INPUT_INDEX> = 1;
+
+        <androidx.core.app.FrameMetricsAggregator: int INPUT_DURATION> = 2;
+
+        <androidx.core.app.FrameMetricsAggregator: int EVERY_DURATION> = 511;
+
+        <androidx.core.app.FrameMetricsAggregator: int DRAW_INDEX> = 3;
+
+        <androidx.core.app.FrameMetricsAggregator: int DRAW_DURATION> = 8;
+
+        <androidx.core.app.FrameMetricsAggregator: int DELAY_INDEX> = 7;
+
+        <androidx.core.app.FrameMetricsAggregator: int DELAY_DURATION> = 128;
+
+        <androidx.core.app.FrameMetricsAggregator: boolean DBG> = 0;
+
+        <androidx.core.app.FrameMetricsAggregator: int COMMAND_INDEX> = 5;
+
+        <androidx.core.app.FrameMetricsAggregator: int COMMAND_DURATION> = 32;
+
+        <androidx.core.app.FrameMetricsAggregator: int ANIMATION_INDEX> = 8;
+
+        <androidx.core.app.FrameMetricsAggregator: int ANIMATION_DURATION> = 256;
+
+        return;
+    }
+}

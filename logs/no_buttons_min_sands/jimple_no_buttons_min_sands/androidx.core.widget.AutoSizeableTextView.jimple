@@ -1,0 +1,42 @@
+public interface  androidx.core.widget.AutoSizeableTextView extends java.lang.Object
+{
+    public static final boolean PLATFORM_SUPPORTS_AUTOSIZE;
+
+    static void <clinit>()
+    {
+        int $i0;
+        boolean $z0;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 27 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        <androidx.core.widget.AutoSizeableTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE> = $z0;
+
+        return;
+    }
+
+    public abstract int getAutoSizeMaxTextSize();
+
+    public abstract int getAutoSizeMinTextSize();
+
+    public abstract int getAutoSizeStepGranularity();
+
+    public abstract int[] getAutoSizeTextAvailableSizes();
+
+    public abstract int getAutoSizeTextType();
+
+    public abstract void setAutoSizeTextTypeUniformWithConfiguration(int, int, int, int) throws java.lang.IllegalArgumentException;
+
+    public abstract void setAutoSizeTextTypeUniformWithPresetSizes(int[], int) throws java.lang.IllegalArgumentException;
+
+    public abstract void setAutoSizeTextTypeWithDefaults(int);
+}

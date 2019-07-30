@@ -1,0 +1,181 @@
+public final class androidx.core.view.inputmethod.InputContentInfoCompat extends java.lang.Object
+{
+    private final androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl;
+
+    public void <init>(android.net.Uri, android.content.ClipDescription, android.net.Uri)
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        android.net.Uri $r1, $r3;
+        android.content.ClipDescription $r2;
+        int $i0;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl $r4;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl $r5;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $r2 := @parameter1: android.content.ClipDescription;
+
+        $r3 := @parameter2: android.net.Uri;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r4 = new androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        specialinvoke $r4.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: void <init>(android.net.Uri,android.content.ClipDescription,android.net.Uri)>($r1, $r2, $r3);
+
+        $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl> = $r4;
+
+        return;
+
+     label1:
+        $r5 = new androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl;
+
+        specialinvoke $r5.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl: void <init>(android.net.Uri,android.content.ClipDescription,android.net.Uri)>($r1, $r2, $r3);
+
+        $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl> = $r5;
+
+        return;
+    }
+
+    private void <init>(androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl)
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl $r1;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r1 := @parameter0: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl> = $r1;
+
+        return;
+    }
+
+    public static androidx.core.view.inputmethod.InputContentInfoCompat wrap(java.lang.Object)
+    {
+        java.lang.Object $r0;
+        int $i0;
+        androidx.core.view.inputmethod.InputContentInfoCompat $r1;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl $r2;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 25 goto label2;
+
+        return null;
+
+     label2:
+        $r1 = new androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r2 = new androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        specialinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: void <init>(java.lang.Object)>($r0);
+
+        specialinvoke $r1.<androidx.core.view.inputmethod.InputContentInfoCompat: void <init>(androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl)>($r2);
+
+        return $r1;
+    }
+
+    public android.net.Uri getContentUri()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        android.net.Uri $r1;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl $r2;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r2 = $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl: android.net.Uri getContentUri()>();
+
+        return $r1;
+    }
+
+    public android.content.ClipDescription getDescription()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        android.content.ClipDescription $r1;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl $r2;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r2 = $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl: android.content.ClipDescription getDescription()>();
+
+        return $r1;
+    }
+
+    public android.net.Uri getLinkUri()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        android.net.Uri $r1;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl $r2;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r2 = $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl: android.net.Uri getLinkUri()>();
+
+        return $r1;
+    }
+
+    public void releasePermission()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl $r1;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r1 = $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl>;
+
+        interfaceinvoke $r1.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl: void releasePermission()>();
+
+        return;
+    }
+
+    public void requestPermission()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl $r1;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r1 = $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl>;
+
+        interfaceinvoke $r1.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl: void requestPermission()>();
+
+        return;
+    }
+
+    public java.lang.Object unwrap()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat $r0;
+        java.lang.Object $r1;
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl $r2;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputContentInfoCompat;
+
+        $r2 = $r0.<androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl: java.lang.Object getInputContentInfo()>();
+
+        return $r1;
+    }
+}

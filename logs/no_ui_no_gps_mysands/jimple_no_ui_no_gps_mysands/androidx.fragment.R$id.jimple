@@ -1,0 +1,124 @@
+public final class androidx.fragment.R$id extends java.lang.Object
+{
+    public static final int action_container;
+    public static final int action_divider;
+    public static final int action_image;
+    public static final int action_text;
+    public static final int actions;
+    public static final int async;
+    public static final int blocking;
+    public static final int bottom;
+    public static final int chronometer;
+    public static final int end;
+    public static final int forever;
+    public static final int icon;
+    public static final int icon_group;
+    public static final int info;
+    public static final int italic;
+    public static final int left;
+    public static final int line1;
+    public static final int line3;
+    public static final int none;
+    public static final int normal;
+    public static final int notification_background;
+    public static final int notification_main_column;
+    public static final int notification_main_column_container;
+    public static final int right;
+    public static final int right_icon;
+    public static final int right_side;
+    public static final int start;
+    public static final int tag_transition_group;
+    public static final int tag_unhandled_key_event_manager;
+    public static final int tag_unhandled_key_listeners;
+    public static final int text;
+    public static final int text2;
+    public static final int time;
+    public static final int title;
+    public static final int top;
+
+    private void <init>()
+    {
+        androidx.fragment.R$id $r0;
+
+        $r0 := @this: androidx.fragment.R$id;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.fragment.R$id: int top> = 2131165323;
+
+        <androidx.fragment.R$id: int title> = 2131165320;
+
+        <androidx.fragment.R$id: int time> = 2131165319;
+
+        <androidx.fragment.R$id: int text2> = 2131165316;
+
+        <androidx.fragment.R$id: int text> = 2131165315;
+
+        <androidx.fragment.R$id: int tag_unhandled_key_listeners> = 2131165314;
+
+        <androidx.fragment.R$id: int tag_unhandled_key_event_manager> = 2131165313;
+
+        <androidx.fragment.R$id: int tag_transition_group> = 2131165312;
+
+        <androidx.fragment.R$id: int start> = 2131165308;
+
+        <androidx.fragment.R$id: int right_side> = 2131165280;
+
+        <androidx.fragment.R$id: int right_icon> = 2131165279;
+
+        <androidx.fragment.R$id: int right> = 2131165278;
+
+        <androidx.fragment.R$id: int notification_main_column_container> = 2131165270;
+
+        <androidx.fragment.R$id: int notification_main_column> = 2131165269;
+
+        <androidx.fragment.R$id: int notification_background> = 2131165268;
+
+        <androidx.fragment.R$id: int normal> = 2131165267;
+
+        <androidx.fragment.R$id: int none> = 2131165266;
+
+        <androidx.fragment.R$id: int line3> = 2131165259;
+
+        <androidx.fragment.R$id: int line1> = 2131165258;
+
+        <androidx.fragment.R$id: int left> = 2131165257;
+
+        <androidx.fragment.R$id: int italic> = 2131165256;
+
+        <androidx.fragment.R$id: int info> = 2131165254;
+
+        <androidx.fragment.R$id: int icon_group> = 2131165251;
+
+        <androidx.fragment.R$id: int icon> = 2131165250;
+
+        <androidx.fragment.R$id: int forever> = 2131165244;
+
+        <androidx.fragment.R$id: int end> = 2131165238;
+
+        <androidx.fragment.R$id: int chronometer> = 2131165224;
+
+        <androidx.fragment.R$id: int bottom> = 2131165217;
+
+        <androidx.fragment.R$id: int blocking> = 2131165216;
+
+        <androidx.fragment.R$id: int async> = 2131165213;
+
+        <androidx.fragment.R$id: int actions> = 2131165207;
+
+        <androidx.fragment.R$id: int action_text> = 2131165206;
+
+        <androidx.fragment.R$id: int action_image> = 2131165200;
+
+        <androidx.fragment.R$id: int action_divider> = 2131165199;
+
+        <androidx.fragment.R$id: int action_container> = 2131165197;
+
+        return;
+    }
+}

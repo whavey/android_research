@@ -1,0 +1,176 @@
+class androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator extends java.lang.Object implements android.animation.TimeInterpolator
+{
+    private int[] mFrameTimes;
+    private int mFrames;
+    private int mTotalDuration;
+
+    void <init>(android.graphics.drawable.AnimationDrawable, boolean)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator $r0;
+        android.graphics.drawable.AnimationDrawable $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        $r1 := @parameter0: android.graphics.drawable.AnimationDrawable;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int updateFrames(android.graphics.drawable.AnimationDrawable,boolean)>($r1, $z0);
+
+        return;
+    }
+
+    public float getInterpolation(float)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator $r0;
+        float $f0, $f1, $f2;
+        int[] $r1;
+        int $i0, $i1, $i2, $i3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        $f0 := @parameter0: float;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration>;
+
+        $f1 = (float) $i0;
+
+        $f0 = $f1 * $f0;
+
+        $f0 = $f0 + 0.5F;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mFrames>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes>;
+
+        $i2 = (int) $f0;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $i3 = $r1[$i1];
+
+        if $i2 < $i3 goto label2;
+
+        $i3 = $r1[$i1];
+
+        $i2 = $i2 - $i3;
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        if $i1 >= $i0 goto label3;
+
+        $f0 = (float) $i2;
+
+        $i2 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration>;
+
+        $f1 = (float) $i2;
+
+        $f0 = $f0 / $f1;
+
+        goto label4;
+
+     label3:
+        $f0 = 0.0F;
+
+     label4:
+        $f2 = (float) $i1;
+
+        $f1 = (float) $i0;
+
+        $f1 = $f2 / $f1;
+
+        $f0 = $f1 + $f0;
+
+        return $f0;
+    }
+
+    int getTotalDuration()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        i0 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration>;
+
+        return i0;
+    }
+
+    int updateFrames(android.graphics.drawable.AnimationDrawable, boolean)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator $r0;
+        android.graphics.drawable.AnimationDrawable $r1;
+        boolean $z0;
+        int $i0, $i1, $i2, $i3;
+        int[] $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        $r1 := @parameter0: android.graphics.drawable.AnimationDrawable;
+
+        $z0 := @parameter1: boolean;
+
+        $i0 = virtualinvoke $r1.<android.graphics.drawable.AnimationDrawable: int getNumberOfFrames()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mFrames> = $i0;
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes>;
+
+        if $r2 == null goto label1;
+
+        $i1 = lengthof $r2;
+
+        if $i1 >= $i0 goto label2;
+
+     label1:
+        $r2 = newarray (int)[$i0];
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes> = $r2;
+
+     label2:
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes>;
+
+        $i1 = 0;
+
+        $i2 = 0;
+
+     label3:
+        if $i2 >= $i0 goto label6;
+
+        if $z0 == 0 goto label4;
+
+        $i3 = $i0 - $i2;
+
+        $i3 = $i3 + -1;
+
+        goto label5;
+
+     label4:
+        $i3 = $i2;
+
+     label5:
+        $i3 = virtualinvoke $r1.<android.graphics.drawable.AnimationDrawable: int getDuration(int)>($i3);
+
+        $r2[$i2] = $i3;
+
+        $i1 = $i1 + $i3;
+
+        $i2 = $i2 + 1;
+
+        goto label3;
+
+     label6:
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration> = $i1;
+
+        return $i1;
+    }
+}

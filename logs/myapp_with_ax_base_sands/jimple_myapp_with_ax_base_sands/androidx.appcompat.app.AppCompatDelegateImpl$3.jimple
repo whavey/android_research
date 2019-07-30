@@ -1,0 +1,56 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$3 extends java.lang.Object implements androidx.core.view.OnApplyWindowInsetsListener
+{
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$3 $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$3;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl$3: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.core.view.WindowInsetsCompat onApplyWindowInsets(android.view.View, androidx.core.view.WindowInsetsCompat)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$3 $r0;
+        android.view.View $r1;
+        androidx.core.view.WindowInsetsCompat $r2;
+        int $i0, $i1, $i2, $i3;
+        androidx.appcompat.app.AppCompatDelegateImpl $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$3;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: androidx.core.view.WindowInsetsCompat;
+
+        $i0 = virtualinvoke $r2.<androidx.core.view.WindowInsetsCompat: int getSystemWindowInsetTop()>();
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$3: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $i1 = virtualinvoke $r3.<androidx.appcompat.app.AppCompatDelegateImpl: int updateStatusGuard(int)>($i0);
+
+        if $i0 == $i1 goto label1;
+
+        $i0 = virtualinvoke $r2.<androidx.core.view.WindowInsetsCompat: int getSystemWindowInsetLeft()>();
+
+        $i2 = virtualinvoke $r2.<androidx.core.view.WindowInsetsCompat: int getSystemWindowInsetRight()>();
+
+        $i3 = virtualinvoke $r2.<androidx.core.view.WindowInsetsCompat: int getSystemWindowInsetBottom()>();
+
+        $r2 = virtualinvoke $r2.<androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat replaceSystemWindowInsets(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+     label1:
+        $r2 = staticinvoke <androidx.core.view.ViewCompat: androidx.core.view.WindowInsetsCompat onApplyWindowInsets(android.view.View,androidx.core.view.WindowInsetsCompat)>($r1, $r2);
+
+        return $r2;
+    }
+}

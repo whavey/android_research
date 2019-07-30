@@ -1,0 +1,45 @@
+===
+test_1:
+	app_name: fd_test
+	sources_and_sinks_file: 
+		sourcesandsinks.txt:
+			leaks: 
+				1:
+					- source: getDeviceId
+					- sink: sendTextMessage
+			total_source_methods_found: 2
+			total_sink_methods_found: 1
+			results_logname: fdtsands
+		mysands:
+			leaks: 
+				1:
+					- source: getDeviceId
+					- sink: sendTextMessage
+			total_source_methods_found: 2
+			total_sink_methods_found: 1	
+			results_logname: ftdms
+		fromcbs_sands: NO SOURCES FOUND 
+test_2:
+	app_name: ax_fd_test:
+	sources_and_sinks_file:
+		sourcesandsinks.txt:
+			leaks:
+				1: 
+					- source: getLongitude, getLatitude
+					- sink: putParcelable
+				2:
+					- source: getLongitude, getLatitude x3
+					- sink: static invoke int v()
+				3:
+					- source: getLongitude, getLatitude x3
+					- sink: addAction
+			total_source_methods_found: 7
+			total_sink_methods_found: 83
+			results_logname: afsands
+		mysands: NO SINKS FOUND
+			results_logname: afms
+		fromcbs_sands: 
+			leaks: 0
+			total_source_methods_found: 6 
+			total_sink_methods_found: 3
+			results_logname: afxs

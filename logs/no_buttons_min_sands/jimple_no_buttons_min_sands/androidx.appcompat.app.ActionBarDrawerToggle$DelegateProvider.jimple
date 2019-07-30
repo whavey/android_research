@@ -1,0 +1,5 @@
+public interface  androidx.appcompat.app.ActionBarDrawerToggle$DelegateProvider extends java.lang.Object
+{
+
+    public abstract androidx.appcompat.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate();
+}

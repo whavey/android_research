@@ -1,0 +1,104 @@
+public class androidx.versionedparcelable.ParcelImpl extends java.lang.Object implements android.os.Parcelable
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    private final androidx.versionedparcelable.VersionedParcelable mParcel;
+
+    static void <clinit>()
+    {
+        androidx.versionedparcelable.ParcelImpl$1 $r0;
+
+        $r0 = new androidx.versionedparcelable.ParcelImpl$1;
+
+        specialinvoke $r0.<androidx.versionedparcelable.ParcelImpl$1: void <init>()>();
+
+        <androidx.versionedparcelable.ParcelImpl: android.os.Parcelable$Creator CREATOR> = $r0;
+
+        return;
+    }
+
+    protected void <init>(android.os.Parcel)
+    {
+        androidx.versionedparcelable.ParcelImpl $r0;
+        android.os.Parcel $r1;
+        androidx.versionedparcelable.VersionedParcelable $r2;
+        androidx.versionedparcelable.VersionedParcelParcel $r3;
+
+        $r0 := @this: androidx.versionedparcelable.ParcelImpl;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new androidx.versionedparcelable.VersionedParcelParcel;
+
+        specialinvoke $r3.<androidx.versionedparcelable.VersionedParcelParcel: void <init>(android.os.Parcel)>($r1);
+
+        $r2 = virtualinvoke $r3.<androidx.versionedparcelable.VersionedParcelParcel: androidx.versionedparcelable.VersionedParcelable readVersionedParcelable()>();
+
+        $r0.<androidx.versionedparcelable.ParcelImpl: androidx.versionedparcelable.VersionedParcelable mParcel> = $r2;
+
+        return;
+    }
+
+    public void <init>(androidx.versionedparcelable.VersionedParcelable)
+    {
+        androidx.versionedparcelable.ParcelImpl $r0;
+        androidx.versionedparcelable.VersionedParcelable $r1;
+
+        $r0 := @this: androidx.versionedparcelable.ParcelImpl;
+
+        $r1 := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.versionedparcelable.ParcelImpl: androidx.versionedparcelable.VersionedParcelable mParcel> = $r1;
+
+        return;
+    }
+
+    public int describeContents()
+    {
+        androidx.versionedparcelable.ParcelImpl $r0;
+
+        $r0 := @this: androidx.versionedparcelable.ParcelImpl;
+
+        return 0;
+    }
+
+    public androidx.versionedparcelable.VersionedParcelable getVersionedParcel()
+    {
+        androidx.versionedparcelable.ParcelImpl $r0;
+        androidx.versionedparcelable.VersionedParcelable r1;
+
+        $r0 := @this: androidx.versionedparcelable.ParcelImpl;
+
+        r1 = $r0.<androidx.versionedparcelable.ParcelImpl: androidx.versionedparcelable.VersionedParcelable mParcel>;
+
+        return r1;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        androidx.versionedparcelable.ParcelImpl $r0;
+        android.os.Parcel $r1;
+        int $i0;
+        androidx.versionedparcelable.VersionedParcelParcel $r2;
+        androidx.versionedparcelable.VersionedParcelable $r3;
+
+        $r0 := @this: androidx.versionedparcelable.ParcelImpl;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i0 := @parameter1: int;
+
+        $r2 = new androidx.versionedparcelable.VersionedParcelParcel;
+
+        specialinvoke $r2.<androidx.versionedparcelable.VersionedParcelParcel: void <init>(android.os.Parcel)>($r1);
+
+        $r3 = $r0.<androidx.versionedparcelable.ParcelImpl: androidx.versionedparcelable.VersionedParcelable mParcel>;
+
+        virtualinvoke $r2.<androidx.versionedparcelable.VersionedParcelParcel: void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable)>($r3);
+
+        return;
+    }
+}

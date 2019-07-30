@@ -1,0 +1,1925 @@
+public class androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer extends androidx.constraintlayout.solver.widgets.WidgetContainer
+{
+    private static final boolean DEBUG;
+    static final boolean DEBUG_GRAPH;
+    private static final boolean DEBUG_LAYOUT;
+    private static final int MAX_ITERATIONS;
+    private static final boolean USE_SNAPSHOT;
+    int mDebugSolverPassCount;
+    public boolean mGroupsWrapOptimized;
+    private boolean mHeightMeasuredTooSmall;
+    androidx.constraintlayout.solver.widgets.ChainHead[] mHorizontalChainsArray;
+    int mHorizontalChainsSize;
+    public boolean mHorizontalWrapOptimized;
+    private boolean mIsRtl;
+    private int mOptimizationLevel;
+    int mPaddingBottom;
+    int mPaddingLeft;
+    int mPaddingRight;
+    int mPaddingTop;
+    public boolean mSkipSolver;
+    private androidx.constraintlayout.solver.widgets.Snapshot mSnapshot;
+    protected androidx.constraintlayout.solver.LinearSystem mSystem;
+    androidx.constraintlayout.solver.widgets.ChainHead[] mVerticalChainsArray;
+    int mVerticalChainsSize;
+    public boolean mVerticalWrapOptimized;
+    public java.util.List mWidgetGroups;
+    private boolean mWidthMeasuredTooSmall;
+    public int mWrapFixedHeight;
+    public int mWrapFixedWidth;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.widgets.ChainHead[] $r1;
+        androidx.constraintlayout.solver.LinearSystem $r2;
+        java.util.ArrayList $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.WidgetContainer: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mIsRtl> = 0;
+
+        $r2 = new androidx.constraintlayout.solver.LinearSystem;
+
+        specialinvoke $r2.<androidx.constraintlayout.solver.LinearSystem: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem> = $r2;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize> = 0;
+
+        $r1 = newarray (androidx.constraintlayout.solver.widgets.ChainHead)[4];
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mVerticalChainsArray> = $r1;
+
+        $r1 = newarray (androidx.constraintlayout.solver.widgets.ChainHead)[4];
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mHorizontalChainsArray> = $r1;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups> = $r3;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mGroupsWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHorizontalWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mVerticalWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mWrapFixedWidth> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mWrapFixedHeight> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel> = 7;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mSkipSolver> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mWidthMeasuredTooSmall> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHeightMeasuredTooSmall> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mDebugSolverPassCount> = 0;
+
+        return;
+    }
+
+    public void <init>(int, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ChainHead[] $r1;
+        androidx.constraintlayout.solver.LinearSystem $r2;
+        java.util.ArrayList $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.WidgetContainer: void <init>(int,int)>($i0, $i1);
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mIsRtl> = 0;
+
+        $r2 = new androidx.constraintlayout.solver.LinearSystem;
+
+        specialinvoke $r2.<androidx.constraintlayout.solver.LinearSystem: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem> = $r2;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize> = 0;
+
+        $r1 = newarray (androidx.constraintlayout.solver.widgets.ChainHead)[4];
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mVerticalChainsArray> = $r1;
+
+        $r1 = newarray (androidx.constraintlayout.solver.widgets.ChainHead)[4];
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mHorizontalChainsArray> = $r1;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups> = $r3;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mGroupsWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHorizontalWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mVerticalWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mWrapFixedWidth> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mWrapFixedHeight> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel> = 7;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mSkipSolver> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mWidthMeasuredTooSmall> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHeightMeasuredTooSmall> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mDebugSolverPassCount> = 0;
+
+        return;
+    }
+
+    public void <init>(int, int, int, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0, $i1, $i2, $i3;
+        androidx.constraintlayout.solver.widgets.ChainHead[] $r1;
+        androidx.constraintlayout.solver.LinearSystem $r2;
+        java.util.ArrayList $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.WidgetContainer: void <init>(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mIsRtl> = 0;
+
+        $r2 = new androidx.constraintlayout.solver.LinearSystem;
+
+        specialinvoke $r2.<androidx.constraintlayout.solver.LinearSystem: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem> = $r2;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize> = 0;
+
+        $r1 = newarray (androidx.constraintlayout.solver.widgets.ChainHead)[4];
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mVerticalChainsArray> = $r1;
+
+        $r1 = newarray (androidx.constraintlayout.solver.widgets.ChainHead)[4];
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mHorizontalChainsArray> = $r1;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups> = $r3;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mGroupsWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHorizontalWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mVerticalWrapOptimized> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mWrapFixedWidth> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mWrapFixedHeight> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel> = 7;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mSkipSolver> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mWidthMeasuredTooSmall> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHeightMeasuredTooSmall> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mDebugSolverPassCount> = 0;
+
+        return;
+    }
+
+    private void addHorizontalChain(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ChainHead[] $r2;
+        java.lang.Object[] $r3;
+        androidx.constraintlayout.solver.widgets.ChainHead $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize>;
+
+        $i0 = $i0 + 1;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mHorizontalChainsArray>;
+
+        $i1 = lengthof $r2;
+
+        if $i0 < $i1 goto label1;
+
+        $i0 = lengthof $r2;
+
+        $i0 = $i0 * 2;
+
+        $r3 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r2, $i0);
+
+        $r2 = (androidx.constraintlayout.solver.widgets.ChainHead[]) $r3;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mHorizontalChainsArray> = $r2;
+
+     label1:
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mHorizontalChainsArray>;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize>;
+
+        $r4 = new androidx.constraintlayout.solver.widgets.ChainHead;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean isRtl()>();
+
+        specialinvoke $r4.<androidx.constraintlayout.solver.widgets.ChainHead: void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget,int,boolean)>($r1, 0, $z0);
+
+        $r2[$i0] = $r4;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize> = $i0;
+
+        return;
+    }
+
+    private void addVerticalChain(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ChainHead[] $r2;
+        java.lang.Object[] $r3;
+        androidx.constraintlayout.solver.widgets.ChainHead $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize>;
+
+        $i0 = $i0 + 1;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mVerticalChainsArray>;
+
+        $i1 = lengthof $r2;
+
+        if $i0 < $i1 goto label1;
+
+        $i0 = lengthof $r2;
+
+        $i0 = $i0 * 2;
+
+        $r3 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r2, $i0);
+
+        $r2 = (androidx.constraintlayout.solver.widgets.ChainHead[]) $r3;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mVerticalChainsArray> = $r2;
+
+     label1:
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ChainHead[] mVerticalChainsArray>;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize>;
+
+        $r4 = new androidx.constraintlayout.solver.widgets.ChainHead;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean isRtl()>();
+
+        specialinvoke $r4.<androidx.constraintlayout.solver.widgets.ChainHead: void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget,int,boolean)>($r1, 1, $z0);
+
+        $r2[$i0] = $r4;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize> = $i0;
+
+        return;
+    }
+
+    private void resetChains()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize> = 0;
+
+        return;
+    }
+
+    void addChain(androidx.constraintlayout.solver.widgets.ConstraintWidget, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $i0 := @parameter1: int;
+
+        if $i0 != 0 goto label1;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void addHorizontalChain(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r1);
+
+        return;
+
+     label1:
+        if $i0 != 1 goto label2;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void addVerticalChain(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r1);
+
+     label2:
+        return;
+    }
+
+    public boolean addChildrenToSolver(androidx.constraintlayout.solver.LinearSystem)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.LinearSystem $r1;
+        java.util.ArrayList $r2;
+        int $i0, $i1;
+        java.lang.Object $r3;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r4;
+        boolean $z0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] $r5;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $r6, $r7, $r8;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.LinearSystem;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void addToSolver(androidx.constraintlayout.solver.LinearSystem)>($r1);
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label08;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r4 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r3;
+
+        $z0 = $r4 instanceof androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        if $z0 == 0 goto label06;
+
+        $r5 = $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r6 = $r5[0];
+
+        $r5 = $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r7 = $r5[1];
+
+        $r8 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r6 != $r8 goto label02;
+
+        $r8 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHorizontalDimensionBehaviour(androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour)>($r8);
+
+     label02:
+        $r8 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r7 != $r8 goto label03;
+
+        $r8 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setVerticalDimensionBehaviour(androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour)>($r8);
+
+     label03:
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void addToSolver(androidx.constraintlayout.solver.LinearSystem)>($r1);
+
+        $r8 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r6 != $r8 goto label04;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHorizontalDimensionBehaviour(androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour)>($r6);
+
+     label04:
+        $r6 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r7 != $r6 goto label05;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setVerticalDimensionBehaviour(androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour)>($r7);
+
+     label05:
+        goto label07;
+
+     label06:
+        staticinvoke <androidx.constraintlayout.solver.widgets.Optimizer: void checkMatchParent(androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer,androidx.constraintlayout.solver.LinearSystem,androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r0, $r1, $r4);
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void addToSolver(androidx.constraintlayout.solver.LinearSystem)>($r1);
+
+     label07:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label08:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mHorizontalChainsSize>;
+
+        if $i0 <= 0 goto label09;
+
+        staticinvoke <androidx.constraintlayout.solver.widgets.Chain: void applyChainConstraints(androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer,androidx.constraintlayout.solver.LinearSystem,int)>($r0, $r1, 0);
+
+     label09:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mVerticalChainsSize>;
+
+        if $i0 <= 0 goto label10;
+
+        staticinvoke <androidx.constraintlayout.solver.widgets.Chain: void applyChainConstraints(androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer,androidx.constraintlayout.solver.LinearSystem,int)>($r0, $r1, 1);
+
+     label10:
+        return 1;
+    }
+
+    public void analyze(int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0, $i1, $i2;
+        java.util.ArrayList $r1;
+        java.lang.Object $r2;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.WidgetContainer: void analyze(int)>($i0);
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $i1 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        $i2 = 0;
+
+     label1:
+        if $i2 >= $i1 goto label2;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i2);
+
+        $r3 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r2;
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void analyze(int)>($i0);
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void fillMetrics(androidx.constraintlayout.solver.Metrics)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.Metrics $r1;
+        androidx.constraintlayout.solver.LinearSystem $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.Metrics;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        virtualinvoke $r2.<androidx.constraintlayout.solver.LinearSystem: void fillMetrics(androidx.constraintlayout.solver.Metrics)>($r1);
+
+        return;
+    }
+
+    public java.util.ArrayList getHorizontalGuidelines()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        java.util.ArrayList $r1, $r2;
+        int $i0, $i1, $i2;
+        java.lang.Object $r3;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r4;
+        boolean $z0;
+        androidx.constraintlayout.solver.widgets.Guideline $r5;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $i0 = 0;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $i1 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r4 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r3;
+
+        $z0 = $r4 instanceof androidx.constraintlayout.solver.widgets.Guideline;
+
+        if $z0 == 0 goto label2;
+
+        $r5 = (androidx.constraintlayout.solver.widgets.Guideline) $r4;
+
+        $i2 = virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.Guideline: int getOrientation()>();
+
+        if $i2 != 0 goto label2;
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r5);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return $r1;
+    }
+
+    public int getOptimizationLevel()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel>;
+
+        return i0;
+    }
+
+    public androidx.constraintlayout.solver.LinearSystem getSystem()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.LinearSystem r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        return r1;
+    }
+
+    public java.lang.String getType()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        return "ConstraintLayout";
+    }
+
+    public java.util.ArrayList getVerticalGuidelines()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        java.util.ArrayList $r1, $r2;
+        int $i0, $i1, $i2;
+        java.lang.Object $r3;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r4;
+        boolean $z0;
+        androidx.constraintlayout.solver.widgets.Guideline $r5;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $i0 = 0;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $i1 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label3;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r4 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r3;
+
+        $z0 = $r4 instanceof androidx.constraintlayout.solver.widgets.Guideline;
+
+        if $z0 == 0 goto label2;
+
+        $r5 = (androidx.constraintlayout.solver.widgets.Guideline) $r4;
+
+        $i2 = virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.Guideline: int getOrientation()>();
+
+        if $i2 != 1 goto label2;
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r5);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return $r1;
+    }
+
+    public java.util.List getWidgetGroups()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        java.util.List r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        return r1;
+    }
+
+    public boolean handlesInternalConstraints()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        return 0;
+    }
+
+    public boolean isHeightMeasuredTooSmall()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        z0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHeightMeasuredTooSmall>;
+
+        return z0;
+    }
+
+    public boolean isRtl()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        z0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mIsRtl>;
+
+        return z0;
+    }
+
+    public boolean isWidthMeasuredTooSmall()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        z0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mWidthMeasuredTooSmall>;
+
+        return z0;
+    }
+
+    public void layout()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0, $r21;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i9, $i10, $i11, $i12, $i13;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        androidx.constraintlayout.solver.widgets.Snapshot $r2;
+        androidx.constraintlayout.solver.LinearSystem $r3;
+        androidx.constraintlayout.solver.Cache $r4;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] $r5;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $r6, $r7, $r11, $r12;
+        java.util.List $r8;
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup $r9;
+        java.util.ArrayList $r10, $r14;
+        java.lang.Object $r13;
+        byte $b8;
+        androidx.constraintlayout.solver.widgets.WidgetContainer $r15;
+        java.lang.Exception $r16;
+        java.io.PrintStream $r17;
+        java.lang.StringBuilder $r18;
+        java.lang.String $r19;
+        boolean[] $r20;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mX>;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mY>;
+
+        $i2 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getWidth()>();
+
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i2);
+
+        $i3 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getHeight()>();
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i3);
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mWidthMeasuredTooSmall> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHeightMeasuredTooSmall> = 0;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        if $r1 == null goto label02;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.Snapshot mSnapshot>;
+
+        if $r2 != null goto label01;
+
+        $r2 = new androidx.constraintlayout.solver.widgets.Snapshot;
+
+        specialinvoke $r2.<androidx.constraintlayout.solver.widgets.Snapshot: void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r0);
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.Snapshot mSnapshot> = $r2;
+
+     label01:
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.Snapshot mSnapshot>;
+
+        virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.Snapshot: void updateFrom(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r0);
+
+        $i4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingLeft>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setX(int)>($i4);
+
+        $i4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingTop>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setY(int)>($i4);
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void resetAnchors()>();
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        $r4 = virtualinvoke $r3.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.Cache getCache()>();
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void resetSolverVariables(androidx.constraintlayout.solver.Cache)>($r4);
+
+        goto label03;
+
+     label02:
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mX> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mY> = 0;
+
+     label03:
+        $i4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel>;
+
+        if $i4 == 0 goto label06;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean optimizeFor(int)>(8);
+
+        if $z0 != 0 goto label04;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void optimizeReset()>();
+
+     label04:
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean optimizeFor(int)>(32);
+
+        if $z0 != 0 goto label05;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void optimize()>();
+
+     label05:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        $r3.<androidx.constraintlayout.solver.LinearSystem: boolean graphOptimizer> = 1;
+
+        goto label07;
+
+     label06:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        $r3.<androidx.constraintlayout.solver.LinearSystem: boolean graphOptimizer> = 0;
+
+     label07:
+        $z1 = 0;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r6 = $r5[1];
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r7 = $r5[0];
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void resetChains()>();
+
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        $i4 = interfaceinvoke $r8.<java.util.List: int size()>();
+
+        if $i4 != 0 goto label08;
+
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        interfaceinvoke $r8.<java.util.List: void clear()>();
+
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        $r9 = new androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup;
+
+        $r10 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        specialinvoke $r9.<androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup: void <init>(java.util.List)>($r10);
+
+        interfaceinvoke $r8.<java.util.List: void add(int,java.lang.Object)>(0, $r9);
+
+     label08:
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        $i5 = interfaceinvoke $r8.<java.util.List: int size()>();
+
+        $r10 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r11 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r11 == $r12 goto label10;
+
+        $r11 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r11 != $r12 goto label09;
+
+        goto label10;
+
+     label09:
+        $z0 = 0;
+
+        goto label11;
+
+     label10:
+        $z0 = 1;
+
+     label11:
+        $i4 = 0;
+
+     label12:
+        if $i4 >= $i5 goto label58;
+
+        $z2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mSkipSolver>;
+
+        if $z2 != 0 goto label58;
+
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        $r13 = interfaceinvoke $r8.<java.util.List: java.lang.Object get(int)>($i4);
+
+        $r9 = (androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup) $r13;
+
+        $z2 = $r9.<androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup: boolean mSkipSolver>;
+
+        if $z2 == 0 goto label13;
+
+        $i6 = $i5;
+
+        goto label57;
+
+     label13:
+        $z2 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean optimizeFor(int)>(32);
+
+        if $z2 == 0 goto label15;
+
+        $r11 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        if $r11 != $r12 goto label14;
+
+        $r11 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        if $r11 != $r12 goto label14;
+
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        $r13 = interfaceinvoke $r8.<java.util.List: java.lang.Object get(int)>($i4);
+
+        $r9 = (androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup) $r13;
+
+        $r8 = virtualinvoke $r9.<androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup: java.util.List getWidgetsToSolve()>();
+
+        $r14 = (java.util.ArrayList) $r8;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren> = $r14;
+
+        goto label15;
+
+     label14:
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        $r13 = interfaceinvoke $r8.<java.util.List: java.lang.Object get(int)>($i4);
+
+        $r9 = (androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup) $r13;
+
+        $r8 = $r9.<androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup: java.util.List mConstrainedGroup>;
+
+        $r14 = (java.util.ArrayList) $r8;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren> = $r14;
+
+     label15:
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void resetChains()>();
+
+        $r14 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $i6 = virtualinvoke $r14.<java.util.ArrayList: int size()>();
+
+        $i7 = $i6;
+
+        $b8 = 0;
+
+        $i9 = 0;
+
+     label16:
+        if $i9 >= $i6 goto label18;
+
+        $r14 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r13 = virtualinvoke $r14.<java.util.ArrayList: java.lang.Object get(int)>($i9);
+
+        $r1 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r13;
+
+        $z2 = $r1 instanceof androidx.constraintlayout.solver.widgets.WidgetContainer;
+
+        if $z2 == 0 goto label17;
+
+        $r15 = (androidx.constraintlayout.solver.widgets.WidgetContainer) $r1;
+
+        virtualinvoke $r15.<androidx.constraintlayout.solver.widgets.WidgetContainer: void layout()>();
+
+     label17:
+        $i9 = $i9 + 1;
+
+        goto label16;
+
+     label18:
+        $i6 = $b8;
+
+        $z2 = 1;
+
+     label19:
+        if $z2 == 0 goto label56;
+
+        $i6 = $i6 + 1;
+
+     label20:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.LinearSystem: void reset()>();
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void resetChains()>();
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void createObjectVariables(androidx.constraintlayout.solver.LinearSystem)>($r3);
+
+     label21:
+        $i9 = 0;
+
+     label22:
+        if $i9 >= $i7 goto label28;
+
+        $z3 = $z2;
+
+     label23:
+        $r14 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r13 = virtualinvoke $r14.<java.util.ArrayList: java.lang.Object get(int)>($i9);
+
+        $r1 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r13;
+
+     label24:
+        $z4 = $z1;
+
+     label25:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void createObjectVariables(androidx.constraintlayout.solver.LinearSystem)>($r3);
+
+     label26:
+        $i9 = $i9 + 1;
+
+        goto label22;
+
+     label27:
+        $r16 := @caughtexception;
+
+        $z4 = $z1;
+
+        $z2 = $z3;
+
+        goto label37;
+
+     label28:
+        $z3 = $z2;
+
+        $z4 = $z1;
+
+     label29:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        $z1 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean addChildrenToSolver(androidx.constraintlayout.solver.LinearSystem)>($r3);
+
+     label30:
+        $z2 = $z1;
+
+        if $z1 == 0 goto label34;
+
+     label31:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.LinearSystem: void minimize()>();
+
+     label32:
+        goto label34;
+
+     label33:
+        $r16 := @caughtexception;
+
+        goto label37;
+
+     label34:
+        goto label38;
+
+     label35:
+        $r16 := @caughtexception;
+
+        $z2 = $z3;
+
+        goto label37;
+
+     label36:
+        $r16 := @caughtexception;
+
+        $z4 = $z1;
+
+     label37:
+        virtualinvoke $r16.<java.lang.Exception: void printStackTrace()>();
+
+        $r17 = <java.lang.System: java.io.PrintStream out>;
+
+        $z1 = $z2;
+
+        $r18 = new java.lang.StringBuilder;
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("EXCEPTION : ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r16);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r17.<java.io.PrintStream: void println(java.lang.String)>($r19);
+
+     label38:
+        if $z1 == 0 goto label39;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        $r20 = <androidx.constraintlayout.solver.widgets.Optimizer: boolean[] flags>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void updateChildrenFromSolver(androidx.constraintlayout.solver.LinearSystem,boolean[])>($r3, $r20);
+
+        goto label44;
+
+     label39:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void updateFromSolver(androidx.constraintlayout.solver.LinearSystem)>($r3);
+
+        $i9 = 0;
+
+     label40:
+        if $i9 >= $i7 goto label44;
+
+        $r14 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r13 = virtualinvoke $r14.<java.util.ArrayList: java.lang.Object get(int)>($i9);
+
+        $r1 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r13;
+
+        $r5 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = $r5[0];
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $r11 != $r12 goto label42;
+
+        $i10 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $i11 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWrapWidth()>();
+
+        if $i10 >= $i11 goto label41;
+
+        $r20 = <androidx.constraintlayout.solver.widgets.Optimizer: boolean[] flags>;
+
+        $r20[2] = 1;
+
+        goto label44;
+
+     label41:
+        goto label42;
+
+     label42:
+        $r5 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = $r5[1];
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $r11 != $r12 goto label43;
+
+        $i10 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        $i11 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWrapHeight()>();
+
+        if $i10 >= $i11 goto label43;
+
+        $r20 = <androidx.constraintlayout.solver.widgets.Optimizer: boolean[] flags>;
+
+        $r20[2] = 1;
+
+        goto label44;
+
+     label43:
+        $i9 = $i9 + 1;
+
+        goto label40;
+
+     label44:
+        $z1 = 0;
+
+        if $z0 == 0 goto label49;
+
+        if $i6 >= 8 goto label49;
+
+        $r20 = <androidx.constraintlayout.solver.widgets.Optimizer: boolean[] flags>;
+
+        $z2 = $r20[2];
+
+        if $z2 == 0 goto label49;
+
+        $i9 = 0;
+
+        $i10 = 0;
+
+        $i11 = 0;
+
+     label45:
+        if $i11 >= $i7 goto label46;
+
+        $r14 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r13 = virtualinvoke $r14.<java.util.ArrayList: java.lang.Object get(int)>($i11);
+
+        $r1 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r13;
+
+        $i12 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mX>;
+
+        $i13 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $i12 = $i12 + $i13;
+
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i10, $i12);
+
+        $i12 = $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mY>;
+
+        $i13 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        $i12 = $i12 + $i13;
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i12);
+
+        $i11 = $i11 + 1;
+
+        goto label45;
+
+     label46:
+        $z2 = $z1;
+
+        $i11 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mMinWidth>;
+
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i11, $i10);
+
+        $i11 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mMinHeight>;
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i11, $i9);
+
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r7 != $r11 goto label47;
+
+        $i11 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getWidth()>();
+
+        if $i11 >= $i10 goto label47;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setWidth(int)>($i10);
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        $r5[0] = $r11;
+
+        $z1 = 1;
+
+        $z2 = 1;
+
+        goto label48;
+
+     label47:
+        $z1 = $z4;
+
+     label48:
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r6 != $r11 goto label50;
+
+        $i10 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getHeight()>();
+
+        if $i10 >= $i9 goto label50;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setHeight(int)>($i9);
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        $r5[1] = $r11;
+
+        $z1 = 1;
+
+        $z2 = 1;
+
+        goto label50;
+
+     label49:
+        $z2 = 0;
+
+        $z1 = $z4;
+
+     label50:
+        $i9 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mMinWidth>;
+
+        $i10 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getWidth()>();
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i10);
+
+        $i10 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getWidth()>();
+
+        if $i9 <= $i10 goto label51;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setWidth(int)>($i9);
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        $r5[0] = $r11;
+
+        $z1 = 1;
+
+        $z2 = 1;
+
+     label51:
+        $i9 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mMinHeight>;
+
+        $i10 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getHeight()>();
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i10);
+
+        $i10 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getHeight()>();
+
+        if $i9 <= $i10 goto label52;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setHeight(int)>($i9);
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        $r5[1] = $r11;
+
+        $z1 = 1;
+
+        $z2 = 1;
+
+     label52:
+        if $z1 != 0 goto label55;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = $r5[0];
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r11 != $r12 goto label53;
+
+        if $i2 <= 0 goto label53;
+
+        $i9 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getWidth()>();
+
+        if $i9 <= $i2 goto label53;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mWidthMeasuredTooSmall> = 1;
+
+        $z1 = 1;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        $r5[0] = $r11;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setWidth(int)>($i2);
+
+        $z2 = 1;
+
+     label53:
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = $r5[1];
+
+        $r12 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r11 != $r12 goto label54;
+
+        if $i3 <= 0 goto label54;
+
+        $i9 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getHeight()>();
+
+        if $i9 <= $i3 goto label54;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mHeightMeasuredTooSmall> = 1;
+
+        $z1 = 1;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r11 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        $r5[1] = $r11;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setHeight(int)>($i3);
+
+        $z2 = 1;
+
+        goto label55;
+
+     label54:
+        goto label55;
+
+     label55:
+        goto label19;
+
+     label56:
+        $i6 = $i5;
+
+        $r8 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        $r13 = interfaceinvoke $r8.<java.util.List: java.lang.Object get(int)>($i4);
+
+        $r9 = (androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup) $r13;
+
+        virtualinvoke $r9.<androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup: void updateUnresolvedWidgets()>();
+
+     label57:
+        $i4 = $i4 + 1;
+
+        $i5 = $i6;
+
+        goto label12;
+
+     label58:
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren> = $r10;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        if $r1 == null goto label59;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mMinWidth>;
+
+        $i1 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getWidth()>();
+
+        $i1 = staticinvoke <java.lang.Math: int max(int,int)>($i0, $i1);
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mMinHeight>;
+
+        $i2 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int getHeight()>();
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>($i0, $i2);
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.Snapshot mSnapshot>;
+
+        virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.Snapshot: void applyTo(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r0);
+
+        $i2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingLeft>;
+
+        $i1 = $i2 + $i1;
+
+        $i2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingRight>;
+
+        $i1 = $i1 + $i2;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setWidth(int)>($i1);
+
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingTop>;
+
+        $i0 = $i1 + $i0;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingBottom>;
+
+        $i0 = $i0 + $i1;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void setHeight(int)>($i0);
+
+        goto label60;
+
+     label59:
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mX> = $i0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mY> = $i1;
+
+     label60:
+        if $z1 == 0 goto label61;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r5[0] = $r7;
+
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r5[1] = $r6;
+
+     label61:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        $r4 = virtualinvoke $r3.<androidx.constraintlayout.solver.LinearSystem: androidx.constraintlayout.solver.Cache getCache()>();
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void resetSolverVariables(androidx.constraintlayout.solver.Cache)>($r4);
+
+        $r21 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer getRootConstraintContainer()>();
+
+        if $r0 != $r21 goto label62;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void updateDrawPosition()>();
+
+     label62:
+        return;
+
+        catch java.lang.Exception from label20 to label21 with label36;
+        catch java.lang.Exception from label23 to label24 with label27;
+        catch java.lang.Exception from label25 to label26 with label35;
+        catch java.lang.Exception from label29 to label30 with label35;
+        catch java.lang.Exception from label31 to label32 with label33;
+    }
+
+    public void optimize()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean optimizeFor(int)>(8);
+
+        if $z0 != 0 goto label1;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void analyze(int)>($i0);
+
+     label1:
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void solveGraph()>();
+
+        return;
+    }
+
+    public boolean optimizeFor(int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel>;
+
+        $i1 = $i1 & $i0;
+
+        if $i1 != $i0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void optimizeForDimensions(int, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $r2, $r3;
+        androidx.constraintlayout.solver.widgets.ResolutionDimension $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r2 = $r1[0];
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r2 == $r3 goto label1;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ResolutionDimension mResolutionWidth>;
+
+        if $r4 == null goto label1;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ResolutionDimension mResolutionWidth>;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ResolutionDimension: void resolve(int)>($i0);
+
+     label1:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r2 = $r1[1];
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $r2 == $r3 goto label2;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ResolutionDimension mResolutionHeight>;
+
+        if $r4 == null goto label2;
+
+        $r4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ResolutionDimension mResolutionHeight>;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ResolutionDimension: void resolve(int)>($i1);
+
+     label2:
+        return;
+    }
+
+    public void optimizeReset()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        java.util.ArrayList $r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $i0 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void resetResolutionNodes()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r3 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r2;
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void resetResolutionNodes()>();
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void preOptimize()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void optimizeReset()>();
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel>;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void analyze(int)>($i0);
+
+        return;
+    }
+
+    public void reset()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        java.util.List $r1;
+        androidx.constraintlayout.solver.LinearSystem $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.LinearSystem mSystem>;
+
+        virtualinvoke $r2.<androidx.constraintlayout.solver.LinearSystem: void reset()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingLeft> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingRight> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingTop> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingBottom> = 0;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.List mWidgetGroups>;
+
+        interfaceinvoke $r1.<java.util.List: void clear()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mSkipSolver> = 0;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.WidgetContainer: void reset()>();
+
+        return;
+    }
+
+    public void resetGraph()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r2;
+        androidx.constraintlayout.solver.widgets.ResolutionAnchor $r3, $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type LEFT>;
+
+        $r2 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintAnchor getAnchor(androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type)>($r1);
+
+        $r3 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type TOP>;
+
+        $r2 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintAnchor getAnchor(androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type)>($r1);
+
+        $r4 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void invalidateAnchors()>();
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void invalidateAnchors()>();
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+        return;
+    }
+
+    public void setOptimizationLevel(int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mOptimizationLevel> = $i0;
+
+        return;
+    }
+
+    public void setPadding(int, int, int, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        int $i0, $i1, $i2, $i3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingLeft> = $i0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingTop> = $i1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingRight> = $i2;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int mPaddingBottom> = $i3;
+
+        return;
+    }
+
+    public void setRtl(boolean)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean mIsRtl> = $z0;
+
+        return;
+    }
+
+    public void solveGraph()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r2;
+        androidx.constraintlayout.solver.widgets.ResolutionAnchor $r3, $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type LEFT>;
+
+        $r2 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintAnchor getAnchor(androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type)>($r1);
+
+        $r3 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type TOP>;
+
+        $r2 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.ConstraintAnchor getAnchor(androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type)>($r1);
+
+        $r4 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()>();
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void resolve(androidx.constraintlayout.solver.widgets.ResolutionAnchor,float)>(null, 0.0F);
+
+        return;
+    }
+
+    public void updateChildrenFromSolver(androidx.constraintlayout.solver.LinearSystem, boolean[])
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $r0;
+        androidx.constraintlayout.solver.LinearSystem $r1;
+        boolean[] $r2;
+        java.util.ArrayList $r3;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r4;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r5;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] $r6;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $r7, $r8;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.LinearSystem;
+
+        $r2 := @parameter1: boolean[];
+
+        $r2[2] = 0;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: void updateFromSolver(androidx.constraintlayout.solver.LinearSystem)>($r1);
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $i0 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: java.util.ArrayList mChildren>;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r5 = (androidx.constraintlayout.solver.widgets.ConstraintWidget) $r4;
+
+        virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void updateFromSolver(androidx.constraintlayout.solver.LinearSystem)>($r1);
+
+        $r6 = $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r7 = $r6[0];
+
+        $r8 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $r7 != $r8 goto label2;
+
+        $i2 = virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $i3 = virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWrapWidth()>();
+
+        if $i2 >= $i3 goto label2;
+
+        $r2[2] = 1;
+
+     label2:
+        $r6 = $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $r7 = $r6[1];
+
+        $r8 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $r7 != $r8 goto label3;
+
+        $i2 = virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        $i3 = virtualinvoke $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWrapHeight()>();
+
+        if $i2 >= $i3 goto label3;
+
+        $r2[2] = 1;
+
+     label3:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean USE_SNAPSHOT> = 1;
+
+        <androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: int MAX_ITERATIONS> = 8;
+
+        <androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean DEBUG_LAYOUT> = 0;
+
+        <androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean DEBUG_GRAPH> = 0;
+
+        <androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean DEBUG> = 0;
+
+        return;
+    }
+}

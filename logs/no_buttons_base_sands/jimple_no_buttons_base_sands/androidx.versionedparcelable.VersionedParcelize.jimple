@@ -1,0 +1,13 @@
+public annotation interface  androidx.versionedparcelable.VersionedParcelize extends java.lang.Object implements java.lang.'annotation'.Annotation
+{
+
+    public abstract boolean allowSerialization();
+
+    public abstract int[] deprecatedIds();
+
+    public abstract boolean ignoreParcelables();
+
+    public abstract boolean isCustom();
+
+    public abstract java.lang.String jetifyAs();
+}

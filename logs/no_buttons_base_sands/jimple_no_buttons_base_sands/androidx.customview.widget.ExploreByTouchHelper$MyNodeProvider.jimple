@@ -1,0 +1,98 @@
+class androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider extends androidx.core.view.accessibility.AccessibilityNodeProviderCompat
+{
+    final androidx.customview.widget.ExploreByTouchHelper this$0;
+
+    void <init>(androidx.customview.widget.ExploreByTouchHelper)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider $r0;
+        androidx.customview.widget.ExploreByTouchHelper $r1;
+
+        $r0 := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $r1 := @parameter0: androidx.customview.widget.ExploreByTouchHelper;
+
+        $r0.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0> = $r1;
+
+        specialinvoke $r0.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat: void <init>()>();
+
+        return;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider $r0;
+        int $i0;
+        androidx.customview.widget.ExploreByTouchHelper $r1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $r2;
+
+        $r0 := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $r2 = virtualinvoke $r1.<androidx.customview.widget.ExploreByTouchHelper: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtainAccessibilityNodeInfo(int)>($i0);
+
+        $r2 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain(androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($r2);
+
+        return $r2;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat findFocus(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider $r0;
+        int $i0;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $r1;
+        androidx.customview.widget.ExploreByTouchHelper $r2;
+
+        $r0 := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 2 goto label1;
+
+        $r2 = $r0.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $i0 = $r2.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId>;
+
+        goto label2;
+
+     label1:
+        $r2 = $r0.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $i0 = $r2.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+     label2:
+        if $i0 != -2147483648 goto label3;
+
+        return null;
+
+     label3:
+        $r1 = virtualinvoke $r0.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.core.view.accessibility.AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int)>($i0);
+
+        return $r1;
+    }
+
+    public boolean performAction(int, int, android.os.Bundle)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider $r0;
+        int $i0, $i1;
+        android.os.Bundle $r1;
+        boolean $z0;
+        androidx.customview.widget.ExploreByTouchHelper $r2;
+
+        $r0 := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: android.os.Bundle;
+
+        $r2 = $r0.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $z0 = virtualinvoke $r2.<androidx.customview.widget.ExploreByTouchHelper: boolean performAction(int,int,android.os.Bundle)>($i0, $i1, $r1);
+
+        return $z0;
+    }
+}

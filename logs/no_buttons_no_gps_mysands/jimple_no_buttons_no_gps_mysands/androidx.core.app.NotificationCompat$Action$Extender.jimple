@@ -1,0 +1,5 @@
+public interface  androidx.core.app.NotificationCompat$Action$Extender extends java.lang.Object
+{
+
+    public abstract androidx.core.app.NotificationCompat$Action$Builder extend(androidx.core.app.NotificationCompat$Action$Builder);
+}

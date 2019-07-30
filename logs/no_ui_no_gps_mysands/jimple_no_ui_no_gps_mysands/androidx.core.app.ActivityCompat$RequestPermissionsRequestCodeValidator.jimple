@@ -1,0 +1,5 @@
+public interface  androidx.core.app.ActivityCompat$RequestPermissionsRequestCodeValidator extends java.lang.Object
+{
+
+    public abstract void validateRequestPermissionsRequestCode(int);
+}

@@ -1,0 +1,127 @@
+class androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1 extends androidx.core.view.ViewPropertyAnimatorListenerAdapter
+{
+    private int mProxyEndCount;
+    private boolean mProxyStarted;
+    final androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0;
+
+    void <init>(androidx.appcompat.view.ViewPropertyAnimatorCompatSet)
+    {
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1 $r0;
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet $r1;
+
+        $r0 := @this: androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1;
+
+        $r1 := @parameter0: androidx.appcompat.view.ViewPropertyAnimatorCompatSet;
+
+        $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0> = $r1;
+
+        specialinvoke $r0.<androidx.core.view.ViewPropertyAnimatorListenerAdapter: void <init>()>();
+
+        $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: boolean mProxyStarted> = 0;
+
+        $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: int mProxyEndCount> = 0;
+
+        return;
+    }
+
+    public void onAnimationEnd(android.view.View)
+    {
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1 $r0;
+        android.view.View $r1;
+        int $i0, $i1;
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet $r2;
+        java.util.ArrayList $r3;
+        androidx.core.view.ViewPropertyAnimatorListener $r4;
+
+        $r0 := @this: androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: int mProxyEndCount>;
+
+        $i1 = $i0 + 1;
+
+        $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: int mProxyEndCount> = $i1;
+
+        $r2 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0>;
+
+        $r3 = $r2.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet: java.util.ArrayList mAnimators>;
+
+        $i0 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        if $i1 != $i0 goto label2;
+
+        $r2 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0>;
+
+        $r4 = $r2.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet: androidx.core.view.ViewPropertyAnimatorListener mListener>;
+
+        if $r4 == null goto label1;
+
+        $r2 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0>;
+
+        $r4 = $r2.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet: androidx.core.view.ViewPropertyAnimatorListener mListener>;
+
+        interfaceinvoke $r4.<androidx.core.view.ViewPropertyAnimatorListener: void onAnimationEnd(android.view.View)>(null);
+
+     label1:
+        virtualinvoke $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: void onEnd()>();
+
+     label2:
+        return;
+    }
+
+    public void onAnimationStart(android.view.View)
+    {
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1 $r0;
+        android.view.View $r1;
+        boolean $z0;
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet $r2;
+        androidx.core.view.ViewPropertyAnimatorListener $r3;
+
+        $r0 := @this: androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1;
+
+        $r1 := @parameter0: android.view.View;
+
+        $z0 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: boolean mProxyStarted>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: boolean mProxyStarted> = 1;
+
+        $r2 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0>;
+
+        $r3 = $r2.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet: androidx.core.view.ViewPropertyAnimatorListener mListener>;
+
+        if $r3 == null goto label2;
+
+        $r2 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0>;
+
+        $r3 = $r2.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet: androidx.core.view.ViewPropertyAnimatorListener mListener>;
+
+        interfaceinvoke $r3.<androidx.core.view.ViewPropertyAnimatorListener: void onAnimationStart(android.view.View)>(null);
+
+     label2:
+        return;
+    }
+
+    void onEnd()
+    {
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1 $r0;
+        androidx.appcompat.view.ViewPropertyAnimatorCompatSet $r1;
+
+        $r0 := @this: androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1;
+
+        $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: int mProxyEndCount> = 0;
+
+        $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: boolean mProxyStarted> = 0;
+
+        $r1 = $r0.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet$1: androidx.appcompat.view.ViewPropertyAnimatorCompatSet this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.view.ViewPropertyAnimatorCompatSet: void onAnimationsEnded()>();
+
+        return;
+    }
+}

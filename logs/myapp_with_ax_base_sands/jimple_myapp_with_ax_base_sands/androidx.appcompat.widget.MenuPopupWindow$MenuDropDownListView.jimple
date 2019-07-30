@@ -1,0 +1,386 @@
+public class androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView extends androidx.appcompat.widget.DropDownListView
+{
+    final int mAdvanceKey;
+    private androidx.appcompat.widget.MenuItemHoverListener mHoverListener;
+    private android.view.MenuItem mHoveredMenuItem;
+    final int mRetreatKey;
+
+    public void <init>(android.content.Context, boolean)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        android.content.Context $r1;
+        boolean $z0;
+        android.content.res.Resources $r2;
+        android.content.res.Configuration $r3;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: void <init>(android.content.Context,boolean)>($r1, $z0);
+
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r3 = virtualinvoke $r2.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $i0 = virtualinvoke $r3.<android.content.res.Configuration: int getLayoutDirection()>();
+
+        if 1 != $i0 goto label1;
+
+        $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int mAdvanceKey> = 21;
+
+        $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int mRetreatKey> = 22;
+
+        return;
+
+     label1:
+        $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int mAdvanceKey> = 22;
+
+        $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int mRetreatKey> = 21;
+
+        return;
+    }
+
+    public void clearSelection()
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: void setSelection(int)>(-1);
+
+        return;
+    }
+
+    public volatile boolean hasFocus()
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean hasFocus()>();
+
+        return $z0;
+    }
+
+    public volatile boolean hasWindowFocus()
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean hasWindowFocus()>();
+
+        return $z0;
+    }
+
+    public volatile boolean isFocused()
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean isFocused()>();
+
+        return $z0;
+    }
+
+    public volatile boolean isInTouchMode()
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean isInTouchMode()>();
+
+        return $z0;
+    }
+
+    public volatile int lookForSelectablePosition(int, boolean)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        $i0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: int lookForSelectablePosition(int,boolean)>($i0, $z0);
+
+        return $i0;
+    }
+
+    public volatile int measureHeightOfChildrenCompat(int, int, int, int, int)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $i4 := @parameter0: int;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: int measureHeightOfChildrenCompat(int,int,int,int,int)>($i4, $i0, $i1, $i2, $i3);
+
+        return $i4;
+    }
+
+    public volatile boolean onForwardedEvent(android.view.MotionEvent, int)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        int $i0;
+        boolean $z0;
+        android.view.MotionEvent $r1;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $i0 := @parameter1: int;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean onForwardedEvent(android.view.MotionEvent,int)>($r1, $i0);
+
+        return $z0;
+    }
+
+    public boolean onHoverEvent(android.view.MotionEvent)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        android.view.MotionEvent $r1;
+        androidx.appcompat.widget.MenuItemHoverListener $r2;
+        android.widget.ListAdapter $r3;
+        boolean $z0;
+        android.widget.HeaderViewListAdapter $r4;
+        int $i0, $i1, $i2;
+        androidx.appcompat.view.menu.MenuAdapter $r5;
+        androidx.appcompat.view.menu.MenuItemImpl $r6;
+        float $f0;
+        android.view.MenuItem $r7;
+        androidx.appcompat.view.menu.MenuBuilder $r8;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $r2 = $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: androidx.appcompat.widget.MenuItemHoverListener mHoverListener>;
+
+        if $r2 == null goto label5;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: android.widget.ListAdapter getAdapter()>();
+
+        $z0 = $r3 instanceof android.widget.HeaderViewListAdapter;
+
+        if $z0 == 0 goto label1;
+
+        $r4 = (android.widget.HeaderViewListAdapter) $r3;
+
+        $i0 = virtualinvoke $r4.<android.widget.HeaderViewListAdapter: int getHeadersCount()>();
+
+        $r3 = virtualinvoke $r4.<android.widget.HeaderViewListAdapter: android.widget.ListAdapter getWrappedAdapter()>();
+
+        $r5 = (androidx.appcompat.view.menu.MenuAdapter) $r3;
+
+        goto label2;
+
+     label1:
+        $i0 = 0;
+
+        $r5 = (androidx.appcompat.view.menu.MenuAdapter) $r3;
+
+     label2:
+        $r6 = null;
+
+        $i1 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        if $i1 == 10 goto label3;
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getX()>();
+
+        $i1 = (int) $f0;
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getY()>();
+
+        $i2 = (int) $f0;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int pointToPosition(int,int)>($i1, $i2);
+
+        if $i1 == -1 goto label3;
+
+        $i0 = $i1 - $i0;
+
+        if $i0 < 0 goto label3;
+
+        $i1 = virtualinvoke $r5.<androidx.appcompat.view.menu.MenuAdapter: int getCount()>();
+
+        if $i0 >= $i1 goto label3;
+
+        $r6 = virtualinvoke $r5.<androidx.appcompat.view.menu.MenuAdapter: androidx.appcompat.view.menu.MenuItemImpl getItem(int)>($i0);
+
+     label3:
+        $r7 = $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: android.view.MenuItem mHoveredMenuItem>;
+
+        if $r7 == $r6 goto label5;
+
+        $r8 = virtualinvoke $r5.<androidx.appcompat.view.menu.MenuAdapter: androidx.appcompat.view.menu.MenuBuilder getAdapterMenu()>();
+
+        if $r7 == null goto label4;
+
+        $r2 = $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: androidx.appcompat.widget.MenuItemHoverListener mHoverListener>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.MenuItemHoverListener: void onItemHoverExit(androidx.appcompat.view.menu.MenuBuilder,android.view.MenuItem)>($r8, $r7);
+
+     label4:
+        $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: android.view.MenuItem mHoveredMenuItem> = $r6;
+
+        if $r6 == null goto label5;
+
+        $r2 = $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: androidx.appcompat.widget.MenuItemHoverListener mHoverListener>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.MenuItemHoverListener: void onItemHoverEnter(androidx.appcompat.view.menu.MenuBuilder,android.view.MenuItem)>($r8, $r6);
+
+     label5:
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean onHoverEvent(android.view.MotionEvent)>($r1);
+
+        return $z0;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        int $i0, $i1;
+        android.view.KeyEvent $r1;
+        android.view.View $r2;
+        androidx.appcompat.view.menu.ListMenuItemView $r3;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuItemImpl $r4;
+        long $l2;
+        android.widget.ListAdapter $r5;
+        androidx.appcompat.view.menu.MenuAdapter $r6;
+        androidx.appcompat.view.menu.MenuBuilder $r7;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: android.view.View getSelectedView()>();
+
+        $r3 = (androidx.appcompat.view.menu.ListMenuItemView) $r2;
+
+        if $r3 == null goto label1;
+
+        $i1 = $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int mAdvanceKey>;
+
+        if $i0 != $i1 goto label1;
+
+        $z0 = virtualinvoke $r3.<androidx.appcompat.view.menu.ListMenuItemView: boolean isEnabled()>();
+
+        if $z0 == 0 goto label3;
+
+        $r4 = virtualinvoke $r3.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl getItemData()>();
+
+        $z0 = virtualinvoke $r4.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        if $z0 == 0 goto label3;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int getSelectedItemPosition()>();
+
+        $l2 = virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: long getSelectedItemId()>();
+
+        virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: boolean performItemClick(android.view.View,int,long)>($r3, $i0, $l2);
+
+        return 1;
+
+     label1:
+        if $r3 == null goto label2;
+
+        $i1 = $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: int mRetreatKey>;
+
+        if $i0 != $i1 goto label2;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: void setSelection(int)>(-1);
+
+        $r5 = virtualinvoke $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: android.widget.ListAdapter getAdapter()>();
+
+        $r6 = (androidx.appcompat.view.menu.MenuAdapter) $r5;
+
+        $r7 = virtualinvoke $r6.<androidx.appcompat.view.menu.MenuAdapter: androidx.appcompat.view.menu.MenuBuilder getAdapterMenu()>();
+
+        virtualinvoke $r7.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(0);
+
+        return 1;
+
+     label2:
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean onKeyDown(int,android.view.KeyEvent)>($i0, $r1);
+
+        return $z0;
+
+     label3:
+        return 1;
+    }
+
+    public volatile boolean onTouchEvent(android.view.MotionEvent)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        boolean $z0;
+        android.view.MotionEvent $r1;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: boolean onTouchEvent(android.view.MotionEvent)>($r1);
+
+        return $z0;
+    }
+
+    public void setHoverListener(androidx.appcompat.widget.MenuItemHoverListener)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        androidx.appcompat.widget.MenuItemHoverListener $r1;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $r1 := @parameter0: androidx.appcompat.widget.MenuItemHoverListener;
+
+        $r0.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: androidx.appcompat.widget.MenuItemHoverListener mHoverListener> = $r1;
+
+        return;
+    }
+
+    public volatile void setSelector(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView $r0;
+        android.graphics.drawable.Drawable $r1;
+
+        $r0 := @this: androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        specialinvoke $r0.<androidx.appcompat.widget.DropDownListView: void setSelector(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+    }
+}

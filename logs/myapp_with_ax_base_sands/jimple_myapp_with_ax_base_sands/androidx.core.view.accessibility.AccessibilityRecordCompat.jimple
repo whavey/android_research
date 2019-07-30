@@ -1,0 +1,948 @@
+public class androidx.core.view.accessibility.AccessibilityRecordCompat extends java.lang.Object
+{
+    private final android.view.accessibility.AccessibilityRecord mRecord;
+
+    public void <init>(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r2 = (android.view.accessibility.AccessibilityRecord) $r1;
+
+        $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord> = $r2;
+
+        return;
+    }
+
+    public static int getMaxScrollX(android.view.accessibility.AccessibilityRecord)
+    {
+        android.view.accessibility.AccessibilityRecord $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.accessibility.AccessibilityRecord;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 15 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.accessibility.AccessibilityRecord: int getMaxScrollX()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static int getMaxScrollY(android.view.accessibility.AccessibilityRecord)
+    {
+        android.view.accessibility.AccessibilityRecord $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.accessibility.AccessibilityRecord;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 15 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.accessibility.AccessibilityRecord: int getMaxScrollY()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityRecordCompat obtain()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 = new androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = staticinvoke <android.view.accessibility.AccessibilityRecord: android.view.accessibility.AccessibilityRecord obtain()>();
+
+        specialinvoke $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: void <init>(java.lang.Object)>($r1);
+
+        return $r0;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityRecordCompat obtain(androidx.core.view.accessibility.AccessibilityRecordCompat)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0, $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @parameter0: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = new androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $r2 = staticinvoke <android.view.accessibility.AccessibilityRecord: android.view.accessibility.AccessibilityRecord obtain(android.view.accessibility.AccessibilityRecord)>($r2);
+
+        specialinvoke $r1.<androidx.core.view.accessibility.AccessibilityRecordCompat: void <init>(java.lang.Object)>($r2);
+
+        return $r1;
+    }
+
+    public static void setMaxScrollX(android.view.accessibility.AccessibilityRecord, int)
+    {
+        android.view.accessibility.AccessibilityRecord $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.accessibility.AccessibilityRecord;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 15 goto label1;
+
+        virtualinvoke $r0.<android.view.accessibility.AccessibilityRecord: void setMaxScrollX(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setMaxScrollY(android.view.accessibility.AccessibilityRecord, int)
+    {
+        android.view.accessibility.AccessibilityRecord $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.accessibility.AccessibilityRecord;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 15 goto label1;
+
+        virtualinvoke $r0.<android.view.accessibility.AccessibilityRecord: void setMaxScrollY(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setSource(android.view.accessibility.AccessibilityRecord, android.view.View, int)
+    {
+        android.view.accessibility.AccessibilityRecord $r0;
+        android.view.View $r1;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.accessibility.AccessibilityRecord;
+
+        $r1 := @parameter1: android.view.View;
+
+        $i0 := @parameter2: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 16 goto label1;
+
+        virtualinvoke $r0.<android.view.accessibility.AccessibilityRecord: void setSource(android.view.View,int)>($r1, $i0);
+
+     label1:
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0, $r5;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityRecord $r2, $r6;
+        java.lang.Class $r3, $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r3 = virtualinvoke $r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r3 == $r4 goto label3;
+
+        return 0;
+
+     label3:
+        $r5 = (androidx.core.view.accessibility.AccessibilityRecordCompat) $r1;
+
+        $r6 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        if $r6 != null goto label4;
+
+        $r2 = $r5.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        if $r2 == null goto label5;
+
+        return 0;
+
+     label4:
+        $r2 = $r5.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $z0 = virtualinvoke $r6.<java.lang.Object: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 != 0 goto label5;
+
+        return 0;
+
+     label5:
+        return 1;
+    }
+
+    public int getAddedCount()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getAddedCount()>();
+
+        return $i0;
+    }
+
+    public java.lang.CharSequence getBeforeText()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.lang.CharSequence $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $r1 = virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: java.lang.CharSequence getBeforeText()>();
+
+        return $r1;
+    }
+
+    public java.lang.CharSequence getClassName()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.lang.CharSequence $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $r1 = virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: java.lang.CharSequence getClassName()>();
+
+        return $r1;
+    }
+
+    public java.lang.CharSequence getContentDescription()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.lang.CharSequence $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $r1 = virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: java.lang.CharSequence getContentDescription()>();
+
+        return $r1;
+    }
+
+    public int getCurrentItemIndex()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getCurrentItemIndex()>();
+
+        return $i0;
+    }
+
+    public int getFromIndex()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getFromIndex()>();
+
+        return $i0;
+    }
+
+    public java.lang.Object getImpl()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.view.accessibility.AccessibilityRecord r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        return r1;
+    }
+
+    public int getItemCount()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getItemCount()>();
+
+        return $i0;
+    }
+
+    public int getMaxScrollX()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = staticinvoke <androidx.core.view.accessibility.AccessibilityRecordCompat: int getMaxScrollX(android.view.accessibility.AccessibilityRecord)>($r1);
+
+        return $i0;
+    }
+
+    public int getMaxScrollY()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = staticinvoke <androidx.core.view.accessibility.AccessibilityRecordCompat: int getMaxScrollY(android.view.accessibility.AccessibilityRecord)>($r1);
+
+        return $i0;
+    }
+
+    public android.os.Parcelable getParcelableData()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.os.Parcelable $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $r1 = virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: android.os.Parcelable getParcelableData()>();
+
+        return $r1;
+    }
+
+    public int getRemovedCount()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getRemovedCount()>();
+
+        return $i0;
+    }
+
+    public int getScrollX()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getScrollX()>();
+
+        return $i0;
+    }
+
+    public int getScrollY()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getScrollY()>();
+
+        return $i0;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getSource()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.view.accessibility.AccessibilityRecord $r1;
+        android.view.accessibility.AccessibilityNodeInfo $r2;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $r3;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $r2 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: android.view.accessibility.AccessibilityNodeInfo getSource()>();
+
+        $r3 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($r2);
+
+        return $r3;
+    }
+
+    public java.util.List getText()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.util.List $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $r1 = virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: java.util.List getText()>();
+
+        return $r1;
+    }
+
+    public int getToIndex()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getToIndex()>();
+
+        return $i0;
+    }
+
+    public int getWindowId()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: int getWindowId()>();
+
+        return $i0;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = virtualinvoke $r1.<java.lang.Object: int hashCode()>();
+
+        return $i0;
+    }
+
+    public boolean isChecked()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $z0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: boolean isChecked()>();
+
+        return $z0;
+    }
+
+    public boolean isEnabled()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $z0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: boolean isEnabled()>();
+
+        return $z0;
+    }
+
+    public boolean isFullScreen()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $z0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: boolean isFullScreen()>();
+
+        return $z0;
+    }
+
+    public boolean isPassword()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $z0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: boolean isPassword()>();
+
+        return $z0;
+    }
+
+    public boolean isScrollable()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        $z0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: boolean isScrollable()>();
+
+        return $z0;
+    }
+
+    public void recycle()
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void recycle()>();
+
+        return;
+    }
+
+    public void setAddedCount(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setAddedCount(int)>($i0);
+
+        return;
+    }
+
+    public void setBeforeText(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.lang.CharSequence $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: void setBeforeText(java.lang.CharSequence)>($r1);
+
+        return;
+    }
+
+    public void setChecked(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setChecked(boolean)>($z0);
+
+        return;
+    }
+
+    public void setClassName(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.lang.CharSequence $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: void setClassName(java.lang.CharSequence)>($r1);
+
+        return;
+    }
+
+    public void setContentDescription(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        java.lang.CharSequence $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: void setContentDescription(java.lang.CharSequence)>($r1);
+
+        return;
+    }
+
+    public void setCurrentItemIndex(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setCurrentItemIndex(int)>($i0);
+
+        return;
+    }
+
+    public void setEnabled(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setEnabled(boolean)>($z0);
+
+        return;
+    }
+
+    public void setFromIndex(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setFromIndex(int)>($i0);
+
+        return;
+    }
+
+    public void setFullScreen(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setFullScreen(boolean)>($z0);
+
+        return;
+    }
+
+    public void setItemCount(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setItemCount(int)>($i0);
+
+        return;
+    }
+
+    public void setMaxScrollX(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        staticinvoke <androidx.core.view.accessibility.AccessibilityRecordCompat: void setMaxScrollX(android.view.accessibility.AccessibilityRecord,int)>($r1, $i0);
+
+        return;
+    }
+
+    public void setMaxScrollY(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        staticinvoke <androidx.core.view.accessibility.AccessibilityRecordCompat: void setMaxScrollY(android.view.accessibility.AccessibilityRecord,int)>($r1, $i0);
+
+        return;
+    }
+
+    public void setParcelableData(android.os.Parcelable)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.os.Parcelable $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: android.os.Parcelable;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: void setParcelableData(android.os.Parcelable)>($r1);
+
+        return;
+    }
+
+    public void setPassword(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setPassword(boolean)>($z0);
+
+        return;
+    }
+
+    public void setRemovedCount(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setRemovedCount(int)>($i0);
+
+        return;
+    }
+
+    public void setScrollX(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setScrollX(int)>($i0);
+
+        return;
+    }
+
+    public void setScrollY(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setScrollY(int)>($i0);
+
+        return;
+    }
+
+    public void setScrollable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        boolean $z0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setScrollable(boolean)>($z0);
+
+        return;
+    }
+
+    public void setSource(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.view.View $r1;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r2.<android.view.accessibility.AccessibilityRecord: void setSource(android.view.View)>($r1);
+
+        return;
+    }
+
+    public void setSource(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        android.view.View $r1;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $r2 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        staticinvoke <androidx.core.view.accessibility.AccessibilityRecordCompat: void setSource(android.view.accessibility.AccessibilityRecord,android.view.View,int)>($r2, $r1, $i0);
+
+        return;
+    }
+
+    public void setToIndex(int)
+    {
+        androidx.core.view.accessibility.AccessibilityRecordCompat $r0;
+        int $i0;
+        android.view.accessibility.AccessibilityRecord $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityRecordCompat: android.view.accessibility.AccessibilityRecord mRecord>;
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityRecord: void setToIndex(int)>($i0);
+
+        return;
+    }
+}

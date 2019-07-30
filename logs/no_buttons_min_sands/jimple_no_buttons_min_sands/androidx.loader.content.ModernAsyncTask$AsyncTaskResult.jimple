@@ -1,0 +1,26 @@
+class androidx.loader.content.ModernAsyncTask$AsyncTaskResult extends java.lang.Object
+{
+    final java.lang.Object[] mData;
+    final androidx.loader.content.ModernAsyncTask mTask;
+
+    transient void <init>(androidx.loader.content.ModernAsyncTask, java.lang.Object[])
+    {
+        androidx.loader.content.ModernAsyncTask$AsyncTaskResult $r0;
+        androidx.loader.content.ModernAsyncTask $r1;
+        java.lang.Object[] $r2;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask$AsyncTaskResult;
+
+        $r1 := @parameter0: androidx.loader.content.ModernAsyncTask;
+
+        $r2 := @parameter1: java.lang.Object[];
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: androidx.loader.content.ModernAsyncTask mTask> = $r1;
+
+        $r0.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: java.lang.Object[] mData> = $r2;
+
+        return;
+    }
+}

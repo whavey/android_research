@@ -1,0 +1,22 @@
+public annotation interface  androidx.'annotation'.VisibleForTesting extends java.lang.Object implements java.lang.'annotation'.Annotation
+{
+    public static final int NONE;
+    public static final int PACKAGE_PRIVATE;
+    public static final int PRIVATE;
+    public static final int PROTECTED;
+
+    public abstract int otherwise();
+
+    public static void <clinit>()
+    {
+        <androidx.'annotation'.VisibleForTesting: int PROTECTED> = 4;
+
+        <androidx.'annotation'.VisibleForTesting: int PRIVATE> = 2;
+
+        <androidx.'annotation'.VisibleForTesting: int PACKAGE_PRIVATE> = 3;
+
+        <androidx.'annotation'.VisibleForTesting: int NONE> = 5;
+
+        return;
+    }
+}

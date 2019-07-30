@@ -1,0 +1,27 @@
+public interface  androidx.appcompat.view.menu.MenuPresenter extends java.lang.Object
+{
+
+    public abstract boolean collapseItemActionView(androidx.appcompat.view.menu.MenuBuilder, androidx.appcompat.view.menu.MenuItemImpl);
+
+    public abstract boolean expandItemActionView(androidx.appcompat.view.menu.MenuBuilder, androidx.appcompat.view.menu.MenuItemImpl);
+
+    public abstract boolean flagActionItems();
+
+    public abstract int getId();
+
+    public abstract androidx.appcompat.view.menu.MenuView getMenuView(android.view.ViewGroup);
+
+    public abstract void initForMenu(android.content.Context, androidx.appcompat.view.menu.MenuBuilder);
+
+    public abstract void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder, boolean);
+
+    public abstract void onRestoreInstanceState(android.os.Parcelable);
+
+    public abstract android.os.Parcelable onSaveInstanceState();
+
+    public abstract boolean onSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder);
+
+    public abstract void setCallback(androidx.appcompat.view.menu.MenuPresenter$Callback);
+
+    public abstract void updateMenuView(boolean);
+}

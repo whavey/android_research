@@ -1,0 +1,48 @@
+final class androidx.lifecycle.Transformations$1 extends java.lang.Object implements androidx.lifecycle.Observer
+{
+    final androidx.arch.core.util.Function val$mapFunction;
+    final androidx.lifecycle.MediatorLiveData val$result;
+
+    void <init>(androidx.lifecycle.MediatorLiveData, androidx.arch.core.util.Function)
+    {
+        androidx.lifecycle.Transformations$1 $r0;
+        androidx.lifecycle.MediatorLiveData $r1;
+        androidx.arch.core.util.Function $r2;
+
+        $r0 := @this: androidx.lifecycle.Transformations$1;
+
+        $r1 := @parameter0: androidx.lifecycle.MediatorLiveData;
+
+        $r2 := @parameter1: androidx.arch.core.util.Function;
+
+        $r0.<androidx.lifecycle.Transformations$1: androidx.lifecycle.MediatorLiveData val$result> = $r1;
+
+        $r0.<androidx.lifecycle.Transformations$1: androidx.arch.core.util.Function val$mapFunction> = $r2;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onChanged(java.lang.Object)
+    {
+        androidx.lifecycle.Transformations$1 $r0;
+        java.lang.Object $r1;
+        androidx.lifecycle.MediatorLiveData $r2;
+        androidx.arch.core.util.Function $r3;
+
+        $r0 := @this: androidx.lifecycle.Transformations$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.lifecycle.Transformations$1: androidx.lifecycle.MediatorLiveData val$result>;
+
+        $r3 = $r0.<androidx.lifecycle.Transformations$1: androidx.arch.core.util.Function val$mapFunction>;
+
+        $r1 = interfaceinvoke $r3.<androidx.arch.core.util.Function: java.lang.Object apply(java.lang.Object)>($r1);
+
+        virtualinvoke $r2.<androidx.lifecycle.MediatorLiveData: void setValue(java.lang.Object)>($r1);
+
+        return;
+    }
+}

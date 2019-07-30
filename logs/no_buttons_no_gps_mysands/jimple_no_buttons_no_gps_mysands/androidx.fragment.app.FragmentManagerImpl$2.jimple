@@ -1,0 +1,59 @@
+class androidx.fragment.app.FragmentManagerImpl$2 extends androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper
+{
+    final androidx.fragment.app.FragmentManagerImpl this$0;
+    final android.view.ViewGroup val$container;
+    final androidx.fragment.app.Fragment val$fragment;
+
+    void <init>(androidx.fragment.app.FragmentManagerImpl, android.view.animation.Animation$AnimationListener, android.view.ViewGroup, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.FragmentManagerImpl$2 $r0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+        android.view.animation.Animation$AnimationListener $r2;
+        android.view.ViewGroup $r3;
+        androidx.fragment.app.Fragment $r4;
+
+        $r0 := @this: androidx.fragment.app.FragmentManagerImpl$2;
+
+        $r1 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        $r2 := @parameter1: android.view.animation.Animation$AnimationListener;
+
+        $r3 := @parameter2: android.view.ViewGroup;
+
+        $r4 := @parameter3: androidx.fragment.app.Fragment;
+
+        $r0.<androidx.fragment.app.FragmentManagerImpl$2: androidx.fragment.app.FragmentManagerImpl this$0> = $r1;
+
+        $r0.<androidx.fragment.app.FragmentManagerImpl$2: android.view.ViewGroup val$container> = $r3;
+
+        $r0.<androidx.fragment.app.FragmentManagerImpl$2: androidx.fragment.app.Fragment val$fragment> = $r4;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper: void <init>(android.view.animation.Animation$AnimationListener)>($r2);
+
+        return;
+    }
+
+    public void onAnimationEnd(android.view.animation.Animation)
+    {
+        androidx.fragment.app.FragmentManagerImpl$2 $r0;
+        android.view.animation.Animation $r1;
+        android.view.ViewGroup $r2;
+        androidx.fragment.app.FragmentManagerImpl$2$1 $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentManagerImpl$2;
+
+        $r1 := @parameter0: android.view.animation.Animation;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper: void onAnimationEnd(android.view.animation.Animation)>($r1);
+
+        $r2 = $r0.<androidx.fragment.app.FragmentManagerImpl$2: android.view.ViewGroup val$container>;
+
+        $r3 = new androidx.fragment.app.FragmentManagerImpl$2$1;
+
+        specialinvoke $r3.<androidx.fragment.app.FragmentManagerImpl$2$1: void <init>(androidx.fragment.app.FragmentManagerImpl$2)>($r0);
+
+        virtualinvoke $r2.<android.view.ViewGroup: boolean post(java.lang.Runnable)>($r3);
+
+        return;
+    }
+}

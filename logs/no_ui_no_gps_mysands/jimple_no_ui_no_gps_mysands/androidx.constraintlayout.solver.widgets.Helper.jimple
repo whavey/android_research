@@ -1,0 +1,80 @@
+public class androidx.constraintlayout.solver.widgets.Helper extends androidx.constraintlayout.solver.widgets.ConstraintWidget
+{
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets;
+    protected int mWidgetsCount;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.solver.widgets.Helper $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Helper;
+
+        specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void <init>()>();
+
+        $r1 = newarray (androidx.constraintlayout.solver.widgets.ConstraintWidget)[4];
+
+        $r0.<androidx.constraintlayout.solver.widgets.Helper: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets> = $r1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.Helper: int mWidgetsCount> = 0;
+
+        return;
+    }
+
+    public void add(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.Helper $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        int $i0, $i1;
+        java.lang.Object[] $r2;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Helper;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Helper: int mWidgetsCount>;
+
+        $i1 = $i0 + 1;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Helper: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        $i0 = lengthof $r3;
+
+        if $i1 <= $i0 goto label1;
+
+        $i0 = lengthof $r3;
+
+        $i0 = $i0 * 2;
+
+        $r2 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r3, $i0);
+
+        $r3 = (androidx.constraintlayout.solver.widgets.ConstraintWidget[]) $r2;
+
+        $r0.<androidx.constraintlayout.solver.widgets.Helper: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets> = $r3;
+
+     label1:
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.Helper: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Helper: int mWidgetsCount>;
+
+        $r3[$i0] = $r1;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.Helper: int mWidgetsCount> = $i0;
+
+        return;
+    }
+
+    public void removeAllIds()
+    {
+        androidx.constraintlayout.solver.widgets.Helper $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Helper;
+
+        $r0.<androidx.constraintlayout.solver.widgets.Helper: int mWidgetsCount> = 0;
+
+        return;
+    }
+}

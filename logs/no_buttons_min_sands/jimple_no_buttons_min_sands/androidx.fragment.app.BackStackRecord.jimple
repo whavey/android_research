@@ -1,0 +1,2821 @@
+final class androidx.fragment.app.BackStackRecord extends androidx.fragment.app.FragmentTransaction implements androidx.fragment.app.FragmentManager$BackStackEntry, androidx.fragment.app.FragmentManagerImpl$OpGenerator
+{
+    static final int OP_ADD;
+    static final int OP_ATTACH;
+    static final int OP_DETACH;
+    static final int OP_HIDE;
+    static final int OP_NULL;
+    static final int OP_REMOVE;
+    static final int OP_REPLACE;
+    static final int OP_SET_PRIMARY_NAV;
+    static final int OP_SHOW;
+    static final int OP_UNSET_PRIMARY_NAV;
+    static final java.lang.String TAG;
+    boolean mAddToBackStack;
+    boolean mAllowAddToBackStack;
+    int mBreadCrumbShortTitleRes;
+    java.lang.CharSequence mBreadCrumbShortTitleText;
+    int mBreadCrumbTitleRes;
+    java.lang.CharSequence mBreadCrumbTitleText;
+    java.util.ArrayList mCommitRunnables;
+    boolean mCommitted;
+    int mEnterAnim;
+    int mExitAnim;
+    int mIndex;
+    final androidx.fragment.app.FragmentManagerImpl mManager;
+    java.lang.String mName;
+    java.util.ArrayList mOps;
+    int mPopEnterAnim;
+    int mPopExitAnim;
+    boolean mReorderingAllowed;
+    java.util.ArrayList mSharedElementSourceNames;
+    java.util.ArrayList mSharedElementTargetNames;
+    int mTransition;
+    int mTransitionStyle;
+
+    public void <init>(androidx.fragment.app.FragmentManagerImpl)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+        java.util.ArrayList $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentTransaction: void <init>()>();
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps> = $r2;
+
+        $r0.<androidx.fragment.app.BackStackRecord: boolean mAllowAddToBackStack> = 1;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mIndex> = -1;
+
+        $r0.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed> = 0;
+
+        $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager> = $r1;
+
+        return;
+    }
+
+    private void doAddOp(int, androidx.fragment.app.Fragment, java.lang.String, int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0, $i1, $i2;
+        androidx.fragment.app.Fragment $r1;
+        java.lang.String $r2, $r5;
+        java.lang.Class $r3;
+        boolean $z0;
+        androidx.fragment.app.FragmentManagerImpl $r4;
+        java.lang.IllegalStateException $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.IllegalArgumentException $r8;
+        androidx.fragment.app.BackStackRecord$Op $r9;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.fragment.app.Fragment;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $i1 := @parameter3: int;
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $i2 = virtualinvoke $r3.<java.lang.Class: int getModifiers()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.Class: boolean isAnonymousClass()>();
+
+        if $z0 != 0 goto label9;
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isPublic(int)>($i2);
+
+        if $z0 == 0 goto label9;
+
+        $z0 = virtualinvoke $r3.<java.lang.Class: boolean isMemberClass()>();
+
+        if $z0 == 0 goto label1;
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>($i2);
+
+        if $z0 == 0 goto label9;
+
+     label1:
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        $r1.<androidx.fragment.app.Fragment: androidx.fragment.app.FragmentManagerImpl mFragmentManager> = $r4;
+
+        if $r2 == null goto label4;
+
+        $r5 = $r1.<androidx.fragment.app.Fragment: java.lang.String mTag>;
+
+        if $r5 == null goto label3;
+
+        $r5 = $r1.<androidx.fragment.app.Fragment: java.lang.String mTag>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $r6 = new java.lang.IllegalStateException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t change tag of fragment ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": was ");
+
+        $r5 = $r1.<androidx.fragment.app.Fragment: java.lang.String mTag>;
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" now ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r2);
+
+        throw $r6;
+
+     label3:
+        $r1.<androidx.fragment.app.Fragment: java.lang.String mTag> = $r2;
+
+     label4:
+        if $i0 == 0 goto label8;
+
+        if $i0 == -1 goto label7;
+
+        $i2 = $r1.<androidx.fragment.app.Fragment: int mFragmentId>;
+
+        if $i2 == 0 goto label6;
+
+        $i2 = $r1.<androidx.fragment.app.Fragment: int mFragmentId>;
+
+        if $i2 != $i0 goto label5;
+
+        goto label6;
+
+     label5:
+        $r6 = new java.lang.IllegalStateException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t change container ID of fragment ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": was ");
+
+        $i1 = $r1.<androidx.fragment.app.Fragment: int mFragmentId>;
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" now ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r2);
+
+        throw $r6;
+
+     label6:
+        $r1.<androidx.fragment.app.Fragment: int mFragmentId> = $i0;
+
+        $r1.<androidx.fragment.app.Fragment: int mContainerId> = $i0;
+
+        goto label8;
+
+     label7:
+        $r8 = new java.lang.IllegalArgumentException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t add fragment ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" with tag ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to container view with no id");
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw $r8;
+
+     label8:
+        $r9 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r9.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>($i1, $r1);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r9);
+
+        return;
+
+     label9:
+        $r6 = new java.lang.IllegalStateException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Fragment ");
+
+        $r2 = virtualinvoke $r3.<java.lang.Class: java.lang.String getCanonicalName()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" must be a public static class to be  properly recreated from");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" instance state.");
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r2);
+
+        throw $r6;
+    }
+
+    private static boolean isFragmentPostponed(androidx.fragment.app.BackStackRecord$Op)
+    {
+        androidx.fragment.app.BackStackRecord$Op $r0;
+        androidx.fragment.app.Fragment $r1;
+        boolean $z0;
+        android.view.View $r2;
+
+        $r0 := @parameter0: androidx.fragment.app.BackStackRecord$Op;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r1 == null goto label1;
+
+        $z0 = $r1.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = $r1.<androidx.fragment.app.Fragment: android.view.View mView>;
+
+        if $r2 == null goto label1;
+
+        $z0 = $r1.<androidx.fragment.app.Fragment: boolean mDetached>;
+
+        if $z0 != 0 goto label1;
+
+        $z0 = $r1.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if $z0 != 0 goto label1;
+
+        $z0 = virtualinvoke $r1.<androidx.fragment.app.Fragment: boolean isPostponed()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction add(int, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+        androidx.fragment.app.Fragment $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.fragment.app.Fragment;
+
+        specialinvoke $r0.<androidx.fragment.app.BackStackRecord: void doAddOp(int,androidx.fragment.app.Fragment,java.lang.String,int)>($i0, $r1, null, 1);
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction add(int, androidx.fragment.app.Fragment, java.lang.String)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+        androidx.fragment.app.Fragment $r1;
+        java.lang.String $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.fragment.app.Fragment;
+
+        $r2 := @parameter2: java.lang.String;
+
+        specialinvoke $r0.<androidx.fragment.app.BackStackRecord: void doAddOp(int,androidx.fragment.app.Fragment,java.lang.String,int)>($i0, $r1, $r2, 1);
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction add(androidx.fragment.app.Fragment, java.lang.String)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        java.lang.String $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke $r0.<androidx.fragment.app.BackStackRecord: void doAddOp(int,androidx.fragment.app.Fragment,java.lang.String,int)>(0, $r1, $r2, 1);
+
+        return $r0;
+    }
+
+    void addOp(androidx.fragment.app.BackStackRecord$Op)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.BackStackRecord$Op $r1;
+        java.util.ArrayList $r2;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.BackStackRecord$Op;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mEnterAnim>;
+
+        $r1.<androidx.fragment.app.BackStackRecord$Op: int enterAnim> = $i0;
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mExitAnim>;
+
+        $r1.<androidx.fragment.app.BackStackRecord$Op: int exitAnim> = $i0;
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mPopEnterAnim>;
+
+        $r1.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim> = $i0;
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mPopExitAnim>;
+
+        $r1.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim> = $i0;
+
+        return;
+    }
+
+    public androidx.fragment.app.FragmentTransaction addSharedElement(android.view.View, java.lang.String)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        android.view.View $r1;
+        java.lang.String $r2, $r3;
+        boolean $z0;
+        java.util.ArrayList $r4;
+        java.lang.IllegalArgumentException $r5;
+        java.lang.StringBuilder $r6;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $z0 = staticinvoke <androidx.fragment.app.FragmentTransition: boolean supportsTransition()>();
+
+        if $z0 == 0 goto label6;
+
+        $r3 = staticinvoke <androidx.core.view.ViewCompat: java.lang.String getTransitionName(android.view.View)>($r1);
+
+        if $r3 == null goto label5;
+
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        if $r4 != null goto label1;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames> = $r4;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames> = $r4;
+
+        goto label2;
+
+     label1:
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+        $z0 = virtualinvoke $r4.<java.util.ArrayList: boolean contains(java.lang.Object)>($r2);
+
+        if $z0 != 0 goto label4;
+
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        $z0 = virtualinvoke $r4.<java.util.ArrayList: boolean contains(java.lang.Object)>($r3);
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        virtualinvoke $r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+        virtualinvoke $r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r2);
+
+        return $r0;
+
+     label3:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("A shared element with the source name \'");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" has already been added to the transaction.");
+
+        $r2 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw $r5;
+
+     label4:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("A shared element with the target name \'");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' has already been added to the transaction.");
+
+        $r2 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw $r5;
+
+     label5:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Unique transitionNames are required for all sharedElements");
+
+        throw $r5;
+
+     label6:
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction addToBackStack(java.lang.String)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.String $r1;
+        boolean $z0;
+        java.lang.IllegalStateException $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 = $r0.<androidx.fragment.app.BackStackRecord: boolean mAllowAddToBackStack>;
+
+        if $z0 == 0 goto label1;
+
+        $r0.<androidx.fragment.app.BackStackRecord: boolean mAddToBackStack> = 1;
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.lang.String mName> = $r1;
+
+        return $r0;
+
+     label1:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("This FragmentTransaction is not allowed to be added to the back stack.");
+
+        throw $r2;
+    }
+
+    public androidx.fragment.app.FragmentTransaction attach(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        androidx.fragment.app.BackStackRecord$Op $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $r2 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r2.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(7, $r1);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r2);
+
+        return $r0;
+    }
+
+    void bumpBackStackNesting(int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0, $i1, $i2, $i3;
+        boolean $z0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        java.util.ArrayList $r3;
+        java.lang.Object $r4;
+        androidx.fragment.app.BackStackRecord$Op $r5;
+        androidx.fragment.app.Fragment $r6;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $z0 = $r0.<androidx.fragment.app.BackStackRecord: boolean mAddToBackStack>;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $z0 = <androidx.fragment.app.FragmentManagerImpl: boolean DEBUG>;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Bump nesting in ");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r0);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" by ");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r2);
+
+     label2:
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i1 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        $i2 = 0;
+
+     label3:
+        if $i2 >= $i1 goto label5;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i2);
+
+        $r5 = (androidx.fragment.app.BackStackRecord$Op) $r4;
+
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r6 == null goto label4;
+
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        $i3 = $r6.<androidx.fragment.app.Fragment: int mBackStackNesting>;
+
+        $i3 = $i3 + $i0;
+
+        $r6.<androidx.fragment.app.Fragment: int mBackStackNesting> = $i3;
+
+        $z0 = <androidx.fragment.app.FragmentManagerImpl: boolean DEBUG>;
+
+        if $z0 == 0 goto label4;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Bump nesting of ");
+
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to ");
+
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        $i3 = $r6.<androidx.fragment.app.Fragment: int mBackStackNesting>;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r2);
+
+     label4:
+        $i2 = $i2 + 1;
+
+        goto label3;
+
+     label5:
+        return;
+    }
+
+    public int commit()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 = virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: int commitInternal(boolean)>(0);
+
+        return $i0;
+    }
+
+    public int commitAllowingStateLoss()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 = virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: int commitInternal(boolean)>(1);
+
+        return $i0;
+    }
+
+    int commitInternal(boolean)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        androidx.core.util.LogWriter $r3;
+        java.io.PrintWriter $r4;
+        androidx.fragment.app.FragmentManagerImpl $r5;
+        int $i0;
+        java.lang.IllegalStateException $r6;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 = $r0.<androidx.fragment.app.BackStackRecord: boolean mCommitted>;
+
+        if $z1 != 0 goto label4;
+
+        $z1 = <androidx.fragment.app.FragmentManagerImpl: boolean DEBUG>;
+
+        if $z1 == 0 goto label1;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Commit: ");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r2);
+
+        $r3 = new androidx.core.util.LogWriter;
+
+        specialinvoke $r3.<androidx.core.util.LogWriter: void <init>(java.lang.String)>("FragmentManager");
+
+        $r4 = new java.io.PrintWriter;
+
+        specialinvoke $r4.<java.io.PrintWriter: void <init>(java.io.Writer)>($r3);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])>("  ", null, $r4, null);
+
+        virtualinvoke $r4.<java.io.PrintWriter: void close()>();
+
+     label1:
+        $r0.<androidx.fragment.app.BackStackRecord: boolean mCommitted> = 1;
+
+        $z1 = $r0.<androidx.fragment.app.BackStackRecord: boolean mAddToBackStack>;
+
+        if $z1 == 0 goto label2;
+
+        $r5 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        $i0 = virtualinvoke $r5.<androidx.fragment.app.FragmentManagerImpl: int allocBackStackIndex(androidx.fragment.app.BackStackRecord)>($r0);
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mIndex> = $i0;
+
+        goto label3;
+
+     label2:
+        $r0.<androidx.fragment.app.BackStackRecord: int mIndex> = -1;
+
+     label3:
+        $r5 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r5.<androidx.fragment.app.FragmentManagerImpl: void enqueueAction(androidx.fragment.app.FragmentManagerImpl$OpGenerator,boolean)>($r0, $z0);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mIndex>;
+
+        return $i0;
+
+     label4:
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("commit already called");
+
+        throw $r6;
+    }
+
+    public void commitNow()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentTransaction disallowAddToBackStack()>();
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r1.<androidx.fragment.app.FragmentManagerImpl: void execSingleAction(androidx.fragment.app.FragmentManagerImpl$OpGenerator,boolean)>($r0, 0);
+
+        return;
+    }
+
+    public void commitNowAllowingStateLoss()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentTransaction disallowAddToBackStack()>();
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r1.<androidx.fragment.app.FragmentManagerImpl: void execSingleAction(androidx.fragment.app.FragmentManagerImpl$OpGenerator,boolean)>($r0, 1);
+
+        return;
+    }
+
+    public androidx.fragment.app.FragmentTransaction detach(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        androidx.fragment.app.BackStackRecord$Op $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $r2 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r2.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(6, $r1);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r2);
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction disallowAddToBackStack()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        boolean $z0;
+        java.lang.IllegalStateException $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $z0 = $r0.<androidx.fragment.app.BackStackRecord: boolean mAddToBackStack>;
+
+        if $z0 != 0 goto label1;
+
+        $r0.<androidx.fragment.app.BackStackRecord: boolean mAllowAddToBackStack> = 0;
+
+        return $r0;
+
+     label1:
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("This transaction is already being added to the back stack");
+
+        throw $r1;
+    }
+
+    public void dump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String[])
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.String $r1;
+        java.io.FileDescriptor $r2;
+        java.io.PrintWriter $r3;
+        java.lang.String[] $r4;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.io.FileDescriptor;
+
+        $r3 := @parameter2: java.io.PrintWriter;
+
+        $r4 := @parameter3: java.lang.String[];
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void dump(java.lang.String,java.io.PrintWriter,boolean)>($r1, $r3, 1);
+
+        return;
+    }
+
+    public void dump(java.lang.String, java.io.PrintWriter, boolean)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.String $r1, $r3;
+        java.io.PrintWriter $r2;
+        boolean $z0, $z1;
+        int $i0, $i1, $i2;
+        java.lang.CharSequence $r4;
+        java.util.ArrayList $r5;
+        java.lang.StringBuilder $r6;
+        java.lang.Object $r7;
+        androidx.fragment.app.BackStackRecord$Op $r8;
+        androidx.fragment.app.Fragment $r9;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.io.PrintWriter;
+
+        $z0 := @parameter2: boolean;
+
+        if $z0 == 0 goto label09;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("mName=");
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.String mName>;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" mIndex=");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mIndex>;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" mCommitted=");
+
+        $z1 = $r0.<androidx.fragment.app.BackStackRecord: boolean mCommitted>;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(boolean)>($z1);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mTransition>;
+
+        if $i0 == 0 goto label01;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("mTransition=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mTransition>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" mTransitionStyle=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mTransitionStyle>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.String)>($r3);
+
+     label01:
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mEnterAnim>;
+
+        if $i0 != 0 goto label02;
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mExitAnim>;
+
+        if $i0 == 0 goto label03;
+
+     label02:
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("mEnterAnim=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mEnterAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" mExitAnim=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mExitAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.String)>($r3);
+
+     label03:
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mPopEnterAnim>;
+
+        if $i0 != 0 goto label04;
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mPopExitAnim>;
+
+        if $i0 == 0 goto label05;
+
+     label04:
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("mPopEnterAnim=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mPopEnterAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" mPopExitAnim=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mPopExitAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.String)>($r3);
+
+     label05:
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes>;
+
+        if $i0 != 0 goto label06;
+
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbTitleText>;
+
+        if $r4 == null goto label07;
+
+     label06:
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("mBreadCrumbTitleRes=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" mBreadCrumbTitleText=");
+
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbTitleText>;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.Object)>($r4);
+
+     label07:
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes>;
+
+        if $i0 != 0 goto label08;
+
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbShortTitleText>;
+
+        if $r4 == null goto label09;
+
+     label08:
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("mBreadCrumbShortTitleRes=#");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" mBreadCrumbShortTitleText=");
+
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbShortTitleText>;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.Object)>($r4);
+
+     label09:
+        $r5 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $z1 = virtualinvoke $r5.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $z1 != 0 goto label27;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.String)>("Operations:");
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("    ");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i0 = virtualinvoke $r5.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label10:
+        if $i1 >= $i0 goto label27;
+
+        $r5 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r7 = virtualinvoke $r5.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r8 = (androidx.fragment.app.BackStackRecord$Op) $r7;
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        lookupswitch($i2)
+        {
+            case 0: goto label21;
+            case 1: goto label20;
+            case 2: goto label19;
+            case 3: goto label18;
+            case 4: goto label17;
+            case 5: goto label16;
+            case 6: goto label15;
+            case 7: goto label14;
+            case 8: goto label13;
+            case 9: goto label12;
+            default: goto label11;
+        };
+
+     label11:
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("cmd=");
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r3 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label22;
+
+     label12:
+        $r3 = "UNSET_PRIMARY_NAV";
+
+        goto label22;
+
+     label13:
+        $r3 = "SET_PRIMARY_NAV";
+
+        goto label22;
+
+     label14:
+        $r3 = "ATTACH";
+
+        goto label22;
+
+     label15:
+        $r3 = "DETACH";
+
+        goto label22;
+
+     label16:
+        $r3 = "SHOW";
+
+        goto label22;
+
+     label17:
+        $r3 = "HIDE";
+
+        goto label22;
+
+     label18:
+        $r3 = "REMOVE";
+
+        goto label22;
+
+     label19:
+        $r3 = "REPLACE";
+
+        goto label22;
+
+     label20:
+        $r3 = "ADD";
+
+        goto label22;
+
+     label21:
+        $r3 = "NULL";
+
+     label22:
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("  Op #");
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(int)>($i1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(": ");
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" ");
+
+        $r9 = $r8.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.Object)>($r9);
+
+        if $z0 == 0 goto label26;
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        if $i2 != 0 goto label23;
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        if $i2 == 0 goto label24;
+
+     label23:
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("enterAnim=#");
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i2);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" exitAnim=#");
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i2);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.String)>($r3);
+
+     label24:
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        if $i2 != 0 goto label25;
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        if $i2 == 0 goto label26;
+
+     label25:
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>("popEnterAnim=#");
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i2);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void print(java.lang.String)>(" popExitAnim=#");
+
+        $i2 = $r8.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i2);
+
+        virtualinvoke $r2.<java.io.PrintWriter: void println(java.lang.String)>($r3);
+
+     label26:
+        $i1 = $i1 + 1;
+
+        goto label10;
+
+     label27:
+        return;
+    }
+
+    void executeOps()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        java.util.ArrayList $r2;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r3;
+        androidx.fragment.app.BackStackRecord$Op $r4;
+        java.lang.IllegalArgumentException $r5;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r7;
+        androidx.fragment.app.FragmentManagerImpl $r8;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label14;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r4 = (androidx.fragment.app.BackStackRecord$Op) $r3;
+
+        $r1 = $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r1 == null goto label02;
+
+        $i2 = $r0.<androidx.fragment.app.BackStackRecord: int mTransition>;
+
+        $i3 = $r0.<androidx.fragment.app.BackStackRecord: int mTransitionStyle>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextTransition(int,int)>($i2, $i3);
+
+     label02:
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        lookupswitch($i2)
+        {
+            case 1: goto label11;
+            case 2: goto label03;
+            case 3: goto label10;
+            case 4: goto label09;
+            case 5: goto label08;
+            case 6: goto label07;
+            case 7: goto label06;
+            case 8: goto label05;
+            case 9: goto label04;
+            default: goto label03;
+        };
+
+     label03:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown cmd: ");
+
+        $i0 = $r4.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r7);
+
+        throw $r5;
+
+     label04:
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void setPrimaryNavigationFragment(androidx.fragment.app.Fragment)>(null);
+
+        goto label12;
+
+     label05:
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void setPrimaryNavigationFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label06:
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i2);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void attachFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label07:
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i2);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void detachFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label08:
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i2);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void showFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label09:
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i2);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void hideFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label10:
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i2);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void removeFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label11:
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i2);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void addFragment(androidx.fragment.app.Fragment,boolean)>($r1, 0);
+
+     label12:
+        $z0 = $r0.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed>;
+
+        if $z0 != 0 goto label13;
+
+        $i2 = $r4.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        if $i2 == 1 goto label13;
+
+        if $r1 == null goto label13;
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void moveFragmentToExpectedState(androidx.fragment.app.Fragment)>($r1);
+
+     label13:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label14:
+        $z0 = $r0.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed>;
+
+        if $z0 != 0 goto label15;
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        $i0 = $r8.<androidx.fragment.app.FragmentManagerImpl: int mCurState>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void moveToState(int,boolean)>($i0, 1);
+
+     label15:
+        return;
+    }
+
+    void executePopOps(boolean)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        boolean $z0, $z1;
+        androidx.fragment.app.Fragment $r1;
+        java.util.ArrayList $r2;
+        int $i0, $i1, $i2;
+        java.lang.Object $r3;
+        androidx.fragment.app.BackStackRecord$Op $r4;
+        java.lang.IllegalArgumentException $r5;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r7;
+        androidx.fragment.app.FragmentManagerImpl $r8;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $z0 := @parameter0: boolean;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i0 = $i0 - 1;
+
+     label01:
+        if $i0 < 0 goto label14;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r4 = (androidx.fragment.app.BackStackRecord$Op) $r3;
+
+        $r1 = $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r1 == null goto label02;
+
+        $i1 = $r0.<androidx.fragment.app.BackStackRecord: int mTransition>;
+
+        $i1 = staticinvoke <androidx.fragment.app.FragmentManagerImpl: int reverseTransit(int)>($i1);
+
+        $i2 = $r0.<androidx.fragment.app.BackStackRecord: int mTransitionStyle>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextTransition(int,int)>($i1, $i2);
+
+     label02:
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        lookupswitch($i1)
+        {
+            case 1: goto label11;
+            case 2: goto label03;
+            case 3: goto label10;
+            case 4: goto label09;
+            case 5: goto label08;
+            case 6: goto label07;
+            case 7: goto label06;
+            case 8: goto label05;
+            case 9: goto label04;
+            default: goto label03;
+        };
+
+     label03:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown cmd: ");
+
+        $i0 = $r4.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r7);
+
+        throw $r5;
+
+     label04:
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void setPrimaryNavigationFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label05:
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void setPrimaryNavigationFragment(androidx.fragment.app.Fragment)>(null);
+
+        goto label12;
+
+     label06:
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i1);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void detachFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label07:
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i1);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void attachFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label08:
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i1);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void hideFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label09:
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i1);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void showFragment(androidx.fragment.app.Fragment)>($r1);
+
+        goto label12;
+
+     label10:
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i1);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void addFragment(androidx.fragment.app.Fragment,boolean)>($r1, 0);
+
+        goto label12;
+
+     label11:
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setNextAnim(int)>($i1);
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void removeFragment(androidx.fragment.app.Fragment)>($r1);
+
+     label12:
+        $z1 = $r0.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed>;
+
+        if $z1 != 0 goto label13;
+
+        $i1 = $r4.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        if $i1 == 3 goto label13;
+
+        if $r1 == null goto label13;
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void moveFragmentToExpectedState(androidx.fragment.app.Fragment)>($r1);
+
+     label13:
+        $i0 = $i0 + -1;
+
+        goto label01;
+
+     label14:
+        $z1 = $r0.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed>;
+
+        if $z1 != 0 goto label15;
+
+        if $z0 == 0 goto label15;
+
+        $r8 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        $i0 = $r8.<androidx.fragment.app.FragmentManagerImpl: int mCurState>;
+
+        virtualinvoke $r8.<androidx.fragment.app.FragmentManagerImpl: void moveToState(int,boolean)>($i0, 1);
+
+     label15:
+        return;
+    }
+
+    androidx.fragment.app.Fragment expandOps(java.util.ArrayList, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.util.ArrayList $r1, $r3;
+        androidx.fragment.app.Fragment $r2, $r7, $r8;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r4;
+        androidx.fragment.app.BackStackRecord$Op $r5, $r6;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.util.ArrayList;
+
+        $r2 := @parameter1: androidx.fragment.app.Fragment;
+
+        $i0 = 0;
+
+     label01:
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i1 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        if $i0 >= $i1 goto label14;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r5 = (androidx.fragment.app.BackStackRecord$Op) $r4;
+
+        $i1 = $r5.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        if $i1 == 1 goto label12;
+
+        if $i1 == 2 goto label04;
+
+        if $i1 == 3 goto label03;
+
+        if $i1 == 6 goto label03;
+
+        if $i1 == 7 goto label12;
+
+        if $i1 == 8 goto label02;
+
+        goto label13;
+
+     label02:
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r6 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r6.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(9, $r2);
+
+        virtualinvoke $r3.<java.util.ArrayList: void add(int,java.lang.Object)>($i0, $r6);
+
+        $i0 = $i0 + 1;
+
+        $r2 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        goto label13;
+
+     label03:
+        $r7 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean remove(java.lang.Object)>($r7);
+
+        $r7 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r7 != $r2 goto label13;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r6 = new androidx.fragment.app.BackStackRecord$Op;
+
+        $r2 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        specialinvoke $r6.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(9, $r2);
+
+        virtualinvoke $r3.<java.util.ArrayList: void add(int,java.lang.Object)>($i0, $r6);
+
+        $i0 = $i0 + 1;
+
+        $r2 = null;
+
+        goto label13;
+
+     label04:
+        $r7 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        $i1 = $r7.<androidx.fragment.app.Fragment: int mContainerId>;
+
+        $z0 = 0;
+
+        $i2 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        $i2 = $i2 - 1;
+
+     label05:
+        if $i2 < 0 goto label09;
+
+        $r4 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i2);
+
+        $r8 = (androidx.fragment.app.Fragment) $r4;
+
+        $i3 = $r8.<androidx.fragment.app.Fragment: int mContainerId>;
+
+        if $i3 != $i1 goto label08;
+
+        if $r8 != $r7 goto label06;
+
+        $z0 = 1;
+
+        goto label08;
+
+     label06:
+        if $r8 != $r2 goto label07;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r6 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r6.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(9, $r8);
+
+        virtualinvoke $r3.<java.util.ArrayList: void add(int,java.lang.Object)>($i0, $r6);
+
+        $i0 = $i0 + 1;
+
+        $r2 = null;
+
+     label07:
+        $r6 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r6.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(3, $r8);
+
+        $i3 = $r5.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        $r6.<androidx.fragment.app.BackStackRecord$Op: int enterAnim> = $i3;
+
+        $i3 = $r5.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        $r6.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim> = $i3;
+
+        $i3 = $r5.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        $r6.<androidx.fragment.app.BackStackRecord$Op: int exitAnim> = $i3;
+
+        $i3 = $r5.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        $r6.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim> = $i3;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        virtualinvoke $r3.<java.util.ArrayList: void add(int,java.lang.Object)>($i0, $r6);
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean remove(java.lang.Object)>($r8);
+
+        $i0 = $i0 + 1;
+
+     label08:
+        $i2 = $i2 + -1;
+
+        goto label05;
+
+     label09:
+        if $z0 == 0 goto label10;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        virtualinvoke $r3.<java.util.ArrayList: java.lang.Object remove(int)>($i0);
+
+        $i0 = $i0 + -1;
+
+        goto label11;
+
+     label10:
+        $r5.<androidx.fragment.app.BackStackRecord$Op: int cmd> = 1;
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+
+     label11:
+        goto label13;
+
+     label12:
+        $r7 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+
+     label13:
+        $i0 = $i0 + 1;
+
+        goto label01;
+
+     label14:
+        return $r2;
+    }
+
+    public boolean generateOps(java.util.ArrayList, java.util.ArrayList)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.util.ArrayList $r1, $r2;
+        boolean $z0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        java.lang.Boolean $r5;
+        androidx.fragment.app.FragmentManagerImpl $r6;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.util.ArrayList;
+
+        $r2 := @parameter1: java.util.ArrayList;
+
+        $z0 = <androidx.fragment.app.FragmentManagerImpl: boolean DEBUG>;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Run: ");
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r4);
+
+     label1:
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r0);
+
+        $r5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r5);
+
+        $z0 = $r0.<androidx.fragment.app.BackStackRecord: boolean mAddToBackStack>;
+
+        if $z0 == 0 goto label2;
+
+        $r6 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $r6.<androidx.fragment.app.FragmentManagerImpl: void addBackStackState(androidx.fragment.app.BackStackRecord)>($r0);
+
+     label2:
+        return 1;
+    }
+
+    public java.lang.CharSequence getBreadCrumbShortTitle()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+        androidx.fragment.app.FragmentHostCallback $r2;
+        android.content.Context $r3;
+        java.lang.CharSequence $r4;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes>;
+
+        if $i0 == 0 goto label1;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        $r2 = $r1.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentHostCallback mHost>;
+
+        $r3 = virtualinvoke $r2.<androidx.fragment.app.FragmentHostCallback: android.content.Context getContext()>();
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes>;
+
+        $r4 = virtualinvoke $r3.<android.content.Context: java.lang.CharSequence getText(int)>($i0);
+
+        return $r4;
+
+     label1:
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbShortTitleText>;
+
+        return $r4;
+    }
+
+    public int getBreadCrumbShortTitleRes()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes>;
+
+        return i0;
+    }
+
+    public java.lang.CharSequence getBreadCrumbTitle()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+        androidx.fragment.app.FragmentHostCallback $r2;
+        android.content.Context $r3;
+        java.lang.CharSequence $r4;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes>;
+
+        if $i0 == 0 goto label1;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        $r2 = $r1.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentHostCallback mHost>;
+
+        $r3 = virtualinvoke $r2.<androidx.fragment.app.FragmentHostCallback: android.content.Context getContext()>();
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes>;
+
+        $r4 = virtualinvoke $r3.<android.content.Context: java.lang.CharSequence getText(int)>($i0);
+
+        return $r4;
+
+     label1:
+        $r4 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbTitleText>;
+
+        return $r4;
+    }
+
+    public int getBreadCrumbTitleRes()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        i0 = $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes>;
+
+        return i0;
+    }
+
+    public int getId()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        i0 = $r0.<androidx.fragment.app.BackStackRecord: int mIndex>;
+
+        return i0;
+    }
+
+    public java.lang.String getName()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.String r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        r1 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.String mName>;
+
+        return r1;
+    }
+
+    public int getTransition()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        i0 = $r0.<androidx.fragment.app.BackStackRecord: int mTransition>;
+
+        return i0;
+    }
+
+    public int getTransitionStyle()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        i0 = $r0.<androidx.fragment.app.BackStackRecord: int mTransitionStyle>;
+
+        return i0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction hide(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        androidx.fragment.app.BackStackRecord$Op $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $r2 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r2.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(4, $r1);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r2);
+
+        return $r0;
+    }
+
+    boolean interactsWith(int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0, $i1, $i2, $i3;
+        java.util.ArrayList $r1;
+        java.lang.Object $r2;
+        androidx.fragment.app.BackStackRecord$Op $r3;
+        androidx.fragment.app.Fragment $r4;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i1 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        $i2 = 0;
+
+     label1:
+        $i3 = 0;
+
+        if $i2 >= $i1 goto label4;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i2);
+
+        $r3 = (androidx.fragment.app.BackStackRecord$Op) $r2;
+
+        $r4 = $r3.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r4 == null goto label2;
+
+        $r4 = $r3.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        $i3 = $r4.<androidx.fragment.app.Fragment: int mContainerId>;
+
+     label2:
+        if $i3 == 0 goto label3;
+
+        if $i3 != $i0 goto label3;
+
+        return 1;
+
+     label3:
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label4:
+        return 0;
+    }
+
+    boolean interactsWith(java.util.ArrayList, int, int)
+    {
+        androidx.fragment.app.BackStackRecord $r0, $r6;
+        java.util.ArrayList $r1, $r2;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9;
+        java.lang.Object $r3;
+        androidx.fragment.app.BackStackRecord$Op $r4;
+        androidx.fragment.app.Fragment $r5;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.util.ArrayList;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $i1 != $i0 goto label01;
+
+        return 0;
+
+     label01:
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i2 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i3 = -1;
+
+        $i4 = 0;
+
+     label02:
+        if $i4 >= $i2 goto label12;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i4);
+
+        $r4 = (androidx.fragment.app.BackStackRecord$Op) $r3;
+
+        $r5 = $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r5 == null goto label03;
+
+        $r5 = $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        $i5 = $r5.<androidx.fragment.app.Fragment: int mContainerId>;
+
+        goto label04;
+
+     label03:
+        $i5 = 0;
+
+     label04:
+        if $i5 == 0 goto label11;
+
+        if $i5 == $i3 goto label11;
+
+        $i3 = $i5;
+
+        $i6 = $i0;
+
+     label05:
+        if $i6 >= $i1 goto label11;
+
+        $r3 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i6);
+
+        $r6 = (androidx.fragment.app.BackStackRecord) $r3;
+
+        $r2 = $r6.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i7 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i8 = 0;
+
+     label06:
+        if $i8 >= $i7 goto label10;
+
+        $r2 = $r6.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i8);
+
+        $r4 = (androidx.fragment.app.BackStackRecord$Op) $r3;
+
+        $r5 = $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r5 == null goto label07;
+
+        $r5 = $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        $i9 = $r5.<androidx.fragment.app.Fragment: int mContainerId>;
+
+        goto label08;
+
+     label07:
+        $i9 = 0;
+
+     label08:
+        if $i9 != $i5 goto label09;
+
+        return 1;
+
+     label09:
+        $i8 = $i8 + 1;
+
+        goto label06;
+
+     label10:
+        $i6 = $i6 + 1;
+
+        goto label05;
+
+     label11:
+        $i4 = $i4 + 1;
+
+        goto label02;
+
+     label12:
+        return 0;
+    }
+
+    public boolean isAddToBackStackAllowed()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        z0 = $r0.<androidx.fragment.app.BackStackRecord: boolean mAllowAddToBackStack>;
+
+        return z0;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        boolean $z0;
+        java.util.ArrayList $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $z0 = virtualinvoke $r1.<java.util.ArrayList: boolean isEmpty()>();
+
+        return $z0;
+    }
+
+    boolean isPostponed()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0, $i1;
+        java.util.ArrayList $r1;
+        java.lang.Object $r2;
+        androidx.fragment.app.BackStackRecord$Op $r3;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 = 0;
+
+     label1:
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i1 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        if $i0 >= $i1 goto label3;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (androidx.fragment.app.BackStackRecord$Op) $r2;
+
+        $z0 = staticinvoke <androidx.fragment.app.BackStackRecord: boolean isFragmentPostponed(androidx.fragment.app.BackStackRecord$Op)>($r3);
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction remove(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        androidx.fragment.app.BackStackRecord$Op $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $r2 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r2.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(3, $r1);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r2);
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction replace(int, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+        androidx.fragment.app.Fragment $r1;
+        androidx.fragment.app.FragmentTransaction $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.fragment.app.Fragment;
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentTransaction replace(int,androidx.fragment.app.Fragment,java.lang.String)>($i0, $r1, null);
+
+        return $r2;
+    }
+
+    public androidx.fragment.app.FragmentTransaction replace(int, androidx.fragment.app.Fragment, java.lang.String)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+        androidx.fragment.app.Fragment $r1;
+        java.lang.String $r2;
+        java.lang.IllegalArgumentException $r3;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.fragment.app.Fragment;
+
+        $r2 := @parameter2: java.lang.String;
+
+        if $i0 == 0 goto label1;
+
+        specialinvoke $r0.<androidx.fragment.app.BackStackRecord: void doAddOp(int,androidx.fragment.app.Fragment,java.lang.String,int)>($i0, $r1, $r2, 2);
+
+        return $r0;
+
+     label1:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Must use non-zero containerViewId");
+
+        throw $r3;
+    }
+
+    public androidx.fragment.app.FragmentTransaction runOnCommit(java.lang.Runnable)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.Runnable $r1;
+        java.util.ArrayList $r2;
+        java.lang.IllegalArgumentException $r3;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        if $r1 == null goto label2;
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentTransaction disallowAddToBackStack()>();
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mCommitRunnables>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mCommitRunnables> = $r2;
+
+     label1:
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mCommitRunnables>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return $r0;
+
+     label2:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("runnable cannot be null");
+
+        throw $r3;
+    }
+
+    public void runOnCommitRunnables()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.util.ArrayList $r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        java.lang.Runnable $r3;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mCommitRunnables>;
+
+        if $r1 == null goto label3;
+
+        $i0 = 0;
+
+        $i1 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        $r1 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mCommitRunnables>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (java.lang.Runnable) $r2;
+
+        interfaceinvoke $r3.<java.lang.Runnable: void run()>();
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mCommitRunnables> = null;
+
+     label3:
+        return;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setAllowOptimization(boolean)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        boolean $z0;
+        androidx.fragment.app.FragmentTransaction $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentTransaction setReorderingAllowed(boolean)>($z0);
+
+        return $r1;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setBreadCrumbShortTitle(int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes> = $i0;
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbShortTitleText> = null;
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setBreadCrumbShortTitle(java.lang.CharSequence)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes> = 0;
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbShortTitleText> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setBreadCrumbTitle(int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes> = $i0;
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbTitleText> = null;
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setBreadCrumbTitle(java.lang.CharSequence)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes> = 0;
+
+        $r0.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbTitleText> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setCustomAnimations(int, int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0, $i1;
+        androidx.fragment.app.FragmentTransaction $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentTransaction setCustomAnimations(int,int,int,int)>($i0, $i1, 0, 0);
+
+        return $r1;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setCustomAnimations(int, int, int, int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0, $i1, $i2, $i3;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mEnterAnim> = $i0;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mExitAnim> = $i1;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mPopEnterAnim> = $i2;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mPopExitAnim> = $i3;
+
+        return $r0;
+    }
+
+    void setOnStartPostponedListener(androidx.fragment.app.Fragment$OnStartEnterTransitionListener)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment$OnStartEnterTransitionListener $r1;
+        int $i0, $i1;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+        androidx.fragment.app.BackStackRecord$Op $r4;
+        boolean $z0;
+        androidx.fragment.app.Fragment $r5;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment$OnStartEnterTransitionListener;
+
+        $i0 = 0;
+
+     label1:
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i1 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        if $i0 >= $i1 goto label3;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r4 = (androidx.fragment.app.BackStackRecord$Op) $r3;
+
+        $z0 = staticinvoke <androidx.fragment.app.BackStackRecord: boolean isFragmentPostponed(androidx.fragment.app.BackStackRecord$Op)>($r4);
+
+        if $z0 == 0 goto label2;
+
+        $r5 = $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r5.<androidx.fragment.app.Fragment: void setOnStartEnterTransitionListener(androidx.fragment.app.Fragment$OnStartEnterTransitionListener)>($r1);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setPrimaryNavigationFragment(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        androidx.fragment.app.BackStackRecord$Op $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $r2 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r2.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(8, $r1);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r2);
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setReorderingAllowed(boolean)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed> = $z0;
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setTransition(int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mTransition> = $i0;
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction setTransitionStyle(int)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.fragment.app.BackStackRecord: int mTransitionStyle> = $i0;
+
+        return $r0;
+    }
+
+    public androidx.fragment.app.FragmentTransaction show(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        androidx.fragment.app.Fragment $r1;
+        androidx.fragment.app.BackStackRecord$Op $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $r2 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r2.<androidx.fragment.app.BackStackRecord$Op: void <init>(int,androidx.fragment.app.Fragment)>(5, $r1);
+
+        virtualinvoke $r0.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r2);
+
+        return $r0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.lang.StringBuilder $r1;
+        int $i0;
+        java.lang.String $r2;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(int)>(128);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("BackStackEntry{");
+
+        $i0 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>($r0);
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mIndex>;
+
+        if $i0 < 0 goto label1;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" #");
+
+        $i0 = $r0.<androidx.fragment.app.BackStackRecord: int mIndex>;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+     label1:
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.String mName>;
+
+        if $r2 == null goto label2;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r2 = $r0.<androidx.fragment.app.BackStackRecord: java.lang.String mName>;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label2:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    androidx.fragment.app.Fragment trackAddedFragmentsInPop(java.util.ArrayList, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord $r0;
+        java.util.ArrayList $r1, $r3;
+        androidx.fragment.app.Fragment $r2, $r6;
+        int $i0, $i1;
+        java.lang.Object $r4;
+        androidx.fragment.app.BackStackRecord$Op $r5;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord;
+
+        $r1 := @parameter0: java.util.ArrayList;
+
+        $r2 := @parameter1: androidx.fragment.app.Fragment;
+
+        $i0 = 0;
+
+     label1:
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i1 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        if $i0 >= $i1 goto label8;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r5 = (androidx.fragment.app.BackStackRecord$Op) $r4;
+
+        $i1 = $r5.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        if $i1 == 1 goto label6;
+
+        if $i1 == 3 goto label5;
+
+        lookupswitch($i1)
+        {
+            case 6: goto label5;
+            case 7: goto label6;
+            case 8: goto label4;
+            case 9: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        goto label7;
+
+     label3:
+        $r2 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        goto label7;
+
+     label4:
+        $r2 = null;
+
+        goto label7;
+
+     label5:
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r6);
+
+        goto label7;
+
+     label6:
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean remove(java.lang.Object)>($r6);
+
+     label7:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label8:
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.fragment.app.BackStackRecord: java.lang.String TAG> = "FragmentManager";
+
+        <androidx.fragment.app.BackStackRecord: int OP_UNSET_PRIMARY_NAV> = 9;
+
+        <androidx.fragment.app.BackStackRecord: int OP_SHOW> = 5;
+
+        <androidx.fragment.app.BackStackRecord: int OP_SET_PRIMARY_NAV> = 8;
+
+        <androidx.fragment.app.BackStackRecord: int OP_REPLACE> = 2;
+
+        <androidx.fragment.app.BackStackRecord: int OP_REMOVE> = 3;
+
+        <androidx.fragment.app.BackStackRecord: int OP_NULL> = 0;
+
+        <androidx.fragment.app.BackStackRecord: int OP_HIDE> = 4;
+
+        <androidx.fragment.app.BackStackRecord: int OP_DETACH> = 6;
+
+        <androidx.fragment.app.BackStackRecord: int OP_ATTACH> = 7;
+
+        <androidx.fragment.app.BackStackRecord: int OP_ADD> = 1;
+
+        return;
+    }
+}

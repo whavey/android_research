@@ -1,0 +1,9 @@
+public interface  androidx.appcompat.app.AppCompatCallback extends java.lang.Object
+{
+
+    public abstract void onSupportActionModeFinished(androidx.appcompat.view.ActionMode);
+
+    public abstract void onSupportActionModeStarted(androidx.appcompat.view.ActionMode);
+
+    public abstract androidx.appcompat.view.ActionMode onWindowStartingSupportActionMode(androidx.appcompat.view.ActionMode$Callback);
+}

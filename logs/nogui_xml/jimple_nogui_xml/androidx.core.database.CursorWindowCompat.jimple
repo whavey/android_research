@@ -1,0 +1,54 @@
+public final class androidx.core.database.CursorWindowCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.database.CursorWindowCompat $r0;
+
+        $r0 := @this: androidx.core.database.CursorWindowCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.database.CursorWindow create(java.lang.String, long)
+    {
+        java.lang.String $r0;
+        long $l0;
+        int $i1;
+        android.database.CursorWindow $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $l0 := @parameter1: long;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 28 goto label1;
+
+        $r1 = new android.database.CursorWindow;
+
+        specialinvoke $r1.<android.database.CursorWindow: void <init>(java.lang.String,long)>($r0, $l0);
+
+        return $r1;
+
+     label1:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 15 goto label2;
+
+        $r1 = new android.database.CursorWindow;
+
+        specialinvoke $r1.<android.database.CursorWindow: void <init>(java.lang.String)>($r0);
+
+        return $r1;
+
+     label2:
+        $r1 = new android.database.CursorWindow;
+
+        specialinvoke $r1.<android.database.CursorWindow: void <init>(boolean)>(0);
+
+        return $r1;
+    }
+}

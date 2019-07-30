@@ -1,0 +1,167 @@
+public abstract class androidx.core.app.INotificationSideChannel$Stub extends android.os.Binder implements androidx.core.app.INotificationSideChannel
+{
+    private static final java.lang.String DESCRIPTOR;
+    static final int TRANSACTION_cancel;
+    static final int TRANSACTION_cancelAll;
+    static final int TRANSACTION_notify;
+
+    public void <init>()
+    {
+        androidx.core.app.INotificationSideChannel$Stub $r0;
+
+        $r0 := @this: androidx.core.app.INotificationSideChannel$Stub;
+
+        specialinvoke $r0.<android.os.Binder: void <init>()>();
+
+        virtualinvoke $r0.<androidx.core.app.INotificationSideChannel$Stub: void attachInterface(android.os.IInterface,java.lang.String)>($r0, "androidx.core.app.INotificationSideChannel");
+
+        return;
+    }
+
+    public static androidx.core.app.INotificationSideChannel asInterface(android.os.IBinder)
+    {
+        android.os.IBinder $r0;
+        android.os.IInterface $r1;
+        boolean $z0;
+        androidx.core.app.INotificationSideChannel $r2;
+        androidx.core.app.INotificationSideChannel$Stub$Proxy $r3;
+
+        $r0 := @parameter0: android.os.IBinder;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = interfaceinvoke $r0.<android.os.IBinder: android.os.IInterface queryLocalInterface(java.lang.String)>("androidx.core.app.INotificationSideChannel");
+
+        if $r1 == null goto label2;
+
+        $z0 = $r1 instanceof androidx.core.app.INotificationSideChannel;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.app.INotificationSideChannel) $r1;
+
+        return $r2;
+
+     label2:
+        $r3 = new androidx.core.app.INotificationSideChannel$Stub$Proxy;
+
+        specialinvoke $r3.<androidx.core.app.INotificationSideChannel$Stub$Proxy: void <init>(android.os.IBinder)>($r0);
+
+        return $r3;
+    }
+
+    public android.os.IBinder asBinder()
+    {
+        androidx.core.app.INotificationSideChannel$Stub $r0;
+
+        $r0 := @this: androidx.core.app.INotificationSideChannel$Stub;
+
+        return $r0;
+    }
+
+    public boolean onTransact(int, android.os.Parcel, android.os.Parcel, int) throws android.os.RemoteException
+    {
+        androidx.core.app.INotificationSideChannel$Stub $r0;
+        int $i0, $i1;
+        android.os.Parcel $r1, $r2;
+        boolean $z0;
+        java.lang.String $r3, $r4;
+        android.os.Parcelable$Creator $r5;
+        java.lang.Object $r6;
+        android.app.Notification $r7;
+
+        $r0 := @this: androidx.core.app.INotificationSideChannel$Stub;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.os.Parcel;
+
+        $r2 := @parameter2: android.os.Parcel;
+
+        $i1 := @parameter3: int;
+
+        if $i0 == 1 goto label4;
+
+        if $i0 == 2 goto label3;
+
+        if $i0 == 3 goto label2;
+
+        if $i0 == 1598968902 goto label1;
+
+        $z0 = specialinvoke $r0.<android.os.Binder: boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)>($i0, $r1, $r2, $i1);
+
+        return $z0;
+
+     label1:
+        virtualinvoke $r2.<android.os.Parcel: void writeString(java.lang.String)>("androidx.core.app.INotificationSideChannel");
+
+        return 1;
+
+     label2:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("androidx.core.app.INotificationSideChannel");
+
+        $r3 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        virtualinvoke $r0.<androidx.core.app.INotificationSideChannel$Stub: void cancelAll(java.lang.String)>($r3);
+
+        return 1;
+
+     label3:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("androidx.core.app.INotificationSideChannel");
+
+        $r3 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $r4 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        virtualinvoke $r0.<androidx.core.app.INotificationSideChannel$Stub: void cancel(java.lang.String,int,java.lang.String)>($r3, $i0, $r4);
+
+        return 1;
+
+     label4:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("androidx.core.app.INotificationSideChannel");
+
+        $r3 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $r4 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        $i1 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i1 == 0 goto label5;
+
+        $r5 = <android.app.Notification: android.os.Parcelable$Creator CREATOR>;
+
+        $r6 = interfaceinvoke $r5.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        $r7 = (android.app.Notification) $r6;
+
+        goto label6;
+
+     label5:
+        $r7 = null;
+
+     label6:
+        virtualinvoke $r0.<androidx.core.app.INotificationSideChannel$Stub: void notify(java.lang.String,int,java.lang.String,android.app.Notification)>($r3, $i0, $r4, $r7);
+
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.INotificationSideChannel$Stub: int TRANSACTION_notify> = 1;
+
+        <androidx.core.app.INotificationSideChannel$Stub: int TRANSACTION_cancelAll> = 3;
+
+        <androidx.core.app.INotificationSideChannel$Stub: int TRANSACTION_cancel> = 2;
+
+        <androidx.core.app.INotificationSideChannel$Stub: java.lang.String DESCRIPTOR> = "androidx.core.app.INotificationSideChannel";
+
+        return;
+    }
+}

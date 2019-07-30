@@ -1,0 +1,15 @@
+interface  androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl extends java.lang.Object
+{
+
+    public abstract android.net.Uri getContentUri();
+
+    public abstract android.content.ClipDescription getDescription();
+
+    public abstract java.lang.Object getInputContentInfo();
+
+    public abstract android.net.Uri getLinkUri();
+
+    public abstract void releasePermission();
+
+    public abstract void requestPermission();
+}

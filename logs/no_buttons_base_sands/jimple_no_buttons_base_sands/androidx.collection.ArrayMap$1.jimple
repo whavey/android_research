@@ -1,0 +1,180 @@
+class androidx.collection.ArrayMap$1 extends androidx.collection.MapCollections
+{
+    final androidx.collection.ArrayMap this$0;
+
+    void <init>(androidx.collection.ArrayMap)
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        androidx.collection.ArrayMap $r1;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $r1 := @parameter0: androidx.collection.ArrayMap;
+
+        $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0> = $r1;
+
+        specialinvoke $r0.<androidx.collection.MapCollections: void <init>()>();
+
+        return;
+    }
+
+    protected void colClear()
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        androidx.collection.ArrayMap $r1;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $r1 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        virtualinvoke $r1.<androidx.collection.ArrayMap: void clear()>();
+
+        return;
+    }
+
+    protected java.lang.Object colGetEntry(int, int)
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        int $i0, $i1;
+        androidx.collection.ArrayMap $r1;
+        java.lang.Object[] $r2;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        $r2 = $r1.<androidx.collection.ArrayMap: java.lang.Object[] mArray>;
+
+        $i0 = $i0 << 1;
+
+        $i0 = $i0 + $i1;
+
+        $r3 = $r2[$i0];
+
+        return $r3;
+    }
+
+    protected java.util.Map colGetMap()
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        androidx.collection.ArrayMap r1;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        r1 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        return r1;
+    }
+
+    protected int colGetSize()
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        androidx.collection.ArrayMap $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $r1 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        i0 = $r1.<androidx.collection.ArrayMap: int mSize>;
+
+        return i0;
+    }
+
+    protected int colIndexOfKey(java.lang.Object)
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        java.lang.Object $r1;
+        int $i0;
+        androidx.collection.ArrayMap $r2;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        $i0 = virtualinvoke $r2.<androidx.collection.ArrayMap: int indexOfKey(java.lang.Object)>($r1);
+
+        return $i0;
+    }
+
+    protected int colIndexOfValue(java.lang.Object)
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        java.lang.Object $r1;
+        int $i0;
+        androidx.collection.ArrayMap $r2;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        $i0 = virtualinvoke $r2.<androidx.collection.ArrayMap: int indexOfValue(java.lang.Object)>($r1);
+
+        return $i0;
+    }
+
+    protected void colPut(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        java.lang.Object $r1, $r2;
+        androidx.collection.ArrayMap $r3;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        virtualinvoke $r3.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+
+    protected void colRemoveAt(int)
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        int $i0;
+        androidx.collection.ArrayMap $r1;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        virtualinvoke $r1.<androidx.collection.ArrayMap: java.lang.Object removeAt(int)>($i0);
+
+        return;
+    }
+
+    protected java.lang.Object colSetValue(int, java.lang.Object)
+    {
+        androidx.collection.ArrayMap$1 $r0;
+        int $i0;
+        java.lang.Object $r1;
+        androidx.collection.ArrayMap $r2;
+
+        $r0 := @this: androidx.collection.ArrayMap$1;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 = $r0.<androidx.collection.ArrayMap$1: androidx.collection.ArrayMap this$0>;
+
+        $r1 = virtualinvoke $r2.<androidx.collection.ArrayMap: java.lang.Object setValueAt(int,java.lang.Object)>($i0, $r1);
+
+        return $r1;
+    }
+}

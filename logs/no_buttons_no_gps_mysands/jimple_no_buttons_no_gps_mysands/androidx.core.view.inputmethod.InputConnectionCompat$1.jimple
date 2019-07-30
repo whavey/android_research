@@ -1,0 +1,60 @@
+final class androidx.core.view.inputmethod.InputConnectionCompat$1 extends android.view.inputmethod.InputConnectionWrapper
+{
+    final androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener val$listener;
+
+    void <init>(android.view.inputmethod.InputConnection, boolean, androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener)
+    {
+        androidx.core.view.inputmethod.InputConnectionCompat$1 $r0;
+        android.view.inputmethod.InputConnection $r1;
+        boolean $z0;
+        androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener $r2;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputConnectionCompat$1;
+
+        $r1 := @parameter0: android.view.inputmethod.InputConnection;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 := @parameter2: androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener;
+
+        $r0.<androidx.core.view.inputmethod.InputConnectionCompat$1: androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener val$listener> = $r2;
+
+        specialinvoke $r0.<android.view.inputmethod.InputConnectionWrapper: void <init>(android.view.inputmethod.InputConnection,boolean)>($r1, $z0);
+
+        return;
+    }
+
+    public boolean commitContent(android.view.inputmethod.InputContentInfo, int, android.os.Bundle)
+    {
+        androidx.core.view.inputmethod.InputConnectionCompat$1 $r0;
+        android.view.inputmethod.InputContentInfo $r1;
+        int $i0;
+        android.os.Bundle $r2;
+        androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener $r3;
+        androidx.core.view.inputmethod.InputContentInfoCompat $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.core.view.inputmethod.InputConnectionCompat$1;
+
+        $r1 := @parameter0: android.view.inputmethod.InputContentInfo;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.os.Bundle;
+
+        $r3 = $r0.<androidx.core.view.inputmethod.InputConnectionCompat$1: androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener val$listener>;
+
+        $r4 = staticinvoke <androidx.core.view.inputmethod.InputContentInfoCompat: androidx.core.view.inputmethod.InputContentInfoCompat wrap(java.lang.Object)>($r1);
+
+        $z0 = interfaceinvoke $r3.<androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener: boolean onCommitContent(androidx.core.view.inputmethod.InputContentInfoCompat,int,android.os.Bundle)>($r4, $i0, $r2);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = specialinvoke $r0.<android.view.inputmethod.InputConnectionWrapper: boolean commitContent(android.view.inputmethod.InputContentInfo,int,android.os.Bundle)>($r1, $i0, $r2);
+
+        return $z0;
+    }
+}

@@ -1,0 +1,512 @@
+public class androidx.arch.core.internal.SafeIterableMap extends java.lang.Object implements java.lang.Iterable
+{
+    private androidx.arch.core.internal.SafeIterableMap$Entry mEnd;
+    private java.util.WeakHashMap mIterators;
+    private int mSize;
+    androidx.arch.core.internal.SafeIterableMap$Entry mStart;
+
+    public void <init>()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        java.util.WeakHashMap $r1;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.WeakHashMap;
+
+        specialinvoke $r1.<java.util.WeakHashMap: void <init>()>();
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.WeakHashMap mIterators> = $r1;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: int mSize> = 0;
+
+        return;
+    }
+
+    public java.util.Iterator descendingIterator()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        androidx.arch.core.internal.SafeIterableMap$DescendingIterator $r1;
+        java.lang.Boolean $r2;
+        androidx.arch.core.internal.SafeIterableMap$Entry $r3, $r4;
+        java.util.WeakHashMap $r5;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 = new androidx.arch.core.internal.SafeIterableMap$DescendingIterator;
+
+        $r3 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mEnd>;
+
+        $r4 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mStart>;
+
+        specialinvoke $r1.<androidx.arch.core.internal.SafeIterableMap$DescendingIterator: void <init>(androidx.arch.core.internal.SafeIterableMap$Entry,androidx.arch.core.internal.SafeIterableMap$Entry)>($r3, $r4);
+
+        $r5 = $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.WeakHashMap mIterators>;
+
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        virtualinvoke $r5.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return $r1;
+    }
+
+    public java.util.Map$Entry eldest()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        androidx.arch.core.internal.SafeIterableMap$Entry r1;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        r1 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mStart>;
+
+        return r1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0, $r2;
+        java.lang.Object $r1;
+        boolean $z0;
+        int $i0, $i1;
+        java.util.Iterator $r3, $r4;
+        java.util.Map$Entry $r5;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 != $r0 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = $r1 instanceof androidx.arch.core.internal.SafeIterableMap;
+
+        if $z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = (androidx.arch.core.internal.SafeIterableMap) $r1;
+
+        $i0 = virtualinvoke $r0.<androidx.arch.core.internal.SafeIterableMap: int size()>();
+
+        $i1 = virtualinvoke $r2.<androidx.arch.core.internal.SafeIterableMap: int size()>();
+
+        if $i0 == $i1 goto label3;
+
+        return 0;
+
+     label3:
+        $r3 = virtualinvoke $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.Iterator iterator()>();
+
+        $r4 = virtualinvoke $r2.<androidx.arch.core.internal.SafeIterableMap: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label6;
+
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label6;
+
+        $r1 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (java.util.Map$Entry) $r1;
+
+        $r1 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        if $r5 != null goto label5;
+
+        if $r1 != null goto label8;
+
+     label5:
+        if $r5 == null goto label4;
+
+        $z0 = interfaceinvoke $r5.<java.util.Map$Entry: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label4;
+
+        return 0;
+
+     label6:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label7;
+
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label7;
+
+        return 1;
+
+     label7:
+        return 0;
+
+     label8:
+        return 0;
+    }
+
+    protected androidx.arch.core.internal.SafeIterableMap$Entry get(java.lang.Object)
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        java.lang.Object $r1, $r3;
+        boolean $z0;
+        androidx.arch.core.internal.SafeIterableMap$Entry $r2;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mStart>;
+
+     label1:
+        if $r2 == null goto label3;
+
+        $r3 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: java.lang.Object mKey>;
+
+        $z0 = virtualinvoke $r3.<java.lang.Object: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        return $r2;
+
+     label2:
+        $r2 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext>;
+
+        goto label1;
+
+     label3:
+        return $r2;
+    }
+
+    public int hashCode()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        int $i0, $i1;
+        java.util.Iterator $r1;
+        boolean $z0;
+        java.lang.Object $r2;
+        java.util.Map$Entry $r3;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $i0 = 0;
+
+        $r1 = virtualinvoke $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r2 = interfaceinvoke $r1.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (java.util.Map$Entry) $r2;
+
+        $i1 = interfaceinvoke $r3.<java.util.Map$Entry: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        goto label1;
+
+     label2:
+        return $i0;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        androidx.arch.core.internal.SafeIterableMap$AscendingIterator $r1;
+        java.lang.Boolean $r2;
+        androidx.arch.core.internal.SafeIterableMap$Entry $r3, $r4;
+        java.util.WeakHashMap $r5;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 = new androidx.arch.core.internal.SafeIterableMap$AscendingIterator;
+
+        $r3 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mStart>;
+
+        $r4 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mEnd>;
+
+        specialinvoke $r1.<androidx.arch.core.internal.SafeIterableMap$AscendingIterator: void <init>(androidx.arch.core.internal.SafeIterableMap$Entry,androidx.arch.core.internal.SafeIterableMap$Entry)>($r3, $r4);
+
+        $r5 = $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.WeakHashMap mIterators>;
+
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        virtualinvoke $r5.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return $r1;
+    }
+
+    public androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions iteratorWithAdditions()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions $r1;
+        java.util.WeakHashMap $r2;
+        java.lang.Boolean $r3;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 = new androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions;
+
+        specialinvoke $r1.<androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions: void <init>(androidx.arch.core.internal.SafeIterableMap)>($r0);
+
+        $r2 = $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.WeakHashMap mIterators>;
+
+        $r3 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        virtualinvoke $r2.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        return $r1;
+    }
+
+    public java.util.Map$Entry newest()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        androidx.arch.core.internal.SafeIterableMap$Entry r1;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        r1 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mEnd>;
+
+        return r1;
+    }
+
+    protected androidx.arch.core.internal.SafeIterableMap$Entry put(java.lang.Object, java.lang.Object)
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        java.lang.Object $r1, $r2;
+        androidx.arch.core.internal.SafeIterableMap$Entry $r3, $r4;
+        int $i0;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = new androidx.arch.core.internal.SafeIterableMap$Entry;
+
+        specialinvoke $r3.<androidx.arch.core.internal.SafeIterableMap$Entry: void <init>(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        $i0 = $r0.<androidx.arch.core.internal.SafeIterableMap: int mSize>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: int mSize> = $i0;
+
+        $r4 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mEnd>;
+
+        if $r4 != null goto label1;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mStart> = $r3;
+
+        $r4 = $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mStart>;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mEnd> = $r4;
+
+        return $r3;
+
+     label1:
+        $r4.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext> = $r3;
+
+        $r3.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious> = $r4;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mEnd> = $r3;
+
+        return $r3;
+    }
+
+    public java.lang.Object putIfAbsent(java.lang.Object, java.lang.Object)
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        java.lang.Object $r1, $r2;
+        androidx.arch.core.internal.SafeIterableMap$Entry $r3;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = virtualinvoke $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry get(java.lang.Object)>($r1);
+
+        if $r3 == null goto label1;
+
+        $r1 = $r3.<androidx.arch.core.internal.SafeIterableMap$Entry: java.lang.Object mValue>;
+
+        return $r1;
+
+     label1:
+        virtualinvoke $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return null;
+    }
+
+    public java.lang.Object remove(java.lang.Object)
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        java.lang.Object $r1;
+        androidx.arch.core.internal.SafeIterableMap$Entry $r2, $r7, $r8;
+        int $i0;
+        java.util.WeakHashMap $r3;
+        boolean $z0;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        androidx.arch.core.internal.SafeIterableMap$SupportRemove $r6;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = virtualinvoke $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry get(java.lang.Object)>($r1);
+
+        if $r2 != null goto label1;
+
+        return null;
+
+     label1:
+        $i0 = $r0.<androidx.arch.core.internal.SafeIterableMap: int mSize>;
+
+        $i0 = $i0 + -1;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: int mSize> = $i0;
+
+        $r3 = $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.WeakHashMap mIterators>;
+
+        $z0 = virtualinvoke $r3.<java.util.WeakHashMap: boolean isEmpty()>();
+
+        if $z0 != 0 goto label3;
+
+        $r3 = $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.WeakHashMap mIterators>;
+
+        $r4 = virtualinvoke $r3.<java.util.WeakHashMap: java.util.Set keySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r1 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (androidx.arch.core.internal.SafeIterableMap$SupportRemove) $r1;
+
+        interfaceinvoke $r6.<androidx.arch.core.internal.SafeIterableMap$SupportRemove: void supportRemove(androidx.arch.core.internal.SafeIterableMap$Entry)>($r2);
+
+        goto label2;
+
+     label3:
+        $r7 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious>;
+
+        if $r7 == null goto label4;
+
+        $r7 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious>;
+
+        $r8 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext>;
+
+        $r7.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext> = $r8;
+
+        goto label5;
+
+     label4:
+        $r7 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext>;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mStart> = $r7;
+
+     label5:
+        $r7 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext>;
+
+        if $r7 == null goto label6;
+
+        $r7 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext>;
+
+        $r8 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious>;
+
+        $r7.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious> = $r8;
+
+        goto label7;
+
+     label6:
+        $r7 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious>;
+
+        $r0.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$Entry mEnd> = $r7;
+
+     label7:
+        $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext> = null;
+
+        $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious> = null;
+
+        $r1 = $r2.<androidx.arch.core.internal.SafeIterableMap$Entry: java.lang.Object mValue>;
+
+        return $r1;
+    }
+
+    public int size()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        int i0;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        i0 = $r0.<androidx.arch.core.internal.SafeIterableMap: int mSize>;
+
+        return i0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.arch.core.internal.SafeIterableMap $r0;
+        java.lang.StringBuilder $r1;
+        java.util.Iterator $r2;
+        boolean $z0;
+        java.lang.Object $r3;
+        java.util.Map$Entry $r4;
+        java.lang.String $r5;
+
+        $r0 := @this: androidx.arch.core.internal.SafeIterableMap;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[");
+
+        $r2 = virtualinvoke $r0.<androidx.arch.core.internal.SafeIterableMap: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $r4 = (java.util.Map$Entry) $r3;
+
+        $r5 = virtualinvoke $r4.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+        goto label1;
+
+     label2:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r5 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r5;
+    }
+}

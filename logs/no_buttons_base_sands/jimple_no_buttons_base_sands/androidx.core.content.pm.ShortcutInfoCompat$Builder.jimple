@@ -1,0 +1,222 @@
+public class androidx.core.content.pm.ShortcutInfoCompat$Builder extends java.lang.Object
+{
+    private final androidx.core.content.pm.ShortcutInfoCompat mInfo;
+
+    public void <init>(android.content.Context, java.lang.String)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+        androidx.core.content.pm.ShortcutInfoCompat $r3;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new androidx.core.content.pm.ShortcutInfoCompat;
+
+        specialinvoke $r3.<androidx.core.content.pm.ShortcutInfoCompat: void <init>()>();
+
+        $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo> = $r3;
+
+        $r3 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r3.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext> = $r1;
+
+        $r3.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId> = $r2;
+
+        return;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat build()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        boolean $z0;
+        androidx.core.content.pm.ShortcutInfoCompat $r1;
+        java.lang.CharSequence $r2;
+        android.content.Intent[] $r3;
+        int $i0;
+        java.lang.IllegalArgumentException $r4;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r2 = $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel>;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r2);
+
+        if $z0 != 0 goto label2;
+
+        $r1 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r3 = $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        if $r3 == null goto label1;
+
+        $r1 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r3 = $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        $i0 = lengthof $r3;
+
+        if $i0 == 0 goto label1;
+
+        $r1 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        return $r1;
+
+     label1:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Shortcut must have an intent");
+
+        throw $r4;
+
+     label2:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Shortcut must have a non-empty label");
+
+        throw $r4;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setActivity(android.content.ComponentName)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        android.content.ComponentName $r1;
+        androidx.core.content.pm.ShortcutInfoCompat $r2;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: android.content.ComponentName;
+
+        $r2 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r2.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setAlwaysBadged()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        androidx.core.content.pm.ShortcutInfoCompat $r1;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r1.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsAlwaysBadged> = 1;
+
+        return $r0;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setDisabledMessage(java.lang.CharSequence)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        java.lang.CharSequence $r1;
+        androidx.core.content.pm.ShortcutInfoCompat $r2;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r2.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setIcon(androidx.core.graphics.drawable.IconCompat)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        androidx.core.graphics.drawable.IconCompat $r1;
+        androidx.core.content.pm.ShortcutInfoCompat $r2;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $r2 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r2.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setIntent(android.content.Intent)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        android.content.Intent $r1;
+        android.content.Intent[] $r2;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: android.content.Intent;
+
+        $r2 = newarray (android.content.Intent)[1];
+
+        $r2[0] = $r1;
+
+        $r0 = virtualinvoke $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat$Builder setIntents(android.content.Intent[])>($r2);
+
+        return $r0;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setIntents(android.content.Intent[])
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        android.content.Intent[] $r1;
+        androidx.core.content.pm.ShortcutInfoCompat $r2;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: android.content.Intent[];
+
+        $r2 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r2.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setLongLabel(java.lang.CharSequence)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        java.lang.CharSequence $r1;
+        androidx.core.content.pm.ShortcutInfoCompat $r2;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r2.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setShortLabel(java.lang.CharSequence)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r0;
+        java.lang.CharSequence $r1;
+        androidx.core.content.pm.ShortcutInfoCompat $r2;
+
+        $r0 := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $r2.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel> = $r1;
+
+        return $r0;
+    }
+}

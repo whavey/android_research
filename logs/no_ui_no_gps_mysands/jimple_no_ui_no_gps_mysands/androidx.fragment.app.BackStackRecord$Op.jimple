@@ -1,0 +1,41 @@
+final class androidx.fragment.app.BackStackRecord$Op extends java.lang.Object
+{
+    int cmd;
+    int enterAnim;
+    int exitAnim;
+    androidx.fragment.app.Fragment fragment;
+    int popEnterAnim;
+    int popExitAnim;
+
+    void <init>()
+    {
+        androidx.fragment.app.BackStackRecord$Op $r0;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(int, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.BackStackRecord$Op $r0;
+        int $i0;
+        androidx.fragment.app.Fragment $r1;
+
+        $r0 := @this: androidx.fragment.app.BackStackRecord$Op;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.fragment.app.Fragment;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.fragment.app.BackStackRecord$Op: int cmd> = $i0;
+
+        $r0.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment> = $r1;
+
+        return;
+    }
+}

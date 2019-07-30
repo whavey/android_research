@@ -1,0 +1,23 @@
+class androidx.constraintlayout.solver.widgets.ConstraintTableLayout$HorizontalSlice extends java.lang.Object
+{
+    androidx.constraintlayout.solver.widgets.ConstraintWidget bottom;
+    int padding;
+    final androidx.constraintlayout.solver.widgets.ConstraintTableLayout this$0;
+    androidx.constraintlayout.solver.widgets.ConstraintWidget top;
+
+    void <init>(androidx.constraintlayout.solver.widgets.ConstraintTableLayout)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintTableLayout$HorizontalSlice $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintTableLayout $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintTableLayout$HorizontalSlice;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintTableLayout;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintTableLayout$HorizontalSlice: androidx.constraintlayout.solver.widgets.ConstraintTableLayout this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

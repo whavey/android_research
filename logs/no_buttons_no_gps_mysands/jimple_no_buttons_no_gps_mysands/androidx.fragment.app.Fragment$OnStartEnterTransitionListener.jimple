@@ -1,0 +1,7 @@
+interface  androidx.fragment.app.Fragment$OnStartEnterTransitionListener extends java.lang.Object
+{
+
+    public abstract void onStartEnterTransition();
+
+    public abstract void startListening();
+}

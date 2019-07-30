@@ -1,0 +1,16 @@
+public abstract class androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback $r0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public abstract androidx.appcompat.view.menu.ShowableListMenu getPopup();
+}

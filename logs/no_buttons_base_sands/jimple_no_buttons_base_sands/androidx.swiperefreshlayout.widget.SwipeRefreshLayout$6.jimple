@@ -1,0 +1,104 @@
+class androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6 extends android.view.animation.Animation
+{
+    final androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0;
+
+    void <init>(androidx.swiperefreshlayout.widget.SwipeRefreshLayout)
+    {
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6 $r0;
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout $r1;
+
+        $r0 := @this: androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6;
+
+        $r1 := @parameter0: androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+        $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0> = $r1;
+
+        specialinvoke $r0.<android.view.animation.Animation: void <init>()>();
+
+        return;
+    }
+
+    public void applyTransformation(float, android.view.animation.Transformation)
+    {
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6 $r0;
+        float $f0, $f1;
+        android.view.animation.Transformation $r1;
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout $r2;
+        boolean $z0;
+        int $i0, $i1, $i2;
+        androidx.swiperefreshlayout.widget.CircleImageView $r3;
+        androidx.swiperefreshlayout.widget.CircularProgressDrawable $r4;
+
+        $r0 := @this: androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6;
+
+        $f0 := @parameter0: float;
+
+        $r1 := @parameter1: android.view.animation.Transformation;
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $z0 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: boolean mUsingCustomStart>;
+
+        if $z0 != 0 goto label1;
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $i0 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: int mSpinnerOffsetEnd>;
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $i1 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: int mOriginalOffsetTop>;
+
+        $i1 = staticinvoke <java.lang.Math: int abs(int)>($i1);
+
+        $i1 = $i0 - $i1;
+
+        goto label2;
+
+     label1:
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $i1 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: int mSpinnerOffsetEnd>;
+
+     label2:
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $i0 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: int mFrom>;
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $i2 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: int mFrom>;
+
+        $i1 = $i1 - $i2;
+
+        $f1 = (float) $i1;
+
+        $f1 = $f1 * $f0;
+
+        $i1 = (int) $f1;
+
+        $i0 = $i0 + $i1;
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $r3 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: androidx.swiperefreshlayout.widget.CircleImageView mCircleView>;
+
+        $i1 = virtualinvoke $r3.<androidx.swiperefreshlayout.widget.CircleImageView: int getTop()>();
+
+        $i0 = $i0 - $i1;
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        virtualinvoke $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: void setTargetOffsetTopAndBottom(int)>($i0);
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$6: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $r4 = $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: androidx.swiperefreshlayout.widget.CircularProgressDrawable mProgress>;
+
+        $f0 = 1.0F - $f0;
+
+        virtualinvoke $r4.<androidx.swiperefreshlayout.widget.CircularProgressDrawable: void setArrowScale(float)>($f0);
+
+        return;
+    }
+}

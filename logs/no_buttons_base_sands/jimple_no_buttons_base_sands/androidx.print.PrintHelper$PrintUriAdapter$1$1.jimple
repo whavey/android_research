@@ -1,0 +1,41 @@
+class androidx.print.PrintHelper$PrintUriAdapter$1$1 extends java.lang.Object implements android.os.CancellationSignal$OnCancelListener
+{
+    final androidx.print.PrintHelper$PrintUriAdapter$1 this$2;
+
+    void <init>(androidx.print.PrintHelper$PrintUriAdapter$1)
+    {
+        androidx.print.PrintHelper$PrintUriAdapter$1$1 $r0;
+        androidx.print.PrintHelper$PrintUriAdapter$1 $r1;
+
+        $r0 := @this: androidx.print.PrintHelper$PrintUriAdapter$1$1;
+
+        $r1 := @parameter0: androidx.print.PrintHelper$PrintUriAdapter$1;
+
+        $r0.<androidx.print.PrintHelper$PrintUriAdapter$1$1: androidx.print.PrintHelper$PrintUriAdapter$1 this$2> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onCancel()
+    {
+        androidx.print.PrintHelper$PrintUriAdapter$1$1 $r0;
+        androidx.print.PrintHelper$PrintUriAdapter$1 $r1;
+        androidx.print.PrintHelper$PrintUriAdapter $r2;
+
+        $r0 := @this: androidx.print.PrintHelper$PrintUriAdapter$1$1;
+
+        $r1 = $r0.<androidx.print.PrintHelper$PrintUriAdapter$1$1: androidx.print.PrintHelper$PrintUriAdapter$1 this$2>;
+
+        $r2 = $r1.<androidx.print.PrintHelper$PrintUriAdapter$1: androidx.print.PrintHelper$PrintUriAdapter this$1>;
+
+        virtualinvoke $r2.<androidx.print.PrintHelper$PrintUriAdapter: void cancelLoad()>();
+
+        $r1 = $r0.<androidx.print.PrintHelper$PrintUriAdapter$1$1: androidx.print.PrintHelper$PrintUriAdapter$1 this$2>;
+
+        virtualinvoke $r1.<androidx.print.PrintHelper$PrintUriAdapter$1: boolean cancel(boolean)>(0);
+
+        return;
+    }
+}

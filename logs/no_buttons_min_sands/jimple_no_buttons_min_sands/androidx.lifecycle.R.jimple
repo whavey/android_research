@@ -1,0 +1,14 @@
+public final class androidx.lifecycle.R extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.lifecycle.R $r0;
+
+        $r0 := @this: androidx.lifecycle.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

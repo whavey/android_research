@@ -1,0 +1,38 @@
+class androidx.appcompat.app.AppCompatDialog$1 extends java.lang.Object implements androidx.core.view.KeyEventDispatcher$Component
+{
+    final androidx.appcompat.app.AppCompatDialog this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDialog)
+    {
+        androidx.appcompat.app.AppCompatDialog$1 $r0;
+        androidx.appcompat.app.AppCompatDialog $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDialog$1;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDialog;
+
+        $r0.<androidx.appcompat.app.AppCompatDialog$1: androidx.appcompat.app.AppCompatDialog this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean superDispatchKeyEvent(android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDialog$1 $r0;
+        android.view.KeyEvent $r1;
+        boolean $z0;
+        androidx.appcompat.app.AppCompatDialog $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDialog$1;
+
+        $r1 := @parameter0: android.view.KeyEvent;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDialog$1: androidx.appcompat.app.AppCompatDialog this$0>;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.app.AppCompatDialog: boolean superDispatchKeyEvent(android.view.KeyEvent)>($r1);
+
+        return $z0;
+    }
+}

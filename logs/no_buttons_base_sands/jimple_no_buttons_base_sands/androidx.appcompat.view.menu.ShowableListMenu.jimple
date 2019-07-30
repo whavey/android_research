@@ -1,0 +1,11 @@
+public interface  androidx.appcompat.view.menu.ShowableListMenu extends java.lang.Object
+{
+
+    public abstract void dismiss();
+
+    public abstract android.widget.ListView getListView();
+
+    public abstract boolean isShowing();
+
+    public abstract void show();
+}

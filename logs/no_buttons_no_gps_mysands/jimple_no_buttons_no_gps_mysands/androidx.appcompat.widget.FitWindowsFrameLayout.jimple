@@ -1,0 +1,72 @@
+public class androidx.appcompat.widget.FitWindowsFrameLayout extends android.widget.FrameLayout implements androidx.appcompat.widget.FitWindowsViewGroup
+{
+    private androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener mListener;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.FitWindowsFrameLayout $r0;
+        android.content.Context $r1;
+
+        $r0 := @this: androidx.appcompat.widget.FitWindowsFrameLayout;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke $r0.<android.widget.FrameLayout: void <init>(android.content.Context)>($r1);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.FitWindowsFrameLayout $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+
+        $r0 := @this: androidx.appcompat.widget.FitWindowsFrameLayout;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke $r0.<android.widget.FrameLayout: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        return;
+    }
+
+    protected boolean fitSystemWindows(android.graphics.Rect)
+    {
+        androidx.appcompat.widget.FitWindowsFrameLayout $r0;
+        android.graphics.Rect $r1;
+        boolean $z0;
+        androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener $r2;
+
+        $r0 := @this: androidx.appcompat.widget.FitWindowsFrameLayout;
+
+        $r1 := @parameter0: android.graphics.Rect;
+
+        $r2 = $r0.<androidx.appcompat.widget.FitWindowsFrameLayout: androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener mListener>;
+
+        if $r2 == null goto label1;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener: void onFitSystemWindows(android.graphics.Rect)>($r1);
+
+     label1:
+        $z0 = specialinvoke $r0.<android.widget.FrameLayout: boolean fitSystemWindows(android.graphics.Rect)>($r1);
+
+        return $z0;
+    }
+
+    public void setOnFitSystemWindowsListener(androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener)
+    {
+        androidx.appcompat.widget.FitWindowsFrameLayout $r0;
+        androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener $r1;
+
+        $r0 := @this: androidx.appcompat.widget.FitWindowsFrameLayout;
+
+        $r1 := @parameter0: androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener;
+
+        $r0.<androidx.appcompat.widget.FitWindowsFrameLayout: androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener mListener> = $r1;
+
+        return;
+    }
+}

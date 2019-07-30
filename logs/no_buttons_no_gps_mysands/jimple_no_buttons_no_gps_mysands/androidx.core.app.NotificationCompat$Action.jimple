@@ -1,0 +1,256 @@
+public class androidx.core.app.NotificationCompat$Action extends java.lang.Object
+{
+    static final java.lang.String EXTRA_SEMANTIC_ACTION;
+    static final java.lang.String EXTRA_SHOWS_USER_INTERFACE;
+    public static final int SEMANTIC_ACTION_ARCHIVE;
+    public static final int SEMANTIC_ACTION_CALL;
+    public static final int SEMANTIC_ACTION_DELETE;
+    public static final int SEMANTIC_ACTION_MARK_AS_READ;
+    public static final int SEMANTIC_ACTION_MARK_AS_UNREAD;
+    public static final int SEMANTIC_ACTION_MUTE;
+    public static final int SEMANTIC_ACTION_NONE;
+    public static final int SEMANTIC_ACTION_REPLY;
+    public static final int SEMANTIC_ACTION_THUMBS_DOWN;
+    public static final int SEMANTIC_ACTION_THUMBS_UP;
+    public static final int SEMANTIC_ACTION_UNMUTE;
+    public android.app.PendingIntent actionIntent;
+    public int icon;
+    private boolean mAllowGeneratedReplies;
+    private final androidx.core.app.RemoteInput[] mDataOnlyRemoteInputs;
+    final android.os.Bundle mExtras;
+    private final androidx.core.app.RemoteInput[] mRemoteInputs;
+    private final int mSemanticAction;
+    boolean mShowsUserInterface;
+    public java.lang.CharSequence title;
+
+    public void <init>(int, java.lang.CharSequence, android.app.PendingIntent)
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        int $i0;
+        java.lang.CharSequence $r1;
+        android.app.PendingIntent $r2;
+        android.os.Bundle $r3;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.CharSequence;
+
+        $r2 := @parameter2: android.app.PendingIntent;
+
+        $r3 = new android.os.Bundle;
+
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+
+        specialinvoke $r0.<androidx.core.app.NotificationCompat$Action: void <init>(int,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],androidx.core.app.RemoteInput[],boolean,int,boolean)>($i0, $r1, $r2, $r3, null, null, 1, 0, 1);
+
+        return;
+    }
+
+    void <init>(int, java.lang.CharSequence, android.app.PendingIntent, android.os.Bundle, androidx.core.app.RemoteInput[], androidx.core.app.RemoteInput[], boolean, int, boolean)
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        int $i0, $i1;
+        java.lang.CharSequence $r1;
+        android.app.PendingIntent $r2;
+        android.os.Bundle $r3;
+        androidx.core.app.RemoteInput[] $r4, $r5;
+        boolean $z0, $z1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.CharSequence;
+
+        $r2 := @parameter2: android.app.PendingIntent;
+
+        $r3 := @parameter3: android.os.Bundle;
+
+        $r4 := @parameter4: androidx.core.app.RemoteInput[];
+
+        $r5 := @parameter5: androidx.core.app.RemoteInput[];
+
+        $z0 := @parameter6: boolean;
+
+        $i1 := @parameter7: int;
+
+        $z1 := @parameter8: boolean;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.core.app.NotificationCompat$Action: boolean mShowsUserInterface> = 1;
+
+        $r0.<androidx.core.app.NotificationCompat$Action: int icon> = $i0;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        $r0.<androidx.core.app.NotificationCompat$Action: java.lang.CharSequence title> = $r1;
+
+        $r0.<androidx.core.app.NotificationCompat$Action: android.app.PendingIntent actionIntent> = $r2;
+
+        if $r3 == null goto label1;
+
+        goto label2;
+
+     label1:
+        $r3 = new android.os.Bundle;
+
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+
+     label2:
+        $r0.<androidx.core.app.NotificationCompat$Action: android.os.Bundle mExtras> = $r3;
+
+        $r0.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] mRemoteInputs> = $r4;
+
+        $r0.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] mDataOnlyRemoteInputs> = $r5;
+
+        $r0.<androidx.core.app.NotificationCompat$Action: boolean mAllowGeneratedReplies> = $z0;
+
+        $r0.<androidx.core.app.NotificationCompat$Action: int mSemanticAction> = $i1;
+
+        $r0.<androidx.core.app.NotificationCompat$Action: boolean mShowsUserInterface> = $z1;
+
+        return;
+    }
+
+    public android.app.PendingIntent getActionIntent()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        android.app.PendingIntent r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        r1 = $r0.<androidx.core.app.NotificationCompat$Action: android.app.PendingIntent actionIntent>;
+
+        return r1;
+    }
+
+    public boolean getAllowGeneratedReplies()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        z0 = $r0.<androidx.core.app.NotificationCompat$Action: boolean mAllowGeneratedReplies>;
+
+        return z0;
+    }
+
+    public androidx.core.app.RemoteInput[] getDataOnlyRemoteInputs()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        androidx.core.app.RemoteInput[] r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        r1 = $r0.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] mDataOnlyRemoteInputs>;
+
+        return r1;
+    }
+
+    public android.os.Bundle getExtras()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        android.os.Bundle r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        r1 = $r0.<androidx.core.app.NotificationCompat$Action: android.os.Bundle mExtras>;
+
+        return r1;
+    }
+
+    public int getIcon()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        int i0;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        i0 = $r0.<androidx.core.app.NotificationCompat$Action: int icon>;
+
+        return i0;
+    }
+
+    public androidx.core.app.RemoteInput[] getRemoteInputs()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        androidx.core.app.RemoteInput[] r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        r1 = $r0.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] mRemoteInputs>;
+
+        return r1;
+    }
+
+    public int getSemanticAction()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        int i0;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        i0 = $r0.<androidx.core.app.NotificationCompat$Action: int mSemanticAction>;
+
+        return i0;
+    }
+
+    public boolean getShowsUserInterface()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        z0 = $r0.<androidx.core.app.NotificationCompat$Action: boolean mShowsUserInterface>;
+
+        return z0;
+    }
+
+    public java.lang.CharSequence getTitle()
+    {
+        androidx.core.app.NotificationCompat$Action $r0;
+        java.lang.CharSequence r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$Action;
+
+        r1 = $r0.<androidx.core.app.NotificationCompat$Action: java.lang.CharSequence title>;
+
+        return r1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_UNMUTE> = 7;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_THUMBS_UP> = 8;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_THUMBS_DOWN> = 9;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_REPLY> = 1;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_NONE> = 0;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_MUTE> = 6;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_MARK_AS_UNREAD> = 3;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_MARK_AS_READ> = 2;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_DELETE> = 4;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_CALL> = 10;
+
+        <androidx.core.app.NotificationCompat$Action: int SEMANTIC_ACTION_ARCHIVE> = 5;
+
+        <androidx.core.app.NotificationCompat$Action: java.lang.String EXTRA_SHOWS_USER_INTERFACE> = "android.support.action.showsUserInterface";
+
+        <androidx.core.app.NotificationCompat$Action: java.lang.String EXTRA_SEMANTIC_ACTION> = "android.support.action.semanticAction";
+
+        return;
+    }
+}

@@ -1,0 +1,38 @@
+class androidx.appcompat.graphics.drawable.DrawableContainer$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.graphics.drawable.DrawableContainer this$0;
+
+    void <init>(androidx.appcompat.graphics.drawable.DrawableContainer)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$1 $r0;
+        androidx.appcompat.graphics.drawable.DrawableContainer $r1;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$1;
+
+        $r1 := @parameter0: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$1: androidx.appcompat.graphics.drawable.DrawableContainer this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$1 $r0;
+        androidx.appcompat.graphics.drawable.DrawableContainer $r1;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$1;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$1: androidx.appcompat.graphics.drawable.DrawableContainer this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.graphics.drawable.DrawableContainer: void animate(boolean)>(1);
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$1: androidx.appcompat.graphics.drawable.DrawableContainer this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.graphics.drawable.DrawableContainer: void invalidateSelf()>();
+
+        return;
+    }
+}

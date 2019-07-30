@@ -1,0 +1,7 @@
+public annotation interface  androidx.'annotation'.RequiresFeature extends java.lang.Object implements java.lang.'annotation'.Annotation
+{
+
+    public abstract java.lang.String enforcement();
+
+    public abstract java.lang.String name();
+}

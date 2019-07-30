@@ -1,0 +1,56 @@
+public final class androidx.core.content.IntentCompat extends java.lang.Object
+{
+    public static final java.lang.String CATEGORY_LEANBACK_LAUNCHER;
+    public static final java.lang.String EXTRA_HTML_TEXT;
+    public static final java.lang.String EXTRA_START_PLAYBACK;
+
+    private void <init>()
+    {
+        androidx.core.content.IntentCompat $r0;
+
+        $r0 := @this: androidx.core.content.IntentCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.content.Intent makeMainSelectorActivity(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        android.content.Intent $r2;
+        int $i0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 15 goto label1;
+
+        $r2 = staticinvoke <android.content.Intent: android.content.Intent makeMainSelectorActivity(java.lang.String,java.lang.String)>($r0, $r1);
+
+        return $r2;
+
+     label1:
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>(java.lang.String)>($r0);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addCategory(java.lang.String)>($r1);
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.content.IntentCompat: java.lang.String EXTRA_START_PLAYBACK> = "android.intent.extra.START_PLAYBACK";
+
+        <androidx.core.content.IntentCompat: java.lang.String EXTRA_HTML_TEXT> = "android.intent.extra.HTML_TEXT";
+
+        <androidx.core.content.IntentCompat: java.lang.String CATEGORY_LEANBACK_LAUNCHER> = "android.intent.category.LEANBACK_LAUNCHER";
+
+        return;
+    }
+}

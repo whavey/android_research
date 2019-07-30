@@ -1,0 +1,1440 @@
+abstract class androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState extends android.graphics.drawable.Drawable$ConstantState
+{
+    boolean mAutoMirrored;
+    boolean mCanConstantState;
+    int mChangingConfigurations;
+    boolean mCheckedConstantSize;
+    boolean mCheckedConstantState;
+    boolean mCheckedOpacity;
+    boolean mCheckedPadding;
+    boolean mCheckedStateful;
+    int mChildrenChangingConfigurations;
+    android.graphics.ColorFilter mColorFilter;
+    int mConstantHeight;
+    int mConstantMinimumHeight;
+    int mConstantMinimumWidth;
+    android.graphics.Rect mConstantPadding;
+    boolean mConstantSize;
+    int mConstantWidth;
+    int mDensity;
+    boolean mDither;
+    android.util.SparseArray mDrawableFutures;
+    android.graphics.drawable.Drawable[] mDrawables;
+    int mEnterFadeDuration;
+    int mExitFadeDuration;
+    boolean mHasColorFilter;
+    boolean mHasTintList;
+    boolean mHasTintMode;
+    int mLayoutDirection;
+    boolean mMutated;
+    int mNumChildren;
+    int mOpacity;
+    final androidx.appcompat.graphics.drawable.DrawableContainer mOwner;
+    android.content.res.Resources mSourceRes;
+    boolean mStateful;
+    android.content.res.ColorStateList mTintList;
+    android.graphics.PorterDuff$Mode mTintMode;
+    boolean mVariablePadding;
+
+    void <init>(androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState, androidx.appcompat.graphics.drawable.DrawableContainer, android.content.res.Resources)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0, $r1;
+        androidx.appcompat.graphics.drawable.DrawableContainer $r2;
+        android.content.res.Resources $r3, $r5;
+        android.graphics.drawable.Drawable $r4;
+        int $i0, $i1;
+        boolean $z0;
+        android.graphics.ColorFilter $r6;
+        android.content.res.ColorStateList $r7;
+        android.graphics.PorterDuff$Mode $r8;
+        android.graphics.Rect $r9, $r10;
+        android.graphics.drawable.Drawable[] $r11, $r12;
+        android.util.SparseArray $r13;
+        android.graphics.drawable.Drawable$ConstantState $r14;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r1 := @parameter0: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r2 := @parameter1: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $r3 := @parameter2: android.content.res.Resources;
+
+        specialinvoke $r0.<android.graphics.drawable.Drawable$ConstantState: void <init>()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity> = 160;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mVariablePadding> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mConstantSize> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mDither> = 1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: androidx.appcompat.graphics.drawable.DrawableContainer mOwner> = $r2;
+
+        if $r3 == null goto label01;
+
+        $r5 = $r3;
+
+        goto label03;
+
+     label01:
+        if $r1 == null goto label02;
+
+        $r5 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.Resources mSourceRes>;
+
+        goto label03;
+
+     label02:
+        $r5 = null;
+
+     label03:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.Resources mSourceRes> = $r5;
+
+        if $r1 == null goto label04;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity>;
+
+        goto label05;
+
+     label04:
+        $i0 = 0;
+
+     label05:
+        $i0 = staticinvoke <androidx.appcompat.graphics.drawable.DrawableContainer: int resolveDensity(android.content.res.Resources,int)>($r3, $i0);
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity> = $i0;
+
+        if $r1 == null goto label16;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChangingConfigurations>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChangingConfigurations> = $i0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChildrenChangingConfigurations>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChildrenChangingConfigurations> = $i0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantState> = 1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCanConstantState> = 1;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mVariablePadding>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mVariablePadding> = $z0;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mConstantSize>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mConstantSize> = $z0;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mDither>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mDither> = $z0;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mMutated>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mMutated> = $z0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mLayoutDirection>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mLayoutDirection> = $i0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration> = $i0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration> = $i0;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mAutoMirrored>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mAutoMirrored> = $z0;
+
+        $r6 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.ColorFilter mColorFilter>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.ColorFilter mColorFilter> = $r6;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasColorFilter>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasColorFilter> = $z0;
+
+        $r7 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.ColorStateList mTintList>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.ColorStateList mTintList> = $r7;
+
+        $r8 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.PorterDuff$Mode mTintMode>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.PorterDuff$Mode mTintMode> = $r8;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintList>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintList> = $z0;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintMode>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintMode> = $z0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity>;
+
+        $i1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity>;
+
+        if $i0 != $i1 goto label07;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedPadding>;
+
+        if $z0 == 0 goto label06;
+
+        $r9 = new android.graphics.Rect;
+
+        $r10 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.Rect mConstantPadding>;
+
+        specialinvoke $r9.<android.graphics.Rect: void <init>(android.graphics.Rect)>($r10);
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.Rect mConstantPadding> = $r9;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedPadding> = 1;
+
+     label06:
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize>;
+
+        if $z0 == 0 goto label07;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantWidth>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantWidth> = $i0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantHeight>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantHeight> = $i0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumWidth>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumWidth> = $i0;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumHeight>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumHeight> = $i0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize> = 1;
+
+     label07:
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedOpacity>;
+
+        if $z0 == 0 goto label08;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mOpacity>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mOpacity> = $i0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedOpacity> = 1;
+
+     label08:
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedStateful>;
+
+        if $z0 == 0 goto label09;
+
+        $z0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mStateful>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mStateful> = $z0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedStateful> = 1;
+
+     label09:
+        $r11 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i0 = lengthof $r11;
+
+        $r12 = newarray (android.graphics.drawable.Drawable)[$i0];
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables> = $r12;
+
+        $i0 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren> = $i0;
+
+        $r13 = $r1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        if $r13 == null goto label10;
+
+        $r13 = virtualinvoke $r13.<android.util.SparseArray: android.util.SparseArray clone()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures> = $r13;
+
+        goto label11;
+
+     label10:
+        $r13 = new android.util.SparseArray;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        specialinvoke $r13.<android.util.SparseArray: void <init>(int)>($i0);
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures> = $r13;
+
+     label11:
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $i1 = 0;
+
+     label12:
+        if $i1 >= $i0 goto label15;
+
+        $r4 = $r11[$i1];
+
+        if $r4 == null goto label14;
+
+        $r4 = $r11[$i1];
+
+        $r14 = virtualinvoke $r4.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable$ConstantState getConstantState()>();
+
+        if $r14 == null goto label13;
+
+        $r13 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        virtualinvoke $r13.<android.util.SparseArray: void put(int,java.lang.Object)>($i1, $r14);
+
+        goto label14;
+
+     label13:
+        $r12 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $r4 = $r11[$i1];
+
+        $r12[$i1] = $r4;
+
+     label14:
+        $i1 = $i1 + 1;
+
+        goto label12;
+
+     label15:
+        return;
+
+     label16:
+        $r11 = newarray (android.graphics.drawable.Drawable)[10];
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables> = $r11;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren> = 0;
+
+        return;
+    }
+
+    private void createAllFutures()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.drawable.Drawable[] $r1;
+        android.util.SparseArray $r2;
+        int $i0, $i1, $i2;
+        java.lang.Object $r3;
+        android.graphics.drawable.Drawable$ConstantState $r4;
+        android.content.res.Resources $r5;
+        android.graphics.drawable.Drawable $r6;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        if $r2 == null goto label3;
+
+        $i0 = virtualinvoke $r2.<android.util.SparseArray: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        $i2 = virtualinvoke $r2.<android.util.SparseArray: int keyAt(int)>($i1);
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        $r3 = virtualinvoke $r2.<android.util.SparseArray: java.lang.Object valueAt(int)>($i1);
+
+        $r4 = (android.graphics.drawable.Drawable$ConstantState) $r3;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $r5 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.Resources mSourceRes>;
+
+        $r6 = virtualinvoke $r4.<android.graphics.drawable.Drawable$ConstantState: android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)>($r5);
+
+        $r6 = specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable prepareDrawable(android.graphics.drawable.Drawable)>($r6);
+
+        $r1[$i2] = $r6;
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures> = null;
+
+     label3:
+        return;
+    }
+
+    private android.graphics.drawable.Drawable prepareDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.drawable.Drawable $r1;
+        int $i0;
+        androidx.appcompat.graphics.drawable.DrawableContainer $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label1;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mLayoutDirection>;
+
+        virtualinvoke $r1.<android.graphics.drawable.Drawable: boolean setLayoutDirection(int)>($i0);
+
+     label1:
+        $r1 = virtualinvoke $r1.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: androidx.appcompat.graphics.drawable.DrawableContainer mOwner>;
+
+        virtualinvoke $r1.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>($r2);
+
+        return $r1;
+    }
+
+    public final int addChild(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.drawable.Drawable $r1;
+        int $i0, $i1, $i2;
+        android.graphics.drawable.Drawable[] $r2;
+        androidx.appcompat.graphics.drawable.DrawableContainer $r3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i1 = lengthof $r2;
+
+        if $i0 < $i1 goto label1;
+
+        $i1 = $i0 + 10;
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void growArray(int,int)>($i0, $i1);
+
+     label1:
+        virtualinvoke $r1.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        virtualinvoke $r1.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>(0, 1);
+
+        $r3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: androidx.appcompat.graphics.drawable.DrawableContainer mOwner>;
+
+        virtualinvoke $r1.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>($r3);
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $r2[$i0] = $r1;
+
+        $i1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $i1 = $i1 + 1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren> = $i1;
+
+        $i2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChildrenChangingConfigurations>;
+
+        $i1 = virtualinvoke $r1.<android.graphics.drawable.Drawable: int getChangingConfigurations()>();
+
+        $i1 = $i2 | $i1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChildrenChangingConfigurations> = $i1;
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void invalidateCache()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.Rect mConstantPadding> = null;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedPadding> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantState> = 0;
+
+        return $i0;
+    }
+
+    final void applyTheme(android.content.res.Resources$Theme)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.content.res.Resources$Theme $r1;
+        int $i0, $i1, $i2, $i3;
+        android.graphics.drawable.Drawable[] $r2;
+        android.graphics.drawable.Drawable $r3;
+        boolean $z0;
+        android.content.res.Resources $r4;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r1 := @parameter0: android.content.res.Resources$Theme;
+
+        if $r1 == null goto label4;
+
+        specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void createAllFutures()>();
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r3 = $r2[$i1];
+
+        if $r3 == null goto label2;
+
+        $r3 = $r2[$i1];
+
+        $z0 = virtualinvoke $r3.<android.graphics.drawable.Drawable: boolean canApplyTheme()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = $r2[$i1];
+
+        virtualinvoke $r3.<android.graphics.drawable.Drawable: void applyTheme(android.content.res.Resources$Theme)>($r1);
+
+        $i2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChildrenChangingConfigurations>;
+
+        $r3 = $r2[$i1];
+
+        $i3 = virtualinvoke $r3.<android.graphics.drawable.Drawable: int getChangingConfigurations()>();
+
+        $i2 = $i2 | $i3;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChildrenChangingConfigurations> = $i2;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $r4 = virtualinvoke $r1.<android.content.res.Resources$Theme: android.content.res.Resources getResources()>();
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void updateDensity(android.content.res.Resources)>($r4);
+
+     label4:
+        return;
+    }
+
+    public boolean canApplyTheme()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0, $i1;
+        android.graphics.drawable.Drawable[] $r1;
+        android.graphics.drawable.Drawable $r2;
+        boolean $z0;
+        android.util.SparseArray $r3;
+        java.lang.Object $r4;
+        android.graphics.drawable.Drawable$ConstantState $r5;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $r2 = $r1[$i1];
+
+        if $r2 == null goto label2;
+
+        $z0 = virtualinvoke $r2.<android.graphics.drawable.Drawable: boolean canApplyTheme()>();
+
+        if $z0 == 0 goto label3;
+
+        return 1;
+
+     label2:
+        $r3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        $r4 = virtualinvoke $r3.<android.util.SparseArray: java.lang.Object get(int)>($i1);
+
+        $r5 = (android.graphics.drawable.Drawable$ConstantState) $r4;
+
+        if $r5 == null goto label3;
+
+        $z0 = virtualinvoke $r5.<android.graphics.drawable.Drawable$ConstantState: boolean canApplyTheme()>();
+
+        if $z0 == 0 goto label3;
+
+        return 1;
+
+     label3:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label4:
+        return 0;
+    }
+
+    public boolean canConstantState()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0, $i1;
+        android.graphics.drawable.Drawable[] $r1;
+        android.graphics.drawable.Drawable$ConstantState $r2;
+        boolean $z0;
+        android.graphics.drawable.Drawable $r3;
+        java.lang.Throwable $r4;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        entermonitor $r0;
+
+     label1:
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantState>;
+
+        if $z0 == 0 goto label3;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCanConstantState>;
+
+     label2:
+        exitmonitor $r0;
+
+        return $z0;
+
+     label3:
+        specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void createAllFutures()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantState> = 1;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i1 = 0;
+
+     label4:
+        if $i1 >= $i0 goto label7;
+
+        $r3 = $r1[$i1];
+
+        $r2 = virtualinvoke $r3.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable$ConstantState getConstantState()>();
+
+        if $r2 != null goto label6;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCanConstantState> = 0;
+
+     label5:
+        exitmonitor $r0;
+
+        return 0;
+
+     label6:
+        $i1 = $i1 + 1;
+
+        goto label4;
+
+     label7:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCanConstantState> = 1;
+
+     label8:
+        exitmonitor $r0;
+
+        return 1;
+
+     label9:
+        $r4 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label9;
+        catch java.lang.Throwable from label3 to label5 with label9;
+        catch java.lang.Throwable from label7 to label8 with label9;
+    }
+
+    final void clearMutated()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mMutated> = 0;
+
+        return;
+    }
+
+    protected void computeConstantSize()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.drawable.Drawable[] $r1;
+        android.graphics.drawable.Drawable $r2;
+        int $i0, $i1, $i2, $i3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize> = 1;
+
+        specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void createAllFutures()>();
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantHeight> = -1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantWidth> = -1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumHeight> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumWidth> = 0;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label6;
+
+        $r2 = $r1[$i1];
+
+        $i2 = virtualinvoke $r2.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        $i3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantWidth>;
+
+        if $i2 <= $i3 goto label2;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantWidth> = $i2;
+
+     label2:
+        $i2 = virtualinvoke $r2.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        $i3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantHeight>;
+
+        if $i2 <= $i3 goto label3;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantHeight> = $i2;
+
+     label3:
+        $i2 = virtualinvoke $r2.<android.graphics.drawable.Drawable: int getMinimumWidth()>();
+
+        $i3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumWidth>;
+
+        if $i2 <= $i3 goto label4;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumWidth> = $i2;
+
+     label4:
+        $i2 = virtualinvoke $r2.<android.graphics.drawable.Drawable: int getMinimumHeight()>();
+
+        $i3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumHeight>;
+
+        if $i2 <= $i3 goto label5;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumHeight> = $i2;
+
+     label5:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label6:
+        return;
+    }
+
+    final int getCapacity()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.drawable.Drawable[] $r1;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i0 = lengthof $r1;
+
+        return $i0;
+    }
+
+    public int getChangingConfigurations()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChangingConfigurations>;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChildrenChangingConfigurations>;
+
+        $i0 = $i1 | $i0;
+
+        return $i0;
+    }
+
+    public final android.graphics.drawable.Drawable getChild(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0, $i1;
+        android.graphics.drawable.Drawable[] $r1;
+        android.graphics.drawable.Drawable $r2;
+        android.util.SparseArray $r3;
+        java.lang.Object $r4;
+        android.graphics.drawable.Drawable$ConstantState $r5;
+        android.content.res.Resources $r6;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $r2 = $r1[$i0];
+
+        if $r2 == null goto label1;
+
+        return $r2;
+
+     label1:
+        $r3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        if $r3 == null goto label2;
+
+        $i1 = virtualinvoke $r3.<android.util.SparseArray: int indexOfKey(int)>($i0);
+
+        if $i1 < 0 goto label2;
+
+        $r3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        $r4 = virtualinvoke $r3.<android.util.SparseArray: java.lang.Object valueAt(int)>($i1);
+
+        $r5 = (android.graphics.drawable.Drawable$ConstantState) $r4;
+
+        $r6 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.Resources mSourceRes>;
+
+        $r2 = virtualinvoke $r5.<android.graphics.drawable.Drawable$ConstantState: android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)>($r6);
+
+        $r2 = specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable prepareDrawable(android.graphics.drawable.Drawable)>($r2);
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $r1[$i0] = $r2;
+
+        $r3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        virtualinvoke $r3.<android.util.SparseArray: void removeAt(int)>($i1);
+
+        $r3 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures>;
+
+        $i0 = virtualinvoke $r3.<android.util.SparseArray: int size()>();
+
+        if $i0 != 0 goto label3;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.util.SparseArray mDrawableFutures> = null;
+
+        return $r2;
+
+     label2:
+        return null;
+
+     label3:
+        return $r2;
+    }
+
+    public final int getChildCount()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        return i0;
+    }
+
+    public final int getConstantHeight()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        boolean $z0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize>;
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void computeConstantSize()>();
+
+     label1:
+        i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantHeight>;
+
+        return i0;
+    }
+
+    public final int getConstantMinimumHeight()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        boolean $z0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize>;
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void computeConstantSize()>();
+
+     label1:
+        i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumHeight>;
+
+        return i0;
+    }
+
+    public final int getConstantMinimumWidth()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        boolean $z0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize>;
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void computeConstantSize()>();
+
+     label1:
+        i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantMinimumWidth>;
+
+        return i0;
+    }
+
+    public final android.graphics.Rect getConstantPadding()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.Rect $r1, $r3;
+        int $i0, $i1, $i2, $i3;
+        android.graphics.drawable.Drawable[] $r2;
+        boolean $z0;
+        android.graphics.drawable.Drawable $r4;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mVariablePadding>;
+
+        if $z0 == 0 goto label01;
+
+        return null;
+
+     label01:
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.Rect mConstantPadding>;
+
+        if $r1 != null goto label10;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedPadding>;
+
+        if $z0 == 0 goto label02;
+
+        goto label10;
+
+     label02:
+        specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void createAllFutures()>();
+
+        $r3 = null;
+
+        $r1 = new android.graphics.Rect;
+
+        specialinvoke $r1.<android.graphics.Rect: void <init>()>();
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i1 = 0;
+
+     label03:
+        if $i1 >= $i0 goto label09;
+
+        $r4 = $r2[$i1];
+
+        $z0 = virtualinvoke $r4.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>($r1);
+
+        if $z0 == 0 goto label08;
+
+        if $r3 != null goto label04;
+
+        $r3 = new android.graphics.Rect;
+
+        specialinvoke $r3.<android.graphics.Rect: void <init>(int,int,int,int)>(0, 0, 0, 0);
+
+     label04:
+        $i2 = $r1.<android.graphics.Rect: int left>;
+
+        $i3 = $r3.<android.graphics.Rect: int left>;
+
+        if $i2 <= $i3 goto label05;
+
+        $i2 = $r1.<android.graphics.Rect: int left>;
+
+        $r3.<android.graphics.Rect: int left> = $i2;
+
+     label05:
+        $i2 = $r1.<android.graphics.Rect: int top>;
+
+        $i3 = $r3.<android.graphics.Rect: int top>;
+
+        if $i2 <= $i3 goto label06;
+
+        $i2 = $r1.<android.graphics.Rect: int top>;
+
+        $r3.<android.graphics.Rect: int top> = $i2;
+
+     label06:
+        $i2 = $r1.<android.graphics.Rect: int right>;
+
+        $i3 = $r3.<android.graphics.Rect: int right>;
+
+        if $i2 <= $i3 goto label07;
+
+        $i2 = $r1.<android.graphics.Rect: int right>;
+
+        $r3.<android.graphics.Rect: int right> = $i2;
+
+     label07:
+        $i2 = $r1.<android.graphics.Rect: int bottom>;
+
+        $i3 = $r3.<android.graphics.Rect: int bottom>;
+
+        if $i2 <= $i3 goto label08;
+
+        $i2 = $r1.<android.graphics.Rect: int bottom>;
+
+        $r3.<android.graphics.Rect: int bottom> = $i2;
+
+     label08:
+        $i1 = $i1 + 1;
+
+        goto label03;
+
+     label09:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedPadding> = 1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.Rect mConstantPadding> = $r3;
+
+        return $r3;
+
+     label10:
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.Rect mConstantPadding>;
+
+        return $r1;
+    }
+
+    public final int getConstantWidth()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        boolean $z0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize>;
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void computeConstantSize()>();
+
+     label1:
+        i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mConstantWidth>;
+
+        return i0;
+    }
+
+    public final int getEnterFadeDuration()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration>;
+
+        return i0;
+    }
+
+    public final int getExitFadeDuration()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration>;
+
+        return i0;
+    }
+
+    public final int getOpacity()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.drawable.Drawable[] $r1;
+        boolean $z0;
+        int $i0, $i1, $i2, $i3;
+        android.graphics.drawable.Drawable $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedOpacity>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mOpacity>;
+
+        return $i0;
+
+     label1:
+        specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void createAllFutures()>();
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        if $i0 <= 0 goto label2;
+
+        $r2 = $r1[0];
+
+        $i2 = virtualinvoke $r2.<android.graphics.drawable.Drawable: int getOpacity()>();
+
+        goto label3;
+
+     label2:
+        $i2 = -2;
+
+     label3:
+        $i1 = 1;
+
+     label4:
+        if $i1 >= $i0 goto label5;
+
+        $r2 = $r1[$i1];
+
+        $i3 = virtualinvoke $r2.<android.graphics.drawable.Drawable: int getOpacity()>();
+
+        $i2 = staticinvoke <android.graphics.drawable.Drawable: int resolveOpacity(int,int)>($i2, $i3);
+
+        $i1 = $i1 + 1;
+
+        goto label4;
+
+     label5:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mOpacity> = $i2;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedOpacity> = 1;
+
+        return $i2;
+    }
+
+    public void growArray(int, int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0, $i1;
+        android.graphics.drawable.Drawable[] $r1, $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = newarray (android.graphics.drawable.Drawable)[$i1];
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r1, 0, $i0);
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables> = $r1;
+
+        return;
+    }
+
+    void invalidateCache()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedOpacity> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedStateful> = 0;
+
+        return;
+    }
+
+    public final boolean isConstantSize()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mConstantSize>;
+
+        return z0;
+    }
+
+    public final boolean isStateful()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.graphics.drawable.Drawable[] $r1;
+        boolean $z0, $z1;
+        int $i0, $i1;
+        android.graphics.drawable.Drawable $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedStateful>;
+
+        if $z0 == 0 goto label1;
+
+        $z0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mStateful>;
+
+        return $z0;
+
+     label1:
+        specialinvoke $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void createAllFutures()>();
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $z1 = 0;
+
+        $i1 = 0;
+
+     label2:
+        if $i1 >= $i0 goto label4;
+
+        $r2 = $r1[$i1];
+
+        $z0 = virtualinvoke $r2.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $z0 == 0 goto label3;
+
+        $z1 = 1;
+
+        goto label4;
+
+     label3:
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label4:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mStateful> = $z1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedStateful> = 1;
+
+        return $z1;
+    }
+
+    void mutate()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0, $i1;
+        android.graphics.drawable.Drawable[] $r1;
+        android.graphics.drawable.Drawable $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r2 = $r1[$i1];
+
+        if $r2 == null goto label2;
+
+        $r2 = $r1[$i1];
+
+        virtualinvoke $r2.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mMutated> = 1;
+
+        return;
+    }
+
+    public final void setConstantSize(boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mConstantSize> = $z0;
+
+        return;
+    }
+
+    public final void setEnterFadeDuration(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration> = $i0;
+
+        return;
+    }
+
+    public final void setExitFadeDuration(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration> = $i0;
+
+        return;
+    }
+
+    final boolean setLayoutDirection(int, int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.graphics.drawable.Drawable[] $r1;
+        boolean $z0, $z1;
+        android.graphics.drawable.Drawable $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $z1 = 0;
+
+        $i2 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable[] mDrawables>;
+
+        $i3 = 0;
+
+     label1:
+        if $i3 >= $i2 goto label4;
+
+        $r2 = $r1[$i3];
+
+        if $r2 == null goto label3;
+
+        $z0 = 0;
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 23 goto label2;
+
+        $r2 = $r1[$i3];
+
+        $z0 = virtualinvoke $r2.<android.graphics.drawable.Drawable: boolean setLayoutDirection(int)>($i0);
+
+     label2:
+        if $i3 != $i1 goto label3;
+
+        $z1 = $z0;
+
+     label3:
+        $i3 = $i3 + 1;
+
+        goto label1;
+
+     label4:
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mLayoutDirection> = $i0;
+
+        return $z1;
+    }
+
+    public final void setVariablePadding(boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mVariablePadding> = $z0;
+
+        return;
+    }
+
+    final void updateDensity(android.content.res.Resources)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $r0;
+        android.content.res.Resources $r1;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        $r1 := @parameter0: android.content.res.Resources;
+
+        if $r1 == null goto label1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.Resources mSourceRes> = $r1;
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity>;
+
+        $i1 = staticinvoke <androidx.appcompat.graphics.drawable.DrawableContainer: int resolveDensity(android.content.res.Resources,int)>($r1, $i0);
+
+        $i0 = $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity>;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mDensity> = $i1;
+
+        if $i0 == $i1 goto label1;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedConstantSize> = 0;
+
+        $r0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mCheckedPadding> = 0;
+
+     label1:
+        return;
+    }
+}

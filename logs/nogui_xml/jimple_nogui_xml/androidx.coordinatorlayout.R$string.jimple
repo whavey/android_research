@@ -1,0 +1,22 @@
+public final class androidx.coordinatorlayout.R$string extends java.lang.Object
+{
+    public static final int status_bar_notification_info_overflow;
+
+    private void <init>()
+    {
+        androidx.coordinatorlayout.R$string $r0;
+
+        $r0 := @this: androidx.coordinatorlayout.R$string;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.coordinatorlayout.R$string: int status_bar_notification_info_overflow> = 2131427369;
+
+        return;
+    }
+}

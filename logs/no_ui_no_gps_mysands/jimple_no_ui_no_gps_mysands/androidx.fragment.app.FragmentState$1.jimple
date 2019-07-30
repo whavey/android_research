@@ -1,0 +1,76 @@
+final class androidx.fragment.app.FragmentState$1 extends java.lang.Object implements android.os.Parcelable$Creator
+{
+
+    void <init>()
+    {
+        androidx.fragment.app.FragmentState$1 $r0;
+
+        $r0 := @this: androidx.fragment.app.FragmentState$1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.fragment.app.FragmentState createFromParcel(android.os.Parcel)
+    {
+        androidx.fragment.app.FragmentState$1 $r0;
+        android.os.Parcel $r1;
+        androidx.fragment.app.FragmentState $r2;
+
+        $r0 := @this: androidx.fragment.app.FragmentState$1;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $r2 = new androidx.fragment.app.FragmentState;
+
+        specialinvoke $r2.<androidx.fragment.app.FragmentState: void <init>(android.os.Parcel)>($r1);
+
+        return $r2;
+    }
+
+    public volatile java.lang.Object createFromParcel(android.os.Parcel)
+    {
+        androidx.fragment.app.FragmentState$1 $r0;
+        androidx.fragment.app.FragmentState $r1;
+        android.os.Parcel $r2;
+
+        $r0 := @this: androidx.fragment.app.FragmentState$1;
+
+        $r2 := @parameter0: android.os.Parcel;
+
+        $r1 = virtualinvoke $r0.<androidx.fragment.app.FragmentState$1: androidx.fragment.app.FragmentState createFromParcel(android.os.Parcel)>($r2);
+
+        return $r1;
+    }
+
+    public androidx.fragment.app.FragmentState[] newArray(int)
+    {
+        androidx.fragment.app.FragmentState$1 $r0;
+        int $i0;
+        androidx.fragment.app.FragmentState[] $r1;
+
+        $r0 := @this: androidx.fragment.app.FragmentState$1;
+
+        $i0 := @parameter0: int;
+
+        $r1 = newarray (androidx.fragment.app.FragmentState)[$i0];
+
+        return $r1;
+    }
+
+    public volatile java.lang.Object[] newArray(int)
+    {
+        androidx.fragment.app.FragmentState$1 $r0;
+        androidx.fragment.app.FragmentState[] $r1;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.FragmentState$1;
+
+        $i0 := @parameter0: int;
+
+        $r1 = virtualinvoke $r0.<androidx.fragment.app.FragmentState$1: androidx.fragment.app.FragmentState[] newArray(int)>($i0);
+
+        return $r1;
+    }
+}

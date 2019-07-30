@@ -1,0 +1,52 @@
+class androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy extends java.lang.Object implements androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener
+{
+    final androidx.appcompat.widget.ShareActionProvider this$0;
+
+    void <init>(androidx.appcompat.widget.ShareActionProvider)
+    {
+        androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy $r0;
+        androidx.appcompat.widget.ShareActionProvider $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy;
+
+        $r1 := @parameter0: androidx.appcompat.widget.ShareActionProvider;
+
+        $r0.<androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy: androidx.appcompat.widget.ShareActionProvider this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onChooseActivity(androidx.appcompat.widget.ActivityChooserModel, android.content.Intent)
+    {
+        androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy $r0;
+        androidx.appcompat.widget.ActivityChooserModel $r1;
+        android.content.Intent $r2;
+        androidx.appcompat.widget.ShareActionProvider $r3;
+        androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener $r4;
+
+        $r0 := @this: androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy;
+
+        $r1 := @parameter0: androidx.appcompat.widget.ActivityChooserModel;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = $r0.<androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy: androidx.appcompat.widget.ShareActionProvider this$0>;
+
+        $r4 = $r3.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener mOnShareTargetSelectedListener>;
+
+        if $r4 == null goto label1;
+
+        $r3 = $r0.<androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy: androidx.appcompat.widget.ShareActionProvider this$0>;
+
+        $r4 = $r3.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener mOnShareTargetSelectedListener>;
+
+        $r3 = $r0.<androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy: androidx.appcompat.widget.ShareActionProvider this$0>;
+
+        interfaceinvoke $r4.<androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener: boolean onShareTargetSelected(androidx.appcompat.widget.ShareActionProvider,android.content.Intent)>($r3, $r2);
+
+     label1:
+        return 0;
+    }
+}

@@ -1,0 +1,82 @@
+class androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener extends java.lang.Object implements android.view.ViewGroup$OnHierarchyChangeListener
+{
+    final androidx.coordinatorlayout.widget.CoordinatorLayout this$0;
+
+    void <init>(androidx.coordinatorlayout.widget.CoordinatorLayout)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener $r0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r1;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener;
+
+        $r1 := @parameter0: androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener: androidx.coordinatorlayout.widget.CoordinatorLayout this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onChildViewAdded(android.view.View, android.view.View)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener $r0;
+        android.view.View $r1, $r2;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r3;
+        android.view.ViewGroup$OnHierarchyChangeListener $r4;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.View;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener: androidx.coordinatorlayout.widget.CoordinatorLayout this$0>;
+
+        $r4 = $r3.<androidx.coordinatorlayout.widget.CoordinatorLayout: android.view.ViewGroup$OnHierarchyChangeListener mOnHierarchyChangeListener>;
+
+        if $r4 == null goto label1;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener: androidx.coordinatorlayout.widget.CoordinatorLayout this$0>;
+
+        $r4 = $r3.<androidx.coordinatorlayout.widget.CoordinatorLayout: android.view.ViewGroup$OnHierarchyChangeListener mOnHierarchyChangeListener>;
+
+        interfaceinvoke $r4.<android.view.ViewGroup$OnHierarchyChangeListener: void onChildViewAdded(android.view.View,android.view.View)>($r1, $r2);
+
+     label1:
+        return;
+    }
+
+    public void onChildViewRemoved(android.view.View, android.view.View)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener $r0;
+        android.view.View $r1, $r2;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r3;
+        android.view.ViewGroup$OnHierarchyChangeListener $r4;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.View;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener: androidx.coordinatorlayout.widget.CoordinatorLayout this$0>;
+
+        virtualinvoke $r3.<androidx.coordinatorlayout.widget.CoordinatorLayout: void onChildViewsChanged(int)>(2);
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener: androidx.coordinatorlayout.widget.CoordinatorLayout this$0>;
+
+        $r4 = $r3.<androidx.coordinatorlayout.widget.CoordinatorLayout: android.view.ViewGroup$OnHierarchyChangeListener mOnHierarchyChangeListener>;
+
+        if $r4 == null goto label1;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$HierarchyChangeListener: androidx.coordinatorlayout.widget.CoordinatorLayout this$0>;
+
+        $r4 = $r3.<androidx.coordinatorlayout.widget.CoordinatorLayout: android.view.ViewGroup$OnHierarchyChangeListener mOnHierarchyChangeListener>;
+
+        interfaceinvoke $r4.<android.view.ViewGroup$OnHierarchyChangeListener: void onChildViewRemoved(android.view.View,android.view.View)>($r1, $r2);
+
+     label1:
+        return;
+    }
+}

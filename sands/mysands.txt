@@ -1,0 +1,9 @@
+<android.net.wifi.WifiInfo: int getConnectionInfo()> android.permission.ACCESS_WIFI_STATE -> _SOURCE_
+
+<android.location.Location: double getLatitude()> -> _SOURCE_
+<android.location.Location: double getLongitude()> -> _SOURCE_
+
+<android.telephony.TelephonyManager: java.lang.String getDeviceId()> android.permission.READ_PHONE_STATE -> _SOURCE_
+<android.telephony.TelephonyManager: java.lang.String getSubscriberId()> android.permission.READ_PHONE_STATE -> _SOURCE_
+	
+<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> -> _SINK_ 

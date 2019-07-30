@@ -1,0 +1,14 @@
+public final class com.example.hello_world.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.example.hello_world.R $r0;
+
+        $r0 := @this: com.example.hello_world.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

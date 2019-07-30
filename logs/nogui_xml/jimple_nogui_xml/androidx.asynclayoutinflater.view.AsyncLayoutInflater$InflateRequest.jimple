@@ -1,0 +1,19 @@
+class androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest extends java.lang.Object
+{
+    androidx.asynclayoutinflater.view.AsyncLayoutInflater$OnInflateFinishedListener callback;
+    androidx.asynclayoutinflater.view.AsyncLayoutInflater inflater;
+    android.view.ViewGroup parent;
+    int resid;
+    android.view.View view;
+
+    void <init>()
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest $r0;
+
+        $r0 := @this: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

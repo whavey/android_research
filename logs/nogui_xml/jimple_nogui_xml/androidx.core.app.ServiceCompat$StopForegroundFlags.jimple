@@ -1,0 +1,3 @@
+public annotation interface  androidx.core.app.ServiceCompat$StopForegroundFlags extends java.lang.Object implements java.lang.'annotation'.Annotation
+{
+}

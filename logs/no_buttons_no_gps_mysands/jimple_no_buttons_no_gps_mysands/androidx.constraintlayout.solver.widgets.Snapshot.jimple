@@ -1,0 +1,183 @@
+public class androidx.constraintlayout.solver.widgets.Snapshot extends java.lang.Object
+{
+    private java.util.ArrayList mConnections;
+    private int mHeight;
+    private int mWidth;
+    private int mX;
+    private int mY;
+
+    public void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.Snapshot $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        java.util.ArrayList $r2, $r4;
+        androidx.constraintlayout.solver.widgets.Snapshot$Connection $r3;
+        int $i0, $i1;
+        java.lang.Object $r5;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r6;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Snapshot;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: java.util.ArrayList mConnections> = $r2;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getX()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mX> = $i0;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getY()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mY> = $i0;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mWidth> = $i0;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mHeight> = $i0;
+
+        $r4 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: java.util.ArrayList getAnchors()>();
+
+        $i0 = 0;
+
+        $i1 = virtualinvoke $r4.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        $r5 = virtualinvoke $r4.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r6 = (androidx.constraintlayout.solver.widgets.ConstraintAnchor) $r5;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: java.util.ArrayList mConnections>;
+
+        $r3 = new androidx.constraintlayout.solver.widgets.Snapshot$Connection;
+
+        specialinvoke $r3.<androidx.constraintlayout.solver.widgets.Snapshot$Connection: void <init>(androidx.constraintlayout.solver.widgets.ConstraintAnchor)>($r6);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void applyTo(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.Snapshot $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        int $i0, $i1;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+        androidx.constraintlayout.solver.widgets.Snapshot$Connection $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Snapshot;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mX>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setX(int)>($i0);
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mY>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setY(int)>($i0);
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mWidth>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setWidth(int)>($i0);
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mHeight>;
+
+        virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHeight(int)>($i0);
+
+        $i0 = 0;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: java.util.ArrayList mConnections>;
+
+        $i1 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: java.util.ArrayList mConnections>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r4 = (androidx.constraintlayout.solver.widgets.Snapshot$Connection) $r3;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.Snapshot$Connection: void applyTo(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r1);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void updateFrom(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.Snapshot $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        int $i0, $i1;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+        androidx.constraintlayout.solver.widgets.Snapshot$Connection $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.Snapshot;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getX()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mX> = $i0;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getY()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mY> = $i0;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mWidth> = $i0;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        $r0.<androidx.constraintlayout.solver.widgets.Snapshot: int mHeight> = $i0;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: java.util.ArrayList mConnections>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.Snapshot: java.util.ArrayList mConnections>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r4 = (androidx.constraintlayout.solver.widgets.Snapshot$Connection) $r3;
+
+        virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.Snapshot$Connection: void updateFrom(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r1);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

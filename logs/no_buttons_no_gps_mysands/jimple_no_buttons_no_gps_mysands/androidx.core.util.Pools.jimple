@@ -1,0 +1,14 @@
+public final class androidx.core.util.Pools extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.util.Pools $r0;
+
+        $r0 := @this: androidx.core.util.Pools;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

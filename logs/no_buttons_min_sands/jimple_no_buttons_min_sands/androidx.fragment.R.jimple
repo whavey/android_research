@@ -1,0 +1,14 @@
+public final class androidx.fragment.R extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.fragment.R $r0;
+
+        $r0 := @this: androidx.fragment.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

@@ -1,0 +1,1975 @@
+public class androidx.appcompat.widget.ActionMenuView extends androidx.appcompat.widget.LinearLayoutCompat implements androidx.appcompat.view.menu.MenuBuilder$ItemInvoker, androidx.appcompat.view.menu.MenuView
+{
+    static final int GENERATED_ITEM_PADDING;
+    static final int MIN_CELL_SIZE;
+    private static final java.lang.String TAG;
+    private androidx.appcompat.view.menu.MenuPresenter$Callback mActionMenuPresenterCallback;
+    private boolean mFormatItems;
+    private int mFormatItemsWidth;
+    private int mGeneratedItemPadding;
+    private androidx.appcompat.view.menu.MenuBuilder mMenu;
+    androidx.appcompat.view.menu.MenuBuilder$Callback mMenuBuilderCallback;
+    private int mMinCellSize;
+    androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener mOnMenuItemClickListener;
+    private android.content.Context mPopupContext;
+    private int mPopupTheme;
+    private androidx.appcompat.widget.ActionMenuPresenter mPresenter;
+    private boolean mReserveOverflow;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.content.Context $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke $r0.<androidx.appcompat.widget.ActionMenuView: void <init>(android.content.Context,android.util.AttributeSet)>($r1, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        android.content.res.Resources $r3;
+        android.util.DisplayMetrics $r4;
+        float $f0, $f1;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: void setBaselineAligned(boolean)>(0);
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r3.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $f0 = $r4.<android.util.DisplayMetrics: float density>;
+
+        $f1 = 56.0F * $f0;
+
+        $i0 = (int) $f1;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: int mMinCellSize> = $i0;
+
+        $f0 = 4.0F * $f0;
+
+        $i0 = (int) $f0;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: int mGeneratedItemPadding> = $i0;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context mPopupContext> = $r1;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: int mPopupTheme> = 0;
+
+        return;
+    }
+
+    static int measureChildForCells(android.view.View, int, int, int, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.view.ViewGroup$LayoutParams $r1;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r2;
+        boolean $z0, $z1, $z2;
+        androidx.appcompat.view.menu.ActionMenuItemView $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r2 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r1;
+
+        $i4 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($i2);
+
+        $i3 = $i4 - $i3;
+
+        $i2 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i2);
+
+        $i2 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i3, $i2);
+
+        $z0 = $r0 instanceof androidx.appcompat.view.menu.ActionMenuItemView;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = (androidx.appcompat.view.menu.ActionMenuItemView) $r0;
+
+        goto label2;
+
+     label1:
+        $r3 = null;
+
+     label2:
+        $z0 = 0;
+
+        if $r3 == null goto label3;
+
+        $z1 = virtualinvoke $r3.<androidx.appcompat.view.menu.ActionMenuItemView: boolean hasText()>();
+
+        if $z1 == 0 goto label3;
+
+        $z1 = 1;
+
+        goto label4;
+
+     label3:
+        $z1 = 0;
+
+     label4:
+        $i3 = 0;
+
+        if $i1 <= 0 goto label7;
+
+        if $z1 == 0 goto label5;
+
+        if $i1 < 2 goto label7;
+
+     label5:
+        $i1 = $i0 * $i1;
+
+        $i1 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i1, -2147483648);
+
+        virtualinvoke $r0.<android.view.View: void measure(int,int)>($i1, $i2);
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getMeasuredWidth()>();
+
+        $i3 = $i1 / $i0;
+
+        $i1 = $i1 % $i0;
+
+        if $i1 == 0 goto label6;
+
+        $i3 = $i3 + 1;
+
+     label6:
+        if $z1 == 0 goto label7;
+
+        if $i3 >= 2 goto label7;
+
+        $i3 = 2;
+
+     label7:
+        $z2 = $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton>;
+
+        if $z2 != 0 goto label8;
+
+        if $z1 == 0 goto label8;
+
+        $z0 = 1;
+
+     label8:
+        $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expandable> = $z0;
+
+        $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed> = $i3;
+
+        $i0 = $i3 * $i0;
+
+        $i0 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i0, 1073741824);
+
+        virtualinvoke $r0.<android.view.View: void measure(int,int)>($i0, $i2);
+
+        return $i3;
+    }
+
+    private void onMeasureExactFormat(int, int)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i14, $i15;
+        boolean $z0, $z1, $z2, $z3;
+        long $l13, $l16, $l17;
+        android.view.View $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r3;
+        androidx.appcompat.view.menu.ActionMenuItemView $r4;
+        byte $b18;
+        float $f0, $f1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i1);
+
+        $i3 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($i0);
+
+        $i0 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($i1);
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingLeft()>();
+
+        $i5 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingRight()>();
+
+        $i4 = $i4 + $i5;
+
+        $i5 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingTop()>();
+
+        $i6 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingBottom()>();
+
+        $i7 = $i5 + $i6;
+
+        $i1 = staticinvoke <androidx.appcompat.widget.ActionMenuView: int getChildMeasureSpec(int,int,int)>($i1, $i7, -2);
+
+        $i8 = $i3 - $i4;
+
+        $i3 = $r0.<androidx.appcompat.widget.ActionMenuView: int mMinCellSize>;
+
+        $i5 = $i8 / $i3;
+
+        $i4 = $i8 % $i3;
+
+        if $i5 != 0 goto label01;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: void setMeasuredDimension(int,int)>($i8, 0);
+
+        return;
+
+     label01:
+        $i4 = $i4 / $i5;
+
+        $i3 = $i3 + $i4;
+
+        $z0 = 0;
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getChildCount()>();
+
+        $i9 = 0;
+
+        $i6 = 0;
+
+        $i10 = 0;
+
+        $i11 = 0;
+
+        $i12 = 0;
+
+        $l13 = 0L;
+
+     label02:
+        if $i12 >= $i4 goto label12;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i12);
+
+        $i14 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i14 != 8 goto label03;
+
+        goto label11;
+
+     label03:
+        $z1 = $r1 instanceof androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $i6 = $i6 + 1;
+
+        if $z1 == 0 goto label04;
+
+        $i14 = $r0.<androidx.appcompat.widget.ActionMenuView: int mGeneratedItemPadding>;
+
+        virtualinvoke $r1.<android.view.View: void setPadding(int,int,int,int)>($i14, 0, $i14, 0);
+
+        goto label04;
+
+     label04:
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r2;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expanded> = 0;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int extraPixels> = 0;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed> = 0;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expandable> = 0;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin> = 0;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin> = 0;
+
+        if $z1 == 0 goto label05;
+
+        $r4 = (androidx.appcompat.view.menu.ActionMenuItemView) $r1;
+
+        $z1 = virtualinvoke $r4.<androidx.appcompat.view.menu.ActionMenuItemView: boolean hasText()>();
+
+        if $z1 == 0 goto label05;
+
+        $z1 = 1;
+
+        goto label06;
+
+     label05:
+        $z1 = 0;
+
+     label06:
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean preventEdgeOffset> = $z1;
+
+        $z1 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton>;
+
+        if $z1 == 0 goto label07;
+
+        $i14 = 1;
+
+        goto label08;
+
+     label07:
+        $i14 = $i5;
+
+     label08:
+        $i14 = staticinvoke <androidx.appcompat.widget.ActionMenuView: int measureChildForCells(android.view.View,int,int,int,int)>($r1, $i3, $i14, $i1, $i7);
+
+        $i11 = staticinvoke <java.lang.Math: int max(int,int)>($i11, $i14);
+
+        $z1 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expandable>;
+
+        if $z1 == 0 goto label09;
+
+        $i10 = $i10 + 1;
+
+     label09:
+        $z1 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton>;
+
+        if $z1 == 0 goto label10;
+
+        $z0 = 1;
+
+     label10:
+        $i5 = $i5 - $i14;
+
+        $i15 = virtualinvoke $r1.<android.view.View: int getMeasuredHeight()>();
+
+        $i15 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i15);
+
+        $i9 = $i15;
+
+        if $i14 != 1 goto label11;
+
+        $i9 = 1 << $i12;
+
+        $l16 = (long) $i9;
+
+        $l13 = $l13 | $l16;
+
+        $i9 = $i15;
+
+        goto label11;
+
+     label11:
+        $i12 = $i12 + 1;
+
+        goto label02;
+
+     label12:
+        if $z0 == 0 goto label13;
+
+        if $i6 != 2 goto label13;
+
+        $z1 = 1;
+
+        goto label14;
+
+     label13:
+        $z1 = 0;
+
+     label14:
+        $z2 = 0;
+
+     label15:
+        if $i10 <= 0 goto label27;
+
+        if $i5 <= 0 goto label27;
+
+        $l16 = 0L;
+
+        $i7 = 2147483647;
+
+        $i12 = 0;
+
+        $i14 = 0;
+
+     label16:
+        if $i14 >= $i4 goto label20;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i14);
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r2;
+
+        $z3 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expandable>;
+
+        if $z3 != 0 goto label17;
+
+        goto label19;
+
+     label17:
+        $i15 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed>;
+
+        if $i15 >= $i7 goto label18;
+
+        $i7 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed>;
+
+        $l16 = 1L << $i14;
+
+        $i12 = 1;
+
+        goto label19;
+
+     label18:
+        $i15 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed>;
+
+        if $i15 != $i7 goto label19;
+
+        $l17 = 1L << $i14;
+
+        $l16 = $l16 | $l17;
+
+        $i12 = $i12 + 1;
+
+     label19:
+        $i14 = $i14 + 1;
+
+        goto label16;
+
+     label20:
+        $l13 = $l13 | $l16;
+
+        if $i12 <= $i5 goto label21;
+
+        $i10 = $i8;
+
+        $i8 = $i9;
+
+        goto label28;
+
+     label21:
+        $i7 = $i7 + 1;
+
+        $i12 = 0;
+
+     label22:
+        if $i12 >= $i4 goto label26;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i12);
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r2;
+
+        $i14 = 1 << $i12;
+
+        $l17 = (long) $i14;
+
+        $l17 = $l16 & $l17;
+
+        $b18 = $l17 cmp 0L;
+
+        if $b18 != 0 goto label23;
+
+        $i14 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed>;
+
+        if $i14 != $i7 goto label25;
+
+        $i14 = 1 << $i12;
+
+        $l17 = (long) $i14;
+
+        $l13 = $l13 | $l17;
+
+        goto label25;
+
+     label23:
+        if $z1 == 0 goto label24;
+
+        $z2 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean preventEdgeOffset>;
+
+        if $z2 == 0 goto label24;
+
+        if $i5 != 1 goto label24;
+
+        $i14 = $r0.<androidx.appcompat.widget.ActionMenuView: int mGeneratedItemPadding>;
+
+        $i15 = $i14 + $i3;
+
+        virtualinvoke $r1.<android.view.View: void setPadding(int,int,int,int)>($i15, 0, $i14, 0);
+
+     label24:
+        $i14 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed>;
+
+        $i14 = $i14 + 1;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed> = $i14;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expanded> = 1;
+
+        $i5 = $i5 + -1;
+
+     label25:
+        $i12 = $i12 + 1;
+
+        goto label22;
+
+     label26:
+        $z2 = 1;
+
+        goto label15;
+
+     label27:
+        $i10 = $i8;
+
+        $i8 = $i9;
+
+     label28:
+        if $z0 != 0 goto label29;
+
+        if $i6 != 1 goto label29;
+
+        $z0 = 1;
+
+        goto label30;
+
+     label29:
+        $z0 = 0;
+
+     label30:
+        if $i5 <= 0 goto label45;
+
+        $b18 = $l13 cmp 0L;
+
+        if $b18 == 0 goto label45;
+
+        $i6 = $i6 + -1;
+
+        if $i5 < $i6 goto label32;
+
+        if $z0 != 0 goto label32;
+
+        if $i11 <= 1 goto label31;
+
+        goto label32;
+
+     label31:
+        goto label45;
+
+     label32:
+        $i6 = staticinvoke <java.lang.Long: int bitCount(long)>($l13);
+
+        $f0 = (float) $i6;
+
+        if $z0 != 0 goto label34;
+
+        $l16 = $l13 & 1L;
+
+        $b18 = $l16 cmp 0L;
+
+        if $b18 == 0 goto label33;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>(0);
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r2;
+
+        $z0 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean preventEdgeOffset>;
+
+        if $z0 != 0 goto label33;
+
+        $f0 = $f0 - 0.5F;
+
+        goto label33;
+
+     label33:
+        $i6 = $i4 + -1;
+
+        $i6 = 1 << $i6;
+
+        $l16 = (long) $i6;
+
+        $l16 = $l13 & $l16;
+
+        $b18 = $l16 cmp 0L;
+
+        if $b18 == 0 goto label34;
+
+        $i6 = $i4 + -1;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i6);
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r2;
+
+        $z0 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean preventEdgeOffset>;
+
+        if $z0 != 0 goto label34;
+
+        $f0 = $f0 - 0.5F;
+
+        goto label34;
+
+     label34:
+        $b18 = $f0 cmpl 0.0F;
+
+        if $b18 <= 0 goto label35;
+
+        $i5 = $i5 * $i3;
+
+        $f1 = (float) $i5;
+
+        $f0 = $f1 / $f0;
+
+        $i5 = (int) $f0;
+
+        goto label36;
+
+     label35:
+        $i5 = 0;
+
+     label36:
+        $i6 = 0;
+
+        $z0 = $z2;
+
+     label37:
+        if $i6 >= $i4 goto label44;
+
+        $i11 = 1 << $i6;
+
+        $l16 = (long) $i11;
+
+        $l16 = $l13 & $l16;
+
+        $b18 = $l16 cmp 0L;
+
+        if $b18 != 0 goto label38;
+
+        goto label43;
+
+     label38:
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i6);
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r2;
+
+        $z1 = $r1 instanceof androidx.appcompat.view.menu.ActionMenuItemView;
+
+        if $z1 == 0 goto label40;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int extraPixels> = $i5;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expanded> = 1;
+
+        if $i6 != 0 goto label39;
+
+        $z0 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean preventEdgeOffset>;
+
+        if $z0 != 0 goto label39;
+
+        $i11 = neg $i5;
+
+        $i11 = $i11 / 2;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin> = $i11;
+
+     label39:
+        $z0 = 1;
+
+        goto label43;
+
+     label40:
+        $z1 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton>;
+
+        if $z1 == 0 goto label41;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int extraPixels> = $i5;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expanded> = 1;
+
+        $i11 = neg $i5;
+
+        $i11 = $i11 / 2;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin> = $i11;
+
+        $z0 = 1;
+
+        goto label43;
+
+     label41:
+        if $i6 == 0 goto label42;
+
+        $i11 = $i5 / 2;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin> = $i11;
+
+     label42:
+        $i11 = $i4 + -1;
+
+        if $i6 == $i11 goto label43;
+
+        $i11 = $i5 / 2;
+
+        $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin> = $i11;
+
+     label43:
+        $i6 = $i6 + 1;
+
+        goto label37;
+
+     label44:
+        $z2 = $z0;
+
+        goto label45;
+
+     label45:
+        if $z2 == 0 goto label49;
+
+        $i5 = 0;
+
+     label46:
+        if $i5 >= $i4 goto label49;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i5);
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r2;
+
+        $z0 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean expanded>;
+
+        if $z0 != 0 goto label47;
+
+        goto label48;
+
+     label47:
+        $i6 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int cellsUsed>;
+
+        $i6 = $i6 * $i3;
+
+        $i11 = $r3.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int extraPixels>;
+
+        $i6 = $i6 + $i11;
+
+        $i6 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i6, 1073741824);
+
+        virtualinvoke $r1.<android.view.View: void measure(int,int)>($i6, $i1);
+
+     label48:
+        $i5 = $i5 + 1;
+
+        goto label46;
+
+     label49:
+        if $i2 == 1073741824 goto label50;
+
+        $i0 = $i8;
+
+        goto label50;
+
+     label50:
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: void setMeasuredDimension(int,int)>($i10, $i0);
+
+        return;
+    }
+
+    protected boolean checkLayoutParams(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.view.ViewGroup$LayoutParams $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        if $r1 == null goto label1;
+
+        $z0 = $r1 instanceof androidx.appcompat.widget.ActionMenuView$LayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void dismissPopupMenus()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: boolean dismissPopupMenus()>();
+
+     label1:
+        return;
+    }
+
+    public boolean dispatchPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.view.accessibility.AccessibilityEvent $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        return 0;
+    }
+
+    protected volatile android.view.ViewGroup$LayoutParams generateDefaultLayoutParams()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateDefaultLayoutParams()>();
+
+        return $r1;
+    }
+
+    protected androidx.appcompat.widget.ActionMenuView$LayoutParams generateDefaultLayoutParams()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = new androidx.appcompat.widget.ActionMenuView$LayoutParams;
+
+        specialinvoke $r1.<androidx.appcompat.widget.ActionMenuView$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        $r1.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int gravity> = 16;
+
+        return $r1;
+    }
+
+    protected volatile androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateDefaultLayoutParams()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateDefaultLayoutParams()>();
+
+        return $r1;
+    }
+
+    public volatile android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+        android.util.AttributeSet $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r2 := @parameter0: android.util.AttributeSet;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateLayoutParams(android.util.AttributeSet)>($r2);
+
+        return $r1;
+    }
+
+    protected volatile android.view.ViewGroup$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r2 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+        return $r1;
+    }
+
+    public androidx.appcompat.widget.ActionMenuView$LayoutParams generateLayoutParams(android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.util.AttributeSet $r1;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r2;
+        android.content.Context $r3;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.util.AttributeSet;
+
+        $r2 = new androidx.appcompat.widget.ActionMenuView$LayoutParams;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context getContext()>();
+
+        specialinvoke $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: void <init>(android.content.Context,android.util.AttributeSet)>($r3, $r1);
+
+        return $r2;
+    }
+
+    protected androidx.appcompat.widget.ActionMenuView$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.view.ViewGroup$LayoutParams $r1;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r2, $r3;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        if $r1 == null goto label3;
+
+        $z0 = $r1 instanceof androidx.appcompat.widget.ActionMenuView$LayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = new androidx.appcompat.widget.ActionMenuView$LayoutParams;
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r1;
+
+        specialinvoke $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: void <init>(androidx.appcompat.widget.ActionMenuView$LayoutParams)>($r3);
+
+        goto label2;
+
+     label1:
+        $r2 = new androidx.appcompat.widget.ActionMenuView$LayoutParams;
+
+        specialinvoke $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: void <init>(android.view.ViewGroup$LayoutParams)>($r1);
+
+     label2:
+        $i0 = $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int gravity>;
+
+        if $i0 > 0 goto label4;
+
+        $r2.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int gravity> = 16;
+
+        return $r2;
+
+     label3:
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateDefaultLayoutParams()>();
+
+     label4:
+        return $r2;
+    }
+
+    public volatile androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateLayoutParams(android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+        android.util.AttributeSet $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r2 := @parameter0: android.util.AttributeSet;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateLayoutParams(android.util.AttributeSet)>($r2);
+
+        return $r1;
+    }
+
+    protected volatile androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r2 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+        return $r1;
+    }
+
+    public androidx.appcompat.widget.ActionMenuView$LayoutParams generateOverflowButtonLayoutParams()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$LayoutParams generateDefaultLayoutParams()>();
+
+        $r1.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton> = 1;
+
+        return $r1;
+    }
+
+    public android.view.Menu getMenu()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.content.Context $r1;
+        androidx.appcompat.view.menu.MenuBuilder $r2, r5;
+        androidx.appcompat.widget.ActionMenuPresenter $r3, r7;
+        androidx.appcompat.view.menu.MenuPresenter$Callback $r4;
+        androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback r6;
+        androidx.appcompat.widget.ActionMenuView$ActionMenuPresenterCallback r8;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        if $r2 != null goto label3;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context getContext()>();
+
+        r5 = new androidx.appcompat.view.menu.MenuBuilder;
+
+        specialinvoke r5.<androidx.appcompat.view.menu.MenuBuilder: void <init>(android.content.Context)>($r1);
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu> = r5;
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        r6 = new androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback;
+
+        specialinvoke r6.<androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback: void <init>(androidx.appcompat.widget.ActionMenuView)>($r0);
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void setCallback(androidx.appcompat.view.menu.MenuBuilder$Callback)>(r6);
+
+        r7 = new androidx.appcompat.widget.ActionMenuPresenter;
+
+        specialinvoke r7.<androidx.appcompat.widget.ActionMenuPresenter: void <init>(android.content.Context)>($r1);
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter> = r7;
+
+        $r3 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        virtualinvoke $r3.<androidx.appcompat.widget.ActionMenuPresenter: void setReserveOverflow(boolean)>(1);
+
+        $r3 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        $r4 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuPresenter$Callback mActionMenuPresenterCallback>;
+
+        if $r4 == null goto label1;
+
+        goto label2;
+
+     label1:
+        r8 = new androidx.appcompat.widget.ActionMenuView$ActionMenuPresenterCallback;
+
+        $r4 = r8;
+
+        specialinvoke r8.<androidx.appcompat.widget.ActionMenuView$ActionMenuPresenterCallback: void <init>()>();
+
+     label2:
+        virtualinvoke $r3.<androidx.appcompat.widget.ActionMenuPresenter: void setCallback(androidx.appcompat.view.menu.MenuPresenter$Callback)>($r4);
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        $r3 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context mPopupContext>;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void addMenuPresenter(androidx.appcompat.view.menu.MenuPresenter,android.content.Context)>($r3, $r1);
+
+        $r3 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        virtualinvoke $r3.<androidx.appcompat.widget.ActionMenuPresenter: void setMenuView(androidx.appcompat.widget.ActionMenuView)>($r0);
+
+     label3:
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        return $r2;
+    }
+
+    public android.graphics.drawable.Drawable getOverflowIcon()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.widget.ActionMenuPresenter $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.Menu getMenu()>();
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        $r1 = virtualinvoke $r2.<androidx.appcompat.widget.ActionMenuPresenter: android.graphics.drawable.Drawable getOverflowIcon()>();
+
+        return $r1;
+    }
+
+    public int getPopupTheme()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        i0 = $r0.<androidx.appcompat.widget.ActionMenuView: int mPopupTheme>;
+
+        return i0;
+    }
+
+    public int getWindowAnimations()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        return 0;
+    }
+
+    protected boolean hasSupportDividerBeforeChildAt(int)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        int $i0, $i1;
+        android.view.View $r1, $r2;
+        boolean $z0, $z1;
+        androidx.appcompat.widget.ActionMenuView$ActionMenuChildView $r3;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $i1 = $i0 + -1;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i1);
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i0);
+
+        $z0 = 0;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getChildCount()>();
+
+        if $i0 >= $i1 goto label2;
+
+        $z1 = $r1 instanceof androidx.appcompat.widget.ActionMenuView$ActionMenuChildView;
+
+        if $z1 == 0 goto label2;
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$ActionMenuChildView) $r1;
+
+        $z0 = interfaceinvoke $r3.<androidx.appcompat.widget.ActionMenuView$ActionMenuChildView: boolean needsDividerAfter()>();
+
+     label2:
+        if $i0 <= 0 goto label3;
+
+        $z1 = $r2 instanceof androidx.appcompat.widget.ActionMenuView$ActionMenuChildView;
+
+        if $z1 == 0 goto label3;
+
+        $r3 = (androidx.appcompat.widget.ActionMenuView$ActionMenuChildView) $r2;
+
+        $z1 = interfaceinvoke $r3.<androidx.appcompat.widget.ActionMenuView$ActionMenuChildView: boolean needsDividerBefore()>();
+
+        $z0 = $z0 | $z1;
+
+     label3:
+        return $z0;
+    }
+
+    public boolean hideOverflowMenu()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        boolean $z0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: boolean hideOverflowMenu()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void initialize(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu> = $r1;
+
+        return;
+    }
+
+    public boolean invokeItem(androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: boolean performItemAction(android.view.MenuItem,int)>($r1, 0);
+
+        return $z0;
+    }
+
+    public boolean isOverflowMenuShowPending()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        boolean $z0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: boolean isOverflowMenuShowPending()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isOverflowMenuShowing()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        boolean $z0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: boolean isOverflowMenuShowing()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isOverflowReserved()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        z0 = $r0.<androidx.appcompat.widget.ActionMenuView: boolean mReserveOverflow>;
+
+        return z0;
+    }
+
+    public void onConfigurationChanged(android.content.res.Configuration)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.content.res.Configuration $r1;
+        boolean $z0;
+        androidx.appcompat.widget.ActionMenuPresenter $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.content.res.Configuration;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void onConfigurationChanged(android.content.res.Configuration)>($r1);
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.ActionMenuPresenter: void updateMenuView(boolean)>(0);
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.widget.ActionMenuPresenter: boolean isOverflowMenuShowing()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.ActionMenuPresenter: boolean hideOverflowMenu()>();
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.ActionMenuPresenter: boolean showOverflowMenu()>();
+
+     label1:
+        return;
+    }
+
+    public void onDetachedFromWindow()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void onDetachedFromWindow()>();
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: void dismissPopupMenus()>();
+
+        return;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0, $r1;
+        boolean $z0, $z1, $z2;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12;
+        android.view.View $r2;
+        android.view.ViewGroup$LayoutParams $r3;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r4;
+        byte $b13;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $r1 = $r0;
+
+        $z1 = $r0.<androidx.appcompat.widget.ActionMenuView: boolean mFormatItems>;
+
+        if $z1 != 0 goto label01;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void onLayout(boolean,int,int,int,int)>($z0, $i0, $i1, $i2, $i3);
+
+        return;
+
+     label01:
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getChildCount()>();
+
+        $i1 = $i3 - $i1;
+
+        $i3 = $i1 / 2;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getDividerWidth()>();
+
+        $i6 = 0;
+
+        $i7 = $i2 - $i0;
+
+        $i8 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingRight()>();
+
+        $i7 = $i7 - $i8;
+
+        $i8 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingLeft()>();
+
+        $i7 = $i7 - $i8;
+
+        $z0 = 0;
+
+        $z1 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>($r0);
+
+        $i8 = 0;
+
+     label02:
+        if $i8 >= $i4 goto label10;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i8);
+
+        $i5 = virtualinvoke $r2.<android.view.View: int getVisibility()>();
+
+        if $i5 != 8 goto label03;
+
+        goto label09;
+
+     label03:
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r3;
+
+        $z2 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton>;
+
+        if $z2 == 0 goto label07;
+
+        $i9 = virtualinvoke $r2.<android.view.View: int getMeasuredWidth()>();
+
+        $i5 = $i9;
+
+        $z0 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: boolean hasSupportDividerBeforeChildAt(int)>($i8);
+
+        if $z0 == 0 goto label04;
+
+        $i5 = $i9 + $i1;
+
+     label04:
+        $i9 = virtualinvoke $r2.<android.view.View: int getMeasuredHeight()>();
+
+        if $z1 == 0 goto label05;
+
+        $i10 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingLeft()>();
+
+        $i11 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin>;
+
+        $i10 = $i10 + $i11;
+
+        $i11 = $i10 + $i5;
+
+        goto label06;
+
+     label05:
+        $i10 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getWidth()>();
+
+        $i11 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingRight()>();
+
+        $i10 = $i10 - $i11;
+
+        $i11 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin>;
+
+        $i11 = $i10 - $i11;
+
+        $i10 = $i11 - $i5;
+
+     label06:
+        $i12 = $i9 / 2;
+
+        $i12 = $i3 - $i12;
+
+        $i9 = $i12 + $i9;
+
+        virtualinvoke $r2.<android.view.View: void layout(int,int,int,int)>($i10, $i12, $i11, $i9);
+
+        $i7 = $i7 - $i5;
+
+        $z0 = 1;
+
+        goto label09;
+
+     label07:
+        $i5 = virtualinvoke $r2.<android.view.View: int getMeasuredWidth()>();
+
+        $i9 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin>;
+
+        $i5 = $i5 + $i9;
+
+        $i9 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin>;
+
+        $i5 = $i5 + $i9;
+
+        $i7 = $i7 - $i5;
+
+        $z2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: boolean hasSupportDividerBeforeChildAt(int)>($i8);
+
+        if $z2 == 0 goto label08;
+
+     label08:
+        $i6 = $i6 + 1;
+
+     label09:
+        $i8 = $i8 + 1;
+
+        goto label02;
+
+     label10:
+        $i1 = $i3;
+
+        $b13 = 1;
+
+        if $i4 != 1 goto label11;
+
+        if $z0 != 0 goto label11;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>(0);
+
+        $i4 = virtualinvoke $r2.<android.view.View: int getMeasuredWidth()>();
+
+        $i1 = virtualinvoke $r2.<android.view.View: int getMeasuredHeight()>();
+
+        $i0 = $i2 - $i0;
+
+        $i0 = $i0 / 2;
+
+        $i2 = $i4 / 2;
+
+        $i0 = $i0 - $i2;
+
+        $i2 = $i1 / 2;
+
+        $i2 = $i3 - $i2;
+
+        $i3 = $i0 + $i4;
+
+        $i1 = $i2 + $i1;
+
+        virtualinvoke $r2.<android.view.View: void layout(int,int,int,int)>($i0, $i2, $i3, $i1);
+
+        return;
+
+     label11:
+        if $z0 == 0 goto label12;
+
+        $b13 = 0;
+
+     label12:
+        $i0 = $i6 - $b13;
+
+        if $i0 <= 0 goto label13;
+
+        $i0 = $i7 / $i0;
+
+        goto label14;
+
+     label13:
+        $i0 = 0;
+
+     label14:
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i0);
+
+        if $z1 == 0 goto label19;
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getWidth()>();
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingRight()>();
+
+        $i3 = $i2 - $i3;
+
+        $i2 = 0;
+
+     label15:
+        if $i2 >= $i4 goto label18;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i2);
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r3;
+
+        $i6 = virtualinvoke $r2.<android.view.View: int getVisibility()>();
+
+        if $i6 == 8 goto label17;
+
+        $z0 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton>;
+
+        if $z0 == 0 goto label16;
+
+        goto label17;
+
+     label16:
+        $i6 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin>;
+
+        $i3 = $i3 - $i6;
+
+        $i6 = virtualinvoke $r2.<android.view.View: int getMeasuredWidth()>();
+
+        $i7 = virtualinvoke $r2.<android.view.View: int getMeasuredHeight()>();
+
+        $i8 = $i7 / 2;
+
+        $i8 = $i1 - $i8;
+
+        $i5 = $i3 - $i6;
+
+        $i7 = $i8 + $i7;
+
+        virtualinvoke $r2.<android.view.View: void layout(int,int,int,int)>($i5, $i8, $i3, $i7);
+
+        $i7 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin>;
+
+        $i6 = $i7 + $i6;
+
+        $i6 = $i6 + $i0;
+
+        $i3 = $i3 - $i6;
+
+        goto label17;
+
+     label17:
+        $i2 = $i2 + 1;
+
+        goto label15;
+
+     label18:
+        return;
+
+     label19:
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getPaddingLeft()>();
+
+        $i2 = 0;
+
+     label20:
+        if $i2 >= $i4 goto label23;
+
+        $r2 = virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i2);
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r3;
+
+        $i6 = virtualinvoke $r2.<android.view.View: int getVisibility()>();
+
+        if $i6 == 8 goto label22;
+
+        $z0 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: boolean isOverflowButton>;
+
+        if $z0 == 0 goto label21;
+
+        goto label22;
+
+     label21:
+        $i6 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin>;
+
+        $i3 = $i3 + $i6;
+
+        $i6 = virtualinvoke $r2.<android.view.View: int getMeasuredWidth()>();
+
+        $i7 = virtualinvoke $r2.<android.view.View: int getMeasuredHeight()>();
+
+        $i8 = $i7 / 2;
+
+        $i8 = $i1 - $i8;
+
+        $i5 = $i3 + $i6;
+
+        $i7 = $i8 + $i7;
+
+        virtualinvoke $r2.<android.view.View: void layout(int,int,int,int)>($i3, $i8, $i5, $i7);
+
+        $i7 = $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin>;
+
+        $i6 = $i7 + $i6;
+
+        $i6 = $i6 + $i0;
+
+        $i3 = $i3 + $i6;
+
+     label22:
+        $i2 = $i2 + 1;
+
+        $r1 = $r0;
+
+        goto label20;
+
+     label23:
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        int $i0, $i1, $i2, $i3;
+        boolean $z0, $z1;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        android.view.View $r2;
+        android.view.ViewGroup$LayoutParams $r3;
+        androidx.appcompat.widget.ActionMenuView$LayoutParams $r4;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $z0 = $r0.<androidx.appcompat.widget.ActionMenuView: boolean mFormatItems>;
+
+        $i2 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i0);
+
+        if $i2 != 1073741824 goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        $r0.<androidx.appcompat.widget.ActionMenuView: boolean mFormatItems> = $z1;
+
+        $z1 = $r0.<androidx.appcompat.widget.ActionMenuView: boolean mFormatItems>;
+
+        if $z0 == $z1 goto label3;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: int mFormatItemsWidth> = 0;
+
+     label3:
+        $i2 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($i0);
+
+        $z0 = $r0.<androidx.appcompat.widget.ActionMenuView: boolean mFormatItems>;
+
+        if $z0 == 0 goto label4;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        if $r1 == null goto label4;
+
+        $i3 = $r0.<androidx.appcompat.widget.ActionMenuView: int mFormatItemsWidth>;
+
+        if $i2 == $i3 goto label4;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: int mFormatItemsWidth> = $i2;
+
+        virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+     label4:
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: int getChildCount()>();
+
+        $z0 = $r0.<androidx.appcompat.widget.ActionMenuView: boolean mFormatItems>;
+
+        if $z0 == 0 goto label5;
+
+        if $i2 <= 0 goto label5;
+
+        specialinvoke $r0.<androidx.appcompat.widget.ActionMenuView: void onMeasureExactFormat(int,int)>($i0, $i1);
+
+        return;
+
+     label5:
+        $i3 = 0;
+
+     label6:
+        if $i3 >= $i2 goto label7;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.View getChildAt(int)>($i3);
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.ActionMenuView$LayoutParams) $r3;
+
+        $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int rightMargin> = 0;
+
+        $r4.<androidx.appcompat.widget.ActionMenuView$LayoutParams: int leftMargin> = 0;
+
+        $i3 = $i3 + 1;
+
+        goto label6;
+
+     label7:
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void onMeasure(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    public androidx.appcompat.view.menu.MenuBuilder peekMenu()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.view.menu.MenuBuilder r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        return r1;
+    }
+
+    public void setExpandedActionViewsExclusive(boolean)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        boolean $z0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: void setExpandedActionViewsExclusive(boolean)>($z0);
+
+        return;
+    }
+
+    public void setMenuCallbacks(androidx.appcompat.view.menu.MenuPresenter$Callback, androidx.appcompat.view.menu.MenuBuilder$Callback)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.view.menu.MenuPresenter$Callback $r1;
+        androidx.appcompat.view.menu.MenuBuilder$Callback $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuPresenter$Callback;
+
+        $r2 := @parameter1: androidx.appcompat.view.menu.MenuBuilder$Callback;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuPresenter$Callback mActionMenuPresenterCallback> = $r1;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder$Callback mMenuBuilderCallback> = $r2;
+
+        return;
+    }
+
+    public void setOnMenuItemClickListener(androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener mOnMenuItemClickListener> = $r1;
+
+        return;
+    }
+
+    public void setOverflowIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.widget.ActionMenuPresenter $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.view.Menu getMenu()>();
+
+        $r2 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.ActionMenuPresenter: void setOverflowIcon(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+    }
+
+    public void setOverflowReserved(boolean)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: boolean mReserveOverflow> = $z0;
+
+        return;
+    }
+
+    public void setPopupTheme(int)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        int $i0, $i1;
+        android.content.Context $r1;
+        android.view.ContextThemeWrapper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.appcompat.widget.ActionMenuView: int mPopupTheme>;
+
+        if $i1 == $i0 goto label2;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: int mPopupTheme> = $i0;
+
+        if $i0 != 0 goto label1;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context getContext()>();
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context mPopupContext> = $r1;
+
+        return;
+
+     label1:
+        $r2 = new android.view.ContextThemeWrapper;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context getContext()>();
+
+        specialinvoke $r2.<android.view.ContextThemeWrapper: void <init>(android.content.Context,int)>($r1, $i0);
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: android.content.Context mPopupContext> = $r2;
+
+     label2:
+        return;
+    }
+
+    public void setPresenter(androidx.appcompat.widget.ActionMenuPresenter)
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 := @parameter0: androidx.appcompat.widget.ActionMenuPresenter;
+
+        $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter> = $r1;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: void setMenuView(androidx.appcompat.widget.ActionMenuView)>($r0);
+
+        return;
+    }
+
+    public boolean showOverflowMenu()
+    {
+        androidx.appcompat.widget.ActionMenuView $r0;
+        boolean $z0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuView;
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuPresenter mPresenter>;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: boolean showOverflowMenu()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.widget.ActionMenuView: java.lang.String TAG> = "ActionMenuView";
+
+        <androidx.appcompat.widget.ActionMenuView: int MIN_CELL_SIZE> = 56;
+
+        <androidx.appcompat.widget.ActionMenuView: int GENERATED_ITEM_PADDING> = 4;
+
+        return;
+    }
+}

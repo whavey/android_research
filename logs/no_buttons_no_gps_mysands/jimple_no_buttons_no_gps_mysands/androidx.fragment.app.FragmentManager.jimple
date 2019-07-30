@@ -1,0 +1,93 @@
+public abstract class androidx.fragment.app.FragmentManager extends java.lang.Object
+{
+    public static final int POP_BACK_STACK_INCLUSIVE;
+
+    public void <init>()
+    {
+        androidx.fragment.app.FragmentManager $r0;
+
+        $r0 := @this: androidx.fragment.app.FragmentManager;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void enableDebugLogging(boolean)
+    {
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        <androidx.fragment.app.FragmentManagerImpl: boolean DEBUG> = $z0;
+
+        return;
+    }
+
+    public abstract void addOnBackStackChangedListener(androidx.fragment.app.FragmentManager$OnBackStackChangedListener);
+
+    public abstract androidx.fragment.app.FragmentTransaction beginTransaction();
+
+    public abstract void dump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String[]);
+
+    public abstract boolean executePendingTransactions();
+
+    public abstract androidx.fragment.app.Fragment findFragmentById(int);
+
+    public abstract androidx.fragment.app.Fragment findFragmentByTag(java.lang.String);
+
+    public abstract androidx.fragment.app.FragmentManager$BackStackEntry getBackStackEntryAt(int);
+
+    public abstract int getBackStackEntryCount();
+
+    public abstract androidx.fragment.app.Fragment getFragment(android.os.Bundle, java.lang.String);
+
+    public abstract java.util.List getFragments();
+
+    public abstract androidx.fragment.app.Fragment getPrimaryNavigationFragment();
+
+    public abstract boolean isDestroyed();
+
+    public abstract boolean isStateSaved();
+
+    public androidx.fragment.app.FragmentTransaction openTransaction()
+    {
+        androidx.fragment.app.FragmentManager $r0;
+        androidx.fragment.app.FragmentTransaction $r1;
+
+        $r0 := @this: androidx.fragment.app.FragmentManager;
+
+        $r1 = virtualinvoke $r0.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+        return $r1;
+    }
+
+    public abstract void popBackStack();
+
+    public abstract void popBackStack(int, int);
+
+    public abstract void popBackStack(java.lang.String, int);
+
+    public abstract boolean popBackStackImmediate();
+
+    public abstract boolean popBackStackImmediate(int, int);
+
+    public abstract boolean popBackStackImmediate(java.lang.String, int);
+
+    public abstract void putFragment(android.os.Bundle, java.lang.String, androidx.fragment.app.Fragment);
+
+    public abstract void registerFragmentLifecycleCallbacks(androidx.fragment.app.FragmentManager$FragmentLifecycleCallbacks, boolean);
+
+    public abstract void removeOnBackStackChangedListener(androidx.fragment.app.FragmentManager$OnBackStackChangedListener);
+
+    public abstract androidx.fragment.app.Fragment$SavedState saveFragmentInstanceState(androidx.fragment.app.Fragment);
+
+    public abstract void unregisterFragmentLifecycleCallbacks(androidx.fragment.app.FragmentManager$FragmentLifecycleCallbacks);
+
+    public static void <clinit>()
+    {
+        <androidx.fragment.app.FragmentManager: int POP_BACK_STACK_INCLUSIVE> = 1;
+
+        return;
+    }
+}

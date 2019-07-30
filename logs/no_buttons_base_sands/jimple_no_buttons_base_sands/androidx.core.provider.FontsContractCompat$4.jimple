@@ -1,0 +1,222 @@
+final class androidx.core.provider.FontsContractCompat$4 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback;
+    final android.os.Handler val$callerThreadHandler;
+    final android.content.Context val$context;
+    final androidx.core.provider.FontRequest val$request;
+
+    void <init>(android.content.Context, androidx.core.provider.FontRequest, android.os.Handler, androidx.core.provider.FontsContractCompat$FontRequestCallback)
+    {
+        androidx.core.provider.FontsContractCompat$4 $r0;
+        android.content.Context $r1;
+        androidx.core.provider.FontRequest $r2;
+        android.os.Handler $r3;
+        androidx.core.provider.FontsContractCompat$FontRequestCallback $r4;
+
+        $r0 := @this: androidx.core.provider.FontsContractCompat$4;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.core.provider.FontRequest;
+
+        $r3 := @parameter2: android.os.Handler;
+
+        $r4 := @parameter3: androidx.core.provider.FontsContractCompat$FontRequestCallback;
+
+        $r0.<androidx.core.provider.FontsContractCompat$4: android.content.Context val$context> = $r1;
+
+        $r0.<androidx.core.provider.FontsContractCompat$4: androidx.core.provider.FontRequest val$request> = $r2;
+
+        $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler> = $r3;
+
+        $r0.<androidx.core.provider.FontsContractCompat$4: androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback> = $r4;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.core.provider.FontsContractCompat$4 $r0;
+        androidx.core.provider.FontsContractCompat$FontInfo $r1;
+        android.content.Context $r2;
+        androidx.core.provider.FontRequest $r3;
+        androidx.core.provider.FontsContractCompat$FontFamilyResult $r4;
+        int $i0, $i1, $i2;
+        android.os.Handler $r5;
+        androidx.core.provider.FontsContractCompat$4$4 $r6;
+        androidx.core.provider.FontsContractCompat$4$3 $r7;
+        androidx.core.provider.FontsContractCompat$4$2 $r8;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $r9;
+        androidx.core.provider.FontsContractCompat$4$6 $r10;
+        androidx.core.provider.FontsContractCompat$4$7 $r11;
+        android.graphics.Typeface $r12;
+        androidx.core.provider.FontsContractCompat$4$8 $r13;
+        androidx.core.provider.FontsContractCompat$4$9 $r14;
+        androidx.core.provider.FontsContractCompat$4$5 $r15;
+        java.lang.Throwable $r16;
+        androidx.core.provider.FontsContractCompat$4$1 $r17;
+
+        $r0 := @this: androidx.core.provider.FontsContractCompat$4;
+
+        $r2 = $r0.<androidx.core.provider.FontsContractCompat$4: android.content.Context val$context>;
+
+        $r3 = $r0.<androidx.core.provider.FontsContractCompat$4: androidx.core.provider.FontRequest val$request>;
+
+     label01:
+        $r4 = staticinvoke <androidx.core.provider.FontsContractCompat: androidx.core.provider.FontsContractCompat$FontFamilyResult fetchFonts(android.content.Context,android.os.CancellationSignal,androidx.core.provider.FontRequest)>($r2, null, $r3);
+
+     label02:
+        $i0 = virtualinvoke $r4.<androidx.core.provider.FontsContractCompat$FontFamilyResult: int getStatusCode()>();
+
+        if $i0 == 0 goto label05;
+
+        $i0 = virtualinvoke $r4.<androidx.core.provider.FontsContractCompat$FontFamilyResult: int getStatusCode()>();
+
+        if $i0 == 1 goto label04;
+
+        if $i0 == 2 goto label03;
+
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r6 = new androidx.core.provider.FontsContractCompat$4$4;
+
+        specialinvoke $r6.<androidx.core.provider.FontsContractCompat$4$4: void <init>(androidx.core.provider.FontsContractCompat$4)>($r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r6);
+
+        return;
+
+     label03:
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r7 = new androidx.core.provider.FontsContractCompat$4$3;
+
+        specialinvoke $r7.<androidx.core.provider.FontsContractCompat$4$3: void <init>(androidx.core.provider.FontsContractCompat$4)>($r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r7);
+
+        return;
+
+     label04:
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r8 = new androidx.core.provider.FontsContractCompat$4$2;
+
+        specialinvoke $r8.<androidx.core.provider.FontsContractCompat$4$2: void <init>(androidx.core.provider.FontsContractCompat$4)>($r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r8);
+
+        return;
+
+     label05:
+        $r9 = virtualinvoke $r4.<androidx.core.provider.FontsContractCompat$FontFamilyResult: androidx.core.provider.FontsContractCompat$FontInfo[] getFonts()>();
+
+        if $r9 == null goto label12;
+
+        $i0 = lengthof $r9;
+
+        if $i0 != 0 goto label06;
+
+        goto label12;
+
+     label06:
+        $i0 = lengthof $r9;
+
+        $i1 = 0;
+
+     label07:
+        if $i1 >= $i0 goto label10;
+
+        $r1 = $r9[$i1];
+
+        $i2 = virtualinvoke $r1.<androidx.core.provider.FontsContractCompat$FontInfo: int getResultCode()>();
+
+        if $i2 == 0 goto label09;
+
+        $i0 = virtualinvoke $r1.<androidx.core.provider.FontsContractCompat$FontInfo: int getResultCode()>();
+
+        if $i0 >= 0 goto label08;
+
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r10 = new androidx.core.provider.FontsContractCompat$4$6;
+
+        specialinvoke $r10.<androidx.core.provider.FontsContractCompat$4$6: void <init>(androidx.core.provider.FontsContractCompat$4)>($r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r10);
+
+        return;
+
+     label08:
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r11 = new androidx.core.provider.FontsContractCompat$4$7;
+
+        specialinvoke $r11.<androidx.core.provider.FontsContractCompat$4$7: void <init>(androidx.core.provider.FontsContractCompat$4,int)>($r0, $i0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r11);
+
+        return;
+
+     label09:
+        $i1 = $i1 + 1;
+
+        goto label07;
+
+     label10:
+        $r2 = $r0.<androidx.core.provider.FontsContractCompat$4: android.content.Context val$context>;
+
+        $r12 = staticinvoke <androidx.core.provider.FontsContractCompat: android.graphics.Typeface buildTypeface(android.content.Context,android.os.CancellationSignal,androidx.core.provider.FontsContractCompat$FontInfo[])>($r2, null, $r9);
+
+        if $r12 != null goto label11;
+
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r13 = new androidx.core.provider.FontsContractCompat$4$8;
+
+        specialinvoke $r13.<androidx.core.provider.FontsContractCompat$4$8: void <init>(androidx.core.provider.FontsContractCompat$4)>($r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r13);
+
+        return;
+
+     label11:
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r14 = new androidx.core.provider.FontsContractCompat$4$9;
+
+        specialinvoke $r14.<androidx.core.provider.FontsContractCompat$4$9: void <init>(androidx.core.provider.FontsContractCompat$4,android.graphics.Typeface)>($r0, $r12);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r14);
+
+        return;
+
+     label12:
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r15 = new androidx.core.provider.FontsContractCompat$4$5;
+
+        specialinvoke $r15.<androidx.core.provider.FontsContractCompat$4$5: void <init>(androidx.core.provider.FontsContractCompat$4)>($r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r15);
+
+        return;
+
+     label13:
+        $r16 := @caughtexception;
+
+        $r5 = $r0.<androidx.core.provider.FontsContractCompat$4: android.os.Handler val$callerThreadHandler>;
+
+        $r17 = new androidx.core.provider.FontsContractCompat$4$1;
+
+        specialinvoke $r17.<androidx.core.provider.FontsContractCompat$4$1: void <init>(androidx.core.provider.FontsContractCompat$4)>($r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r17);
+
+        return;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label01 to label02 with label13;
+    }
+}

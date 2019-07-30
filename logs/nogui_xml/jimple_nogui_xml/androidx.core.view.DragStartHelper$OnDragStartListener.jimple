@@ -1,0 +1,5 @@
+public interface  androidx.core.view.DragStartHelper$OnDragStartListener extends java.lang.Object
+{
+
+    public abstract boolean onDragStart(android.view.View, androidx.core.view.DragStartHelper);
+}

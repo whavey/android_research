@@ -1,0 +1,28 @@
+public final class com.example.hello_world.R$bool extends java.lang.Object
+{
+    public static final int abc_action_bar_embed_tabs;
+    public static final int abc_allow_stacked_button_bar;
+    public static final int abc_config_actionMenuItemAllCaps;
+
+    public void <init>()
+    {
+        com.example.hello_world.R$bool $r0;
+
+        $r0 := @this: com.example.hello_world.R$bool;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.example.hello_world.R$bool: int abc_config_actionMenuItemAllCaps> = 2130903042;
+
+        <com.example.hello_world.R$bool: int abc_allow_stacked_button_bar> = 2130903041;
+
+        <com.example.hello_world.R$bool: int abc_action_bar_embed_tabs> = 2130903040;
+
+        return;
+    }
+}

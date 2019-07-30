@@ -1,0 +1,488 @@
+public abstract class androidx.appcompat.app.ActionBar extends java.lang.Object
+{
+    public static final int DISPLAY_HOME_AS_UP;
+    public static final int DISPLAY_SHOW_CUSTOM;
+    public static final int DISPLAY_SHOW_HOME;
+    public static final int DISPLAY_SHOW_TITLE;
+    public static final int DISPLAY_USE_LOGO;
+    public static final int NAVIGATION_MODE_LIST;
+    public static final int NAVIGATION_MODE_STANDARD;
+    public static final int NAVIGATION_MODE_TABS;
+
+    public void <init>()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public abstract void addOnMenuVisibilityListener(androidx.appcompat.app.ActionBar$OnMenuVisibilityListener);
+
+    public abstract void addTab(androidx.appcompat.app.ActionBar$Tab);
+
+    public abstract void addTab(androidx.appcompat.app.ActionBar$Tab, int);
+
+    public abstract void addTab(androidx.appcompat.app.ActionBar$Tab, int, boolean);
+
+    public abstract void addTab(androidx.appcompat.app.ActionBar$Tab, boolean);
+
+    public boolean closeOptionsMenu()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public boolean collapseActionView()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public void dispatchMenuVisibilityChanged(boolean)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public abstract android.view.View getCustomView();
+
+    public abstract int getDisplayOptions();
+
+    public float getElevation()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0.0F;
+    }
+
+    public abstract int getHeight();
+
+    public int getHideOffset()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public abstract int getNavigationItemCount();
+
+    public abstract int getNavigationMode();
+
+    public abstract int getSelectedNavigationIndex();
+
+    public abstract androidx.appcompat.app.ActionBar$Tab getSelectedTab();
+
+    public abstract java.lang.CharSequence getSubtitle();
+
+    public abstract androidx.appcompat.app.ActionBar$Tab getTabAt(int);
+
+    public abstract int getTabCount();
+
+    public android.content.Context getThemedContext()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return null;
+    }
+
+    public abstract java.lang.CharSequence getTitle();
+
+    public abstract void hide();
+
+    public boolean invalidateOptionsMenu()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public boolean isHideOnContentScrollEnabled()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public abstract boolean isShowing();
+
+    public boolean isTitleTruncated()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public abstract androidx.appcompat.app.ActionBar$Tab newTab();
+
+    public void onConfigurationChanged(android.content.res.Configuration)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        android.content.res.Configuration $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: android.content.res.Configuration;
+
+        return;
+    }
+
+    void onDestroy()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return;
+    }
+
+    public boolean onKeyShortcut(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        return 0;
+    }
+
+    public boolean onMenuKeyEvent(android.view.KeyEvent)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        android.view.KeyEvent $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: android.view.KeyEvent;
+
+        return 0;
+    }
+
+    public boolean openOptionsMenu()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public abstract void removeAllTabs();
+
+    public abstract void removeOnMenuVisibilityListener(androidx.appcompat.app.ActionBar$OnMenuVisibilityListener);
+
+    public abstract void removeTab(androidx.appcompat.app.ActionBar$Tab);
+
+    public abstract void removeTabAt(int);
+
+    boolean requestFocus()
+    {
+        androidx.appcompat.app.ActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        return 0;
+    }
+
+    public abstract void selectTab(androidx.appcompat.app.ActionBar$Tab);
+
+    public abstract void setBackgroundDrawable(android.graphics.drawable.Drawable);
+
+    public abstract void setCustomView(int);
+
+    public abstract void setCustomView(android.view.View);
+
+    public abstract void setCustomView(android.view.View, androidx.appcompat.app.ActionBar$LayoutParams);
+
+    public void setDefaultDisplayHomeAsUpEnabled(boolean)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public abstract void setDisplayHomeAsUpEnabled(boolean);
+
+    public abstract void setDisplayOptions(int);
+
+    public abstract void setDisplayOptions(int, int);
+
+    public abstract void setDisplayShowCustomEnabled(boolean);
+
+    public abstract void setDisplayShowHomeEnabled(boolean);
+
+    public abstract void setDisplayShowTitleEnabled(boolean);
+
+    public abstract void setDisplayUseLogoEnabled(boolean);
+
+    public void setElevation(float)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        float $f0;
+        byte $b0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $f0 := @parameter0: float;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Setting a non-zero elevation is not supported in this action bar configuration.");
+
+        throw $r1;
+    }
+
+    public void setHideOffset(int)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        int $i0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Setting an explicit action bar hide offset is not supported in this action bar configuration.");
+
+        throw $r1;
+    }
+
+    public void setHideOnContentScrollEnabled(boolean)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        boolean $z0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Hide on content scroll is not supported in this action bar configuration.");
+
+        throw $r1;
+    }
+
+    public void setHomeActionContentDescription(int)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $i0 := @parameter0: int;
+
+        return;
+    }
+
+    public void setHomeActionContentDescription(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        return;
+    }
+
+    public void setHomeAsUpIndicator(int)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $i0 := @parameter0: int;
+
+        return;
+    }
+
+    public void setHomeAsUpIndicator(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+
+    public void setHomeButtonEnabled(boolean)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public abstract void setIcon(int);
+
+    public abstract void setIcon(android.graphics.drawable.Drawable);
+
+    public abstract void setListNavigationCallbacks(android.widget.SpinnerAdapter, androidx.appcompat.app.ActionBar$OnNavigationListener);
+
+    public abstract void setLogo(int);
+
+    public abstract void setLogo(android.graphics.drawable.Drawable);
+
+    public abstract void setNavigationMode(int);
+
+    public abstract void setSelectedNavigationItem(int);
+
+    public void setShowHideAnimationEnabled(boolean)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void setSplitBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+
+    public void setStackedBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+
+    public abstract void setSubtitle(int);
+
+    public abstract void setSubtitle(java.lang.CharSequence);
+
+    public abstract void setTitle(int);
+
+    public abstract void setTitle(java.lang.CharSequence);
+
+    public void setWindowTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        return;
+    }
+
+    public abstract void show();
+
+    public androidx.appcompat.view.ActionMode startActionMode(androidx.appcompat.view.ActionMode$Callback)
+    {
+        androidx.appcompat.app.ActionBar $r0;
+        androidx.appcompat.view.ActionMode$Callback $r1;
+
+        $r0 := @this: androidx.appcompat.app.ActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.view.ActionMode$Callback;
+
+        return null;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.app.ActionBar: int NAVIGATION_MODE_TABS> = 2;
+
+        <androidx.appcompat.app.ActionBar: int NAVIGATION_MODE_STANDARD> = 0;
+
+        <androidx.appcompat.app.ActionBar: int NAVIGATION_MODE_LIST> = 1;
+
+        <androidx.appcompat.app.ActionBar: int DISPLAY_USE_LOGO> = 1;
+
+        <androidx.appcompat.app.ActionBar: int DISPLAY_SHOW_TITLE> = 8;
+
+        <androidx.appcompat.app.ActionBar: int DISPLAY_SHOW_HOME> = 2;
+
+        <androidx.appcompat.app.ActionBar: int DISPLAY_SHOW_CUSTOM> = 16;
+
+        <androidx.appcompat.app.ActionBar: int DISPLAY_HOME_AS_UP> = 4;
+
+        return;
+    }
+}

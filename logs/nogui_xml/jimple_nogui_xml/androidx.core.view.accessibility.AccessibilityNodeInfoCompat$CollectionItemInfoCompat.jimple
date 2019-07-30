@@ -1,0 +1,261 @@
+public class androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat extends java.lang.Object
+{
+    final java.lang.Object mInfo;
+
+    void <init>(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        java.lang.Object $r1;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo> = $r1;
+
+        return;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat obtain(int, int, int, int, boolean)
+    {
+        int $i0, $i1, $i2, $i3, $i4;
+        boolean $z0;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r0;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r1;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $z0 := @parameter4: boolean;
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 19 goto label1;
+
+        $r1 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $r0 = staticinvoke <android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo obtain(int,int,int,int,boolean)>($i0, $i1, $i2, $i3, $z0);
+
+        specialinvoke $r1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: void <init>(java.lang.Object)>($r0);
+
+        return $r1;
+
+     label1:
+        $r1 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        specialinvoke $r1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: void <init>(java.lang.Object)>(null);
+
+        return $r1;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat obtain(int, int, int, int, boolean, boolean)
+    {
+        int $i0, $i1, $i2, $i3, $i4;
+        boolean $z0, $z1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r1;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $z0 := @parameter4: boolean;
+
+        $z1 := @parameter5: boolean;
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 21 goto label1;
+
+        $r0 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $r1 = staticinvoke <android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo obtain(int,int,int,int,boolean,boolean)>($i0, $i1, $i2, $i3, $z0, $z1);
+
+        specialinvoke $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: void <init>(java.lang.Object)>($r1);
+
+        return $r0;
+
+     label1:
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 19 goto label2;
+
+        $r0 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $r1 = staticinvoke <android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo obtain(int,int,int,int,boolean)>($i0, $i1, $i2, $i3, $z0);
+
+        specialinvoke $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: void <init>(java.lang.Object)>($r1);
+
+        return $r0;
+
+     label2:
+        $r0 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        specialinvoke $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: void <init>(java.lang.Object)>(null);
+
+        return $r0;
+    }
+
+    public int getColumnIndex()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo>;
+
+        $r2 = (android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo) $r1;
+
+        $i0 = virtualinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: int getColumnIndex()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public int getColumnSpan()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo>;
+
+        $r2 = (android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo) $r1;
+
+        $i0 = virtualinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: int getColumnSpan()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public int getRowIndex()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo>;
+
+        $r2 = (android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo) $r1;
+
+        $i0 = virtualinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: int getRowIndex()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public int getRowSpan()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo>;
+
+        $r2 = (android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo) $r1;
+
+        $i0 = virtualinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: int getRowSpan()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isHeading()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        boolean $z0;
+        int $i0;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo>;
+
+        $r2 = (android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo) $r1;
+
+        $z0 = virtualinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: boolean isHeading()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isSelected()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $r0;
+        boolean $z0;
+        int $i0;
+        java.lang.Object $r1;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $r2;
+
+        $r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $r1 = $r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo>;
+
+        $r2 = (android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo) $r1;
+
+        $z0 = virtualinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo: boolean isSelected()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+}

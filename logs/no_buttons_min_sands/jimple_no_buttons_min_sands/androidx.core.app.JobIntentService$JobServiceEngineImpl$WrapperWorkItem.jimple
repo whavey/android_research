@@ -1,0 +1,91 @@
+final class androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem extends java.lang.Object implements androidx.core.app.JobIntentService$GenericWorkItem
+{
+    final android.app.job.JobWorkItem mJobWork;
+    final androidx.core.app.JobIntentService$JobServiceEngineImpl this$0;
+
+    void <init>(androidx.core.app.JobIntentService$JobServiceEngineImpl, android.app.job.JobWorkItem)
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem $r0;
+        androidx.core.app.JobIntentService$JobServiceEngineImpl $r1;
+        android.app.job.JobWorkItem $r2;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem;
+
+        $r1 := @parameter0: androidx.core.app.JobIntentService$JobServiceEngineImpl;
+
+        $r2 := @parameter1: android.app.job.JobWorkItem;
+
+        $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: androidx.core.app.JobIntentService$JobServiceEngineImpl this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: android.app.job.JobWorkItem mJobWork> = $r2;
+
+        return;
+    }
+
+    public void complete()
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem $r0;
+        android.app.job.JobWorkItem $r1;
+        androidx.core.app.JobIntentService$JobServiceEngineImpl $r2;
+        java.lang.Object $r3;
+        android.app.job.JobParameters $r4;
+        java.lang.Throwable $r5;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem;
+
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: androidx.core.app.JobIntentService$JobServiceEngineImpl this$0>;
+
+        $r3 = $r2.<androidx.core.app.JobIntentService$JobServiceEngineImpl: java.lang.Object mLock>;
+
+        entermonitor $r3;
+
+     label1:
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: androidx.core.app.JobIntentService$JobServiceEngineImpl this$0>;
+
+        $r4 = $r2.<androidx.core.app.JobIntentService$JobServiceEngineImpl: android.app.job.JobParameters mParams>;
+
+        if $r4 == null goto label2;
+
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: androidx.core.app.JobIntentService$JobServiceEngineImpl this$0>;
+
+        $r4 = $r2.<androidx.core.app.JobIntentService$JobServiceEngineImpl: android.app.job.JobParameters mParams>;
+
+        $r1 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: android.app.job.JobWorkItem mJobWork>;
+
+        virtualinvoke $r4.<android.app.job.JobParameters: void completeWork(android.app.job.JobWorkItem)>($r1);
+
+     label2:
+        exitmonitor $r3;
+
+     label3:
+        return;
+
+     label4:
+        $r5 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label5:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem $r0;
+        android.content.Intent $r1;
+        android.app.job.JobWorkItem $r2;
+
+        $r0 := @this: androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem;
+
+        $r2 = $r0.<androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem: android.app.job.JobWorkItem mJobWork>;
+
+        $r1 = virtualinvoke $r2.<android.app.job.JobWorkItem: android.content.Intent getIntent()>();
+
+        return $r1;
+    }
+}

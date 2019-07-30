@@ -1,0 +1,222 @@
+class androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread extends java.lang.Thread
+{
+    private static final androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread sInstance;
+    private java.util.concurrent.ArrayBlockingQueue mQueue;
+    private androidx.core.util.Pools$SynchronizedPool mRequestPool;
+
+    static void <clinit>()
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread $r0;
+
+        $r0 = new androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread;
+
+        specialinvoke $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: void <init>()>();
+
+        <androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread sInstance> = $r0;
+
+        $r0 = <androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread sInstance>;
+
+        virtualinvoke $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: void start()>();
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread $r0;
+        java.util.concurrent.ArrayBlockingQueue $r1;
+        androidx.core.util.Pools$SynchronizedPool $r2;
+
+        $r0 := @this: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread;
+
+        specialinvoke $r0.<java.lang.Thread: void <init>()>();
+
+        $r1 = new java.util.concurrent.ArrayBlockingQueue;
+
+        specialinvoke $r1.<java.util.concurrent.ArrayBlockingQueue: void <init>(int)>(10);
+
+        $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: java.util.concurrent.ArrayBlockingQueue mQueue> = $r1;
+
+        $r2 = new androidx.core.util.Pools$SynchronizedPool;
+
+        specialinvoke $r2.<androidx.core.util.Pools$SynchronizedPool: void <init>(int)>(10);
+
+        $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: androidx.core.util.Pools$SynchronizedPool mRequestPool> = $r2;
+
+        return;
+    }
+
+    public static androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread getInstance()
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread r0;
+
+        r0 = <androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread sInstance>;
+
+        return r0;
+    }
+
+    public void enqueue(androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest)
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread $r0;
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest $r1;
+        java.lang.RuntimeException $r2;
+        java.util.concurrent.ArrayBlockingQueue $r3;
+        java.lang.Throwable $r4;
+
+        $r0 := @this: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread;
+
+        $r1 := @parameter0: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest;
+
+        $r3 = $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: java.util.concurrent.ArrayBlockingQueue mQueue>;
+
+     label1:
+        virtualinvoke $r3.<java.util.concurrent.ArrayBlockingQueue: void put(java.lang.Object)>($r1);
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r2 = new java.lang.RuntimeException;
+
+        specialinvoke $r2.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("Failed to enqueue async inflate request", $r4);
+
+        throw $r2;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+    }
+
+    public androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest obtainRequest()
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread $r0;
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest $r1;
+        java.lang.Object $r2;
+        androidx.core.util.Pools$SynchronizedPool $r3;
+
+        $r0 := @this: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread;
+
+        $r3 = $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: androidx.core.util.Pools$SynchronizedPool mRequestPool>;
+
+        $r2 = virtualinvoke $r3.<androidx.core.util.Pools$SynchronizedPool: java.lang.Object acquire()>();
+
+        $r1 = (androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest) $r2;
+
+        if $r1 != null goto label1;
+
+        $r1 = new androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest;
+
+        specialinvoke $r1.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: void <init>()>();
+
+     label1:
+        return $r1;
+    }
+
+    public void releaseRequest(androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest)
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread $r0;
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest $r1;
+        androidx.core.util.Pools$SynchronizedPool $r2;
+
+        $r0 := @this: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread;
+
+        $r1 := @parameter0: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest;
+
+        $r1.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: androidx.asynclayoutinflater.view.AsyncLayoutInflater$OnInflateFinishedListener callback> = null;
+
+        $r1.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: androidx.asynclayoutinflater.view.AsyncLayoutInflater inflater> = null;
+
+        $r1.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: android.view.ViewGroup parent> = null;
+
+        $r1.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: int resid> = 0;
+
+        $r1.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: android.view.View view> = null;
+
+        $r2 = $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: androidx.core.util.Pools$SynchronizedPool mRequestPool>;
+
+        virtualinvoke $r2.<androidx.core.util.Pools$SynchronizedPool: boolean release(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread $r0;
+
+        $r0 := @this: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread;
+
+     label1:
+        virtualinvoke $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: void runInner()>();
+
+        goto label1;
+    }
+
+    public void runInner()
+    {
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread $r0;
+        android.view.ViewGroup $r1;
+        java.util.concurrent.ArrayBlockingQueue $r2;
+        java.lang.Object $r3;
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest $r4;
+        androidx.asynclayoutinflater.view.AsyncLayoutInflater $r5;
+        android.view.LayoutInflater $r6;
+        int $i0;
+        android.view.View $r7;
+        java.lang.RuntimeException $r8;
+        android.os.Handler $r9;
+        android.os.Message $r10;
+        java.lang.Throwable $r11;
+
+        $r0 := @this: androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread;
+
+        $r2 = $r0.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateThread: java.util.concurrent.ArrayBlockingQueue mQueue>;
+
+     label1:
+        $r3 = virtualinvoke $r2.<java.util.concurrent.ArrayBlockingQueue: java.lang.Object take()>();
+
+     label2:
+        $r4 = (androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest) $r3;
+
+     label3:
+        $r5 = $r4.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: androidx.asynclayoutinflater.view.AsyncLayoutInflater inflater>;
+
+        $r6 = $r5.<androidx.asynclayoutinflater.view.AsyncLayoutInflater: android.view.LayoutInflater mInflater>;
+
+        $i0 = $r4.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: int resid>;
+
+        $r1 = $r4.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: android.view.ViewGroup parent>;
+
+        $r7 = virtualinvoke $r6.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($i0, $r1, 0);
+
+        $r4.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: android.view.View view> = $r7;
+
+     label4:
+        goto label6;
+
+     label5:
+        $r8 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("AsyncLayoutInflater", "Failed to inflate resource in the background! Retrying on the UI thread", $r8);
+
+     label6:
+        $r5 = $r4.<androidx.asynclayoutinflater.view.AsyncLayoutInflater$InflateRequest: androidx.asynclayoutinflater.view.AsyncLayoutInflater inflater>;
+
+        $r9 = $r5.<androidx.asynclayoutinflater.view.AsyncLayoutInflater: android.os.Handler mHandler>;
+
+        $r10 = staticinvoke <android.os.Message: android.os.Message obtain(android.os.Handler,int,java.lang.Object)>($r9, 0, $r4);
+
+        virtualinvoke $r10.<android.os.Message: void sendToTarget()>();
+
+        return;
+
+     label7:
+        $r11 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.Throwable)>("AsyncLayoutInflater", $r11);
+
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label7;
+        catch java.lang.RuntimeException from label3 to label4 with label5;
+    }
+}

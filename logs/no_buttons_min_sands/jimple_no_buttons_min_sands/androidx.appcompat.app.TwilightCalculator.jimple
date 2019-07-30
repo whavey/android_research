@@ -1,0 +1,285 @@
+class androidx.appcompat.app.TwilightCalculator extends java.lang.Object
+{
+    private static final float ALTIDUTE_CORRECTION_CIVIL_TWILIGHT;
+    private static final float C1;
+    private static final float C2;
+    private static final float C3;
+    public static final int DAY;
+    private static final float DEGREES_TO_RADIANS;
+    private static final float J0;
+    public static final int NIGHT;
+    private static final float OBLIQUITY;
+    private static final long UTC_2000;
+    private static androidx.appcompat.app.TwilightCalculator sInstance;
+    public int state;
+    public long sunrise;
+    public long sunset;
+
+    void <init>()
+    {
+        androidx.appcompat.app.TwilightCalculator $r0;
+
+        $r0 := @this: androidx.appcompat.app.TwilightCalculator;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static androidx.appcompat.app.TwilightCalculator getInstance()
+    {
+        androidx.appcompat.app.TwilightCalculator $r0;
+
+        $r0 = <androidx.appcompat.app.TwilightCalculator: androidx.appcompat.app.TwilightCalculator sInstance>;
+
+        if $r0 != null goto label1;
+
+        $r0 = new androidx.appcompat.app.TwilightCalculator;
+
+        specialinvoke $r0.<androidx.appcompat.app.TwilightCalculator: void <init>()>();
+
+        <androidx.appcompat.app.TwilightCalculator: androidx.appcompat.app.TwilightCalculator sInstance> = $r0;
+
+     label1:
+        $r0 = <androidx.appcompat.app.TwilightCalculator: androidx.appcompat.app.TwilightCalculator sInstance>;
+
+        return $r0;
+    }
+
+    public void calculateTwilight(long, double, double)
+    {
+        androidx.appcompat.app.TwilightCalculator $r0;
+        long $l0, $l1;
+        double $d0, $d1, $d2, $d3, $d4, $d5;
+        float $f0, $f1, $f2;
+        byte $b2;
+
+        $r0 := @this: androidx.appcompat.app.TwilightCalculator;
+
+        $l0 := @parameter0: long;
+
+        $d0 := @parameter1: double;
+
+        $d1 := @parameter2: double;
+
+        $l1 = $l0 - 946728000000L;
+
+        $f0 = (float) $l1;
+
+        $f1 = $f0 / 8.64E7F;
+
+        $f0 = 0.01720197F * $f1;
+
+        $f0 = $f0 + 6.24006F;
+
+        $d2 = (double) $f0;
+
+        $d3 = (double) $f0;
+
+        $d3 = staticinvoke <java.lang.Math: double sin(double)>($d3);
+
+        $d3 = $d3 * 0.03341960161924362;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($d2);
+
+        $d2 = $d2 + $d3;
+
+        $f2 = 2.0F * $f0;
+
+        $d3 = (double) $f2;
+
+        $d3 = staticinvoke <java.lang.Math: double sin(double)>($d3);
+
+        $d3 = $d3 * 3.4906598739326E-4;
+
+        $d2 = $d2 + $d3;
+
+        $f2 = 3.0F * $f0;
+
+        $d3 = (double) $f2;
+
+        $d3 = staticinvoke <java.lang.Math: double sin(double)>($d3);
+
+        $d3 = $d3 * 5.236000106378924E-6;
+
+        $d2 = $d2 + $d3;
+
+        $d2 = 1.796593063 + $d2;
+
+        $d2 = $d2 + 3.141592653589793;
+
+        $d1 = neg $d1;
+
+        $d1 = $d1 / 360.0;
+
+        $f1 = $f1 - 9.0E-4F;
+
+        $d3 = (double) $f1;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($d3);
+
+        $d3 = $d3 - $d1;
+
+        $l1 = staticinvoke <java.lang.Math: long round(double)>($d3);
+
+        $f1 = (float) $l1;
+
+        $f1 = 9.0E-4F + $f1;
+
+        $d3 = (double) $f1;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($d3);
+
+        $d1 = $d3 + $d1;
+
+        $d3 = (double) $f0;
+
+        $d3 = staticinvoke <java.lang.Math: double sin(double)>($d3);
+
+        $d3 = $d3 * 0.0053;
+
+        $d1 = $d1 + $d3;
+
+        $d3 = 2.0 * $d2;
+
+        $d3 = staticinvoke <java.lang.Math: double sin(double)>($d3);
+
+        $d3 = $d3 * -0.0069;
+
+        $d1 = $d1 + $d3;
+
+        $d2 = staticinvoke <java.lang.Math: double sin(double)>($d2);
+
+        $d3 = staticinvoke <java.lang.Math: double sin(double)>(0.4092797040939331);
+
+        $d2 = $d2 * $d3;
+
+        $d2 = staticinvoke <java.lang.Math: double asin(double)>($d2);
+
+        $d0 = 0.01745329238474369 * $d0;
+
+        $d3 = staticinvoke <java.lang.Math: double sin(double)>(-0.10471975803375244);
+
+        $d4 = staticinvoke <java.lang.Math: double sin(double)>($d0);
+
+        $d5 = staticinvoke <java.lang.Math: double sin(double)>($d2);
+
+        $d4 = $d4 * $d5;
+
+        $d3 = $d3 - $d4;
+
+        $d0 = staticinvoke <java.lang.Math: double cos(double)>($d0);
+
+        $d2 = staticinvoke <java.lang.Math: double cos(double)>($d2);
+
+        $d0 = $d0 * $d2;
+
+        $d0 = $d3 / $d0;
+
+        $b2 = $d0 cmpl 1.0;
+
+        if $b2 < 0 goto label1;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: int state> = 1;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: long sunset> = -1L;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: long sunrise> = -1L;
+
+        return;
+
+     label1:
+        $b2 = $d0 cmpg -1.0;
+
+        if $b2 > 0 goto label2;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: int state> = 0;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: long sunset> = -1L;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: long sunrise> = -1L;
+
+        return;
+
+     label2:
+        $d0 = staticinvoke <java.lang.Math: double acos(double)>($d0);
+
+        $d0 = $d0 / 6.283185307179586;
+
+        $f0 = (float) $d0;
+
+        $d0 = (double) $f0;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($d0);
+
+        $d0 = $d0 + $d1;
+
+        $d0 = $d0 * 8.64E7;
+
+        $l1 = staticinvoke <java.lang.Math: long round(double)>($d0);
+
+        $l1 = $l1 + 946728000000L;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: long sunset> = $l1;
+
+        $d0 = (double) $f0;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($d0);
+
+        $d0 = $d1 - $d0;
+
+        $d0 = $d0 * 8.64E7;
+
+        $l1 = staticinvoke <java.lang.Math: long round(double)>($d0);
+
+        $l1 = $l1 + 946728000000L;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: long sunrise> = $l1;
+
+        $l1 = $r0.<androidx.appcompat.app.TwilightCalculator: long sunrise>;
+
+        $b2 = $l1 cmp $l0;
+
+        if $b2 >= 0 goto label3;
+
+        $l1 = $r0.<androidx.appcompat.app.TwilightCalculator: long sunset>;
+
+        $b2 = $l1 cmp $l0;
+
+        if $b2 <= 0 goto label3;
+
+        $r0.<androidx.appcompat.app.TwilightCalculator: int state> = 0;
+
+        return;
+
+     label3:
+        $r0.<androidx.appcompat.app.TwilightCalculator: int state> = 1;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.app.TwilightCalculator: long UTC_2000> = 946728000000L;
+
+        <androidx.appcompat.app.TwilightCalculator: float OBLIQUITY> = 0.4092797F;
+
+        <androidx.appcompat.app.TwilightCalculator: int NIGHT> = 1;
+
+        <androidx.appcompat.app.TwilightCalculator: float J0> = 9.0E-4F;
+
+        <androidx.appcompat.app.TwilightCalculator: float DEGREES_TO_RADIANS> = 0.017453292F;
+
+        <androidx.appcompat.app.TwilightCalculator: int DAY> = 0;
+
+        <androidx.appcompat.app.TwilightCalculator: float C3> = 5.236E-6F;
+
+        <androidx.appcompat.app.TwilightCalculator: float C2> = 3.49066E-4F;
+
+        <androidx.appcompat.app.TwilightCalculator: float C1> = 0.0334196F;
+
+        <androidx.appcompat.app.TwilightCalculator: float ALTIDUTE_CORRECTION_CIVIL_TWILIGHT> = -0.10471976F;
+
+        return;
+    }
+}

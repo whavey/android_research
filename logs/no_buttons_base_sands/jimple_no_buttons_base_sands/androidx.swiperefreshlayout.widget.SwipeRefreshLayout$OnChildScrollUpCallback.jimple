@@ -1,0 +1,5 @@
+public interface  androidx.swiperefreshlayout.widget.SwipeRefreshLayout$OnChildScrollUpCallback extends java.lang.Object
+{
+
+    public abstract boolean canChildScrollUp(androidx.swiperefreshlayout.widget.SwipeRefreshLayout, android.view.View);
+}

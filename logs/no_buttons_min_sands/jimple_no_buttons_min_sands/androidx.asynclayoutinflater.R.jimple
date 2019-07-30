@@ -1,0 +1,14 @@
+public final class androidx.asynclayoutinflater.R extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.asynclayoutinflater.R $r0;
+
+        $r0 := @this: androidx.asynclayoutinflater.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

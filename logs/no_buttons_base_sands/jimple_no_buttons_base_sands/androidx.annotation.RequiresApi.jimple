@@ -1,0 +1,7 @@
+public annotation interface  androidx.'annotation'.RequiresApi extends java.lang.Object implements java.lang.'annotation'.Annotation
+{
+
+    public abstract int api();
+
+    public abstract int value();
+}

@@ -1,0 +1,1060 @@
+public final class com.example.no_buttons.R$style extends java.lang.Object
+{
+    public static final int AlertDialog_AppCompat;
+    public static final int AlertDialog_AppCompat_Light;
+    public static final int Animation_AppCompat_Dialog;
+    public static final int Animation_AppCompat_DropDownUp;
+    public static final int Animation_AppCompat_Tooltip;
+    public static final int AppTheme;
+    public static final int Base_AlertDialog_AppCompat;
+    public static final int Base_AlertDialog_AppCompat_Light;
+    public static final int Base_Animation_AppCompat_Dialog;
+    public static final int Base_Animation_AppCompat_DropDownUp;
+    public static final int Base_Animation_AppCompat_Tooltip;
+    public static final int Base_DialogWindowTitleBackground_AppCompat;
+    public static final int Base_DialogWindowTitle_AppCompat;
+    public static final int Base_TextAppearance_AppCompat;
+    public static final int Base_TextAppearance_AppCompat_Body1;
+    public static final int Base_TextAppearance_AppCompat_Body2;
+    public static final int Base_TextAppearance_AppCompat_Button;
+    public static final int Base_TextAppearance_AppCompat_Caption;
+    public static final int Base_TextAppearance_AppCompat_Display1;
+    public static final int Base_TextAppearance_AppCompat_Display2;
+    public static final int Base_TextAppearance_AppCompat_Display3;
+    public static final int Base_TextAppearance_AppCompat_Display4;
+    public static final int Base_TextAppearance_AppCompat_Headline;
+    public static final int Base_TextAppearance_AppCompat_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Large;
+    public static final int Base_TextAppearance_AppCompat_Large_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+    public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+    public static final int Base_TextAppearance_AppCompat_Medium;
+    public static final int Base_TextAppearance_AppCompat_Medium_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Menu;
+    public static final int Base_TextAppearance_AppCompat_SearchResult;
+    public static final int Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+    public static final int Base_TextAppearance_AppCompat_SearchResult_Title;
+    public static final int Base_TextAppearance_AppCompat_Small;
+    public static final int Base_TextAppearance_AppCompat_Small_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Subhead;
+    public static final int Base_TextAppearance_AppCompat_Subhead_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Title;
+    public static final int Base_TextAppearance_AppCompat_Title_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Tooltip;
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+    public static final int Base_TextAppearance_AppCompat_Widget_Button;
+    public static final int Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+    public static final int Base_TextAppearance_AppCompat_Widget_Button_Colored;
+    public static final int Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+    public static final int Base_TextAppearance_AppCompat_Widget_DropDownItem;
+    public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+    public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+    public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+    public static final int Base_TextAppearance_AppCompat_Widget_Switch;
+    public static final int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+    public static final int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+    public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+    public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+    public static final int Base_ThemeOverlay_AppCompat;
+    public static final int Base_ThemeOverlay_AppCompat_ActionBar;
+    public static final int Base_ThemeOverlay_AppCompat_Dark;
+    public static final int Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+    public static final int Base_ThemeOverlay_AppCompat_Dialog;
+    public static final int Base_ThemeOverlay_AppCompat_Dialog_Alert;
+    public static final int Base_ThemeOverlay_AppCompat_Light;
+    public static final int Base_Theme_AppCompat;
+    public static final int Base_Theme_AppCompat_CompactMenu;
+    public static final int Base_Theme_AppCompat_Dialog;
+    public static final int Base_Theme_AppCompat_DialogWhenLarge;
+    public static final int Base_Theme_AppCompat_Dialog_Alert;
+    public static final int Base_Theme_AppCompat_Dialog_FixedSize;
+    public static final int Base_Theme_AppCompat_Dialog_MinWidth;
+    public static final int Base_Theme_AppCompat_Light;
+    public static final int Base_Theme_AppCompat_Light_DarkActionBar;
+    public static final int Base_Theme_AppCompat_Light_Dialog;
+    public static final int Base_Theme_AppCompat_Light_DialogWhenLarge;
+    public static final int Base_Theme_AppCompat_Light_Dialog_Alert;
+    public static final int Base_Theme_AppCompat_Light_Dialog_FixedSize;
+    public static final int Base_Theme_AppCompat_Light_Dialog_MinWidth;
+    public static final int Base_V21_ThemeOverlay_AppCompat_Dialog;
+    public static final int Base_V21_Theme_AppCompat;
+    public static final int Base_V21_Theme_AppCompat_Dialog;
+    public static final int Base_V21_Theme_AppCompat_Light;
+    public static final int Base_V21_Theme_AppCompat_Light_Dialog;
+    public static final int Base_V22_Theme_AppCompat;
+    public static final int Base_V22_Theme_AppCompat_Light;
+    public static final int Base_V23_Theme_AppCompat;
+    public static final int Base_V23_Theme_AppCompat_Light;
+    public static final int Base_V26_Theme_AppCompat;
+    public static final int Base_V26_Theme_AppCompat_Light;
+    public static final int Base_V26_Widget_AppCompat_Toolbar;
+    public static final int Base_V28_Theme_AppCompat;
+    public static final int Base_V28_Theme_AppCompat_Light;
+    public static final int Base_V7_ThemeOverlay_AppCompat_Dialog;
+    public static final int Base_V7_Theme_AppCompat;
+    public static final int Base_V7_Theme_AppCompat_Dialog;
+    public static final int Base_V7_Theme_AppCompat_Light;
+    public static final int Base_V7_Theme_AppCompat_Light_Dialog;
+    public static final int Base_V7_Widget_AppCompat_AutoCompleteTextView;
+    public static final int Base_V7_Widget_AppCompat_EditText;
+    public static final int Base_V7_Widget_AppCompat_Toolbar;
+    public static final int Base_Widget_AppCompat_ActionBar;
+    public static final int Base_Widget_AppCompat_ActionBar_Solid;
+    public static final int Base_Widget_AppCompat_ActionBar_TabBar;
+    public static final int Base_Widget_AppCompat_ActionBar_TabText;
+    public static final int Base_Widget_AppCompat_ActionBar_TabView;
+    public static final int Base_Widget_AppCompat_ActionButton;
+    public static final int Base_Widget_AppCompat_ActionButton_CloseMode;
+    public static final int Base_Widget_AppCompat_ActionButton_Overflow;
+    public static final int Base_Widget_AppCompat_ActionMode;
+    public static final int Base_Widget_AppCompat_ActivityChooserView;
+    public static final int Base_Widget_AppCompat_AutoCompleteTextView;
+    public static final int Base_Widget_AppCompat_Button;
+    public static final int Base_Widget_AppCompat_ButtonBar;
+    public static final int Base_Widget_AppCompat_ButtonBar_AlertDialog;
+    public static final int Base_Widget_AppCompat_Button_Borderless;
+    public static final int Base_Widget_AppCompat_Button_Borderless_Colored;
+    public static final int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+    public static final int Base_Widget_AppCompat_Button_Colored;
+    public static final int Base_Widget_AppCompat_Button_Small;
+    public static final int Base_Widget_AppCompat_CompoundButton_CheckBox;
+    public static final int Base_Widget_AppCompat_CompoundButton_RadioButton;
+    public static final int Base_Widget_AppCompat_CompoundButton_Switch;
+    public static final int Base_Widget_AppCompat_DrawerArrowToggle;
+    public static final int Base_Widget_AppCompat_DrawerArrowToggle_Common;
+    public static final int Base_Widget_AppCompat_DropDownItem_Spinner;
+    public static final int Base_Widget_AppCompat_EditText;
+    public static final int Base_Widget_AppCompat_ImageButton;
+    public static final int Base_Widget_AppCompat_Light_ActionBar;
+    public static final int Base_Widget_AppCompat_Light_ActionBar_Solid;
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabBar;
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabText;
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabView;
+    public static final int Base_Widget_AppCompat_Light_PopupMenu;
+    public static final int Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+    public static final int Base_Widget_AppCompat_ListMenuView;
+    public static final int Base_Widget_AppCompat_ListPopupWindow;
+    public static final int Base_Widget_AppCompat_ListView;
+    public static final int Base_Widget_AppCompat_ListView_DropDown;
+    public static final int Base_Widget_AppCompat_ListView_Menu;
+    public static final int Base_Widget_AppCompat_PopupMenu;
+    public static final int Base_Widget_AppCompat_PopupMenu_Overflow;
+    public static final int Base_Widget_AppCompat_PopupWindow;
+    public static final int Base_Widget_AppCompat_ProgressBar;
+    public static final int Base_Widget_AppCompat_ProgressBar_Horizontal;
+    public static final int Base_Widget_AppCompat_RatingBar;
+    public static final int Base_Widget_AppCompat_RatingBar_Indicator;
+    public static final int Base_Widget_AppCompat_RatingBar_Small;
+    public static final int Base_Widget_AppCompat_SearchView;
+    public static final int Base_Widget_AppCompat_SearchView_ActionBar;
+    public static final int Base_Widget_AppCompat_SeekBar;
+    public static final int Base_Widget_AppCompat_SeekBar_Discrete;
+    public static final int Base_Widget_AppCompat_Spinner;
+    public static final int Base_Widget_AppCompat_Spinner_Underlined;
+    public static final int Base_Widget_AppCompat_TextView_SpinnerItem;
+    public static final int Base_Widget_AppCompat_Toolbar;
+    public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation;
+    public static final int Platform_AppCompat;
+    public static final int Platform_AppCompat_Light;
+    public static final int Platform_ThemeOverlay_AppCompat;
+    public static final int Platform_ThemeOverlay_AppCompat_Dark;
+    public static final int Platform_ThemeOverlay_AppCompat_Light;
+    public static final int Platform_V21_AppCompat;
+    public static final int Platform_V21_AppCompat_Light;
+    public static final int Platform_V25_AppCompat;
+    public static final int Platform_V25_AppCompat_Light;
+    public static final int Platform_Widget_AppCompat_Spinner;
+    public static final int RtlOverlay_DialogWindowTitle_AppCompat;
+    public static final int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+    public static final int RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
+    public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+    public static final int RtlUnderlay_Widget_AppCompat_ActionButton;
+    public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+    public static final int TextAppearance_AppCompat;
+    public static final int TextAppearance_AppCompat_Body1;
+    public static final int TextAppearance_AppCompat_Body2;
+    public static final int TextAppearance_AppCompat_Button;
+    public static final int TextAppearance_AppCompat_Caption;
+    public static final int TextAppearance_AppCompat_Display1;
+    public static final int TextAppearance_AppCompat_Display2;
+    public static final int TextAppearance_AppCompat_Display3;
+    public static final int TextAppearance_AppCompat_Display4;
+    public static final int TextAppearance_AppCompat_Headline;
+    public static final int TextAppearance_AppCompat_Inverse;
+    public static final int TextAppearance_AppCompat_Large;
+    public static final int TextAppearance_AppCompat_Large_Inverse;
+    public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+    public static final int TextAppearance_AppCompat_Light_SearchResult_Title;
+    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+    public static final int TextAppearance_AppCompat_Medium;
+    public static final int TextAppearance_AppCompat_Medium_Inverse;
+    public static final int TextAppearance_AppCompat_Menu;
+    public static final int TextAppearance_AppCompat_SearchResult_Subtitle;
+    public static final int TextAppearance_AppCompat_SearchResult_Title;
+    public static final int TextAppearance_AppCompat_Small;
+    public static final int TextAppearance_AppCompat_Small_Inverse;
+    public static final int TextAppearance_AppCompat_Subhead;
+    public static final int TextAppearance_AppCompat_Subhead_Inverse;
+    public static final int TextAppearance_AppCompat_Title;
+    public static final int TextAppearance_AppCompat_Title_Inverse;
+    public static final int TextAppearance_AppCompat_Tooltip;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Menu;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title;
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title;
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+    public static final int TextAppearance_AppCompat_Widget_Button;
+    public static final int TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+    public static final int TextAppearance_AppCompat_Widget_Button_Colored;
+    public static final int TextAppearance_AppCompat_Widget_Button_Inverse;
+    public static final int TextAppearance_AppCompat_Widget_DropDownItem;
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Header;
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Large;
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small;
+    public static final int TextAppearance_AppCompat_Widget_Switch;
+    public static final int TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+    public static final int TextAppearance_Compat_Notification;
+    public static final int TextAppearance_Compat_Notification_Info;
+    public static final int TextAppearance_Compat_Notification_Line2;
+    public static final int TextAppearance_Compat_Notification_Time;
+    public static final int TextAppearance_Compat_Notification_Title;
+    public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+    public static final int TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+    public static final int TextAppearance_Widget_AppCompat_Toolbar_Title;
+    public static final int ThemeOverlay_AppCompat;
+    public static final int ThemeOverlay_AppCompat_ActionBar;
+    public static final int ThemeOverlay_AppCompat_Dark;
+    public static final int ThemeOverlay_AppCompat_Dark_ActionBar;
+    public static final int ThemeOverlay_AppCompat_Dialog;
+    public static final int ThemeOverlay_AppCompat_Dialog_Alert;
+    public static final int ThemeOverlay_AppCompat_Light;
+    public static final int Theme_AppCompat;
+    public static final int Theme_AppCompat_CompactMenu;
+    public static final int Theme_AppCompat_DayNight;
+    public static final int Theme_AppCompat_DayNight_DarkActionBar;
+    public static final int Theme_AppCompat_DayNight_Dialog;
+    public static final int Theme_AppCompat_DayNight_DialogWhenLarge;
+    public static final int Theme_AppCompat_DayNight_Dialog_Alert;
+    public static final int Theme_AppCompat_DayNight_Dialog_MinWidth;
+    public static final int Theme_AppCompat_DayNight_NoActionBar;
+    public static final int Theme_AppCompat_Dialog;
+    public static final int Theme_AppCompat_DialogWhenLarge;
+    public static final int Theme_AppCompat_Dialog_Alert;
+    public static final int Theme_AppCompat_Dialog_MinWidth;
+    public static final int Theme_AppCompat_Light;
+    public static final int Theme_AppCompat_Light_DarkActionBar;
+    public static final int Theme_AppCompat_Light_Dialog;
+    public static final int Theme_AppCompat_Light_DialogWhenLarge;
+    public static final int Theme_AppCompat_Light_Dialog_Alert;
+    public static final int Theme_AppCompat_Light_Dialog_MinWidth;
+    public static final int Theme_AppCompat_Light_NoActionBar;
+    public static final int Theme_AppCompat_NoActionBar;
+    public static final int Widget_AppCompat_ActionBar;
+    public static final int Widget_AppCompat_ActionBar_Solid;
+    public static final int Widget_AppCompat_ActionBar_TabBar;
+    public static final int Widget_AppCompat_ActionBar_TabText;
+    public static final int Widget_AppCompat_ActionBar_TabView;
+    public static final int Widget_AppCompat_ActionButton;
+    public static final int Widget_AppCompat_ActionButton_CloseMode;
+    public static final int Widget_AppCompat_ActionButton_Overflow;
+    public static final int Widget_AppCompat_ActionMode;
+    public static final int Widget_AppCompat_ActivityChooserView;
+    public static final int Widget_AppCompat_AutoCompleteTextView;
+    public static final int Widget_AppCompat_Button;
+    public static final int Widget_AppCompat_ButtonBar;
+    public static final int Widget_AppCompat_ButtonBar_AlertDialog;
+    public static final int Widget_AppCompat_Button_Borderless;
+    public static final int Widget_AppCompat_Button_Borderless_Colored;
+    public static final int Widget_AppCompat_Button_ButtonBar_AlertDialog;
+    public static final int Widget_AppCompat_Button_Colored;
+    public static final int Widget_AppCompat_Button_Small;
+    public static final int Widget_AppCompat_CompoundButton_CheckBox;
+    public static final int Widget_AppCompat_CompoundButton_RadioButton;
+    public static final int Widget_AppCompat_CompoundButton_Switch;
+    public static final int Widget_AppCompat_DrawerArrowToggle;
+    public static final int Widget_AppCompat_DropDownItem_Spinner;
+    public static final int Widget_AppCompat_EditText;
+    public static final int Widget_AppCompat_ImageButton;
+    public static final int Widget_AppCompat_Light_ActionBar;
+    public static final int Widget_AppCompat_Light_ActionBar_Solid;
+    public static final int Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+    public static final int Widget_AppCompat_Light_ActionBar_TabBar;
+    public static final int Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+    public static final int Widget_AppCompat_Light_ActionBar_TabText;
+    public static final int Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+    public static final int Widget_AppCompat_Light_ActionBar_TabView;
+    public static final int Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+    public static final int Widget_AppCompat_Light_ActionButton;
+    public static final int Widget_AppCompat_Light_ActionButton_CloseMode;
+    public static final int Widget_AppCompat_Light_ActionButton_Overflow;
+    public static final int Widget_AppCompat_Light_ActionMode_Inverse;
+    public static final int Widget_AppCompat_Light_ActivityChooserView;
+    public static final int Widget_AppCompat_Light_AutoCompleteTextView;
+    public static final int Widget_AppCompat_Light_DropDownItem_Spinner;
+    public static final int Widget_AppCompat_Light_ListPopupWindow;
+    public static final int Widget_AppCompat_Light_ListView_DropDown;
+    public static final int Widget_AppCompat_Light_PopupMenu;
+    public static final int Widget_AppCompat_Light_PopupMenu_Overflow;
+    public static final int Widget_AppCompat_Light_SearchView;
+    public static final int Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+    public static final int Widget_AppCompat_ListMenuView;
+    public static final int Widget_AppCompat_ListPopupWindow;
+    public static final int Widget_AppCompat_ListView;
+    public static final int Widget_AppCompat_ListView_DropDown;
+    public static final int Widget_AppCompat_ListView_Menu;
+    public static final int Widget_AppCompat_PopupMenu;
+    public static final int Widget_AppCompat_PopupMenu_Overflow;
+    public static final int Widget_AppCompat_PopupWindow;
+    public static final int Widget_AppCompat_ProgressBar;
+    public static final int Widget_AppCompat_ProgressBar_Horizontal;
+    public static final int Widget_AppCompat_RatingBar;
+    public static final int Widget_AppCompat_RatingBar_Indicator;
+    public static final int Widget_AppCompat_RatingBar_Small;
+    public static final int Widget_AppCompat_SearchView;
+    public static final int Widget_AppCompat_SearchView_ActionBar;
+    public static final int Widget_AppCompat_SeekBar;
+    public static final int Widget_AppCompat_SeekBar_Discrete;
+    public static final int Widget_AppCompat_Spinner;
+    public static final int Widget_AppCompat_Spinner_DropDown;
+    public static final int Widget_AppCompat_Spinner_DropDown_ActionBar;
+    public static final int Widget_AppCompat_Spinner_Underlined;
+    public static final int Widget_AppCompat_TextView_SpinnerItem;
+    public static final int Widget_AppCompat_Toolbar;
+    public static final int Widget_AppCompat_Toolbar_Button_Navigation;
+    public static final int Widget_Compat_NotificationActionContainer;
+    public static final int Widget_Compat_NotificationActionText;
+    public static final int Widget_Support_CoordinatorLayout;
+
+    public void <init>()
+    {
+        com.example.no_buttons.R$style $r0;
+
+        $r0 := @this: com.example.no_buttons.R$style;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.example.no_buttons.R$style: int Widget_Support_CoordinatorLayout> = 2131493210;
+
+        <com.example.no_buttons.R$style: int Widget_Compat_NotificationActionText> = 2131493209;
+
+        <com.example.no_buttons.R$style: int Widget_Compat_NotificationActionContainer> = 2131493208;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Toolbar_Button_Navigation> = 2131493207;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Toolbar> = 2131493206;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_TextView_SpinnerItem> = 2131493205;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Spinner_Underlined> = 2131493204;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Spinner_DropDown_ActionBar> = 2131493203;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Spinner_DropDown> = 2131493202;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Spinner> = 2131493201;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_SeekBar_Discrete> = 2131493200;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_SeekBar> = 2131493199;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_SearchView_ActionBar> = 2131493198;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_SearchView> = 2131493197;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_RatingBar_Small> = 2131493196;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_RatingBar_Indicator> = 2131493195;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_RatingBar> = 2131493194;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ProgressBar_Horizontal> = 2131493193;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ProgressBar> = 2131493192;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_PopupWindow> = 2131493191;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_PopupMenu_Overflow> = 2131493190;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_PopupMenu> = 2131493189;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ListView_Menu> = 2131493188;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ListView_DropDown> = 2131493187;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ListView> = 2131493186;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ListPopupWindow> = 2131493185;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ListMenuView> = 2131493184;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_Spinner_DropDown_ActionBar> = 2131493183;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_SearchView> = 2131493182;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_PopupMenu_Overflow> = 2131493181;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_PopupMenu> = 2131493180;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ListView_DropDown> = 2131493179;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ListPopupWindow> = 2131493178;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_DropDownItem_Spinner> = 2131493177;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_AutoCompleteTextView> = 2131493176;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActivityChooserView> = 2131493175;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionMode_Inverse> = 2131493174;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionButton_Overflow> = 2131493173;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionButton_CloseMode> = 2131493172;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionButton> = 2131493171;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_TabView_Inverse> = 2131493170;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_TabView> = 2131493169;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_TabText_Inverse> = 2131493168;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_TabText> = 2131493167;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_TabBar_Inverse> = 2131493166;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_TabBar> = 2131493165;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_Solid_Inverse> = 2131493164;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar_Solid> = 2131493163;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Light_ActionBar> = 2131493162;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ImageButton> = 2131493161;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_EditText> = 2131493160;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_DropDownItem_Spinner> = 2131493159;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_DrawerArrowToggle> = 2131493158;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_CompoundButton_Switch> = 2131493157;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_CompoundButton_RadioButton> = 2131493156;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_CompoundButton_CheckBox> = 2131493155;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Button_Small> = 2131493152;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Button_Colored> = 2131493151;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Button_ButtonBar_AlertDialog> = 2131493150;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Button_Borderless_Colored> = 2131493149;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Button_Borderless> = 2131493148;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ButtonBar_AlertDialog> = 2131493154;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ButtonBar> = 2131493153;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_Button> = 2131493147;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_AutoCompleteTextView> = 2131493146;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActivityChooserView> = 2131493145;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionMode> = 2131493144;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionButton_Overflow> = 2131493143;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionButton_CloseMode> = 2131493142;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionButton> = 2131493141;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionBar_TabView> = 2131493140;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionBar_TabText> = 2131493139;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionBar_TabBar> = 2131493138;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionBar_Solid> = 2131493137;
+
+        <com.example.no_buttons.R$style: int Widget_AppCompat_ActionBar> = 2131493136;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_NoActionBar> = 2131493128;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Light_NoActionBar> = 2131493127;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Light_Dialog_MinWidth> = 2131493125;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Light_Dialog_Alert> = 2131493124;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Light_DialogWhenLarge> = 2131493126;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Light_Dialog> = 2131493123;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Light_DarkActionBar> = 2131493122;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Light> = 2131493121;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Dialog_MinWidth> = 2131493119;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Dialog_Alert> = 2131493118;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DialogWhenLarge> = 2131493120;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_Dialog> = 2131493117;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DayNight_NoActionBar> = 2131493116;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DayNight_Dialog_MinWidth> = 2131493114;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DayNight_Dialog_Alert> = 2131493113;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DayNight_DialogWhenLarge> = 2131493115;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DayNight_Dialog> = 2131493112;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DayNight_DarkActionBar> = 2131493111;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_DayNight> = 2131493110;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat_CompactMenu> = 2131493109;
+
+        <com.example.no_buttons.R$style: int Theme_AppCompat> = 2131493108;
+
+        <com.example.no_buttons.R$style: int ThemeOverlay_AppCompat_Light> = 2131493135;
+
+        <com.example.no_buttons.R$style: int ThemeOverlay_AppCompat_Dialog_Alert> = 2131493134;
+
+        <com.example.no_buttons.R$style: int ThemeOverlay_AppCompat_Dialog> = 2131493133;
+
+        <com.example.no_buttons.R$style: int ThemeOverlay_AppCompat_Dark_ActionBar> = 2131493132;
+
+        <com.example.no_buttons.R$style: int ThemeOverlay_AppCompat_Dark> = 2131493131;
+
+        <com.example.no_buttons.R$style: int ThemeOverlay_AppCompat_ActionBar> = 2131493130;
+
+        <com.example.no_buttons.R$style: int ThemeOverlay_AppCompat> = 2131493129;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Widget_AppCompat_Toolbar_Title> = 2131493107;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Widget_AppCompat_Toolbar_Subtitle> = 2131493106;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Widget_AppCompat_ExpandedMenu_Item> = 2131493105;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Compat_Notification_Title> = 2131493104;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Compat_Notification_Time> = 2131493103;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Compat_Notification_Line2> = 2131493102;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Compat_Notification_Info> = 2131493101;
+
+        <com.example.no_buttons.R$style: int TextAppearance_Compat_Notification> = 2131493100;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_TextView_SpinnerItem> = 2131493099;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_Switch> = 2131493098;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_PopupMenu_Small> = 2131493097;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_PopupMenu_Large> = 2131493096;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_PopupMenu_Header> = 2131493095;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_DropDownItem> = 2131493094;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_Button_Inverse> = 2131493093;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_Button_Colored> = 2131493092;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_Button_Borderless_Colored> = 2131493091;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_Button> = 2131493090;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse> = 2131493089;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionMode_Title> = 2131493088;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse> = 2131493087;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionMode_Subtitle> = 2131493086;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse> = 2131493085;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionBar_Title> = 2131493084;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse> = 2131493083;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionBar_Subtitle> = 2131493082;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Widget_ActionBar_Menu> = 2131493081;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Tooltip> = 2131493080;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Title_Inverse> = 2131493079;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Title> = 2131493078;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Subhead_Inverse> = 2131493077;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Subhead> = 2131493076;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Small_Inverse> = 2131493075;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Small> = 2131493074;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_SearchResult_Title> = 2131493073;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_SearchResult_Subtitle> = 2131493072;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Menu> = 2131493071;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Medium_Inverse> = 2131493070;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Medium> = 2131493069;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small> = 2131493068;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large> = 2131493067;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Light_SearchResult_Title> = 2131493066;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Light_SearchResult_Subtitle> = 2131493065;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Large_Inverse> = 2131493064;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Large> = 2131493063;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Inverse> = 2131493062;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Headline> = 2131493061;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Display4> = 2131493060;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Display3> = 2131493059;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Display2> = 2131493058;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Display1> = 2131493057;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Caption> = 2131493056;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Button> = 2131493055;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Body2> = 2131493054;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat_Body1> = 2131493053;
+
+        <com.example.no_buttons.R$style: int TextAppearance_AppCompat> = 2131493052;
+
+        <com.example.no_buttons.R$style: int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow> = 2131493051;
+
+        <com.example.no_buttons.R$style: int RtlUnderlay_Widget_AppCompat_ActionButton> = 2131493050;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_Search_DropDown_Text> = 2131493048;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_Search_DropDown_Query> = 2131493047;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2> = 2131493046;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1> = 2131493045;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_Search_DropDown> = 2131493044;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_SearchView_MagIcon> = 2131493049;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_PopupMenuItem_Title> = 2131493043;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text> = 2131493042;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow> = 2131493041;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut> = 2131493040;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup> = 2131493039;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_PopupMenuItem> = 2131493038;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_DialogTitle_Icon> = 2131493037;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem> = 2131493036;
+
+        <com.example.no_buttons.R$style: int RtlOverlay_DialogWindowTitle_AppCompat> = 2131493035;
+
+        <com.example.no_buttons.R$style: int Platform_Widget_AppCompat_Spinner> = 2131493034;
+
+        <com.example.no_buttons.R$style: int Platform_V25_AppCompat_Light> = 2131493033;
+
+        <com.example.no_buttons.R$style: int Platform_V25_AppCompat> = 2131493032;
+
+        <com.example.no_buttons.R$style: int Platform_V21_AppCompat_Light> = 2131493031;
+
+        <com.example.no_buttons.R$style: int Platform_V21_AppCompat> = 2131493030;
+
+        <com.example.no_buttons.R$style: int Platform_ThemeOverlay_AppCompat_Light> = 2131493029;
+
+        <com.example.no_buttons.R$style: int Platform_ThemeOverlay_AppCompat_Dark> = 2131493028;
+
+        <com.example.no_buttons.R$style: int Platform_ThemeOverlay_AppCompat> = 2131493027;
+
+        <com.example.no_buttons.R$style: int Platform_AppCompat_Light> = 2131493026;
+
+        <com.example.no_buttons.R$style: int Platform_AppCompat> = 2131493025;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Toolbar_Button_Navigation> = 2131493024;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Toolbar> = 2131493023;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_TextView_SpinnerItem> = 2131493022;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Spinner_Underlined> = 2131493021;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Spinner> = 2131493020;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_SeekBar_Discrete> = 2131493019;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_SeekBar> = 2131493018;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_SearchView_ActionBar> = 2131493017;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_SearchView> = 2131493016;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_RatingBar_Small> = 2131493015;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_RatingBar_Indicator> = 2131493014;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_RatingBar> = 2131493013;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ProgressBar_Horizontal> = 2131493012;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ProgressBar> = 2131493011;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_PopupWindow> = 2131493010;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_PopupMenu_Overflow> = 2131493009;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_PopupMenu> = 2131493008;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ListView_Menu> = 2131493007;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ListView_DropDown> = 2131493006;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ListView> = 2131493005;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ListPopupWindow> = 2131493004;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ListMenuView> = 2131493003;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_PopupMenu_Overflow> = 2131493002;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_PopupMenu> = 2131493001;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_ActionBar_TabView> = 2131493000;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse> = 2131492999;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_ActionBar_TabText> = 2131492998;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_ActionBar_TabBar> = 2131492997;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_ActionBar_Solid> = 2131492996;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Light_ActionBar> = 2131492995;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ImageButton> = 2131492994;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_EditText> = 2131492993;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_DropDownItem_Spinner> = 2131492992;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_DrawerArrowToggle_Common> = 2131492991;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_DrawerArrowToggle> = 2131492990;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_CompoundButton_Switch> = 2131492989;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_CompoundButton_RadioButton> = 2131492988;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_CompoundButton_CheckBox> = 2131492987;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Button_Small> = 2131492984;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Button_Colored> = 2131492983;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog> = 2131492982;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Button_Borderless_Colored> = 2131492981;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Button_Borderless> = 2131492980;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ButtonBar_AlertDialog> = 2131492986;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ButtonBar> = 2131492985;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_Button> = 2131492979;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_AutoCompleteTextView> = 2131492978;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActivityChooserView> = 2131492977;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionMode> = 2131492976;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionButton_Overflow> = 2131492975;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionButton_CloseMode> = 2131492974;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionButton> = 2131492973;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionBar_TabView> = 2131492972;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionBar_TabText> = 2131492971;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionBar_TabBar> = 2131492970;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionBar_Solid> = 2131492969;
+
+        <com.example.no_buttons.R$style: int Base_Widget_AppCompat_ActionBar> = 2131492968;
+
+        <com.example.no_buttons.R$style: int Base_V7_Widget_AppCompat_Toolbar> = 2131492967;
+
+        <com.example.no_buttons.R$style: int Base_V7_Widget_AppCompat_EditText> = 2131492966;
+
+        <com.example.no_buttons.R$style: int Base_V7_Widget_AppCompat_AutoCompleteTextView> = 2131492965;
+
+        <com.example.no_buttons.R$style: int Base_V7_Theme_AppCompat_Light_Dialog> = 2131492963;
+
+        <com.example.no_buttons.R$style: int Base_V7_Theme_AppCompat_Light> = 2131492962;
+
+        <com.example.no_buttons.R$style: int Base_V7_Theme_AppCompat_Dialog> = 2131492961;
+
+        <com.example.no_buttons.R$style: int Base_V7_Theme_AppCompat> = 2131492960;
+
+        <com.example.no_buttons.R$style: int Base_V7_ThemeOverlay_AppCompat_Dialog> = 2131492964;
+
+        <com.example.no_buttons.R$style: int Base_V28_Theme_AppCompat_Light> = 2131492959;
+
+        <com.example.no_buttons.R$style: int Base_V28_Theme_AppCompat> = 2131492958;
+
+        <com.example.no_buttons.R$style: int Base_V26_Widget_AppCompat_Toolbar> = 2131492957;
+
+        <com.example.no_buttons.R$style: int Base_V26_Theme_AppCompat_Light> = 2131492956;
+
+        <com.example.no_buttons.R$style: int Base_V26_Theme_AppCompat> = 2131492955;
+
+        <com.example.no_buttons.R$style: int Base_V23_Theme_AppCompat_Light> = 2131492954;
+
+        <com.example.no_buttons.R$style: int Base_V23_Theme_AppCompat> = 2131492953;
+
+        <com.example.no_buttons.R$style: int Base_V22_Theme_AppCompat_Light> = 2131492952;
+
+        <com.example.no_buttons.R$style: int Base_V22_Theme_AppCompat> = 2131492951;
+
+        <com.example.no_buttons.R$style: int Base_V21_Theme_AppCompat_Light_Dialog> = 2131492949;
+
+        <com.example.no_buttons.R$style: int Base_V21_Theme_AppCompat_Light> = 2131492948;
+
+        <com.example.no_buttons.R$style: int Base_V21_Theme_AppCompat_Dialog> = 2131492947;
+
+        <com.example.no_buttons.R$style: int Base_V21_Theme_AppCompat> = 2131492946;
+
+        <com.example.no_buttons.R$style: int Base_V21_ThemeOverlay_AppCompat_Dialog> = 2131492950;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Light_Dialog_MinWidth> = 2131492937;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Light_Dialog_FixedSize> = 2131492936;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Light_Dialog_Alert> = 2131492935;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Light_DialogWhenLarge> = 2131492938;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Light_Dialog> = 2131492934;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Light_DarkActionBar> = 2131492933;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Light> = 2131492932;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Dialog_MinWidth> = 2131492930;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Dialog_FixedSize> = 2131492929;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Dialog_Alert> = 2131492928;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_DialogWhenLarge> = 2131492931;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_Dialog> = 2131492927;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat_CompactMenu> = 2131492926;
+
+        <com.example.no_buttons.R$style: int Base_Theme_AppCompat> = 2131492925;
+
+        <com.example.no_buttons.R$style: int Base_ThemeOverlay_AppCompat_Light> = 2131492945;
+
+        <com.example.no_buttons.R$style: int Base_ThemeOverlay_AppCompat_Dialog_Alert> = 2131492944;
+
+        <com.example.no_buttons.R$style: int Base_ThemeOverlay_AppCompat_Dialog> = 2131492943;
+
+        <com.example.no_buttons.R$style: int Base_ThemeOverlay_AppCompat_Dark_ActionBar> = 2131492942;
+
+        <com.example.no_buttons.R$style: int Base_ThemeOverlay_AppCompat_Dark> = 2131492941;
+
+        <com.example.no_buttons.R$style: int Base_ThemeOverlay_AppCompat_ActionBar> = 2131492940;
+
+        <com.example.no_buttons.R$style: int Base_ThemeOverlay_AppCompat> = 2131492939;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_Widget_AppCompat_Toolbar_Title> = 2131492924;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle> = 2131492923;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item> = 2131492922;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem> = 2131492921;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_Switch> = 2131492920;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small> = 2131492919;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large> = 2131492918;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_PopupMenu_Header> = 2131492917;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_DropDownItem> = 2131492916;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_Button_Inverse> = 2131492915;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_Button_Colored> = 2131492914;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored> = 2131492913;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_Button> = 2131492912;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_ActionMode_Title> = 2131492911;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle> = 2131492910;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse> = 2131492909;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_ActionBar_Title> = 2131492908;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse> = 2131492907;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle> = 2131492906;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu> = 2131492905;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Tooltip> = 2131492904;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Title_Inverse> = 2131492903;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Title> = 2131492902;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Subhead_Inverse> = 2131492901;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Subhead> = 2131492900;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Small_Inverse> = 2131492899;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Small> = 2131492898;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_SearchResult_Title> = 2131492897;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_SearchResult_Subtitle> = 2131492896;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_SearchResult> = 2131492895;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Menu> = 2131492894;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Medium_Inverse> = 2131492893;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Medium> = 2131492892;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small> = 2131492891;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large> = 2131492890;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Large_Inverse> = 2131492889;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Large> = 2131492888;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Inverse> = 2131492887;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Headline> = 2131492886;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Display4> = 2131492885;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Display3> = 2131492884;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Display2> = 2131492883;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Display1> = 2131492882;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Caption> = 2131492881;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Button> = 2131492880;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Body2> = 2131492879;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat_Body1> = 2131492878;
+
+        <com.example.no_buttons.R$style: int Base_TextAppearance_AppCompat> = 2131492877;
+
+        <com.example.no_buttons.R$style: int Base_DialogWindowTitle_AppCompat> = 2131492875;
+
+        <com.example.no_buttons.R$style: int Base_DialogWindowTitleBackground_AppCompat> = 2131492876;
+
+        <com.example.no_buttons.R$style: int Base_Animation_AppCompat_Tooltip> = 2131492874;
+
+        <com.example.no_buttons.R$style: int Base_Animation_AppCompat_DropDownUp> = 2131492873;
+
+        <com.example.no_buttons.R$style: int Base_Animation_AppCompat_Dialog> = 2131492872;
+
+        <com.example.no_buttons.R$style: int Base_AlertDialog_AppCompat_Light> = 2131492871;
+
+        <com.example.no_buttons.R$style: int Base_AlertDialog_AppCompat> = 2131492870;
+
+        <com.example.no_buttons.R$style: int AppTheme> = 2131492869;
+
+        <com.example.no_buttons.R$style: int Animation_AppCompat_Tooltip> = 2131492868;
+
+        <com.example.no_buttons.R$style: int Animation_AppCompat_DropDownUp> = 2131492867;
+
+        <com.example.no_buttons.R$style: int Animation_AppCompat_Dialog> = 2131492866;
+
+        <com.example.no_buttons.R$style: int AlertDialog_AppCompat_Light> = 2131492865;
+
+        <com.example.no_buttons.R$style: int AlertDialog_AppCompat> = 2131492864;
+
+        return;
+    }
+}

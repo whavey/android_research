@@ -1,0 +1,4121 @@
+public class androidx.appcompat.widget.LinearLayoutCompat extends android.view.ViewGroup
+{
+    public static final int HORIZONTAL;
+    private static final int INDEX_BOTTOM;
+    private static final int INDEX_CENTER_VERTICAL;
+    private static final int INDEX_FILL;
+    private static final int INDEX_TOP;
+    public static final int SHOW_DIVIDER_BEGINNING;
+    public static final int SHOW_DIVIDER_END;
+    public static final int SHOW_DIVIDER_MIDDLE;
+    public static final int SHOW_DIVIDER_NONE;
+    public static final int VERTICAL;
+    private static final int VERTICAL_GRAVITY_COUNT;
+    private boolean mBaselineAligned;
+    private int mBaselineAlignedChildIndex;
+    private int mBaselineChildTop;
+    private android.graphics.drawable.Drawable mDivider;
+    private int mDividerHeight;
+    private int mDividerPadding;
+    private int mDividerWidth;
+    private int mGravity;
+    private int[] mMaxAscent;
+    private int[] mMaxDescent;
+    private int mOrientation;
+    private int mShowDividers;
+    private int mTotalLength;
+    private boolean mUseLargestChild;
+    private float mWeightSum;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.content.Context $r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void <init>(android.content.Context,android.util.AttributeSet)>($r1, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, 0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0;
+        int[] $r3;
+        androidx.appcompat.widget.TintTypedArray $r4;
+        boolean $z0;
+        float $f0;
+        android.graphics.drawable.Drawable $r5;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke $r0.<android.view.ViewGroup: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mBaselineAligned> = 1;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex> = -1;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineChildTop> = 0;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity> = 8388659;
+
+        $r3 = <androidx.appcompat.R$styleable: int[] LinearLayoutCompat>;
+
+        $r4 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($r1, $r2, $r3, $i0, 0);
+
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_android_orientation>;
+
+        $i0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($i0, -1);
+
+        if $i0 < 0 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setOrientation(int)>($i0);
+
+     label1:
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_android_gravity>;
+
+        $i0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($i0, -1);
+
+        if $i0 < 0 goto label2;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setGravity(int)>($i0);
+
+     label2:
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_android_baselineAligned>;
+
+        $z0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>($i0, 1);
+
+        if $z0 != 0 goto label3;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setBaselineAligned(boolean)>($z0);
+
+     label3:
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_android_weightSum>;
+
+        $f0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: float getFloat(int,float)>($i0, -1.0F);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: float mWeightSum> = $f0;
+
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_android_baselineAlignedChildIndex>;
+
+        $i0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($i0, -1);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_measureWithLargestChild>;
+
+        $z0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>($i0, 0);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mUseLargestChild> = $z0;
+
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_divider>;
+
+        $r5 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($i0);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setDividerDrawable(android.graphics.drawable.Drawable)>($r5);
+
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_showDividers>;
+
+        $i0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mShowDividers> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int LinearLayoutCompat_dividerPadding>;
+
+        $i0 = virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerPadding> = $i0;
+
+        virtualinvoke $r4.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        return;
+    }
+
+    private void forceUniformHeight(int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        android.view.View $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r3;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getMeasuredHeight()>();
+
+        $i3 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i3, 1073741824);
+
+        $i4 = 0;
+
+     label1:
+        if $i4 >= $i0 goto label3;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i4);
+
+        $i2 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i2 == 8 goto label2;
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r2;
+
+        $i2 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i2 != -1 goto label2;
+
+        $i2 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        $i5 = virtualinvoke $r1.<android.view.View: int getMeasuredWidth()>();
+
+        $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width> = $i5;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void measureChildWithMargins(android.view.View,int,int,int,int)>($r1, $i1, 0, $i3, 0);
+
+        $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width> = $i2;
+
+     label2:
+        $i4 = $i4 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    private void forceUniformWidth(int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        android.view.View $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r3;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getMeasuredWidth()>();
+
+        $i3 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i3, 1073741824);
+
+        $i4 = 0;
+
+     label1:
+        if $i4 >= $i0 goto label3;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i4);
+
+        $i2 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i2 == 8 goto label2;
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r2;
+
+        $i2 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i2 != -1 goto label2;
+
+        $i2 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        $i5 = virtualinvoke $r1.<android.view.View: int getMeasuredHeight()>();
+
+        $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height> = $i5;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void measureChildWithMargins(android.view.View,int,int,int,int)>($r1, $i3, 0, $i1, 0);
+
+        $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height> = $i2;
+
+     label2:
+        $i4 = $i4 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    private void setChildFrame(android.view.View, int, int, int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.View $r1;
+        int $i0, $i1, $i2, $i3;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i2 = $i0 + $i2;
+
+        $i3 = $i1 + $i3;
+
+        virtualinvoke $r1.<android.view.View: void layout(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    protected boolean checkLayoutParams(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.ViewGroup$LayoutParams $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        $z0 = $r1 instanceof androidx.appcompat.widget.LinearLayoutCompat$LayoutParams;
+
+        return $z0;
+    }
+
+    void drawDividersHorizontal(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.graphics.Canvas $r1;
+        int $i0, $i1, $i2, $i3;
+        boolean $z0, $z1;
+        android.view.View $r2;
+        android.view.ViewGroup$LayoutParams $r3;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r4;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getVirtualChildCount()>();
+
+        $z0 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>($r0);
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label05;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i1);
+
+        if $r2 == null goto label04;
+
+        $i2 = virtualinvoke $r2.<android.view.View: int getVisibility()>();
+
+        if $i2 == 8 goto label04;
+
+        $z1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i1);
+
+        if $z1 == 0 goto label04;
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r3;
+
+        if $z0 == 0 goto label02;
+
+        $i2 = virtualinvoke $r2.<android.view.View: int getRight()>();
+
+        $i3 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i2 = $i2 + $i3;
+
+        goto label03;
+
+     label02:
+        $i2 = virtualinvoke $r2.<android.view.View: int getLeft()>();
+
+        $i3 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i2 = $i2 - $i3;
+
+        $i3 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        $i2 = $i2 - $i3;
+
+     label03:
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void drawVerticalDivider(android.graphics.Canvas,int)>($r1, $i2);
+
+     label04:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label05:
+        $z1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i0);
+
+        if $z1 == 0 goto label10;
+
+        $i0 = $i0 + -1;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i0);
+
+        if $r2 != null goto label07;
+
+        if $z0 == 0 goto label06;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        goto label09;
+
+     label06:
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getWidth()>();
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i0 = $i0 - $i1;
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        $i0 = $i0 - $i1;
+
+        goto label09;
+
+     label07:
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r3;
+
+        if $z0 == 0 goto label08;
+
+        $i0 = virtualinvoke $r2.<android.view.View: int getLeft()>();
+
+        $i1 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i0 = $i0 - $i1;
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        $i0 = $i0 - $i1;
+
+        goto label09;
+
+     label08:
+        $i0 = virtualinvoke $r2.<android.view.View: int getRight()>();
+
+        $i1 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i0 = $i0 + $i1;
+
+     label09:
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void drawVerticalDivider(android.graphics.Canvas,int)>($r1, $i0);
+
+     label10:
+        return;
+    }
+
+    void drawDividersVertical(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.graphics.Canvas $r1;
+        int $i0, $i1, $i2, $i3;
+        android.view.View $r2;
+        boolean $z0;
+        android.view.ViewGroup$LayoutParams $r3;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r4;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getVirtualChildCount()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i1);
+
+        if $r2 == null goto label2;
+
+        $i2 = virtualinvoke $r2.<android.view.View: int getVisibility()>();
+
+        if $i2 == 8 goto label2;
+
+        $z0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i1);
+
+        if $z0 == 0 goto label2;
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r3;
+
+        $i2 = virtualinvoke $r2.<android.view.View: int getTop()>();
+
+        $i3 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i2 = $i2 - $i3;
+
+        $i3 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight>;
+
+        $i2 = $i2 - $i3;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void drawHorizontalDivider(android.graphics.Canvas,int)>($r1, $i2);
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $z0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i0);
+
+        if $z0 == 0 goto label6;
+
+        $i0 = $i0 + -1;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i0);
+
+        if $r2 != null goto label4;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getHeight()>();
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i0 = $i0 - $i1;
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight>;
+
+        $i0 = $i0 - $i1;
+
+        goto label5;
+
+     label4:
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r3;
+
+        $i0 = virtualinvoke $r2.<android.view.View: int getBottom()>();
+
+        $i1 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i0 = $i0 + $i1;
+
+     label5:
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void drawHorizontalDivider(android.graphics.Canvas,int)>($r1, $i0);
+
+     label6:
+        return;
+    }
+
+    void drawHorizontalDivider(android.graphics.Canvas, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.graphics.Canvas $r1;
+        int $i0, $i1, $i2, $i3;
+        android.graphics.drawable.Drawable $r2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $i0 := @parameter1: int;
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider>;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerPadding>;
+
+        $i1 = $i1 + $i2;
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getWidth()>();
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i2 = $i2 - $i3;
+
+        $i3 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerPadding>;
+
+        $i2 = $i2 - $i3;
+
+        $i3 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight>;
+
+        $i3 = $i3 + $i0;
+
+        virtualinvoke $r2.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>($i1, $i0, $i2, $i3);
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider>;
+
+        virtualinvoke $r2.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($r1);
+
+        return;
+    }
+
+    void drawVerticalDivider(android.graphics.Canvas, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.graphics.Canvas $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.graphics.drawable.Drawable $r2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $i0 := @parameter1: int;
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider>;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerPadding>;
+
+        $i1 = $i1 + $i2;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        $i2 = $i2 + $i0;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getHeight()>();
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i3 = $i3 - $i4;
+
+        $i4 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerPadding>;
+
+        $i3 = $i3 - $i4;
+
+        virtualinvoke $r2.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider>;
+
+        virtualinvoke $r2.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($r1);
+
+        return;
+    }
+
+    protected volatile android.view.ViewGroup$LayoutParams generateDefaultLayoutParams()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateDefaultLayoutParams()>();
+
+        return $r1;
+    }
+
+    protected androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateDefaultLayoutParams()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation>;
+
+        if $i0 != 0 goto label1;
+
+        $r1 = new androidx.appcompat.widget.LinearLayoutCompat$LayoutParams;
+
+        specialinvoke $r1.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        return $r1;
+
+     label1:
+        if $i0 != 1 goto label2;
+
+        $r1 = new androidx.appcompat.widget.LinearLayoutCompat$LayoutParams;
+
+        specialinvoke $r1.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        return $r1;
+
+     label2:
+        return null;
+    }
+
+    public volatile android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r1;
+        android.util.AttributeSet $r2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r2 := @parameter0: android.util.AttributeSet;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateLayoutParams(android.util.AttributeSet)>($r2);
+
+        return $r1;
+    }
+
+    protected volatile android.view.ViewGroup$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r2 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+        return $r1;
+    }
+
+    public androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateLayoutParams(android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.util.AttributeSet $r1;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r2;
+        android.content.Context $r3;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.util.AttributeSet;
+
+        $r2 = new androidx.appcompat.widget.LinearLayoutCompat$LayoutParams;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.content.Context getContext()>();
+
+        specialinvoke $r2.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: void <init>(android.content.Context,android.util.AttributeSet)>($r3, $r1);
+
+        return $r2;
+    }
+
+    protected androidx.appcompat.widget.LinearLayoutCompat$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.ViewGroup$LayoutParams $r1;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        $r2 = new androidx.appcompat.widget.LinearLayoutCompat$LayoutParams;
+
+        specialinvoke $r2.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: void <init>(android.view.ViewGroup$LayoutParams)>($r1);
+
+        return $r2;
+    }
+
+    public int getBaseline()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2, $i3;
+        android.view.View $r1;
+        java.lang.RuntimeException $r2;
+        android.view.ViewGroup$LayoutParams $r3;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r4;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex>;
+
+        if $i0 >= 0 goto label1;
+
+        $i0 = specialinvoke $r0.<android.view.ViewGroup: int getBaseline()>();
+
+        return $i0;
+
+     label1:
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildCount()>();
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex>;
+
+        if $i0 <= $i1 goto label7;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getChildAt(int)>($i1);
+
+        $i0 = virtualinvoke $r1.<android.view.View: int getBaseline()>();
+
+        if $i0 != -1 goto label3;
+
+        $i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex>;
+
+        if $i0 != 0 goto label2;
+
+        return -1;
+
+     label2:
+        $r2 = new java.lang.RuntimeException;
+
+        specialinvoke $r2.<java.lang.RuntimeException: void <init>(java.lang.String)>("mBaselineAlignedChildIndex of LinearLayout points to a View that doesn\'t know how to get its baseline.");
+
+        throw $r2;
+
+     label3:
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineChildTop>;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation>;
+
+        if $i2 != 1 goto label6;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        $i2 = $i2 & 112;
+
+        if $i2 == 48 goto label6;
+
+        if $i2 == 16 goto label5;
+
+        if $i2 == 80 goto label4;
+
+        goto label6;
+
+     label4:
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getBottom()>();
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getTop()>();
+
+        $i1 = $i1 - $i2;
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i1 = $i1 - $i2;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i1 = $i1 - $i2;
+
+        goto label6;
+
+     label5:
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getBottom()>();
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getTop()>();
+
+        $i2 = $i2 - $i3;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i2 = $i2 - $i3;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i2 = $i2 - $i3;
+
+        $i3 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i2 = $i2 - $i3;
+
+        $i2 = $i2 / 2;
+
+        $i1 = $i1 + $i2;
+
+     label6:
+        $r3 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r3;
+
+        $i2 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i1 = $i2 + $i1;
+
+        $i0 = $i1 + $i0;
+
+        return $i0;
+
+     label7:
+        $r2 = new java.lang.RuntimeException;
+
+        specialinvoke $r2.<java.lang.RuntimeException: void <init>(java.lang.String)>("mBaselineAlignedChildIndex of LinearLayout set to an index that is out of bounds.");
+
+        throw $r2;
+    }
+
+    public int getBaselineAlignedChildIndex()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex>;
+
+        return i0;
+    }
+
+    int getChildrenSkipCount(android.view.View, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.View $r1;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        return 0;
+    }
+
+    public android.graphics.drawable.Drawable getDividerDrawable()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.graphics.drawable.Drawable r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        r1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider>;
+
+        return r1;
+    }
+
+    public int getDividerPadding()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerPadding>;
+
+        return i0;
+    }
+
+    public int getDividerWidth()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        return i0;
+    }
+
+    public int getGravity()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        return i0;
+    }
+
+    int getLocationOffset(android.view.View)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.View $r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.View;
+
+        return 0;
+    }
+
+    int getNextLocationOffset(android.view.View)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.View $r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.View;
+
+        return 0;
+    }
+
+    public int getOrientation()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation>;
+
+        return i0;
+    }
+
+    public int getShowDividers()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mShowDividers>;
+
+        return i0;
+    }
+
+    android.view.View getVirtualChildAt(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0;
+        android.view.View $r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getChildAt(int)>($i0);
+
+        return $r1;
+    }
+
+    int getVirtualChildCount()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildCount()>();
+
+        return $i0;
+    }
+
+    public float getWeightSum()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        float f0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        f0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: float mWeightSum>;
+
+        return f0;
+    }
+
+    protected boolean hasDividerBeforeChildAt(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1;
+        android.view.View $r1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 0 goto label1;
+
+        $i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mShowDividers>;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label6;
+
+        return 1;
+
+     label1:
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildCount()>();
+
+        if $i0 != $i1 goto label2;
+
+        $i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mShowDividers>;
+
+        $i0 = $i0 & 4;
+
+        if $i0 == 0 goto label6;
+
+        return 1;
+
+     label2:
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mShowDividers>;
+
+        $i1 = $i1 & 2;
+
+        if $i1 == 0 goto label6;
+
+        $i0 = $i0 + -1;
+
+     label3:
+        if $i0 < 0 goto label5;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getChildAt(int)>($i0);
+
+        $i1 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i1 == 8 goto label4;
+
+        return 1;
+
+     label4:
+        $i0 = $i0 + -1;
+
+        goto label3;
+
+     label5:
+        return 0;
+
+     label6:
+        return 0;
+    }
+
+    public boolean isBaselineAligned()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        z0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mBaselineAligned>;
+
+        return z0;
+    }
+
+    public boolean isMeasureWithLargestChildEnabled()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        z0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mUseLargestChild>;
+
+        return z0;
+    }
+
+    void layoutHorizontal(int, int, int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i11, $i12, $i13, $i14;
+        boolean $z0, $z1;
+        int[] $r1, $r2;
+        byte $b10;
+        android.view.View $r3;
+        android.view.ViewGroup$LayoutParams $r4;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r5;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $z1 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>($r0);
+
+        $i5 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i6 = $i5;
+
+        $i3 = $i3 - $i1;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i1 = $i3 - $i1;
+
+        $i3 = $i3 - $i5;
+
+        $i5 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i3 = $i3 - $i5;
+
+        $i7 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getVirtualChildCount()>();
+
+        $i8 = $i7;
+
+        $i5 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        $i4 = $i5 & 8388615;
+
+        $i5 = $i5 & 112;
+
+        $z0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mBaselineAligned>;
+
+        $r1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxAscent>;
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxDescent>;
+
+        $i9 = staticinvoke <androidx.core.view.ViewCompat: int getLayoutDirection(android.view.View)>($r0);
+
+        $i4 = staticinvoke <androidx.core.view.GravityCompat: int getAbsoluteGravity(int,int)>($i4, $i9);
+
+        if $i4 == 1 goto label02;
+
+        if $i4 == 5 goto label01;
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        goto label03;
+
+     label01:
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i2 = $i4 + $i2;
+
+        $i0 = $i2 - $i0;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i4 = $i0 - $i2;
+
+        goto label03;
+
+     label02:
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i0 = $i2 - $i0;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i0 = $i0 - $i2;
+
+        $i0 = $i0 / 2;
+
+        $i4 = $i4 + $i0;
+
+     label03:
+        if $z1 == 0 goto label04;
+
+        $i0 = $i7 + -1;
+
+        $b10 = -1;
+
+        goto label05;
+
+     label04:
+        $i0 = 0;
+
+        $b10 = 1;
+
+     label05:
+        $i9 = 0;
+
+     label06:
+        if $i9 >= $i8 goto label19;
+
+        $i2 = $b10 * $i9;
+
+        $i7 = $i0 + $i2;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i7);
+
+        if $r3 != null goto label07;
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int measureNullChild(int)>($i7);
+
+        $i4 = $i4 + $i2;
+
+        goto label18;
+
+     label07:
+        $i2 = $i9;
+
+        $i11 = virtualinvoke $r3.<android.view.View: int getVisibility()>();
+
+        if $i11 == 8 goto label18;
+
+        $i9 = virtualinvoke $r3.<android.view.View: int getMeasuredWidth()>();
+
+        $i11 = virtualinvoke $r3.<android.view.View: int getMeasuredHeight()>();
+
+        $r4 = virtualinvoke $r3.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r5 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r4;
+
+        if $z0 == 0 goto label08;
+
+        $i12 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i12 == -1 goto label08;
+
+        $i12 = virtualinvoke $r3.<android.view.View: int getBaseline()>();
+
+        goto label09;
+
+     label08:
+        $i12 = -1;
+
+     label09:
+        $i13 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int gravity>;
+
+        if $i13 >= 0 goto label10;
+
+        $i13 = $i5;
+
+        goto label10;
+
+     label10:
+        $i13 = $i13 & 112;
+
+        if $i13 == 16 goto label15;
+
+        if $i13 == 48 goto label13;
+
+        if $i13 == 80 goto label11;
+
+        $i12 = $i6;
+
+        goto label16;
+
+     label11:
+        $i13 = $i1 - $i11;
+
+        $i14 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i13 = $i13 - $i14;
+
+        if $i12 == -1 goto label12;
+
+        $i14 = virtualinvoke $r3.<android.view.View: int getMeasuredHeight()>();
+
+        $i12 = $i14 - $i12;
+
+        $i14 = $r2[2];
+
+        $i12 = $i14 - $i12;
+
+        $i12 = $i13 - $i12;
+
+        goto label16;
+
+     label12:
+        $i12 = $i13;
+
+        goto label16;
+
+     label13:
+        $i13 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i13 = $i13 + $i6;
+
+        if $i12 == -1 goto label14;
+
+        $i14 = $r1[1];
+
+        $i12 = $i14 - $i12;
+
+        $i12 = $i13 + $i12;
+
+        goto label16;
+
+     label14:
+        $i12 = $i13;
+
+        goto label16;
+
+     label15:
+        $i12 = $i3 - $i11;
+
+        $i12 = $i12 / 2;
+
+        $i12 = $i12 + $i6;
+
+        $i13 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i12 = $i12 + $i13;
+
+        $i13 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i12 = $i12 - $i13;
+
+     label16:
+        $z1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i7);
+
+        if $z1 == 0 goto label17;
+
+        $i13 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        $i4 = $i4 + $i13;
+
+     label17:
+        $i13 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i4 = $i4 + $i13;
+
+        $i13 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getLocationOffset(android.view.View)>($r3);
+
+        $i13 = $i4 + $i13;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setChildFrame(android.view.View,int,int,int,int)>($r3, $i13, $i12, $i9, $i11);
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i9 = $i9 + $i11;
+
+        $i11 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r3);
+
+        $i9 = $i9 + $i11;
+
+        $i4 = $i4 + $i9;
+
+        $i7 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r3, $i7);
+
+        $i9 = $i2 + $i7;
+
+        goto label18;
+
+     label18:
+        $i9 = $i9 + 1;
+
+        goto label06;
+
+     label19:
+        return;
+    }
+
+    void layoutVertical(int, int, int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10;
+        android.view.View $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r3;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $i6 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i7 = $i6;
+
+        $i2 = $i2 - $i0;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i0 = $i2 - $i0;
+
+        $i2 = $i2 - $i6;
+
+        $i6 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i2 = $i2 - $i6;
+
+        $i6 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getVirtualChildCount()>();
+
+        $i5 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        $i4 = $i5 & 112;
+
+        $i5 = $i5 & 8388615;
+
+        if $i4 == 16 goto label02;
+
+        if $i4 == 80 goto label01;
+
+        $i8 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        goto label03;
+
+     label01:
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i3 = $i4 + $i3;
+
+        $i1 = $i3 - $i1;
+
+        $i3 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i8 = $i1 - $i3;
+
+        goto label03;
+
+     label02:
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i1 = $i3 - $i1;
+
+        $i3 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i1 = $i1 - $i3;
+
+        $i1 = $i1 / 2;
+
+        $i8 = $i4 + $i1;
+
+     label03:
+        $i1 = 0;
+
+     label04:
+        if $i1 >= $i6 goto label12;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i1);
+
+        if $r1 != null goto label05;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int measureNullChild(int)>($i1);
+
+        $i8 = $i8 + $i3;
+
+        goto label11;
+
+     label05:
+        $i3 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i3 == 8 goto label11;
+
+        $i4 = virtualinvoke $r1.<android.view.View: int getMeasuredWidth()>();
+
+        $i3 = virtualinvoke $r1.<android.view.View: int getMeasuredHeight()>();
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r2;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int gravity>;
+
+        if $i9 >= 0 goto label06;
+
+        $i9 = $i5;
+
+        goto label06;
+
+     label06:
+        $i10 = staticinvoke <androidx.core.view.ViewCompat: int getLayoutDirection(android.view.View)>($r0);
+
+        $i9 = staticinvoke <androidx.core.view.GravityCompat: int getAbsoluteGravity(int,int)>($i9, $i10);
+
+        $i9 = $i9 & 7;
+
+        if $i9 == 1 goto label08;
+
+        if $i9 == 5 goto label07;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i9 = $i9 + $i7;
+
+        goto label09;
+
+     label07:
+        $i9 = $i0 - $i4;
+
+        $i10 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i9 = $i9 - $i10;
+
+        goto label09;
+
+     label08:
+        $i9 = $i2 - $i4;
+
+        $i9 = $i9 / 2;
+
+        $i9 = $i9 + $i7;
+
+        $i10 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i9 = $i9 + $i10;
+
+        $i10 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i9 = $i9 - $i10;
+
+     label09:
+        $z0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i1);
+
+        if $z0 == 0 goto label10;
+
+        $i10 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight>;
+
+        $i8 = $i8 + $i10;
+
+     label10:
+        $i10 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i8 = $i8 + $i10;
+
+        $i10 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getLocationOffset(android.view.View)>($r1);
+
+        $i10 = $i8 + $i10;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setChildFrame(android.view.View,int,int,int,int)>($r1, $i9, $i10, $i4, $i3);
+
+        $i4 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i3 = $i3 + $i4;
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r1);
+
+        $i3 = $i3 + $i4;
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r1, $i1);
+
+        $i1 = $i1 + $i4;
+
+        $i8 = $i8 + $i3;
+
+        goto label11;
+
+     label11:
+        $i1 = $i1 + 1;
+
+        goto label04;
+
+     label12:
+        return;
+    }
+
+    void measureChildBeforeLayout(android.view.View, int, int, int, int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.View $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 := @parameter5: int;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void measureChildWithMargins(android.view.View,int,int,int,int)>($r1, $i1, $i2, $i3, $i4);
+
+        return;
+    }
+
+    void measureHorizontal(int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i16, $i17;
+        float $f0, $f1, $f2;
+        int[] $r1, $r2;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        android.view.View $r3;
+        android.view.ViewGroup$LayoutParams $r4;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r5, $r6;
+        byte $b15;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = 0;
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getVirtualChildCount()>();
+
+        $i3 = $i2;
+
+        $i4 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i0);
+
+        $i5 = $i4;
+
+        $i6 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i1);
+
+        $r1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxAscent>;
+
+        if $r1 == null goto label01;
+
+        $r1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxDescent>;
+
+        if $r1 != null goto label02;
+
+     label01:
+        $r1 = newarray (int)[4];
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxAscent> = $r1;
+
+        $r1 = newarray (int)[4];
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxDescent> = $r1;
+
+     label02:
+        $r1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxAscent>;
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int[] mMaxDescent>;
+
+        $r1[3] = -1;
+
+        $r1[2] = -1;
+
+        $r1[1] = -1;
+
+        $r1[0] = -1;
+
+        $r2[3] = -1;
+
+        $r2[2] = -1;
+
+        $r2[1] = -1;
+
+        $r2[0] = -1;
+
+        $z0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mBaselineAligned>;
+
+        $z1 = 0;
+
+        $z2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mUseLargestChild>;
+
+        if $i4 != 1073741824 goto label03;
+
+        $z3 = 1;
+
+        goto label04;
+
+     label03:
+        $z3 = 0;
+
+     label04:
+        $i4 = 0;
+
+        $i7 = 0;
+
+        $z4 = 0;
+
+        $z5 = 1;
+
+        $i8 = 0;
+
+        $f0 = 0.0F;
+
+        $i9 = 0;
+
+        $i10 = 0;
+
+        $i11 = 0;
+
+     label05:
+        if $i9 >= $i2 goto label34;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i9);
+
+        if $r3 != null goto label06;
+
+        $i12 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i13 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int measureNullChild(int)>($i9);
+
+        $i12 = $i12 + $i13;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i12;
+
+        goto label33;
+
+     label06:
+        $i13 = $i7;
+
+        $i14 = virtualinvoke $r3.<android.view.View: int getVisibility()>();
+
+        $i12 = $i11;
+
+        if $i14 != 8 goto label07;
+
+        $i12 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r3, $i9);
+
+        $i9 = $i9 + $i12;
+
+        goto label33;
+
+     label07:
+        $z6 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i9);
+
+        if $z6 == 0 goto label08;
+
+        $i14 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i11 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        $i14 = $i14 + $i11;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i14;
+
+     label08:
+        $r4 = virtualinvoke $r3.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r5 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r4;
+
+        $f1 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $f0 = $f0 + $f1;
+
+        if $i5 != 1073741824 goto label12;
+
+        $i14 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i14 != 0 goto label12;
+
+        $f1 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label12;
+
+        if $z3 == 0 goto label09;
+
+        $i14 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i7 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i11 = $i10;
+
+        $i10 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i10 = $i7 + $i10;
+
+        $i10 = $i14 + $i10;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i10;
+
+        goto label10;
+
+     label09:
+        $i11 = $i10;
+
+        $i10 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i14 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i14 = $i14 + $i10;
+
+        $i7 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i14 = $i14 + $i7;
+
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i10, $i14);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i10;
+
+     label10:
+        if $z0 == 0 goto label11;
+
+        $i10 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(0, 0);
+
+        virtualinvoke $r3.<android.view.View: void measure(int,int)>($i10, $i10);
+
+        $r6 = $r5;
+
+        $i14 = $i8;
+
+        $i8 = $i9;
+
+        $i10 = $i12;
+
+        $i12 = $i11;
+
+        goto label21;
+
+     label11:
+        $z1 = 1;
+
+        $r6 = $r5;
+
+        $i14 = $i8;
+
+        $i8 = $i9;
+
+        $i10 = $i12;
+
+        $i12 = $i11;
+
+        goto label21;
+
+     label12:
+        $i14 = $i10;
+
+        $i10 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i10 != 0 goto label13;
+
+        $f1 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label13;
+
+        $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width> = -2;
+
+        $i11 = 0;
+
+        goto label14;
+
+     label13:
+        $i11 = -2147483648;
+
+     label14:
+        $b15 = $f0 cmpl 0.0F;
+
+        if $b15 != 0 goto label15;
+
+        $i7 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        goto label16;
+
+     label15:
+        $i7 = 0;
+
+     label16:
+        $i10 = $i12;
+
+        $i12 = $i14;
+
+        $i14 = $i8;
+
+        $i8 = $i9;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void measureChildBeforeLayout(android.view.View,int,int,int,int,int)>($r3, $i9, $i0, $i7, $i1, 0);
+
+        if $i11 == -2147483648 goto label17;
+
+        $r6 = $r5;
+
+        $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width> = $i11;
+
+        goto label18;
+
+     label17:
+        $r6 = $r5;
+
+     label18:
+        $i9 = virtualinvoke $r3.<android.view.View: int getMeasuredWidth()>();
+
+        if $z3 == 0 goto label19;
+
+        $i11 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i7 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i7 = $i7 + $i9;
+
+        $i16 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i7 = $i7 + $i16;
+
+        $i16 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r3);
+
+        $i7 = $i7 + $i16;
+
+        $i11 = $i11 + $i7;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i11;
+
+        goto label20;
+
+     label19:
+        $i11 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i7 = $i11 + $i9;
+
+        $i16 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i7 = $i7 + $i16;
+
+        $i16 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i7 = $i7 + $i16;
+
+        $i16 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r3);
+
+        $i7 = $i7 + $i16;
+
+        $i11 = staticinvoke <java.lang.Math: int max(int,int)>($i11, $i7);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i11;
+
+     label20:
+        if $z2 == 0 goto label21;
+
+        $i13 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i13);
+
+        goto label21;
+
+     label21:
+        $z6 = 0;
+
+        if $i6 == 1073741824 goto label22;
+
+        $i9 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i9 != -1 goto label22;
+
+        $z4 = 1;
+
+        $z6 = 1;
+
+     label22:
+        $i9 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i11 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i7 = $i9 + $i11;
+
+        $i9 = virtualinvoke $r3.<android.view.View: int getMeasuredHeight()>();
+
+        $i9 = $i9 + $i7;
+
+        $i11 = virtualinvoke $r3.<android.view.View: int getMeasuredState()>();
+
+        $i4 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($i4, $i11);
+
+        if $z0 == 0 goto label26;
+
+        $i11 = virtualinvoke $r3.<android.view.View: int getBaseline()>();
+
+        if $i11 == -1 goto label25;
+
+        $i16 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int gravity>;
+
+        if $i16 >= 0 goto label23;
+
+        $i16 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        goto label24;
+
+     label23:
+        $i16 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int gravity>;
+
+     label24:
+        $i16 = $i16 & 112;
+
+        $i16 = $i16 >> 4;
+
+        $i16 = $i16 & -2;
+
+        $i16 = $i16 >> 1;
+
+        $i17 = $r1[$i16];
+
+        $i17 = staticinvoke <java.lang.Math: int max(int,int)>($i17, $i11);
+
+        $r1[$i16] = $i17;
+
+        $i17 = $r2[$i16];
+
+        $i11 = $i9 - $i11;
+
+        $i11 = staticinvoke <java.lang.Math: int max(int,int)>($i17, $i11);
+
+        $r2[$i16] = $i11;
+
+        goto label26;
+
+     label25:
+        goto label26;
+
+     label26:
+        $i14 = staticinvoke <java.lang.Math: int max(int,int)>($i14, $i9);
+
+        if $z5 == 0 goto label27;
+
+        $i11 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i11 != -1 goto label27;
+
+        $z5 = 1;
+
+        goto label28;
+
+     label27:
+        $z5 = 0;
+
+     label28:
+        $f1 = $r6.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label30;
+
+        if $z6 == 0 goto label29;
+
+        $i9 = $i7;
+
+        goto label29;
+
+     label29:
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i10, $i9);
+
+        goto label32;
+
+     label30:
+        if $z6 == 0 goto label31;
+
+        $i9 = $i7;
+
+        goto label31;
+
+     label31:
+        $i12 = staticinvoke <java.lang.Math: int max(int,int)>($i12, $i9);
+
+     label32:
+        $i9 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r3, $i8);
+
+        $i9 = $i8 + $i9;
+
+        $i8 = $i14;
+
+        $i11 = $i10;
+
+        $i10 = $i12;
+
+        $i7 = $i13;
+
+     label33:
+        $i9 = $i9 + 1;
+
+        goto label05;
+
+     label34:
+        $i14 = $i5;
+
+        $i12 = $i4;
+
+        $i5 = $i11;
+
+        $i13 = $i8;
+
+        $i4 = $i7;
+
+        $i8 = $i10;
+
+        $i10 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        if $i10 <= 0 goto label35;
+
+        $z6 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i2);
+
+        if $z6 == 0 goto label35;
+
+        $i10 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i9 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth>;
+
+        $i10 = $i10 + $i9;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i10;
+
+     label35:
+        $i10 = $r1[1];
+
+        if $i10 != -1 goto label37;
+
+        $i10 = $r1[0];
+
+        if $i10 != -1 goto label37;
+
+        $i10 = $r1[2];
+
+        if $i10 != -1 goto label37;
+
+        $i10 = $r1[3];
+
+        if $i10 == -1 goto label36;
+
+        goto label37;
+
+     label36:
+        $i10 = $i12;
+
+        goto label38;
+
+     label37:
+        $i10 = $r1[3];
+
+        $i9 = $r1[0];
+
+        $i11 = $r1[1];
+
+        $i7 = $r1[2];
+
+        $i11 = staticinvoke <java.lang.Math: int max(int,int)>($i11, $i7);
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i11);
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i10, $i9);
+
+        $i11 = $r2[3];
+
+        $i7 = $r2[0];
+
+        $i16 = $r2[1];
+
+        $i10 = $i12;
+
+        $i12 = $r2[2];
+
+        $i12 = staticinvoke <java.lang.Math: int max(int,int)>($i16, $i12);
+
+        $i12 = staticinvoke <java.lang.Math: int max(int,int)>($i7, $i12);
+
+        $i12 = staticinvoke <java.lang.Math: int max(int,int)>($i11, $i12);
+
+        $i12 = $i9 + $i12;
+
+        $i13 = staticinvoke <java.lang.Math: int max(int,int)>($i13, $i12);
+
+     label38:
+        if $z2 == 0 goto label47;
+
+        $i12 = $i14;
+
+        if $i14 == -2147483648 goto label40;
+
+        if $i14 != 0 goto label39;
+
+        goto label40;
+
+     label39:
+        goto label48;
+
+     label40:
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = 0;
+
+        $i14 = 0;
+
+     label41:
+        if $i14 >= $i2 goto label46;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i14);
+
+        if $r3 != null goto label42;
+
+        $i9 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i11 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int measureNullChild(int)>($i14);
+
+        $i9 = $i9 + $i11;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i9;
+
+        goto label45;
+
+     label42:
+        $i9 = virtualinvoke $r3.<android.view.View: int getVisibility()>();
+
+        if $i9 != 8 goto label43;
+
+        $i9 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r3, $i14);
+
+        $i14 = $i14 + $i9;
+
+        goto label45;
+
+     label43:
+        $r4 = virtualinvoke $r3.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r5 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r4;
+
+        if $z3 == 0 goto label44;
+
+        $i9 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i11 = $i11 + $i4;
+
+        $i7 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i11 = $i11 + $i7;
+
+        $i7 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r3);
+
+        $i11 = $i11 + $i7;
+
+        $i9 = $i9 + $i11;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i9;
+
+        goto label45;
+
+     label44:
+        $i9 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i11 = $i9 + $i4;
+
+        $i7 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i11 = $i11 + $i7;
+
+        $i7 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i11 = $i11 + $i7;
+
+        $i7 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r3);
+
+        $i11 = $i11 + $i7;
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i11);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i9;
+
+     label45:
+        $i14 = $i14 + 1;
+
+        goto label41;
+
+     label46:
+        goto label48;
+
+     label47:
+        $i12 = $i14;
+
+     label48:
+        $i14 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i9 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i11 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i9 = $i9 + $i11;
+
+        $i14 = $i14 + $i9;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i14;
+
+        $i14 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i9 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getSuggestedMinimumWidth()>();
+
+        $i14 = staticinvoke <java.lang.Math: int max(int,int)>($i14, $i9);
+
+        $i9 = staticinvoke <android.view.View: int resolveSizeAndState(int,int,int)>($i14, $i0, 0);
+
+        $i14 = $i9;
+
+        $i11 = $i9 & 16777215;
+
+        $i7 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i11 = $i11 - $i7;
+
+        if $z1 != 0 goto label57;
+
+        if $i11 == 0 goto label49;
+
+        $b15 = $f0 cmpl 0.0F;
+
+        if $b15 <= 0 goto label49;
+
+        $f1 = $f0;
+
+        $i2 = $i8;
+
+        goto label58;
+
+     label49:
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>($i8, $i5);
+
+        $i5 = $i3;
+
+        if $z2 == 0 goto label55;
+
+        if $i12 == 1073741824 goto label55;
+
+        $i3 = 0;
+
+     label50:
+        if $i3 >= $i2 goto label54;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i3);
+
+        if $r3 == null goto label53;
+
+        $i8 = virtualinvoke $r3.<android.view.View: int getVisibility()>();
+
+        if $i8 != 8 goto label51;
+
+        goto label53;
+
+     label51:
+        $r4 = virtualinvoke $r3.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r5 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r4;
+
+        $f0 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f0 cmpl 0.0F;
+
+        if $b15 <= 0 goto label52;
+
+        $i8 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i4, 1073741824);
+
+        $i12 = virtualinvoke $r3.<android.view.View: int getMeasuredHeight()>();
+
+        $i12 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i12, 1073741824);
+
+        virtualinvoke $r3.<android.view.View: void measure(int,int)>($i8, $i12);
+
+        goto label53;
+
+     label52:
+        goto label53;
+
+     label53:
+        $i3 = $i3 + 1;
+
+        goto label50;
+
+     label54:
+        $i12 = $i5;
+
+        goto label56;
+
+     label55:
+        $i12 = $i3;
+
+     label56:
+        $i8 = $i9;
+
+        $i5 = $i13;
+
+        $i4 = $i10;
+
+        $i3 = $i2;
+
+        goto label89;
+
+     label57:
+        $f1 = $f0;
+
+        $i2 = $i8;
+
+     label58:
+        $f0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: float mWeightSum>;
+
+        $b15 = $f0 cmpl 0.0F;
+
+        if $b15 <= 0 goto label59;
+
+        goto label60;
+
+     label59:
+        $f0 = $f1;
+
+     label60:
+        $r1[3] = -1;
+
+        $r1[2] = -1;
+
+        $r1[1] = -1;
+
+        $r1[0] = -1;
+
+        $r2[3] = -1;
+
+        $r2[2] = -1;
+
+        $r2[1] = -1;
+
+        $r2[0] = -1;
+
+        $i5 = -1;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = 0;
+
+        $i8 = 0;
+
+        $i4 = $i10;
+
+     label61:
+        if $i8 >= $i3 goto label86;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i8);
+
+        if $r3 == null goto label84;
+
+        $i10 = virtualinvoke $r3.<android.view.View: int getVisibility()>();
+
+        if $i10 != 8 goto label62;
+
+        $i13 = $i11;
+
+        $i10 = $i14;
+
+        goto label85;
+
+     label62:
+        $r4 = virtualinvoke $r3.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r5 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r4;
+
+        $f1 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label69;
+
+        $f2 = (float) $i11;
+
+        $f2 = $f2 * $f1;
+
+        $f2 = $f2 / $f0;
+
+        $i9 = (int) $f2;
+
+        $f0 = $f0 - $f1;
+
+        $i13 = $i11 - $i9;
+
+        $i10 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i11 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i10 = $i10 + $i11;
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i10 = $i10 + $i11;
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i11 = $i10 + $i11;
+
+        $i7 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        $i10 = $i14;
+
+        $i14 = staticinvoke <androidx.appcompat.widget.LinearLayoutCompat: int getChildMeasureSpec(int,int,int)>($i1, $i11, $i7);
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i11 != 0 goto label66;
+
+        if $i12 == 1073741824 goto label63;
+
+        goto label66;
+
+     label63:
+        if $i9 <= 0 goto label64;
+
+        goto label65;
+
+     label64:
+        $i9 = 0;
+
+     label65:
+        $i9 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i9, 1073741824);
+
+        virtualinvoke $r3.<android.view.View: void measure(int,int)>($i9, $i14);
+
+        goto label68;
+
+     label66:
+        $i11 = virtualinvoke $r3.<android.view.View: int getMeasuredWidth()>();
+
+        $i9 = $i11 + $i9;
+
+        if $i9 >= 0 goto label67;
+
+        $i9 = 0;
+
+     label67:
+        $i9 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i9, 1073741824);
+
+        virtualinvoke $r3.<android.view.View: void measure(int,int)>($i9, $i14);
+
+     label68:
+        $i14 = virtualinvoke $r3.<android.view.View: int getMeasuredState()>();
+
+        $i14 = $i14 & -16777216;
+
+        $i4 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($i4, $i14);
+
+        goto label70;
+
+     label69:
+        $i13 = $i11;
+
+        $i10 = $i14;
+
+     label70:
+        if $z3 == 0 goto label71;
+
+        $i14 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i9 = virtualinvoke $r3.<android.view.View: int getMeasuredWidth()>();
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i9 = $i9 + $i11;
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i9 = $i9 + $i11;
+
+        $i11 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r3);
+
+        $i9 = $i9 + $i11;
+
+        $i14 = $i14 + $i9;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i14;
+
+        goto label72;
+
+     label71:
+        $i14 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i9 = virtualinvoke $r3.<android.view.View: int getMeasuredWidth()>();
+
+        $i9 = $i9 + $i14;
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i9 = $i9 + $i11;
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i9 = $i9 + $i11;
+
+        $i11 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r3);
+
+        $i9 = $i9 + $i11;
+
+        $i14 = staticinvoke <java.lang.Math: int max(int,int)>($i14, $i9);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i14;
+
+     label72:
+        if $i6 == 1073741824 goto label73;
+
+        $i14 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i14 != -1 goto label73;
+
+        $z1 = 1;
+
+        goto label74;
+
+     label73:
+        $z1 = 0;
+
+     label74:
+        $i14 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i9 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i9 = $i14 + $i9;
+
+        $i14 = virtualinvoke $r3.<android.view.View: int getMeasuredHeight()>();
+
+        $i14 = $i14 + $i9;
+
+        $i5 = staticinvoke <java.lang.Math: int max(int,int)>($i5, $i14);
+
+        if $z1 == 0 goto label75;
+
+        goto label76;
+
+     label75:
+        $i9 = $i14;
+
+     label76:
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>($i2, $i9);
+
+        if $z5 == 0 goto label77;
+
+        $i9 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i9 != -1 goto label77;
+
+        $z1 = 1;
+
+        goto label78;
+
+     label77:
+        $z1 = 0;
+
+     label78:
+        if $z0 == 0 goto label82;
+
+        $i9 = virtualinvoke $r3.<android.view.View: int getBaseline()>();
+
+        $z5 = $z1;
+
+        if $i9 == -1 goto label81;
+
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int gravity>;
+
+        if $i11 >= 0 goto label79;
+
+        $i11 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        goto label80;
+
+     label79:
+        $i11 = $r5.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int gravity>;
+
+     label80:
+        $i11 = $i11 & 112;
+
+        $i11 = $i11 >> 4;
+
+        $i11 = $i11 & -2;
+
+        $i11 = $i11 >> 1;
+
+        $i7 = $r1[$i11];
+
+        $i7 = staticinvoke <java.lang.Math: int max(int,int)>($i7, $i9);
+
+        $r1[$i11] = $i7;
+
+        $i7 = $r2[$i11];
+
+        $i14 = $i14 - $i9;
+
+        $i14 = staticinvoke <java.lang.Math: int max(int,int)>($i7, $i14);
+
+        $r2[$i11] = $i14;
+
+        goto label83;
+
+     label81:
+        goto label83;
+
+     label82:
+        $z5 = $z1;
+
+     label83:
+        goto label85;
+
+     label84:
+        $i13 = $i11;
+
+        $i10 = $i14;
+
+     label85:
+        $i8 = $i8 + 1;
+
+        $i11 = $i13;
+
+        $i14 = $i10;
+
+        goto label61;
+
+     label86:
+        $i8 = $i14;
+
+        $i12 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i10 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i13 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i10 = $i10 + $i13;
+
+        $i12 = $i12 + $i10;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i12;
+
+        $i12 = $r1[1];
+
+        if $i12 != -1 goto label87;
+
+        $i12 = $r1[0];
+
+        if $i12 != -1 goto label87;
+
+        $i12 = $r1[2];
+
+        if $i12 != -1 goto label87;
+
+        $i12 = $r1[3];
+
+        if $i12 == -1 goto label88;
+
+     label87:
+        $i12 = $r1[3];
+
+        $i10 = $r1[0];
+
+        $i13 = $r1[1];
+
+        $i14 = $r1[2];
+
+        $i13 = staticinvoke <java.lang.Math: int max(int,int)>($i13, $i14);
+
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i10, $i13);
+
+        $i12 = staticinvoke <java.lang.Math: int max(int,int)>($i12, $i10);
+
+        $i10 = $r2[3];
+
+        $i13 = $r2[0];
+
+        $i14 = $r2[1];
+
+        $i9 = $r2[2];
+
+        $i14 = staticinvoke <java.lang.Math: int max(int,int)>($i14, $i9);
+
+        $i13 = staticinvoke <java.lang.Math: int max(int,int)>($i13, $i14);
+
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i10, $i13);
+
+        $i12 = $i12 + $i10;
+
+        $i5 = staticinvoke <java.lang.Math: int max(int,int)>($i5, $i12);
+
+     label88:
+        $i12 = $i2;
+
+     label89:
+        if $z5 != 0 goto label90;
+
+        if $i6 == 1073741824 goto label90;
+
+        $i5 = $i12;
+
+     label90:
+        $i6 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i6 = $i6 + $i2;
+
+        $i6 = $i5 + $i6;
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getSuggestedMinimumHeight()>();
+
+        $i6 = staticinvoke <java.lang.Math: int max(int,int)>($i6, $i2);
+
+        $i2 = -16777216 & $i4;
+
+        $i2 = $i8 | $i2;
+
+        $i4 = $i4 << 16;
+
+        $i1 = staticinvoke <android.view.View: int resolveSizeAndState(int,int,int)>($i6, $i1, $i4);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setMeasuredDimension(int,int)>($i2, $i1);
+
+        if $z4 == 0 goto label91;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void forceUniformHeight(int,int)>($i3, $i0);
+
+     label91:
+        return;
+    }
+
+    int measureNullChild(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        return 0;
+    }
+
+    void measureVertical(int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i16;
+        float $f0, $f1, $f2;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        android.view.View $r1, $r5;
+        android.view.ViewGroup$LayoutParams $r2;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r3, $r4;
+        byte $b15;
+        java.lang.RuntimeException $r6;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = 0;
+
+        $i2 = 0;
+
+        $f0 = 0.0F;
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getVirtualChildCount()>();
+
+        $i3 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i0);
+
+        $i6 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i1);
+
+        $i5 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex>;
+
+        $z0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mUseLargestChild>;
+
+        $z1 = 0;
+
+        $i7 = 0;
+
+        $i8 = 0;
+
+        $i9 = 0;
+
+        $i10 = 0;
+
+        $z2 = 0;
+
+        $i11 = 0;
+
+        $z3 = 1;
+
+     label01:
+        $i12 = $i9;
+
+        if $i11 >= $i4 goto label25;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i11);
+
+        if $r1 != null goto label02;
+
+        $i12 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i13 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int measureNullChild(int)>($i11);
+
+        $i12 = $i12 + $i13;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i12;
+
+        goto label24;
+
+     label02:
+        $i13 = $i2;
+
+        $i14 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i14 != 8 goto label03;
+
+        $i12 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r1, $i11);
+
+        $i11 = $i11 + $i12;
+
+        goto label24;
+
+     label03:
+        $z4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i11);
+
+        if $z4 == 0 goto label04;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i9 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight>;
+
+        $i2 = $i2 + $i9;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i2;
+
+     label04:
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r2;
+
+        $f1 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $f0 = $f0 + $f1;
+
+        if $i6 != 1073741824 goto label05;
+
+        $i2 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i2 != 0 goto label05;
+
+        $f1 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label05;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i9 = $i9 + $i2;
+
+        $i14 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i9 = $i9 + $i14;
+
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>($i2, $i9);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i2;
+
+        $z2 = 1;
+
+        $r4 = $r3;
+
+        $i2 = $i7;
+
+        $r5 = $r1;
+
+        goto label11;
+
+     label05:
+        $i2 = $i8;
+
+        $i8 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i8 != 0 goto label06;
+
+        $f1 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label06;
+
+        $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height> = -2;
+
+        $i9 = 0;
+
+        goto label07;
+
+     label06:
+        $i9 = -2147483648;
+
+     label07:
+        $b15 = $f0 cmpl 0.0F;
+
+        if $b15 != 0 goto label08;
+
+        $i14 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        goto label09;
+
+     label08:
+        $i14 = 0;
+
+     label09:
+        $r4 = $r3;
+
+        $i8 = $i2;
+
+        $i2 = $i7;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void measureChildBeforeLayout(android.view.View,int,int,int,int,int)>($r1, $i11, $i0, 0, $i1, $i14);
+
+        if $i9 == -2147483648 goto label10;
+
+        $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height> = $i9;
+
+     label10:
+        $i7 = virtualinvoke $r1.<android.view.View: int getMeasuredHeight()>();
+
+        $i9 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i14 = $i9 + $i7;
+
+        $i16 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i14 = $i14 + $i16;
+
+        $i16 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i14 = $i14 + $i16;
+
+        $r5 = $r1;
+
+        $i16 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r1);
+
+        $i14 = $i14 + $i16;
+
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i9, $i14);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i9;
+
+        if $z0 == 0 goto label11;
+
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i7, $i10);
+
+     label11:
+        if $i5 < 0 goto label12;
+
+        $i7 = $i11 + 1;
+
+        if $i5 != $i7 goto label12;
+
+        $i7 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineChildTop> = $i7;
+
+     label12:
+        if $i11 >= $i5 goto label14;
+
+        $f1 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 > 0 goto label13;
+
+        goto label14;
+
+     label13:
+        $r6 = new java.lang.RuntimeException;
+
+        specialinvoke $r6.<java.lang.RuntimeException: void <init>(java.lang.String)>("A child of LinearLayout with index less than mBaselineAlignedChildIndex has weight > 0, which won\'t work.  Either remove the weight, or don\'t set mBaselineAlignedChildIndex.");
+
+        throw $r6;
+
+     label14:
+        $z4 = 0;
+
+        if $i3 == 1073741824 goto label15;
+
+        $i7 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i7 != -1 goto label15;
+
+        $z1 = 1;
+
+        $z4 = 1;
+
+     label15:
+        $i7 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i9 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i9 = $i7 + $i9;
+
+        $i7 = virtualinvoke $r5.<android.view.View: int getMeasuredWidth()>();
+
+        $i14 = $i7 + $i9;
+
+        $i7 = staticinvoke <java.lang.Math: int max(int,int)>($i8, $i14);
+
+        $i8 = virtualinvoke $r5.<android.view.View: int getMeasuredState()>();
+
+        $i13 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($i13, $i8);
+
+        if $z3 == 0 goto label16;
+
+        $i8 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i8 != -1 goto label16;
+
+        $z3 = 1;
+
+        goto label17;
+
+     label16:
+        $z3 = 0;
+
+     label17:
+        $f1 = $r4.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label20;
+
+        if $z4 == 0 goto label18;
+
+        $i8 = $i9;
+
+        goto label19;
+
+     label18:
+        $i8 = $i14;
+
+     label19:
+        $i9 = staticinvoke <java.lang.Math: int max(int,int)>($i12, $i8);
+
+        $i12 = $i2;
+
+        goto label23;
+
+     label20:
+        $i8 = $i12;
+
+        if $z4 == 0 goto label21;
+
+        $i12 = $i9;
+
+        goto label22;
+
+     label21:
+        $i12 = $i14;
+
+     label22:
+        $i12 = staticinvoke <java.lang.Math: int max(int,int)>($i2, $i12);
+
+        $i9 = $i8;
+
+     label23:
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r5, $i11);
+
+        $i11 = $i11 + $i2;
+
+        $i8 = $i7;
+
+        $i2 = $i13;
+
+        $i7 = $i12;
+
+     label24:
+        $i11 = $i11 + 1;
+
+        goto label01;
+
+     label25:
+        $i5 = $i2;
+
+        $i2 = $i8;
+
+        $i12 = $i7;
+
+        $i7 = $i9;
+
+        $i11 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        if $i11 <= 0 goto label26;
+
+        $i11 = $i4;
+
+        $z4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean hasDividerBeforeChildAt(int)>($i4);
+
+        if $z4 == 0 goto label27;
+
+        $i4 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i13 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight>;
+
+        $i4 = $i4 + $i13;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i4;
+
+        goto label27;
+
+     label26:
+        $i11 = $i4;
+
+     label27:
+        if $z0 == 0 goto label34;
+
+        $i4 = $i6;
+
+        if $i6 == -2147483648 goto label28;
+
+        if $i6 != 0 goto label35;
+
+     label28:
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = 0;
+
+        $i6 = 0;
+
+     label29:
+        if $i6 >= $i11 goto label33;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i6);
+
+        if $r1 != null goto label30;
+
+        $i13 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i8 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int measureNullChild(int)>($i6);
+
+        $i13 = $i13 + $i8;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i13;
+
+        goto label32;
+
+     label30:
+        $i13 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i13 != 8 goto label31;
+
+        $i13 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildrenSkipCount(android.view.View,int)>($r1, $i6);
+
+        $i6 = $i6 + $i13;
+
+        goto label32;
+
+     label31:
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r2;
+
+        $i13 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i8 = $i13 + $i10;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i8 = $i8 + $i9;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i8 = $i8 + $i9;
+
+        $i9 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r1);
+
+        $i8 = $i8 + $i9;
+
+        $i13 = staticinvoke <java.lang.Math: int max(int,int)>($i13, $i8);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i13;
+
+     label32:
+        $i6 = $i6 + 1;
+
+        goto label29;
+
+     label33:
+        goto label35;
+
+     label34:
+        $i4 = $i6;
+
+     label35:
+        $i6 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i13 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i8 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i13 = $i13 + $i8;
+
+        $i6 = $i6 + $i13;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i6;
+
+        $i6 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i13 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getSuggestedMinimumHeight()>();
+
+        $i6 = staticinvoke <java.lang.Math: int max(int,int)>($i6, $i13);
+
+        $i6 = staticinvoke <android.view.View: int resolveSizeAndState(int,int,int)>($i6, $i1, 0);
+
+        $i13 = $i6 & 16777215;
+
+        $i8 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i13 = $i13 - $i8;
+
+        if $z2 != 0 goto label45;
+
+        if $i13 == 0 goto label36;
+
+        $b15 = $f0 cmpl 0.0F;
+
+        if $b15 <= 0 goto label36;
+
+        $i7 = $i2;
+
+        goto label46;
+
+     label36:
+        $i12 = staticinvoke <java.lang.Math: int max(int,int)>($i12, $i7);
+
+        if $z0 == 0 goto label43;
+
+        if $i4 == 1073741824 goto label42;
+
+        $i4 = 0;
+
+     label37:
+        if $i4 >= $i11 goto label41;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i4);
+
+        if $r1 == null goto label40;
+
+        $i7 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i7 != 8 goto label38;
+
+        goto label40;
+
+     label38:
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r2;
+
+        $f0 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f0 cmpl 0.0F;
+
+        if $b15 <= 0 goto label39;
+
+        $i7 = virtualinvoke $r1.<android.view.View: int getMeasuredWidth()>();
+
+        $i7 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i7, 1073741824);
+
+        $i13 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i10, 1073741824);
+
+        virtualinvoke $r1.<android.view.View: void measure(int,int)>($i7, $i13);
+
+        goto label40;
+
+     label39:
+        goto label40;
+
+     label40:
+        $i4 = $i4 + 1;
+
+        goto label37;
+
+     label41:
+        $i4 = $i2;
+
+        goto label44;
+
+     label42:
+        $i4 = $i2;
+
+        goto label44;
+
+     label43:
+        $i4 = $i2;
+
+     label44:
+        goto label66;
+
+     label45:
+        $i7 = $i2;
+
+     label46:
+        $f1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: float mWeightSum>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label47;
+
+        goto label48;
+
+     label47:
+        $f1 = $f0;
+
+     label48:
+        $f0 = $f1;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = 0;
+
+        $i2 = 0;
+
+        $i10 = $i12;
+
+        $i12 = $i13;
+
+     label49:
+        if $i2 >= $i11 goto label65;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getVirtualChildAt(int)>($i2);
+
+        $i13 = virtualinvoke $r1.<android.view.View: int getVisibility()>();
+
+        if $i13 != 8 goto label50;
+
+        goto label64;
+
+     label50:
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r2;
+
+        $f1 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight>;
+
+        $b15 = $f1 cmpl 0.0F;
+
+        if $b15 <= 0 goto label57;
+
+        $f2 = (float) $i12;
+
+        $f2 = $f2 * $f1;
+
+        $f2 = $f2 / $f0;
+
+        $i13 = (int) $f2;
+
+        $i8 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i9 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i8 = $i8 + $i9;
+
+        $f0 = $f0 - $f1;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i8 = $i8 + $i9;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i8 = $i8 + $i9;
+
+        $i12 = $i12 - $i13;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        $i8 = staticinvoke <androidx.appcompat.widget.LinearLayoutCompat: int getChildMeasureSpec(int,int,int)>($i0, $i8, $i9);
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        if $i9 != 0 goto label54;
+
+        if $i4 == 1073741824 goto label51;
+
+        goto label54;
+
+     label51:
+        if $i13 <= 0 goto label52;
+
+        goto label53;
+
+     label52:
+        $i13 = 0;
+
+     label53:
+        $i13 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i13, 1073741824);
+
+        virtualinvoke $r1.<android.view.View: void measure(int,int)>($i8, $i13);
+
+        goto label56;
+
+     label54:
+        $i9 = virtualinvoke $r1.<android.view.View: int getMeasuredHeight()>();
+
+        $i13 = $i9 + $i13;
+
+        if $i13 >= 0 goto label55;
+
+        $i13 = 0;
+
+     label55:
+        $i13 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i13, 1073741824);
+
+        virtualinvoke $r1.<android.view.View: void measure(int,int)>($i8, $i13);
+
+     label56:
+        $i13 = virtualinvoke $r1.<android.view.View: int getMeasuredState()>();
+
+        $i13 = $i13 & -256;
+
+        $i5 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($i5, $i13);
+
+        goto label57;
+
+     label57:
+        $i13 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        $i8 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        $i13 = $i13 + $i8;
+
+        $i8 = virtualinvoke $r1.<android.view.View: int getMeasuredWidth()>();
+
+        $i8 = $i8 + $i13;
+
+        $i7 = staticinvoke <java.lang.Math: int max(int,int)>($i7, $i8);
+
+        if $i3 == 1073741824 goto label58;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i9 != -1 goto label58;
+
+        $z0 = 1;
+
+        goto label59;
+
+     label58:
+        $z0 = 0;
+
+     label59:
+        if $z0 == 0 goto label60;
+
+        goto label61;
+
+     label60:
+        $i13 = $i8;
+
+     label61:
+        $i10 = staticinvoke <java.lang.Math: int max(int,int)>($i10, $i13);
+
+        if $z3 == 0 goto label62;
+
+        $i13 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if $i13 != -1 goto label62;
+
+        $z0 = 1;
+
+        goto label63;
+
+     label62:
+        $z0 = 0;
+
+     label63:
+        $i13 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i8 = virtualinvoke $r1.<android.view.View: int getMeasuredHeight()>();
+
+        $i8 = $i13 + $i8;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $i8 = $i8 + $i9;
+
+        $i9 = $r3.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $i8 = $i8 + $i9;
+
+        $i9 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getNextLocationOffset(android.view.View)>($r1);
+
+        $i8 = $i8 + $i9;
+
+        $i13 = staticinvoke <java.lang.Math: int max(int,int)>($i13, $i8);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i13;
+
+        $z3 = $z0;
+
+     label64:
+        $i2 = $i2 + 1;
+
+        goto label49;
+
+     label65:
+        $i4 = $i7;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength>;
+
+        $i12 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingTop()>();
+
+        $i7 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingBottom()>();
+
+        $i12 = $i12 + $i7;
+
+        $i2 = $i2 + $i12;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mTotalLength> = $i2;
+
+        $i12 = $i10;
+
+     label66:
+        if $z3 != 0 goto label67;
+
+        if $i3 == 1073741824 goto label67;
+
+        $i4 = $i12;
+
+     label67:
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingLeft()>();
+
+        $i10 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getPaddingRight()>();
+
+        $i3 = $i3 + $i10;
+
+        $i3 = $i4 + $i3;
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getSuggestedMinimumWidth()>();
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>($i3, $i4);
+
+        $i0 = staticinvoke <android.view.View: int resolveSizeAndState(int,int,int)>($i3, $i0, $i5);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setMeasuredDimension(int,int)>($i0, $i6);
+
+        if $z1 == 0 goto label68;
+
+        specialinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void forceUniformWidth(int,int)>($i11, $i1);
+
+     label68:
+        return;
+    }
+
+    protected void onDraw(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.graphics.Canvas $r1;
+        android.graphics.drawable.Drawable $r2;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider>;
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $i0 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation>;
+
+        if $i0 != 1 goto label2;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void drawDividersVertical(android.graphics.Canvas)>($r1);
+
+        return;
+
+     label2:
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void drawDividersHorizontal(android.graphics.Canvas)>($r1);
+
+        return;
+    }
+
+    public void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.accessibility.AccessibilityEvent $r1;
+        java.lang.String $r2;
+        java.lang.Class $r3;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        specialinvoke $r0.<android.view.ViewGroup: void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($r1);
+
+        $r3 = class "Landroidx/appcompat/widget/LinearLayoutCompat;";
+
+        $r2 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityEvent: void setClassName(java.lang.CharSequence)>($r2);
+
+        return;
+    }
+
+    public void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.view.accessibility.AccessibilityNodeInfo $r1;
+        java.lang.String $r2;
+        java.lang.Class $r3;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.view.accessibility.AccessibilityNodeInfo;
+
+        specialinvoke $r0.<android.view.ViewGroup: void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo)>($r1);
+
+        $r3 = class "Landroidx/appcompat/widget/LinearLayoutCompat;";
+
+        $r2 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityNodeInfo: void setClassName(java.lang.CharSequence)>($r2);
+
+        return;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        boolean $z0;
+        int $i0, $i1, $i2, $i3, $i4;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation>;
+
+        if $i4 != 1 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void layoutVertical(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+
+     label1:
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void layoutHorizontal(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation>;
+
+        if $i2 != 1 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void measureVertical(int,int)>($i0, $i1);
+
+        return;
+
+     label1:
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void measureHorizontal(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    public void setBaselineAligned(boolean)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mBaselineAligned> = $z0;
+
+        return;
+    }
+
+    public void setBaselineAlignedChildIndex(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1;
+        java.lang.IllegalArgumentException $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 0 goto label1;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildCount()>();
+
+        if $i0 >= $i1 goto label1;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mBaselineAlignedChildIndex> = $i0;
+
+        return;
+
+     label1:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("base aligned child index out of range (0, ");
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: int getChildCount()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+    }
+
+    public void setDividerDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        android.graphics.drawable.Drawable $r1, $r2;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider>;
+
+        if $r1 != $r2 goto label1;
+
+        return;
+
+     label1:
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: android.graphics.drawable.Drawable mDivider> = $r1;
+
+        $z0 = 0;
+
+        if $r1 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth> = $i0;
+
+        $i0 = virtualinvoke $r1.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight> = $i0;
+
+        goto label3;
+
+     label2:
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerWidth> = 0;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerHeight> = 0;
+
+     label3:
+        if $r1 != null goto label4;
+
+        $z0 = 1;
+
+     label4:
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void setWillNotDraw(boolean)>($z0);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void requestLayout()>();
+
+        return;
+    }
+
+    public void setDividerPadding(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mDividerPadding> = $i0;
+
+        return;
+    }
+
+    public void setGravity(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        if $i1 == $i0 goto label3;
+
+        $i1 = 8388615 & $i0;
+
+        if $i1 != 0 goto label1;
+
+        $i0 = $i0 | 8388611;
+
+     label1:
+        $i1 = $i0 & 112;
+
+        if $i1 != 0 goto label2;
+
+        $i0 = $i0 | 48;
+
+     label2:
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity> = $i0;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void requestLayout()>();
+
+     label3:
+        return;
+    }
+
+    public void setHorizontalGravity(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i0 = $i0 & 8388615;
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        $i2 = 8388615 & $i1;
+
+        if $i2 == $i0 goto label1;
+
+        $i1 = -8388616 & $i1;
+
+        $i0 = $i1 | $i0;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity> = $i0;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void requestLayout()>();
+
+     label1:
+        return;
+    }
+
+    public void setMeasureWithLargestChildEnabled(boolean)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: boolean mUseLargestChild> = $z0;
+
+        return;
+    }
+
+    public void setOrientation(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation>;
+
+        if $i1 == $i0 goto label1;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mOrientation> = $i0;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void requestLayout()>();
+
+     label1:
+        return;
+    }
+
+    public void setShowDividers(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mShowDividers>;
+
+        if $i0 == $i1 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void requestLayout()>();
+
+     label1:
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mShowDividers> = $i0;
+
+        return;
+    }
+
+    public void setVerticalGravity(int)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        int $i0, $i1, $i2;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $i0 := @parameter0: int;
+
+        $i0 = $i0 & 112;
+
+        $i2 = $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity>;
+
+        $i1 = $i2 & 112;
+
+        if $i1 == $i0 goto label1;
+
+        $i1 = $i2 & -113;
+
+        $i0 = $i1 | $i0;
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: int mGravity> = $i0;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.LinearLayoutCompat: void requestLayout()>();
+
+     label1:
+        return;
+    }
+
+    public void setWeightSum(float)
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+        float $f0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        $f0 := @parameter0: float;
+
+        $f0 = staticinvoke <java.lang.Math: float max(float,float)>(0.0F, $f0);
+
+        $r0.<androidx.appcompat.widget.LinearLayoutCompat: float mWeightSum> = $f0;
+
+        return;
+    }
+
+    public boolean shouldDelayChildPressedState()
+    {
+        androidx.appcompat.widget.LinearLayoutCompat $r0;
+
+        $r0 := @this: androidx.appcompat.widget.LinearLayoutCompat;
+
+        return 0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.widget.LinearLayoutCompat: int VERTICAL_GRAVITY_COUNT> = 4;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int VERTICAL> = 1;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int SHOW_DIVIDER_NONE> = 0;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int SHOW_DIVIDER_MIDDLE> = 2;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int SHOW_DIVIDER_END> = 4;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int SHOW_DIVIDER_BEGINNING> = 1;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int INDEX_TOP> = 1;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int INDEX_FILL> = 3;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int INDEX_CENTER_VERTICAL> = 0;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int INDEX_BOTTOM> = 2;
+
+        <androidx.appcompat.widget.LinearLayoutCompat: int HORIZONTAL> = 0;
+
+        return;
+    }
+}

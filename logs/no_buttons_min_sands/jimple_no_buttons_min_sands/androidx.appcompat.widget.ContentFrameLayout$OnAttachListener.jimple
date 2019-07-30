@@ -1,0 +1,7 @@
+public interface  androidx.appcompat.widget.ContentFrameLayout$OnAttachListener extends java.lang.Object
+{
+
+    public abstract void onAttachedFromWindow();
+
+    public abstract void onDetachedFromWindow();
+}

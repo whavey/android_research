@@ -1,0 +1,40 @@
+public final class androidx.legacy.coreutils.R$style extends java.lang.Object
+{
+    public static final int TextAppearance_Compat_Notification;
+    public static final int TextAppearance_Compat_Notification_Info;
+    public static final int TextAppearance_Compat_Notification_Line2;
+    public static final int TextAppearance_Compat_Notification_Time;
+    public static final int TextAppearance_Compat_Notification_Title;
+    public static final int Widget_Compat_NotificationActionContainer;
+    public static final int Widget_Compat_NotificationActionText;
+
+    private void <init>()
+    {
+        androidx.legacy.coreutils.R$style $r0;
+
+        $r0 := @this: androidx.legacy.coreutils.R$style;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.legacy.coreutils.R$style: int Widget_Compat_NotificationActionText> = 2131493209;
+
+        <androidx.legacy.coreutils.R$style: int Widget_Compat_NotificationActionContainer> = 2131493208;
+
+        <androidx.legacy.coreutils.R$style: int TextAppearance_Compat_Notification_Title> = 2131493104;
+
+        <androidx.legacy.coreutils.R$style: int TextAppearance_Compat_Notification_Time> = 2131493103;
+
+        <androidx.legacy.coreutils.R$style: int TextAppearance_Compat_Notification_Line2> = 2131493102;
+
+        <androidx.legacy.coreutils.R$style: int TextAppearance_Compat_Notification_Info> = 2131493101;
+
+        <androidx.legacy.coreutils.R$style: int TextAppearance_Compat_Notification> = 2131493100;
+
+        return;
+    }
+}

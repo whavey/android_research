@@ -1,0 +1,319 @@
+class androidx.documentfile.provider.SingleDocumentFile extends androidx.documentfile.provider.DocumentFile
+{
+    private android.content.Context mContext;
+    private android.net.Uri mUri;
+
+    void <init>(androidx.documentfile.provider.DocumentFile, android.content.Context, android.net.Uri)
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        androidx.documentfile.provider.DocumentFile $r1;
+        android.content.Context $r2;
+        android.net.Uri $r3;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r1 := @parameter0: androidx.documentfile.provider.DocumentFile;
+
+        $r2 := @parameter1: android.content.Context;
+
+        $r3 := @parameter2: android.net.Uri;
+
+        specialinvoke $r0.<androidx.documentfile.provider.DocumentFile: void <init>(androidx.documentfile.provider.DocumentFile)>($r1);
+
+        $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext> = $r2;
+
+        $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri> = $r3;
+
+        return;
+    }
+
+    public boolean canRead()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        boolean $z0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $z0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: boolean canRead(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $z0;
+    }
+
+    public boolean canWrite()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        boolean $z0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $z0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: boolean canWrite(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $z0;
+    }
+
+    public androidx.documentfile.provider.DocumentFile createDirectory(java.lang.String)
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        java.lang.String $r1;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r2;
+    }
+
+    public androidx.documentfile.provider.DocumentFile createFile(java.lang.String, java.lang.String)
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        java.lang.String $r1, $r2;
+        java.lang.UnsupportedOperationException $r3;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r3.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r3;
+    }
+
+    public boolean delete()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.content.Context $r1;
+        android.content.ContentResolver $r2;
+        android.net.Uri $r3;
+        boolean $z0;
+        java.lang.Exception $r4;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+     label1:
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r3 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $z0 = staticinvoke <android.provider.DocumentsContract: boolean deleteDocument(android.content.ContentResolver,android.net.Uri)>($r2, $r3);
+
+     label2:
+        return $z0;
+
+     label3:
+        $r4 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public boolean exists()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        boolean $z0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $z0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: boolean exists(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $z0;
+    }
+
+    public java.lang.String getName()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r3 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $r2 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: java.lang.String getName(android.content.Context,android.net.Uri)>($r3, $r1);
+
+        return $r2;
+    }
+
+    public java.lang.String getType()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r3 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $r2 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: java.lang.String getType(android.content.Context,android.net.Uri)>($r3, $r1);
+
+        return $r2;
+    }
+
+    public android.net.Uri getUri()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri r1;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        return r1;
+    }
+
+    public boolean isDirectory()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        boolean $z0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $z0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: boolean isDirectory(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $z0;
+    }
+
+    public boolean isFile()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        boolean $z0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $z0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: boolean isFile(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $z0;
+    }
+
+    public boolean isVirtual()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        boolean $z0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $z0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: boolean isVirtual(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $z0;
+    }
+
+    public long lastModified()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        long $l0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $l0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: long lastModified(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $l0;
+    }
+
+    public long length()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        android.net.Uri $r1;
+        long $l0;
+        android.content.Context $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r2 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.content.Context mContext>;
+
+        $r1 = $r0.<androidx.documentfile.provider.SingleDocumentFile: android.net.Uri mUri>;
+
+        $l0 = staticinvoke <androidx.documentfile.provider.DocumentsContractApi19: long length(android.content.Context,android.net.Uri)>($r2, $r1);
+
+        return $l0;
+    }
+
+    public androidx.documentfile.provider.DocumentFile[] listFiles()
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r1;
+    }
+
+    public boolean renameTo(java.lang.String)
+    {
+        androidx.documentfile.provider.SingleDocumentFile $r0;
+        java.lang.String $r1;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.documentfile.provider.SingleDocumentFile;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r2;
+    }
+}

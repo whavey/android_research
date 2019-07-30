@@ -1,0 +1,47 @@
+class androidx.appcompat.widget.ListPopupWindow$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.widget.ListPopupWindow this$0;
+
+    void <init>(androidx.appcompat.widget.ListPopupWindow)
+    {
+        androidx.appcompat.widget.ListPopupWindow$2 $r0;
+        androidx.appcompat.widget.ListPopupWindow $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ListPopupWindow$2;
+
+        $r1 := @parameter0: androidx.appcompat.widget.ListPopupWindow;
+
+        $r0.<androidx.appcompat.widget.ListPopupWindow$2: androidx.appcompat.widget.ListPopupWindow this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.widget.ListPopupWindow$2 $r0;
+        androidx.appcompat.widget.ListPopupWindow $r1;
+        android.view.View $r2;
+        android.os.IBinder $r3;
+
+        $r0 := @this: androidx.appcompat.widget.ListPopupWindow$2;
+
+        $r1 = $r0.<androidx.appcompat.widget.ListPopupWindow$2: androidx.appcompat.widget.ListPopupWindow this$0>;
+
+        $r2 = virtualinvoke $r1.<androidx.appcompat.widget.ListPopupWindow: android.view.View getAnchorView()>();
+
+        if $r2 == null goto label1;
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.os.IBinder getWindowToken()>();
+
+        if $r3 == null goto label1;
+
+        $r1 = $r0.<androidx.appcompat.widget.ListPopupWindow$2: androidx.appcompat.widget.ListPopupWindow this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.ListPopupWindow: void show()>();
+
+     label1:
+        return;
+    }
+}

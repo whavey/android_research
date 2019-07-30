@@ -1,0 +1,17 @@
+Results: 
+	App: no_buttons.apk
+	Sources_and_sinks_file: mysands.txt
+	Sinks:
+		Statement:
+			- virtualinvoke $r14.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r2, null, null) 
+		Method:
+			- <com.example.no_buttons.MainActivity: void onCreate(android.os.Bundle)>
+	Sources:
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity$1: void onLocationChanged(android.location.Location)>

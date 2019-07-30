@@ -1,0 +1,909 @@
+public class androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams extends android.view.ViewGroup$MarginLayoutParams
+{
+    public int anchorGravity;
+    public int dodgeInsetEdges;
+    public int gravity;
+    public int insetEdge;
+    public int keyline;
+    android.view.View mAnchorDirectChild;
+    int mAnchorId;
+    android.view.View mAnchorView;
+    androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior;
+    boolean mBehaviorResolved;
+    java.lang.Object mBehaviorTag;
+    private boolean mDidAcceptNestedScrollNonTouch;
+    private boolean mDidAcceptNestedScrollTouch;
+    private boolean mDidBlockInteraction;
+    private boolean mDidChangeAfterNestedScroll;
+    int mInsetOffsetX;
+    int mInsetOffsetY;
+    final android.graphics.Rect mLastChildRect;
+
+    public void <init>(int, int)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        int $i0, $i1;
+        android.graphics.Rect $r1;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        specialinvoke $r0.<android.view.ViewGroup$MarginLayoutParams: void <init>(int,int)>($i0, $i1);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int gravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int anchorGravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int keyline> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int insetEdge> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int dodgeInsetEdges> = 0;
+
+        $r1 = new android.graphics.Rect;
+
+        specialinvoke $r1.<android.graphics.Rect: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.graphics.Rect mLastChildRect> = $r1;
+
+        return;
+    }
+
+    void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        android.graphics.Rect $r3;
+        int[] $r4;
+        android.content.res.TypedArray $r5;
+        int $i0;
+        boolean $z0;
+        java.lang.String $r6;
+        androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior $r7;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke $r0.<android.view.ViewGroup$MarginLayoutParams: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int gravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int anchorGravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int keyline> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int insetEdge> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int dodgeInsetEdges> = 0;
+
+        $r3 = new android.graphics.Rect;
+
+        specialinvoke $r3.<android.graphics.Rect: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.graphics.Rect mLastChildRect> = $r3;
+
+        $r4 = <androidx.coordinatorlayout.R$styleable: int[] CoordinatorLayout_Layout>;
+
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($r2, $r4);
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_android_layout_gravity>;
+
+        $i0 = virtualinvoke $r5.<android.content.res.TypedArray: int getInteger(int,int)>($i0, 0);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int gravity> = $i0;
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_layout_anchor>;
+
+        $i0 = virtualinvoke $r5.<android.content.res.TypedArray: int getResourceId(int,int)>($i0, -1);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId> = $i0;
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_layout_anchorGravity>;
+
+        $i0 = virtualinvoke $r5.<android.content.res.TypedArray: int getInteger(int,int)>($i0, 0);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int anchorGravity> = $i0;
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_layout_keyline>;
+
+        $i0 = virtualinvoke $r5.<android.content.res.TypedArray: int getInteger(int,int)>($i0, -1);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int keyline> = $i0;
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_layout_insetEdge>;
+
+        $i0 = virtualinvoke $r5.<android.content.res.TypedArray: int getInt(int,int)>($i0, 0);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int insetEdge> = $i0;
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_layout_dodgeInsetEdges>;
+
+        $i0 = virtualinvoke $r5.<android.content.res.TypedArray: int getInt(int,int)>($i0, 0);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int dodgeInsetEdges> = $i0;
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_layout_behavior>;
+
+        $z0 = virtualinvoke $r5.<android.content.res.TypedArray: boolean hasValue(int)>($i0);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved> = $z0;
+
+        $z0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = <androidx.coordinatorlayout.R$styleable: int CoordinatorLayout_Layout_layout_behavior>;
+
+        $r6 = virtualinvoke $r5.<android.content.res.TypedArray: java.lang.String getString(int)>($i0);
+
+        $r7 = staticinvoke <androidx.coordinatorlayout.widget.CoordinatorLayout: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior parseBehavior(android.content.Context,android.util.AttributeSet,java.lang.String)>($r1, $r2, $r6);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior> = $r7;
+
+     label1:
+        virtualinvoke $r5.<android.content.res.TypedArray: void recycle()>();
+
+        $r7 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior>;
+
+        if $r7 == null goto label2;
+
+        virtualinvoke $r7.<androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior: void onAttachedToLayoutParams(androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams)>($r0);
+
+     label2:
+        return;
+    }
+
+    public void <init>(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.view.ViewGroup$LayoutParams $r1;
+        android.graphics.Rect $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r0.<android.view.ViewGroup$MarginLayoutParams: void <init>(android.view.ViewGroup$LayoutParams)>($r1);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int gravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int anchorGravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int keyline> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int insetEdge> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int dodgeInsetEdges> = 0;
+
+        $r2 = new android.graphics.Rect;
+
+        specialinvoke $r2.<android.graphics.Rect: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.graphics.Rect mLastChildRect> = $r2;
+
+        return;
+    }
+
+    public void <init>(android.view.ViewGroup$MarginLayoutParams)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.view.ViewGroup$MarginLayoutParams $r1;
+        android.graphics.Rect $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: android.view.ViewGroup$MarginLayoutParams;
+
+        specialinvoke $r0.<android.view.ViewGroup$MarginLayoutParams: void <init>(android.view.ViewGroup$MarginLayoutParams)>($r1);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int gravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int anchorGravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int keyline> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int insetEdge> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int dodgeInsetEdges> = 0;
+
+        $r2 = new android.graphics.Rect;
+
+        specialinvoke $r2.<android.graphics.Rect: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.graphics.Rect mLastChildRect> = $r2;
+
+        return;
+    }
+
+    public void <init>(androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0, $r1;
+        android.graphics.Rect $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        specialinvoke $r0.<android.view.ViewGroup$MarginLayoutParams: void <init>(android.view.ViewGroup$MarginLayoutParams)>($r1);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int gravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int anchorGravity> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int keyline> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId> = -1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int insetEdge> = 0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int dodgeInsetEdges> = 0;
+
+        $r2 = new android.graphics.Rect;
+
+        specialinvoke $r2.<android.graphics.Rect: void <init>()>();
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.graphics.Rect mLastChildRect> = $r2;
+
+        return;
+    }
+
+    private void resolveAnchorView(android.view.View, androidx.coordinatorlayout.widget.CoordinatorLayout)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.view.View $r1, $r3, $r5;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r2;
+        int $i0;
+        boolean $z0;
+        java.lang.IllegalStateException $r4;
+        android.view.ViewParent $r6;
+        java.lang.StringBuilder $r7;
+        android.content.res.Resources $r8;
+        java.lang.String $r9;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+        $i0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId>;
+
+        $r3 = virtualinvoke $r2.<androidx.coordinatorlayout.widget.CoordinatorLayout: android.view.View findViewById(int)>($i0);
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView> = $r3;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        if $r3 == null goto label8;
+
+        if $r3 != $r2 goto label2;
+
+        $z0 = virtualinvoke $r2.<androidx.coordinatorlayout.widget.CoordinatorLayout: boolean isInEditMode()>();
+
+        if $z0 == 0 goto label1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = null;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView> = null;
+
+        return;
+
+     label1:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("View can not be anchored to the the parent CoordinatorLayout");
+
+        throw $r4;
+
+     label2:
+        $r5 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        $r6 = virtualinvoke $r3.<android.view.View: android.view.ViewParent getParent()>();
+
+     label3:
+        if $r6 == $r2 goto label7;
+
+        if $r6 == null goto label7;
+
+        if $r6 != $r1 goto label5;
+
+        $z0 = virtualinvoke $r2.<androidx.coordinatorlayout.widget.CoordinatorLayout: boolean isInEditMode()>();
+
+        if $z0 == 0 goto label4;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = null;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView> = null;
+
+        return;
+
+     label4:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Anchor must not be a descendant of the anchored view");
+
+        throw $r4;
+
+     label5:
+        $z0 = $r6 instanceof android.view.View;
+
+        if $z0 == 0 goto label6;
+
+        $r5 = (android.view.View) $r6;
+
+     label6:
+        $r6 = interfaceinvoke $r6.<android.view.ViewParent: android.view.ViewParent getParent()>();
+
+        goto label3;
+
+     label7:
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = $r5;
+
+        return;
+
+     label8:
+        $z0 = virtualinvoke $r2.<androidx.coordinatorlayout.widget.CoordinatorLayout: boolean isInEditMode()>();
+
+        if $z0 == 0 goto label9;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = null;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView> = null;
+
+        return;
+
+     label9:
+        $r4 = new java.lang.IllegalStateException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not find CoordinatorLayout descendant view with id ");
+
+        $r8 = virtualinvoke $r2.<androidx.coordinatorlayout.widget.CoordinatorLayout: android.content.res.Resources getResources()>();
+
+        $i0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId>;
+
+        $r9 = virtualinvoke $r8.<android.content.res.Resources: java.lang.String getResourceName(int)>($i0);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to anchor view ");
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r9);
+
+        throw $r4;
+    }
+
+    private boolean shouldDodge(android.view.View, int)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0, $r3;
+        android.view.View $r1;
+        int $i0, $i1, $i2;
+        android.view.ViewGroup$LayoutParams $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams) $r2;
+
+        $i1 = $r3.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int insetEdge>;
+
+        $i1 = staticinvoke <androidx.core.view.GravityCompat: int getAbsoluteGravity(int,int)>($i1, $i0);
+
+        if $i1 == 0 goto label1;
+
+        $i2 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int dodgeInsetEdges>;
+
+        $i0 = staticinvoke <androidx.core.view.GravityCompat: int getAbsoluteGravity(int,int)>($i2, $i0);
+
+        $i0 = $i0 & $i1;
+
+        if $i0 != $i1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private boolean verifyAnchorView(android.view.View, androidx.coordinatorlayout.widget.CoordinatorLayout)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.view.View $r1, $r3, $r4;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r2;
+        int $i0, $i1;
+        android.view.ViewParent $r5;
+        boolean $z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        $i0 = virtualinvoke $r3.<android.view.View: int getId()>();
+
+        $i1 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId>;
+
+        if $i0 == $i1 goto label1;
+
+        return 0;
+
+     label1:
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        $r4 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        $r5 = virtualinvoke $r4.<android.view.View: android.view.ViewParent getParent()>();
+
+     label2:
+        if $r5 == $r2 goto label6;
+
+        if $r5 == null goto label5;
+
+        if $r5 != $r1 goto label3;
+
+        goto label5;
+
+     label3:
+        $z0 = $r5 instanceof android.view.View;
+
+        if $z0 == 0 goto label4;
+
+        $r3 = (android.view.View) $r5;
+
+     label4:
+        $r5 = interfaceinvoke $r5.<android.view.ViewParent: android.view.ViewParent getParent()>();
+
+        goto label2;
+
+     label5:
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = null;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView> = null;
+
+        return 0;
+
+     label6:
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = $r3;
+
+        return 1;
+    }
+
+    boolean checkAnchorChanged()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.view.View $r1;
+        int $i0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        if $r1 != null goto label1;
+
+        $i0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId>;
+
+        if $i0 == -1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    boolean dependsOn(androidx.coordinatorlayout.widget.CoordinatorLayout, android.view.View, android.view.View)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r1;
+        android.view.View $r2, $r3, $r4;
+        int $i0;
+        boolean $z0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior $r5;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+        $r2 := @parameter1: android.view.View;
+
+        $r3 := @parameter2: android.view.View;
+
+        $r4 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild>;
+
+        if $r3 == $r4 goto label2;
+
+        $i0 = staticinvoke <androidx.core.view.ViewCompat: int getLayoutDirection(android.view.View)>($r1);
+
+        $z0 = specialinvoke $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean shouldDodge(android.view.View,int)>($r3, $i0);
+
+        if $z0 != 0 goto label2;
+
+        $r5 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior>;
+
+        if $r5 == null goto label1;
+
+        $z0 = virtualinvoke $r5.<androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior: boolean layoutDependsOn(androidx.coordinatorlayout.widget.CoordinatorLayout,android.view.View,android.view.View)>($r1, $r2, $r3);
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    boolean didBlockInteraction()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior $r1;
+        boolean z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior>;
+
+        if $r1 != null goto label1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidBlockInteraction> = 0;
+
+     label1:
+        z0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidBlockInteraction>;
+
+        return z0;
+    }
+
+    android.view.View findAnchorView(androidx.coordinatorlayout.widget.CoordinatorLayout, android.view.View)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r1;
+        android.view.View $r2, $r3;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+        $r2 := @parameter1: android.view.View;
+
+        $i0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId>;
+
+        if $i0 != -1 goto label1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = null;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView> = null;
+
+        return null;
+
+     label1:
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        if $r3 == null goto label2;
+
+        $z0 = specialinvoke $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean verifyAnchorView(android.view.View,androidx.coordinatorlayout.widget.CoordinatorLayout)>($r2, $r1);
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        specialinvoke $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: void resolveAnchorView(android.view.View,androidx.coordinatorlayout.widget.CoordinatorLayout)>($r2, $r1);
+
+     label3:
+        $r2 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView>;
+
+        return $r2;
+    }
+
+    public int getAnchorId()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        int i0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        i0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId>;
+
+        return i0;
+    }
+
+    public androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior getBehavior()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior r1;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        r1 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior>;
+
+        return r1;
+    }
+
+    boolean getChangedAfterNestedScroll()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        z0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidChangeAfterNestedScroll>;
+
+        return z0;
+    }
+
+    android.graphics.Rect getLastChildRect()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.graphics.Rect r1;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        r1 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.graphics.Rect mLastChildRect>;
+
+        return r1;
+    }
+
+    void invalidateAnchor()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorDirectChild> = null;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.view.View mAnchorView> = null;
+
+        return;
+    }
+
+    boolean isBlockingInteractionBelow(androidx.coordinatorlayout.widget.CoordinatorLayout, android.view.View)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout $r1;
+        android.view.View $r2;
+        boolean $z0, $z1;
+        androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior $r3;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+        $r2 := @parameter1: android.view.View;
+
+        $z1 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidBlockInteraction>;
+
+        if $z1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $r3 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior>;
+
+        if $r3 == null goto label2;
+
+        $z0 = virtualinvoke $r3.<androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior: boolean blocksInteractionBelow(androidx.coordinatorlayout.widget.CoordinatorLayout,android.view.View)>($r1, $r2);
+
+        goto label3;
+
+     label2:
+        $z0 = 0;
+
+     label3:
+        $z1 = $z1 | $z0;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidBlockInteraction> = $z1;
+
+        return $z1;
+    }
+
+    boolean isNestedScrollAccepted(int)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        int $i0;
+        boolean z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $i0 := @parameter0: int;
+
+        if $i0 == 0 goto label2;
+
+        if $i0 == 1 goto label1;
+
+        return 0;
+
+     label1:
+        z0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidAcceptNestedScrollNonTouch>;
+
+        return z0;
+
+     label2:
+        z0 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidAcceptNestedScrollTouch>;
+
+        return z0;
+    }
+
+    void resetChangedAfterNestedScroll()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidChangeAfterNestedScroll> = 0;
+
+        return;
+    }
+
+    void resetNestedScroll(int)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        int $i0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $i0 := @parameter0: int;
+
+        virtualinvoke $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: void setNestedScrollAccepted(int,boolean)>($i0, 0);
+
+        return;
+    }
+
+    void resetTouchBehaviorTracking()
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidBlockInteraction> = 0;
+
+        return;
+    }
+
+    public void setAnchorId(int)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        int $i0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $i0 := @parameter0: int;
+
+        virtualinvoke $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: void invalidateAnchor()>();
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: int mAnchorId> = $i0;
+
+        return;
+    }
+
+    public void setBehavior(androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior $r1, $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior>;
+
+        if $r2 == $r1 goto label2;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior: void onDetachedFromLayoutParams()>();
+
+     label1:
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior mBehavior> = $r1;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: java.lang.Object mBehaviorTag> = null;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mBehaviorResolved> = 1;
+
+        if $r1 == null goto label2;
+
+        virtualinvoke $r1.<androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior: void onAttachedToLayoutParams(androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams)>($r0);
+
+     label2:
+        return;
+    }
+
+    void setChangedAfterNestedScroll(boolean)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidChangeAfterNestedScroll> = $z0;
+
+        return;
+    }
+
+    void setLastChildRect(android.graphics.Rect)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        android.graphics.Rect $r1, $r2;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $r1 := @parameter0: android.graphics.Rect;
+
+        $r2 = $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: android.graphics.Rect mLastChildRect>;
+
+        virtualinvoke $r2.<android.graphics.Rect: void set(android.graphics.Rect)>($r1);
+
+        return;
+    }
+
+    void setNestedScrollAccepted(int, boolean)
+    {
+        androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @this: androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        if $i0 == 0 goto label2;
+
+        if $i0 == 1 goto label1;
+
+        return;
+
+     label1:
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidAcceptNestedScrollNonTouch> = $z0;
+
+        return;
+
+     label2:
+        $r0.<androidx.coordinatorlayout.widget.CoordinatorLayout$LayoutParams: boolean mDidAcceptNestedScrollTouch> = $z0;
+
+        return;
+    }
+}

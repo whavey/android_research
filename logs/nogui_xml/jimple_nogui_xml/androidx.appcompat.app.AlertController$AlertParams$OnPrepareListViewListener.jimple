@@ -1,0 +1,5 @@
+public interface  androidx.appcompat.app.AlertController$AlertParams$OnPrepareListViewListener extends java.lang.Object
+{
+
+    public abstract void onPrepareListView(android.widget.ListView);
+}

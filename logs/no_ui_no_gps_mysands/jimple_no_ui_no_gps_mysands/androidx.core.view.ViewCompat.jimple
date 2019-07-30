@@ -1,0 +1,4137 @@
+public class androidx.core.view.ViewCompat extends java.lang.Object
+{
+    public static final int ACCESSIBILITY_LIVE_REGION_ASSERTIVE;
+    public static final int ACCESSIBILITY_LIVE_REGION_NONE;
+    public static final int ACCESSIBILITY_LIVE_REGION_POLITE;
+    public static final int IMPORTANT_FOR_ACCESSIBILITY_AUTO;
+    public static final int IMPORTANT_FOR_ACCESSIBILITY_NO;
+    public static final int IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS;
+    public static final int IMPORTANT_FOR_ACCESSIBILITY_YES;
+    public static final int LAYER_TYPE_HARDWARE;
+    public static final int LAYER_TYPE_NONE;
+    public static final int LAYER_TYPE_SOFTWARE;
+    public static final int LAYOUT_DIRECTION_INHERIT;
+    public static final int LAYOUT_DIRECTION_LOCALE;
+    public static final int LAYOUT_DIRECTION_LTR;
+    public static final int LAYOUT_DIRECTION_RTL;
+    public static final int MEASURED_HEIGHT_STATE_SHIFT;
+    public static final int MEASURED_SIZE_MASK;
+    public static final int MEASURED_STATE_MASK;
+    public static final int MEASURED_STATE_TOO_SMALL;
+    public static final int OVER_SCROLL_ALWAYS;
+    public static final int OVER_SCROLL_IF_CONTENT_SCROLLS;
+    public static final int OVER_SCROLL_NEVER;
+    public static final int SCROLL_AXIS_HORIZONTAL;
+    public static final int SCROLL_AXIS_NONE;
+    public static final int SCROLL_AXIS_VERTICAL;
+    public static final int SCROLL_INDICATOR_BOTTOM;
+    public static final int SCROLL_INDICATOR_END;
+    public static final int SCROLL_INDICATOR_LEFT;
+    public static final int SCROLL_INDICATOR_RIGHT;
+    public static final int SCROLL_INDICATOR_START;
+    public static final int SCROLL_INDICATOR_TOP;
+    private static final java.lang.String TAG;
+    public static final int TYPE_NON_TOUCH;
+    public static final int TYPE_TOUCH;
+    private static boolean sAccessibilityDelegateCheckFailed;
+    private static java.lang.reflect.Field sAccessibilityDelegateField;
+    private static java.lang.reflect.Method sChildrenDrawingOrderMethod;
+    private static java.lang.reflect.Method sDispatchFinishTemporaryDetach;
+    private static java.lang.reflect.Method sDispatchStartTemporaryDetach;
+    private static java.lang.reflect.Field sMinHeightField;
+    private static boolean sMinHeightFieldFetched;
+    private static java.lang.reflect.Field sMinWidthField;
+    private static boolean sMinWidthFieldFetched;
+    private static final java.util.concurrent.atomic.AtomicInteger sNextGeneratedId;
+    private static boolean sTempDetachBound;
+    private static java.lang.ThreadLocal sThreadLocalRect;
+    private static java.util.WeakHashMap sTransitionNameMap;
+    private static java.util.WeakHashMap sViewPropertyAnimatorMap;
+
+    static void <clinit>()
+    {
+        java.util.concurrent.atomic.AtomicInteger $r0;
+
+        <androidx.core.view.ViewCompat: int TYPE_NON_TOUCH> = 1;
+
+        <androidx.core.view.ViewCompat: java.lang.String TAG> = "ViewCompat";
+
+        <androidx.core.view.ViewCompat: int SCROLL_INDICATOR_TOP> = 1;
+
+        <androidx.core.view.ViewCompat: int SCROLL_INDICATOR_START> = 16;
+
+        <androidx.core.view.ViewCompat: int SCROLL_INDICATOR_RIGHT> = 8;
+
+        <androidx.core.view.ViewCompat: int SCROLL_INDICATOR_LEFT> = 4;
+
+        <androidx.core.view.ViewCompat: int SCROLL_INDICATOR_END> = 32;
+
+        <androidx.core.view.ViewCompat: int SCROLL_INDICATOR_BOTTOM> = 2;
+
+        <androidx.core.view.ViewCompat: int SCROLL_AXIS_VERTICAL> = 2;
+
+        <androidx.core.view.ViewCompat: int SCROLL_AXIS_NONE> = 0;
+
+        <androidx.core.view.ViewCompat: int SCROLL_AXIS_HORIZONTAL> = 1;
+
+        <androidx.core.view.ViewCompat: int OVER_SCROLL_NEVER> = 2;
+
+        <androidx.core.view.ViewCompat: int OVER_SCROLL_IF_CONTENT_SCROLLS> = 1;
+
+        <androidx.core.view.ViewCompat: int OVER_SCROLL_ALWAYS> = 0;
+
+        <androidx.core.view.ViewCompat: int MEASURED_STATE_TOO_SMALL> = 16777216;
+
+        <androidx.core.view.ViewCompat: int MEASURED_STATE_MASK> = -16777216;
+
+        <androidx.core.view.ViewCompat: int MEASURED_SIZE_MASK> = 16777215;
+
+        <androidx.core.view.ViewCompat: int MEASURED_HEIGHT_STATE_SHIFT> = 16;
+
+        <androidx.core.view.ViewCompat: int LAYOUT_DIRECTION_RTL> = 1;
+
+        <androidx.core.view.ViewCompat: int LAYOUT_DIRECTION_LTR> = 0;
+
+        <androidx.core.view.ViewCompat: int LAYOUT_DIRECTION_LOCALE> = 3;
+
+        <androidx.core.view.ViewCompat: int LAYOUT_DIRECTION_INHERIT> = 2;
+
+        <androidx.core.view.ViewCompat: int LAYER_TYPE_SOFTWARE> = 1;
+
+        <androidx.core.view.ViewCompat: int LAYER_TYPE_NONE> = 0;
+
+        <androidx.core.view.ViewCompat: int LAYER_TYPE_HARDWARE> = 2;
+
+        <androidx.core.view.ViewCompat: int IMPORTANT_FOR_ACCESSIBILITY_YES> = 1;
+
+        <androidx.core.view.ViewCompat: int IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS> = 4;
+
+        <androidx.core.view.ViewCompat: int IMPORTANT_FOR_ACCESSIBILITY_NO> = 2;
+
+        <androidx.core.view.ViewCompat: int IMPORTANT_FOR_ACCESSIBILITY_AUTO> = 0;
+
+        <androidx.core.view.ViewCompat: int ACCESSIBILITY_LIVE_REGION_POLITE> = 1;
+
+        <androidx.core.view.ViewCompat: int ACCESSIBILITY_LIVE_REGION_NONE> = 0;
+
+        <androidx.core.view.ViewCompat: int ACCESSIBILITY_LIVE_REGION_ASSERTIVE> = 2;
+
+        $r0 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r0.<java.util.concurrent.atomic.AtomicInteger: void <init>(int)>(1);
+
+        <androidx.core.view.ViewCompat: java.util.concurrent.atomic.AtomicInteger sNextGeneratedId> = $r0;
+
+        <androidx.core.view.ViewCompat: java.util.WeakHashMap sViewPropertyAnimatorMap> = null;
+
+        <androidx.core.view.ViewCompat: boolean sAccessibilityDelegateCheckFailed> = 0;
+
+        return;
+    }
+
+    protected void <init>()
+    {
+        androidx.core.view.ViewCompat $r0;
+
+        $r0 := @this: androidx.core.view.ViewCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void addKeyboardNavigationClusters(android.view.View, java.util.Collection, int)
+    {
+        android.view.View $r0;
+        java.util.Collection $r1;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: java.util.Collection;
+
+        $i0 := @parameter2: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 26 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void addKeyboardNavigationClusters(java.util.Collection,int)>($r1, $i0);
+
+     label1:
+        return;
+    }
+
+    public static void addOnUnhandledKeyEventListener(android.view.View, androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)
+    {
+        android.view.View $r0;
+        androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat $r1;
+        int $i0;
+        java.lang.Object $r2;
+        androidx.collection.ArrayMap $r3, r7;
+        androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper $r4, r8;
+        java.util.ArrayList $r5, $r6;
+        java.util.Map r9;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label2;
+
+        $i0 = <androidx.core.R$id: int tag_unhandled_key_listeners>;
+
+        $r2 = virtualinvoke $r0.<android.view.View: java.lang.Object getTag(int)>($i0);
+
+        $r2 = (java.util.Map) $r2;
+
+        if $r2 != null goto label1;
+
+        r7 = new androidx.collection.ArrayMap;
+
+        $r3 = r7;
+
+        specialinvoke r7.<androidx.collection.ArrayMap: void <init>()>();
+
+        $r2 = $r3;
+
+        $i0 = <androidx.core.R$id: int tag_unhandled_key_listeners>;
+
+        virtualinvoke $r0.<android.view.View: void setTag(int,java.lang.Object)>($i0, $r3);
+
+     label1:
+        r8 = new androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper;
+
+        $r4 = r8;
+
+        specialinvoke r8.<androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper: void <init>(androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)>($r1);
+
+        r9 = (java.util.Map) $r2;
+
+        interfaceinvoke r9.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        virtualinvoke $r0.<android.view.View: void addOnUnhandledKeyEventListener(android.view.View$OnUnhandledKeyEventListener)>($r4);
+
+        return;
+
+     label2:
+        $i0 = <androidx.core.R$id: int tag_unhandled_key_listeners>;
+
+        $r2 = virtualinvoke $r0.<android.view.View: java.lang.Object getTag(int)>($i0);
+
+        $r5 = (java.util.ArrayList) $r2;
+
+        if $r5 != null goto label3;
+
+        $r5 = new java.util.ArrayList;
+
+        $r6 = $r5;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        $r5 = $r6;
+
+        $i0 = <androidx.core.R$id: int tag_unhandled_key_listeners>;
+
+        virtualinvoke $r0.<android.view.View: void setTag(int,java.lang.Object)>($i0, $r6);
+
+     label3:
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        $i0 = virtualinvoke $r5.<java.util.ArrayList: int size()>();
+
+        if $i0 != 1 goto label4;
+
+        staticinvoke <androidx.core.view.ViewCompat$UnhandledKeyEventManager: void registerListeningView(android.view.View)>($r0);
+
+     label4:
+        return;
+    }
+
+    public static androidx.core.view.ViewPropertyAnimatorCompat animate(android.view.View)
+    {
+        android.view.View $r0;
+        java.lang.Object $r1;
+        java.util.WeakHashMap $r2;
+        androidx.core.view.ViewPropertyAnimatorCompat $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r2 = <androidx.core.view.ViewCompat: java.util.WeakHashMap sViewPropertyAnimatorMap>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new java.util.WeakHashMap;
+
+        specialinvoke $r2.<java.util.WeakHashMap: void <init>()>();
+
+        <androidx.core.view.ViewCompat: java.util.WeakHashMap sViewPropertyAnimatorMap> = $r2;
+
+     label1:
+        $r2 = <androidx.core.view.ViewCompat: java.util.WeakHashMap sViewPropertyAnimatorMap>;
+
+        $r1 = virtualinvoke $r2.<java.util.WeakHashMap: java.lang.Object get(java.lang.Object)>($r0);
+
+        $r3 = (androidx.core.view.ViewPropertyAnimatorCompat) $r1;
+
+        if $r3 != null goto label2;
+
+        $r3 = new androidx.core.view.ViewPropertyAnimatorCompat;
+
+        specialinvoke $r3.<androidx.core.view.ViewPropertyAnimatorCompat: void <init>(android.view.View)>($r0);
+
+        $r2 = <androidx.core.view.ViewCompat: java.util.WeakHashMap sViewPropertyAnimatorMap>;
+
+        virtualinvoke $r2.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r0, $r3);
+
+     label2:
+        return $r3;
+    }
+
+    private static void bindTempDetach()
+    {
+        java.lang.Class[] $r0;
+        java.lang.Class $r1;
+        java.lang.reflect.Method $r2;
+        java.lang.Throwable $r3;
+
+        $r1 = class "Landroid/view/View;";
+
+        $r0 = newarray (java.lang.Class)[0];
+
+     label1:
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("dispatchStartTemporaryDetach", $r0);
+
+     label2:
+        <androidx.core.view.ViewCompat: java.lang.reflect.Method sDispatchStartTemporaryDetach> = $r2;
+
+        $r1 = class "Landroid/view/View;";
+
+        $r0 = newarray (java.lang.Class)[0];
+
+     label3:
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("dispatchFinishTemporaryDetach", $r0);
+
+     label4:
+        <androidx.core.view.ViewCompat: java.lang.reflect.Method sDispatchFinishTemporaryDetach> = $r2;
+
+        goto label6;
+
+     label5:
+        $r3 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewCompat", "Couldn\'t find method", $r3);
+
+     label6:
+        <androidx.core.view.ViewCompat: boolean sTempDetachBound> = 1;
+
+        return;
+
+        catch java.lang.NoSuchMethodException from label1 to label2 with label5;
+        catch java.lang.NoSuchMethodException from label3 to label4 with label5;
+    }
+
+    public static boolean canScrollHorizontally(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean canScrollHorizontally(int)>($i0);
+
+        return $z0;
+    }
+
+    public static boolean canScrollVertically(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean canScrollVertically(int)>($i0);
+
+        return $z0;
+    }
+
+    public static void cancelDragAndDrop(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void cancelDragAndDrop()>();
+
+     label1:
+        return;
+    }
+
+    public static int combineMeasuredStates(int, int)
+    {
+        int $i0, $i1;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i0 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($i0, $i1);
+
+        return $i0;
+    }
+
+    private static void compatOffsetLeftAndRight(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0;
+        android.view.ViewParent $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        virtualinvoke $r0.<android.view.View: void offsetLeftAndRight(int)>($i0);
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getVisibility()>();
+
+        if $i0 != 0 goto label1;
+
+        staticinvoke <androidx.core.view.ViewCompat: void tickleInvalidationFlag(android.view.View)>($r0);
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewParent getParent()>();
+
+        $z0 = $r1 instanceof android.view.View;
+
+        if $z0 == 0 goto label1;
+
+        $r0 = (android.view.View) $r1;
+
+        staticinvoke <androidx.core.view.ViewCompat: void tickleInvalidationFlag(android.view.View)>($r0);
+
+     label1:
+        return;
+    }
+
+    private static void compatOffsetTopAndBottom(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0;
+        android.view.ViewParent $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        virtualinvoke $r0.<android.view.View: void offsetTopAndBottom(int)>($i0);
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getVisibility()>();
+
+        if $i0 != 0 goto label1;
+
+        staticinvoke <androidx.core.view.ViewCompat: void tickleInvalidationFlag(android.view.View)>($r0);
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewParent getParent()>();
+
+        $z0 = $r1 instanceof android.view.View;
+
+        if $z0 == 0 goto label1;
+
+        $r0 = (android.view.View) $r1;
+
+        staticinvoke <androidx.core.view.ViewCompat: void tickleInvalidationFlag(android.view.View)>($r0);
+
+     label1:
+        return;
+    }
+
+    public static androidx.core.view.WindowInsetsCompat dispatchApplyWindowInsets(android.view.View, androidx.core.view.WindowInsetsCompat)
+    {
+        android.view.View $r0;
+        androidx.core.view.WindowInsetsCompat $r1;
+        int $i0;
+        java.lang.Object $r2;
+        android.view.WindowInsets $r3, $r4;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.WindowInsetsCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label2;
+
+        $r2 = staticinvoke <androidx.core.view.WindowInsetsCompat: java.lang.Object unwrap(androidx.core.view.WindowInsetsCompat)>($r1);
+
+        $r3 = (android.view.WindowInsets) $r2;
+
+        $r4 = virtualinvoke $r0.<android.view.View: android.view.WindowInsets dispatchApplyWindowInsets(android.view.WindowInsets)>($r3);
+
+        if $r4 == $r3 goto label1;
+
+        $r3 = new android.view.WindowInsets;
+
+        specialinvoke $r3.<android.view.WindowInsets: void <init>(android.view.WindowInsets)>($r4);
+
+     label1:
+        $r1 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat wrap(java.lang.Object)>($r3);
+
+     label2:
+        return $r1;
+    }
+
+    public static void dispatchFinishTemporaryDetach(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        java.lang.reflect.Method $r1;
+        java.lang.Object[] $r2;
+        java.lang.Exception $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void dispatchFinishTemporaryDetach()>();
+
+        return;
+
+     label1:
+        $z0 = <androidx.core.view.ViewCompat: boolean sTempDetachBound>;
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <androidx.core.view.ViewCompat: void bindTempDetach()>();
+
+     label2:
+        $r1 = <androidx.core.view.ViewCompat: java.lang.reflect.Method sDispatchFinishTemporaryDetach>;
+
+        if $r1 == null goto label7;
+
+     label3:
+        $r2 = newarray (java.lang.Object)[0];
+
+        virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r2);
+
+     label4:
+        goto label6;
+
+     label5:
+        $r3 := @caughtexception;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewCompat", "Error calling dispatchFinishTemporaryDetach", $r3);
+
+     label6:
+        return;
+
+     label7:
+        virtualinvoke $r0.<android.view.View: void onFinishTemporaryDetach()>();
+
+        return;
+
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    public static boolean dispatchNestedFling(android.view.View, float, float, boolean)
+    {
+        android.view.View $r0;
+        float $f0, $f1;
+        boolean $z0, $z1;
+        int $i0;
+        androidx.core.view.NestedScrollingChild $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $z0 := @parameter3: boolean;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean dispatchNestedFling(float,float,boolean)>($f0, $f1, $z0);
+
+        return $z0;
+
+     label1:
+        $z1 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z1 == 0 goto label2;
+
+        $r1 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        $z0 = interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild: boolean dispatchNestedFling(float,float,boolean)>($f0, $f1, $z0);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean dispatchNestedPreFling(android.view.View, float, float)
+    {
+        android.view.View $r0;
+        float $f0, $f1;
+        int $i0;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean dispatchNestedPreFling(float,float)>($f0, $f1);
+
+        return $z0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        $z0 = interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild: boolean dispatchNestedPreFling(float,float)>($f0, $f1);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean dispatchNestedPreScroll(android.view.View, int, int, int[], int[])
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2;
+        int[] $r1, $r2;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: int[];
+
+        $r2 := @parameter4: int[];
+
+        $i2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i2 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean dispatchNestedPreScroll(int,int,int[],int[])>($i0, $i1, $r1, $r2);
+
+        return $z0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z0 == 0 goto label2;
+
+        $r3 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        $z0 = interfaceinvoke $r3.<androidx.core.view.NestedScrollingChild: boolean dispatchNestedPreScroll(int,int,int[],int[])>($i0, $i1, $r1, $r2);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean dispatchNestedPreScroll(android.view.View, int, int, int[], int[], int)
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2;
+        int[] $r1, $r2;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild2 $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: int[];
+
+        $r2 := @parameter4: int[];
+
+        $i2 := @parameter5: int;
+
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild2;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = (androidx.core.view.NestedScrollingChild2) $r0;
+
+        $z0 = interfaceinvoke $r3.<androidx.core.view.NestedScrollingChild2: boolean dispatchNestedPreScroll(int,int,int[],int[],int)>($i0, $i1, $r1, $r2, $i2);
+
+        return $z0;
+
+     label1:
+        if $i2 != 0 goto label2;
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean dispatchNestedPreScroll(android.view.View,int,int,int[],int[])>($r0, $i0, $i1, $r1, $r2);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean dispatchNestedScroll(android.view.View, int, int, int, int, int[])
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        int[] $r1;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $r1 := @parameter5: int[];
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean dispatchNestedScroll(int,int,int,int,int[])>($i0, $i1, $i2, $i3, $r1);
+
+        return $z0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        $z0 = interfaceinvoke $r2.<androidx.core.view.NestedScrollingChild: boolean dispatchNestedScroll(int,int,int,int,int[])>($i0, $i1, $i2, $i3, $r1);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean dispatchNestedScroll(android.view.View, int, int, int, int, int[], int)
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        int[] $r1;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild2 $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $r1 := @parameter5: int[];
+
+        $i4 := @parameter6: int;
+
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild2;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (androidx.core.view.NestedScrollingChild2) $r0;
+
+        $z0 = interfaceinvoke $r2.<androidx.core.view.NestedScrollingChild2: boolean dispatchNestedScroll(int,int,int,int,int[],int)>($i0, $i1, $i2, $i3, $r1, $i4);
+
+        return $z0;
+
+     label1:
+        if $i4 != 0 goto label2;
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean dispatchNestedScroll(android.view.View,int,int,int,int,int[])>($r0, $i0, $i1, $i2, $i3, $r1);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static void dispatchStartTemporaryDetach(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        java.lang.reflect.Method $r1;
+        java.lang.Object[] $r2;
+        java.lang.Exception $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void dispatchStartTemporaryDetach()>();
+
+        return;
+
+     label1:
+        $z0 = <androidx.core.view.ViewCompat: boolean sTempDetachBound>;
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <androidx.core.view.ViewCompat: void bindTempDetach()>();
+
+     label2:
+        $r1 = <androidx.core.view.ViewCompat: java.lang.reflect.Method sDispatchStartTemporaryDetach>;
+
+        if $r1 == null goto label7;
+
+     label3:
+        $r2 = newarray (java.lang.Object)[0];
+
+        virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r2);
+
+     label4:
+        goto label6;
+
+     label5:
+        $r3 := @caughtexception;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewCompat", "Error calling dispatchStartTemporaryDetach", $r3);
+
+     label6:
+        return;
+
+     label7:
+        virtualinvoke $r0.<android.view.View: void onStartTemporaryDetach()>();
+
+        return;
+
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    static boolean dispatchUnhandledKeyEventBeforeCallback(android.view.View, android.view.KeyEvent)
+    {
+        android.view.View $r0;
+        android.view.KeyEvent $r1;
+        int $i0;
+        androidx.core.view.ViewCompat$UnhandledKeyEventManager $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = staticinvoke <androidx.core.view.ViewCompat$UnhandledKeyEventManager: androidx.core.view.ViewCompat$UnhandledKeyEventManager at(android.view.View)>($r0);
+
+        $z0 = virtualinvoke $r2.<androidx.core.view.ViewCompat$UnhandledKeyEventManager: boolean dispatch(android.view.View,android.view.KeyEvent)>($r0, $r1);
+
+        return $z0;
+    }
+
+    static boolean dispatchUnhandledKeyEventBeforeHierarchy(android.view.View, android.view.KeyEvent)
+    {
+        android.view.View $r0;
+        android.view.KeyEvent $r1;
+        int $i0;
+        androidx.core.view.ViewCompat$UnhandledKeyEventManager $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = staticinvoke <androidx.core.view.ViewCompat$UnhandledKeyEventManager: androidx.core.view.ViewCompat$UnhandledKeyEventManager at(android.view.View)>($r0);
+
+        $z0 = virtualinvoke $r2.<androidx.core.view.ViewCompat$UnhandledKeyEventManager: boolean preDispatch(android.view.KeyEvent)>($r1);
+
+        return $z0;
+    }
+
+    public static int generateViewId()
+    {
+        int $i0, $i1;
+        java.util.concurrent.atomic.AtomicInteger $r0;
+        boolean $z0;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $i0 = staticinvoke <android.view.View: int generateViewId()>();
+
+        return $i0;
+
+     label1:
+        $r0 = <androidx.core.view.ViewCompat: java.util.concurrent.atomic.AtomicInteger sNextGeneratedId>;
+
+        $i0 = virtualinvoke $r0.<java.util.concurrent.atomic.AtomicInteger: int get()>();
+
+        $i1 = $i0 + 1;
+
+        if $i1 <= 16777215 goto label2;
+
+        $i1 = 1;
+
+     label2:
+        $r0 = <androidx.core.view.ViewCompat: java.util.concurrent.atomic.AtomicInteger sNextGeneratedId>;
+
+        $z0 = virtualinvoke $r0.<java.util.concurrent.atomic.AtomicInteger: boolean compareAndSet(int,int)>($i0, $i1);
+
+        if $z0 == 0 goto label1;
+
+        return $i0;
+    }
+
+    public static int getAccessibilityLiveRegion(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getAccessibilityLiveRegion()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(android.view.View)
+    {
+        android.view.View $r0;
+        android.view.accessibility.AccessibilityNodeProvider $r1;
+        int $i0;
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider()>();
+
+        if $r1 == null goto label1;
+
+        $r2 = new androidx.core.view.accessibility.AccessibilityNodeProviderCompat;
+
+        specialinvoke $r2.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat: void <init>(java.lang.Object)>($r1);
+
+        return $r2;
+
+     label1:
+        return null;
+    }
+
+    public static float getAlpha(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getAlpha()>();
+
+        return $f0;
+    }
+
+    public static android.content.res.ColorStateList getBackgroundTintList(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        android.content.res.ColorStateList $r1;
+        boolean $z0;
+        androidx.core.view.TintableBackgroundView $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.content.res.ColorStateList getBackgroundTintList()>();
+
+        return $r1;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.TintableBackgroundView;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.view.TintableBackgroundView) $r0;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.TintableBackgroundView: android.content.res.ColorStateList getSupportBackgroundTintList()>();
+
+        return $r1;
+
+     label2:
+        return null;
+    }
+
+    public static android.graphics.PorterDuff$Mode getBackgroundTintMode(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        android.graphics.PorterDuff$Mode $r1;
+        boolean $z0;
+        androidx.core.view.TintableBackgroundView $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.graphics.PorterDuff$Mode getBackgroundTintMode()>();
+
+        return $r1;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.TintableBackgroundView;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.view.TintableBackgroundView) $r0;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.TintableBackgroundView: android.graphics.PorterDuff$Mode getSupportBackgroundTintMode()>();
+
+        return $r1;
+
+     label2:
+        return null;
+    }
+
+    public static android.graphics.Rect getClipBounds(android.view.View)
+    {
+        android.view.View $r0;
+        android.graphics.Rect $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.graphics.Rect getClipBounds()>();
+
+        return $r1;
+
+     label1:
+        return null;
+    }
+
+    public static android.view.Display getDisplay(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        android.view.Display $r1;
+        boolean $z0;
+        android.content.Context $r2;
+        java.lang.Object $r3;
+        android.view.WindowManager $r4;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.Display getDisplay()>();
+
+        return $r1;
+
+     label1:
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean isAttachedToWindow(android.view.View)>($r0);
+
+        if $z0 == 0 goto label2;
+
+        $r2 = virtualinvoke $r0.<android.view.View: android.content.Context getContext()>();
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        $r4 = (android.view.WindowManager) $r3;
+
+        $r1 = interfaceinvoke $r4.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        return $r1;
+
+     label2:
+        return null;
+    }
+
+    public static float getElevation(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getElevation()>();
+
+        return $f0;
+
+     label1:
+        return 0.0F;
+    }
+
+    private static android.graphics.Rect getEmptyTempRect()
+    {
+        java.lang.Object $r0;
+        java.lang.ThreadLocal $r1;
+        android.graphics.Rect $r2, $r3;
+
+        $r1 = <androidx.core.view.ViewCompat: java.lang.ThreadLocal sThreadLocalRect>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new java.lang.ThreadLocal;
+
+        specialinvoke $r1.<java.lang.ThreadLocal: void <init>()>();
+
+        <androidx.core.view.ViewCompat: java.lang.ThreadLocal sThreadLocalRect> = $r1;
+
+     label1:
+        $r1 = <androidx.core.view.ViewCompat: java.lang.ThreadLocal sThreadLocalRect>;
+
+        $r0 = virtualinvoke $r1.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r2 = (android.graphics.Rect) $r0;
+
+        if $r2 != null goto label2;
+
+        $r3 = new android.graphics.Rect;
+
+        specialinvoke $r3.<android.graphics.Rect: void <init>()>();
+
+        $r2 = $r3;
+
+        $r1 = <androidx.core.view.ViewCompat: java.lang.ThreadLocal sThreadLocalRect>;
+
+        virtualinvoke $r1.<java.lang.ThreadLocal: void set(java.lang.Object)>($r3);
+
+     label2:
+        virtualinvoke $r2.<android.graphics.Rect: void setEmpty()>();
+
+        return $r2;
+    }
+
+    public static boolean getFitsSystemWindows(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean getFitsSystemWindows()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static int getImportantForAccessibility(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getImportantForAccessibility()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static int getImportantForAutofill(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getImportantForAutofill()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static int getLabelFor(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getLabelFor()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static int getLayerType(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getLayerType()>();
+
+        return $i0;
+    }
+
+    public static int getLayoutDirection(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getLayoutDirection()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static android.graphics.Matrix getMatrix(android.view.View)
+    {
+        android.view.View $r0;
+        android.graphics.Matrix $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.graphics.Matrix getMatrix()>();
+
+        return $r1;
+    }
+
+    public static int getMeasuredHeightAndState(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getMeasuredHeightAndState()>();
+
+        return $i0;
+    }
+
+    public static int getMeasuredState(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getMeasuredState()>();
+
+        return $i0;
+    }
+
+    public static int getMeasuredWidthAndState(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getMeasuredWidthAndState()>();
+
+        return $i0;
+    }
+
+    public static int getMinimumHeight(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        java.lang.Class $r1;
+        java.lang.reflect.Field $r2;
+        java.lang.Throwable $r3;
+        java.lang.Object $r4;
+        java.lang.Integer $r5;
+        java.lang.Exception $r6;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label01;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getMinimumHeight()>();
+
+        return $i0;
+
+     label01:
+        $z0 = <androidx.core.view.ViewCompat: boolean sMinHeightFieldFetched>;
+
+        if $z0 != 0 goto label08;
+
+        $r1 = class "Landroid/view/View;";
+
+     label02:
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mMinHeight");
+
+     label03:
+        <androidx.core.view.ViewCompat: java.lang.reflect.Field sMinHeightField> = $r2;
+
+        $r2 = <androidx.core.view.ViewCompat: java.lang.reflect.Field sMinHeightField>;
+
+     label04:
+        virtualinvoke $r2.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label05:
+        goto label07;
+
+     label06:
+        $r3 := @caughtexception;
+
+     label07:
+        <androidx.core.view.ViewCompat: boolean sMinHeightFieldFetched> = 1;
+
+     label08:
+        $r2 = <androidx.core.view.ViewCompat: java.lang.reflect.Field sMinHeightField>;
+
+        if $r2 == null goto label12;
+
+     label09:
+        $r4 = virtualinvoke $r2.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($r0);
+
+        $r5 = (java.lang.Integer) $r4;
+
+        $i0 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+     label10:
+        return $i0;
+
+     label11:
+        $r6 := @caughtexception;
+
+     label12:
+        return 0;
+
+        catch java.lang.NoSuchFieldException from label02 to label03 with label06;
+        catch java.lang.NoSuchFieldException from label04 to label05 with label06;
+        catch java.lang.Exception from label09 to label10 with label11;
+    }
+
+    public static int getMinimumWidth(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        java.lang.Class $r1;
+        java.lang.reflect.Field $r2;
+        java.lang.Throwable $r3;
+        java.lang.Object $r4;
+        java.lang.Integer $r5;
+        java.lang.Exception $r6;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label01;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getMinimumWidth()>();
+
+        return $i0;
+
+     label01:
+        $z0 = <androidx.core.view.ViewCompat: boolean sMinWidthFieldFetched>;
+
+        if $z0 != 0 goto label08;
+
+        $r1 = class "Landroid/view/View;";
+
+     label02:
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mMinWidth");
+
+     label03:
+        <androidx.core.view.ViewCompat: java.lang.reflect.Field sMinWidthField> = $r2;
+
+        $r2 = <androidx.core.view.ViewCompat: java.lang.reflect.Field sMinWidthField>;
+
+     label04:
+        virtualinvoke $r2.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label05:
+        goto label07;
+
+     label06:
+        $r3 := @caughtexception;
+
+     label07:
+        <androidx.core.view.ViewCompat: boolean sMinWidthFieldFetched> = 1;
+
+     label08:
+        $r2 = <androidx.core.view.ViewCompat: java.lang.reflect.Field sMinWidthField>;
+
+        if $r2 == null goto label12;
+
+     label09:
+        $r4 = virtualinvoke $r2.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($r0);
+
+        $r5 = (java.lang.Integer) $r4;
+
+        $i0 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+     label10:
+        return $i0;
+
+     label11:
+        $r6 := @caughtexception;
+
+     label12:
+        return 0;
+
+        catch java.lang.NoSuchFieldException from label02 to label03 with label06;
+        catch java.lang.NoSuchFieldException from label04 to label05 with label06;
+        catch java.lang.Exception from label09 to label10 with label11;
+    }
+
+    public static int getNextClusterForwardId(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getNextClusterForwardId()>();
+
+        return $i0;
+
+     label1:
+        return -1;
+    }
+
+    public static int getOverScrollMode(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getOverScrollMode()>();
+
+        return $i0;
+    }
+
+    public static int getPaddingEnd(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getPaddingEnd()>();
+
+        return $i0;
+
+     label1:
+        $i0 = virtualinvoke $r0.<android.view.View: int getPaddingRight()>();
+
+        return $i0;
+    }
+
+    public static int getPaddingStart(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getPaddingStart()>();
+
+        return $i0;
+
+     label1:
+        $i0 = virtualinvoke $r0.<android.view.View: int getPaddingLeft()>();
+
+        return $i0;
+    }
+
+    public static android.view.ViewParent getParentForAccessibility(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        android.view.ViewParent $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewParent getParentForAccessibility()>();
+
+        return $r1;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewParent getParent()>();
+
+        return $r1;
+    }
+
+    public static float getPivotX(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getPivotX()>();
+
+        return $f0;
+    }
+
+    public static float getPivotY(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getPivotY()>();
+
+        return $f0;
+    }
+
+    public static float getRotation(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getRotation()>();
+
+        return $f0;
+    }
+
+    public static float getRotationX(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getRotationX()>();
+
+        return $f0;
+    }
+
+    public static float getRotationY(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getRotationY()>();
+
+        return $f0;
+    }
+
+    public static float getScaleX(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getScaleX()>();
+
+        return $f0;
+    }
+
+    public static float getScaleY(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getScaleY()>();
+
+        return $f0;
+    }
+
+    public static int getScrollIndicators(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getScrollIndicators()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static java.lang.String getTransitionName(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        java.lang.String $r1;
+        java.util.WeakHashMap $r2;
+        java.lang.Object $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.view.View: java.lang.String getTransitionName()>();
+
+        return $r1;
+
+     label1:
+        $r2 = <androidx.core.view.ViewCompat: java.util.WeakHashMap sTransitionNameMap>;
+
+        if $r2 != null goto label2;
+
+        return null;
+
+     label2:
+        $r3 = virtualinvoke $r2.<java.util.WeakHashMap: java.lang.Object get(java.lang.Object)>($r0);
+
+        $r1 = (java.lang.String) $r3;
+
+        return $r1;
+    }
+
+    public static float getTranslationX(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getTranslationX()>();
+
+        return $f0;
+    }
+
+    public static float getTranslationY(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getTranslationY()>();
+
+        return $f0;
+    }
+
+    public static float getTranslationZ(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getTranslationZ()>();
+
+        return $f0;
+
+     label1:
+        return 0.0F;
+    }
+
+    public static int getWindowSystemUiVisibility(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getWindowSystemUiVisibility()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static float getX(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getX()>();
+
+        return $f0;
+    }
+
+    public static float getY(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getY()>();
+
+        return $f0;
+    }
+
+    public static float getZ(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getZ()>();
+
+        return $f0;
+
+     label1:
+        return 0.0F;
+    }
+
+    public static boolean hasAccessibilityDelegate(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        java.lang.reflect.Field $r1;
+        java.lang.Class $r2;
+        java.lang.Throwable $r3, $r5;
+        java.lang.Object $r4;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 = <androidx.core.view.ViewCompat: boolean sAccessibilityDelegateCheckFailed>;
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = <androidx.core.view.ViewCompat: java.lang.reflect.Field sAccessibilityDelegateField>;
+
+        if $r1 != null goto label5;
+
+        $r2 = class "Landroid/view/View;";
+
+     label2:
+        $r1 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mAccessibilityDelegate");
+
+        <androidx.core.view.ViewCompat: java.lang.reflect.Field sAccessibilityDelegateField> = $r1;
+
+        $r1 = <androidx.core.view.ViewCompat: java.lang.reflect.Field sAccessibilityDelegateField>;
+
+        virtualinvoke $r1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label3:
+        goto label5;
+
+     label4:
+        $r3 := @caughtexception;
+
+        <androidx.core.view.ViewCompat: boolean sAccessibilityDelegateCheckFailed> = 1;
+
+        return 0;
+
+     label5:
+        $r1 = <androidx.core.view.ViewCompat: java.lang.reflect.Field sAccessibilityDelegateField>;
+
+        $r4 = virtualinvoke $r1.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($r0);
+
+     label6:
+        if $r4 == null goto label8;
+
+        return 1;
+
+     label7:
+        $r5 := @caughtexception;
+
+        <androidx.core.view.ViewCompat: boolean sAccessibilityDelegateCheckFailed> = 1;
+
+     label8:
+        return 0;
+
+        catch java.lang.Throwable from label2 to label3 with label4;
+        catch java.lang.Throwable from label5 to label6 with label7;
+    }
+
+    public static boolean hasExplicitFocusable(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean hasExplicitFocusable()>();
+
+        return $z0;
+
+     label1:
+        $z0 = virtualinvoke $r0.<android.view.View: boolean hasFocusable()>();
+
+        return $z0;
+    }
+
+    public static boolean hasNestedScrollingParent(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean hasNestedScrollingParent()>();
+
+        return $z0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        $z0 = interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild: boolean hasNestedScrollingParent()>();
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean hasNestedScrollingParent(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild2 $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild2;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (androidx.core.view.NestedScrollingChild2) $r0;
+
+        interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild2: boolean hasNestedScrollingParent(int)>($i0);
+
+        goto label2;
+
+     label1:
+        if $i0 != 0 goto label2;
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean hasNestedScrollingParent(android.view.View)>($r0);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean hasOnClickListeners(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 15 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean hasOnClickListeners()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean hasOverlappingRendering(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean hasOverlappingRendering()>();
+
+        return $z0;
+
+     label1:
+        return 1;
+    }
+
+    public static boolean hasTransientState(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean hasTransientState()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isAttachedToWindow(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        android.os.IBinder $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isAttachedToWindow()>();
+
+        return $z0;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.view.View: android.os.IBinder getWindowToken()>();
+
+        if $r1 == null goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean isFocusedByDefault(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isFocusedByDefault()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isImportantForAccessibility(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isImportantForAccessibility()>();
+
+        return $z0;
+
+     label1:
+        return 1;
+    }
+
+    public static boolean isImportantForAutofill(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isImportantForAutofill()>();
+
+        return $z0;
+
+     label1:
+        return 1;
+    }
+
+    public static boolean isInLayout(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isInLayout()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isKeyboardNavigationCluster(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isKeyboardNavigationCluster()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isLaidOut(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isLaidOut()>();
+
+        return $z0;
+
+     label1:
+        $i0 = virtualinvoke $r0.<android.view.View: int getWidth()>();
+
+        if $i0 <= 0 goto label2;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getHeight()>();
+
+        if $i0 <= 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean isLayoutDirectionResolved(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 19 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isLayoutDirectionResolved()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isNestedScrollingEnabled(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isNestedScrollingEnabled()>();
+
+        return $z0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        $z0 = interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild: boolean isNestedScrollingEnabled()>();
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean isOpaque(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isOpaque()>();
+
+        return $z0;
+    }
+
+    public static boolean isPaddingRelative(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isPaddingRelative()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static void jumpDrawablesToCurrentState(android.view.View)
+    {
+        android.view.View $r0;
+
+        $r0 := @parameter0: android.view.View;
+
+        virtualinvoke $r0.<android.view.View: void jumpDrawablesToCurrentState()>();
+
+        return;
+    }
+
+    public static android.view.View keyboardNavigationClusterSearch(android.view.View, android.view.View, int)
+    {
+        android.view.View $r0, $r1;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.view.View;
+
+        $i0 := @parameter2: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 26 goto label1;
+
+        $r0 = virtualinvoke $r0.<android.view.View: android.view.View keyboardNavigationClusterSearch(android.view.View,int)>($r1, $i0);
+
+        return $r0;
+
+     label1:
+        return null;
+    }
+
+    public static void offsetLeftAndRight(android.view.View, int)
+    {
+        android.view.View $r0, $r3;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.graphics.Rect $r1;
+        boolean $z0, $z1;
+        android.view.ViewParent $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 23 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void offsetLeftAndRight(int)>($i0);
+
+        return;
+
+     label1:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 21 goto label4;
+
+        $r1 = staticinvoke <androidx.core.view.ViewCompat: android.graphics.Rect getEmptyTempRect()>();
+
+        $z0 = 0;
+
+        $r2 = virtualinvoke $r0.<android.view.View: android.view.ViewParent getParent()>();
+
+        $z1 = $r2 instanceof android.view.View;
+
+        if $z1 == 0 goto label2;
+
+        $r3 = (android.view.View) $r2;
+
+        $i1 = virtualinvoke $r3.<android.view.View: int getLeft()>();
+
+        $i2 = virtualinvoke $r3.<android.view.View: int getTop()>();
+
+        $i3 = virtualinvoke $r3.<android.view.View: int getRight()>();
+
+        $i4 = virtualinvoke $r3.<android.view.View: int getBottom()>();
+
+        virtualinvoke $r1.<android.graphics.Rect: void set(int,int,int,int)>($i1, $i2, $i3, $i4);
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getLeft()>();
+
+        $i2 = virtualinvoke $r0.<android.view.View: int getTop()>();
+
+        $i3 = virtualinvoke $r0.<android.view.View: int getRight()>();
+
+        $i4 = virtualinvoke $r0.<android.view.View: int getBottom()>();
+
+        $z0 = virtualinvoke $r1.<android.graphics.Rect: boolean intersects(int,int,int,int)>($i1, $i2, $i3, $i4);
+
+        $z0 = $z0 ^ 1;
+
+     label2:
+        staticinvoke <androidx.core.view.ViewCompat: void compatOffsetLeftAndRight(android.view.View,int)>($r0, $i0);
+
+        if $z0 == 0 goto label3;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getLeft()>();
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getTop()>();
+
+        $i2 = virtualinvoke $r0.<android.view.View: int getRight()>();
+
+        $i3 = virtualinvoke $r0.<android.view.View: int getBottom()>();
+
+        $z0 = virtualinvoke $r1.<android.graphics.Rect: boolean intersect(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        if $z0 == 0 goto label3;
+
+        $r0 = (android.view.View) $r2;
+
+        virtualinvoke $r0.<android.view.View: void invalidate(android.graphics.Rect)>($r1);
+
+     label3:
+        return;
+
+     label4:
+        staticinvoke <androidx.core.view.ViewCompat: void compatOffsetLeftAndRight(android.view.View,int)>($r0, $i0);
+
+        return;
+    }
+
+    public static void offsetTopAndBottom(android.view.View, int)
+    {
+        android.view.View $r0, $r3;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.graphics.Rect $r1;
+        boolean $z0, $z1;
+        android.view.ViewParent $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 23 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void offsetTopAndBottom(int)>($i0);
+
+        return;
+
+     label1:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 21 goto label4;
+
+        $r1 = staticinvoke <androidx.core.view.ViewCompat: android.graphics.Rect getEmptyTempRect()>();
+
+        $z0 = 0;
+
+        $r2 = virtualinvoke $r0.<android.view.View: android.view.ViewParent getParent()>();
+
+        $z1 = $r2 instanceof android.view.View;
+
+        if $z1 == 0 goto label2;
+
+        $r3 = (android.view.View) $r2;
+
+        $i1 = virtualinvoke $r3.<android.view.View: int getLeft()>();
+
+        $i2 = virtualinvoke $r3.<android.view.View: int getTop()>();
+
+        $i3 = virtualinvoke $r3.<android.view.View: int getRight()>();
+
+        $i4 = virtualinvoke $r3.<android.view.View: int getBottom()>();
+
+        virtualinvoke $r1.<android.graphics.Rect: void set(int,int,int,int)>($i1, $i2, $i3, $i4);
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getLeft()>();
+
+        $i2 = virtualinvoke $r0.<android.view.View: int getTop()>();
+
+        $i3 = virtualinvoke $r0.<android.view.View: int getRight()>();
+
+        $i4 = virtualinvoke $r0.<android.view.View: int getBottom()>();
+
+        $z0 = virtualinvoke $r1.<android.graphics.Rect: boolean intersects(int,int,int,int)>($i1, $i2, $i3, $i4);
+
+        $z0 = $z0 ^ 1;
+
+     label2:
+        staticinvoke <androidx.core.view.ViewCompat: void compatOffsetTopAndBottom(android.view.View,int)>($r0, $i0);
+
+        if $z0 == 0 goto label3;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getLeft()>();
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getTop()>();
+
+        $i2 = virtualinvoke $r0.<android.view.View: int getRight()>();
+
+        $i3 = virtualinvoke $r0.<android.view.View: int getBottom()>();
+
+        $z0 = virtualinvoke $r1.<android.graphics.Rect: boolean intersect(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        if $z0 == 0 goto label3;
+
+        $r0 = (android.view.View) $r2;
+
+        virtualinvoke $r0.<android.view.View: void invalidate(android.graphics.Rect)>($r1);
+
+     label3:
+        return;
+
+     label4:
+        staticinvoke <androidx.core.view.ViewCompat: void compatOffsetTopAndBottom(android.view.View,int)>($r0, $i0);
+
+        return;
+    }
+
+    public static androidx.core.view.WindowInsetsCompat onApplyWindowInsets(android.view.View, androidx.core.view.WindowInsetsCompat)
+    {
+        android.view.View $r0;
+        androidx.core.view.WindowInsetsCompat $r1;
+        int $i0;
+        java.lang.Object $r2;
+        android.view.WindowInsets $r3, $r4;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.WindowInsetsCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label2;
+
+        $r2 = staticinvoke <androidx.core.view.WindowInsetsCompat: java.lang.Object unwrap(androidx.core.view.WindowInsetsCompat)>($r1);
+
+        $r3 = (android.view.WindowInsets) $r2;
+
+        $r4 = virtualinvoke $r0.<android.view.View: android.view.WindowInsets onApplyWindowInsets(android.view.WindowInsets)>($r3);
+
+        if $r4 == $r3 goto label1;
+
+        $r3 = new android.view.WindowInsets;
+
+        specialinvoke $r3.<android.view.WindowInsets: void <init>(android.view.WindowInsets)>($r4);
+
+     label1:
+        $r1 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat wrap(java.lang.Object)>($r3);
+
+     label2:
+        return $r1;
+    }
+
+    public static void onInitializeAccessibilityEvent(android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.View $r0;
+        android.view.accessibility.AccessibilityEvent $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        virtualinvoke $r0.<android.view.View: void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($r1);
+
+        return;
+    }
+
+    public static void onInitializeAccessibilityNodeInfo(android.view.View, androidx.core.view.accessibility.AccessibilityNodeInfoCompat)
+    {
+        android.view.View $r0;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $r1;
+        android.view.accessibility.AccessibilityNodeInfo $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $r2 = virtualinvoke $r1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo unwrap()>();
+
+        virtualinvoke $r0.<android.view.View: void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo)>($r2);
+
+        return;
+    }
+
+    public static void onPopulateAccessibilityEvent(android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.View $r0;
+        android.view.accessibility.AccessibilityEvent $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        virtualinvoke $r0.<android.view.View: void onPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($r1);
+
+        return;
+    }
+
+    public static boolean performAccessibilityAction(android.view.View, int, android.os.Bundle)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+        android.os.Bundle $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: android.os.Bundle;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 16 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean performAccessibilityAction(int,android.os.Bundle)>($i0, $r1);
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public static void postInvalidateOnAnimation(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void postInvalidateOnAnimation()>();
+
+        return;
+
+     label1:
+        virtualinvoke $r0.<android.view.View: void postInvalidate()>();
+
+        return;
+    }
+
+    public static void postInvalidateOnAnimation(android.view.View, int, int, int, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 16 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void postInvalidateOnAnimation(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+
+     label1:
+        virtualinvoke $r0.<android.view.View: void postInvalidate(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public static void postOnAnimation(android.view.View, java.lang.Runnable)
+    {
+        android.view.View $r0;
+        java.lang.Runnable $r1;
+        long $l0;
+        int $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: java.lang.Runnable;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 16 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void postOnAnimation(java.lang.Runnable)>($r1);
+
+        return;
+
+     label1:
+        $l0 = staticinvoke <android.animation.ValueAnimator: long getFrameDelay()>();
+
+        virtualinvoke $r0.<android.view.View: boolean postDelayed(java.lang.Runnable,long)>($r1, $l0);
+
+        return;
+    }
+
+    public static void postOnAnimationDelayed(android.view.View, java.lang.Runnable, long)
+    {
+        android.view.View $r0;
+        java.lang.Runnable $r1;
+        long $l0, $l1;
+        int $i2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: java.lang.Runnable;
+
+        $l0 := @parameter2: long;
+
+        $i2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i2 < 16 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void postOnAnimationDelayed(java.lang.Runnable,long)>($r1, $l0);
+
+        return;
+
+     label1:
+        $l1 = staticinvoke <android.animation.ValueAnimator: long getFrameDelay()>();
+
+        $l0 = $l1 + $l0;
+
+        virtualinvoke $r0.<android.view.View: boolean postDelayed(java.lang.Runnable,long)>($r1, $l0);
+
+        return;
+    }
+
+    public static void removeOnUnhandledKeyEventListener(android.view.View, androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)
+    {
+        android.view.View $r0;
+        androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat $r1;
+        int $i0;
+        java.lang.Object $r2;
+        java.util.Map $r3;
+        android.view.View$OnUnhandledKeyEventListener $r4;
+        java.util.ArrayList $r5;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label2;
+
+        $i0 = <androidx.core.R$id: int tag_unhandled_key_listeners>;
+
+        $r2 = virtualinvoke $r0.<android.view.View: java.lang.Object getTag(int)>($i0);
+
+        $r3 = (java.util.Map) $r2;
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r4 = (android.view.View$OnUnhandledKeyEventListener) $r2;
+
+        if $r4 == null goto label3;
+
+        virtualinvoke $r0.<android.view.View: void removeOnUnhandledKeyEventListener(android.view.View$OnUnhandledKeyEventListener)>($r4);
+
+        return;
+
+     label2:
+        $i0 = <androidx.core.R$id: int tag_unhandled_key_listeners>;
+
+        $r2 = virtualinvoke $r0.<android.view.View: java.lang.Object getTag(int)>($i0);
+
+        $r5 = (java.util.ArrayList) $r2;
+
+        if $r5 == null goto label3;
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean remove(java.lang.Object)>($r1);
+
+        $i0 = virtualinvoke $r5.<java.util.ArrayList: int size()>();
+
+        if $i0 != 0 goto label3;
+
+        staticinvoke <androidx.core.view.ViewCompat$UnhandledKeyEventManager: void unregisterListeningView(android.view.View)>($r0);
+
+     label3:
+        return;
+    }
+
+    public static void requestApplyInsets(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 20 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void requestApplyInsets()>();
+
+        return;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label2;
+
+        virtualinvoke $r0.<android.view.View: void requestFitSystemWindows()>();
+
+     label2:
+        return;
+    }
+
+    public static android.view.View requireViewById(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+        java.lang.IllegalArgumentException $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 28 goto label1;
+
+        $r0 = virtualinvoke $r0.<android.view.View: android.view.View requireViewById(int)>($i0);
+
+        return $r0;
+
+     label1:
+        $r0 = virtualinvoke $r0.<android.view.View: android.view.View findViewById(int)>($i0);
+
+        if $r0 == null goto label2;
+
+        return $r0;
+
+     label2:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("ID does not reference a View inside this View");
+
+        throw $r1;
+    }
+
+    public static int resolveSizeAndState(int, int, int)
+    {
+        int $i0, $i1, $i2;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i0 = staticinvoke <android.view.View: int resolveSizeAndState(int,int,int)>($i0, $i1, $i2);
+
+        return $i0;
+    }
+
+    public static boolean restoreDefaultFocus(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean restoreDefaultFocus()>();
+
+        return $z0;
+
+     label1:
+        $z0 = virtualinvoke $r0.<android.view.View: boolean requestFocus()>();
+
+        return $z0;
+    }
+
+    public static void setAccessibilityDelegate(android.view.View, androidx.core.view.AccessibilityDelegateCompat)
+    {
+        android.view.View $r0;
+        androidx.core.view.AccessibilityDelegateCompat $r1;
+        android.view.View$AccessibilityDelegate $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.AccessibilityDelegateCompat;
+
+        if $r1 != null goto label1;
+
+        $r2 = null;
+
+        goto label2;
+
+     label1:
+        $r2 = virtualinvoke $r1.<androidx.core.view.AccessibilityDelegateCompat: android.view.View$AccessibilityDelegate getBridge()>();
+
+     label2:
+        virtualinvoke $r0.<android.view.View: void setAccessibilityDelegate(android.view.View$AccessibilityDelegate)>($r2);
+
+        return;
+    }
+
+    public static void setAccessibilityLiveRegion(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 19 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setAccessibilityLiveRegion(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setActivated(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        virtualinvoke $r0.<android.view.View: void setActivated(boolean)>($z0);
+
+        return;
+    }
+
+    public static void setAlpha(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setAlpha(float)>($f0);
+
+        return;
+    }
+
+    public static transient void setAutofillHints(android.view.View, java.lang.String[])
+    {
+        android.view.View $r0;
+        java.lang.String[] $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: java.lang.String[];
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setAutofillHints(java.lang.String[])>($r1);
+
+     label1:
+        return;
+    }
+
+    public static void setBackground(android.view.View, android.graphics.drawable.Drawable)
+    {
+        android.view.View $r0;
+        android.graphics.drawable.Drawable $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.graphics.drawable.Drawable;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setBackground(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+
+     label1:
+        virtualinvoke $r0.<android.view.View: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+    }
+
+    public static void setBackgroundTintList(android.view.View, android.content.res.ColorStateList)
+    {
+        android.view.View $r0;
+        android.content.res.ColorStateList $r1;
+        int $i0;
+        android.graphics.drawable.Drawable $r2;
+        android.graphics.PorterDuff$Mode $r3;
+        boolean $z0;
+        int[] $r4;
+        androidx.core.view.TintableBackgroundView $r5;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.content.res.ColorStateList;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label6;
+
+        virtualinvoke $r0.<android.view.View: void setBackgroundTintList(android.content.res.ColorStateList)>($r1);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 != 21 goto label7;
+
+        $r2 = virtualinvoke $r0.<android.view.View: android.graphics.drawable.Drawable getBackground()>();
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.content.res.ColorStateList getBackgroundTintList()>();
+
+        if $r1 != null goto label2;
+
+        $r3 = virtualinvoke $r0.<android.view.View: android.graphics.PorterDuff$Mode getBackgroundTintMode()>();
+
+        if $r3 == null goto label1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+        goto label3;
+
+     label2:
+        $z0 = 1;
+
+     label3:
+        if $r2 == null goto label5;
+
+        if $z0 == 0 goto label5;
+
+        $z0 = virtualinvoke $r2.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $z0 == 0 goto label4;
+
+        $r4 = virtualinvoke $r0.<android.view.View: int[] getDrawableState()>();
+
+        virtualinvoke $r2.<android.graphics.drawable.Drawable: boolean setState(int[])>($r4);
+
+     label4:
+        virtualinvoke $r0.<android.view.View: void setBackground(android.graphics.drawable.Drawable)>($r2);
+
+     label5:
+        return;
+
+     label6:
+        $z0 = $r0 instanceof androidx.core.view.TintableBackgroundView;
+
+        if $z0 == 0 goto label7;
+
+        $r5 = (androidx.core.view.TintableBackgroundView) $r0;
+
+        interfaceinvoke $r5.<androidx.core.view.TintableBackgroundView: void setSupportBackgroundTintList(android.content.res.ColorStateList)>($r1);
+
+     label7:
+        return;
+    }
+
+    public static void setBackgroundTintMode(android.view.View, android.graphics.PorterDuff$Mode)
+    {
+        android.view.View $r0;
+        android.graphics.PorterDuff$Mode $r1;
+        int $i0;
+        android.graphics.drawable.Drawable $r2;
+        android.content.res.ColorStateList $r3;
+        boolean $z0;
+        int[] $r4;
+        androidx.core.view.TintableBackgroundView $r5;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.graphics.PorterDuff$Mode;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label6;
+
+        virtualinvoke $r0.<android.view.View: void setBackgroundTintMode(android.graphics.PorterDuff$Mode)>($r1);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 != 21 goto label7;
+
+        $r2 = virtualinvoke $r0.<android.view.View: android.graphics.drawable.Drawable getBackground()>();
+
+        $r3 = virtualinvoke $r0.<android.view.View: android.content.res.ColorStateList getBackgroundTintList()>();
+
+        if $r3 != null goto label2;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.graphics.PorterDuff$Mode getBackgroundTintMode()>();
+
+        if $r1 == null goto label1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+        goto label3;
+
+     label2:
+        $z0 = 1;
+
+     label3:
+        if $r2 == null goto label5;
+
+        if $z0 == 0 goto label5;
+
+        $z0 = virtualinvoke $r2.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $z0 == 0 goto label4;
+
+        $r4 = virtualinvoke $r0.<android.view.View: int[] getDrawableState()>();
+
+        virtualinvoke $r2.<android.graphics.drawable.Drawable: boolean setState(int[])>($r4);
+
+     label4:
+        virtualinvoke $r0.<android.view.View: void setBackground(android.graphics.drawable.Drawable)>($r2);
+
+     label5:
+        return;
+
+     label6:
+        $z0 = $r0 instanceof androidx.core.view.TintableBackgroundView;
+
+        if $z0 == 0 goto label7;
+
+        $r5 = (androidx.core.view.TintableBackgroundView) $r0;
+
+        interfaceinvoke $r5.<androidx.core.view.TintableBackgroundView: void setSupportBackgroundTintMode(android.graphics.PorterDuff$Mode)>($r1);
+
+     label7:
+        return;
+    }
+
+    public static void setChildrenDrawingOrderEnabled(android.view.ViewGroup, boolean)
+    {
+        android.view.ViewGroup $r0;
+        boolean $z0;
+        java.lang.Class[] $r1;
+        java.lang.Class $r2, $r4;
+        java.lang.reflect.Method $r3;
+        java.lang.Throwable $r5, $r8, $r9, $r10;
+        java.lang.Object[] $r6;
+        java.lang.Boolean $r7;
+
+        $r0 := @parameter0: android.view.ViewGroup;
+
+        $z0 := @parameter1: boolean;
+
+        $r3 = <androidx.core.view.ViewCompat: java.lang.reflect.Method sChildrenDrawingOrderMethod>;
+
+        if $r3 != null goto label05;
+
+        $r4 = class "Landroid/view/ViewGroup;";
+
+        $r1 = newarray (java.lang.Class)[1];
+
+        $r2 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        $r1[0] = $r2;
+
+     label01:
+        $r3 = virtualinvoke $r4.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("setChildrenDrawingOrderEnabled", $r1);
+
+     label02:
+        <androidx.core.view.ViewCompat: java.lang.reflect.Method sChildrenDrawingOrderMethod> = $r3;
+
+        goto label04;
+
+     label03:
+        $r5 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewCompat", "Unable to find childrenDrawingOrderEnabled", $r5);
+
+     label04:
+        $r3 = <androidx.core.view.ViewCompat: java.lang.reflect.Method sChildrenDrawingOrderMethod>;
+
+        virtualinvoke $r3.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label05:
+        $r3 = <androidx.core.view.ViewCompat: java.lang.reflect.Method sChildrenDrawingOrderMethod>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+     label06:
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+     label07:
+        $r6[0] = $r7;
+
+     label08:
+        virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r6);
+
+     label09:
+        goto label13;
+
+     label10:
+        $r8 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", $r8);
+
+        return;
+
+     label11:
+        $r9 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", $r9);
+
+        goto label13;
+
+     label12:
+        $r10 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", $r10);
+
+     label13:
+        return;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label03;
+        catch java.lang.IllegalAccessException from label06 to label07 with label12;
+        catch java.lang.IllegalAccessException from label08 to label09 with label12;
+        catch java.lang.IllegalArgumentException from label06 to label07 with label11;
+        catch java.lang.IllegalArgumentException from label08 to label09 with label11;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label10;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label10;
+    }
+
+    public static void setClipBounds(android.view.View, android.graphics.Rect)
+    {
+        android.view.View $r0;
+        android.graphics.Rect $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.graphics.Rect;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setClipBounds(android.graphics.Rect)>($r1);
+
+     label1:
+        return;
+    }
+
+    public static void setElevation(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setElevation(float)>($f0);
+
+     label1:
+        return;
+    }
+
+    public static void setFitsSystemWindows(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        virtualinvoke $r0.<android.view.View: void setFitsSystemWindows(boolean)>($z0);
+
+        return;
+    }
+
+    public static void setFocusedByDefault(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setFocusedByDefault(boolean)>($z0);
+
+     label1:
+        return;
+    }
+
+    public static void setHasTransientState(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setHasTransientState(boolean)>($z0);
+
+     label1:
+        return;
+    }
+
+    public static void setImportantForAccessibility(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 19 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setImportantForAccessibility(int)>($i0);
+
+        return;
+
+     label1:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 16 goto label3;
+
+        if $i0 != 4 goto label2;
+
+        $i0 = 2;
+
+     label2:
+        virtualinvoke $r0.<android.view.View: void setImportantForAccessibility(int)>($i0);
+
+     label3:
+        return;
+    }
+
+    public static void setImportantForAutofill(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 26 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setImportantForAutofill(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setKeyboardNavigationCluster(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setKeyboardNavigationCluster(boolean)>($z0);
+
+     label1:
+        return;
+    }
+
+    public static void setLabelFor(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 17 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setLabelFor(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setLayerPaint(android.view.View, android.graphics.Paint)
+    {
+        android.view.View $r0;
+        android.graphics.Paint $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.graphics.Paint;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setLayerPaint(android.graphics.Paint)>($r1);
+
+        return;
+
+     label1:
+        $i0 = virtualinvoke $r0.<android.view.View: int getLayerType()>();
+
+        virtualinvoke $r0.<android.view.View: void setLayerType(int,android.graphics.Paint)>($i0, $r1);
+
+        virtualinvoke $r0.<android.view.View: void invalidate()>();
+
+        return;
+    }
+
+    public static void setLayerType(android.view.View, int, android.graphics.Paint)
+    {
+        android.view.View $r0;
+        int $i0;
+        android.graphics.Paint $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: android.graphics.Paint;
+
+        virtualinvoke $r0.<android.view.View: void setLayerType(int,android.graphics.Paint)>($i0, $r1);
+
+        return;
+    }
+
+    public static void setLayoutDirection(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 17 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setLayoutDirection(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setNestedScrollingEnabled(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        boolean $z0, $z1;
+        int $i0;
+        androidx.core.view.NestedScrollingChild $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setNestedScrollingEnabled(boolean)>($z0);
+
+        return;
+
+     label1:
+        $z1 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z1 == 0 goto label2;
+
+        $r1 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild: void setNestedScrollingEnabled(boolean)>($z0);
+
+     label2:
+        return;
+    }
+
+    public static void setNextClusterForwardId(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 26 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setNextClusterForwardId(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setOnApplyWindowInsetsListener(android.view.View, androidx.core.view.OnApplyWindowInsetsListener)
+    {
+        android.view.View $r0;
+        androidx.core.view.OnApplyWindowInsetsListener $r1;
+        int $i0;
+        androidx.core.view.ViewCompat$1 $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.OnApplyWindowInsetsListener;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label2;
+
+        if $r1 != null goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setOnApplyWindowInsetsListener(android.view.View$OnApplyWindowInsetsListener)>(null);
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.view.ViewCompat$1;
+
+        specialinvoke $r2.<androidx.core.view.ViewCompat$1: void <init>(androidx.core.view.OnApplyWindowInsetsListener)>($r1);
+
+        virtualinvoke $r0.<android.view.View: void setOnApplyWindowInsetsListener(android.view.View$OnApplyWindowInsetsListener)>($r2);
+
+     label2:
+        return;
+    }
+
+    public static void setOverScrollMode(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        virtualinvoke $r0.<android.view.View: void setOverScrollMode(int)>($i0);
+
+        return;
+    }
+
+    public static void setPaddingRelative(android.view.View, int, int, int, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 17 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setPaddingRelative(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+
+     label1:
+        virtualinvoke $r0.<android.view.View: void setPadding(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public static void setPivotX(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setPivotX(float)>($f0);
+
+        return;
+    }
+
+    public static void setPivotY(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setPivotY(float)>($f0);
+
+        return;
+    }
+
+    public static void setPointerIcon(android.view.View, androidx.core.view.PointerIconCompat)
+    {
+        android.view.View $r0;
+        androidx.core.view.PointerIconCompat $r1;
+        java.lang.Object $r2;
+        int $i0;
+        android.view.PointerIcon $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.PointerIconCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label3;
+
+        if $r1 == null goto label1;
+
+        $r2 = virtualinvoke $r1.<androidx.core.view.PointerIconCompat: java.lang.Object getPointerIcon()>();
+
+        goto label2;
+
+     label1:
+        $r2 = null;
+
+     label2:
+        $r3 = (android.view.PointerIcon) $r2;
+
+        virtualinvoke $r0.<android.view.View: void setPointerIcon(android.view.PointerIcon)>($r3);
+
+     label3:
+        return;
+    }
+
+    public static void setRotation(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setRotation(float)>($f0);
+
+        return;
+    }
+
+    public static void setRotationX(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setRotationX(float)>($f0);
+
+        return;
+    }
+
+    public static void setRotationY(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setRotationY(float)>($f0);
+
+        return;
+    }
+
+    public static void setSaveFromParentEnabled(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        virtualinvoke $r0.<android.view.View: void setSaveFromParentEnabled(boolean)>($z0);
+
+        return;
+    }
+
+    public static void setScaleX(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setScaleX(float)>($f0);
+
+        return;
+    }
+
+    public static void setScaleY(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setScaleY(float)>($f0);
+
+        return;
+    }
+
+    public static void setScrollIndicators(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 23 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setScrollIndicators(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public static void setScrollIndicators(android.view.View, int, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1, $i2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i2 < 23 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setScrollIndicators(int,int)>($i0, $i1);
+
+     label1:
+        return;
+    }
+
+    public static void setTooltipText(android.view.View, java.lang.CharSequence)
+    {
+        android.view.View $r0;
+        java.lang.CharSequence $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: java.lang.CharSequence;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setTooltipText(java.lang.CharSequence)>($r1);
+
+     label1:
+        return;
+    }
+
+    public static void setTransitionName(android.view.View, java.lang.String)
+    {
+        android.view.View $r0;
+        java.lang.String $r1;
+        int $i0;
+        java.util.WeakHashMap $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setTransitionName(java.lang.String)>($r1);
+
+        return;
+
+     label1:
+        $r2 = <androidx.core.view.ViewCompat: java.util.WeakHashMap sTransitionNameMap>;
+
+        if $r2 != null goto label2;
+
+        $r2 = new java.util.WeakHashMap;
+
+        specialinvoke $r2.<java.util.WeakHashMap: void <init>()>();
+
+        <androidx.core.view.ViewCompat: java.util.WeakHashMap sTransitionNameMap> = $r2;
+
+     label2:
+        $r2 = <androidx.core.view.ViewCompat: java.util.WeakHashMap sTransitionNameMap>;
+
+        virtualinvoke $r2.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r0, $r1);
+
+        return;
+    }
+
+    public static void setTranslationX(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setTranslationX(float)>($f0);
+
+        return;
+    }
+
+    public static void setTranslationY(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setTranslationY(float)>($f0);
+
+        return;
+    }
+
+    public static void setTranslationZ(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setTranslationZ(float)>($f0);
+
+     label1:
+        return;
+    }
+
+    public static void setX(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setX(float)>($f0);
+
+        return;
+    }
+
+    public static void setY(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        virtualinvoke $r0.<android.view.View: void setY(float)>($f0);
+
+        return;
+    }
+
+    public static void setZ(android.view.View, float)
+    {
+        android.view.View $r0;
+        float $f0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 := @parameter1: float;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setZ(float)>($f0);
+
+     label1:
+        return;
+    }
+
+    public static boolean startDragAndDrop(android.view.View, android.content.ClipData, android.view.View$DragShadowBuilder, java.lang.Object, int)
+    {
+        android.view.View $r0;
+        android.content.ClipData $r1;
+        android.view.View$DragShadowBuilder $r2;
+        java.lang.Object $r3;
+        int $i0, $i1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.content.ClipData;
+
+        $r2 := @parameter2: android.view.View$DragShadowBuilder;
+
+        $r3 := @parameter3: java.lang.Object;
+
+        $i0 := @parameter4: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 24 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean startDragAndDrop(android.content.ClipData,android.view.View$DragShadowBuilder,java.lang.Object,int)>($r1, $r2, $r3, $i0);
+
+        return $z0;
+
+     label1:
+        $z0 = virtualinvoke $r0.<android.view.View: boolean startDrag(android.content.ClipData,android.view.View$DragShadowBuilder,java.lang.Object,int)>($r1, $r2, $r3, $i0);
+
+        return $z0;
+    }
+
+    public static boolean startNestedScroll(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 21 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean startNestedScroll(int)>($i0);
+
+        return $z0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        $z0 = interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild: boolean startNestedScroll(int)>($i0);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean startNestedScroll(android.view.View, int, int)
+    {
+        android.view.View $r0;
+        int $i0, $i1;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild2 $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild2;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (androidx.core.view.NestedScrollingChild2) $r0;
+
+        $z0 = interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild2: boolean startNestedScroll(int,int)>($i0, $i1);
+
+        return $z0;
+
+     label1:
+        if $i1 != 0 goto label2;
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean startNestedScroll(android.view.View,int)>($r0, $i0);
+
+        return $z0;
+
+     label2:
+        return 0;
+    }
+
+    public static void stopNestedScroll(android.view.View)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void stopNestedScroll()>();
+
+        return;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.view.NestedScrollingChild) $r0;
+
+        interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild: void stopNestedScroll()>();
+
+     label2:
+        return;
+    }
+
+    public static void stopNestedScroll(android.view.View, int)
+    {
+        android.view.View $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.view.NestedScrollingChild2 $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $z0 = $r0 instanceof androidx.core.view.NestedScrollingChild2;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (androidx.core.view.NestedScrollingChild2) $r0;
+
+        interfaceinvoke $r1.<androidx.core.view.NestedScrollingChild2: void stopNestedScroll(int)>($i0);
+
+        return;
+
+     label1:
+        if $i0 != 0 goto label2;
+
+        staticinvoke <androidx.core.view.ViewCompat: void stopNestedScroll(android.view.View)>($r0);
+
+     label2:
+        return;
+    }
+
+    private static void tickleInvalidationFlag(android.view.View)
+    {
+        android.view.View $r0;
+        float $f0, $f1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $f0 = virtualinvoke $r0.<android.view.View: float getTranslationY()>();
+
+        $f1 = 1.0F + $f0;
+
+        virtualinvoke $r0.<android.view.View: void setTranslationY(float)>($f1);
+
+        virtualinvoke $r0.<android.view.View: void setTranslationY(float)>($f0);
+
+        return;
+    }
+
+    public static void updateDragShadow(android.view.View, android.view.View$DragShadowBuilder)
+    {
+        android.view.View $r0;
+        android.view.View$DragShadowBuilder $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.view.View$DragShadowBuilder;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label1;
+
+        virtualinvoke $r0.<android.view.View: void updateDragShadow(android.view.View$DragShadowBuilder)>($r1);
+
+     label1:
+        return;
+    }
+}

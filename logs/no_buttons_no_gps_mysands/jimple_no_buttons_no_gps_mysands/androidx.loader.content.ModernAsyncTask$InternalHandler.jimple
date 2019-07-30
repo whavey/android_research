@@ -1,0 +1,64 @@
+class androidx.loader.content.ModernAsyncTask$InternalHandler extends android.os.Handler
+{
+
+    void <init>()
+    {
+        androidx.loader.content.ModernAsyncTask$InternalHandler $r0;
+        android.os.Looper $r1;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask$InternalHandler;
+
+        $r1 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r0.<android.os.Handler: void <init>(android.os.Looper)>($r1);
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        androidx.loader.content.ModernAsyncTask$InternalHandler $r0;
+        android.os.Message $r1;
+        java.lang.Object $r2;
+        androidx.loader.content.ModernAsyncTask$AsyncTaskResult $r3;
+        int $i0;
+        androidx.loader.content.ModernAsyncTask $r4;
+        java.lang.Object[] $r5;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask$InternalHandler;
+
+        $r1 := @parameter0: android.os.Message;
+
+        $r2 = $r1.<android.os.Message: java.lang.Object obj>;
+
+        $r3 = (androidx.loader.content.ModernAsyncTask$AsyncTaskResult) $r2;
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        if $i0 == 1 goto label2;
+
+        if $i0 == 2 goto label1;
+
+        return;
+
+     label1:
+        $r4 = $r3.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: androidx.loader.content.ModernAsyncTask mTask>;
+
+        $r5 = $r3.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: java.lang.Object[] mData>;
+
+        virtualinvoke $r4.<androidx.loader.content.ModernAsyncTask: void onProgressUpdate(java.lang.Object[])>($r5);
+
+        return;
+
+     label2:
+        $r4 = $r3.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: androidx.loader.content.ModernAsyncTask mTask>;
+
+        $r5 = $r3.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: java.lang.Object[] mData>;
+
+        $r2 = $r5[0];
+
+        virtualinvoke $r4.<androidx.loader.content.ModernAsyncTask: void finish(java.lang.Object)>($r2);
+
+        return;
+    }
+}

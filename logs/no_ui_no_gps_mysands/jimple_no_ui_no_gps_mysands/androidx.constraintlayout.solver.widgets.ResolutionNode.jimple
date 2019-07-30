@@ -1,0 +1,211 @@
+public class androidx.constraintlayout.solver.widgets.ResolutionNode extends java.lang.Object
+{
+    public static final int REMOVED;
+    public static final int RESOLVED;
+    public static final int UNRESOLVED;
+    java.util.HashSet dependents;
+    int state;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+        java.util.HashSet $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashSet;
+
+        specialinvoke $r1.<java.util.HashSet: void <init>(int)>(2);
+
+        $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: java.util.HashSet dependents> = $r1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: int state> = 0;
+
+        return;
+    }
+
+    public void addDependent(androidx.constraintlayout.solver.widgets.ResolutionNode)
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0, $r1;
+        java.util.HashSet $r2;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: java.util.HashSet dependents>;
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void didResolve()
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+        java.util.HashSet $r1;
+        java.util.Iterator $r2;
+        boolean $z0;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: int state> = 1;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: java.util.HashSet dependents>;
+
+        $r2 = virtualinvoke $r1.<java.util.HashSet: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $r0 = (androidx.constraintlayout.solver.widgets.ResolutionNode) $r3;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: void resolve()>();
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void invalidate()
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+        java.util.HashSet $r1;
+        java.util.Iterator $r2;
+        boolean $z0;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: int state> = 0;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: java.util.HashSet dependents>;
+
+        $r2 = virtualinvoke $r1.<java.util.HashSet: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $r0 = (androidx.constraintlayout.solver.widgets.ResolutionNode) $r3;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: void invalidate()>();
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void invalidateAnchors()
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+        boolean $z0;
+        java.util.HashSet $r1;
+        java.util.Iterator $r2;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $z0 = $r0 instanceof androidx.constraintlayout.solver.widgets.ResolutionAnchor;
+
+        if $z0 == 0 goto label1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: int state> = 0;
+
+     label1:
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: java.util.HashSet dependents>;
+
+        $r2 = virtualinvoke $r1.<java.util.HashSet: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $r0 = (androidx.constraintlayout.solver.widgets.ResolutionNode) $r3;
+
+        virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: void invalidateAnchors()>();
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public boolean isResolved()
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: int state>;
+
+        if $i0 != 1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void remove(androidx.constraintlayout.solver.widgets.ResolutionDimension)
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+        androidx.constraintlayout.solver.widgets.ResolutionDimension $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ResolutionDimension;
+
+        return;
+    }
+
+    public void reset()
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+        java.util.HashSet $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: int state> = 0;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ResolutionNode: java.util.HashSet dependents>;
+
+        virtualinvoke $r1.<java.util.HashSet: void clear()>();
+
+        return;
+    }
+
+    public void resolve()
+    {
+        androidx.constraintlayout.solver.widgets.ResolutionNode $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ResolutionNode;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.widgets.ResolutionNode: int RESOLVED> = 1;
+
+        <androidx.constraintlayout.solver.widgets.ResolutionNode: int REMOVED> = 2;
+
+        return;
+    }
+}

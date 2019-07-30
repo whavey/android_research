@@ -1,0 +1,80 @@
+class androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1 extends java.lang.Object implements android.graphics.drawable.Drawable$Callback
+{
+    final androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat this$0;
+
+    void <init>(androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat)
+    {
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1 $r0;
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat $r1;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1;
+
+        $r1 := @parameter0: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+
+        $r0.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void invalidateDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1 $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat $r2;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = $r0.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat this$0>;
+
+        virtualinvoke $r2.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)
+    {
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1 $r0;
+        android.graphics.drawable.Drawable $r1;
+        java.lang.Runnable $r2;
+        long $l0;
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat $r3;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 := @parameter1: java.lang.Runnable;
+
+        $l0 := @parameter2: long;
+
+        $r3 = $r0.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat this$0>;
+
+        virtualinvoke $r3.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat: void scheduleSelf(java.lang.Runnable,long)>($r2, $l0);
+
+        return;
+    }
+
+    public void unscheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable)
+    {
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1 $r0;
+        android.graphics.drawable.Drawable $r1;
+        java.lang.Runnable $r2;
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat $r3;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 := @parameter1: java.lang.Runnable;
+
+        $r3 = $r0.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$1: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat this$0>;
+
+        virtualinvoke $r3.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat: void unscheduleSelf(java.lang.Runnable)>($r2);
+
+        return;
+    }
+}

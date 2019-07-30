@@ -1,0 +1,14 @@
+public final class androidx.documentfile.R extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.documentfile.R $r0;
+
+        $r0 := @this: androidx.documentfile.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

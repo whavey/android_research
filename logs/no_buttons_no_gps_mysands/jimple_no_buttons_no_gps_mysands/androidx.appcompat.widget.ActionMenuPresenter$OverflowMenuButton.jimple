@@ -1,0 +1,163 @@
+class androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton extends androidx.appcompat.widget.AppCompatImageView implements androidx.appcompat.widget.ActionMenuView$ActionMenuChildView
+{
+    private final float[] mTempPts;
+    final androidx.appcompat.widget.ActionMenuPresenter this$0;
+
+    public void <init>(androidx.appcompat.widget.ActionMenuPresenter, android.content.Context)
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $r0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+        android.content.Context $r2;
+        java.lang.CharSequence $r3;
+        int $i0;
+        float[] $r4;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1 $r5;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton;
+
+        $r1 := @parameter0: androidx.appcompat.widget.ActionMenuPresenter;
+
+        $r2 := @parameter1: android.content.Context;
+
+        $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: androidx.appcompat.widget.ActionMenuPresenter this$0> = $r1;
+
+        $i0 = <androidx.appcompat.R$attr: int actionOverflowButtonStyle>;
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatImageView: void <init>(android.content.Context,android.util.AttributeSet,int)>($r2, null, $i0);
+
+        $r4 = newarray (float)[2];
+
+        $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: float[] mTempPts> = $r4;
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: void setClickable(boolean)>(1);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: void setFocusable(boolean)>(1);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: void setVisibility(int)>(0);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: void setEnabled(boolean)>(1);
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: java.lang.CharSequence getContentDescription()>();
+
+        staticinvoke <androidx.appcompat.widget.TooltipCompat: void setTooltipText(android.view.View,java.lang.CharSequence)>($r0, $r3);
+
+        $r5 = new androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1;
+
+        specialinvoke $r5.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: void <init>(androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton,android.view.View,androidx.appcompat.widget.ActionMenuPresenter)>($r0, $r0, $r1);
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: void setOnTouchListener(android.view.View$OnTouchListener)>($r5);
+
+        return;
+    }
+
+    public boolean needsDividerAfter()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $r0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton;
+
+        return 0;
+    }
+
+    public boolean needsDividerBefore()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $r0;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton;
+
+        return 0;
+    }
+
+    public boolean performClick()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $r0;
+        boolean $z0;
+        androidx.appcompat.widget.ActionMenuPresenter $r1;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.AppCompatImageView: boolean performClick()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: void playSoundEffect(int)>(0);
+
+        $r1 = $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.ActionMenuPresenter: boolean showOverflowMenu()>();
+
+        return 1;
+    }
+
+    protected boolean setFrame(int, int, int, int)
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        boolean $z0;
+        android.graphics.drawable.Drawable $r1, $r2;
+
+        $r0 := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.AppCompatImageView: boolean setFrame(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: android.graphics.drawable.Drawable getDrawable()>();
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: android.graphics.drawable.Drawable getBackground()>();
+
+        if $r1 == null goto label1;
+
+        if $r2 == null goto label1;
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: int getWidth()>();
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: int getHeight()>();
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>($i2, $i1);
+
+        $i0 = $i0 / 2;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: int getPaddingLeft()>();
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: int getPaddingRight()>();
+
+        $i3 = $i3 - $i4;
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: int getPaddingTop()>();
+
+        $i5 = virtualinvoke $r0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: int getPaddingBottom()>();
+
+        $i4 = $i4 - $i5;
+
+        $i2 = $i2 + $i3;
+
+        $i2 = $i2 / 2;
+
+        $i1 = $i1 + $i4;
+
+        $i4 = $i1 / 2;
+
+        $i1 = $i2 - $i0;
+
+        $i3 = $i4 - $i0;
+
+        $i2 = $i2 + $i0;
+
+        $i0 = $i4 + $i0;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setHotspotBounds(android.graphics.drawable.Drawable,int,int,int,int)>($r2, $i1, $i3, $i2, $i0);
+
+     label1:
+        return $z0;
+    }
+}

@@ -1,0 +1,34 @@
+class androidx.appcompat.widget.SearchView$SearchAutoComplete$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.widget.SearchView$SearchAutoComplete this$0;
+
+    void <init>(androidx.appcompat.widget.SearchView$SearchAutoComplete)
+    {
+        androidx.appcompat.widget.SearchView$SearchAutoComplete$1 $r0;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $r1;
+
+        $r0 := @this: androidx.appcompat.widget.SearchView$SearchAutoComplete$1;
+
+        $r1 := @parameter0: androidx.appcompat.widget.SearchView$SearchAutoComplete;
+
+        $r0.<androidx.appcompat.widget.SearchView$SearchAutoComplete$1: androidx.appcompat.widget.SearchView$SearchAutoComplete this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.widget.SearchView$SearchAutoComplete$1 $r0;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $r1;
+
+        $r0 := @this: androidx.appcompat.widget.SearchView$SearchAutoComplete$1;
+
+        $r1 = $r0.<androidx.appcompat.widget.SearchView$SearchAutoComplete$1: androidx.appcompat.widget.SearchView$SearchAutoComplete this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void showSoftInputIfNecessary()>();
+
+        return;
+    }
+}

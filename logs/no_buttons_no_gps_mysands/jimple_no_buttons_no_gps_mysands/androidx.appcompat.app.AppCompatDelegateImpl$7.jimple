@@ -1,0 +1,100 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$7 extends androidx.core.view.ViewPropertyAnimatorListenerAdapter
+{
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$7 $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$7;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $r1;
+
+        specialinvoke $r0.<androidx.core.view.ViewPropertyAnimatorListenerAdapter: void <init>()>();
+
+        return;
+    }
+
+    public void onAnimationEnd(android.view.View)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$7 $r0;
+        android.view.View $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl $r2;
+        androidx.appcompat.widget.ActionBarContextView $r3;
+        androidx.core.view.ViewPropertyAnimatorCompat $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$7;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r3 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r3.<androidx.appcompat.widget.ActionBarContextView: void setAlpha(float)>(1.0F);
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r4 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim>;
+
+        virtualinvoke $r4.<androidx.core.view.ViewPropertyAnimatorCompat: androidx.core.view.ViewPropertyAnimatorCompat setListener(androidx.core.view.ViewPropertyAnimatorListener)>(null);
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim> = null;
+
+        return;
+    }
+
+    public void onAnimationStart(android.view.View)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$7 $r0;
+        android.view.View $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl $r2;
+        androidx.appcompat.widget.ActionBarContextView $r3;
+        android.view.ViewParent $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$7;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r3 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r3.<androidx.appcompat.widget.ActionBarContextView: void setVisibility(int)>(0);
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r3 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r3.<androidx.appcompat.widget.ActionBarContextView: void sendAccessibilityEvent(int)>(32);
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r3 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r4 = virtualinvoke $r3.<androidx.appcompat.widget.ActionBarContextView: android.view.ViewParent getParent()>();
+
+        $z0 = $r4 instanceof android.view.View;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$7: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r3 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r4 = virtualinvoke $r3.<androidx.appcompat.widget.ActionBarContextView: android.view.ViewParent getParent()>();
+
+        $r1 = (android.view.View) $r4;
+
+        staticinvoke <androidx.core.view.ViewCompat: void requestApplyInsets(android.view.View)>($r1);
+
+     label1:
+        return;
+    }
+}

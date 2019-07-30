@@ -1,0 +1,40 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1 extends android.content.BroadcastReceiver
+{
+    final androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager this$1;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1 $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager this$1> = $r1;
+
+        specialinvoke $r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1 $r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager this$1>;
+
+        virtualinvoke $r3.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void dispatchTimeChanged()>();
+
+        return;
+    }
+}

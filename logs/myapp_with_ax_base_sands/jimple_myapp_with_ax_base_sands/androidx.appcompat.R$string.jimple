@@ -1,0 +1,142 @@
+public final class androidx.appcompat.R$string extends java.lang.Object
+{
+    public static final int abc_action_bar_home_description;
+    public static final int abc_action_bar_up_description;
+    public static final int abc_action_menu_overflow_description;
+    public static final int abc_action_mode_done;
+    public static final int abc_activity_chooser_view_see_all;
+    public static final int abc_activitychooserview_choose_application;
+    public static final int abc_capital_off;
+    public static final int abc_capital_on;
+    public static final int abc_font_family_body_1_material;
+    public static final int abc_font_family_body_2_material;
+    public static final int abc_font_family_button_material;
+    public static final int abc_font_family_caption_material;
+    public static final int abc_font_family_display_1_material;
+    public static final int abc_font_family_display_2_material;
+    public static final int abc_font_family_display_3_material;
+    public static final int abc_font_family_display_4_material;
+    public static final int abc_font_family_headline_material;
+    public static final int abc_font_family_menu_material;
+    public static final int abc_font_family_subhead_material;
+    public static final int abc_font_family_title_material;
+    public static final int abc_menu_alt_shortcut_label;
+    public static final int abc_menu_ctrl_shortcut_label;
+    public static final int abc_menu_delete_shortcut_label;
+    public static final int abc_menu_enter_shortcut_label;
+    public static final int abc_menu_function_shortcut_label;
+    public static final int abc_menu_meta_shortcut_label;
+    public static final int abc_menu_shift_shortcut_label;
+    public static final int abc_menu_space_shortcut_label;
+    public static final int abc_menu_sym_shortcut_label;
+    public static final int abc_prepend_shortcut_label;
+    public static final int abc_search_hint;
+    public static final int abc_searchview_description_clear;
+    public static final int abc_searchview_description_query;
+    public static final int abc_searchview_description_search;
+    public static final int abc_searchview_description_submit;
+    public static final int abc_searchview_description_voice;
+    public static final int abc_shareactionprovider_share_with;
+    public static final int abc_shareactionprovider_share_with_application;
+    public static final int abc_toolbar_collapse_description;
+    public static final int search_menu_title;
+    public static final int status_bar_notification_info_overflow;
+
+    private void <init>()
+    {
+        androidx.appcompat.R$string $r0;
+
+        $r0 := @this: androidx.appcompat.R$string;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.R$string: int status_bar_notification_info_overflow> = 2131427369;
+
+        <androidx.appcompat.R$string: int search_menu_title> = 2131427368;
+
+        <androidx.appcompat.R$string: int abc_toolbar_collapse_description> = 2131427366;
+
+        <androidx.appcompat.R$string: int abc_shareactionprovider_share_with_application> = 2131427365;
+
+        <androidx.appcompat.R$string: int abc_shareactionprovider_share_with> = 2131427364;
+
+        <androidx.appcompat.R$string: int abc_searchview_description_voice> = 2131427363;
+
+        <androidx.appcompat.R$string: int abc_searchview_description_submit> = 2131427362;
+
+        <androidx.appcompat.R$string: int abc_searchview_description_search> = 2131427361;
+
+        <androidx.appcompat.R$string: int abc_searchview_description_query> = 2131427360;
+
+        <androidx.appcompat.R$string: int abc_searchview_description_clear> = 2131427359;
+
+        <androidx.appcompat.R$string: int abc_search_hint> = 2131427358;
+
+        <androidx.appcompat.R$string: int abc_prepend_shortcut_label> = 2131427357;
+
+        <androidx.appcompat.R$string: int abc_menu_sym_shortcut_label> = 2131427356;
+
+        <androidx.appcompat.R$string: int abc_menu_space_shortcut_label> = 2131427355;
+
+        <androidx.appcompat.R$string: int abc_menu_shift_shortcut_label> = 2131427354;
+
+        <androidx.appcompat.R$string: int abc_menu_meta_shortcut_label> = 2131427353;
+
+        <androidx.appcompat.R$string: int abc_menu_function_shortcut_label> = 2131427352;
+
+        <androidx.appcompat.R$string: int abc_menu_enter_shortcut_label> = 2131427351;
+
+        <androidx.appcompat.R$string: int abc_menu_delete_shortcut_label> = 2131427350;
+
+        <androidx.appcompat.R$string: int abc_menu_ctrl_shortcut_label> = 2131427349;
+
+        <androidx.appcompat.R$string: int abc_menu_alt_shortcut_label> = 2131427348;
+
+        <androidx.appcompat.R$string: int abc_font_family_title_material> = 2131427347;
+
+        <androidx.appcompat.R$string: int abc_font_family_subhead_material> = 2131427346;
+
+        <androidx.appcompat.R$string: int abc_font_family_menu_material> = 2131427345;
+
+        <androidx.appcompat.R$string: int abc_font_family_headline_material> = 2131427344;
+
+        <androidx.appcompat.R$string: int abc_font_family_display_4_material> = 2131427343;
+
+        <androidx.appcompat.R$string: int abc_font_family_display_3_material> = 2131427342;
+
+        <androidx.appcompat.R$string: int abc_font_family_display_2_material> = 2131427341;
+
+        <androidx.appcompat.R$string: int abc_font_family_display_1_material> = 2131427340;
+
+        <androidx.appcompat.R$string: int abc_font_family_caption_material> = 2131427339;
+
+        <androidx.appcompat.R$string: int abc_font_family_button_material> = 2131427338;
+
+        <androidx.appcompat.R$string: int abc_font_family_body_2_material> = 2131427337;
+
+        <androidx.appcompat.R$string: int abc_font_family_body_1_material> = 2131427336;
+
+        <androidx.appcompat.R$string: int abc_capital_on> = 2131427335;
+
+        <androidx.appcompat.R$string: int abc_capital_off> = 2131427334;
+
+        <androidx.appcompat.R$string: int abc_activitychooserview_choose_application> = 2131427333;
+
+        <androidx.appcompat.R$string: int abc_activity_chooser_view_see_all> = 2131427332;
+
+        <androidx.appcompat.R$string: int abc_action_mode_done> = 2131427331;
+
+        <androidx.appcompat.R$string: int abc_action_menu_overflow_description> = 2131427330;
+
+        <androidx.appcompat.R$string: int abc_action_bar_up_description> = 2131427329;
+
+        <androidx.appcompat.R$string: int abc_action_bar_home_description> = 2131427328;
+
+        return;
+    }
+}

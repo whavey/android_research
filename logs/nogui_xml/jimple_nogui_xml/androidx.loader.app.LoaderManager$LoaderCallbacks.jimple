@@ -1,0 +1,9 @@
+public interface  androidx.loader.app.LoaderManager$LoaderCallbacks extends java.lang.Object
+{
+
+    public abstract androidx.loader.content.Loader onCreateLoader(int, android.os.Bundle);
+
+    public abstract void onLoadFinished(androidx.loader.content.Loader, java.lang.Object);
+
+    public abstract void onLoaderReset(androidx.loader.content.Loader);
+}

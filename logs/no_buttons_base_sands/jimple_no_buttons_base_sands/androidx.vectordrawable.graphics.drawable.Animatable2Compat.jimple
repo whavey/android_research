@@ -1,0 +1,9 @@
+public interface  androidx.vectordrawable.graphics.drawable.Animatable2Compat extends java.lang.Object implements android.graphics.drawable.Animatable
+{
+
+    public abstract void clearAnimationCallbacks();
+
+    public abstract void registerAnimationCallback(androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback);
+
+    public abstract boolean unregisterAnimationCallback(androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback);
+}

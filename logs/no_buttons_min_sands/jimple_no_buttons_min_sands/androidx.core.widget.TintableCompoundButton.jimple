@@ -1,0 +1,11 @@
+public interface  androidx.core.widget.TintableCompoundButton extends java.lang.Object
+{
+
+    public abstract android.content.res.ColorStateList getSupportButtonTintList();
+
+    public abstract android.graphics.PorterDuff$Mode getSupportButtonTintMode();
+
+    public abstract void setSupportButtonTintList(android.content.res.ColorStateList);
+
+    public abstract void setSupportButtonTintMode(android.graphics.PorterDuff$Mode);
+}

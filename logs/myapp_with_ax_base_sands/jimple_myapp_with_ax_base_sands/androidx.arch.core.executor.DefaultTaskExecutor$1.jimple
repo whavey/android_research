@@ -1,0 +1,72 @@
+class androidx.arch.core.executor.DefaultTaskExecutor$1 extends java.lang.Object implements java.util.concurrent.ThreadFactory
+{
+    private static final java.lang.String THREAD_NAME_STEM;
+    private final java.util.concurrent.atomic.AtomicInteger mThreadId;
+    final androidx.arch.core.executor.DefaultTaskExecutor this$0;
+
+    void <init>(androidx.arch.core.executor.DefaultTaskExecutor)
+    {
+        androidx.arch.core.executor.DefaultTaskExecutor$1 $r0;
+        androidx.arch.core.executor.DefaultTaskExecutor $r1;
+        java.util.concurrent.atomic.AtomicInteger $r2;
+
+        $r0 := @this: androidx.arch.core.executor.DefaultTaskExecutor$1;
+
+        $r1 := @parameter0: androidx.arch.core.executor.DefaultTaskExecutor;
+
+        $r0.<androidx.arch.core.executor.DefaultTaskExecutor$1: androidx.arch.core.executor.DefaultTaskExecutor this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r2.<java.util.concurrent.atomic.AtomicInteger: void <init>(int)>(0);
+
+        $r0.<androidx.arch.core.executor.DefaultTaskExecutor$1: java.util.concurrent.atomic.AtomicInteger mThreadId> = $r2;
+
+        return;
+    }
+
+    public java.lang.Thread newThread(java.lang.Runnable)
+    {
+        androidx.arch.core.executor.DefaultTaskExecutor$1 $r0;
+        java.lang.Runnable $r1;
+        java.lang.Thread $r2;
+        java.lang.Object[] $r3;
+        java.util.concurrent.atomic.AtomicInteger $r4;
+        int $i0;
+        java.lang.Integer $r5;
+        java.lang.String $r6;
+
+        $r0 := @this: androidx.arch.core.executor.DefaultTaskExecutor$1;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = new java.lang.Thread;
+
+        specialinvoke $r2.<java.lang.Thread: void <init>(java.lang.Runnable)>($r1);
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r4 = $r0.<androidx.arch.core.executor.DefaultTaskExecutor$1: java.util.concurrent.atomic.AtomicInteger mThreadId>;
+
+        $i0 = virtualinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: int getAndIncrement()>();
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r3[0] = $r5;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("arch_disk_io_%d", $r3);
+
+        virtualinvoke $r2.<java.lang.Thread: void setName(java.lang.String)>($r6);
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.arch.core.executor.DefaultTaskExecutor$1: java.lang.String THREAD_NAME_STEM> = "arch_disk_io_%d";
+
+        return;
+    }
+}

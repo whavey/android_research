@@ -1,0 +1,17 @@
+Results: 
+	App: no_buttons_no_gps.apk
+	Sources_and_sinks_file: mysands.txt
+	Sinks:
+		Statement:
+			- virtualinvoke $r12.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r2, null, null) 
+		Method:
+			- <com.example.no_buttons.MainActivity: void onCreate(android.os.Bundle)>
+	Sources:
+		Statement:
+			- $r6 = virtualinvoke $r4.<android.telephony.TelephonyManager: java.lang.String getSubscriberId()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity: void onCreate(android.os.Bundle)>
+		Statement:
+			- $r2 = virtualinvoke $r4.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>() 
+		Method:
+			- <com.example.no_buttons.MainActivity: void onCreate(android.os.Bundle)>

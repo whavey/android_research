@@ -1,0 +1,58 @@
+class androidx.appcompat.widget.SearchView$9 extends java.lang.Object implements android.widget.AdapterView$OnItemSelectedListener
+{
+    final androidx.appcompat.widget.SearchView this$0;
+
+    void <init>(androidx.appcompat.widget.SearchView)
+    {
+        androidx.appcompat.widget.SearchView$9 $r0;
+        androidx.appcompat.widget.SearchView $r1;
+
+        $r0 := @this: androidx.appcompat.widget.SearchView$9;
+
+        $r1 := @parameter0: androidx.appcompat.widget.SearchView;
+
+        $r0.<androidx.appcompat.widget.SearchView$9: androidx.appcompat.widget.SearchView this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onItemSelected(android.widget.AdapterView, android.view.View, int, long)
+    {
+        androidx.appcompat.widget.SearchView$9 $r0;
+        android.widget.AdapterView $r1;
+        android.view.View $r2;
+        int $i0;
+        long $l1;
+        androidx.appcompat.widget.SearchView $r3;
+
+        $r0 := @this: androidx.appcompat.widget.SearchView$9;
+
+        $r1 := @parameter0: android.widget.AdapterView;
+
+        $r2 := @parameter1: android.view.View;
+
+        $i0 := @parameter2: int;
+
+        $l1 := @parameter3: long;
+
+        $r3 = $r0.<androidx.appcompat.widget.SearchView$9: androidx.appcompat.widget.SearchView this$0>;
+
+        virtualinvoke $r3.<androidx.appcompat.widget.SearchView: boolean onItemSelected(int)>($i0);
+
+        return;
+    }
+
+    public void onNothingSelected(android.widget.AdapterView)
+    {
+        androidx.appcompat.widget.SearchView$9 $r0;
+        android.widget.AdapterView $r1;
+
+        $r0 := @this: androidx.appcompat.widget.SearchView$9;
+
+        $r1 := @parameter0: android.widget.AdapterView;
+
+        return;
+    }
+}

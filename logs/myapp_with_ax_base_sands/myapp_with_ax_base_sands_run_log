@@ -1,0 +1,45 @@
+Results: 
+	App: ax_fd_test.apk
+	Sources_and_sinks_file: sourcesandsinks.txt
+	Sinks:
+		Statement:
+			- staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r7) 
+		Method:
+			- <androidx.fragment.app.FragmentManagerImpl: android.os.Parcelable saveAllState()>
+		Statement:
+			- virtualinvoke $r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.intent.action.TIME_SET") 
+		Method:
+			- <androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void setup()>
+	Sources:
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d1 = virtualinvoke $r1.<android.location.Location: double getLongitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>
+		Statement:
+			- $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>() 
+		Method:
+			- <androidx.appcompat.app.TwilightManager: void updateState(android.location.Location)>

@@ -1,0 +1,15 @@
+interface  androidx.lifecycle.FullLifecycleObserver extends java.lang.Object implements androidx.lifecycle.LifecycleObserver
+{
+
+    public abstract void onCreate(androidx.lifecycle.LifecycleOwner);
+
+    public abstract void onDestroy(androidx.lifecycle.LifecycleOwner);
+
+    public abstract void onPause(androidx.lifecycle.LifecycleOwner);
+
+    public abstract void onResume(androidx.lifecycle.LifecycleOwner);
+
+    public abstract void onStart(androidx.lifecycle.LifecycleOwner);
+
+    public abstract void onStop(androidx.lifecycle.LifecycleOwner);
+}

@@ -1,0 +1,50 @@
+public final class androidx.core.os.HandlerCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.os.HandlerCompat $r0;
+
+        $r0 := @this: androidx.core.os.HandlerCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean postDelayed(android.os.Handler, java.lang.Runnable, java.lang.Object, long)
+    {
+        android.os.Handler $r0;
+        java.lang.Runnable $r1;
+        java.lang.Object $r2;
+        long $l0;
+        int $i1;
+        boolean $z0;
+        android.os.Message $r3;
+
+        $r0 := @parameter0: android.os.Handler;
+
+        $r1 := @parameter1: java.lang.Runnable;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        $l0 := @parameter3: long;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 28 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.os.Handler: boolean postDelayed(java.lang.Runnable,java.lang.Object,long)>($r1, $r2, $l0);
+
+        return $z0;
+
+     label1:
+        $r3 = staticinvoke <android.os.Message: android.os.Message obtain(android.os.Handler,java.lang.Runnable)>($r0, $r1);
+
+        $r3.<android.os.Message: java.lang.Object obj> = $r2;
+
+        $z0 = virtualinvoke $r0.<android.os.Handler: boolean sendMessageDelayed(android.os.Message,long)>($r3, $l0);
+
+        return $z0;
+    }
+}

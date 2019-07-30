@@ -1,0 +1,718 @@
+public class androidx.fragment.app.ListFragment extends androidx.fragment.app.Fragment
+{
+    static final int INTERNAL_EMPTY_ID;
+    static final int INTERNAL_LIST_CONTAINER_ID;
+    static final int INTERNAL_PROGRESS_CONTAINER_ID;
+    android.widget.ListAdapter mAdapter;
+    java.lang.CharSequence mEmptyText;
+    android.view.View mEmptyView;
+    private final android.os.Handler mHandler;
+    android.widget.ListView mList;
+    android.view.View mListContainer;
+    boolean mListShown;
+    private final android.widget.AdapterView$OnItemClickListener mOnClickListener;
+    android.view.View mProgressContainer;
+    private final java.lang.Runnable mRequestFocus;
+    android.widget.TextView mStandardEmptyView;
+
+    public void <init>()
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.os.Handler $r1;
+        androidx.fragment.app.ListFragment$1 $r2;
+        androidx.fragment.app.ListFragment$2 $r3;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        specialinvoke $r0.<androidx.fragment.app.Fragment: void <init>()>();
+
+        $r1 = new android.os.Handler;
+
+        specialinvoke $r1.<android.os.Handler: void <init>()>();
+
+        $r0.<androidx.fragment.app.ListFragment: android.os.Handler mHandler> = $r1;
+
+        $r2 = new androidx.fragment.app.ListFragment$1;
+
+        specialinvoke $r2.<androidx.fragment.app.ListFragment$1: void <init>(androidx.fragment.app.ListFragment)>($r0);
+
+        $r0.<androidx.fragment.app.ListFragment: java.lang.Runnable mRequestFocus> = $r2;
+
+        $r3 = new androidx.fragment.app.ListFragment$2;
+
+        specialinvoke $r3.<androidx.fragment.app.ListFragment$2: void <init>(androidx.fragment.app.ListFragment)>($r0);
+
+        $r0.<androidx.fragment.app.ListFragment: android.widget.AdapterView$OnItemClickListener mOnClickListener> = $r3;
+
+        return;
+    }
+
+    private void ensureList()
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.widget.ListView $r1;
+        android.view.View $r2, $r3;
+        boolean $z0;
+        android.widget.TextView $r4;
+        java.lang.RuntimeException $r5;
+        java.lang.CharSequence $r6;
+        android.widget.AdapterView$OnItemClickListener $r7;
+        android.widget.ListAdapter $r8;
+        android.os.Handler $r9;
+        java.lang.Runnable $r10;
+        java.lang.IllegalStateException $r11;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        if $r1 == null goto label01;
+
+        return;
+
+     label01:
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.ListFragment: android.view.View getView()>();
+
+        if $r2 == null goto label11;
+
+        $z0 = $r2 instanceof android.widget.ListView;
+
+        if $z0 == 0 goto label02;
+
+        $r1 = (android.widget.ListView) $r2;
+
+        $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList> = $r1;
+
+        goto label08;
+
+     label02:
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>(16711681);
+
+        $r4 = (android.widget.TextView) $r3;
+
+        $r0.<androidx.fragment.app.ListFragment: android.widget.TextView mStandardEmptyView> = $r4;
+
+        $r4 = $r0.<androidx.fragment.app.ListFragment: android.widget.TextView mStandardEmptyView>;
+
+        if $r4 != null goto label03;
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>(16908292);
+
+        $r0.<androidx.fragment.app.ListFragment: android.view.View mEmptyView> = $r3;
+
+        goto label04;
+
+     label03:
+        virtualinvoke $r4.<android.widget.TextView: void setVisibility(int)>(8);
+
+     label04:
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>(16711682);
+
+        $r0.<androidx.fragment.app.ListFragment: android.view.View mProgressContainer> = $r3;
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>(16711683);
+
+        $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer> = $r3;
+
+        $r2 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>(16908298);
+
+        $z0 = $r2 instanceof android.widget.ListView;
+
+        if $z0 != 0 goto label06;
+
+        if $r2 != null goto label05;
+
+        $r5 = new java.lang.RuntimeException;
+
+        specialinvoke $r5.<java.lang.RuntimeException: void <init>(java.lang.String)>("Your content must have a ListView whose id attribute is \'android.R.id.list\'");
+
+        throw $r5;
+
+     label05:
+        $r5 = new java.lang.RuntimeException;
+
+        specialinvoke $r5.<java.lang.RuntimeException: void <init>(java.lang.String)>("Content has view with id attribute \'android.R.id.list\' that is not a ListView class");
+
+        throw $r5;
+
+     label06:
+        $r1 = (android.widget.ListView) $r2;
+
+        $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList> = $r1;
+
+        $r2 = $r0.<androidx.fragment.app.ListFragment: android.view.View mEmptyView>;
+
+        if $r2 == null goto label07;
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        virtualinvoke $r1.<android.widget.ListView: void setEmptyView(android.view.View)>($r2);
+
+        goto label08;
+
+     label07:
+        $r6 = $r0.<androidx.fragment.app.ListFragment: java.lang.CharSequence mEmptyText>;
+
+        if $r6 == null goto label08;
+
+        $r4 = $r0.<androidx.fragment.app.ListFragment: android.widget.TextView mStandardEmptyView>;
+
+        virtualinvoke $r4.<android.widget.TextView: void setText(java.lang.CharSequence)>($r6);
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        $r4 = $r0.<androidx.fragment.app.ListFragment: android.widget.TextView mStandardEmptyView>;
+
+        virtualinvoke $r1.<android.widget.ListView: void setEmptyView(android.view.View)>($r4);
+
+     label08:
+        $r0.<androidx.fragment.app.ListFragment: boolean mListShown> = 1;
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        $r7 = $r0.<androidx.fragment.app.ListFragment: android.widget.AdapterView$OnItemClickListener mOnClickListener>;
+
+        virtualinvoke $r1.<android.widget.ListView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>($r7);
+
+        $r8 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListAdapter mAdapter>;
+
+        if $r8 == null goto label09;
+
+        $r8 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListAdapter mAdapter>;
+
+        $r0.<androidx.fragment.app.ListFragment: android.widget.ListAdapter mAdapter> = null;
+
+        virtualinvoke $r0.<androidx.fragment.app.ListFragment: void setListAdapter(android.widget.ListAdapter)>($r8);
+
+        goto label10;
+
+     label09:
+        $r2 = $r0.<androidx.fragment.app.ListFragment: android.view.View mProgressContainer>;
+
+        if $r2 == null goto label10;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void setListShown(boolean,boolean)>(0, 0);
+
+     label10:
+        $r9 = $r0.<androidx.fragment.app.ListFragment: android.os.Handler mHandler>;
+
+        $r10 = $r0.<androidx.fragment.app.ListFragment: java.lang.Runnable mRequestFocus>;
+
+        virtualinvoke $r9.<android.os.Handler: boolean post(java.lang.Runnable)>($r10);
+
+        return;
+
+     label11:
+        $r11 = new java.lang.IllegalStateException;
+
+        specialinvoke $r11.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Content view not yet created");
+
+        throw $r11;
+    }
+
+    private void setListShown(boolean, boolean)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        boolean $z0, $z1, $z2;
+        android.view.View $r1;
+        android.content.Context $r2;
+        android.view.animation.Animation $r3;
+        java.lang.IllegalStateException $r4;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 := @parameter1: boolean;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void ensureList()>();
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mProgressContainer>;
+
+        if $r1 == null goto label7;
+
+        $z2 = $r0.<androidx.fragment.app.ListFragment: boolean mListShown>;
+
+        if $z2 != $z0 goto label1;
+
+        return;
+
+     label1:
+        $r0.<androidx.fragment.app.ListFragment: boolean mListShown> = $z0;
+
+        if $z0 == 0 goto label4;
+
+        if $z1 == 0 goto label2;
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.ListFragment: android.content.Context getContext()>();
+
+        $r3 = staticinvoke <android.view.animation.AnimationUtils: android.view.animation.Animation loadAnimation(android.content.Context,int)>($r2, 17432577);
+
+        virtualinvoke $r1.<android.view.View: void startAnimation(android.view.animation.Animation)>($r3);
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer>;
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.ListFragment: android.content.Context getContext()>();
+
+        $r3 = staticinvoke <android.view.animation.AnimationUtils: android.view.animation.Animation loadAnimation(android.content.Context,int)>($r2, 17432576);
+
+        virtualinvoke $r1.<android.view.View: void startAnimation(android.view.animation.Animation)>($r3);
+
+        goto label3;
+
+     label2:
+        virtualinvoke $r1.<android.view.View: void clearAnimation()>();
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer>;
+
+        virtualinvoke $r1.<android.view.View: void clearAnimation()>();
+
+     label3:
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mProgressContainer>;
+
+        virtualinvoke $r1.<android.view.View: void setVisibility(int)>(8);
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer>;
+
+        virtualinvoke $r1.<android.view.View: void setVisibility(int)>(0);
+
+        return;
+
+     label4:
+        if $z1 == 0 goto label5;
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.ListFragment: android.content.Context getContext()>();
+
+        $r3 = staticinvoke <android.view.animation.AnimationUtils: android.view.animation.Animation loadAnimation(android.content.Context,int)>($r2, 17432576);
+
+        virtualinvoke $r1.<android.view.View: void startAnimation(android.view.animation.Animation)>($r3);
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer>;
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.ListFragment: android.content.Context getContext()>();
+
+        $r3 = staticinvoke <android.view.animation.AnimationUtils: android.view.animation.Animation loadAnimation(android.content.Context,int)>($r2, 17432577);
+
+        virtualinvoke $r1.<android.view.View: void startAnimation(android.view.animation.Animation)>($r3);
+
+        goto label6;
+
+     label5:
+        virtualinvoke $r1.<android.view.View: void clearAnimation()>();
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer>;
+
+        virtualinvoke $r1.<android.view.View: void clearAnimation()>();
+
+     label6:
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mProgressContainer>;
+
+        virtualinvoke $r1.<android.view.View: void setVisibility(int)>(0);
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer>;
+
+        virtualinvoke $r1.<android.view.View: void setVisibility(int)>(8);
+
+        return;
+
+     label7:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Can\'t be used with a custom content view");
+
+        throw $r4;
+    }
+
+    public android.widget.ListAdapter getListAdapter()
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.widget.ListAdapter r1;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListAdapter mAdapter>;
+
+        return r1;
+    }
+
+    public android.widget.ListView getListView()
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.widget.ListView r1;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void ensureList()>();
+
+        r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        return r1;
+    }
+
+    public long getSelectedItemId()
+    {
+        androidx.fragment.app.ListFragment $r0;
+        long $l0;
+        android.widget.ListView $r1;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void ensureList()>();
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        $l0 = virtualinvoke $r1.<android.widget.ListView: long getSelectedItemId()>();
+
+        return $l0;
+    }
+
+    public int getSelectedItemPosition()
+    {
+        androidx.fragment.app.ListFragment $r0;
+        int $i0;
+        android.widget.ListView $r1;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void ensureList()>();
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        $i0 = virtualinvoke $r1.<android.widget.ListView: int getSelectedItemPosition()>();
+
+        return $i0;
+    }
+
+    public android.view.View onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.view.LayoutInflater $r1;
+        android.view.ViewGroup $r2;
+        android.os.Bundle $r3;
+        android.widget.FrameLayout $r4, $r9;
+        android.widget.LinearLayout $r5;
+        android.widget.ProgressBar $r6;
+        android.content.Context $r7;
+        android.widget.FrameLayout$LayoutParams $r8;
+        android.widget.TextView $r10;
+        android.widget.ListView $r11;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $r1 := @parameter0: android.view.LayoutInflater;
+
+        $r2 := @parameter1: android.view.ViewGroup;
+
+        $r3 := @parameter2: android.os.Bundle;
+
+        $r7 = virtualinvoke $r0.<androidx.fragment.app.ListFragment: android.content.Context getContext()>();
+
+        $r4 = new android.widget.FrameLayout;
+
+        specialinvoke $r4.<android.widget.FrameLayout: void <init>(android.content.Context)>($r7);
+
+        $r5 = new android.widget.LinearLayout;
+
+        specialinvoke $r5.<android.widget.LinearLayout: void <init>(android.content.Context)>($r7);
+
+        virtualinvoke $r5.<android.widget.LinearLayout: void setId(int)>(16711682);
+
+        virtualinvoke $r5.<android.widget.LinearLayout: void setOrientation(int)>(1);
+
+        virtualinvoke $r5.<android.widget.LinearLayout: void setVisibility(int)>(8);
+
+        virtualinvoke $r5.<android.widget.LinearLayout: void setGravity(int)>(17);
+
+        $r6 = new android.widget.ProgressBar;
+
+        specialinvoke $r6.<android.widget.ProgressBar: void <init>(android.content.Context,android.util.AttributeSet,int)>($r7, null, 16842874);
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        virtualinvoke $r5.<android.widget.LinearLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r6, $r8);
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r4.<android.widget.FrameLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r5, $r8);
+
+        $r9 = new android.widget.FrameLayout;
+
+        specialinvoke $r9.<android.widget.FrameLayout: void <init>(android.content.Context)>($r7);
+
+        virtualinvoke $r9.<android.widget.FrameLayout: void setId(int)>(16711683);
+
+        $r10 = new android.widget.TextView;
+
+        specialinvoke $r10.<android.widget.TextView: void <init>(android.content.Context)>($r7);
+
+        virtualinvoke $r10.<android.widget.TextView: void setId(int)>(16711681);
+
+        virtualinvoke $r10.<android.widget.TextView: void setGravity(int)>(17);
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r9.<android.widget.FrameLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r10, $r8);
+
+        $r11 = new android.widget.ListView;
+
+        specialinvoke $r11.<android.widget.ListView: void <init>(android.content.Context)>($r7);
+
+        virtualinvoke $r11.<android.widget.ListView: void setId(int)>(16908298);
+
+        virtualinvoke $r11.<android.widget.ListView: void setDrawSelectorOnTop(boolean)>(0);
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r9.<android.widget.FrameLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r11, $r8);
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r4.<android.widget.FrameLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r9, $r8);
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r4.<android.widget.FrameLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r8);
+
+        return $r4;
+    }
+
+    public void onDestroyView()
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.os.Handler $r1;
+        java.lang.Runnable $r2;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.os.Handler mHandler>;
+
+        $r2 = $r0.<androidx.fragment.app.ListFragment: java.lang.Runnable mRequestFocus>;
+
+        virtualinvoke $r1.<android.os.Handler: void removeCallbacks(java.lang.Runnable)>($r2);
+
+        $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList> = null;
+
+        $r0.<androidx.fragment.app.ListFragment: boolean mListShown> = 0;
+
+        $r0.<androidx.fragment.app.ListFragment: android.view.View mListContainer> = null;
+
+        $r0.<androidx.fragment.app.ListFragment: android.view.View mProgressContainer> = null;
+
+        $r0.<androidx.fragment.app.ListFragment: android.view.View mEmptyView> = null;
+
+        $r0.<androidx.fragment.app.ListFragment: android.widget.TextView mStandardEmptyView> = null;
+
+        specialinvoke $r0.<androidx.fragment.app.Fragment: void onDestroyView()>();
+
+        return;
+    }
+
+    public void onListItemClick(android.widget.ListView, android.view.View, int, long)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.widget.ListView $r1;
+        android.view.View $r2;
+        int $i0;
+        long $l1;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $r1 := @parameter0: android.widget.ListView;
+
+        $r2 := @parameter1: android.view.View;
+
+        $i0 := @parameter2: int;
+
+        $l1 := @parameter3: long;
+
+        return;
+    }
+
+    public void onViewCreated(android.view.View, android.os.Bundle)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.view.View $r1;
+        android.os.Bundle $r2;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.os.Bundle;
+
+        specialinvoke $r0.<androidx.fragment.app.Fragment: void onViewCreated(android.view.View,android.os.Bundle)>($r1, $r2);
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void ensureList()>();
+
+        return;
+    }
+
+    public void setEmptyText(java.lang.CharSequence)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        java.lang.CharSequence $r1, $r3;
+        android.widget.TextView $r2;
+        android.widget.ListView $r4;
+        java.lang.IllegalStateException $r5;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void ensureList()>();
+
+        $r2 = $r0.<androidx.fragment.app.ListFragment: android.widget.TextView mStandardEmptyView>;
+
+        if $r2 == null goto label2;
+
+        virtualinvoke $r2.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+        $r3 = $r0.<androidx.fragment.app.ListFragment: java.lang.CharSequence mEmptyText>;
+
+        if $r3 != null goto label1;
+
+        $r4 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        $r2 = $r0.<androidx.fragment.app.ListFragment: android.widget.TextView mStandardEmptyView>;
+
+        virtualinvoke $r4.<android.widget.ListView: void setEmptyView(android.view.View)>($r2);
+
+     label1:
+        $r0.<androidx.fragment.app.ListFragment: java.lang.CharSequence mEmptyText> = $r1;
+
+        return;
+
+     label2:
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Can\'t be used with a custom content view");
+
+        throw $r5;
+    }
+
+    public void setListAdapter(android.widget.ListAdapter)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        android.widget.ListAdapter $r1, $r2;
+        boolean $z0, $z1, $z2;
+        android.widget.ListView $r3;
+        android.view.View $r4;
+        android.os.IBinder $r5;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $r1 := @parameter0: android.widget.ListAdapter;
+
+        $r2 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListAdapter mAdapter>;
+
+        $z0 = 0;
+
+        if $r2 == null goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        $r0.<androidx.fragment.app.ListFragment: android.widget.ListAdapter mAdapter> = $r1;
+
+        $r3 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        if $r3 == null goto label4;
+
+        virtualinvoke $r3.<android.widget.ListView: void setAdapter(android.widget.ListAdapter)>($r1);
+
+        $z2 = $r0.<androidx.fragment.app.ListFragment: boolean mListShown>;
+
+        if $z2 != 0 goto label4;
+
+        if $z1 != 0 goto label4;
+
+        $r4 = virtualinvoke $r0.<androidx.fragment.app.ListFragment: android.view.View getView()>();
+
+        $r5 = virtualinvoke $r4.<android.view.View: android.os.IBinder getWindowToken()>();
+
+        if $r5 == null goto label3;
+
+        $z0 = 1;
+
+     label3:
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void setListShown(boolean,boolean)>(1, $z0);
+
+     label4:
+        return;
+    }
+
+    public void setListShown(boolean)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void setListShown(boolean,boolean)>($z0, 1);
+
+        return;
+    }
+
+    public void setListShownNoAnimation(boolean)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void setListShown(boolean,boolean)>($z0, 0);
+
+        return;
+    }
+
+    public void setSelection(int)
+    {
+        androidx.fragment.app.ListFragment $r0;
+        int $i0;
+        android.widget.ListView $r1;
+
+        $r0 := @this: androidx.fragment.app.ListFragment;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke $r0.<androidx.fragment.app.ListFragment: void ensureList()>();
+
+        $r1 = $r0.<androidx.fragment.app.ListFragment: android.widget.ListView mList>;
+
+        virtualinvoke $r1.<android.widget.ListView: void setSelection(int)>($i0);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.fragment.app.ListFragment: int INTERNAL_PROGRESS_CONTAINER_ID> = 16711682;
+
+        <androidx.fragment.app.ListFragment: int INTERNAL_LIST_CONTAINER_ID> = 16711683;
+
+        <androidx.fragment.app.ListFragment: int INTERNAL_EMPTY_ID> = 16711681;
+
+        return;
+    }
+}

@@ -1,0 +1,125 @@
+public class androidx.core.app.NotificationCompat$BigTextStyle extends androidx.core.app.NotificationCompat$Style
+{
+    private java.lang.CharSequence mBigText;
+
+    public void <init>()
+    {
+        androidx.core.app.NotificationCompat$BigTextStyle $r0;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$BigTextStyle;
+
+        specialinvoke $r0.<androidx.core.app.NotificationCompat$Style: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(androidx.core.app.NotificationCompat$Builder)
+    {
+        androidx.core.app.NotificationCompat$BigTextStyle $r0;
+        androidx.core.app.NotificationCompat$Builder $r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$BigTextStyle;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$Builder;
+
+        specialinvoke $r0.<androidx.core.app.NotificationCompat$Style: void <init>()>();
+
+        virtualinvoke $r0.<androidx.core.app.NotificationCompat$BigTextStyle: void setBuilder(androidx.core.app.NotificationCompat$Builder)>($r1);
+
+        return;
+    }
+
+    public void apply(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$BigTextStyle $r0;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $r1;
+        int $i0;
+        android.app.Notification$BigTextStyle $r2;
+        android.app.Notification$Builder $r3;
+        java.lang.CharSequence $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$BigTextStyle;
+
+        $r1 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $r2 = new android.app.Notification$BigTextStyle;
+
+        $r3 = interfaceinvoke $r1.<androidx.core.app.NotificationBuilderWithBuilderAccessor: android.app.Notification$Builder getBuilder()>();
+
+        specialinvoke $r2.<android.app.Notification$BigTextStyle: void <init>(android.app.Notification$Builder)>($r3);
+
+        $r4 = $r0.<androidx.core.app.NotificationCompat$BigTextStyle: java.lang.CharSequence mBigContentTitle>;
+
+        $r2 = virtualinvoke $r2.<android.app.Notification$BigTextStyle: android.app.Notification$BigTextStyle setBigContentTitle(java.lang.CharSequence)>($r4);
+
+        $r4 = $r0.<androidx.core.app.NotificationCompat$BigTextStyle: java.lang.CharSequence mBigText>;
+
+        $r2 = virtualinvoke $r2.<android.app.Notification$BigTextStyle: android.app.Notification$BigTextStyle bigText(java.lang.CharSequence)>($r4);
+
+        $z0 = $r0.<androidx.core.app.NotificationCompat$BigTextStyle: boolean mSummaryTextSet>;
+
+        if $z0 == 0 goto label1;
+
+        $r4 = $r0.<androidx.core.app.NotificationCompat$BigTextStyle: java.lang.CharSequence mSummaryText>;
+
+        virtualinvoke $r2.<android.app.Notification$BigTextStyle: android.app.Notification$BigTextStyle setSummaryText(java.lang.CharSequence)>($r4);
+
+     label1:
+        return;
+    }
+
+    public androidx.core.app.NotificationCompat$BigTextStyle bigText(java.lang.CharSequence)
+    {
+        androidx.core.app.NotificationCompat$BigTextStyle $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$BigTextStyle;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        $r0.<androidx.core.app.NotificationCompat$BigTextStyle: java.lang.CharSequence mBigText> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.core.app.NotificationCompat$BigTextStyle setBigContentTitle(java.lang.CharSequence)
+    {
+        androidx.core.app.NotificationCompat$BigTextStyle $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$BigTextStyle;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        $r0.<androidx.core.app.NotificationCompat$BigTextStyle: java.lang.CharSequence mBigContentTitle> = $r1;
+
+        return $r0;
+    }
+
+    public androidx.core.app.NotificationCompat$BigTextStyle setSummaryText(java.lang.CharSequence)
+    {
+        androidx.core.app.NotificationCompat$BigTextStyle $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.core.app.NotificationCompat$BigTextStyle;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        $r0.<androidx.core.app.NotificationCompat$BigTextStyle: java.lang.CharSequence mSummaryText> = $r1;
+
+        $r0.<androidx.core.app.NotificationCompat$BigTextStyle: boolean mSummaryTextSet> = 1;
+
+        return $r0;
+    }
+}

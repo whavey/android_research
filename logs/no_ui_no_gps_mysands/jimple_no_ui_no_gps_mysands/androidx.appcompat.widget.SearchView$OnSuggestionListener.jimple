@@ -1,0 +1,7 @@
+public interface  androidx.appcompat.widget.SearchView$OnSuggestionListener extends java.lang.Object
+{
+
+    public abstract boolean onSuggestionClick(int);
+
+    public abstract boolean onSuggestionSelect(int);
+}

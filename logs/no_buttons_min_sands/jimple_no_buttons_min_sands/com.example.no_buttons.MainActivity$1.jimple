@@ -1,0 +1,88 @@
+class com.example.no_buttons.MainActivity$1 extends java.lang.Object implements android.location.LocationListener
+{
+    final com.example.no_buttons.MainActivity this$0;
+
+    void <init>(com.example.no_buttons.MainActivity)
+    {
+        com.example.no_buttons.MainActivity$1 $r0;
+        com.example.no_buttons.MainActivity $r1;
+
+        $r0 := @this: com.example.no_buttons.MainActivity$1;
+
+        $r1 := @parameter0: com.example.no_buttons.MainActivity;
+
+        $r0.<com.example.no_buttons.MainActivity$1: com.example.no_buttons.MainActivity this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onLocationChanged(android.location.Location)
+    {
+        com.example.no_buttons.MainActivity$1 $r0;
+        android.location.Location $r1;
+        com.example.no_buttons.MainActivity $r2;
+        double $d0;
+
+        $r0 := @this: com.example.no_buttons.MainActivity$1;
+
+        $r1 := @parameter0: android.location.Location;
+
+        $r2 = $r0.<com.example.no_buttons.MainActivity$1: com.example.no_buttons.MainActivity this$0>;
+
+        $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>();
+
+        $r2.<com.example.no_buttons.MainActivity: double longitudeGPS> = $d0;
+
+        $r2 = $r0.<com.example.no_buttons.MainActivity$1: com.example.no_buttons.MainActivity this$0>;
+
+        $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>();
+
+        $r2.<com.example.no_buttons.MainActivity: double latitudeGPS> = $d0;
+
+        return;
+    }
+
+    public void onProviderDisabled(java.lang.String)
+    {
+        com.example.no_buttons.MainActivity$1 $r0;
+        java.lang.String $r1;
+
+        $r0 := @this: com.example.no_buttons.MainActivity$1;
+
+        $r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void onProviderEnabled(java.lang.String)
+    {
+        com.example.no_buttons.MainActivity$1 $r0;
+        java.lang.String $r1;
+
+        $r0 := @this: com.example.no_buttons.MainActivity$1;
+
+        $r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void onStatusChanged(java.lang.String, int, android.os.Bundle)
+    {
+        com.example.no_buttons.MainActivity$1 $r0;
+        java.lang.String $r1;
+        int $i0;
+        android.os.Bundle $r2;
+
+        $r0 := @this: com.example.no_buttons.MainActivity$1;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.os.Bundle;
+
+        return;
+    }
+}

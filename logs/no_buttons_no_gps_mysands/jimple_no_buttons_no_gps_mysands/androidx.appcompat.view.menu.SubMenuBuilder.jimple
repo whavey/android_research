@@ -1,0 +1,416 @@
+public class androidx.appcompat.view.menu.SubMenuBuilder extends androidx.appcompat.view.menu.MenuBuilder implements android.view.SubMenu
+{
+    private androidx.appcompat.view.menu.MenuItemImpl mItem;
+    private androidx.appcompat.view.menu.MenuBuilder mParentMenu;
+
+    public void <init>(android.content.Context, androidx.appcompat.view.menu.MenuBuilder, androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        android.content.Context $r1;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+        androidx.appcompat.view.menu.MenuItemImpl $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.appcompat.view.menu.MenuBuilder;
+
+        $r3 := @parameter2: androidx.appcompat.view.menu.MenuItemImpl;
+
+        specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: void <init>(android.content.Context)>($r1);
+
+        $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu> = $r2;
+
+        $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mItem> = $r3;
+
+        return;
+    }
+
+    public boolean collapseItemActionView(androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        $r2 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: boolean collapseItemActionView(androidx.appcompat.view.menu.MenuItemImpl)>($r1);
+
+        return $z0;
+    }
+
+    boolean dispatchMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuBuilder $r1, $r3;
+        android.view.MenuItem $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $r2 := @parameter1: android.view.MenuItem;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: boolean dispatchMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder,android.view.MenuItem)>($r1, $r2);
+
+        if $z0 != 0 goto label2;
+
+        $r3 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        $z0 = virtualinvoke $r3.<androidx.appcompat.view.menu.MenuBuilder: boolean dispatchMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder,android.view.MenuItem)>($r1, $r2);
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public boolean expandItemActionView(androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        $r2 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: boolean expandItemActionView(androidx.appcompat.view.menu.MenuItemImpl)>($r1);
+
+        return $z0;
+    }
+
+    public java.lang.String getActionViewStatesKey()
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+        int $i0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mItem>;
+
+        if $r1 == null goto label1;
+
+        $i0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: int getItemId()>();
+
+        goto label2;
+
+     label1:
+        $i0 = 0;
+
+     label2:
+        if $i0 != 0 goto label3;
+
+        return null;
+
+     label3:
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: java.lang.String getActionViewStatesKey()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public android.view.MenuItem getItem()
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuItemImpl r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mItem>;
+
+        return r1;
+    }
+
+    public android.view.Menu getParentMenu()
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuBuilder r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        return r1;
+    }
+
+    public androidx.appcompat.view.menu.MenuBuilder getRootMenu()
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        $r1 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder getRootMenu()>();
+
+        return $r1;
+    }
+
+    public boolean isGroupDividerEnabled()
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: boolean isGroupDividerEnabled()>();
+
+        return $z0;
+    }
+
+    public boolean isQwertyMode()
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: boolean isQwertyMode()>();
+
+        return $z0;
+    }
+
+    public boolean isShortcutsVisible()
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: boolean isShortcutsVisible()>();
+
+        return $z0;
+    }
+
+    public void setCallback(androidx.appcompat.view.menu.MenuBuilder$Callback)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        androidx.appcompat.view.menu.MenuBuilder$Callback $r1;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder$Callback;
+
+        $r2 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void setCallback(androidx.appcompat.view.menu.MenuBuilder$Callback)>($r1);
+
+        return;
+    }
+
+    public void setGroupDividerEnabled(boolean)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: void setGroupDividerEnabled(boolean)>($z0);
+
+        return;
+    }
+
+    public android.view.SubMenu setHeaderIcon(int)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        int $i0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        android.view.SubMenu $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder setHeaderIconInt(int)>($i0);
+
+        $r2 = (android.view.SubMenu) $r1;
+
+        return $r2;
+    }
+
+    public android.view.SubMenu setHeaderIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+        android.view.SubMenu $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder setHeaderIconInt(android.graphics.drawable.Drawable)>($r1);
+
+        $r3 = (android.view.SubMenu) $r2;
+
+        return $r3;
+    }
+
+    public android.view.SubMenu setHeaderTitle(int)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        int $i0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        android.view.SubMenu $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder setHeaderTitleInt(int)>($i0);
+
+        $r2 = (android.view.SubMenu) $r1;
+
+        return $r2;
+    }
+
+    public android.view.SubMenu setHeaderTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+        android.view.SubMenu $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder setHeaderTitleInt(java.lang.CharSequence)>($r1);
+
+        $r3 = (android.view.SubMenu) $r2;
+
+        return $r3;
+    }
+
+    public android.view.SubMenu setHeaderView(android.view.View)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        android.view.View $r1;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+        android.view.SubMenu $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = specialinvoke $r0.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder setHeaderViewInt(android.view.View)>($r1);
+
+        $r3 = (android.view.SubMenu) $r2;
+
+        return $r3;
+    }
+
+    public android.view.SubMenu setIcon(int)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        int $i0;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mItem>;
+
+        virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: android.view.MenuItem setIcon(int)>($i0);
+
+        return $r0;
+    }
+
+    public android.view.SubMenu setIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.view.menu.MenuItemImpl $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mItem>;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuItemImpl: android.view.MenuItem setIcon(android.graphics.drawable.Drawable)>($r1);
+
+        return $r0;
+    }
+
+    public void setQwertyMode(boolean)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: void setQwertyMode(boolean)>($z0);
+
+        return;
+    }
+
+    public void setShortcutsVisible(boolean)
+    {
+        androidx.appcompat.view.menu.SubMenuBuilder $r0;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.SubMenuBuilder: androidx.appcompat.view.menu.MenuBuilder mParentMenu>;
+
+        virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: void setShortcutsVisible(boolean)>($z0);
+
+        return;
+    }
+}

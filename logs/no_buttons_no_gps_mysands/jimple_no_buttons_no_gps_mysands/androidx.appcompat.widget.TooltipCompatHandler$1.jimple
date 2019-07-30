@@ -1,0 +1,34 @@
+class androidx.appcompat.widget.TooltipCompatHandler$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.widget.TooltipCompatHandler this$0;
+
+    void <init>(androidx.appcompat.widget.TooltipCompatHandler)
+    {
+        androidx.appcompat.widget.TooltipCompatHandler$1 $r0;
+        androidx.appcompat.widget.TooltipCompatHandler $r1;
+
+        $r0 := @this: androidx.appcompat.widget.TooltipCompatHandler$1;
+
+        $r1 := @parameter0: androidx.appcompat.widget.TooltipCompatHandler;
+
+        $r0.<androidx.appcompat.widget.TooltipCompatHandler$1: androidx.appcompat.widget.TooltipCompatHandler this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.widget.TooltipCompatHandler$1 $r0;
+        androidx.appcompat.widget.TooltipCompatHandler $r1;
+
+        $r0 := @this: androidx.appcompat.widget.TooltipCompatHandler$1;
+
+        $r1 = $r0.<androidx.appcompat.widget.TooltipCompatHandler$1: androidx.appcompat.widget.TooltipCompatHandler this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.TooltipCompatHandler: void show(boolean)>(0);
+
+        return;
+    }
+}

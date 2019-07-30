@@ -1,0 +1,139 @@
+final class androidx.collection.MapCollections$ArrayIterator extends java.lang.Object implements java.util.Iterator
+{
+    boolean mCanRemove;
+    int mIndex;
+    final int mOffset;
+    int mSize;
+    final androidx.collection.MapCollections this$0;
+
+    void <init>(androidx.collection.MapCollections, int)
+    {
+        androidx.collection.MapCollections$ArrayIterator $r0;
+        androidx.collection.MapCollections $r1;
+        int $i0;
+
+        $r0 := @this: androidx.collection.MapCollections$ArrayIterator;
+
+        $r1 := @parameter0: androidx.collection.MapCollections;
+
+        $i0 := @parameter1: int;
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: androidx.collection.MapCollections this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: boolean mCanRemove> = 0;
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: int mOffset> = 0;
+
+        $i0 = virtualinvoke $r1.<androidx.collection.MapCollections: int colGetSize()>();
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: int mSize> = $i0;
+
+        return;
+    }
+
+    public boolean hasNext()
+    {
+        androidx.collection.MapCollections$ArrayIterator $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.collection.MapCollections$ArrayIterator;
+
+        $i1 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mIndex>;
+
+        $i0 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mSize>;
+
+        if $i1 >= $i0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.lang.Object next()
+    {
+        androidx.collection.MapCollections$ArrayIterator $r0;
+        boolean $z0;
+        androidx.collection.MapCollections $r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        java.util.NoSuchElementException $r3;
+
+        $r0 := @this: androidx.collection.MapCollections$ArrayIterator;
+
+        $z0 = virtualinvoke $r0.<androidx.collection.MapCollections$ArrayIterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = $r0.<androidx.collection.MapCollections$ArrayIterator: androidx.collection.MapCollections this$0>;
+
+        $i0 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mIndex>;
+
+        $i1 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mOffset>;
+
+        $r2 = virtualinvoke $r1.<androidx.collection.MapCollections: java.lang.Object colGetEntry(int,int)>($i0, $i1);
+
+        $i0 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mIndex>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: int mIndex> = $i0;
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: boolean mCanRemove> = 1;
+
+        return $r2;
+
+     label1:
+        $r3 = new java.util.NoSuchElementException;
+
+        specialinvoke $r3.<java.util.NoSuchElementException: void <init>()>();
+
+        throw $r3;
+    }
+
+    public void remove()
+    {
+        androidx.collection.MapCollections$ArrayIterator $r0;
+        int $i0;
+        boolean $z0;
+        androidx.collection.MapCollections $r1;
+        java.lang.IllegalStateException $r2;
+
+        $r0 := @this: androidx.collection.MapCollections$ArrayIterator;
+
+        $z0 = $r0.<androidx.collection.MapCollections$ArrayIterator: boolean mCanRemove>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mIndex>;
+
+        $i0 = $i0 + -1;
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: int mIndex> = $i0;
+
+        $i0 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mSize>;
+
+        $i0 = $i0 + -1;
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: int mSize> = $i0;
+
+        $r0.<androidx.collection.MapCollections$ArrayIterator: boolean mCanRemove> = 0;
+
+        $r1 = $r0.<androidx.collection.MapCollections$ArrayIterator: androidx.collection.MapCollections this$0>;
+
+        $i0 = $r0.<androidx.collection.MapCollections$ArrayIterator: int mIndex>;
+
+        virtualinvoke $r1.<androidx.collection.MapCollections: void colRemoveAt(int)>($i0);
+
+        return;
+
+     label1:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>()>();
+
+        throw $r2;
+    }
+}

@@ -1,0 +1,1822 @@
+class androidx.appcompat.app.AlertController extends java.lang.Object
+{
+    android.widget.ListAdapter mAdapter;
+    private int mAlertDialogLayout;
+    private final android.view.View$OnClickListener mButtonHandler;
+    private final int mButtonIconDimen;
+    android.widget.Button mButtonNegative;
+    private android.graphics.drawable.Drawable mButtonNegativeIcon;
+    android.os.Message mButtonNegativeMessage;
+    private java.lang.CharSequence mButtonNegativeText;
+    android.widget.Button mButtonNeutral;
+    private android.graphics.drawable.Drawable mButtonNeutralIcon;
+    android.os.Message mButtonNeutralMessage;
+    private java.lang.CharSequence mButtonNeutralText;
+    private int mButtonPanelLayoutHint;
+    private int mButtonPanelSideLayout;
+    android.widget.Button mButtonPositive;
+    private android.graphics.drawable.Drawable mButtonPositiveIcon;
+    android.os.Message mButtonPositiveMessage;
+    private java.lang.CharSequence mButtonPositiveText;
+    int mCheckedItem;
+    private final android.content.Context mContext;
+    private android.view.View mCustomTitleView;
+    final androidx.appcompat.app.AppCompatDialog mDialog;
+    android.os.Handler mHandler;
+    private android.graphics.drawable.Drawable mIcon;
+    private int mIconId;
+    private android.widget.ImageView mIconView;
+    int mListItemLayout;
+    int mListLayout;
+    android.widget.ListView mListView;
+    private java.lang.CharSequence mMessage;
+    private android.widget.TextView mMessageView;
+    int mMultiChoiceItemLayout;
+    androidx.core.widget.NestedScrollView mScrollView;
+    private boolean mShowTitle;
+    int mSingleChoiceItemLayout;
+    private java.lang.CharSequence mTitle;
+    private android.widget.TextView mTitleView;
+    private android.view.View mView;
+    private int mViewLayoutResId;
+    private int mViewSpacingBottom;
+    private int mViewSpacingLeft;
+    private int mViewSpacingRight;
+    private boolean mViewSpacingSpecified;
+    private int mViewSpacingTop;
+    private final android.view.Window mWindow;
+
+    public void <init>(android.content.Context, androidx.appcompat.app.AppCompatDialog, android.view.Window)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.content.Context $r1;
+        androidx.appcompat.app.AppCompatDialog $r2;
+        android.view.Window $r3;
+        androidx.appcompat.app.AlertController$1 $r4;
+        androidx.appcompat.app.AlertController$ButtonHandler $r5;
+        int[] $r6;
+        int $i0;
+        android.content.res.TypedArray $r7;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.appcompat.app.AppCompatDialog;
+
+        $r3 := @parameter2: android.view.Window;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.appcompat.app.AlertController: boolean mViewSpacingSpecified> = 0;
+
+        $r0.<androidx.appcompat.app.AlertController: int mIconId> = 0;
+
+        $r0.<androidx.appcompat.app.AlertController: int mCheckedItem> = -1;
+
+        $r0.<androidx.appcompat.app.AlertController: int mButtonPanelLayoutHint> = 0;
+
+        $r4 = new androidx.appcompat.app.AlertController$1;
+
+        specialinvoke $r4.<androidx.appcompat.app.AlertController$1: void <init>(androidx.appcompat.app.AlertController)>($r0);
+
+        $r0.<androidx.appcompat.app.AlertController: android.view.View$OnClickListener mButtonHandler> = $r4;
+
+        $r0.<androidx.appcompat.app.AlertController: android.content.Context mContext> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController: androidx.appcompat.app.AppCompatDialog mDialog> = $r2;
+
+        $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow> = $r3;
+
+        $r5 = new androidx.appcompat.app.AlertController$ButtonHandler;
+
+        specialinvoke $r5.<androidx.appcompat.app.AlertController$ButtonHandler: void <init>(android.content.DialogInterface)>($r2);
+
+        $r0.<androidx.appcompat.app.AlertController: android.os.Handler mHandler> = $r5;
+
+        $r6 = <androidx.appcompat.R$styleable: int[] AlertDialog>;
+
+        $i0 = <androidx.appcompat.R$attr: int alertDialogStyle>;
+
+        $r7 = virtualinvoke $r1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>(null, $r6, $i0, 0);
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_android_layout>;
+
+        $i0 = virtualinvoke $r7.<android.content.res.TypedArray: int getResourceId(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AlertController: int mAlertDialogLayout> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_buttonPanelSideLayout>;
+
+        $i0 = virtualinvoke $r7.<android.content.res.TypedArray: int getResourceId(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AlertController: int mButtonPanelSideLayout> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_listLayout>;
+
+        $i0 = virtualinvoke $r7.<android.content.res.TypedArray: int getResourceId(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AlertController: int mListLayout> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_multiChoiceItemLayout>;
+
+        $i0 = virtualinvoke $r7.<android.content.res.TypedArray: int getResourceId(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AlertController: int mMultiChoiceItemLayout> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_singleChoiceItemLayout>;
+
+        $i0 = virtualinvoke $r7.<android.content.res.TypedArray: int getResourceId(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AlertController: int mSingleChoiceItemLayout> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_listItemLayout>;
+
+        $i0 = virtualinvoke $r7.<android.content.res.TypedArray: int getResourceId(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AlertController: int mListItemLayout> = $i0;
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_showTitle>;
+
+        $z0 = virtualinvoke $r7.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($i0, 1);
+
+        $r0.<androidx.appcompat.app.AlertController: boolean mShowTitle> = $z0;
+
+        $i0 = <androidx.appcompat.R$styleable: int AlertDialog_buttonIconDimen>;
+
+        $i0 = virtualinvoke $r7.<android.content.res.TypedArray: int getDimensionPixelSize(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AlertController: int mButtonIconDimen> = $i0;
+
+        virtualinvoke $r7.<android.content.res.TypedArray: void recycle()>();
+
+        virtualinvoke $r2.<androidx.appcompat.app.AppCompatDialog: boolean supportRequestWindowFeature(int)>(1);
+
+        return;
+    }
+
+    static boolean canTextInput(android.view.View)
+    {
+        android.view.View $r0;
+        boolean $z0;
+        android.view.ViewGroup $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean onCheckIsTextEditor()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = $r0 instanceof android.view.ViewGroup;
+
+        if $z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r1 = (android.view.ViewGroup) $r0;
+
+        $i0 = virtualinvoke $r1.<android.view.ViewGroup: int getChildCount()>();
+
+     label3:
+        if $i0 <= 0 goto label4;
+
+        $i0 = $i0 + -1;
+
+        $r0 = virtualinvoke $r1.<android.view.ViewGroup: android.view.View getChildAt(int)>($i0);
+
+        $z0 = staticinvoke <androidx.appcompat.app.AlertController: boolean canTextInput(android.view.View)>($r0);
+
+        if $z0 == 0 goto label3;
+
+        return 1;
+
+     label4:
+        return 0;
+    }
+
+    private void centerButton(android.widget.Button)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.widget.Button $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+        android.widget.LinearLayout$LayoutParams $r3;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.widget.Button;
+
+        $r2 = virtualinvoke $r1.<android.widget.Button: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r3 = (android.widget.LinearLayout$LayoutParams) $r2;
+
+        $r3.<android.widget.LinearLayout$LayoutParams: int gravity> = 1;
+
+        $r3.<android.widget.LinearLayout$LayoutParams: float weight> = 0.5F;
+
+        virtualinvoke $r1.<android.widget.Button: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r3);
+
+        return;
+    }
+
+    static void manageScrollIndicators(android.view.View, android.view.View, android.view.View)
+    {
+        android.view.View $r0, $r1, $r2;
+        byte $b0, $b1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.view.View;
+
+        $r2 := @parameter2: android.view.View;
+
+        $b0 = 0;
+
+        if $r1 == null goto label3;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean canScrollVertically(int)>(-1);
+
+        if $z0 == 0 goto label1;
+
+        $b1 = 0;
+
+        goto label2;
+
+     label1:
+        $b1 = 4;
+
+     label2:
+        virtualinvoke $r1.<android.view.View: void setVisibility(int)>($b1);
+
+     label3:
+        if $r2 == null goto label6;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean canScrollVertically(int)>(1);
+
+        if $z0 == 0 goto label4;
+
+        goto label5;
+
+     label4:
+        $b0 = 4;
+
+     label5:
+        virtualinvoke $r2.<android.view.View: void setVisibility(int)>($b0);
+
+     label6:
+        return;
+    }
+
+    private android.view.ViewGroup resolvePanel(android.view.View, android.view.View)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.View $r1, $r2;
+        boolean $z0;
+        android.view.ViewStub $r3;
+        android.view.ViewGroup $r4;
+        android.view.ViewParent $r5;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.View;
+
+        if $r1 != null goto label2;
+
+        $z0 = $r2 instanceof android.view.ViewStub;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = (android.view.ViewStub) $r2;
+
+        $r2 = virtualinvoke $r3.<android.view.ViewStub: android.view.View inflate()>();
+
+     label1:
+        $r4 = (android.view.ViewGroup) $r2;
+
+        return $r4;
+
+     label2:
+        if $r2 == null goto label3;
+
+        $r5 = virtualinvoke $r2.<android.view.View: android.view.ViewParent getParent()>();
+
+        $z0 = $r5 instanceof android.view.ViewGroup;
+
+        if $z0 == 0 goto label3;
+
+        $r4 = (android.view.ViewGroup) $r5;
+
+        virtualinvoke $r4.<android.view.ViewGroup: void removeView(android.view.View)>($r2);
+
+     label3:
+        $z0 = $r1 instanceof android.view.ViewStub;
+
+        if $z0 == 0 goto label4;
+
+        $r3 = (android.view.ViewStub) $r1;
+
+        $r1 = virtualinvoke $r3.<android.view.ViewStub: android.view.View inflate()>();
+
+     label4:
+        $r4 = (android.view.ViewGroup) $r1;
+
+        return $r4;
+    }
+
+    private int selectContentView()
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i1 = $r0.<androidx.appcompat.app.AlertController: int mButtonPanelSideLayout>;
+
+        if $i1 != 0 goto label1;
+
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mAlertDialogLayout>;
+
+        return $i0;
+
+     label1:
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mButtonPanelLayoutHint>;
+
+        if $i0 != 1 goto label2;
+
+        return $i1;
+
+     label2:
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mAlertDialogLayout>;
+
+        return $i0;
+    }
+
+    private void setScrollIndicators(android.view.ViewGroup, android.view.View, int, int)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.ViewGroup $r1;
+        android.view.View $r2, $r4, $r5, $r6, $r7;
+        int $i0, $i1, $i2;
+        android.view.Window $r3;
+        java.lang.CharSequence $r8;
+        androidx.core.widget.NestedScrollView $r9;
+        androidx.appcompat.app.AlertController$2 $r10;
+        androidx.appcompat.app.AlertController$3 $r11;
+        android.widget.ListView $r12;
+        androidx.appcompat.app.AlertController$4 $r13;
+        androidx.appcompat.app.AlertController$5 $r14;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.ViewGroup;
+
+        $r2 := @parameter1: android.view.View;
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i2 = <androidx.appcompat.R$id: int scrollIndicatorUp>;
+
+        $r4 = virtualinvoke $r3.<android.view.Window: android.view.View findViewById(int)>($i2);
+
+        $r5 = $r4;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i2 = <androidx.appcompat.R$id: int scrollIndicatorDown>;
+
+        $r6 = virtualinvoke $r3.<android.view.Window: android.view.View findViewById(int)>($i2);
+
+        $r7 = $r6;
+
+        $i2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i2 < 23 goto label2;
+
+        staticinvoke <androidx.core.view.ViewCompat: void setScrollIndicators(android.view.View,int,int)>($r2, $i0, $i1);
+
+        if $r4 == null goto label1;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeView(android.view.View)>($r4);
+
+     label1:
+        if $r6 == null goto label9;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeView(android.view.View)>($r6);
+
+        return;
+
+     label2:
+        if $r4 == null goto label3;
+
+        $i1 = $i0 & 1;
+
+        if $i1 != 0 goto label3;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeView(android.view.View)>($r4);
+
+        $r5 = null;
+
+     label3:
+        if $r6 == null goto label4;
+
+        $i0 = $i0 & 2;
+
+        if $i0 != 0 goto label4;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeView(android.view.View)>($r6);
+
+        $r7 = null;
+
+     label4:
+        if $r5 != null goto label5;
+
+        if $r7 == null goto label9;
+
+     label5:
+        $r2 = $r7;
+
+        $r8 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mMessage>;
+
+        if $r8 == null goto label6;
+
+        $r9 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        $r10 = new androidx.appcompat.app.AlertController$2;
+
+        specialinvoke $r10.<androidx.appcompat.app.AlertController$2: void <init>(androidx.appcompat.app.AlertController,android.view.View,android.view.View)>($r0, $r5, $r7);
+
+        virtualinvoke $r9.<androidx.core.widget.NestedScrollView: void setOnScrollChangeListener(androidx.core.widget.NestedScrollView$OnScrollChangeListener)>($r10);
+
+        $r9 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        $r11 = new androidx.appcompat.app.AlertController$3;
+
+        specialinvoke $r11.<androidx.appcompat.app.AlertController$3: void <init>(androidx.appcompat.app.AlertController,android.view.View,android.view.View)>($r0, $r5, $r7);
+
+        virtualinvoke $r9.<androidx.core.widget.NestedScrollView: boolean post(java.lang.Runnable)>($r11);
+
+        return;
+
+     label6:
+        $r12 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        if $r12 == null goto label7;
+
+        $r13 = new androidx.appcompat.app.AlertController$4;
+
+        specialinvoke $r13.<androidx.appcompat.app.AlertController$4: void <init>(androidx.appcompat.app.AlertController,android.view.View,android.view.View)>($r0, $r5, $r7);
+
+        virtualinvoke $r12.<android.widget.ListView: void setOnScrollListener(android.widget.AbsListView$OnScrollListener)>($r13);
+
+        $r12 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        $r14 = new androidx.appcompat.app.AlertController$5;
+
+        specialinvoke $r14.<androidx.appcompat.app.AlertController$5: void <init>(androidx.appcompat.app.AlertController,android.view.View,android.view.View)>($r0, $r5, $r7);
+
+        virtualinvoke $r12.<android.widget.ListView: boolean post(java.lang.Runnable)>($r14);
+
+        return;
+
+     label7:
+        if $r5 == null goto label8;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeView(android.view.View)>($r5);
+
+     label8:
+        if $r2 == null goto label9;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeView(android.view.View)>($r2);
+
+     label9:
+        return;
+    }
+
+    private void setupButtons(android.view.ViewGroup)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.ViewGroup $r1;
+        byte $b0;
+        android.view.View $r2;
+        android.widget.Button $r3;
+        android.view.View$OnClickListener $r4;
+        java.lang.CharSequence $r5;
+        boolean $z0, $z1;
+        android.graphics.drawable.Drawable $r6;
+        int $i1;
+        android.content.Context $r7;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.ViewGroup;
+
+        $b0 = 0;
+
+        $r2 = virtualinvoke $r1.<android.view.ViewGroup: android.view.View findViewById(int)>(16908313);
+
+        $r3 = (android.widget.Button) $r2;
+
+        $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive> = $r3;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        $r4 = $r0.<androidx.appcompat.app.AlertController: android.view.View$OnClickListener mButtonHandler>;
+
+        virtualinvoke $r3.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>($r4);
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonPositiveText>;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r5);
+
+        $z1 = 0;
+
+        if $z0 == 0 goto label01;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonPositiveIcon>;
+
+        if $r6 != null goto label01;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        virtualinvoke $r3.<android.widget.Button: void setVisibility(int)>(8);
+
+        goto label03;
+
+     label01:
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonPositiveText>;
+
+        virtualinvoke $r3.<android.widget.Button: void setText(java.lang.CharSequence)>($r5);
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonPositiveIcon>;
+
+        if $r6 == null goto label02;
+
+        $i1 = $r0.<androidx.appcompat.app.AlertController: int mButtonIconDimen>;
+
+        virtualinvoke $r6.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, $i1, $i1);
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonPositiveIcon>;
+
+        virtualinvoke $r3.<android.widget.Button: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r6, null, null, null);
+
+     label02:
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        virtualinvoke $r3.<android.widget.Button: void setVisibility(int)>(0);
+
+        $b0 = 1;
+
+     label03:
+        $r2 = virtualinvoke $r1.<android.view.ViewGroup: android.view.View findViewById(int)>(16908314);
+
+        $r3 = (android.widget.Button) $r2;
+
+        $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative> = $r3;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative>;
+
+        $r4 = $r0.<androidx.appcompat.app.AlertController: android.view.View$OnClickListener mButtonHandler>;
+
+        virtualinvoke $r3.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>($r4);
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonNegativeText>;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r5);
+
+        if $z0 == 0 goto label04;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonNegativeIcon>;
+
+        if $r6 != null goto label04;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative>;
+
+        virtualinvoke $r3.<android.widget.Button: void setVisibility(int)>(8);
+
+        goto label06;
+
+     label04:
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative>;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonNegativeText>;
+
+        virtualinvoke $r3.<android.widget.Button: void setText(java.lang.CharSequence)>($r5);
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonNegativeIcon>;
+
+        if $r6 == null goto label05;
+
+        $i1 = $r0.<androidx.appcompat.app.AlertController: int mButtonIconDimen>;
+
+        virtualinvoke $r6.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, $i1, $i1);
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative>;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonNegativeIcon>;
+
+        virtualinvoke $r3.<android.widget.Button: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r6, null, null, null);
+
+     label05:
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative>;
+
+        virtualinvoke $r3.<android.widget.Button: void setVisibility(int)>(0);
+
+        $b0 = $b0 | 2;
+
+     label06:
+        $r2 = virtualinvoke $r1.<android.view.ViewGroup: android.view.View findViewById(int)>(16908315);
+
+        $r3 = (android.widget.Button) $r2;
+
+        $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNeutral> = $r3;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNeutral>;
+
+        $r4 = $r0.<androidx.appcompat.app.AlertController: android.view.View$OnClickListener mButtonHandler>;
+
+        virtualinvoke $r3.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>($r4);
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonNeutralText>;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r5);
+
+        if $z0 == 0 goto label07;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonNeutralIcon>;
+
+        if $r6 != null goto label07;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNeutral>;
+
+        virtualinvoke $r3.<android.widget.Button: void setVisibility(int)>(8);
+
+        goto label09;
+
+     label07:
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNeutral>;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonNeutralText>;
+
+        virtualinvoke $r3.<android.widget.Button: void setText(java.lang.CharSequence)>($r5);
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonPositiveIcon>;
+
+        if $r6 == null goto label08;
+
+        $i1 = $r0.<androidx.appcompat.app.AlertController: int mButtonIconDimen>;
+
+        virtualinvoke $r6.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, $i1, $i1);
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonPositiveIcon>;
+
+        virtualinvoke $r3.<android.widget.Button: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r6, null, null, null);
+
+     label08:
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNeutral>;
+
+        virtualinvoke $r3.<android.widget.Button: void setVisibility(int)>(0);
+
+        $b0 = $b0 | 4;
+
+     label09:
+        $r7 = $r0.<androidx.appcompat.app.AlertController: android.content.Context mContext>;
+
+        $z0 = staticinvoke <androidx.appcompat.app.AlertController: boolean shouldCenterSingleButton(android.content.Context)>($r7);
+
+        if $z0 == 0 goto label12;
+
+        if $b0 != 1 goto label10;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void centerButton(android.widget.Button)>($r3);
+
+        goto label12;
+
+     label10:
+        if $b0 != 2 goto label11;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative>;
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void centerButton(android.widget.Button)>($r3);
+
+        goto label12;
+
+     label11:
+        if $b0 != 4 goto label12;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNeutral>;
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void centerButton(android.widget.Button)>($r3);
+
+     label12:
+        if $b0 == 0 goto label13;
+
+        $z1 = 1;
+
+     label13:
+        if $z1 != 0 goto label14;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void setVisibility(int)>(8);
+
+     label14:
+        return;
+    }
+
+    private void setupContent(android.view.ViewGroup)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.ViewGroup $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+        android.view.Window $r3;
+        int $i0;
+        android.view.View $r4;
+        androidx.core.widget.NestedScrollView $r5;
+        android.widget.TextView $r6;
+        java.lang.CharSequence $r7;
+        android.widget.ListView $r8;
+        android.view.ViewParent $r9;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.ViewGroup;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i0 = <androidx.appcompat.R$id: int scrollView>;
+
+        $r4 = virtualinvoke $r3.<android.view.Window: android.view.View findViewById(int)>($i0);
+
+        $r5 = (androidx.core.widget.NestedScrollView) $r4;
+
+        $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView> = $r5;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        virtualinvoke $r5.<androidx.core.widget.NestedScrollView: void setFocusable(boolean)>(0);
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        virtualinvoke $r5.<androidx.core.widget.NestedScrollView: void setNestedScrollingEnabled(boolean)>(0);
+
+        $r4 = virtualinvoke $r1.<android.view.ViewGroup: android.view.View findViewById(int)>(16908299);
+
+        $r6 = (android.widget.TextView) $r4;
+
+        $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mMessageView> = $r6;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mMessageView>;
+
+        if $r6 != null goto label1;
+
+        return;
+
+     label1:
+        $r7 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mMessage>;
+
+        if $r7 == null goto label2;
+
+        virtualinvoke $r6.<android.widget.TextView: void setText(java.lang.CharSequence)>($r7);
+
+        return;
+
+     label2:
+        virtualinvoke $r6.<android.widget.TextView: void setVisibility(int)>(8);
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mMessageView>;
+
+        virtualinvoke $r5.<androidx.core.widget.NestedScrollView: void removeView(android.view.View)>($r6);
+
+        $r8 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        if $r8 == null goto label3;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        $r9 = virtualinvoke $r5.<androidx.core.widget.NestedScrollView: android.view.ViewParent getParent()>();
+
+        $r1 = (android.view.ViewGroup) $r9;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        $i0 = virtualinvoke $r1.<android.view.ViewGroup: int indexOfChild(android.view.View)>($r5);
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeViewAt(int)>($i0);
+
+        $r8 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        $r2 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r2.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r1.<android.view.ViewGroup: void addView(android.view.View,int,android.view.ViewGroup$LayoutParams)>($r8, $i0, $r2);
+
+        return;
+
+     label3:
+        virtualinvoke $r1.<android.view.ViewGroup: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    private void setupCustomContent(android.view.ViewGroup)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.ViewGroup $r1;
+        int $i0, $i1, $i2, $i3;
+        android.view.View $r2, $r6;
+        boolean $z0, $z1;
+        android.content.Context $r3;
+        android.view.LayoutInflater $r4;
+        android.view.Window $r5;
+        android.widget.FrameLayout $r7;
+        android.view.ViewGroup$LayoutParams $r8;
+        android.widget.ListView $r9;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams $r10;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.ViewGroup;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.view.View mView>;
+
+        $z0 = 0;
+
+        if $r2 == null goto label1;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.view.View mView>;
+
+        goto label3;
+
+     label1:
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mViewLayoutResId>;
+
+        if $i0 == 0 goto label2;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.content.Context mContext>;
+
+        $r4 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($r3);
+
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mViewLayoutResId>;
+
+        $r2 = virtualinvoke $r4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($i0, $r1, 0);
+
+        goto label3;
+
+     label2:
+        $r2 = null;
+
+     label3:
+        if $r2 == null goto label4;
+
+        $z0 = 1;
+
+     label4:
+        if $z0 == 0 goto label5;
+
+        $z1 = staticinvoke <androidx.appcompat.app.AlertController: boolean canTextInput(android.view.View)>($r2);
+
+        if $z1 != 0 goto label6;
+
+     label5:
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        virtualinvoke $r5.<android.view.Window: void setFlags(int,int)>(131072, 131072);
+
+     label6:
+        if $z0 == 0 goto label9;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i0 = <androidx.appcompat.R$id: int custom>;
+
+        $r6 = virtualinvoke $r5.<android.view.Window: android.view.View findViewById(int)>($i0);
+
+        $r7 = (android.widget.FrameLayout) $r6;
+
+        $r8 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r8.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r7.<android.widget.FrameLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r2, $r8);
+
+        $z0 = $r0.<androidx.appcompat.app.AlertController: boolean mViewSpacingSpecified>;
+
+        if $z0 == 0 goto label7;
+
+        $i2 = $r0.<androidx.appcompat.app.AlertController: int mViewSpacingLeft>;
+
+        $i3 = $r0.<androidx.appcompat.app.AlertController: int mViewSpacingTop>;
+
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mViewSpacingRight>;
+
+        $i1 = $r0.<androidx.appcompat.app.AlertController: int mViewSpacingBottom>;
+
+        virtualinvoke $r7.<android.widget.FrameLayout: void setPadding(int,int,int,int)>($i2, $i3, $i0, $i1);
+
+     label7:
+        $r9 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        if $r9 == null goto label8;
+
+        $r8 = virtualinvoke $r1.<android.view.ViewGroup: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r10 = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $r8;
+
+        $r10.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: float weight> = 0.0F;
+
+     label8:
+        return;
+
+     label9:
+        virtualinvoke $r1.<android.view.ViewGroup: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    private void setupTitle(android.view.ViewGroup)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.ViewGroup $r1;
+        android.view.View $r2;
+        android.view.ViewGroup$LayoutParams $r3;
+        android.view.Window $r4;
+        int $i0, $i1, $i2, $i3;
+        android.widget.ImageView $r5;
+        java.lang.CharSequence $r6;
+        boolean $z0;
+        android.widget.TextView $r7;
+        android.graphics.drawable.Drawable $r8;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.ViewGroup;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.view.View mCustomTitleView>;
+
+        if $r2 == null goto label1;
+
+        $r3 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r3.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.view.View mCustomTitleView>;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void addView(android.view.View,int,android.view.ViewGroup$LayoutParams)>($r2, 0, $r3);
+
+        $r4 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i0 = <androidx.appcompat.R$id: int title_template>;
+
+        $r2 = virtualinvoke $r4.<android.view.Window: android.view.View findViewById(int)>($i0);
+
+        virtualinvoke $r2.<android.view.View: void setVisibility(int)>(8);
+
+        return;
+
+     label1:
+        $r4 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $r2 = virtualinvoke $r4.<android.view.Window: android.view.View findViewById(int)>(16908294);
+
+        $r5 = (android.widget.ImageView) $r2;
+
+        $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView> = $r5;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mTitle>;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r6);
+
+        $z0 = $z0 ^ 1;
+
+        if $z0 == 0 goto label4;
+
+        $z0 = $r0.<androidx.appcompat.app.AlertController: boolean mShowTitle>;
+
+        if $z0 == 0 goto label4;
+
+        $r4 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i0 = <androidx.appcompat.R$id: int alertTitle>;
+
+        $r2 = virtualinvoke $r4.<android.view.Window: android.view.View findViewById(int)>($i0);
+
+        $r7 = (android.widget.TextView) $r2;
+
+        $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mTitleView> = $r7;
+
+        $r7 = $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mTitleView>;
+
+        $r6 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mTitle>;
+
+        virtualinvoke $r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r6);
+
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mIconId>;
+
+        if $i0 == 0 goto label2;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        virtualinvoke $r5.<android.widget.ImageView: void setImageResource(int)>($i0);
+
+        return;
+
+     label2:
+        $r8 = $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mIcon>;
+
+        if $r8 == null goto label3;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        virtualinvoke $r5.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($r8);
+
+        return;
+
+     label3:
+        $r7 = $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mTitleView>;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        $i0 = virtualinvoke $r5.<android.widget.ImageView: int getPaddingLeft()>();
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        $i1 = virtualinvoke $r5.<android.widget.ImageView: int getPaddingTop()>();
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        $i2 = virtualinvoke $r5.<android.widget.ImageView: int getPaddingRight()>();
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        $i3 = virtualinvoke $r5.<android.widget.ImageView: int getPaddingBottom()>();
+
+        virtualinvoke $r7.<android.widget.TextView: void setPadding(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        virtualinvoke $r5.<android.widget.ImageView: void setVisibility(int)>(8);
+
+        return;
+
+     label4:
+        $r4 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i0 = <androidx.appcompat.R$id: int title_template>;
+
+        $r2 = virtualinvoke $r4.<android.view.Window: android.view.View findViewById(int)>($i0);
+
+        virtualinvoke $r2.<android.view.View: void setVisibility(int)>(8);
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        virtualinvoke $r5.<android.widget.ImageView: void setVisibility(int)>(8);
+
+        virtualinvoke $r1.<android.view.ViewGroup: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    private void setupView()
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.Window $r1;
+        int $i0;
+        android.view.View $r2, $r3, $r4, $r5, $r7, $r8;
+        android.view.ViewGroup $r6, $r9, $r10, $r11;
+        boolean $z0, $z1, $z2, $z3;
+        androidx.core.widget.NestedScrollView $r12;
+        java.lang.CharSequence $r13;
+        android.widget.ListView $r14;
+        androidx.appcompat.app.AlertController$RecycleListView $r15;
+        java.lang.Object $r16;
+        byte $b1, $b2;
+        android.widget.ListAdapter $r17;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 = $r0.<androidx.appcompat.app.AlertController: android.view.Window mWindow>;
+
+        $i0 = <androidx.appcompat.R$id: int parentPanel>;
+
+        $r2 = virtualinvoke $r1.<android.view.Window: android.view.View findViewById(int)>($i0);
+
+        $i0 = <androidx.appcompat.R$id: int topPanel>;
+
+        $r3 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>($i0);
+
+        $i0 = <androidx.appcompat.R$id: int contentPanel>;
+
+        $r4 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>($i0);
+
+        $i0 = <androidx.appcompat.R$id: int buttonPanel>;
+
+        $r5 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>($i0);
+
+        $i0 = <androidx.appcompat.R$id: int customPanel>;
+
+        $r2 = virtualinvoke $r2.<android.view.View: android.view.View findViewById(int)>($i0);
+
+        $r6 = (android.view.ViewGroup) $r2;
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void setupCustomContent(android.view.ViewGroup)>($r6);
+
+        $i0 = <androidx.appcompat.R$id: int topPanel>;
+
+        $r2 = virtualinvoke $r6.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        $i0 = <androidx.appcompat.R$id: int contentPanel>;
+
+        $r7 = virtualinvoke $r6.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        $i0 = <androidx.appcompat.R$id: int buttonPanel>;
+
+        $r8 = virtualinvoke $r6.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        $r9 = specialinvoke $r0.<androidx.appcompat.app.AlertController: android.view.ViewGroup resolvePanel(android.view.View,android.view.View)>($r2, $r3);
+
+        $r10 = specialinvoke $r0.<androidx.appcompat.app.AlertController: android.view.ViewGroup resolvePanel(android.view.View,android.view.View)>($r7, $r4);
+
+        $r11 = specialinvoke $r0.<androidx.appcompat.app.AlertController: android.view.ViewGroup resolvePanel(android.view.View,android.view.View)>($r8, $r5);
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void setupContent(android.view.ViewGroup)>($r10);
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void setupButtons(android.view.ViewGroup)>($r11);
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void setupTitle(android.view.ViewGroup)>($r9);
+
+        if $r6 == null goto label01;
+
+        $i0 = virtualinvoke $r6.<android.view.ViewGroup: int getVisibility()>();
+
+        if $i0 == 8 goto label01;
+
+        $z0 = 1;
+
+        goto label02;
+
+     label01:
+        $z0 = 0;
+
+     label02:
+        if $r9 == null goto label03;
+
+        $i0 = virtualinvoke $r9.<android.view.ViewGroup: int getVisibility()>();
+
+        if $i0 == 8 goto label03;
+
+        $z1 = 1;
+
+        goto label04;
+
+     label03:
+        $z1 = 0;
+
+     label04:
+        if $r11 == null goto label05;
+
+        $i0 = virtualinvoke $r11.<android.view.ViewGroup: int getVisibility()>();
+
+        if $i0 == 8 goto label05;
+
+        $z2 = 1;
+
+        goto label06;
+
+     label05:
+        $z2 = 0;
+
+     label06:
+        if $z2 != 0 goto label09;
+
+        if $r10 == null goto label08;
+
+        $i0 = <androidx.appcompat.R$id: int textSpacerNoButtons>;
+
+        $r3 = virtualinvoke $r10.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        if $r3 == null goto label07;
+
+        virtualinvoke $r3.<android.view.View: void setVisibility(int)>(0);
+
+        goto label09;
+
+     label07:
+        goto label09;
+
+     label08:
+        goto label09;
+
+     label09:
+        if $z1 == 0 goto label14;
+
+        $r12 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        if $r12 == null goto label10;
+
+        virtualinvoke $r12.<androidx.core.widget.NestedScrollView: void setClipToPadding(boolean)>(1);
+
+     label10:
+        $r3 = null;
+
+        $r13 = $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mMessage>;
+
+        if $r13 != null goto label11;
+
+        $r14 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        if $r14 == null goto label12;
+
+     label11:
+        $i0 = <androidx.appcompat.R$id: int titleDividerNoCustom>;
+
+        $r3 = virtualinvoke $r9.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+     label12:
+        if $r3 == null goto label13;
+
+        virtualinvoke $r3.<android.view.View: void setVisibility(int)>(0);
+
+     label13:
+        goto label16;
+
+     label14:
+        if $r10 == null goto label16;
+
+        $i0 = <androidx.appcompat.R$id: int textSpacerNoTitle>;
+
+        $r3 = virtualinvoke $r10.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        if $r3 == null goto label15;
+
+        virtualinvoke $r3.<android.view.View: void setVisibility(int)>(0);
+
+        goto label16;
+
+     label15:
+        goto label16;
+
+     label16:
+        $r14 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        $z3 = $r14 instanceof androidx.appcompat.app.AlertController$RecycleListView;
+
+        if $z3 == 0 goto label17;
+
+        $r15 = (androidx.appcompat.app.AlertController$RecycleListView) $r14;
+
+        virtualinvoke $r15.<androidx.appcompat.app.AlertController$RecycleListView: void setHasDecor(boolean,boolean)>($z1, $z2);
+
+     label17:
+        if $z0 != 0 goto label25;
+
+        $r16 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        if $r16 == null goto label18;
+
+        goto label19;
+
+     label18:
+        $r16 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+     label19:
+        if $r16 == null goto label24;
+
+        if $z1 == 0 goto label20;
+
+        $b1 = 1;
+
+        goto label21;
+
+     label20:
+        $b1 = 0;
+
+     label21:
+        if $z2 == 0 goto label22;
+
+        $b2 = 2;
+
+        goto label23;
+
+     label22:
+        $b2 = 0;
+
+     label23:
+        $b1 = $b1 | $b2;
+
+        $r3 = (android.view.View) $r16;
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void setScrollIndicators(android.view.ViewGroup,android.view.View,int,int)>($r10, $r3, $b1, 3);
+
+        goto label25;
+
+     label24:
+        goto label25;
+
+     label25:
+        $r14 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        if $r14 == null goto label26;
+
+        $r17 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListAdapter mAdapter>;
+
+        if $r17 == null goto label26;
+
+        virtualinvoke $r14.<android.widget.ListView: void setAdapter(android.widget.ListAdapter)>($r17);
+
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mCheckedItem>;
+
+        if $i0 <= -1 goto label26;
+
+        virtualinvoke $r14.<android.widget.ListView: void setItemChecked(int,boolean)>($i0, 1);
+
+        virtualinvoke $r14.<android.widget.ListView: void setSelection(int)>($i0);
+
+     label26:
+        return;
+    }
+
+    private static boolean shouldCenterSingleButton(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.util.TypedValue $r1;
+        int $i0;
+        android.content.res.Resources$Theme $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = new android.util.TypedValue;
+
+        specialinvoke $r1.<android.util.TypedValue: void <init>()>();
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $i0 = <androidx.appcompat.R$attr: int alertDialogCenterButtons>;
+
+        virtualinvoke $r2.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r1, 1);
+
+        $i0 = $r1.<android.util.TypedValue: int data>;
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public android.widget.Button getButton(int)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+        android.widget.Button r1;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        if $i0 == -3 goto label3;
+
+        if $i0 == -2 goto label2;
+
+        if $i0 == -1 goto label1;
+
+        return null;
+
+     label1:
+        r1 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonPositive>;
+
+        return r1;
+
+     label2:
+        r1 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNegative>;
+
+        return r1;
+
+     label3:
+        r1 = $r0.<androidx.appcompat.app.AlertController: android.widget.Button mButtonNeutral>;
+
+        return r1;
+    }
+
+    public int getIconAttributeResId(int)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+        android.util.TypedValue $r1;
+        android.content.res.Resources$Theme $r2;
+        android.content.Context $r3;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new android.util.TypedValue;
+
+        specialinvoke $r1.<android.util.TypedValue: void <init>()>();
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController: android.content.Context mContext>;
+
+        $r2 = virtualinvoke $r3.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        virtualinvoke $r2.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r1, 1);
+
+        $i0 = $r1.<android.util.TypedValue: int resourceId>;
+
+        return $i0;
+    }
+
+    public android.widget.ListView getListView()
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.widget.ListView r1;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        r1 = $r0.<androidx.appcompat.app.AlertController: android.widget.ListView mListView>;
+
+        return r1;
+    }
+
+    public void installContent()
+    {
+        androidx.appcompat.app.AlertController $r0;
+        androidx.appcompat.app.AppCompatDialog $r1;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 = specialinvoke $r0.<androidx.appcompat.app.AlertController: int selectContentView()>();
+
+        $r1 = $r0.<androidx.appcompat.app.AlertController: androidx.appcompat.app.AppCompatDialog mDialog>;
+
+        virtualinvoke $r1.<androidx.appcompat.app.AppCompatDialog: void setContentView(int)>($i0);
+
+        specialinvoke $r0.<androidx.appcompat.app.AlertController: void setupView()>();
+
+        return;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        boolean $z0;
+        androidx.core.widget.NestedScrollView $r2;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        if $r2 == null goto label1;
+
+        $z0 = virtualinvoke $r2.<androidx.core.widget.NestedScrollView: boolean executeKeyEvent(android.view.KeyEvent)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean onKeyUp(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        boolean $z0;
+        androidx.core.widget.NestedScrollView $r2;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        if $r2 == null goto label1;
+
+        $z0 = virtualinvoke $r2.<androidx.core.widget.NestedScrollView: boolean executeKeyEvent(android.view.KeyEvent)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setButton(int, java.lang.CharSequence, android.content.DialogInterface$OnClickListener, android.os.Message, android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+        java.lang.CharSequence $r1;
+        android.content.DialogInterface$OnClickListener $r2;
+        android.graphics.drawable.Drawable $r3;
+        android.os.Message $r4;
+        android.os.Handler $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.CharSequence;
+
+        $r2 := @parameter2: android.content.DialogInterface$OnClickListener;
+
+        $r4 := @parameter3: android.os.Message;
+
+        $r3 := @parameter4: android.graphics.drawable.Drawable;
+
+        if $r4 != null goto label1;
+
+        if $r2 == null goto label1;
+
+        $r5 = $r0.<androidx.appcompat.app.AlertController: android.os.Handler mHandler>;
+
+        $r4 = virtualinvoke $r5.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>($i0, $r2);
+
+     label1:
+        if $i0 == -3 goto label4;
+
+        if $i0 == -2 goto label3;
+
+        if $i0 != -1 goto label2;
+
+        $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonPositiveText> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController: android.os.Message mButtonPositiveMessage> = $r4;
+
+        $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonPositiveIcon> = $r3;
+
+        return;
+
+     label2:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Button does not exist");
+
+        throw $r6;
+
+     label3:
+        $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonNegativeText> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController: android.os.Message mButtonNegativeMessage> = $r4;
+
+        $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonNegativeIcon> = $r3;
+
+        return;
+
+     label4:
+        $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mButtonNeutralText> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController: android.os.Message mButtonNeutralMessage> = $r4;
+
+        $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mButtonNeutralIcon> = $r3;
+
+        return;
+    }
+
+    public void setButtonPanelLayoutHint(int)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.appcompat.app.AlertController: int mButtonPanelLayoutHint> = $i0;
+
+        return;
+    }
+
+    public void setCustomTitle(android.view.View)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.View $r1;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r0.<androidx.appcompat.app.AlertController: android.view.View mCustomTitleView> = $r1;
+
+        return;
+    }
+
+    public void setIcon(int)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+        android.widget.ImageView $r1;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mIcon> = null;
+
+        $r0.<androidx.appcompat.app.AlertController: int mIconId> = $i0;
+
+        $r1 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        if $r1 == null goto label2;
+
+        if $i0 == 0 goto label1;
+
+        virtualinvoke $r1.<android.widget.ImageView: void setVisibility(int)>(0);
+
+        $r1 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        $i0 = $r0.<androidx.appcompat.app.AlertController: int mIconId>;
+
+        virtualinvoke $r1.<android.widget.ImageView: void setImageResource(int)>($i0);
+
+        return;
+
+     label1:
+        virtualinvoke $r1.<android.widget.ImageView: void setVisibility(int)>(8);
+
+     label2:
+        return;
+    }
+
+    public void setIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.graphics.drawable.Drawable $r1;
+        android.widget.ImageView $r2;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r0.<androidx.appcompat.app.AlertController: android.graphics.drawable.Drawable mIcon> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController: int mIconId> = 0;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        if $r2 == null goto label2;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r2.<android.widget.ImageView: void setVisibility(int)>(0);
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.widget.ImageView mIconView>;
+
+        virtualinvoke $r2.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+
+     label1:
+        virtualinvoke $r2.<android.widget.ImageView: void setVisibility(int)>(8);
+
+     label2:
+        return;
+    }
+
+    public void setMessage(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        java.lang.CharSequence $r1;
+        android.widget.TextView $r2;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mMessage> = $r1;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mMessageView>;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+     label1:
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        java.lang.CharSequence $r1;
+        android.widget.TextView $r2;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r0.<androidx.appcompat.app.AlertController: java.lang.CharSequence mTitle> = $r1;
+
+        $r2 = $r0.<androidx.appcompat.app.AlertController: android.widget.TextView mTitleView>;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+     label1:
+        return;
+    }
+
+    public void setView(int)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.appcompat.app.AlertController: android.view.View mView> = null;
+
+        $r0.<androidx.appcompat.app.AlertController: int mViewLayoutResId> = $i0;
+
+        $r0.<androidx.appcompat.app.AlertController: boolean mViewSpacingSpecified> = 0;
+
+        return;
+    }
+
+    public void setView(android.view.View)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.View $r1;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r0.<androidx.appcompat.app.AlertController: android.view.View mView> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController: int mViewLayoutResId> = 0;
+
+        $r0.<androidx.appcompat.app.AlertController: boolean mViewSpacingSpecified> = 0;
+
+        return;
+    }
+
+    public void setView(android.view.View, int, int, int, int)
+    {
+        androidx.appcompat.app.AlertController $r0;
+        android.view.View $r1;
+        int $i0, $i1, $i2, $i3;
+
+        $r0 := @this: androidx.appcompat.app.AlertController;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $r0.<androidx.appcompat.app.AlertController: android.view.View mView> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController: int mViewLayoutResId> = 0;
+
+        $r0.<androidx.appcompat.app.AlertController: boolean mViewSpacingSpecified> = 1;
+
+        $r0.<androidx.appcompat.app.AlertController: int mViewSpacingLeft> = $i0;
+
+        $r0.<androidx.appcompat.app.AlertController: int mViewSpacingTop> = $i1;
+
+        $r0.<androidx.appcompat.app.AlertController: int mViewSpacingRight> = $i2;
+
+        $r0.<androidx.appcompat.app.AlertController: int mViewSpacingBottom> = $i3;
+
+        return;
+    }
+}

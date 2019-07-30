@@ -1,0 +1,73 @@
+public final class androidx.core.view.DragAndDropPermissionsCompat extends java.lang.Object
+{
+    private java.lang.Object mDragAndDropPermissions;
+
+    private void <init>(java.lang.Object)
+    {
+        androidx.core.view.DragAndDropPermissionsCompat $r0;
+        java.lang.Object $r1;
+
+        $r0 := @this: androidx.core.view.DragAndDropPermissionsCompat;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.core.view.DragAndDropPermissionsCompat: java.lang.Object mDragAndDropPermissions> = $r1;
+
+        return;
+    }
+
+    public static androidx.core.view.DragAndDropPermissionsCompat request(android.app.Activity, android.view.DragEvent)
+    {
+        android.app.Activity $r0;
+        android.view.DragEvent $r1;
+        android.view.DragAndDropPermissions $r2;
+        int $i0;
+        androidx.core.view.DragAndDropPermissionsCompat $r3;
+
+        $r0 := @parameter0: android.app.Activity;
+
+        $r1 := @parameter1: android.view.DragEvent;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label1;
+
+        $r2 = virtualinvoke $r0.<android.app.Activity: android.view.DragAndDropPermissions requestDragAndDropPermissions(android.view.DragEvent)>($r1);
+
+        if $r2 == null goto label1;
+
+        $r3 = new androidx.core.view.DragAndDropPermissionsCompat;
+
+        specialinvoke $r3.<androidx.core.view.DragAndDropPermissionsCompat: void <init>(java.lang.Object)>($r2);
+
+        return $r3;
+
+     label1:
+        return null;
+    }
+
+    public void release()
+    {
+        androidx.core.view.DragAndDropPermissionsCompat $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.view.DragAndDropPermissions $r2;
+
+        $r0 := @this: androidx.core.view.DragAndDropPermissionsCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label1;
+
+        $r1 = $r0.<androidx.core.view.DragAndDropPermissionsCompat: java.lang.Object mDragAndDropPermissions>;
+
+        $r2 = (android.view.DragAndDropPermissions) $r1;
+
+        virtualinvoke $r2.<android.view.DragAndDropPermissions: void release()>();
+
+     label1:
+        return;
+    }
+}

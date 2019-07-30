@@ -1,0 +1,183 @@
+public class androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory extends androidx.lifecycle.ViewModelProvider$NewInstanceFactory
+{
+    private static androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory sInstance;
+    private android.app.Application mApplication;
+
+    public void <init>(android.app.Application)
+    {
+        androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory $r0;
+        android.app.Application $r1;
+
+        $r0 := @this: androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory;
+
+        $r1 := @parameter0: android.app.Application;
+
+        specialinvoke $r0.<androidx.lifecycle.ViewModelProvider$NewInstanceFactory: void <init>()>();
+
+        $r0.<androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory: android.app.Application mApplication> = $r1;
+
+        return;
+    }
+
+    public static androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory getInstance(android.app.Application)
+    {
+        android.app.Application $r0;
+        androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory $r1;
+
+        $r0 := @parameter0: android.app.Application;
+
+        $r1 = <androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory: androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory sInstance>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory;
+
+        specialinvoke $r1.<androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory: void <init>(android.app.Application)>($r0);
+
+        <androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory: androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory sInstance> = $r1;
+
+     label1:
+        $r1 = <androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory: androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory sInstance>;
+
+        return $r1;
+    }
+
+    public androidx.lifecycle.ViewModel create(java.lang.Class)
+    {
+        androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory $r0;
+        java.lang.Class $r1, $r2;
+        boolean $z0;
+        java.lang.Class[] $r3;
+        java.lang.reflect.Constructor $r4;
+        java.lang.Object[] $r5;
+        android.app.Application $r6;
+        java.lang.Object $r7;
+        androidx.lifecycle.ViewModel $r8;
+        java.lang.Throwable $r9, $r13, $r14, $r15;
+        java.lang.RuntimeException $r10;
+        java.lang.StringBuilder $r11;
+        java.lang.String $r12;
+
+        $r0 := @this: androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 = class "Landroidx/lifecycle/AndroidViewModel;";
+
+        $z0 = virtualinvoke $r2.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r1);
+
+        if $z0 == 0 goto label9;
+
+        $r3 = newarray (java.lang.Class)[1];
+
+        $r3[0] = class "Landroid/app/Application;";
+
+     label1:
+        $r4 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r3);
+
+     label2:
+        $r5 = newarray (java.lang.Object)[1];
+
+        $r6 = $r0.<androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory: android.app.Application mApplication>;
+
+        $r5[0] = $r6;
+
+     label3:
+        $r7 = virtualinvoke $r4.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r5);
+
+     label4:
+        $r8 = (androidx.lifecycle.ViewModel) $r7;
+
+        return $r8;
+
+     label5:
+        $r9 := @caughtexception;
+
+        $r10 = new java.lang.RuntimeException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Cannot create an instance of ");
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($r12, $r9);
+
+        throw $r10;
+
+     label6:
+        $r13 := @caughtexception;
+
+        $r10 = new java.lang.RuntimeException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Cannot create an instance of ");
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($r12, $r13);
+
+        throw $r10;
+
+     label7:
+        $r14 := @caughtexception;
+
+        $r10 = new java.lang.RuntimeException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Cannot create an instance of ");
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($r12, $r14);
+
+        throw $r10;
+
+     label8:
+        $r15 := @caughtexception;
+
+        $r10 = new java.lang.RuntimeException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Cannot create an instance of ");
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($r12, $r15);
+
+        throw $r10;
+
+     label9:
+        $r8 = specialinvoke $r0.<androidx.lifecycle.ViewModelProvider$NewInstanceFactory: androidx.lifecycle.ViewModel create(java.lang.Class)>($r1);
+
+        return $r8;
+
+        catch java.lang.NoSuchMethodException from label1 to label2 with label8;
+        catch java.lang.NoSuchMethodException from label3 to label4 with label8;
+        catch java.lang.IllegalAccessException from label1 to label2 with label7;
+        catch java.lang.IllegalAccessException from label3 to label4 with label7;
+        catch java.lang.InstantiationException from label1 to label2 with label6;
+        catch java.lang.InstantiationException from label3 to label4 with label6;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label5;
+        catch java.lang.reflect.InvocationTargetException from label3 to label4 with label5;
+    }
+}

@@ -1,0 +1,17 @@
+Results: 
+	App: fd_test.apk
+	Sources_and_sinks_file: sourcesandsinks.txt
+	Sinks:
+		Statement:
+			- virtualinvoke $r2.<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)>("8502920020", null, $r1, null, null) 
+		Method:
+			- <com.example.fd_test_app.MainActivity: void sendMessage(java.lang.String)>
+	Sources:
+		Statement:
+			- $r6 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>() 
+		Method:
+			- <com.example.fd_test_app.MainActivity: void getDeviceId(android.view.View)>
+		Statement:
+			- $r6 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getSubscriberId()>() 
+		Method:
+			- <com.example.fd_test_app.MainActivity: void getDeviceId(android.view.View)>

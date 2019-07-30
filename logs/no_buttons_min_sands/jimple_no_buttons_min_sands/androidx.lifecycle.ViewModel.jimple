@@ -1,0 +1,23 @@
+public abstract class androidx.lifecycle.ViewModel extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.lifecycle.ViewModel $r0;
+
+        $r0 := @this: androidx.lifecycle.ViewModel;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    protected void onCleared()
+    {
+        androidx.lifecycle.ViewModel $r0;
+
+        $r0 := @this: androidx.lifecycle.ViewModel;
+
+        return;
+    }
+}

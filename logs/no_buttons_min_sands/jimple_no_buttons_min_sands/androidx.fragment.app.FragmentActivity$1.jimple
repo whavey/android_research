@@ -1,0 +1,54 @@
+class androidx.fragment.app.FragmentActivity$1 extends android.os.Handler
+{
+    final androidx.fragment.app.FragmentActivity this$0;
+
+    void <init>(androidx.fragment.app.FragmentActivity)
+    {
+        androidx.fragment.app.FragmentActivity$1 $r0;
+        androidx.fragment.app.FragmentActivity $r1;
+
+        $r0 := @this: androidx.fragment.app.FragmentActivity$1;
+
+        $r1 := @parameter0: androidx.fragment.app.FragmentActivity;
+
+        $r0.<androidx.fragment.app.FragmentActivity$1: androidx.fragment.app.FragmentActivity this$0> = $r1;
+
+        specialinvoke $r0.<android.os.Handler: void <init>()>();
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        androidx.fragment.app.FragmentActivity$1 $r0;
+        android.os.Message $r1;
+        int $i0;
+        androidx.fragment.app.FragmentActivity $r2;
+        androidx.fragment.app.FragmentController $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentActivity$1;
+
+        $r1 := @parameter0: android.os.Message;
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        if $i0 == 2 goto label1;
+
+        specialinvoke $r0.<android.os.Handler: void handleMessage(android.os.Message)>($r1);
+
+        return;
+
+     label1:
+        $r2 = $r0.<androidx.fragment.app.FragmentActivity$1: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $r2.<androidx.fragment.app.FragmentActivity: void onResumeFragments()>();
+
+        $r2 = $r0.<androidx.fragment.app.FragmentActivity$1: androidx.fragment.app.FragmentActivity this$0>;
+
+        $r3 = $r2.<androidx.fragment.app.FragmentActivity: androidx.fragment.app.FragmentController mFragments>;
+
+        virtualinvoke $r3.<androidx.fragment.app.FragmentController: boolean execPendingActions()>();
+
+        return;
+    }
+}

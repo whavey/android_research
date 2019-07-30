@@ -1,0 +1,7 @@
+public interface  androidx.core.graphics.drawable.WrappedDrawable extends java.lang.Object
+{
+
+    public abstract android.graphics.drawable.Drawable getWrappedDrawable();
+
+    public abstract void setWrappedDrawable(android.graphics.drawable.Drawable);
+}

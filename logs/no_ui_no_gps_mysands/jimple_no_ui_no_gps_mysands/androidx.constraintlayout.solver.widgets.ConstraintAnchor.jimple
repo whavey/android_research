@@ -1,0 +1,1450 @@
+public class androidx.constraintlayout.solver.widgets.ConstraintAnchor extends java.lang.Object
+{
+    private static final boolean ALLOW_BINARY;
+    public static final int AUTO_CONSTRAINT_CREATOR;
+    public static final int SCOUT_CREATOR;
+    private static final int UNSET_GONE_MARGIN;
+    public static final int USER_CREATOR;
+    private int mConnectionCreator;
+    private androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType mConnectionType;
+    int mGoneMargin;
+    public int mMargin;
+    final androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner;
+    private androidx.constraintlayout.solver.widgets.ResolutionAnchor mResolutionAnchor;
+    androidx.constraintlayout.solver.SolverVariable mSolverVariable;
+    private androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength mStrength;
+    androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget;
+    final androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType;
+
+    public void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget, androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2;
+        androidx.constraintlayout.solver.widgets.ResolutionAnchor $r3;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength $r4;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType $r5;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $r2 := @parameter1: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new androidx.constraintlayout.solver.widgets.ResolutionAnchor;
+
+        specialinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void <init>(androidx.constraintlayout.solver.widgets.ConstraintAnchor)>($r0);
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor mResolutionAnchor> = $r3;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mMargin> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mGoneMargin> = -1;
+
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength NONE>;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength mStrength> = $r4;
+
+        $r5 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType: androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType RELAXED>;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType mConnectionType> = $r5;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mConnectionCreator> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner> = $r1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType> = $r2;
+
+        return;
+    }
+
+    private boolean isConnectionToMe(androidx.constraintlayout.solver.widgets.ConstraintWidget, java.util.HashSet)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r6;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1, $r3;
+        java.util.HashSet $r2;
+        boolean $z0;
+        java.util.ArrayList $r4;
+        int $i0, $i1;
+        java.lang.Object $r5;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $r2 := @parameter1: java.util.HashSet;
+
+        $z0 = virtualinvoke $r2.<java.util.HashSet: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>($r1);
+
+        $r3 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()>();
+
+        if $r1 != $r3 goto label2;
+
+        return 1;
+
+     label2:
+        $r4 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: java.util.ArrayList getAnchors()>();
+
+        $i0 = 0;
+
+        $i1 = virtualinvoke $r4.<java.util.ArrayList: int size()>();
+
+     label3:
+        if $i0 >= $i1 goto label5;
+
+        $r5 = virtualinvoke $r4.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r6 = (androidx.constraintlayout.solver.widgets.ConstraintAnchor) $r5;
+
+        $z0 = virtualinvoke $r6.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isSimilarDimensionConnection(androidx.constraintlayout.solver.widgets.ConstraintAnchor)>($r0);
+
+        if $z0 == 0 goto label4;
+
+        $z0 = virtualinvoke $r6.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isConnected()>();
+
+        if $z0 == 0 goto label4;
+
+        $r6 = virtualinvoke $r6.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor getTarget()>();
+
+        $r1 = virtualinvoke $r6.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()>();
+
+        $z0 = specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isConnectionToMe(androidx.constraintlayout.solver.widgets.ConstraintWidget,java.util.HashSet)>($r1, $r2);
+
+        if $z0 == 0 goto label4;
+
+        return 1;
+
+     label4:
+        $i0 = $i0 + 1;
+
+        goto label3;
+
+     label5:
+        return 0;
+    }
+
+    public boolean connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r1;
+        int $i0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $i0 := @parameter1: int;
+
+        $r2 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength STRONG>;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,int,int,androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength,int,boolean)>($r1, $i0, -1, $r2, 0, 0);
+
+        return $z0;
+    }
+
+    public boolean connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor, int, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r1;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength STRONG>;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,int,int,androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength,int,boolean)>($r1, $i0, -1, $r2, $i1, 0);
+
+        return $z0;
+    }
+
+    public boolean connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor, int, int, androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength, int, boolean)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r1;
+        int $i0, $i1, $i2;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength;
+
+        $i2 := @parameter4: int;
+
+        $z0 := @parameter5: boolean;
+
+        if $r1 != null goto label1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget> = null;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mMargin> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mGoneMargin> = -1;
+
+        $r2 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength NONE>;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength mStrength> = $r2;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mConnectionCreator> = 2;
+
+        return 1;
+
+     label1:
+        if $z0 != 0 goto label2;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isValidConnection(androidx.constraintlayout.solver.widgets.ConstraintAnchor)>($r1);
+
+        if $z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget> = $r1;
+
+        if $i0 <= 0 goto label3;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mMargin> = $i0;
+
+        goto label4;
+
+     label3:
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mMargin> = 0;
+
+     label4:
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mGoneMargin> = $i1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength mStrength> = $r2;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mConnectionCreator> = $i2;
+
+        return 1;
+    }
+
+    public boolean connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor, int, androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r1;
+        int $i0, $i1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength;
+
+        $i1 := @parameter3: int;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,int,int,androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength,int,boolean)>($r1, $i0, -1, $r2, $i1, 0);
+
+        return $z0;
+    }
+
+    public int getConnectionCreator()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mConnectionCreator>;
+
+        return i0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType getConnectionType()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType mConnectionType>;
+
+        return r1;
+    }
+
+    public int getMargin()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r2;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if $i0 != 8 goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mGoneMargin>;
+
+        if $i0 <= -1 goto label2;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget>;
+
+        if $r2 == null goto label2;
+
+        $r1 = $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $i0 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if $i0 != 8 goto label2;
+
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mGoneMargin>;
+
+        return $i0;
+
+     label2:
+        $i0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mMargin>;
+
+        return $i0;
+    }
+
+    public final androidx.constraintlayout.solver.widgets.ConstraintAnchor getOpposite()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int[] $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2;
+        int $i0;
+        java.lang.AssertionError $r3;
+        java.lang.String $r4;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r5;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label6;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label3;
+            case 5: goto label2;
+            case 6: goto label6;
+            case 7: goto label6;
+            case 8: goto label6;
+            case 9: goto label6;
+            default: goto label1;
+        };
+
+     label1:
+        $r3 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r4 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r3.<java.lang.AssertionError: void <init>(java.lang.Object)>($r4);
+
+        throw $r3;
+
+     label2:
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $r0 = $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        return $r0;
+
+     label3:
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $r0 = $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        return $r0;
+
+     label4:
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $r0 = $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        return $r0;
+
+     label5:
+        $r5 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $r0 = $r5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        return $r0;
+
+     label6:
+        return null;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        return r1;
+    }
+
+    public int getPriorityLevel()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int[] $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2;
+        int $i0;
+        java.lang.AssertionError $r3;
+        java.lang.String $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label4;
+            case 2: goto label4;
+            case 3: goto label4;
+            case 4: goto label4;
+            case 5: goto label4;
+            case 6: goto label3;
+            case 7: goto label2;
+            case 8: goto label2;
+            case 9: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r3 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r4 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r3.<java.lang.AssertionError: void <init>(java.lang.Object)>($r4);
+
+        throw $r3;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+
+     label4:
+        return 2;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ResolutionAnchor getResolutionNode()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ResolutionAnchor r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor mResolutionAnchor>;
+
+        return r1;
+    }
+
+    public int getSnapPriorityLevel()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int[] $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2;
+        int $i0;
+        java.lang.AssertionError $r3;
+        java.lang.String $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label8;
+            case 2: goto label7;
+            case 3: goto label7;
+            case 4: goto label6;
+            case 5: goto label6;
+            case 6: goto label5;
+            case 7: goto label4;
+            case 8: goto label3;
+            case 9: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r3 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r4 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r3.<java.lang.AssertionError: void <init>(java.lang.Object)>($r4);
+
+        throw $r3;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+
+     label4:
+        return 0;
+
+     label5:
+        return 2;
+
+     label6:
+        return 0;
+
+     label7:
+        return 1;
+
+     label8:
+        return 3;
+    }
+
+    public androidx.constraintlayout.solver.SolverVariable getSolverVariable()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.SolverVariable r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        return r1;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength getStrength()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength mStrength>;
+
+        return r1;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintAnchor getTarget()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget>;
+
+        return $r0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        r1 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        return r1;
+    }
+
+    public boolean isConnected()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r0 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget>;
+
+        if $r0 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isConnectionAllowed(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1, $r3;
+        java.util.HashSet $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $r2 = new java.util.HashSet;
+
+        specialinvoke $r2.<java.util.HashSet: void <init>()>();
+
+        $z0 = specialinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isConnectionToMe(androidx.constraintlayout.solver.widgets.ConstraintWidget,java.util.HashSet)>($r1, $r2);
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $r3 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()>();
+
+        $r3 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        if $r3 != $r1 goto label2;
+
+        return 1;
+
+     label2:
+        $r1 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        if $r1 != $r3 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean isConnectionAllowed(androidx.constraintlayout.solver.widgets.ConstraintWidget, androidx.constraintlayout.solver.widgets.ConstraintAnchor)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r2;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $r2 := @parameter1: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isConnectionAllowed(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($r1);
+
+        return $z0;
+    }
+
+    public boolean isSideAnchor()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int[] $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2;
+        int $i0;
+        java.lang.AssertionError $r3;
+        java.lang.String $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label2;
+            case 3: goto label2;
+            case 4: goto label2;
+            case 5: goto label2;
+            case 6: goto label3;
+            case 7: goto label3;
+            case 8: goto label3;
+            case 9: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        $r3 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r4 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r3.<java.lang.AssertionError: void <init>(java.lang.Object)>($r4);
+
+        throw $r3;
+
+     label2:
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean isSimilarDimensionConnection(androidx.constraintlayout.solver.widgets.ConstraintAnchor)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2, $r3;
+        int[] $r4;
+        int $i0;
+        java.lang.AssertionError $r5;
+        java.lang.String $r6;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        if $r2 != $r3 goto label01;
+
+        return 1;
+
+     label01:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label08;
+            case 2: goto label06;
+            case 3: goto label06;
+            case 4: goto label04;
+            case 5: goto label04;
+            case 6: goto label04;
+            case 7: goto label06;
+            case 8: goto label04;
+            case 9: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        $r5 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r6 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r5.<java.lang.AssertionError: void <init>(java.lang.Object)>($r6);
+
+        throw $r5;
+
+     label03:
+        return 0;
+
+     label04:
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type TOP>;
+
+        if $r2 == $r3 goto label10;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type BOTTOM>;
+
+        if $r2 == $r3 goto label10;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type CENTER_Y>;
+
+        if $r2 == $r3 goto label10;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type BASELINE>;
+
+        if $r2 != $r3 goto label05;
+
+        return 1;
+
+     label05:
+        return 0;
+
+     label06:
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type LEFT>;
+
+        if $r2 == $r3 goto label10;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type RIGHT>;
+
+        if $r2 == $r3 goto label10;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type CENTER_X>;
+
+        if $r2 != $r3 goto label07;
+
+        return 1;
+
+     label07:
+        return 0;
+
+     label08:
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type BASELINE>;
+
+        if $r2 == $r3 goto label09;
+
+        return 1;
+
+     label09:
+        return 0;
+
+     label10:
+        return 1;
+    }
+
+    public boolean isSnapCompatibleWith(androidx.constraintlayout.solver.widgets.ConstraintAnchor)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2, $r3;
+        int[] $r4;
+        int $i0;
+        java.lang.AssertionError $r5;
+        java.lang.String $r6;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type CENTER>;
+
+        if $r2 != $r3 goto label01;
+
+        return 0;
+
+     label01:
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r3 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        if $r2 != $r3 goto label02;
+
+        return 1;
+
+     label02:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label16;
+            case 2: goto label14;
+            case 3: goto label12;
+            case 4: goto label10;
+            case 5: goto label08;
+            case 6: goto label16;
+            case 7: goto label06;
+            case 8: goto label04;
+            case 9: goto label16;
+            default: goto label03;
+        };
+
+     label03:
+        $r5 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r6 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r5.<java.lang.AssertionError: void <init>(java.lang.Object)>($r6);
+
+        throw $r5;
+
+     label04:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        if $i0 == 4 goto label05;
+
+        if $i0 == 5 goto label05;
+
+        return 0;
+
+     label05:
+        return 1;
+
+     label06:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        if $i0 == 2 goto label07;
+
+        if $i0 == 3 goto label07;
+
+        return 0;
+
+     label07:
+        return 1;
+
+     label08:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        if $i0 == 4 goto label09;
+
+        if $i0 == 8 goto label09;
+
+        return 0;
+
+     label09:
+        return 1;
+
+     label10:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        if $i0 == 5 goto label11;
+
+        if $i0 == 8 goto label11;
+
+        return 0;
+
+     label11:
+        return 1;
+
+     label12:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        if $i0 == 2 goto label13;
+
+        if $i0 == 7 goto label13;
+
+        return 0;
+
+     label13:
+        return 1;
+
+     label14:
+        $r4 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        if $i0 == 3 goto label15;
+
+        if $i0 == 7 goto label15;
+
+        return 0;
+
+     label15:
+        return 1;
+
+     label16:
+        return 0;
+    }
+
+    public boolean isValidConnection(androidx.constraintlayout.solver.widgets.ConstraintAnchor)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0, $r1;
+        boolean $z0, $z1, $z2;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2, $r3;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r4;
+        int[] $r5;
+        int $i0;
+        java.lang.AssertionError $r6;
+        java.lang.String $r7;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $z0 = 0;
+
+        if $r1 != null goto label01;
+
+        return 0;
+
+     label01:
+        $r2 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type getType()>();
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        if $r2 != $r3 goto label03;
+
+        $r2 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type BASELINE>;
+
+        if $r3 != $r2 goto label02;
+
+        $r4 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()>();
+
+        $z0 = virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: boolean hasBaseline()>();
+
+        if $z0 == 0 goto label19;
+
+        $r4 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()>();
+
+        $z0 = virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: boolean hasBaseline()>();
+
+        if $z0 != 0 goto label20;
+
+        return 0;
+
+     label02:
+        return 1;
+
+     label03:
+        $r5 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r5[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label18;
+            case 2: goto label12;
+            case 3: goto label12;
+            case 4: goto label06;
+            case 5: goto label06;
+            case 6: goto label05;
+            case 7: goto label05;
+            case 8: goto label05;
+            case 9: goto label05;
+            default: goto label04;
+        };
+
+     label04:
+        $r6 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r7 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r6.<java.lang.AssertionError: void <init>(java.lang.Object)>($r7);
+
+        throw $r6;
+
+     label05:
+        return 0;
+
+     label06:
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type TOP>;
+
+        if $r2 == $r3 goto label08;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type BOTTOM>;
+
+        if $r2 != $r3 goto label07;
+
+        goto label08;
+
+     label07:
+        $z1 = 0;
+
+        goto label09;
+
+     label08:
+        $z1 = 1;
+
+     label09:
+        $r4 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()>();
+
+        $z2 = $r4 instanceof androidx.constraintlayout.solver.widgets.Guideline;
+
+        if $z2 == 0 goto label21;
+
+        if $z1 != 0 goto label10;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type CENTER_Y>;
+
+        if $r2 != $r3 goto label11;
+
+     label10:
+        $z0 = 1;
+
+     label11:
+        return $z0;
+
+     label12:
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type LEFT>;
+
+        if $r2 == $r3 goto label14;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type RIGHT>;
+
+        if $r2 != $r3 goto label13;
+
+        goto label14;
+
+     label13:
+        $z1 = 0;
+
+        goto label15;
+
+     label14:
+        $z1 = 1;
+
+     label15:
+        $r4 = virtualinvoke $r1.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget getOwner()>();
+
+        $z2 = $r4 instanceof androidx.constraintlayout.solver.widgets.Guideline;
+
+        if $z2 == 0 goto label21;
+
+        if $z1 != 0 goto label16;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type CENTER_X>;
+
+        if $r2 != $r3 goto label17;
+
+     label16:
+        $z0 = 1;
+
+     label17:
+        return $z0;
+
+     label18:
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type BASELINE>;
+
+        if $r2 == $r3 goto label22;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type CENTER_X>;
+
+        if $r2 == $r3 goto label22;
+
+        $r3 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type CENTER_Y>;
+
+        if $r2 == $r3 goto label22;
+
+        return 1;
+
+     label19:
+        return 0;
+
+     label20:
+        return 1;
+
+     label21:
+        return $z1;
+
+     label22:
+        return 0;
+    }
+
+    public boolean isVerticalAnchor()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int[] $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r2;
+        int $i0;
+        java.lang.AssertionError $r3;
+        java.lang.String $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintAnchor$Type>;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $i0 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label3;
+            case 3: goto label3;
+            case 4: goto label2;
+            case 5: goto label2;
+            case 6: goto label2;
+            case 7: goto label3;
+            case 8: goto label2;
+            case 9: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r3 = new java.lang.AssertionError;
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r4 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String name()>();
+
+        specialinvoke $r3.<java.lang.AssertionError: void <init>(java.lang.Object)>($r4);
+
+        throw $r3;
+
+     label2:
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public void reset()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType $r2;
+        androidx.constraintlayout.solver.widgets.ResolutionAnchor $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget> = null;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mMargin> = 0;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mGoneMargin> = -1;
+
+        $r1 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength STRONG>;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength mStrength> = $r1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mConnectionCreator> = 0;
+
+        $r2 = <androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType: androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType RELAXED>;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType mConnectionType> = $r2;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ResolutionAnchor mResolutionAnchor>;
+
+        virtualinvoke $r3.<androidx.constraintlayout.solver.widgets.ResolutionAnchor: void reset()>();
+
+        return;
+    }
+
+    public void resetSolverVariable(androidx.constraintlayout.solver.Cache)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.Cache $r1;
+        androidx.constraintlayout.solver.SolverVariable$Type $r2;
+        androidx.constraintlayout.solver.SolverVariable $r3;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.Cache;
+
+        $r3 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable>;
+
+        if $r3 != null goto label1;
+
+        $r3 = new androidx.constraintlayout.solver.SolverVariable;
+
+        $r2 = <androidx.constraintlayout.solver.SolverVariable$Type: androidx.constraintlayout.solver.SolverVariable$Type UNRESTRICTED>;
+
+        specialinvoke $r3.<androidx.constraintlayout.solver.SolverVariable: void <init>(androidx.constraintlayout.solver.SolverVariable$Type,java.lang.String)>($r2, null);
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.SolverVariable mSolverVariable> = $r3;
+
+        return;
+
+     label1:
+        virtualinvoke $r3.<androidx.constraintlayout.solver.SolverVariable: void reset()>();
+
+        return;
+    }
+
+    public void setConnectionCreator(int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int $i0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $i0 := @parameter0: int;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mConnectionCreator> = $i0;
+
+        return;
+    }
+
+    public void setConnectionType(androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType $r1;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$ConnectionType mConnectionType> = $r1;
+
+        return;
+    }
+
+    public void setGoneMargin(int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $i0 := @parameter0: int;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isConnected()>();
+
+        if $z0 == 0 goto label1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mGoneMargin> = $i0;
+
+     label1:
+        return;
+    }
+
+    public void setMargin(int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        int $i0;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $i0 := @parameter0: int;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isConnected()>();
+
+        if $z0 == 0 goto label1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int mMargin> = $i0;
+
+     label1:
+        return;
+    }
+
+    public void setStrength(androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength;
+
+        $z0 = virtualinvoke $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean isConnected()>();
+
+        if $z0 == 0 goto label1;
+
+        $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Strength mStrength> = $r1;
+
+     label1:
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $r0;
+        java.lang.StringBuilder $r1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $r2;
+        java.lang.String $r3;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type $r4;
+
+        $r0 := @this: androidx.constraintlayout.solver.widgets.ConstraintAnchor;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $r3 = virtualinvoke $r2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: java.lang.String getDebugName()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r4 = $r0.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type mType>;
+
+        $r3 = virtualinvoke $r4.<androidx.constraintlayout.solver.widgets.ConstraintAnchor$Type: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.widgets.ConstraintAnchor: int UNSET_GONE_MARGIN> = -1;
+
+        <androidx.constraintlayout.solver.widgets.ConstraintAnchor: int SCOUT_CREATOR> = 1;
+
+        <androidx.constraintlayout.solver.widgets.ConstraintAnchor: int AUTO_CONSTRAINT_CREATOR> = 2;
+
+        <androidx.constraintlayout.solver.widgets.ConstraintAnchor: boolean ALLOW_BINARY> = 0;
+
+        return;
+    }
+}

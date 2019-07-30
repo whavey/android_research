@@ -1,0 +1,9 @@
+public interface  androidx.viewpager.widget.ViewPager$OnPageChangeListener extends java.lang.Object
+{
+
+    public abstract void onPageScrollStateChanged(int);
+
+    public abstract void onPageScrolled(int, float, int);
+
+    public abstract void onPageSelected(int);
+}

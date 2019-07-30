@@ -1,0 +1,187 @@
+public class androidx.arch.core.executor.ArchTaskExecutor extends androidx.arch.core.executor.TaskExecutor
+{
+    private static final java.util.concurrent.Executor sIOThreadExecutor;
+    private static volatile androidx.arch.core.executor.ArchTaskExecutor sInstance;
+    private static final java.util.concurrent.Executor sMainThreadExecutor;
+    private androidx.arch.core.executor.TaskExecutor mDefaultTaskExecutor;
+    private androidx.arch.core.executor.TaskExecutor mDelegate;
+
+    static void <clinit>()
+    {
+        androidx.arch.core.executor.ArchTaskExecutor$1 $r0;
+        androidx.arch.core.executor.ArchTaskExecutor$2 $r1;
+
+        $r0 = new androidx.arch.core.executor.ArchTaskExecutor$1;
+
+        specialinvoke $r0.<androidx.arch.core.executor.ArchTaskExecutor$1: void <init>()>();
+
+        <androidx.arch.core.executor.ArchTaskExecutor: java.util.concurrent.Executor sMainThreadExecutor> = $r0;
+
+        $r1 = new androidx.arch.core.executor.ArchTaskExecutor$2;
+
+        specialinvoke $r1.<androidx.arch.core.executor.ArchTaskExecutor$2: void <init>()>();
+
+        <androidx.arch.core.executor.ArchTaskExecutor: java.util.concurrent.Executor sIOThreadExecutor> = $r1;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.arch.core.executor.ArchTaskExecutor $r0;
+        androidx.arch.core.executor.DefaultTaskExecutor $r1;
+        androidx.arch.core.executor.TaskExecutor $r2;
+
+        $r0 := @this: androidx.arch.core.executor.ArchTaskExecutor;
+
+        specialinvoke $r0.<androidx.arch.core.executor.TaskExecutor: void <init>()>();
+
+        $r1 = new androidx.arch.core.executor.DefaultTaskExecutor;
+
+        specialinvoke $r1.<androidx.arch.core.executor.DefaultTaskExecutor: void <init>()>();
+
+        $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDefaultTaskExecutor> = $r1;
+
+        $r2 = $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDefaultTaskExecutor>;
+
+        $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDelegate> = $r2;
+
+        return;
+    }
+
+    public static java.util.concurrent.Executor getIOThreadExecutor()
+    {
+        java.util.concurrent.Executor r0;
+
+        r0 = <androidx.arch.core.executor.ArchTaskExecutor: java.util.concurrent.Executor sIOThreadExecutor>;
+
+        return r0;
+    }
+
+    public static androidx.arch.core.executor.ArchTaskExecutor getInstance()
+    {
+        androidx.arch.core.executor.ArchTaskExecutor $r0;
+        java.lang.Throwable $r1;
+
+        $r0 = <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor sInstance>;
+
+        if $r0 == null goto label1;
+
+        $r0 = <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor sInstance>;
+
+        return $r0;
+
+     label1:
+        entermonitor class "Landroidx/arch/core/executor/ArchTaskExecutor;";
+
+     label2:
+        $r0 = <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor sInstance>;
+
+        if $r0 != null goto label3;
+
+        $r0 = new androidx.arch.core.executor.ArchTaskExecutor;
+
+        specialinvoke $r0.<androidx.arch.core.executor.ArchTaskExecutor: void <init>()>();
+
+        <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor sInstance> = $r0;
+
+     label3:
+        exitmonitor class "Landroidx/arch/core/executor/ArchTaskExecutor;";
+
+     label4:
+        $r0 = <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor sInstance>;
+
+        return $r0;
+
+     label5:
+        $r1 := @caughtexception;
+
+     label6:
+        exitmonitor class "Landroidx/arch/core/executor/ArchTaskExecutor;";
+
+     label7:
+        throw $r1;
+
+        catch java.lang.Throwable from label2 to label4 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    public static java.util.concurrent.Executor getMainThreadExecutor()
+    {
+        java.util.concurrent.Executor r0;
+
+        r0 = <androidx.arch.core.executor.ArchTaskExecutor: java.util.concurrent.Executor sMainThreadExecutor>;
+
+        return r0;
+    }
+
+    public void executeOnDiskIO(java.lang.Runnable)
+    {
+        androidx.arch.core.executor.ArchTaskExecutor $r0;
+        java.lang.Runnable $r1;
+        androidx.arch.core.executor.TaskExecutor $r2;
+
+        $r0 := @this: androidx.arch.core.executor.ArchTaskExecutor;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDelegate>;
+
+        virtualinvoke $r2.<androidx.arch.core.executor.TaskExecutor: void executeOnDiskIO(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public boolean isMainThread()
+    {
+        androidx.arch.core.executor.ArchTaskExecutor $r0;
+        boolean $z0;
+        androidx.arch.core.executor.TaskExecutor $r1;
+
+        $r0 := @this: androidx.arch.core.executor.ArchTaskExecutor;
+
+        $r1 = $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDelegate>;
+
+        $z0 = virtualinvoke $r1.<androidx.arch.core.executor.TaskExecutor: boolean isMainThread()>();
+
+        return $z0;
+    }
+
+    public void postToMainThread(java.lang.Runnable)
+    {
+        androidx.arch.core.executor.ArchTaskExecutor $r0;
+        java.lang.Runnable $r1;
+        androidx.arch.core.executor.TaskExecutor $r2;
+
+        $r0 := @this: androidx.arch.core.executor.ArchTaskExecutor;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDelegate>;
+
+        virtualinvoke $r2.<androidx.arch.core.executor.TaskExecutor: void postToMainThread(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void setDelegate(androidx.arch.core.executor.TaskExecutor)
+    {
+        androidx.arch.core.executor.ArchTaskExecutor $r0;
+        androidx.arch.core.executor.TaskExecutor $r1;
+
+        $r0 := @this: androidx.arch.core.executor.ArchTaskExecutor;
+
+        $r1 := @parameter0: androidx.arch.core.executor.TaskExecutor;
+
+        if $r1 != null goto label1;
+
+        $r1 = $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDefaultTaskExecutor>;
+
+        goto label1;
+
+     label1:
+        $r0.<androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.TaskExecutor mDelegate> = $r1;
+
+        return;
+    }
+}

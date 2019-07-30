@@ -1,0 +1,190 @@
+public final class androidx.constraintlayout.widget.R$attr extends java.lang.Object
+{
+    public static final int barrierAllowsGoneWidgets;
+    public static final int barrierDirection;
+    public static final int chainUseRtl;
+    public static final int constraintSet;
+    public static final int constraint_referenced_ids;
+    public static final int content;
+    public static final int emptyVisibility;
+    public static final int layout_constrainedHeight;
+    public static final int layout_constrainedWidth;
+    public static final int layout_constraintBaseline_creator;
+    public static final int layout_constraintBaseline_toBaselineOf;
+    public static final int layout_constraintBottom_creator;
+    public static final int layout_constraintBottom_toBottomOf;
+    public static final int layout_constraintBottom_toTopOf;
+    public static final int layout_constraintCircle;
+    public static final int layout_constraintCircleAngle;
+    public static final int layout_constraintCircleRadius;
+    public static final int layout_constraintDimensionRatio;
+    public static final int layout_constraintEnd_toEndOf;
+    public static final int layout_constraintEnd_toStartOf;
+    public static final int layout_constraintGuide_begin;
+    public static final int layout_constraintGuide_end;
+    public static final int layout_constraintGuide_percent;
+    public static final int layout_constraintHeight_default;
+    public static final int layout_constraintHeight_max;
+    public static final int layout_constraintHeight_min;
+    public static final int layout_constraintHeight_percent;
+    public static final int layout_constraintHorizontal_bias;
+    public static final int layout_constraintHorizontal_chainStyle;
+    public static final int layout_constraintHorizontal_weight;
+    public static final int layout_constraintLeft_creator;
+    public static final int layout_constraintLeft_toLeftOf;
+    public static final int layout_constraintLeft_toRightOf;
+    public static final int layout_constraintRight_creator;
+    public static final int layout_constraintRight_toLeftOf;
+    public static final int layout_constraintRight_toRightOf;
+    public static final int layout_constraintStart_toEndOf;
+    public static final int layout_constraintStart_toStartOf;
+    public static final int layout_constraintTop_creator;
+    public static final int layout_constraintTop_toBottomOf;
+    public static final int layout_constraintTop_toTopOf;
+    public static final int layout_constraintVertical_bias;
+    public static final int layout_constraintVertical_chainStyle;
+    public static final int layout_constraintVertical_weight;
+    public static final int layout_constraintWidth_default;
+    public static final int layout_constraintWidth_max;
+    public static final int layout_constraintWidth_min;
+    public static final int layout_constraintWidth_percent;
+    public static final int layout_editor_absoluteX;
+    public static final int layout_editor_absoluteY;
+    public static final int layout_goneMarginBottom;
+    public static final int layout_goneMarginEnd;
+    public static final int layout_goneMarginLeft;
+    public static final int layout_goneMarginRight;
+    public static final int layout_goneMarginStart;
+    public static final int layout_goneMarginTop;
+    public static final int layout_optimizationLevel;
+
+    private void <init>()
+    {
+        androidx.constraintlayout.widget.R$attr $r0;
+
+        $r0 := @this: androidx.constraintlayout.widget.R$attr;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.widget.R$attr: int layout_optimizationLevel> = 2130837710;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_goneMarginTop> = 2130837707;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_goneMarginStart> = 2130837706;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_goneMarginRight> = 2130837705;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_goneMarginLeft> = 2130837704;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_goneMarginEnd> = 2130837703;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_goneMarginBottom> = 2130837702;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_editor_absoluteY> = 2130837701;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_editor_absoluteX> = 2130837700;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintWidth_percent> = 2130837698;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintWidth_min> = 2130837697;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintWidth_max> = 2130837696;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintWidth_default> = 2130837695;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintVertical_weight> = 2130837694;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintVertical_chainStyle> = 2130837693;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintVertical_bias> = 2130837692;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintTop_toTopOf> = 2130837691;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintTop_toBottomOf> = 2130837690;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintTop_creator> = 2130837689;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintStart_toStartOf> = 2130837688;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintStart_toEndOf> = 2130837687;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintRight_toRightOf> = 2130837686;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintRight_toLeftOf> = 2130837685;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintRight_creator> = 2130837684;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintLeft_toRightOf> = 2130837683;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintLeft_toLeftOf> = 2130837682;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintLeft_creator> = 2130837681;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintHorizontal_weight> = 2130837680;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintHorizontal_chainStyle> = 2130837679;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintHorizontal_bias> = 2130837678;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintHeight_percent> = 2130837677;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintHeight_min> = 2130837676;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintHeight_max> = 2130837675;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintHeight_default> = 2130837674;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintGuide_percent> = 2130837673;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintGuide_end> = 2130837672;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintGuide_begin> = 2130837671;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintEnd_toStartOf> = 2130837670;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintEnd_toEndOf> = 2130837669;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintDimensionRatio> = 2130837668;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintCircleRadius> = 2130837667;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintCircleAngle> = 2130837666;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintCircle> = 2130837665;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintBottom_toTopOf> = 2130837664;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintBottom_toBottomOf> = 2130837663;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintBottom_creator> = 2130837662;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintBaseline_toBaselineOf> = 2130837661;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constraintBaseline_creator> = 2130837660;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constrainedWidth> = 2130837659;
+
+        <androidx.constraintlayout.widget.R$attr: int layout_constrainedHeight> = 2130837658;
+
+        <androidx.constraintlayout.widget.R$attr: int emptyVisibility> = 2130837623;
+
+        <androidx.constraintlayout.widget.R$attr: int content> = 2130837595;
+
+        <androidx.constraintlayout.widget.R$attr: int constraint_referenced_ids> = 2130837594;
+
+        <androidx.constraintlayout.widget.R$attr: int constraintSet> = 2130837593;
+
+        <androidx.constraintlayout.widget.R$attr: int chainUseRtl> = 2130837574;
+
+        <androidx.constraintlayout.widget.R$attr: int barrierDirection> = 2130837560;
+
+        <androidx.constraintlayout.widget.R$attr: int barrierAllowsGoneWidgets> = 2130837559;
+
+        return;
+    }
+}

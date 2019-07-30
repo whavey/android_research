@@ -1,0 +1,815 @@
+public class androidx.appcompat.view.menu.ActionMenuItemView extends androidx.appcompat.widget.AppCompatTextView implements androidx.appcompat.view.menu.MenuView$ItemView, android.view.View$OnClickListener, androidx.appcompat.widget.ActionMenuView$ActionMenuChildView
+{
+    private static final int MAX_ICON_SIZE;
+    private static final java.lang.String TAG;
+    private boolean mAllowTextWithIcon;
+    private boolean mExpandedFormat;
+    private androidx.appcompat.widget.ForwardingListener mForwardingListener;
+    private android.graphics.drawable.Drawable mIcon;
+    androidx.appcompat.view.menu.MenuItemImpl mItemData;
+    androidx.appcompat.view.menu.MenuBuilder$ItemInvoker mItemInvoker;
+    private int mMaxIconSize;
+    private int mMinWidth;
+    androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback mPopupCallback;
+    private int mSavedPaddingLeft;
+    private java.lang.CharSequence mTitle;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.content.Context $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void <init>(android.content.Context,android.util.AttributeSet)>($r1, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, 0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0;
+        android.content.res.Resources $r3;
+        boolean $z0;
+        int[] $r4;
+        android.content.res.TypedArray $r5;
+        android.util.DisplayMetrics $r6;
+        float $f0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean shouldAllowTextWithIcon()>();
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean mAllowTextWithIcon> = $z0;
+
+        $r4 = <androidx.appcompat.R$styleable: int[] ActionMenuItemView>;
+
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>($r2, $r4, $i0, 0);
+
+        $i0 = <androidx.appcompat.R$styleable: int ActionMenuItemView_android_minWidth>;
+
+        $i0 = virtualinvoke $r5.<android.content.res.TypedArray: int getDimensionPixelSize(int,int)>($i0, 0);
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMinWidth> = $i0;
+
+        virtualinvoke $r5.<android.content.res.TypedArray: void recycle()>();
+
+        $r6 = virtualinvoke $r3.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $f0 = $r6.<android.util.DisplayMetrics: float density>;
+
+        $f0 = 32.0F * $f0;
+
+        $f0 = $f0 + 0.5F;
+
+        $i0 = (int) $f0;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMaxIconSize> = $i0;
+
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setOnClickListener(android.view.View$OnClickListener)>($r0);
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mSavedPaddingLeft> = -1;
+
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setSaveEnabled(boolean)>(0);
+
+        return;
+    }
+
+    private boolean shouldAllowTextWithIcon()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        int $i0, $i1;
+        android.content.Context $r1;
+        android.content.res.Resources $r2;
+        android.content.res.Configuration $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: android.content.Context getContext()>();
+
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r3 = virtualinvoke $r2.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $i0 = $r3.<android.content.res.Configuration: int screenWidthDp>;
+
+        $i1 = $r3.<android.content.res.Configuration: int screenHeightDp>;
+
+        if $i0 >= 480 goto label3;
+
+        if $i0 < 640 goto label1;
+
+        if $i1 >= 480 goto label3;
+
+     label1:
+        $i0 = $r3.<android.content.res.Configuration: int orientation>;
+
+        if $i0 != 2 goto label2;
+
+        goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+    }
+
+    private void updateTextButtonVisibility()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        java.lang.CharSequence $r1, $r4;
+        boolean $z0, $z1, $z2;
+        android.graphics.drawable.Drawable $r2;
+        androidx.appcompat.view.menu.MenuItemImpl $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: java.lang.CharSequence mTitle>;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r1);
+
+        $z1 = 1;
+
+        $z0 = $z0 ^ 1;
+
+        $r2 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: android.graphics.drawable.Drawable mIcon>;
+
+        if $r2 == null goto label03;
+
+        $r3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $z2 = virtualinvoke $r3.<androidx.appcompat.view.menu.MenuItemImpl: boolean showsTextAsAction()>();
+
+        if $z2 == 0 goto label02;
+
+        $z2 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean mAllowTextWithIcon>;
+
+        if $z2 != 0 goto label01;
+
+        $z2 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean mExpandedFormat>;
+
+        if $z2 == 0 goto label02;
+
+     label01:
+        goto label03;
+
+     label02:
+        $z1 = 0;
+
+        goto label03;
+
+     label03:
+        $z1 = $z0 & $z1;
+
+        $r1 = null;
+
+        if $z1 == 0 goto label04;
+
+        $r4 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: java.lang.CharSequence mTitle>;
+
+        goto label05;
+
+     label04:
+        $r4 = null;
+
+     label05:
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setText(java.lang.CharSequence)>($r4);
+
+        $r3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $r4 = virtualinvoke $r3.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.CharSequence getContentDescription()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r4);
+
+        if $z0 == 0 goto label08;
+
+        if $z1 == 0 goto label06;
+
+        $r4 = null;
+
+        goto label07;
+
+     label06:
+        $r3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $r4 = virtualinvoke $r3.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.CharSequence getTitle()>();
+
+     label07:
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setContentDescription(java.lang.CharSequence)>($r4);
+
+        goto label09;
+
+     label08:
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setContentDescription(java.lang.CharSequence)>($r4);
+
+     label09:
+        $r3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $r4 = virtualinvoke $r3.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.CharSequence getTooltipText()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r4);
+
+        if $z0 == 0 goto label12;
+
+        if $z1 == 0 goto label10;
+
+        goto label11;
+
+     label10:
+        $r3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $r1 = virtualinvoke $r3.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.CharSequence getTitle()>();
+
+     label11:
+        staticinvoke <androidx.appcompat.widget.TooltipCompat: void setTooltipText(android.view.View,java.lang.CharSequence)>($r0, $r1);
+
+        return;
+
+     label12:
+        staticinvoke <androidx.appcompat.widget.TooltipCompat: void setTooltipText(android.view.View,java.lang.CharSequence)>($r0, $r4);
+
+        return;
+    }
+
+    public androidx.appcompat.view.menu.MenuItemImpl getItemData()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        androidx.appcompat.view.menu.MenuItemImpl r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        r1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        return r1;
+    }
+
+    public boolean hasText()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        java.lang.CharSequence $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: java.lang.CharSequence getText()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r1);
+
+        $z0 = $z0 ^ 1;
+
+        return $z0;
+    }
+
+    public void initialize(androidx.appcompat.view.menu.MenuItemImpl, int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+        int $i0;
+        android.graphics.drawable.Drawable $r2;
+        java.lang.CharSequence $r3;
+        boolean $z0;
+        byte $b1;
+        androidx.appcompat.widget.ForwardingListener $r4;
+        androidx.appcompat.view.menu.ActionMenuItemView$ActionMenuItemForwardingListener $r5;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        $i0 := @parameter1: int;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData> = $r1;
+
+        $r2 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: android.graphics.drawable.Drawable getIcon()>();
+
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setIcon(android.graphics.drawable.Drawable)>($r2);
+
+        $r3 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.CharSequence getTitleForItemView(androidx.appcompat.view.menu.MenuView$ItemView)>($r0);
+
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setTitle(java.lang.CharSequence)>($r3);
+
+        $i0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: int getItemId()>();
+
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setId(int)>($i0);
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: boolean isVisible()>();
+
+        if $z0 == 0 goto label1;
+
+        $b1 = 0;
+
+        goto label2;
+
+     label1:
+        $b1 = 8;
+
+     label2:
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setVisibility(int)>($b1);
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: boolean isEnabled()>();
+
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setEnabled(boolean)>($z0);
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        if $z0 == 0 goto label3;
+
+        $r4 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.widget.ForwardingListener mForwardingListener>;
+
+        if $r4 != null goto label3;
+
+        $r5 = new androidx.appcompat.view.menu.ActionMenuItemView$ActionMenuItemForwardingListener;
+
+        specialinvoke $r5.<androidx.appcompat.view.menu.ActionMenuItemView$ActionMenuItemForwardingListener: void <init>(androidx.appcompat.view.menu.ActionMenuItemView)>($r0);
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.widget.ForwardingListener mForwardingListener> = $r5;
+
+     label3:
+        return;
+    }
+
+    public boolean needsDividerAfter()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $z0 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean hasText()>();
+
+        return $z0;
+    }
+
+    public boolean needsDividerBefore()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+        android.graphics.drawable.Drawable $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $z0 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean hasText()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $r2 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: android.graphics.drawable.Drawable getIcon()>();
+
+        if $r2 != null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onClick(android.view.View)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.view.View $r1;
+        androidx.appcompat.view.menu.MenuBuilder$ItemInvoker $r2;
+        androidx.appcompat.view.menu.MenuItemImpl $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuBuilder$ItemInvoker mItemInvoker>;
+
+        if $r2 == null goto label1;
+
+        $r3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        interfaceinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder$ItemInvoker: boolean invokeItem(androidx.appcompat.view.menu.MenuItemImpl)>($r3);
+
+     label1:
+        return;
+    }
+
+    public void onConfigurationChanged(android.content.res.Configuration)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.content.res.Configuration $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.content.res.Configuration;
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void onConfigurationChanged(android.content.res.Configuration)>($r1);
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean shouldAllowTextWithIcon()>();
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean mAllowTextWithIcon> = $z0;
+
+        specialinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void updateTextButtonVisibility()>();
+
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        boolean $z0;
+        android.graphics.drawable.Drawable $r1;
+        android.graphics.Rect $r2;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $z0 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean hasText()>();
+
+        if $z0 == 0 goto label1;
+
+        $i2 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mSavedPaddingLeft>;
+
+        if $i2 < 0 goto label1;
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getPaddingTop()>();
+
+        $i4 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getPaddingRight()>();
+
+        $i5 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getPaddingBottom()>();
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void setPadding(int,int,int,int)>($i2, $i3, $i4, $i5);
+
+     label1:
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void onMeasure(int,int)>($i0, $i1);
+
+        $i2 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($i0);
+
+        $i3 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($i0);
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getMeasuredWidth()>();
+
+        if $i2 != -2147483648 goto label2;
+
+        $i4 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMinWidth>;
+
+        $i3 = staticinvoke <java.lang.Math: int min(int,int)>($i3, $i4);
+
+        goto label3;
+
+     label2:
+        $i3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMinWidth>;
+
+     label3:
+        if $i2 == 1073741824 goto label4;
+
+        $i2 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMinWidth>;
+
+        if $i2 <= 0 goto label4;
+
+        if $i0 >= $i3 goto label4;
+
+        $i0 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($i3, 1073741824);
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void onMeasure(int,int)>($i0, $i1);
+
+     label4:
+        if $z0 != 0 goto label5;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: android.graphics.drawable.Drawable mIcon>;
+
+        if $r1 == null goto label5;
+
+        $i0 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getMeasuredWidth()>();
+
+        $r1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: android.graphics.drawable.Drawable mIcon>;
+
+        $r2 = virtualinvoke $r1.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        $i1 = virtualinvoke $r2.<android.graphics.Rect: int width()>();
+
+        $i0 = $i0 - $i1;
+
+        $i0 = $i0 / 2;
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getPaddingTop()>();
+
+        $i2 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getPaddingRight()>();
+
+        $i3 = virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int getPaddingBottom()>();
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void setPadding(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+     label5:
+        return;
+    }
+
+    public void onRestoreInstanceState(android.os.Parcelable)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.os.Parcelable $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.os.Parcelable;
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void onRestoreInstanceState(android.os.Parcelable)>(null);
+
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.view.MotionEvent $r1;
+        androidx.appcompat.view.menu.MenuItemImpl $r2;
+        boolean $z0;
+        androidx.appcompat.widget.ForwardingListener $r3;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $r2 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        if $z0 == 0 goto label1;
+
+        $r3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.widget.ForwardingListener mForwardingListener>;
+
+        if $r3 == null goto label1;
+
+        $z0 = virtualinvoke $r3.<androidx.appcompat.widget.ForwardingListener: boolean onTouch(android.view.View,android.view.MotionEvent)>($r0, $r1);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: boolean onTouchEvent(android.view.MotionEvent)>($r1);
+
+        return $z0;
+    }
+
+    public boolean prefersCondensedTitle()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        return 1;
+    }
+
+    public void setCheckable(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void setChecked(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void setExpandedFormat(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        boolean $z0, $z1;
+        androidx.appcompat.view.menu.MenuItemImpl $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean mExpandedFormat>;
+
+        if $z1 == $z0 goto label1;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: boolean mExpandedFormat> = $z0;
+
+        $r1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.view.menu.MenuItemImpl: void actionFormatChanged()>();
+
+     label1:
+        return;
+    }
+
+    public void setIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        android.graphics.drawable.Drawable $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        float $f0, $f1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: android.graphics.drawable.Drawable mIcon> = $r1;
+
+        if $r1 == null goto label3;
+
+        $i0 = virtualinvoke $r1.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        $i1 = $i0;
+
+        $i2 = virtualinvoke $r1.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        $i3 = $i2;
+
+        $i4 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMaxIconSize>;
+
+        if $i0 <= $i4 goto label1;
+
+        $f0 = (float) $i4;
+
+        $f1 = (float) $i0;
+
+        $f0 = $f0 / $f1;
+
+        $i1 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMaxIconSize>;
+
+        $f1 = (float) $i2;
+
+        $f0 = $f1 * $f0;
+
+        $i3 = (int) $f0;
+
+     label1:
+        $i0 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMaxIconSize>;
+
+        if $i3 <= $i0 goto label2;
+
+        $f0 = (float) $i0;
+
+        $f1 = (float) $i3;
+
+        $f0 = $f0 / $f1;
+
+        $i3 = $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mMaxIconSize>;
+
+        $f1 = (float) $i1;
+
+        $f0 = $f1 * $f0;
+
+        $i1 = (int) $f0;
+
+     label2:
+        virtualinvoke $r1.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, $i1, $i3);
+
+     label3:
+        virtualinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r1, null, null, null);
+
+        specialinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void updateTextButtonVisibility()>();
+
+        return;
+    }
+
+    public void setItemInvoker(androidx.appcompat.view.menu.MenuBuilder$ItemInvoker)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        androidx.appcompat.view.menu.MenuBuilder$ItemInvoker $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder$ItemInvoker;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.MenuBuilder$ItemInvoker mItemInvoker> = $r1;
+
+        return;
+    }
+
+    public void setPadding(int, int, int, int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        int $i0, $i1, $i2, $i3;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: int mSavedPaddingLeft> = $i0;
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatTextView: void setPadding(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public void setPopupCallback(androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: androidx.appcompat.view.menu.ActionMenuItemView$PopupCallback mPopupCallback> = $r1;
+
+        return;
+    }
+
+    public void setShortcut(boolean, char)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        boolean $z0;
+        char $c0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $z0 := @parameter0: boolean;
+
+        $c0 := @parameter1: char;
+
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+        java.lang.CharSequence $r1;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r0.<androidx.appcompat.view.menu.ActionMenuItemView: java.lang.CharSequence mTitle> = $r1;
+
+        specialinvoke $r0.<androidx.appcompat.view.menu.ActionMenuItemView: void updateTextButtonVisibility()>();
+
+        return;
+    }
+
+    public boolean showsIcon()
+    {
+        androidx.appcompat.view.menu.ActionMenuItemView $r0;
+
+        $r0 := @this: androidx.appcompat.view.menu.ActionMenuItemView;
+
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.view.menu.ActionMenuItemView: java.lang.String TAG> = "ActionMenuItemView";
+
+        <androidx.appcompat.view.menu.ActionMenuItemView: int MAX_ICON_SIZE> = 32;
+
+        return;
+    }
+}

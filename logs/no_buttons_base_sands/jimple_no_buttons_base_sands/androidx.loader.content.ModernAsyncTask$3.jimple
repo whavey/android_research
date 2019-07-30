@@ -1,0 +1,94 @@
+class androidx.loader.content.ModernAsyncTask$3 extends java.util.concurrent.FutureTask
+{
+    final androidx.loader.content.ModernAsyncTask this$0;
+
+    void <init>(androidx.loader.content.ModernAsyncTask, java.util.concurrent.Callable)
+    {
+        androidx.loader.content.ModernAsyncTask$3 $r0;
+        androidx.loader.content.ModernAsyncTask $r1;
+        java.util.concurrent.Callable $r2;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask$3;
+
+        $r1 := @parameter0: androidx.loader.content.ModernAsyncTask;
+
+        $r2 := @parameter1: java.util.concurrent.Callable;
+
+        $r0.<androidx.loader.content.ModernAsyncTask$3: androidx.loader.content.ModernAsyncTask this$0> = $r1;
+
+        specialinvoke $r0.<java.util.concurrent.FutureTask: void <init>(java.util.concurrent.Callable)>($r2);
+
+        return;
+    }
+
+    protected void done()
+    {
+        androidx.loader.content.ModernAsyncTask$3 $r0;
+        java.lang.Object $r1;
+        androidx.loader.content.ModernAsyncTask $r2;
+        java.lang.Throwable $r3, $r4, $r5, $r6;
+        java.lang.RuntimeException r7;
+        java.util.concurrent.ExecutionException r8;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask$3;
+
+     label1:
+        $r1 = virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask$3: java.lang.Object get()>();
+
+     label2:
+        $r2 = $r0.<androidx.loader.content.ModernAsyncTask$3: androidx.loader.content.ModernAsyncTask this$0>;
+
+     label3:
+        virtualinvoke $r2.<androidx.loader.content.ModernAsyncTask: void postResultIfNotInvoked(java.lang.Object)>($r1);
+
+     label4:
+        goto label9;
+
+     label5:
+        $r3 := @caughtexception;
+
+        r7 = new java.lang.RuntimeException;
+
+        specialinvoke r7.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("An error occurred while executing doInBackground()", $r3);
+
+        throw r7;
+
+     label6:
+        $r4 := @caughtexception;
+
+        $r2 = $r0.<androidx.loader.content.ModernAsyncTask$3: androidx.loader.content.ModernAsyncTask this$0>;
+
+        virtualinvoke $r2.<androidx.loader.content.ModernAsyncTask: void postResultIfNotInvoked(java.lang.Object)>(null);
+
+        goto label9;
+
+     label7:
+        $r5 := @caughtexception;
+
+        r7 = new java.lang.RuntimeException;
+
+        r8 = (java.util.concurrent.ExecutionException) $r5;
+
+        $r3 = virtualinvoke r8.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        specialinvoke r7.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("An error occurred while executing doInBackground()", $r3);
+
+        throw r7;
+
+     label8:
+        $r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.Throwable)>("AsyncTask", $r6);
+
+     label9:
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label8;
+        catch java.lang.InterruptedException from label3 to label4 with label8;
+        catch java.util.concurrent.ExecutionException from label1 to label2 with label7;
+        catch java.util.concurrent.ExecutionException from label3 to label4 with label7;
+        catch java.util.concurrent.CancellationException from label1 to label2 with label6;
+        catch java.util.concurrent.CancellationException from label3 to label4 with label6;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+}

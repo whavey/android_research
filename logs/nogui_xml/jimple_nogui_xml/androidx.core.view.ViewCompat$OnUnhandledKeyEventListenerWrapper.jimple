@@ -1,0 +1,41 @@
+class androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper extends java.lang.Object implements android.view.View$OnUnhandledKeyEventListener
+{
+    private androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat mCompatListener;
+
+    void <init>(androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)
+    {
+        androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper $r0;
+        androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat $r1;
+
+        $r0 := @this: androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper;
+
+        $r1 := @parameter0: androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper: androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat mCompatListener> = $r1;
+
+        return;
+    }
+
+    public boolean onUnhandledKeyEvent(android.view.View, android.view.KeyEvent)
+    {
+        androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper $r0;
+        android.view.View $r1;
+        android.view.KeyEvent $r2;
+        boolean $z0;
+        androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat $r3;
+
+        $r0 := @this: androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.KeyEvent;
+
+        $r3 = $r0.<androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerWrapper: androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat mCompatListener>;
+
+        $z0 = interfaceinvoke $r3.<androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat: boolean onUnhandledKeyEvent(android.view.View,android.view.KeyEvent)>($r1, $r2);
+
+        return $z0;
+    }
+}

@@ -1,0 +1,38 @@
+class androidx.core.view.DragStartHelper$1 extends java.lang.Object implements android.view.View$OnLongClickListener
+{
+    final androidx.core.view.DragStartHelper this$0;
+
+    void <init>(androidx.core.view.DragStartHelper)
+    {
+        androidx.core.view.DragStartHelper$1 $r0;
+        androidx.core.view.DragStartHelper $r1;
+
+        $r0 := @this: androidx.core.view.DragStartHelper$1;
+
+        $r1 := @parameter0: androidx.core.view.DragStartHelper;
+
+        $r0.<androidx.core.view.DragStartHelper$1: androidx.core.view.DragStartHelper this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onLongClick(android.view.View)
+    {
+        androidx.core.view.DragStartHelper$1 $r0;
+        android.view.View $r1;
+        boolean $z0;
+        androidx.core.view.DragStartHelper $r2;
+
+        $r0 := @this: androidx.core.view.DragStartHelper$1;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = $r0.<androidx.core.view.DragStartHelper$1: androidx.core.view.DragStartHelper this$0>;
+
+        $z0 = virtualinvoke $r2.<androidx.core.view.DragStartHelper: boolean onLongClick(android.view.View)>($r1);
+
+        return $z0;
+    }
+}

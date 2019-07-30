@@ -1,0 +1,5 @@
+public interface  androidx.core.view.ViewPropertyAnimatorUpdateListener extends java.lang.Object
+{
+
+    public abstract void onAnimationUpdate(android.view.View);
+}

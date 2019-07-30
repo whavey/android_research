@@ -1,0 +1,17 @@
+final class androidx.fragment.app.FragmentActivity$NonConfigurationInstances extends java.lang.Object
+{
+    java.lang.Object custom;
+    androidx.fragment.app.FragmentManagerNonConfig fragments;
+    androidx.lifecycle.ViewModelStore viewModelStore;
+
+    void <init>()
+    {
+        androidx.fragment.app.FragmentActivity$NonConfigurationInstances $r0;
+
+        $r0 := @this: androidx.fragment.app.FragmentActivity$NonConfigurationInstances;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

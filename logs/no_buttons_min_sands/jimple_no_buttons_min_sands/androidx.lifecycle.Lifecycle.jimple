@@ -1,0 +1,20 @@
+public abstract class androidx.lifecycle.Lifecycle extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.lifecycle.Lifecycle $r0;
+
+        $r0 := @this: androidx.lifecycle.Lifecycle;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public abstract void addObserver(androidx.lifecycle.LifecycleObserver);
+
+    public abstract androidx.lifecycle.Lifecycle$State getCurrentState();
+
+    public abstract void removeObserver(androidx.lifecycle.LifecycleObserver);
+}

@@ -1,0 +1,136 @@
+public final class com.example.hello_world.R$layout extends java.lang.Object
+{
+    public static final int abc_action_bar_title_item;
+    public static final int abc_action_bar_up_container;
+    public static final int abc_action_menu_item_layout;
+    public static final int abc_action_menu_layout;
+    public static final int abc_action_mode_bar;
+    public static final int abc_action_mode_close_item_material;
+    public static final int abc_activity_chooser_view;
+    public static final int abc_activity_chooser_view_list_item;
+    public static final int abc_alert_dialog_button_bar_material;
+    public static final int abc_alert_dialog_material;
+    public static final int abc_alert_dialog_title_material;
+    public static final int abc_cascading_menu_item_layout;
+    public static final int abc_dialog_title_material;
+    public static final int abc_expanded_menu_layout;
+    public static final int abc_list_menu_item_checkbox;
+    public static final int abc_list_menu_item_icon;
+    public static final int abc_list_menu_item_layout;
+    public static final int abc_list_menu_item_radio;
+    public static final int abc_popup_menu_header_item_layout;
+    public static final int abc_popup_menu_item_layout;
+    public static final int abc_screen_content_include;
+    public static final int abc_screen_simple;
+    public static final int abc_screen_simple_overlay_action_mode;
+    public static final int abc_screen_toolbar;
+    public static final int abc_search_dropdown_item_icons_2line;
+    public static final int abc_search_view;
+    public static final int abc_select_dialog_material;
+    public static final int abc_tooltip;
+    public static final int activity_main;
+    public static final int notification_action;
+    public static final int notification_action_tombstone;
+    public static final int notification_template_custom_big;
+    public static final int notification_template_icon_group;
+    public static final int notification_template_part_chronometer;
+    public static final int notification_template_part_time;
+    public static final int select_dialog_item_material;
+    public static final int select_dialog_multichoice_material;
+    public static final int select_dialog_singlechoice_material;
+    public static final int support_simple_spinner_dropdown_item;
+
+    public void <init>()
+    {
+        com.example.hello_world.R$layout $r0;
+
+        $r0 := @this: com.example.hello_world.R$layout;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.example.hello_world.R$layout: int support_simple_spinner_dropdown_item> = 2131296294;
+
+        <com.example.hello_world.R$layout: int select_dialog_singlechoice_material> = 2131296293;
+
+        <com.example.hello_world.R$layout: int select_dialog_multichoice_material> = 2131296292;
+
+        <com.example.hello_world.R$layout: int select_dialog_item_material> = 2131296291;
+
+        <com.example.hello_world.R$layout: int notification_template_part_time> = 2131296290;
+
+        <com.example.hello_world.R$layout: int notification_template_part_chronometer> = 2131296289;
+
+        <com.example.hello_world.R$layout: int notification_template_icon_group> = 2131296288;
+
+        <com.example.hello_world.R$layout: int notification_template_custom_big> = 2131296287;
+
+        <com.example.hello_world.R$layout: int notification_action_tombstone> = 2131296286;
+
+        <com.example.hello_world.R$layout: int notification_action> = 2131296285;
+
+        <com.example.hello_world.R$layout: int activity_main> = 2131296284;
+
+        <com.example.hello_world.R$layout: int abc_tooltip> = 2131296283;
+
+        <com.example.hello_world.R$layout: int abc_select_dialog_material> = 2131296282;
+
+        <com.example.hello_world.R$layout: int abc_search_view> = 2131296281;
+
+        <com.example.hello_world.R$layout: int abc_search_dropdown_item_icons_2line> = 2131296280;
+
+        <com.example.hello_world.R$layout: int abc_screen_toolbar> = 2131296279;
+
+        <com.example.hello_world.R$layout: int abc_screen_simple_overlay_action_mode> = 2131296278;
+
+        <com.example.hello_world.R$layout: int abc_screen_simple> = 2131296277;
+
+        <com.example.hello_world.R$layout: int abc_screen_content_include> = 2131296276;
+
+        <com.example.hello_world.R$layout: int abc_popup_menu_item_layout> = 2131296275;
+
+        <com.example.hello_world.R$layout: int abc_popup_menu_header_item_layout> = 2131296274;
+
+        <com.example.hello_world.R$layout: int abc_list_menu_item_radio> = 2131296273;
+
+        <com.example.hello_world.R$layout: int abc_list_menu_item_layout> = 2131296272;
+
+        <com.example.hello_world.R$layout: int abc_list_menu_item_icon> = 2131296271;
+
+        <com.example.hello_world.R$layout: int abc_list_menu_item_checkbox> = 2131296270;
+
+        <com.example.hello_world.R$layout: int abc_expanded_menu_layout> = 2131296269;
+
+        <com.example.hello_world.R$layout: int abc_dialog_title_material> = 2131296268;
+
+        <com.example.hello_world.R$layout: int abc_cascading_menu_item_layout> = 2131296267;
+
+        <com.example.hello_world.R$layout: int abc_alert_dialog_title_material> = 2131296266;
+
+        <com.example.hello_world.R$layout: int abc_alert_dialog_material> = 2131296265;
+
+        <com.example.hello_world.R$layout: int abc_alert_dialog_button_bar_material> = 2131296264;
+
+        <com.example.hello_world.R$layout: int abc_activity_chooser_view_list_item> = 2131296263;
+
+        <com.example.hello_world.R$layout: int abc_activity_chooser_view> = 2131296262;
+
+        <com.example.hello_world.R$layout: int abc_action_mode_close_item_material> = 2131296261;
+
+        <com.example.hello_world.R$layout: int abc_action_mode_bar> = 2131296260;
+
+        <com.example.hello_world.R$layout: int abc_action_menu_layout> = 2131296259;
+
+        <com.example.hello_world.R$layout: int abc_action_menu_item_layout> = 2131296258;
+
+        <com.example.hello_world.R$layout: int abc_action_bar_up_container> = 2131296257;
+
+        <com.example.hello_world.R$layout: int abc_action_bar_title_item> = 2131296256;
+
+        return;
+    }
+}

@@ -1,0 +1,14 @@
+public final class com.example.fd_test_app.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.example.fd_test_app.R $r0;
+
+        $r0 := @this: com.example.fd_test_app.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

@@ -1,0 +1,5 @@
+public interface  androidx.core.app.TaskStackBuilder$SupportParentable extends java.lang.Object
+{
+
+    public abstract android.content.Intent getSupportParentActivityIntent();
+}

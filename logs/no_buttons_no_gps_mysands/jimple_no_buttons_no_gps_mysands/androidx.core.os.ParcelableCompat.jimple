@@ -1,0 +1,28 @@
+public final class androidx.core.os.ParcelableCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.os.ParcelableCompat $r0;
+
+        $r0 := @this: androidx.core.os.ParcelableCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.os.Parcelable$Creator newCreator(androidx.core.os.ParcelableCompatCreatorCallbacks)
+    {
+        androidx.core.os.ParcelableCompatCreatorCallbacks $r0;
+        androidx.core.os.ParcelableCompat$ParcelableCompatCreatorHoneycombMR2 $r1;
+
+        $r0 := @parameter0: androidx.core.os.ParcelableCompatCreatorCallbacks;
+
+        $r1 = new androidx.core.os.ParcelableCompat$ParcelableCompatCreatorHoneycombMR2;
+
+        specialinvoke $r1.<androidx.core.os.ParcelableCompat$ParcelableCompatCreatorHoneycombMR2: void <init>(androidx.core.os.ParcelableCompatCreatorCallbacks)>($r0);
+
+        return $r1;
+    }
+}

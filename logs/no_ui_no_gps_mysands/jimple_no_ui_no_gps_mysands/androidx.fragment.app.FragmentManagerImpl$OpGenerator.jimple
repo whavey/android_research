@@ -1,0 +1,5 @@
+interface  androidx.fragment.app.FragmentManagerImpl$OpGenerator extends java.lang.Object
+{
+
+    public abstract boolean generateOps(java.util.ArrayList, java.util.ArrayList);
+}

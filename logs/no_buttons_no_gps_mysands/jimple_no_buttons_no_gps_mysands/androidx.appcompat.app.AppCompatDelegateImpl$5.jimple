@@ -1,0 +1,43 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$5 extends java.lang.Object implements androidx.appcompat.widget.ContentFrameLayout$OnAttachListener
+{
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$5 $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$5;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl$5: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onAttachedFromWindow()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$5 $r0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$5;
+
+        return;
+    }
+
+    public void onDetachedFromWindow()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$5 $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$5;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$5: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl: void dismissPopups()>();
+
+        return;
+    }
+}

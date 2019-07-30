@@ -1,0 +1,134 @@
+class dummyMainClass
+{
+
+    public static void dummyMainMethod(java.lang.String[])
+    {
+        java.lang.String[] $r0;
+        int $i0;
+
+        $r0 := @parameter0: java.lang.String[];
+
+        $i0 = 0;
+
+     label1:
+        if $i0 == 0 goto label2;
+
+        staticinvoke <dummyMainClass: com.example.no_buttons.MainActivity dummyMainMethod_com_example_no__buttons_MainActivity(android.content.Intent)>(null);
+
+        if $i0 == 1 goto label1;
+
+     label2:
+        if $i0 == 2 goto label1;
+
+        return;
+    }
+
+    public static com.example.no_buttons.MainActivity dummyMainMethod_com_example_no__buttons_MainActivity(android.content.Intent)
+    {
+        android.content.Intent parameter0;
+        int $i0;
+        com.example.no_buttons.MainActivity $r0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+        androidx.fragment.app.Fragment $r2;
+        androidx.fragment.app.FragmentManagerImpl$2 $r3;
+        androidx.fragment.app.FragmentManagerImpl$AnimateOnHWLayerIfNeededListener $r4;
+        androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper $r5;
+
+        parameter0 := @parameter0: android.content.Intent;
+
+        $i0 = 0;
+
+     label01:
+        if $i0 == 0 goto label13;
+
+        $r0 = new com.example.no_buttons.MainActivity;
+
+        specialinvoke $r0.<com.example.no_buttons.MainActivity: void <init>()>();
+
+        $r0.<com.example.no_buttons.MainActivity: android.content.Intent ipcIntent> = parameter0;
+
+        virtualinvoke $r0.<com.example.no_buttons.MainActivity: void onCreate(android.os.Bundle)>(null);
+
+     label02:
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatActivity: void onStart()>();
+
+        if $i0 == 1 goto label03;
+
+     label03:
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatActivity: void onPostCreate(android.os.Bundle)>(null);
+
+     label04:
+        virtualinvoke $r0.<androidx.fragment.app.FragmentActivity: void onResume()>();
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatActivity: void onPostResume()>();
+
+     label05:
+        if $i0 == 2 goto label11;
+
+     label06:
+        $r1 = new androidx.fragment.app.FragmentManagerImpl;
+
+        specialinvoke $r1.<androidx.fragment.app.FragmentManagerImpl: void <init>()>();
+
+        $r2 = new androidx.fragment.app.Fragment;
+
+        specialinvoke $r2.<androidx.fragment.app.Fragment: void <init>()>();
+
+        $r3 = new androidx.fragment.app.FragmentManagerImpl$2;
+
+        specialinvoke $r3.<androidx.fragment.app.FragmentManagerImpl$2: void <init>(androidx.fragment.app.FragmentManagerImpl,android.view.animation.Animation$AnimationListener,android.view.ViewGroup,androidx.fragment.app.Fragment)>($r1, null, null, $r2);
+
+        if $i0 == 3 goto label07;
+
+        virtualinvoke $r3.<androidx.fragment.app.FragmentManagerImpl$2: void onAnimationEnd(android.view.animation.Animation)>(null);
+
+     label07:
+        $r4 = new androidx.fragment.app.FragmentManagerImpl$AnimateOnHWLayerIfNeededListener;
+
+        specialinvoke $r4.<androidx.fragment.app.FragmentManagerImpl$AnimateOnHWLayerIfNeededListener: void <init>(android.view.View,android.view.animation.Animation$AnimationListener)>(null, null);
+
+        if $i0 == 4 goto label08;
+
+        virtualinvoke $r4.<androidx.fragment.app.FragmentManagerImpl$AnimateOnHWLayerIfNeededListener: void onAnimationEnd(android.view.animation.Animation)>(null);
+
+     label08:
+        $r5 = new androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper;
+
+        specialinvoke $r5.<androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper: void <init>(android.view.animation.Animation$AnimationListener)>(null);
+
+        if $i0 == 5 goto label09;
+
+        virtualinvoke $r5.<androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper: void onAnimationStart(android.view.animation.Animation)>(null);
+
+     label09:
+        if $i0 == 6 goto label10;
+
+        virtualinvoke $r5.<androidx.fragment.app.FragmentManagerImpl$AnimationListenerWrapper: void onAnimationRepeat(android.view.animation.Animation)>(null);
+
+     label10:
+        if $i0 == 7 goto label06;
+
+     label11:
+        if $i0 == 8 goto label05;
+
+        virtualinvoke $r0.<androidx.fragment.app.FragmentActivity: void onPause()>();
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatActivity: void onSaveInstanceState(android.os.Bundle)>(null);
+
+        if $i0 == 9 goto label04;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatActivity: void onStop()>();
+
+        if $i0 == 10 goto label12;
+
+        if $i0 == 11 goto label02;
+
+     label12:
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatActivity: void onDestroy()>();
+
+        if $i0 == 12 goto label01;
+
+     label13:
+        return $r0;
+    }
+}

@@ -1,0 +1,391 @@
+class androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState extends androidx.appcompat.graphics.drawable.StateListDrawable$StateListState
+{
+    private static final long REVERSED_BIT;
+    private static final long REVERSIBLE_FLAG_BIT;
+    androidx.collection.SparseArrayCompat mStateIds;
+    androidx.collection.LongSparseArray mTransitions;
+
+    void <init>(androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState, androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat, android.content.res.Resources)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0, $r1;
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat $r2;
+        android.content.res.Resources $r3;
+        androidx.collection.LongSparseArray $r4;
+        androidx.collection.SparseArrayCompat $r5;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $r1 := @parameter0: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $r2 := @parameter1: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat;
+
+        $r3 := @parameter2: android.content.res.Resources;
+
+        specialinvoke $r0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: void <init>(androidx.appcompat.graphics.drawable.StateListDrawable$StateListState,androidx.appcompat.graphics.drawable.StateListDrawable,android.content.res.Resources)>($r1, $r2, $r3);
+
+        if $r1 == null goto label1;
+
+        $r4 = $r1.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions>;
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions> = $r4;
+
+        $r5 = $r1.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.SparseArrayCompat mStateIds>;
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.SparseArrayCompat mStateIds> = $r5;
+
+        return;
+
+     label1:
+        $r4 = new androidx.collection.LongSparseArray;
+
+        specialinvoke $r4.<androidx.collection.LongSparseArray: void <init>()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions> = $r4;
+
+        $r5 = new androidx.collection.SparseArrayCompat;
+
+        specialinvoke $r5.<androidx.collection.SparseArrayCompat: void <init>()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.SparseArrayCompat mStateIds> = $r5;
+
+        return;
+    }
+
+    private static long generateTransitionKey(int, int)
+    {
+        int $i0, $i1;
+        long $l2, $l3;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $l2 = (long) $i0;
+
+        $l2 = $l2 << 32;
+
+        $l3 = (long) $i1;
+
+        $l2 = $l2 | $l3;
+
+        return $l2;
+    }
+
+    int addStateSet(int[], android.graphics.drawable.Drawable, int)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        int[] $r1;
+        android.graphics.drawable.Drawable $r2;
+        int $i0, $i1;
+        androidx.collection.SparseArrayCompat $r3;
+        java.lang.Integer $r4;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $r1 := @parameter0: int[];
+
+        $r2 := @parameter1: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter2: int;
+
+        $i1 = specialinvoke $r0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int addStateSet(int[],android.graphics.drawable.Drawable)>($r1, $r2);
+
+        $r3 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.SparseArrayCompat mStateIds>;
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke $r3.<androidx.collection.SparseArrayCompat: void put(int,java.lang.Object)>($i1, $r4);
+
+        return $i1;
+    }
+
+    int addTransition(int, int, android.graphics.drawable.Drawable, boolean)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        int $i0, $i1, $i2;
+        android.graphics.drawable.Drawable $r1;
+        boolean $z0;
+        androidx.collection.LongSparseArray $r2;
+        long $l3, $l4, $l5;
+        java.lang.Long $r3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: android.graphics.drawable.Drawable;
+
+        $z0 := @parameter3: boolean;
+
+        $i2 = specialinvoke $r0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int addChild(android.graphics.drawable.Drawable)>($r1);
+
+        $l3 = staticinvoke <androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: long generateTransitionKey(int,int)>($i0, $i1);
+
+        $l4 = 0L;
+
+        if $z0 == 0 goto label1;
+
+        $l4 = 8589934592L;
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions>;
+
+        $l5 = (long) $i2;
+
+        $l5 = $l5 | $l4;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l5);
+
+        virtualinvoke $r2.<androidx.collection.LongSparseArray: void append(long,java.lang.Object)>($l3, $r3);
+
+        if $z0 == 0 goto label2;
+
+        $l3 = staticinvoke <androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: long generateTransitionKey(int,int)>($i1, $i0);
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions>;
+
+        $l5 = (long) $i2;
+
+        $l5 = $l5 | 4294967296L;
+
+        $l4 = $l5 | $l4;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l4);
+
+        virtualinvoke $r2.<androidx.collection.LongSparseArray: void append(long,java.lang.Object)>($l3, $r3);
+
+     label2:
+        return $i2;
+    }
+
+    int getKeyframeIdAt(int)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        int $i0;
+        androidx.collection.SparseArrayCompat $r1;
+        java.lang.Integer $r2;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $i0 := @parameter0: int;
+
+        if $i0 >= 0 goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.SparseArrayCompat mStateIds>;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        $r3 = virtualinvoke $r1.<androidx.collection.SparseArrayCompat: java.lang.Object get(int,java.lang.Object)>($i0, $r2);
+
+        $r2 = (java.lang.Integer) $r3;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    int indexOfKeyframe(int[])
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        int[] $r1;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $r1 := @parameter0: int[];
+
+        $i0 = specialinvoke $r0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int indexOfStateSet(int[])>($r1);
+
+        if $i0 < 0 goto label1;
+
+        return $i0;
+
+     label1:
+        $r1 = <android.util.StateSet: int[] WILD_CARD>;
+
+        $i0 = specialinvoke $r0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int indexOfStateSet(int[])>($r1);
+
+        return $i0;
+    }
+
+    int indexOfTransition(int, int)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        int $i0, $i1;
+        long $l2;
+        androidx.collection.LongSparseArray $r1;
+        java.lang.Long $r2;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $l2 = staticinvoke <androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: long generateTransitionKey(int,int)>($i0, $i1);
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions>;
+
+        $r2 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(-1L);
+
+        $r3 = virtualinvoke $r1.<androidx.collection.LongSparseArray: java.lang.Object get(long,java.lang.Object)>($l2, $r2);
+
+        $r2 = (java.lang.Long) $r3;
+
+        $l2 = virtualinvoke $r2.<java.lang.Long: long longValue()>();
+
+        $i0 = (int) $l2;
+
+        return $i0;
+    }
+
+    boolean isTransitionReversed(int, int)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        int $i0, $i1;
+        byte $b2;
+        long $l3;
+        androidx.collection.LongSparseArray $r1;
+        java.lang.Long $r2;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $l3 = staticinvoke <androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: long generateTransitionKey(int,int)>($i0, $i1);
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions>;
+
+        $r2 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(-1L);
+
+        $r3 = virtualinvoke $r1.<androidx.collection.LongSparseArray: java.lang.Object get(long,java.lang.Object)>($l3, $r2);
+
+        $r2 = (java.lang.Long) $r3;
+
+        $l3 = virtualinvoke $r2.<java.lang.Long: long longValue()>();
+
+        $l3 = $l3 & 4294967296L;
+
+        $b2 = $l3 cmp 0L;
+
+        if $b2 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    void mutate()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        androidx.collection.LongSparseArray $r1;
+        androidx.collection.SparseArrayCompat $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions>;
+
+        $r1 = virtualinvoke $r1.<androidx.collection.LongSparseArray: androidx.collection.LongSparseArray clone()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions> = $r1;
+
+        $r2 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.SparseArrayCompat mStateIds>;
+
+        $r2 = virtualinvoke $r2.<androidx.collection.SparseArrayCompat: androidx.collection.SparseArrayCompat clone()>();
+
+        $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.SparseArrayCompat mStateIds> = $r2;
+
+        return;
+    }
+
+    public android.graphics.drawable.Drawable newDrawable()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat $r1;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $r1 = new androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat;
+
+        specialinvoke $r1.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat: void <init>(androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState,android.content.res.Resources)>($r0, null);
+
+        return $r1;
+    }
+
+    public android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        android.content.res.Resources $r1;
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat $r2;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $r1 := @parameter0: android.content.res.Resources;
+
+        $r2 = new androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat;
+
+        specialinvoke $r2.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat: void <init>(androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState,android.content.res.Resources)>($r0, $r1);
+
+        return $r2;
+    }
+
+    boolean transitionHasReversibleFlag(int, int)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState $r0;
+        int $i0, $i1;
+        byte $b2;
+        long $l3;
+        androidx.collection.LongSparseArray $r1;
+        java.lang.Long $r2;
+        java.lang.Object $r3;
+
+        $r0 := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $l3 = staticinvoke <androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: long generateTransitionKey(int,int)>($i0, $i1);
+
+        $r1 = $r0.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: androidx.collection.LongSparseArray mTransitions>;
+
+        $r2 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(-1L);
+
+        $r3 = virtualinvoke $r1.<androidx.collection.LongSparseArray: java.lang.Object get(long,java.lang.Object)>($l3, $r2);
+
+        $r2 = (java.lang.Long) $r3;
+
+        $l3 = virtualinvoke $r2.<java.lang.Long: long longValue()>();
+
+        $l3 = $l3 & 8589934592L;
+
+        $b2 = $l3 cmp 0L;
+
+        if $b2 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: long REVERSIBLE_FLAG_BIT> = 8589934592L;
+
+        <androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedStateListState: long REVERSED_BIT> = 4294967296L;
+
+        return;
+    }
+}

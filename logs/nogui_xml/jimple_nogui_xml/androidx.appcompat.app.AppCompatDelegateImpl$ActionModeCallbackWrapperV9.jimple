@@ -1,0 +1,186 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 extends java.lang.Object implements androidx.appcompat.view.ActionMode$Callback
+{
+    private androidx.appcompat.view.ActionMode$Callback mWrapped;
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    public void <init>(androidx.appcompat.app.AppCompatDelegateImpl, androidx.appcompat.view.ActionMode$Callback)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+        androidx.appcompat.view.ActionMode$Callback $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r2 := @parameter1: androidx.appcompat.view.ActionMode$Callback;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.view.ActionMode$Callback mWrapped> = $r2;
+
+        return;
+    }
+
+    public boolean onActionItemClicked(androidx.appcompat.view.ActionMode, android.view.MenuItem)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 $r0;
+        androidx.appcompat.view.ActionMode $r1;
+        android.view.MenuItem $r2;
+        boolean $z0;
+        androidx.appcompat.view.ActionMode$Callback $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        $r1 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $r2 := @parameter1: android.view.MenuItem;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.view.ActionMode$Callback mWrapped>;
+
+        $z0 = interfaceinvoke $r3.<androidx.appcompat.view.ActionMode$Callback: boolean onActionItemClicked(androidx.appcompat.view.ActionMode,android.view.MenuItem)>($r1, $r2);
+
+        return $z0;
+    }
+
+    public boolean onCreateActionMode(androidx.appcompat.view.ActionMode, android.view.Menu)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 $r0;
+        androidx.appcompat.view.ActionMode $r1;
+        android.view.Menu $r2;
+        boolean $z0;
+        androidx.appcompat.view.ActionMode$Callback $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        $r1 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $r2 := @parameter1: android.view.Menu;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.view.ActionMode$Callback mWrapped>;
+
+        $z0 = interfaceinvoke $r3.<androidx.appcompat.view.ActionMode$Callback: boolean onCreateActionMode(androidx.appcompat.view.ActionMode,android.view.Menu)>($r1, $r2);
+
+        return $z0;
+    }
+
+    public void onDestroyActionMode(androidx.appcompat.view.ActionMode)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 $r0;
+        androidx.appcompat.view.ActionMode $r1;
+        androidx.appcompat.view.ActionMode$Callback $r2;
+        androidx.appcompat.app.AppCompatDelegateImpl $r3;
+        android.widget.PopupWindow $r4;
+        android.view.Window $r5;
+        android.view.View $r6;
+        java.lang.Runnable $r7;
+        androidx.appcompat.widget.ActionBarContextView $r8;
+        androidx.core.view.ViewPropertyAnimatorCompat $r9;
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9$1 $r10;
+        androidx.appcompat.app.AppCompatCallback $r11;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        $r1 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.view.ActionMode$Callback mWrapped>;
+
+        interfaceinvoke $r2.<androidx.appcompat.view.ActionMode$Callback: void onDestroyActionMode(androidx.appcompat.view.ActionMode)>($r1);
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r4 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        if $r4 == null goto label1;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r5 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r6 = virtualinvoke $r5.<android.view.Window: android.view.View getDecorView()>();
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r7 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mShowActionModePopup>;
+
+        virtualinvoke $r6.<android.view.View: boolean removeCallbacks(java.lang.Runnable)>($r7);
+
+     label1:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r8 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        if $r8 == null goto label2;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        virtualinvoke $r3.<androidx.appcompat.app.AppCompatDelegateImpl: void endOnGoingFadeAnimation()>();
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r8 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r9 = staticinvoke <androidx.core.view.ViewCompat: androidx.core.view.ViewPropertyAnimatorCompat animate(android.view.View)>($r8);
+
+        $r9 = virtualinvoke $r9.<androidx.core.view.ViewPropertyAnimatorCompat: androidx.core.view.ViewPropertyAnimatorCompat alpha(float)>(0.0F);
+
+        $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim> = $r9;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r9 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim>;
+
+        $r10 = new androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9$1;
+
+        specialinvoke $r10.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9$1: void <init>(androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9)>($r0);
+
+        virtualinvoke $r9.<androidx.core.view.ViewPropertyAnimatorCompat: androidx.core.view.ViewPropertyAnimatorCompat setListener(androidx.core.view.ViewPropertyAnimatorListener)>($r10);
+
+     label2:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r11 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatCallback mAppCompatCallback>;
+
+        if $r11 == null goto label3;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r11 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatCallback mAppCompatCallback>;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r1 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        interfaceinvoke $r11.<androidx.appcompat.app.AppCompatCallback: void onSupportActionModeFinished(androidx.appcompat.view.ActionMode)>($r1);
+
+     label3:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode> = null;
+
+        return;
+    }
+
+    public boolean onPrepareActionMode(androidx.appcompat.view.ActionMode, android.view.Menu)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 $r0;
+        androidx.appcompat.view.ActionMode $r1;
+        android.view.Menu $r2;
+        boolean $z0;
+        androidx.appcompat.view.ActionMode$Callback $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        $r1 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $r2 := @parameter1: android.view.Menu;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: androidx.appcompat.view.ActionMode$Callback mWrapped>;
+
+        $z0 = interfaceinvoke $r3.<androidx.appcompat.view.ActionMode$Callback: boolean onPrepareActionMode(androidx.appcompat.view.ActionMode,android.view.Menu)>($r1, $r2);
+
+        return $z0;
+    }
+}

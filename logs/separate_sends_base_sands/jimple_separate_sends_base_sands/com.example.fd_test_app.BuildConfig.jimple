@@ -1,0 +1,41 @@
+public final class com.example.fd_test_app.BuildConfig extends java.lang.Object
+{
+    public static final java.lang.String APPLICATION_ID;
+    public static final java.lang.String BUILD_TYPE;
+    public static final boolean DEBUG;
+    public static final java.lang.String FLAVOR;
+    public static final int VERSION_CODE;
+    public static final java.lang.String VERSION_NAME;
+
+    static void <clinit>()
+    {
+        boolean $z0;
+
+        <com.example.fd_test_app.BuildConfig: java.lang.String VERSION_NAME> = "1.0";
+
+        <com.example.fd_test_app.BuildConfig: int VERSION_CODE> = 1;
+
+        <com.example.fd_test_app.BuildConfig: java.lang.String FLAVOR> = "";
+
+        <com.example.fd_test_app.BuildConfig: java.lang.String BUILD_TYPE> = "debug";
+
+        <com.example.fd_test_app.BuildConfig: java.lang.String APPLICATION_ID> = "com.example.fd_test_app";
+
+        $z0 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>("true");
+
+        <com.example.fd_test_app.BuildConfig: boolean DEBUG> = $z0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.example.fd_test_app.BuildConfig $r0;
+
+        $r0 := @this: com.example.fd_test_app.BuildConfig;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}
