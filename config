@@ -1,0 +1,8 @@
+[Paths]
+base_path = C:\users\wayne\desktop\research\android
+flowdroid_path = %(base_path)s\tools\flowdroid\source\FlowDroid-master\soot-infoflow-cmd\target\soot-infoflow-cmd-jar-with-dependencies.jar
+platforms_path = C:\users\wayne\AppData\local\Android\sdk\platforms
+app_path = ./apps
+sands_path = ./sands
+logs_path = ./logs
+soot_output = ./sootOutput
