@@ -1,0 +1,3 @@
+public interface  androidx.core.internal.view.SupportSubMenu extends java.lang.Object implements androidx.core.internal.view.SupportMenu, android.view.SubMenu
+{
+}

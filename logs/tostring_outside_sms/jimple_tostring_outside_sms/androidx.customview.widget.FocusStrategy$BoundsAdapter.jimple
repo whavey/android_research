@@ -1,0 +1,5 @@
+public interface  androidx.customview.widget.FocusStrategy$BoundsAdapter extends java.lang.Object
+{
+
+    public abstract void obtainBounds(java.lang.Object, android.graphics.Rect);
+}

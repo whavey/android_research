@@ -1,0 +1,318 @@
+public class androidx.constraintlayout.widget.Constraints$LayoutParams extends androidx.constraintlayout.widget.ConstraintLayout$LayoutParams
+{
+    public float alpha;
+    public boolean applyElevation;
+    public float elevation;
+    public float rotation;
+    public float rotationX;
+    public float rotationY;
+    public float scaleX;
+    public float scaleY;
+    public float transformPivotX;
+    public float transformPivotY;
+    public float translationX;
+    public float translationY;
+    public float translationZ;
+
+    public void <init>(int, int)
+    {
+        androidx.constraintlayout.widget.Constraints$LayoutParams $r0;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.constraintlayout.widget.Constraints$LayoutParams;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        specialinvoke $r0.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: void <init>(int,int)>($i0, $i1);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float alpha> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: boolean applyElevation> = 0;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float elevation> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotation> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleX> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleY> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationZ> = 0.0F;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.widget.Constraints$LayoutParams $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int[] $r3;
+        android.content.res.TypedArray $r4;
+        int $i0, $i1, $i2, $i3;
+        float $f0;
+
+        $r0 := @this: androidx.constraintlayout.widget.Constraints$LayoutParams;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke $r0.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float alpha> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: boolean applyElevation> = 0;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float elevation> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotation> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleX> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleY> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationZ> = 0.0F;
+
+        $r3 = <androidx.constraintlayout.widget.R$styleable: int[] ConstraintSet>;
+
+        $r4 = virtualinvoke $r1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($r2, $r3);
+
+        $i0 = virtualinvoke $r4.<android.content.res.TypedArray: int getIndexCount()>();
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label14;
+
+        $i2 = virtualinvoke $r4.<android.content.res.TypedArray: int getIndex(int)>($i1);
+
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_alpha>;
+
+        if $i2 != $i3 goto label02;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float alpha>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float alpha> = $f0;
+
+        goto label13;
+
+     label02:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_elevation>;
+
+        if $i2 != $i3 goto label03;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float elevation>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float elevation> = $f0;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: boolean applyElevation> = 1;
+
+        goto label13;
+
+     label03:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_rotationX>;
+
+        if $i2 != $i3 goto label04;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationX>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationX> = $f0;
+
+        goto label13;
+
+     label04:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_rotationY>;
+
+        if $i2 != $i3 goto label05;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationY>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationY> = $f0;
+
+        goto label13;
+
+     label05:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_rotation>;
+
+        if $i2 != $i3 goto label06;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotation>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotation> = $f0;
+
+        goto label13;
+
+     label06:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_scaleX>;
+
+        if $i2 != $i3 goto label07;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleX>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleX> = $f0;
+
+        goto label13;
+
+     label07:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_scaleY>;
+
+        if $i2 != $i3 goto label08;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleY>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleY> = $f0;
+
+        goto label13;
+
+     label08:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_transformPivotX>;
+
+        if $i2 != $i3 goto label09;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotX>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotX> = $f0;
+
+        goto label13;
+
+     label09:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_transformPivotY>;
+
+        if $i2 != $i3 goto label10;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotY>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotY> = $f0;
+
+        goto label13;
+
+     label10:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_translationX>;
+
+        if $i2 != $i3 goto label11;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationX>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationX> = $f0;
+
+        goto label13;
+
+     label11:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_translationY>;
+
+        if $i2 != $i3 goto label12;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationY>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationY> = $f0;
+
+        goto label13;
+
+     label12:
+        $i3 = <androidx.constraintlayout.widget.R$styleable: int ConstraintSet_android_translationZ>;
+
+        if $i2 != $i3 goto label13;
+
+        $f0 = $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationZ>;
+
+        $f0 = virtualinvoke $r4.<android.content.res.TypedArray: float getFloat(int,float)>($i2, $f0);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationX> = $f0;
+
+     label13:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label14:
+        return;
+    }
+
+    public void <init>(androidx.constraintlayout.widget.Constraints$LayoutParams)
+    {
+        androidx.constraintlayout.widget.Constraints$LayoutParams $r0, $r1;
+
+        $r0 := @this: androidx.constraintlayout.widget.Constraints$LayoutParams;
+
+        $r1 := @parameter0: androidx.constraintlayout.widget.Constraints$LayoutParams;
+
+        specialinvoke $r0.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: void <init>(androidx.constraintlayout.widget.ConstraintLayout$LayoutParams)>($r1);
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float alpha> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: boolean applyElevation> = 0;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float elevation> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotation> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float rotationY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleX> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float scaleY> = 1.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float transformPivotY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationX> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationY> = 0.0F;
+
+        $r0.<androidx.constraintlayout.widget.Constraints$LayoutParams: float translationZ> = 0.0F;
+
+        return;
+    }
+}

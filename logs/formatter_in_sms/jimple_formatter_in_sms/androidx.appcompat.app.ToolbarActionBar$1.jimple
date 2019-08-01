@@ -1,0 +1,34 @@
+class androidx.appcompat.app.ToolbarActionBar$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.app.ToolbarActionBar this$0;
+
+    void <init>(androidx.appcompat.app.ToolbarActionBar)
+    {
+        androidx.appcompat.app.ToolbarActionBar$1 $r0;
+        androidx.appcompat.app.ToolbarActionBar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar$1;
+
+        $r1 := @parameter0: androidx.appcompat.app.ToolbarActionBar;
+
+        $r0.<androidx.appcompat.app.ToolbarActionBar$1: androidx.appcompat.app.ToolbarActionBar this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.app.ToolbarActionBar$1 $r0;
+        androidx.appcompat.app.ToolbarActionBar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar$1;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar$1: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        virtualinvoke $r1.<androidx.appcompat.app.ToolbarActionBar: void populateOptionsMenu()>();
+
+        return;
+    }
+}

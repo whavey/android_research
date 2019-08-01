@@ -1,0 +1,26 @@
+public interface  androidx.core.internal.view.SupportMenu extends java.lang.Object implements android.view.Menu
+{
+    public static final int CATEGORY_MASK;
+    public static final int CATEGORY_SHIFT;
+    public static final int FLAG_KEEP_OPEN_ON_SUBMENU_OPENED;
+    public static final int SUPPORTED_MODIFIERS_MASK;
+    public static final int USER_MASK;
+    public static final int USER_SHIFT;
+
+    public abstract void setGroupDividerEnabled(boolean);
+
+    public static void <clinit>()
+    {
+        <androidx.core.internal.view.SupportMenu: int USER_MASK> = 65535;
+
+        <androidx.core.internal.view.SupportMenu: int SUPPORTED_MODIFIERS_MASK> = 69647;
+
+        <androidx.core.internal.view.SupportMenu: int FLAG_KEEP_OPEN_ON_SUBMENU_OPENED> = 4;
+
+        <androidx.core.internal.view.SupportMenu: int CATEGORY_SHIFT> = 16;
+
+        <androidx.core.internal.view.SupportMenu: int CATEGORY_MASK> = -65536;
+
+        return;
+    }
+}

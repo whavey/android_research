@@ -1,0 +1,14 @@
+public final class androidx.vectordrawable.R extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.vectordrawable.R $r0;
+
+        $r0 := @this: androidx.vectordrawable.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

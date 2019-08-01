@@ -1,0 +1,562 @@
+final class androidx.fragment.app.BackStackState extends java.lang.Object implements android.os.Parcelable
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    final int mBreadCrumbShortTitleRes;
+    final java.lang.CharSequence mBreadCrumbShortTitleText;
+    final int mBreadCrumbTitleRes;
+    final java.lang.CharSequence mBreadCrumbTitleText;
+    final int mIndex;
+    final java.lang.String mName;
+    final int[] mOps;
+    final boolean mReorderingAllowed;
+    final java.util.ArrayList mSharedElementSourceNames;
+    final java.util.ArrayList mSharedElementTargetNames;
+    final int mTransition;
+    final int mTransitionStyle;
+
+    static void <clinit>()
+    {
+        androidx.fragment.app.BackStackState$1 $r0;
+
+        $r0 = new androidx.fragment.app.BackStackState$1;
+
+        specialinvoke $r0.<androidx.fragment.app.BackStackState$1: void <init>()>();
+
+        <androidx.fragment.app.BackStackState: android.os.Parcelable$Creator CREATOR> = $r0;
+
+        return;
+    }
+
+    public void <init>(android.os.Parcel)
+    {
+        androidx.fragment.app.BackStackState $r0;
+        android.os.Parcel $r1;
+        int[] $r2;
+        int $i0;
+        java.lang.String $r3;
+        android.os.Parcelable$Creator $r4;
+        java.lang.Object $r5;
+        java.lang.CharSequence $r6;
+        java.util.ArrayList $r7;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.BackStackState;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: int[] createIntArray()>();
+
+        $r0.<androidx.fragment.app.BackStackState: int[] mOps> = $r2;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $r0.<androidx.fragment.app.BackStackState: int mTransition> = $i0;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $r0.<androidx.fragment.app.BackStackState: int mTransitionStyle> = $i0;
+
+        $r3 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        $r0.<androidx.fragment.app.BackStackState: java.lang.String mName> = $r3;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $r0.<androidx.fragment.app.BackStackState: int mIndex> = $i0;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbTitleRes> = $i0;
+
+        $r4 = <android.text.TextUtils: android.os.Parcelable$Creator CHAR_SEQUENCE_CREATOR>;
+
+        $r5 = interfaceinvoke $r4.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        $r6 = (java.lang.CharSequence) $r5;
+
+        $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbTitleText> = $r6;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbShortTitleRes> = $i0;
+
+        $r4 = <android.text.TextUtils: android.os.Parcelable$Creator CHAR_SEQUENCE_CREATOR>;
+
+        $r5 = interfaceinvoke $r4.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        $r6 = (java.lang.CharSequence) $r5;
+
+        $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbShortTitleText> = $r6;
+
+        $r7 = virtualinvoke $r1.<android.os.Parcel: java.util.ArrayList createStringArrayList()>();
+
+        $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementSourceNames> = $r7;
+
+        $r7 = virtualinvoke $r1.<android.os.Parcel: java.util.ArrayList createStringArrayList()>();
+
+        $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementTargetNames> = $r7;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i0 == 0 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        $r0.<androidx.fragment.app.BackStackState: boolean mReorderingAllowed> = $z0;
+
+        return;
+    }
+
+    public void <init>(androidx.fragment.app.BackStackRecord)
+    {
+        androidx.fragment.app.BackStackState $r0;
+        androidx.fragment.app.BackStackRecord $r1;
+        java.util.ArrayList $r2;
+        int $i0, $i1, $i2, $i3, $i4;
+        int[] $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        androidx.fragment.app.BackStackRecord$Op $r5;
+        androidx.fragment.app.Fragment $r6;
+        java.lang.String $r7;
+        java.lang.CharSequence $r8;
+        java.lang.IllegalStateException $r9;
+
+        $r0 := @this: androidx.fragment.app.BackStackState;
+
+        $r1 := @parameter0: androidx.fragment.app.BackStackRecord;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r2 = $r1.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i1 = $i0 * 6;
+
+        $r3 = newarray (int)[$i1];
+
+        $r0.<androidx.fragment.app.BackStackState: int[] mOps> = $r3;
+
+        $z0 = $r1.<androidx.fragment.app.BackStackRecord: boolean mAddToBackStack>;
+
+        if $z0 == 0 goto label5;
+
+        $i2 = 0;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $r2 = $r1.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $r4 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r5 = (androidx.fragment.app.BackStackRecord$Op) $r4;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i3 = $i2 + 1;
+
+        $i4 = $r5.<androidx.fragment.app.BackStackRecord$Op: int cmd>;
+
+        $r3[$i2] = $i4;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i2 = $i3 + 1;
+
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        if $r6 == null goto label2;
+
+        $r6 = $r5.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment>;
+
+        $i4 = $r6.<androidx.fragment.app.Fragment: int mIndex>;
+
+        goto label3;
+
+     label2:
+        $i4 = -1;
+
+     label3:
+        $r3[$i3] = $i4;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i3 = $i2 + 1;
+
+        $i4 = $r5.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        $r3[$i2] = $i4;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i2 = $i3 + 1;
+
+        $i4 = $r5.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        $r3[$i3] = $i4;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i3 = $i2 + 1;
+
+        $i4 = $r5.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        $r3[$i2] = $i4;
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i4 = $r5.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        $r3[$i3] = $i4;
+
+        $i1 = $i1 + 1;
+
+        $i2 = $i3 + 1;
+
+        goto label1;
+
+     label4:
+        $i0 = $r1.<androidx.fragment.app.BackStackRecord: int mTransition>;
+
+        $r0.<androidx.fragment.app.BackStackState: int mTransition> = $i0;
+
+        $i0 = $r1.<androidx.fragment.app.BackStackRecord: int mTransitionStyle>;
+
+        $r0.<androidx.fragment.app.BackStackState: int mTransitionStyle> = $i0;
+
+        $r7 = $r1.<androidx.fragment.app.BackStackRecord: java.lang.String mName>;
+
+        $r0.<androidx.fragment.app.BackStackState: java.lang.String mName> = $r7;
+
+        $i0 = $r1.<androidx.fragment.app.BackStackRecord: int mIndex>;
+
+        $r0.<androidx.fragment.app.BackStackState: int mIndex> = $i0;
+
+        $i0 = $r1.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes>;
+
+        $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbTitleRes> = $i0;
+
+        $r8 = $r1.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbTitleText>;
+
+        $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbTitleText> = $r8;
+
+        $i0 = $r1.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes>;
+
+        $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbShortTitleRes> = $i0;
+
+        $r8 = $r1.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbShortTitleText>;
+
+        $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbShortTitleText> = $r8;
+
+        $r2 = $r1.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementSourceNames> = $r2;
+
+        $r2 = $r1.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+        $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementTargetNames> = $r2;
+
+        $z0 = $r1.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed>;
+
+        $r0.<androidx.fragment.app.BackStackState: boolean mReorderingAllowed> = $z0;
+
+        return;
+
+     label5:
+        $r9 = new java.lang.IllegalStateException;
+
+        specialinvoke $r9.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Not on back stack");
+
+        throw $r9;
+    }
+
+    public int describeContents()
+    {
+        androidx.fragment.app.BackStackState $r0;
+
+        $r0 := @this: androidx.fragment.app.BackStackState;
+
+        return 0;
+    }
+
+    public androidx.fragment.app.BackStackRecord instantiate(androidx.fragment.app.FragmentManagerImpl)
+    {
+        androidx.fragment.app.BackStackState $r0;
+        androidx.fragment.app.FragmentManagerImpl $r1;
+        androidx.fragment.app.BackStackRecord $r2;
+        int $i0, $i1, $i2, $i3;
+        int[] $r3;
+        androidx.fragment.app.BackStackRecord$Op $r4;
+        boolean $z0;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        android.util.SparseArray $r7;
+        java.lang.Object $r8;
+        androidx.fragment.app.Fragment $r9;
+        java.lang.CharSequence $r10;
+        java.util.ArrayList $r11;
+
+        $r0 := @this: androidx.fragment.app.BackStackState;
+
+        $r1 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        $r2 = new androidx.fragment.app.BackStackRecord;
+
+        specialinvoke $r2.<androidx.fragment.app.BackStackRecord: void <init>(androidx.fragment.app.FragmentManagerImpl)>($r1);
+
+        $i0 = 0;
+
+        $i1 = 0;
+
+     label1:
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i2 = lengthof $r3;
+
+        if $i0 >= $i2 goto label5;
+
+        $r4 = new androidx.fragment.app.BackStackRecord$Op;
+
+        specialinvoke $r4.<androidx.fragment.app.BackStackRecord$Op: void <init>()>();
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i2 = $i0 + 1;
+
+        $i0 = $r3[$i0];
+
+        $r4.<androidx.fragment.app.BackStackRecord$Op: int cmd> = $i0;
+
+        $z0 = <androidx.fragment.app.FragmentManagerImpl: boolean DEBUG>;
+
+        if $z0 == 0 goto label2;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Instantiate ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" op #");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" base fragment #");
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i0 = $r3[$i2];
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $r6);
+
+     label2:
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i0 = $i2 + 1;
+
+        $i2 = $r3[$i2];
+
+        if $i2 < 0 goto label3;
+
+        $r7 = $r1.<androidx.fragment.app.FragmentManagerImpl: android.util.SparseArray mActive>;
+
+        $r8 = virtualinvoke $r7.<android.util.SparseArray: java.lang.Object get(int)>($i2);
+
+        $r9 = (androidx.fragment.app.Fragment) $r8;
+
+        $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment> = $r9;
+
+        goto label4;
+
+     label3:
+        $r4.<androidx.fragment.app.BackStackRecord$Op: androidx.fragment.app.Fragment fragment> = null;
+
+     label4:
+        $r3 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        $i2 = $i0 + 1;
+
+        $i0 = $r3[$i0];
+
+        $r4.<androidx.fragment.app.BackStackRecord$Op: int enterAnim> = $i0;
+
+        $i0 = $i2 + 1;
+
+        $i2 = $r3[$i2];
+
+        $r4.<androidx.fragment.app.BackStackRecord$Op: int exitAnim> = $i2;
+
+        $i3 = $i0 + 1;
+
+        $i2 = $r3[$i0];
+
+        $r4.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim> = $i2;
+
+        $i0 = $r3[$i3];
+
+        $r4.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim> = $i0;
+
+        $i0 = $r4.<androidx.fragment.app.BackStackRecord$Op: int enterAnim>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mEnterAnim> = $i0;
+
+        $i0 = $r4.<androidx.fragment.app.BackStackRecord$Op: int exitAnim>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mExitAnim> = $i0;
+
+        $i0 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popEnterAnim>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mPopEnterAnim> = $i0;
+
+        $i0 = $r4.<androidx.fragment.app.BackStackRecord$Op: int popExitAnim>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mPopExitAnim> = $i0;
+
+        virtualinvoke $r2.<androidx.fragment.app.BackStackRecord: void addOp(androidx.fragment.app.BackStackRecord$Op)>($r4);
+
+        $i1 = $i1 + 1;
+
+        $i0 = $i3 + 1;
+
+        goto label1;
+
+     label5:
+        $i1 = $r0.<androidx.fragment.app.BackStackState: int mTransition>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mTransition> = $i1;
+
+        $i1 = $r0.<androidx.fragment.app.BackStackState: int mTransitionStyle>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mTransitionStyle> = $i1;
+
+        $r6 = $r0.<androidx.fragment.app.BackStackState: java.lang.String mName>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: java.lang.String mName> = $r6;
+
+        $i1 = $r0.<androidx.fragment.app.BackStackState: int mIndex>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mIndex> = $i1;
+
+        $r2.<androidx.fragment.app.BackStackRecord: boolean mAddToBackStack> = 1;
+
+        $i1 = $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbTitleRes>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mBreadCrumbTitleRes> = $i1;
+
+        $r10 = $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbTitleText>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbTitleText> = $r10;
+
+        $i1 = $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbShortTitleRes>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: int mBreadCrumbShortTitleRes> = $i1;
+
+        $r10 = $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbShortTitleText>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: java.lang.CharSequence mBreadCrumbShortTitleText> = $r10;
+
+        $r11 = $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementSourceNames>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames> = $r11;
+
+        $r11 = $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementTargetNames>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames> = $r11;
+
+        $z0 = $r0.<androidx.fragment.app.BackStackState: boolean mReorderingAllowed>;
+
+        $r2.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed> = $z0;
+
+        virtualinvoke $r2.<androidx.fragment.app.BackStackRecord: void bumpBackStackNesting(int)>(1);
+
+        return $r2;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        androidx.fragment.app.BackStackState $r0;
+        android.os.Parcel $r1;
+        int $i0;
+        int[] $r2;
+        java.lang.String $r3;
+        java.lang.CharSequence $r4;
+        java.util.ArrayList $r5;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.BackStackState;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i0 := @parameter1: int;
+
+        $r2 = $r0.<androidx.fragment.app.BackStackState: int[] mOps>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeIntArray(int[])>($r2);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackState: int mTransition>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackState: int mTransitionStyle>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $r3 = $r0.<androidx.fragment.app.BackStackState: java.lang.String mName>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r3);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackState: int mIndex>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbTitleRes>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $r4 = $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbTitleText>;
+
+        staticinvoke <android.text.TextUtils: void writeToParcel(java.lang.CharSequence,android.os.Parcel,int)>($r4, $r1, 0);
+
+        $i0 = $r0.<androidx.fragment.app.BackStackState: int mBreadCrumbShortTitleRes>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $r4 = $r0.<androidx.fragment.app.BackStackState: java.lang.CharSequence mBreadCrumbShortTitleText>;
+
+        staticinvoke <android.text.TextUtils: void writeToParcel(java.lang.CharSequence,android.os.Parcel,int)>($r4, $r1, 0);
+
+        $r5 = $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementSourceNames>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeStringList(java.util.List)>($r5);
+
+        $r5 = $r0.<androidx.fragment.app.BackStackState: java.util.ArrayList mSharedElementTargetNames>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeStringList(java.util.List)>($r5);
+
+        $z0 = $r0.<androidx.fragment.app.BackStackState: boolean mReorderingAllowed>;
+
+        $i0 = (int) $z0;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        return;
+    }
+}

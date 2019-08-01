@@ -1,0 +1,22 @@
+public final class androidx.swiperefreshlayout.R$string extends java.lang.Object
+{
+    public static final int status_bar_notification_info_overflow;
+
+    private void <init>()
+    {
+        androidx.swiperefreshlayout.R$string $r0;
+
+        $r0 := @this: androidx.swiperefreshlayout.R$string;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.swiperefreshlayout.R$string: int status_bar_notification_info_overflow> = 2131427369;
+
+        return;
+    }
+}

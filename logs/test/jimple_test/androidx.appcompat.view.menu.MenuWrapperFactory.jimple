@@ -1,0 +1,78 @@
+public final class androidx.appcompat.view.menu.MenuWrapperFactory extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.appcompat.view.menu.MenuWrapperFactory $r0;
+
+        $r0 := @this: androidx.appcompat.view.menu.MenuWrapperFactory;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.view.Menu wrapSupportMenu(android.content.Context, androidx.core.internal.view.SupportMenu)
+    {
+        android.content.Context $r0;
+        androidx.core.internal.view.SupportMenu $r1;
+        androidx.appcompat.view.menu.MenuWrapperICS $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.internal.view.SupportMenu;
+
+        $r2 = new androidx.appcompat.view.menu.MenuWrapperICS;
+
+        specialinvoke $r2.<androidx.appcompat.view.menu.MenuWrapperICS: void <init>(android.content.Context,androidx.core.internal.view.SupportMenu)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public static android.view.MenuItem wrapSupportMenuItem(android.content.Context, androidx.core.internal.view.SupportMenuItem)
+    {
+        android.content.Context $r0;
+        androidx.core.internal.view.SupportMenuItem $r1;
+        int $i0;
+        androidx.appcompat.view.menu.MenuItemWrapperJB $r2;
+        androidx.appcompat.view.menu.MenuItemWrapperICS $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.internal.view.SupportMenuItem;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $r2 = new androidx.appcompat.view.menu.MenuItemWrapperJB;
+
+        specialinvoke $r2.<androidx.appcompat.view.menu.MenuItemWrapperJB: void <init>(android.content.Context,androidx.core.internal.view.SupportMenuItem)>($r0, $r1);
+
+        return $r2;
+
+     label1:
+        $r3 = new androidx.appcompat.view.menu.MenuItemWrapperICS;
+
+        specialinvoke $r3.<androidx.appcompat.view.menu.MenuItemWrapperICS: void <init>(android.content.Context,androidx.core.internal.view.SupportMenuItem)>($r0, $r1);
+
+        return $r3;
+    }
+
+    public static android.view.SubMenu wrapSupportSubMenu(android.content.Context, androidx.core.internal.view.SupportSubMenu)
+    {
+        android.content.Context $r0;
+        androidx.core.internal.view.SupportSubMenu $r1;
+        androidx.appcompat.view.menu.SubMenuWrapperICS $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.internal.view.SupportSubMenu;
+
+        $r2 = new androidx.appcompat.view.menu.SubMenuWrapperICS;
+
+        specialinvoke $r2.<androidx.appcompat.view.menu.SubMenuWrapperICS: void <init>(android.content.Context,androidx.core.internal.view.SupportSubMenu)>($r0, $r1);
+
+        return $r2;
+    }
+}

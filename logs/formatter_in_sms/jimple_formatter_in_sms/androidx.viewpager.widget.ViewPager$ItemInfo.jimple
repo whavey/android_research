@@ -1,0 +1,19 @@
+class androidx.viewpager.widget.ViewPager$ItemInfo extends java.lang.Object
+{
+    java.lang.Object object;
+    float offset;
+    int position;
+    boolean scrolling;
+    float widthFactor;
+
+    void <init>()
+    {
+        androidx.viewpager.widget.ViewPager$ItemInfo $r0;
+
+        $r0 := @this: androidx.viewpager.widget.ViewPager$ItemInfo;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

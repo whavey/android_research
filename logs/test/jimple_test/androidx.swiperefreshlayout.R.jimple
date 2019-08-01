@@ -1,0 +1,14 @@
+public final class androidx.swiperefreshlayout.R extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.swiperefreshlayout.R $r0;
+
+        $r0 := @this: androidx.swiperefreshlayout.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

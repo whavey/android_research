@@ -1,0 +1,49 @@
+abstract class androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject $r0;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$1)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject $r0;
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$1 $r1;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject;
+
+        $r1 := @parameter0: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$1;
+
+        specialinvoke $r0.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject: void <init>()>();
+
+        return;
+    }
+
+    public boolean isStateful()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject $r0;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject;
+
+        return 0;
+    }
+
+    public boolean onStateChanged(int[])
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject $r0;
+        int[] $r1;
+
+        $r0 := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject;
+
+        $r1 := @parameter0: int[];
+
+        return 0;
+    }
+}

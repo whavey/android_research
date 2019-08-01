@@ -1,0 +1,5 @@
+public interface  androidx.core.view.ActionProvider$SubUiVisibilityListener extends java.lang.Object
+{
+
+    public abstract void onSubUiVisibilityChanged(boolean);
+}

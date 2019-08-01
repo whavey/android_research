@@ -1,0 +1,9 @@
+interface  androidx.lifecycle.ReportFragment$ActivityInitializationListener extends java.lang.Object
+{
+
+    public abstract void onCreate();
+
+    public abstract void onResume();
+
+    public abstract void onStart();
+}

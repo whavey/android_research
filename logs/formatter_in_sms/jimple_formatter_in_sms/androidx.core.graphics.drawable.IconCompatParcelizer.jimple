@@ -1,0 +1,131 @@
+public class androidx.core.graphics.drawable.IconCompatParcelizer extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.core.graphics.drawable.IconCompatParcelizer $r0;
+
+        $r0 := @this: androidx.core.graphics.drawable.IconCompatParcelizer;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
+    {
+        androidx.versionedparcelable.VersionedParcel $r0;
+        androidx.core.graphics.drawable.IconCompat $r1;
+        int $i0;
+        byte[] $r2;
+        android.os.Parcelable $r3;
+        android.content.res.ColorStateList $r4;
+        java.lang.String $r5;
+
+        $r0 := @parameter0: androidx.versionedparcelable.VersionedParcel;
+
+        $r1 = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke $r1.<androidx.core.graphics.drawable.IconCompat: void <init>()>();
+
+        $i0 = $r1.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        $i0 = virtualinvoke $r0.<androidx.versionedparcelable.VersionedParcel: int readInt(int,int)>($i0, 1);
+
+        $r1.<androidx.core.graphics.drawable.IconCompat: int mType> = $i0;
+
+        $r2 = $r1.<androidx.core.graphics.drawable.IconCompat: byte[] mData>;
+
+        $r2 = virtualinvoke $r0.<androidx.versionedparcelable.VersionedParcel: byte[] readByteArray(byte[],int)>($r2, 2);
+
+        $r1.<androidx.core.graphics.drawable.IconCompat: byte[] mData> = $r2;
+
+        $r3 = $r1.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable>;
+
+        $r3 = virtualinvoke $r0.<androidx.versionedparcelable.VersionedParcel: android.os.Parcelable readParcelable(android.os.Parcelable,int)>($r3, 3);
+
+        $r1.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable> = $r3;
+
+        $i0 = $r1.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        $i0 = virtualinvoke $r0.<androidx.versionedparcelable.VersionedParcel: int readInt(int,int)>($i0, 4);
+
+        $r1.<androidx.core.graphics.drawable.IconCompat: int mInt1> = $i0;
+
+        $i0 = $r1.<androidx.core.graphics.drawable.IconCompat: int mInt2>;
+
+        $i0 = virtualinvoke $r0.<androidx.versionedparcelable.VersionedParcel: int readInt(int,int)>($i0, 5);
+
+        $r1.<androidx.core.graphics.drawable.IconCompat: int mInt2> = $i0;
+
+        $r4 = $r1.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        $r3 = virtualinvoke $r0.<androidx.versionedparcelable.VersionedParcel: android.os.Parcelable readParcelable(android.os.Parcelable,int)>($r4, 6);
+
+        $r4 = (android.content.res.ColorStateList) $r3;
+
+        $r1.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList> = $r4;
+
+        $r5 = $r1.<androidx.core.graphics.drawable.IconCompat: java.lang.String mTintModeStr>;
+
+        $r5 = virtualinvoke $r0.<androidx.versionedparcelable.VersionedParcel: java.lang.String readString(java.lang.String,int)>($r5, 7);
+
+        $r1.<androidx.core.graphics.drawable.IconCompat: java.lang.String mTintModeStr> = $r5;
+
+        virtualinvoke $r1.<androidx.core.graphics.drawable.IconCompat: void onPostParceling()>();
+
+        return $r1;
+    }
+
+    public static void write(androidx.core.graphics.drawable.IconCompat, androidx.versionedparcelable.VersionedParcel)
+    {
+        androidx.core.graphics.drawable.IconCompat $r0;
+        androidx.versionedparcelable.VersionedParcel $r1;
+        boolean $z0;
+        int $i0;
+        byte[] $r2;
+        android.os.Parcelable $r3;
+        android.content.res.ColorStateList $r4;
+        java.lang.String $r5;
+
+        $r0 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $r1 := @parameter1: androidx.versionedparcelable.VersionedParcel;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void setSerializationFlags(boolean,boolean)>(1, 1);
+
+        $z0 = virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: boolean isStream()>();
+
+        virtualinvoke $r0.<androidx.core.graphics.drawable.IconCompat: void onPreParceling(boolean)>($z0);
+
+        $i0 = $r0.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void writeInt(int,int)>($i0, 1);
+
+        $r2 = $r0.<androidx.core.graphics.drawable.IconCompat: byte[] mData>;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void writeByteArray(byte[],int)>($r2, 2);
+
+        $r3 = $r0.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable>;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void writeParcelable(android.os.Parcelable,int)>($r3, 3);
+
+        $i0 = $r0.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void writeInt(int,int)>($i0, 4);
+
+        $i0 = $r0.<androidx.core.graphics.drawable.IconCompat: int mInt2>;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void writeInt(int,int)>($i0, 5);
+
+        $r4 = $r0.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void writeParcelable(android.os.Parcelable,int)>($r4, 6);
+
+        $r5 = $r0.<androidx.core.graphics.drawable.IconCompat: java.lang.String mTintModeStr>;
+
+        virtualinvoke $r1.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String,int)>($r5, 7);
+
+        return;
+    }
+}

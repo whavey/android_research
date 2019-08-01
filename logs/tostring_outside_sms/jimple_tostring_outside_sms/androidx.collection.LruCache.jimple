@@ -1,0 +1,911 @@
+public class androidx.collection.LruCache extends java.lang.Object
+{
+    private int createCount;
+    private int evictionCount;
+    private int hitCount;
+    private final java.util.LinkedHashMap map;
+    private int maxSize;
+    private int missCount;
+    private int putCount;
+    private int size;
+
+    public void <init>(int)
+    {
+        androidx.collection.LruCache $r0;
+        int $i0;
+        java.util.LinkedHashMap $r1;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.collection.LruCache: int maxSize> = 6;
+
+        $r1 = new java.util.LinkedHashMap;
+
+        specialinvoke $r1.<java.util.LinkedHashMap: void <init>(int,float,boolean)>(0, 0.75F, 1);
+
+        $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map> = $r1;
+
+        return;
+    }
+
+    private int safeSizeOf(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Object $r1, $r2;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        return 1;
+    }
+
+    protected java.lang.Object create(java.lang.Object)
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Object $r1;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        return null;
+    }
+
+    public final int createCount()
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        i0 = $r0.<androidx.collection.LruCache: int createCount>;
+
+     label2:
+        exitmonitor $r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    protected void entryRemoved(boolean, java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache $r0;
+        boolean $z0;
+        java.lang.Object $r1, $r2, $r3;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        $r3 := @parameter3: java.lang.Object;
+
+        return;
+    }
+
+    public final void evictAll()
+    {
+        androidx.collection.LruCache $r0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        virtualinvoke $r0.<androidx.collection.LruCache: void trimToSize(int)>(-1);
+
+        return;
+    }
+
+    public final int evictionCount()
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        i0 = $r0.<androidx.collection.LruCache: int evictionCount>;
+
+     label2:
+        exitmonitor $r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.Object get(java.lang.Object)
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Object $r1, $r3, $r4;
+        java.util.LinkedHashMap $r2;
+        int $i0;
+        java.lang.Throwable $r5, $r6, $r7;
+        java.lang.NullPointerException $r8;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 == null goto label20;
+
+        entermonitor $r0;
+
+     label01:
+        $r2 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+     label02:
+        if $r3 == null goto label05;
+
+     label03:
+        $i0 = $r0.<androidx.collection.LruCache: int hitCount>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.collection.LruCache: int hitCount> = $i0;
+
+        exitmonitor $r0;
+
+     label04:
+        return $r3;
+
+     label05:
+        $i0 = $r0.<androidx.collection.LruCache: int missCount>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.collection.LruCache: int missCount> = $i0;
+
+        exitmonitor $r0;
+
+     label06:
+        $r3 = virtualinvoke $r0.<androidx.collection.LruCache: java.lang.Object create(java.lang.Object)>($r1);
+
+        if $r3 != null goto label07;
+
+        return null;
+
+     label07:
+        entermonitor $r0;
+
+     label08:
+        $i0 = $r0.<androidx.collection.LruCache: int createCount>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.collection.LruCache: int createCount> = $i0;
+
+        $r2 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $r4 = virtualinvoke $r2.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        if $r4 == null goto label09;
+
+        $r2 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        virtualinvoke $r2.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        goto label10;
+
+     label09:
+        $i0 = $r0.<androidx.collection.LruCache: int size>;
+
+        specialinvoke $r0.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.collection.LruCache: int size> = $i0;
+
+     label10:
+        exitmonitor $r0;
+
+     label11:
+        if $r4 == null goto label12;
+
+        virtualinvoke $r0.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(0, $r1, $r3, $r4);
+
+        return $r4;
+
+     label12:
+        $i0 = $r0.<androidx.collection.LruCache: int maxSize>;
+
+        virtualinvoke $r0.<androidx.collection.LruCache: void trimToSize(int)>($i0);
+
+        return $r3;
+
+     label13:
+        $r5 := @caughtexception;
+
+     label14:
+        exitmonitor $r0;
+
+     label15:
+        throw $r5;
+
+     label16:
+        $r6 := @caughtexception;
+
+        $r7 = $r6;
+
+     label17:
+        exitmonitor $r0;
+
+     label18:
+        throw $r7;
+
+     label19:
+        $r7 := @caughtexception;
+
+        goto label17;
+
+     label20:
+        $r8 = new java.lang.NullPointerException;
+
+        specialinvoke $r8.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null");
+
+        throw $r8;
+
+        catch java.lang.Throwable from label01 to label02 with label16;
+        catch java.lang.Throwable from label03 to label04 with label19;
+        catch java.lang.Throwable from label05 to label06 with label19;
+        catch java.lang.Throwable from label08 to label11 with label13;
+        catch java.lang.Throwable from label14 to label15 with label13;
+        catch java.lang.Throwable from label17 to label18 with label19;
+    }
+
+    public final int hitCount()
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        i0 = $r0.<androidx.collection.LruCache: int hitCount>;
+
+     label2:
+        exitmonitor $r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int maxSize()
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        i0 = $r0.<androidx.collection.LruCache: int maxSize>;
+
+     label2:
+        exitmonitor $r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int missCount()
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        i0 = $r0.<androidx.collection.LruCache: int missCount>;
+
+     label2:
+        exitmonitor $r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.Object put(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Object $r1, $r2, $r4;
+        int $i0;
+        java.util.LinkedHashMap $r3;
+        java.lang.Throwable $r5;
+        java.lang.NullPointerException $r6;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        if $r1 == null goto label11;
+
+        if $r2 == null goto label11;
+
+        entermonitor $r0;
+
+     label01:
+        $i0 = $r0.<androidx.collection.LruCache: int putCount>;
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.collection.LruCache: int putCount> = $i0;
+
+        $i0 = $r0.<androidx.collection.LruCache: int size>;
+
+        specialinvoke $r0.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        $i0 = $i0 + 1;
+
+        $r0.<androidx.collection.LruCache: int size> = $i0;
+
+        $r3 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $r4 = virtualinvoke $r3.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+     label02:
+        if $r4 == null goto label04;
+
+     label03:
+        $i0 = $r0.<androidx.collection.LruCache: int size>;
+
+        specialinvoke $r0.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        $i0 = $i0 - 1;
+
+        $r0.<androidx.collection.LruCache: int size> = $i0;
+
+     label04:
+        exitmonitor $r0;
+
+     label05:
+        if $r4 == null goto label06;
+
+        virtualinvoke $r0.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(0, $r1, $r4, $r2);
+
+     label06:
+        $i0 = $r0.<androidx.collection.LruCache: int maxSize>;
+
+        virtualinvoke $r0.<androidx.collection.LruCache: void trimToSize(int)>($i0);
+
+        return $r4;
+
+     label07:
+        $r5 := @caughtexception;
+
+     label08:
+        exitmonitor $r0;
+
+     label09:
+        throw $r5;
+
+     label10:
+        $r5 := @caughtexception;
+
+        goto label08;
+
+     label11:
+        $r6 = new java.lang.NullPointerException;
+
+        specialinvoke $r6.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null || value == null");
+
+        throw $r6;
+
+        catch java.lang.Throwable from label01 to label02 with label07;
+        catch java.lang.Throwable from label03 to label05 with label10;
+        catch java.lang.Throwable from label08 to label09 with label10;
+    }
+
+    public final int putCount()
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        i0 = $r0.<androidx.collection.LruCache: int putCount>;
+
+     label2:
+        exitmonitor $r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.Object remove(java.lang.Object)
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Object $r1, $r3;
+        java.util.LinkedHashMap $r2;
+        int $i0, $i1;
+        java.lang.Throwable $r4, $r5;
+        java.lang.NullPointerException $r6;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 == null goto label10;
+
+        entermonitor $r0;
+
+     label01:
+        $r2 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.lang.Object remove(java.lang.Object)>($r1);
+
+     label02:
+        if $r3 == null goto label04;
+
+     label03:
+        $i0 = $r0.<androidx.collection.LruCache: int size>;
+
+        $i1 = specialinvoke $r0.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        $i0 = $i0 - $i1;
+
+        $r0.<androidx.collection.LruCache: int size> = $i0;
+
+     label04:
+        exitmonitor $r0;
+
+     label05:
+        if $r3 == null goto label11;
+
+        virtualinvoke $r0.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(0, $r1, $r3, null);
+
+        return $r3;
+
+     label06:
+        $r4 := @caughtexception;
+
+        $r5 = $r4;
+
+     label07:
+        exitmonitor $r0;
+
+     label08:
+        throw $r5;
+
+     label09:
+        $r5 := @caughtexception;
+
+        goto label07;
+
+     label10:
+        $r6 = new java.lang.NullPointerException;
+
+        specialinvoke $r6.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null");
+
+        throw $r6;
+
+     label11:
+        return $r3;
+
+        catch java.lang.Throwable from label01 to label02 with label06;
+        catch java.lang.Throwable from label03 to label05 with label09;
+        catch java.lang.Throwable from label07 to label08 with label09;
+    }
+
+    public void resize(int)
+    {
+        androidx.collection.LruCache $r0;
+        int $i0;
+        java.lang.Throwable $r1;
+        java.lang.IllegalArgumentException $r2;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $i0 := @parameter0: int;
+
+        if $i0 <= 0 goto label6;
+
+        entermonitor $r0;
+
+     label1:
+        $r0.<androidx.collection.LruCache: int maxSize> = $i0;
+
+        exitmonitor $r0;
+
+     label2:
+        virtualinvoke $r0.<androidx.collection.LruCache: void trimToSize(int)>($i0);
+
+        return;
+
+     label3:
+        $r1 := @caughtexception;
+
+     label4:
+        exitmonitor $r0;
+
+     label5:
+        throw $r1;
+
+     label6:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("maxSize <= 0");
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label4 to label5 with label3;
+    }
+
+    public final int size()
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        i0 = $r0.<androidx.collection.LruCache: int size>;
+
+     label2:
+        exitmonitor $r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    protected int sizeOf(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache $r0;
+        java.lang.Object $r1, $r2;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        return 1;
+    }
+
+    public final java.util.Map snapshot()
+    {
+        androidx.collection.LruCache $r0;
+        java.util.LinkedHashMap $r1, $r2;
+        java.lang.Throwable $r3;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        $r2 = new java.util.LinkedHashMap;
+
+        $r1 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        specialinvoke $r2.<java.util.LinkedHashMap: void <init>(java.util.Map)>($r1);
+
+     label2:
+        exitmonitor $r0;
+
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.String toString()
+    {
+        androidx.collection.LruCache $r0;
+        java.util.Locale $r1;
+        int $i0, $i1;
+        java.lang.Object[] $r2;
+        java.lang.Integer $r3;
+        java.lang.String $r4;
+        java.lang.Throwable $r5;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        entermonitor $r0;
+
+     label1:
+        $i0 = $r0.<androidx.collection.LruCache: int hitCount>;
+
+        $i1 = $r0.<androidx.collection.LruCache: int missCount>;
+
+        $i0 = $i0 + $i1;
+
+        if $i0 == 0 goto label2;
+
+        $i1 = $r0.<androidx.collection.LruCache: int hitCount>;
+
+        $i1 = $i1 * 100;
+
+        $i0 = $i1 / $i0;
+
+        goto label3;
+
+     label2:
+        $i0 = 0;
+
+     label3:
+        $r1 = <java.util.Locale: java.util.Locale US>;
+
+        $r2 = newarray (java.lang.Object)[4];
+
+        $i1 = $r0.<androidx.collection.LruCache: int maxSize>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        $r2[0] = $r3;
+
+        $i1 = $r0.<androidx.collection.LruCache: int hitCount>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        $r2[1] = $r3;
+
+        $i1 = $r0.<androidx.collection.LruCache: int missCount>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        $r2[2] = $r3;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r2[3] = $r3;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String format(java.util.Locale,java.lang.String,java.lang.Object[])>($r1, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", $r2);
+
+     label4:
+        exitmonitor $r0;
+
+        return $r4;
+
+     label5:
+        $r5 := @caughtexception;
+
+        exitmonitor $r0;
+
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void trimToSize(int)
+    {
+        androidx.collection.LruCache $r0;
+        int $i0, $i1;
+        java.util.LinkedHashMap $r1;
+        boolean $z0;
+        java.util.Set $r2;
+        java.util.Iterator $r3;
+        java.lang.Object $r4, $r6;
+        java.util.Map$Entry $r5;
+        java.lang.Throwable $r7;
+        java.lang.IllegalStateException $r8;
+        java.lang.StringBuilder $r9;
+        java.lang.Class $r10;
+        java.lang.String $r11;
+
+        $r0 := @this: androidx.collection.LruCache;
+
+        $i0 := @parameter0: int;
+
+     label01:
+        entermonitor $r0;
+
+     label02:
+        $i1 = $r0.<androidx.collection.LruCache: int size>;
+
+        if $i1 < 0 goto label11;
+
+        $r1 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $z0 = virtualinvoke $r1.<java.util.LinkedHashMap: boolean isEmpty()>();
+
+        if $z0 == 0 goto label03;
+
+        $i1 = $r0.<androidx.collection.LruCache: int size>;
+
+        if $i1 != 0 goto label11;
+
+     label03:
+        $i1 = $r0.<androidx.collection.LruCache: int size>;
+
+        if $i1 <= $i0 goto label09;
+
+        $r1 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $z0 = virtualinvoke $r1.<java.util.LinkedHashMap: boolean isEmpty()>();
+
+        if $z0 == 0 goto label04;
+
+        goto label09;
+
+     label04:
+        $r1 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $r2 = virtualinvoke $r1.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Set: java.util.Iterator iterator()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (java.util.Map$Entry) $r4;
+
+        $r4 = interfaceinvoke $r5.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+     label05:
+        $r6 = interfaceinvoke $r5.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+     label06:
+        $r1 = $r0.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        virtualinvoke $r1.<java.util.LinkedHashMap: java.lang.Object remove(java.lang.Object)>($r4);
+
+        $i1 = $r0.<androidx.collection.LruCache: int size>;
+
+        specialinvoke $r0.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>($r4, $r6);
+
+        $i1 = $i1 - 1;
+
+        $r0.<androidx.collection.LruCache: int size> = $i1;
+
+        $i1 = $r0.<androidx.collection.LruCache: int evictionCount>;
+
+        $i1 = $i1 + 1;
+
+        $r0.<androidx.collection.LruCache: int evictionCount> = $i1;
+
+        exitmonitor $r0;
+
+     label07:
+        virtualinvoke $r0.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(1, $r4, $r6, null);
+
+        goto label01;
+
+     label08:
+        $r7 := @caughtexception;
+
+        goto label13;
+
+     label09:
+        exitmonitor $r0;
+
+     label10:
+        return;
+
+     label11:
+        $r8 = new java.lang.IllegalStateException;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r11 = virtualinvoke $r10.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".sizeOf() is reporting inconsistent results!");
+
+        $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r11);
+
+        throw $r8;
+
+     label12:
+        $r7 := @caughtexception;
+
+     label13:
+        exitmonitor $r0;
+
+     label14:
+        throw $r7;
+
+     label15:
+        $r7 := @caughtexception;
+
+        goto label13;
+
+        catch java.lang.Throwable from label02 to label05 with label12;
+        catch java.lang.Throwable from label05 to label06 with label08;
+        catch java.lang.Throwable from label06 to label07 with label15;
+        catch java.lang.Throwable from label09 to label10 with label12;
+        catch java.lang.Throwable from label11 to label12 with label12;
+        catch java.lang.Throwable from label13 to label14 with label15;
+    }
+}

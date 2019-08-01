@@ -1,0 +1,55 @@
+public final class androidx.drawerlayout.R$attr extends java.lang.Object
+{
+    public static final int alpha;
+    public static final int font;
+    public static final int fontProviderAuthority;
+    public static final int fontProviderCerts;
+    public static final int fontProviderFetchStrategy;
+    public static final int fontProviderFetchTimeout;
+    public static final int fontProviderPackage;
+    public static final int fontProviderQuery;
+    public static final int fontStyle;
+    public static final int fontVariationSettings;
+    public static final int fontWeight;
+    public static final int ttcIndex;
+
+    private void <init>()
+    {
+        androidx.drawerlayout.R$attr $r0;
+
+        $r0 := @this: androidx.drawerlayout.R$attr;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.drawerlayout.R$attr: int ttcIndex> = 2130837820;
+
+        <androidx.drawerlayout.R$attr: int fontWeight> = 2130837636;
+
+        <androidx.drawerlayout.R$attr: int fontVariationSettings> = 2130837635;
+
+        <androidx.drawerlayout.R$attr: int fontStyle> = 2130837634;
+
+        <androidx.drawerlayout.R$attr: int fontProviderQuery> = 2130837633;
+
+        <androidx.drawerlayout.R$attr: int fontProviderPackage> = 2130837632;
+
+        <androidx.drawerlayout.R$attr: int fontProviderFetchTimeout> = 2130837631;
+
+        <androidx.drawerlayout.R$attr: int fontProviderFetchStrategy> = 2130837630;
+
+        <androidx.drawerlayout.R$attr: int fontProviderCerts> = 2130837629;
+
+        <androidx.drawerlayout.R$attr: int fontProviderAuthority> = 2130837628;
+
+        <androidx.drawerlayout.R$attr: int font> = 2130837626;
+
+        <androidx.drawerlayout.R$attr: int alpha> = 2130837543;
+
+        return;
+    }
+}

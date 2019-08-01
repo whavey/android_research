@@ -1,0 +1,1563 @@
+class androidx.appcompat.app.ToolbarActionBar extends androidx.appcompat.app.ActionBar
+{
+    androidx.appcompat.widget.DecorToolbar mDecorToolbar;
+    private boolean mLastMenuVisibility;
+    private boolean mMenuCallbackSet;
+    private final androidx.appcompat.widget.Toolbar$OnMenuItemClickListener mMenuClicker;
+    private final java.lang.Runnable mMenuInvalidator;
+    private java.util.ArrayList mMenuVisibilityListeners;
+    boolean mToolbarMenuPrepared;
+    android.view.Window$Callback mWindowCallback;
+
+    void <init>(androidx.appcompat.widget.Toolbar, java.lang.CharSequence, android.view.Window$Callback)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.widget.Toolbar $r1;
+        java.lang.CharSequence $r2;
+        android.view.Window$Callback $r3;
+        java.util.ArrayList $r4;
+        androidx.appcompat.app.ToolbarActionBar$1 $r5;
+        androidx.appcompat.app.ToolbarActionBar$2 $r6;
+        androidx.appcompat.widget.ToolbarWidgetWrapper $r7;
+        androidx.appcompat.app.ToolbarActionBar$ToolbarCallbackWrapper $r8;
+        androidx.appcompat.widget.DecorToolbar $r9;
+        androidx.appcompat.widget.Toolbar$OnMenuItemClickListener $r10;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.widget.Toolbar;
+
+        $r2 := @parameter1: java.lang.CharSequence;
+
+        $r3 := @parameter2: android.view.Window$Callback;
+
+        specialinvoke $r0.<androidx.appcompat.app.ActionBar: void <init>()>();
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.appcompat.app.ToolbarActionBar: java.util.ArrayList mMenuVisibilityListeners> = $r4;
+
+        $r5 = new androidx.appcompat.app.ToolbarActionBar$1;
+
+        specialinvoke $r5.<androidx.appcompat.app.ToolbarActionBar$1: void <init>(androidx.appcompat.app.ToolbarActionBar)>($r0);
+
+        $r0.<androidx.appcompat.app.ToolbarActionBar: java.lang.Runnable mMenuInvalidator> = $r5;
+
+        $r6 = new androidx.appcompat.app.ToolbarActionBar$2;
+
+        specialinvoke $r6.<androidx.appcompat.app.ToolbarActionBar$2: void <init>(androidx.appcompat.app.ToolbarActionBar)>($r0);
+
+        $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.Toolbar$OnMenuItemClickListener mMenuClicker> = $r6;
+
+        $r7 = new androidx.appcompat.widget.ToolbarWidgetWrapper;
+
+        specialinvoke $r7.<androidx.appcompat.widget.ToolbarWidgetWrapper: void <init>(androidx.appcompat.widget.Toolbar,boolean)>($r1, 0);
+
+        $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar> = $r7;
+
+        $r8 = new androidx.appcompat.app.ToolbarActionBar$ToolbarCallbackWrapper;
+
+        specialinvoke $r8.<androidx.appcompat.app.ToolbarActionBar$ToolbarCallbackWrapper: void <init>(androidx.appcompat.app.ToolbarActionBar,android.view.Window$Callback)>($r0, $r3);
+
+        $r0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback> = $r8;
+
+        $r9 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        interfaceinvoke $r9.<androidx.appcompat.widget.DecorToolbar: void setWindowCallback(android.view.Window$Callback)>($r3);
+
+        $r10 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.Toolbar$OnMenuItemClickListener mMenuClicker>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.Toolbar: void setOnMenuItemClickListener(androidx.appcompat.widget.Toolbar$OnMenuItemClickListener)>($r10);
+
+        $r9 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r9.<androidx.appcompat.widget.DecorToolbar: void setWindowTitle(java.lang.CharSequence)>($r2);
+
+        return;
+    }
+
+    private android.view.Menu getMenu()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback $r1;
+        androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback $r2;
+        android.view.Menu $r3;
+        boolean $z0;
+        androidx.appcompat.widget.DecorToolbar $r4;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 = $r0.<androidx.appcompat.app.ToolbarActionBar: boolean mMenuCallbackSet>;
+
+        if $z0 != 0 goto label1;
+
+        $r4 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r1 = new androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback;
+
+        specialinvoke $r1.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: void <init>(androidx.appcompat.app.ToolbarActionBar)>($r0);
+
+        $r2 = new androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback;
+
+        specialinvoke $r2.<androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback: void <init>(androidx.appcompat.app.ToolbarActionBar)>($r0);
+
+        interfaceinvoke $r4.<androidx.appcompat.widget.DecorToolbar: void setMenuCallbacks(androidx.appcompat.view.menu.MenuPresenter$Callback,androidx.appcompat.view.menu.MenuBuilder$Callback)>($r1, $r2);
+
+        $r0.<androidx.appcompat.app.ToolbarActionBar: boolean mMenuCallbackSet> = 1;
+
+     label1:
+        $r4 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r3 = interfaceinvoke $r4.<androidx.appcompat.widget.DecorToolbar: android.view.Menu getMenu()>();
+
+        return $r3;
+    }
+
+    public void addOnMenuVisibilityListener(androidx.appcompat.app.ActionBar$OnMenuVisibilityListener)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$OnMenuVisibilityListener $r1;
+        java.util.ArrayList $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$OnMenuVisibilityListener;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: java.util.ArrayList mMenuVisibilityListeners>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void addTab(androidx.appcompat.app.ActionBar$Tab)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$Tab $r1;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$Tab;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r2;
+    }
+
+    public void addTab(androidx.appcompat.app.ActionBar$Tab, int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$Tab $r1;
+        int $i0;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$Tab;
+
+        $i0 := @parameter1: int;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r2;
+    }
+
+    public void addTab(androidx.appcompat.app.ActionBar$Tab, int, boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$Tab $r1;
+        int $i0;
+        boolean $z0;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$Tab;
+
+        $i0 := @parameter1: int;
+
+        $z0 := @parameter2: boolean;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r2;
+    }
+
+    public void addTab(androidx.appcompat.app.ActionBar$Tab, boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$Tab $r1;
+        boolean $z0;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$Tab;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r2;
+    }
+
+    public boolean closeOptionsMenu()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $z0 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: boolean hideOverflowMenu()>();
+
+        return $z0;
+    }
+
+    public boolean collapseActionView()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $z0 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: boolean hasExpandedActionView()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void collapseActionView()>();
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void dispatchMenuVisibilityChanged(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0, $z1;
+        java.util.ArrayList $r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        androidx.appcompat.app.ActionBar$OnMenuVisibilityListener $r3;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 = $r0.<androidx.appcompat.app.ToolbarActionBar: boolean mLastMenuVisibility>;
+
+        if $z0 != $z1 goto label1;
+
+        return;
+
+     label1:
+        $r0.<androidx.appcompat.app.ToolbarActionBar: boolean mLastMenuVisibility> = $z0;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: java.util.ArrayList mMenuVisibilityListeners>;
+
+        $i0 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label2:
+        if $i1 >= $i0 goto label3;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: java.util.ArrayList mMenuVisibilityListeners>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r3 = (androidx.appcompat.app.ActionBar$OnMenuVisibilityListener) $r2;
+
+        interfaceinvoke $r3.<androidx.appcompat.app.ActionBar$OnMenuVisibilityListener: void onMenuVisibilityChanged(boolean)>($z0);
+
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public android.view.View getCustomView()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.view.View $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: android.view.View getCustomView()>();
+
+        return $r1;
+    }
+
+    public int getDisplayOptions()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $i0 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: int getDisplayOptions()>();
+
+        return $i0;
+    }
+
+    public float getElevation()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        android.view.ViewGroup $r2;
+        float $f0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.view.ViewGroup getViewGroup()>();
+
+        $f0 = staticinvoke <androidx.core.view.ViewCompat: float getElevation(android.view.View)>($r2);
+
+        return $f0;
+    }
+
+    public int getHeight()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $i0 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: int getHeight()>();
+
+        return $i0;
+    }
+
+    public int getNavigationItemCount()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        return 0;
+    }
+
+    public int getNavigationMode()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        return 0;
+    }
+
+    public int getSelectedNavigationIndex()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        return -1;
+    }
+
+    public androidx.appcompat.app.ActionBar$Tab getSelectedTab()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r1;
+    }
+
+    public java.lang.CharSequence getSubtitle()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: java.lang.CharSequence getSubtitle()>();
+
+        return $r1;
+    }
+
+    public androidx.appcompat.app.ActionBar$Tab getTabAt(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r1;
+    }
+
+    public int getTabCount()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        return 0;
+    }
+
+    public android.content.Context getThemedContext()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.content.Context $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: android.content.Context getContext()>();
+
+        return $r1;
+    }
+
+    public java.lang.CharSequence getTitle()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: java.lang.CharSequence getTitle()>();
+
+        return $r1;
+    }
+
+    public android.view.Window$Callback getWrappedWindowCallback()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.view.Window$Callback r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        return r1;
+    }
+
+    public void hide()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    public boolean invalidateOptionsMenu()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        android.view.ViewGroup $r2;
+        java.lang.Runnable $r3;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.view.ViewGroup getViewGroup()>();
+
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: java.lang.Runnable mMenuInvalidator>;
+
+        virtualinvoke $r2.<android.view.ViewGroup: boolean removeCallbacks(java.lang.Runnable)>($r3);
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.view.ViewGroup getViewGroup()>();
+
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: java.lang.Runnable mMenuInvalidator>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void postOnAnimation(android.view.View,java.lang.Runnable)>($r2, $r3);
+
+        return 1;
+    }
+
+    public boolean isShowing()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $i0 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: int getVisibility()>();
+
+        if $i0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isTitleTruncated()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.ActionBar: boolean isTitleTruncated()>();
+
+        return $z0;
+    }
+
+    public androidx.appcompat.app.ActionBar$Tab newTab()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r1;
+    }
+
+    public void onConfigurationChanged(android.content.res.Configuration)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.content.res.Configuration $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.content.res.Configuration;
+
+        specialinvoke $r0.<androidx.appcompat.app.ActionBar: void onConfigurationChanged(android.content.res.Configuration)>($r1);
+
+        return;
+    }
+
+    void onDestroy()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.Runnable $r1;
+        android.view.ViewGroup $r2;
+        androidx.appcompat.widget.DecorToolbar $r3;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r2 = interfaceinvoke $r3.<androidx.appcompat.widget.DecorToolbar: android.view.ViewGroup getViewGroup()>();
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: java.lang.Runnable mMenuInvalidator>;
+
+        virtualinvoke $r2.<android.view.ViewGroup: boolean removeCallbacks(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public boolean onKeyShortcut(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0, $i1;
+        android.view.KeyEvent $r1;
+        android.view.Menu $r2;
+        android.view.KeyCharacterMap $r3;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $r2 = specialinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: android.view.Menu getMenu()>();
+
+        if $r2 == null goto label5;
+
+        if $r1 == null goto label1;
+
+        $i1 = virtualinvoke $r1.<android.view.KeyEvent: int getDeviceId()>();
+
+        goto label2;
+
+     label1:
+        $i1 = -1;
+
+     label2:
+        $r3 = staticinvoke <android.view.KeyCharacterMap: android.view.KeyCharacterMap load(int)>($i1);
+
+        $i1 = virtualinvoke $r3.<android.view.KeyCharacterMap: int getKeyboardType()>();
+
+        $z0 = 1;
+
+        if $i1 == 1 goto label3;
+
+        goto label4;
+
+     label3:
+        $z0 = 0;
+
+     label4:
+        interfaceinvoke $r2.<android.view.Menu: void setQwertyMode(boolean)>($z0);
+
+        $z0 = interfaceinvoke $r2.<android.view.Menu: boolean performShortcut(int,android.view.KeyEvent,int)>($i0, $r1, 0);
+
+        return $z0;
+
+     label5:
+        return 0;
+    }
+
+    public boolean onMenuKeyEvent(android.view.KeyEvent)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.view.KeyEvent $r1;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.view.KeyEvent;
+
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getAction()>();
+
+        if $i0 != 1 goto label1;
+
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: boolean openOptionsMenu()>();
+
+     label1:
+        return 1;
+    }
+
+    public boolean openOptionsMenu()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $z0 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: boolean showOverflowMenu()>();
+
+        return $z0;
+    }
+
+    void populateOptionsMenu()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.view.Menu $r1;
+        boolean $z0;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+        android.view.Window$Callback $r3;
+        java.lang.Throwable $r4;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = specialinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: android.view.Menu getMenu()>();
+
+        $z0 = $r1 instanceof androidx.appcompat.view.menu.MenuBuilder;
+
+        if $z0 == 0 goto label01;
+
+        $r2 = (androidx.appcompat.view.menu.MenuBuilder) $r1;
+
+        goto label02;
+
+     label01:
+        $r2 = null;
+
+     label02:
+        if $r2 == null goto label03;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+     label03:
+        interfaceinvoke $r1.<android.view.Menu: void clear()>();
+
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        $z0 = interfaceinvoke $r3.<android.view.Window$Callback: boolean onCreatePanelMenu(int,android.view.Menu)>(0, $r1);
+
+     label04:
+        if $z0 == 0 goto label07;
+
+     label05:
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        $z0 = interfaceinvoke $r3.<android.view.Window$Callback: boolean onPreparePanel(int,android.view.View,android.view.Menu)>(0, null, $r1);
+
+     label06:
+        if $z0 != 0 goto label08;
+
+     label07:
+        interfaceinvoke $r1.<android.view.Menu: void clear()>();
+
+     label08:
+        if $r2 == null goto label11;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+        return;
+
+     label09:
+        $r4 := @caughtexception;
+
+        if $r2 == null goto label10;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+     label10:
+        throw $r4;
+
+     label11:
+        return;
+
+        catch java.lang.Throwable from label03 to label04 with label09;
+        catch java.lang.Throwable from label05 to label06 with label09;
+        catch java.lang.Throwable from label07 to label08 with label09;
+    }
+
+    public void removeAllTabs()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r1;
+    }
+
+    public void removeOnMenuVisibilityListener(androidx.appcompat.app.ActionBar$OnMenuVisibilityListener)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$OnMenuVisibilityListener $r1;
+        java.util.ArrayList $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$OnMenuVisibilityListener;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: java.util.ArrayList mMenuVisibilityListeners>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean remove(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void removeTab(androidx.appcompat.app.ActionBar$Tab)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$Tab $r1;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$Tab;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r2;
+    }
+
+    public void removeTabAt(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        java.lang.UnsupportedOperationException $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r1;
+    }
+
+    public boolean requestFocus()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        android.view.ViewGroup $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.view.ViewGroup getViewGroup()>();
+
+        if $r2 == null goto label1;
+
+        $z0 = virtualinvoke $r2.<android.view.ViewGroup: boolean hasFocus()>();
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke $r2.<android.view.ViewGroup: boolean requestFocus()>();
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void selectTab(androidx.appcompat.app.ActionBar$Tab)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.app.ActionBar$Tab $r1;
+        java.lang.UnsupportedOperationException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: androidx.appcompat.app.ActionBar$Tab;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Tabs are not supported in toolbar action bars");
+
+        throw $r2;
+    }
+
+    public void setBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+    }
+
+    public void setCustomView(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        android.content.Context $r2;
+        android.view.LayoutInflater $r3;
+        android.view.ViewGroup $r4;
+        android.view.View $r5;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.content.Context getContext()>();
+
+        $r3 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($r2);
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r4 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.view.ViewGroup getViewGroup()>();
+
+        $r5 = virtualinvoke $r3.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($i0, $r4, 0);
+
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setCustomView(android.view.View)>($r5);
+
+        return;
+    }
+
+    public void setCustomView(android.view.View)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.view.View $r1;
+        androidx.appcompat.app.ActionBar$LayoutParams $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = new androidx.appcompat.app.ActionBar$LayoutParams;
+
+        specialinvoke $r2.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setCustomView(android.view.View,androidx.appcompat.app.ActionBar$LayoutParams)>($r1, $r2);
+
+        return;
+    }
+
+    public void setCustomView(android.view.View, androidx.appcompat.app.ActionBar$LayoutParams)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.view.View $r1;
+        androidx.appcompat.app.ActionBar$LayoutParams $r2;
+        androidx.appcompat.widget.DecorToolbar $r3;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: androidx.appcompat.app.ActionBar$LayoutParams;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+     label1:
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r3.<androidx.appcompat.widget.DecorToolbar: void setCustomView(android.view.View)>($r1);
+
+        return;
+    }
+
+    public void setDefaultDisplayHomeAsUpEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void setDisplayHomeAsUpEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        byte $b0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 4;
+
+        goto label2;
+
+     label1:
+        $b0 = 0;
+
+     label2:
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setDisplayOptions(int,int)>($b0, 4);
+
+        return;
+    }
+
+    public void setDisplayOptions(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setDisplayOptions(int,int)>($i0, -1);
+
+        return;
+    }
+
+    public void setDisplayOptions(int, int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0, $i1, $i2;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $i2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: int getDisplayOptions()>();
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $i0 = $i0 & $i1;
+
+        $i1 = $i1 ^ -1;
+
+        $i1 = $i1 & $i2;
+
+        $i0 = $i0 | $i1;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setDisplayOptions(int)>($i0);
+
+        return;
+    }
+
+    public void setDisplayShowCustomEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        byte $b0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 16;
+
+        goto label2;
+
+     label1:
+        $b0 = 0;
+
+     label2:
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setDisplayOptions(int,int)>($b0, 16);
+
+        return;
+    }
+
+    public void setDisplayShowHomeEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        byte $b0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 2;
+
+        goto label2;
+
+     label1:
+        $b0 = 0;
+
+     label2:
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setDisplayOptions(int,int)>($b0, 2);
+
+        return;
+    }
+
+    public void setDisplayShowTitleEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        byte $b0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 8;
+
+        goto label2;
+
+     label1:
+        $b0 = 0;
+
+     label2:
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setDisplayOptions(int,int)>($b0, 8);
+
+        return;
+    }
+
+    public void setDisplayUseLogoEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+        int i0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        i0 = (int) $z0;
+
+        virtualinvoke $r0.<androidx.appcompat.app.ToolbarActionBar: void setDisplayOptions(int,int)>(i0, 1);
+
+        return;
+    }
+
+    public void setElevation(float)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        float $f0;
+        android.view.ViewGroup $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $f0 := @parameter0: float;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: android.view.ViewGroup getViewGroup()>();
+
+        staticinvoke <androidx.core.view.ViewCompat: void setElevation(android.view.View,float)>($r1, $f0);
+
+        return;
+    }
+
+    public void setHomeActionContentDescription(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setNavigationContentDescription(int)>($i0);
+
+        return;
+    }
+
+    public void setHomeActionContentDescription(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setNavigationContentDescription(java.lang.CharSequence)>($r1);
+
+        return;
+    }
+
+    public void setHomeAsUpIndicator(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setNavigationIcon(int)>($i0);
+
+        return;
+    }
+
+    public void setHomeAsUpIndicator(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setNavigationIcon(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+    }
+
+    public void setHomeButtonEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void setIcon(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setIcon(int)>($i0);
+
+        return;
+    }
+
+    public void setIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setIcon(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+    }
+
+    public void setListNavigationCallbacks(android.widget.SpinnerAdapter, androidx.appcompat.app.ActionBar$OnNavigationListener)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.widget.SpinnerAdapter $r1;
+        androidx.appcompat.app.ActionBar$OnNavigationListener $r2;
+        androidx.appcompat.widget.DecorToolbar $r3;
+        androidx.appcompat.app.NavItemSelectedListener $r4;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.widget.SpinnerAdapter;
+
+        $r2 := @parameter1: androidx.appcompat.app.ActionBar$OnNavigationListener;
+
+        $r3 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $r4 = new androidx.appcompat.app.NavItemSelectedListener;
+
+        specialinvoke $r4.<androidx.appcompat.app.NavItemSelectedListener: void <init>(androidx.appcompat.app.ActionBar$OnNavigationListener)>($r2);
+
+        interfaceinvoke $r3.<androidx.appcompat.widget.DecorToolbar: void setDropdownParams(android.widget.SpinnerAdapter,android.widget.AdapterView$OnItemSelectedListener)>($r1, $r4);
+
+        return;
+    }
+
+    public void setLogo(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setLogo(int)>($i0);
+
+        return;
+    }
+
+    public void setLogo(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setLogo(android.graphics.drawable.Drawable)>($r1);
+
+        return;
+    }
+
+    public void setNavigationMode(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        java.lang.IllegalArgumentException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        if $i0 == 2 goto label1;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setNavigationMode(int)>($i0);
+
+        return;
+
+     label1:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Tabs not supported in this configuration");
+
+        throw $r2;
+    }
+
+    public void setSelectedNavigationItem(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0, $i1;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        java.lang.IllegalStateException $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $i1 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: int getNavigationMode()>();
+
+        if $i1 != 1 goto label1;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setDropdownSelectedPosition(int)>($i0);
+
+        return;
+
+     label1:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("setSelectedNavigationIndex not valid for current navigation mode");
+
+        throw $r2;
+    }
+
+    public void setShowHideAnimationEnabled(boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void setSplitBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+
+    public void setStackedBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        android.graphics.drawable.Drawable $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+
+    public void setSubtitle(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        android.content.Context $r2;
+        java.lang.CharSequence $r3;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        if $i0 == 0 goto label1;
+
+        $r2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.content.Context getContext()>();
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.lang.CharSequence getText(int)>($i0);
+
+        goto label2;
+
+     label1:
+        $r3 = null;
+
+     label2:
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setSubtitle(java.lang.CharSequence)>($r3);
+
+        return;
+    }
+
+    public void setSubtitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setSubtitle(java.lang.CharSequence)>($r1);
+
+        return;
+    }
+
+    public void setTitle(int)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        int $i0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+        android.content.Context $r2;
+        java.lang.CharSequence $r3;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        if $i0 == 0 goto label1;
+
+        $r2 = interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: android.content.Context getContext()>();
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.lang.CharSequence getText(int)>($i0);
+
+        goto label2;
+
+     label1:
+        $r3 = null;
+
+     label2:
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setTitle(java.lang.CharSequence)>($r3);
+
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setTitle(java.lang.CharSequence)>($r1);
+
+        return;
+    }
+
+    public void setWindowTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.widget.DecorToolbar $r2;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorToolbar: void setWindowTitle(java.lang.CharSequence)>($r1);
+
+        return;
+    }
+
+    public void show()
+    {
+        androidx.appcompat.app.ToolbarActionBar $r0;
+        androidx.appcompat.widget.DecorToolbar $r1;
+
+        $r0 := @this: androidx.appcompat.app.ToolbarActionBar;
+
+        $r1 = $r0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorToolbar: void setVisibility(int)>(0);
+
+        return;
+    }
+}

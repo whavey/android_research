@@ -1,0 +1,5 @@
+public interface  androidx.viewpager.widget.ViewPager$OnAdapterChangeListener extends java.lang.Object
+{
+
+    public abstract void onAdapterChanged(androidx.viewpager.widget.ViewPager, androidx.viewpager.widget.PagerAdapter, androidx.viewpager.widget.PagerAdapter);
+}

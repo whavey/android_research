@@ -1,0 +1,118 @@
+public final class androidx.core.graphics.PathUtils extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.graphics.PathUtils $r0;
+
+        $r0 := @this: androidx.core.graphics.PathUtils;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.util.Collection flatten(android.graphics.Path)
+    {
+        android.graphics.Path $r0;
+        java.util.Collection $r1;
+
+        $r0 := @parameter0: android.graphics.Path;
+
+        $r1 = staticinvoke <androidx.core.graphics.PathUtils: java.util.Collection flatten(android.graphics.Path,float)>($r0, 0.5F);
+
+        return $r1;
+    }
+
+    public static java.util.Collection flatten(android.graphics.Path, float)
+    {
+        android.graphics.Path $r0;
+        float $f0, $f1, $f2, $f3, $f4, $f5;
+        java.util.ArrayList $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.graphics.PointF $r2, $r3;
+        float[] $r4;
+        byte $b5;
+        androidx.core.graphics.PathSegment $r5;
+
+        $r0 := @parameter0: android.graphics.Path;
+
+        $f0 := @parameter1: float;
+
+        $r4 = virtualinvoke $r0.<android.graphics.Path: float[] approximate(float)>($f0);
+
+        $i1 = lengthof $r4;
+
+        $i1 = $i1 / 3;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>(int)>($i1);
+
+        $i2 = 1;
+
+     label1:
+        if $i2 >= $i1 goto label4;
+
+        $i0 = $i2 * 3;
+
+        $i3 = $i2 + -1;
+
+        $i3 = $i3 * 3;
+
+        $f0 = $r4[$i0];
+
+        $i4 = $i0 + 1;
+
+        $f2 = $r4[$i4];
+
+        $i0 = $i0 + 2;
+
+        $f3 = $r4[$i0];
+
+        $f1 = $r4[$i3];
+
+        $i0 = $i3 + 1;
+
+        $f4 = $r4[$i0];
+
+        $i3 = $i3 + 2;
+
+        $f5 = $r4[$i3];
+
+        $b5 = $f0 cmpl $f1;
+
+        if $b5 == 0 goto label3;
+
+        $b5 = $f2 cmpl $f4;
+
+        if $b5 != 0 goto label2;
+
+        $b5 = $f3 cmpl $f5;
+
+        if $b5 == 0 goto label3;
+
+     label2:
+        $r5 = new androidx.core.graphics.PathSegment;
+
+        $r2 = new android.graphics.PointF;
+
+        specialinvoke $r2.<android.graphics.PointF: void <init>(float,float)>($f4, $f5);
+
+        $r3 = new android.graphics.PointF;
+
+        specialinvoke $r3.<android.graphics.PointF: void <init>(float,float)>($f2, $f3);
+
+        specialinvoke $r5.<androidx.core.graphics.PathSegment: void <init>(android.graphics.PointF,float,android.graphics.PointF,float)>($r2, $f1, $r3, $f0);
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+     label3:
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label4:
+        return $r1;
+    }
+}

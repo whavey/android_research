@@ -1,0 +1,141 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl extends java.lang.Object implements androidx.appcompat.app.ActionBarDrawerToggle$Delegate
+{
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public android.content.Context getActionBarThemedContext()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl $r0;
+        android.content.Context $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r1 = virtualinvoke $r2.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context getActionBarThemedContext()>();
+
+        return $r1;
+    }
+
+    public android.graphics.drawable.Drawable getThemeUpIndicator()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl $r0;
+        android.content.Context $r1;
+        int[] $r2;
+        int $i0;
+        androidx.appcompat.widget.TintTypedArray $r3;
+        android.graphics.drawable.Drawable $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl: android.content.Context getActionBarThemedContext()>();
+
+        $r2 = newarray (int)[1];
+
+        $i0 = <androidx.appcompat.R$attr: int homeAsUpIndicator>;
+
+        $r2[0] = $i0;
+
+        $r3 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[])>($r1, null, $r2);
+
+        $r4 = virtualinvoke $r3.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>(0);
+
+        virtualinvoke $r3.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        return $r4;
+    }
+
+    public boolean isNavigationVisible()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+        androidx.appcompat.app.ActionBar $r2;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r2 = virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r2 == null goto label1;
+
+        $i0 = virtualinvoke $r2.<androidx.appcompat.app.ActionBar: int getDisplayOptions()>();
+
+        $i0 = $i0 & 4;
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setActionBarDescription(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl $r0;
+        int $i0;
+        androidx.appcompat.app.ActionBar $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl;
+
+        $i0 := @parameter0: int;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r1 = virtualinvoke $r2.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.app.ActionBar: void setHomeActionContentDescription(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public void setActionBarUpIndicator(android.graphics.drawable.Drawable, int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl $r0;
+        android.graphics.drawable.Drawable $r1;
+        int $i0;
+        androidx.appcompat.app.ActionBar $r2;
+        androidx.appcompat.app.AppCompatDelegateImpl $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter1: int;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r2 = virtualinvoke $r3.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.appcompat.app.ActionBar: void setHomeAsUpIndicator(android.graphics.drawable.Drawable)>($r1);
+
+        virtualinvoke $r2.<androidx.appcompat.app.ActionBar: void setHomeActionContentDescription(int)>($i0);
+
+     label1:
+        return;
+    }
+}

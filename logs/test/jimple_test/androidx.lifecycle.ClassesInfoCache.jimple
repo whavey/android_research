@@ -1,0 +1,484 @@
+class androidx.lifecycle.ClassesInfoCache extends java.lang.Object
+{
+    private static final int CALL_TYPE_NO_ARG;
+    private static final int CALL_TYPE_PROVIDER;
+    private static final int CALL_TYPE_PROVIDER_WITH_EVENT;
+    static androidx.lifecycle.ClassesInfoCache sInstance;
+    private final java.util.Map mCallbackMap;
+    private final java.util.Map mHasLifecycleMethods;
+
+    static void <clinit>()
+    {
+        androidx.lifecycle.ClassesInfoCache $r0;
+
+        <androidx.lifecycle.ClassesInfoCache: int CALL_TYPE_PROVIDER_WITH_EVENT> = 2;
+
+        <androidx.lifecycle.ClassesInfoCache: int CALL_TYPE_PROVIDER> = 1;
+
+        <androidx.lifecycle.ClassesInfoCache: int CALL_TYPE_NO_ARG> = 0;
+
+        $r0 = new androidx.lifecycle.ClassesInfoCache;
+
+        specialinvoke $r0.<androidx.lifecycle.ClassesInfoCache: void <init>()>();
+
+        <androidx.lifecycle.ClassesInfoCache: androidx.lifecycle.ClassesInfoCache sInstance> = $r0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        androidx.lifecycle.ClassesInfoCache $r0;
+        java.util.HashMap $r1;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mCallbackMap> = $r1;
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mHasLifecycleMethods> = $r1;
+
+        return;
+    }
+
+    private androidx.lifecycle.ClassesInfoCache$CallbackInfo createInfo(java.lang.Class, java.lang.reflect.Method[])
+    {
+        androidx.lifecycle.ClassesInfoCache $r0;
+        java.lang.Class $r1, $r4;
+        java.lang.reflect.Method[] $r2;
+        java.util.HashMap $r3;
+        androidx.lifecycle.ClassesInfoCache$CallbackInfo $r5;
+        java.util.Map $r6;
+        java.lang.Class[] $r7;
+        int $i0, $i1, $i3;
+        java.util.Set $r8;
+        java.util.Iterator $r9;
+        boolean $z0, $z1;
+        java.lang.Object $r10;
+        java.util.Map$Entry $r11;
+        androidx.lifecycle.ClassesInfoCache$MethodReference $r12;
+        androidx.lifecycle.Lifecycle$Event $r13, $r18;
+        java.lang.reflect.Method $r14;
+        java.lang.'annotation'.Annotation $r15;
+        androidx.lifecycle.OnLifecycleEvent $r16;
+        byte $b2;
+        java.lang.IllegalArgumentException $r17;
+        java.lang.Boolean $r19;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.reflect.Method[];
+
+        $r4 = virtualinvoke $r1.<java.lang.Class: java.lang.Class getSuperclass()>();
+
+        $r3 = new java.util.HashMap;
+
+        specialinvoke $r3.<java.util.HashMap: void <init>()>();
+
+        if $r4 == null goto label01;
+
+        $r5 = virtualinvoke $r0.<androidx.lifecycle.ClassesInfoCache: androidx.lifecycle.ClassesInfoCache$CallbackInfo getInfo(java.lang.Class)>($r4);
+
+        if $r5 == null goto label01;
+
+        $r6 = $r5.<androidx.lifecycle.ClassesInfoCache$CallbackInfo: java.util.Map mHandlerToEvent>;
+
+        interfaceinvoke $r3.<java.util.Map: void putAll(java.util.Map)>($r6);
+
+     label01:
+        $r7 = virtualinvoke $r1.<java.lang.Class: java.lang.Class[] getInterfaces()>();
+
+        $i0 = lengthof $r7;
+
+        $i1 = 0;
+
+     label02:
+        if $i1 >= $i0 goto label05;
+
+        $r4 = $r7[$i1];
+
+        $r5 = virtualinvoke $r0.<androidx.lifecycle.ClassesInfoCache: androidx.lifecycle.ClassesInfoCache$CallbackInfo getInfo(java.lang.Class)>($r4);
+
+        $r6 = $r5.<androidx.lifecycle.ClassesInfoCache$CallbackInfo: java.util.Map mHandlerToEvent>;
+
+        $r8 = interfaceinvoke $r6.<java.util.Map: java.util.Set entrySet()>();
+
+        $r9 = interfaceinvoke $r8.<java.util.Set: java.util.Iterator iterator()>();
+
+     label03:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label04;
+
+        $r10 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        $r11 = (java.util.Map$Entry) $r10;
+
+        $r10 = interfaceinvoke $r11.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r12 = (androidx.lifecycle.ClassesInfoCache$MethodReference) $r10;
+
+        $r10 = interfaceinvoke $r11.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r13 = (androidx.lifecycle.Lifecycle$Event) $r10;
+
+        specialinvoke $r0.<androidx.lifecycle.ClassesInfoCache: void verifyAndPutHandler(java.util.Map,androidx.lifecycle.ClassesInfoCache$MethodReference,androidx.lifecycle.Lifecycle$Event,java.lang.Class)>($r3, $r12, $r13, $r1);
+
+        goto label03;
+
+     label04:
+        $i1 = $i1 + 1;
+
+        goto label02;
+
+     label05:
+        if $r2 == null goto label06;
+
+        goto label07;
+
+     label06:
+        $r2 = specialinvoke $r0.<androidx.lifecycle.ClassesInfoCache: java.lang.reflect.Method[] getDeclaredMethods(java.lang.Class)>($r1);
+
+     label07:
+        $i0 = lengthof $r2;
+
+        $z0 = 0;
+
+        $i1 = 0;
+
+     label08:
+        if $i1 >= $i0 goto label17;
+
+        $r14 = $r2[$i1];
+
+        $r15 = virtualinvoke $r14.<java.lang.reflect.Method: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Landroidx/lifecycle/OnLifecycleEvent;");
+
+        $r16 = (androidx.lifecycle.OnLifecycleEvent) $r15;
+
+        if $r16 != null goto label09;
+
+        goto label15;
+
+     label09:
+        $z0 = 1;
+
+        $r7 = virtualinvoke $r14.<java.lang.reflect.Method: java.lang.Class[] getParameterTypes()>();
+
+        $b2 = 0;
+
+        $i3 = lengthof $r7;
+
+        if $i3 <= 0 goto label11;
+
+        $b2 = 1;
+
+        $r4 = $r7[0];
+
+        $z1 = virtualinvoke $r4.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(class "Landroidx/lifecycle/LifecycleOwner;");
+
+        if $z1 == 0 goto label10;
+
+        goto label11;
+
+     label10:
+        $r17 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r17.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("invalid parameter type. Must be one and instanceof LifecycleOwner");
+
+        throw $r17;
+
+     label11:
+        $r13 = interfaceinvoke $r16.<androidx.lifecycle.OnLifecycleEvent: androidx.lifecycle.Lifecycle$Event value()>();
+
+        $i3 = lengthof $r7;
+
+        if $i3 <= 1 goto label14;
+
+        $b2 = 2;
+
+        $r4 = $r7[1];
+
+        $z1 = virtualinvoke $r4.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(class "Landroidx/lifecycle/Lifecycle$Event;");
+
+        if $z1 == 0 goto label13;
+
+        $r18 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_ANY>;
+
+        if $r13 != $r18 goto label12;
+
+        goto label14;
+
+     label12:
+        $r17 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r17.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Second arg is supported only for ON_ANY value");
+
+        throw $r17;
+
+     label13:
+        $r17 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r17.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("invalid parameter type. second arg must be an event");
+
+        throw $r17;
+
+     label14:
+        $i3 = lengthof $r7;
+
+        if $i3 > 2 goto label16;
+
+        $r12 = new androidx.lifecycle.ClassesInfoCache$MethodReference;
+
+        specialinvoke $r12.<androidx.lifecycle.ClassesInfoCache$MethodReference: void <init>(int,java.lang.reflect.Method)>($b2, $r14);
+
+        specialinvoke $r0.<androidx.lifecycle.ClassesInfoCache: void verifyAndPutHandler(java.util.Map,androidx.lifecycle.ClassesInfoCache$MethodReference,androidx.lifecycle.Lifecycle$Event,java.lang.Class)>($r3, $r12, $r13, $r1);
+
+     label15:
+        $i1 = $i1 + 1;
+
+        goto label08;
+
+     label16:
+        $r17 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r17.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("cannot have more than 2 params");
+
+        throw $r17;
+
+     label17:
+        $r5 = new androidx.lifecycle.ClassesInfoCache$CallbackInfo;
+
+        specialinvoke $r5.<androidx.lifecycle.ClassesInfoCache$CallbackInfo: void <init>(java.util.Map)>($r3);
+
+        $r6 = $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mCallbackMap>;
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r5);
+
+        $r6 = $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mHasLifecycleMethods>;
+
+        $r19 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r19);
+
+        return $r5;
+    }
+
+    private java.lang.reflect.Method[] getDeclaredMethods(java.lang.Class)
+    {
+        androidx.lifecycle.ClassesInfoCache $r0;
+        java.lang.Class $r1;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.reflect.Method[] $r3;
+        java.lang.NoClassDefFoundError $r4;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache;
+
+        $r1 := @parameter0: java.lang.Class;
+
+     label1:
+        $r3 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Method[] getDeclaredMethods()>();
+
+     label2:
+        return $r3;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String,java.lang.Throwable)>("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", $r4);
+
+        throw $r2;
+
+        catch java.lang.NoClassDefFoundError from label1 to label2 with label3;
+    }
+
+    private void verifyAndPutHandler(java.util.Map, androidx.lifecycle.ClassesInfoCache$MethodReference, androidx.lifecycle.Lifecycle$Event, java.lang.Class)
+    {
+        androidx.lifecycle.ClassesInfoCache $r0;
+        java.util.Map $r1;
+        androidx.lifecycle.ClassesInfoCache$MethodReference $r2;
+        androidx.lifecycle.Lifecycle$Event $r3, $r8;
+        java.lang.Class $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.IllegalArgumentException $r6;
+        java.lang.Object $r7;
+        java.lang.StringBuilder $r9;
+        java.lang.String $r10;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache;
+
+        $r1 := @parameter0: java.util.Map;
+
+        $r2 := @parameter1: androidx.lifecycle.ClassesInfoCache$MethodReference;
+
+        $r3 := @parameter2: androidx.lifecycle.Lifecycle$Event;
+
+        $r4 := @parameter3: java.lang.Class;
+
+        $r7 = interfaceinvoke $r1.<java.util.Map: java.lang.Object get(java.lang.Object)>($r2);
+
+        $r8 = (androidx.lifecycle.Lifecycle$Event) $r7;
+
+        if $r8 == null goto label2;
+
+        if $r3 != $r8 goto label1;
+
+        goto label2;
+
+     label1:
+        $r5 = $r2.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Method ");
+
+        $r10 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" in ");
+
+        $r10 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" already declared with different @OnLifecycleEvent value: previous");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" value ");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", new value ");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r6;
+
+     label2:
+        if $r8 != null goto label3;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, $r3);
+
+     label3:
+        return;
+    }
+
+    androidx.lifecycle.ClassesInfoCache$CallbackInfo getInfo(java.lang.Class)
+    {
+        androidx.lifecycle.ClassesInfoCache $r0;
+        java.lang.Class $r1;
+        java.util.Map $r2;
+        java.lang.Object $r3;
+        androidx.lifecycle.ClassesInfoCache$CallbackInfo $r4;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 = $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mCallbackMap>;
+
+        $r3 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r4 = (androidx.lifecycle.ClassesInfoCache$CallbackInfo) $r3;
+
+        if $r4 == null goto label1;
+
+        return $r4;
+
+     label1:
+        $r4 = specialinvoke $r0.<androidx.lifecycle.ClassesInfoCache: androidx.lifecycle.ClassesInfoCache$CallbackInfo createInfo(java.lang.Class,java.lang.reflect.Method[])>($r1, null);
+
+        return $r4;
+    }
+
+    boolean hasLifecycleMethods(java.lang.Class)
+    {
+        androidx.lifecycle.ClassesInfoCache $r0;
+        java.lang.Class $r1;
+        java.lang.reflect.Method $r2;
+        java.util.Map $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        java.lang.Boolean $r5;
+        java.lang.reflect.Method[] $r6;
+        int $i0, $i1;
+        java.lang.'annotation'.Annotation $r7;
+        androidx.lifecycle.OnLifecycleEvent $r8;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r3 = $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mHasLifecycleMethods>;
+
+        $z0 = interfaceinvoke $r3.<java.util.Map: boolean containsKey(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r3 = $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mHasLifecycleMethods>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r5 = (java.lang.Boolean) $r4;
+
+        $z0 = virtualinvoke $r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        return $z0;
+
+     label1:
+        $r6 = specialinvoke $r0.<androidx.lifecycle.ClassesInfoCache: java.lang.reflect.Method[] getDeclaredMethods(java.lang.Class)>($r1);
+
+        $i0 = lengthof $r6;
+
+        $i1 = 0;
+
+     label2:
+        if $i1 >= $i0 goto label4;
+
+        $r2 = $r6[$i1];
+
+        $r7 = virtualinvoke $r2.<java.lang.reflect.Method: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Landroidx/lifecycle/OnLifecycleEvent;");
+
+        $r8 = (androidx.lifecycle.OnLifecycleEvent) $r7;
+
+        if $r8 == null goto label3;
+
+        specialinvoke $r0.<androidx.lifecycle.ClassesInfoCache: androidx.lifecycle.ClassesInfoCache$CallbackInfo createInfo(java.lang.Class,java.lang.reflect.Method[])>($r1, $r6);
+
+        return 1;
+
+     label3:
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label4:
+        $r3 = $r0.<androidx.lifecycle.ClassesInfoCache: java.util.Map mHasLifecycleMethods>;
+
+        $r5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r5);
+
+        return 0;
+    }
+}

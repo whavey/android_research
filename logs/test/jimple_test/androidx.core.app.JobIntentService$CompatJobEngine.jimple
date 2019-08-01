@@ -1,0 +1,7 @@
+interface  androidx.core.app.JobIntentService$CompatJobEngine extends java.lang.Object
+{
+
+    public abstract android.os.IBinder compatGetBinder();
+
+    public abstract androidx.core.app.JobIntentService$GenericWorkItem dequeueWork();
+}

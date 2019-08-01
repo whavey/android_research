@@ -1,0 +1,1426 @@
+public final class androidx.core.widget.TextViewCompat extends java.lang.Object
+{
+    public static final int AUTO_SIZE_TEXT_TYPE_NONE;
+    public static final int AUTO_SIZE_TEXT_TYPE_UNIFORM;
+    private static final int LINES;
+    private static final java.lang.String LOG_TAG;
+    private static java.lang.reflect.Field sMaxModeField;
+    private static boolean sMaxModeFieldFetched;
+    private static java.lang.reflect.Field sMaximumField;
+    private static boolean sMaximumFieldFetched;
+    private static java.lang.reflect.Field sMinModeField;
+    private static boolean sMinModeFieldFetched;
+    private static java.lang.reflect.Field sMinimumField;
+    private static boolean sMinimumFieldFetched;
+
+    private void <init>()
+    {
+        androidx.core.widget.TextViewCompat $r0;
+
+        $r0 := @this: androidx.core.widget.TextViewCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static int getAutoSizeMaxTextSize(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 27 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getAutoSizeMaxTextSize()>();
+
+        return $i0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        $i0 = interfaceinvoke $r1.<androidx.core.widget.AutoSizeableTextView: int getAutoSizeMaxTextSize()>();
+
+        return $i0;
+
+     label2:
+        return -1;
+    }
+
+    public static int getAutoSizeMinTextSize(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 27 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getAutoSizeMinTextSize()>();
+
+        return $i0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        $i0 = interfaceinvoke $r1.<androidx.core.widget.AutoSizeableTextView: int getAutoSizeMinTextSize()>();
+
+        return $i0;
+
+     label2:
+        return -1;
+    }
+
+    public static int getAutoSizeStepGranularity(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 27 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getAutoSizeStepGranularity()>();
+
+        return $i0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        $i0 = interfaceinvoke $r1.<androidx.core.widget.AutoSizeableTextView: int getAutoSizeStepGranularity()>();
+
+        return $i0;
+
+     label2:
+        return -1;
+    }
+
+    public static int[] getAutoSizeTextAvailableSizes(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        int[] $r1;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r2;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 27 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.widget.TextView: int[] getAutoSizeTextAvailableSizes()>();
+
+        return $r1;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.widget.AutoSizeableTextView: int[] getAutoSizeTextAvailableSizes()>();
+
+        return $r1;
+
+     label2:
+        $r1 = newarray (int)[0];
+
+        return $r1;
+    }
+
+    public static int getAutoSizeTextType(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 27 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getAutoSizeTextType()>();
+
+        return $i0;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        $i0 = interfaceinvoke $r1.<androidx.core.widget.AutoSizeableTextView: int getAutoSizeTextType()>();
+
+        return $i0;
+
+     label2:
+        return 0;
+    }
+
+    public static android.graphics.drawable.Drawable[] getCompoundDrawablesRelative(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        android.graphics.drawable.Drawable $r1, $r2;
+        int $i0;
+        android.graphics.drawable.Drawable[] $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label1;
+
+        $r3 = virtualinvoke $r0.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawablesRelative()>();
+
+        return $r3;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label4;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getLayoutDirection()>();
+
+        $z0 = 1;
+
+        if $i0 != 1 goto label2;
+
+        goto label3;
+
+     label2:
+        $z0 = 0;
+
+     label3:
+        $r3 = virtualinvoke $r0.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawables()>();
+
+        if $z0 == 0 goto label5;
+
+        $r1 = $r3[2];
+
+        $r2 = $r3[0];
+
+        $r3[0] = $r1;
+
+        $r3[2] = $r2;
+
+        return $r3;
+
+     label4:
+        $r3 = virtualinvoke $r0.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawables()>();
+
+     label5:
+        return $r3;
+    }
+
+    public static int getFirstBaselineToTopHeight(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1;
+        android.text.TextPaint $r1;
+        android.graphics.Paint$FontMetricsInt $r2;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getPaddingTop()>();
+
+        $r1 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $r2 = virtualinvoke $r1.<android.text.TextPaint: android.graphics.Paint$FontMetricsInt getFontMetricsInt()>();
+
+        $i1 = $r2.<android.graphics.Paint$FontMetricsInt: int top>;
+
+        $i0 = $i0 - $i1;
+
+        return $i0;
+    }
+
+    public static int getLastBaselineToBottomHeight(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1;
+        android.text.TextPaint $r1;
+        android.graphics.Paint$FontMetricsInt $r2;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getPaddingBottom()>();
+
+        $r1 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $r2 = virtualinvoke $r1.<android.text.TextPaint: android.graphics.Paint$FontMetricsInt getFontMetricsInt()>();
+
+        $i1 = $r2.<android.graphics.Paint$FontMetricsInt: int bottom>;
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+    }
+
+    public static int getMaxLines(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        boolean $z0;
+        java.lang.reflect.Field $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getMaxLines()>();
+
+        return $i0;
+
+     label1:
+        $z0 = <androidx.core.widget.TextViewCompat: boolean sMaxModeFieldFetched>;
+
+        if $z0 != 0 goto label2;
+
+        $r1 = staticinvoke <androidx.core.widget.TextViewCompat: java.lang.reflect.Field retrieveField(java.lang.String)>("mMaxMode");
+
+        <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMaxModeField> = $r1;
+
+        <androidx.core.widget.TextViewCompat: boolean sMaxModeFieldFetched> = 1;
+
+     label2:
+        $r1 = <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMaxModeField>;
+
+        if $r1 == null goto label4;
+
+        $i0 = staticinvoke <androidx.core.widget.TextViewCompat: int retrieveIntFromField(java.lang.reflect.Field,android.widget.TextView)>($r1, $r0);
+
+        if $i0 != 1 goto label4;
+
+        $z0 = <androidx.core.widget.TextViewCompat: boolean sMaximumFieldFetched>;
+
+        if $z0 != 0 goto label3;
+
+        $r1 = staticinvoke <androidx.core.widget.TextViewCompat: java.lang.reflect.Field retrieveField(java.lang.String)>("mMaximum");
+
+        <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMaximumField> = $r1;
+
+        <androidx.core.widget.TextViewCompat: boolean sMaximumFieldFetched> = 1;
+
+     label3:
+        $r1 = <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMaximumField>;
+
+        if $r1 == null goto label4;
+
+        $i0 = staticinvoke <androidx.core.widget.TextViewCompat: int retrieveIntFromField(java.lang.reflect.Field,android.widget.TextView)>($r1, $r0);
+
+        return $i0;
+
+     label4:
+        return -1;
+    }
+
+    public static int getMinLines(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        boolean $z0;
+        java.lang.reflect.Field $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 16 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getMinLines()>();
+
+        return $i0;
+
+     label1:
+        $z0 = <androidx.core.widget.TextViewCompat: boolean sMinModeFieldFetched>;
+
+        if $z0 != 0 goto label2;
+
+        $r1 = staticinvoke <androidx.core.widget.TextViewCompat: java.lang.reflect.Field retrieveField(java.lang.String)>("mMinMode");
+
+        <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMinModeField> = $r1;
+
+        <androidx.core.widget.TextViewCompat: boolean sMinModeFieldFetched> = 1;
+
+     label2:
+        $r1 = <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMinModeField>;
+
+        if $r1 == null goto label4;
+
+        $i0 = staticinvoke <androidx.core.widget.TextViewCompat: int retrieveIntFromField(java.lang.reflect.Field,android.widget.TextView)>($r1, $r0);
+
+        if $i0 != 1 goto label4;
+
+        $z0 = <androidx.core.widget.TextViewCompat: boolean sMinimumFieldFetched>;
+
+        if $z0 != 0 goto label3;
+
+        $r1 = staticinvoke <androidx.core.widget.TextViewCompat: java.lang.reflect.Field retrieveField(java.lang.String)>("mMinimum");
+
+        <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMinimumField> = $r1;
+
+        <androidx.core.widget.TextViewCompat: boolean sMinimumFieldFetched> = 1;
+
+     label3:
+        $r1 = <androidx.core.widget.TextViewCompat: java.lang.reflect.Field sMinimumField>;
+
+        if $r1 == null goto label4;
+
+        $i0 = staticinvoke <androidx.core.widget.TextViewCompat: int retrieveIntFromField(java.lang.reflect.Field,android.widget.TextView)>($r1, $r0);
+
+        return $i0;
+
+     label4:
+        return -1;
+    }
+
+    private static int getTextDirection(android.text.TextDirectionHeuristic)
+    {
+        android.text.TextDirectionHeuristic $r0, $r1;
+
+        $r0 := @parameter0: android.text.TextDirectionHeuristic;
+
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_RTL>;
+
+        if $r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_LTR>;
+
+        if $r0 != $r1 goto label2;
+
+        return 1;
+
+     label2:
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic ANYRTL_LTR>;
+
+        if $r0 != $r1 goto label3;
+
+        return 2;
+
+     label3:
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic LTR>;
+
+        if $r0 != $r1 goto label4;
+
+        return 3;
+
+     label4:
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic RTL>;
+
+        if $r0 != $r1 goto label5;
+
+        return 4;
+
+     label5:
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic LOCALE>;
+
+        if $r0 != $r1 goto label6;
+
+        return 5;
+
+     label6:
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_LTR>;
+
+        if $r0 != $r1 goto label7;
+
+        return 6;
+
+     label7:
+        $r1 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_RTL>;
+
+        if $r0 != $r1 goto label8;
+
+        return 7;
+
+     label8:
+        return 1;
+    }
+
+    private static android.text.TextDirectionHeuristic getTextDirectionHeuristic(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        android.text.method.TransformationMethod $r1;
+        boolean $z0;
+        int $i0;
+        java.util.Locale $r2;
+        android.icu.text.DecimalFormatSymbols $r3;
+        java.lang.String[] $r4;
+        java.lang.String $r5;
+        byte $b1;
+        android.text.TextDirectionHeuristic r6;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 = virtualinvoke $r0.<android.widget.TextView: android.text.method.TransformationMethod getTransformationMethod()>();
+
+        $z0 = $r1 instanceof android.text.method.PasswordTransformationMethod;
+
+        if $z0 == 0 goto label01;
+
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic LTR>;
+
+        return r6;
+
+     label01:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        $z0 = 0;
+
+        if $i0 < 28 goto label04;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getInputType()>();
+
+        $i0 = $i0 & 15;
+
+        if $i0 != 3 goto label04;
+
+        $r2 = virtualinvoke $r0.<android.widget.TextView: java.util.Locale getTextLocale()>();
+
+        $r3 = staticinvoke <android.icu.text.DecimalFormatSymbols: android.icu.text.DecimalFormatSymbols getInstance(java.util.Locale)>($r2);
+
+        $r4 = virtualinvoke $r3.<android.icu.text.DecimalFormatSymbols: java.lang.String[] getDigitStrings()>();
+
+        $r5 = $r4[0];
+
+        $i0 = virtualinvoke $r5.<java.lang.String: int codePointAt(int)>(0);
+
+        $b1 = staticinvoke <java.lang.Character: byte getDirectionality(int)>($i0);
+
+        if $b1 == 1 goto label03;
+
+        if $b1 != 2 goto label02;
+
+        goto label03;
+
+     label02:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic LTR>;
+
+        return r6;
+
+     label03:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic RTL>;
+
+        return r6;
+
+     label04:
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getLayoutDirection()>();
+
+        if $i0 != 1 goto label05;
+
+        $z0 = 1;
+
+     label05:
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getTextDirection()>();
+
+        lookupswitch($i0)
+        {
+            case 2: goto label12;
+            case 3: goto label11;
+            case 4: goto label10;
+            case 5: goto label09;
+            case 6: goto label08;
+            case 7: goto label07;
+            default: goto label06;
+        };
+
+     label06:
+        if $z0 == 0 goto label13;
+
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_RTL>;
+
+        return r6;
+
+     label07:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_RTL>;
+
+        return r6;
+
+     label08:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_LTR>;
+
+        return r6;
+
+     label09:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic LOCALE>;
+
+        return r6;
+
+     label10:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic RTL>;
+
+        return r6;
+
+     label11:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic LTR>;
+
+        return r6;
+
+     label12:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic ANYRTL_LTR>;
+
+        return r6;
+
+     label13:
+        r6 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_LTR>;
+
+        return r6;
+    }
+
+    public static androidx.core.text.PrecomputedTextCompat$Params getTextMetricsParams(android.widget.TextView)
+    {
+        android.widget.TextView $r0;
+        int $i0;
+        androidx.core.text.PrecomputedTextCompat$Params $r1;
+        android.text.PrecomputedText$Params $r2;
+        androidx.core.text.PrecomputedTextCompat$Params$Builder $r3;
+        android.text.TextPaint $r4, $r5;
+        android.text.TextDirectionHeuristic $r6;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        $r1 = new androidx.core.text.PrecomputedTextCompat$Params;
+
+        $r2 = virtualinvoke $r0.<android.widget.TextView: android.text.PrecomputedText$Params getTextMetricsParams()>();
+
+        specialinvoke $r1.<androidx.core.text.PrecomputedTextCompat$Params: void <init>(android.text.PrecomputedText$Params)>($r2);
+
+        return $r1;
+
+     label1:
+        $r3 = new androidx.core.text.PrecomputedTextCompat$Params$Builder;
+
+        $r4 = new android.text.TextPaint;
+
+        $r5 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        specialinvoke $r4.<android.text.TextPaint: void <init>(android.graphics.Paint)>($r5);
+
+        specialinvoke $r3.<androidx.core.text.PrecomputedTextCompat$Params$Builder: void <init>(android.text.TextPaint)>($r4);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label2;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getBreakStrategy()>();
+
+        virtualinvoke $r3.<androidx.core.text.PrecomputedTextCompat$Params$Builder: androidx.core.text.PrecomputedTextCompat$Params$Builder setBreakStrategy(int)>($i0);
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getHyphenationFrequency()>();
+
+        virtualinvoke $r3.<androidx.core.text.PrecomputedTextCompat$Params$Builder: androidx.core.text.PrecomputedTextCompat$Params$Builder setHyphenationFrequency(int)>($i0);
+
+     label2:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label3;
+
+        $r6 = staticinvoke <androidx.core.widget.TextViewCompat: android.text.TextDirectionHeuristic getTextDirectionHeuristic(android.widget.TextView)>($r0);
+
+        virtualinvoke $r3.<androidx.core.text.PrecomputedTextCompat$Params$Builder: androidx.core.text.PrecomputedTextCompat$Params$Builder setTextDirection(android.text.TextDirectionHeuristic)>($r6);
+
+     label3:
+        $r1 = virtualinvoke $r3.<androidx.core.text.PrecomputedTextCompat$Params$Builder: androidx.core.text.PrecomputedTextCompat$Params build()>();
+
+        return $r1;
+    }
+
+    private static java.lang.reflect.Field retrieveField(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.reflect.Field $r1, $r3;
+        java.lang.Class $r2;
+        java.lang.Throwable $r4;
+        java.lang.StringBuilder $r5;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = null;
+
+        $r2 = class "Landroid/widget/TextView;";
+
+     label1:
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>($r0);
+
+     label2:
+        $r1 = $r3;
+
+     label3:
+        virtualinvoke $r3.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label4:
+        return $r3;
+
+     label5:
+        $r4 := @caughtexception;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not retrieve ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" field.");
+
+        $r0 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TextViewCompat", $r0);
+
+        return $r1;
+
+        catch java.lang.NoSuchFieldException from label1 to label2 with label5;
+        catch java.lang.NoSuchFieldException from label3 to label4 with label5;
+    }
+
+    private static int retrieveIntFromField(java.lang.reflect.Field, android.widget.TextView)
+    {
+        java.lang.reflect.Field $r0;
+        android.widget.TextView $r1;
+        int $i0;
+        java.lang.Throwable $r2;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+
+        $r0 := @parameter0: java.lang.reflect.Field;
+
+        $r1 := @parameter1: android.widget.TextView;
+
+     label1:
+        $i0 = virtualinvoke $r0.<java.lang.reflect.Field: int getInt(java.lang.Object)>($r1);
+
+     label2:
+        return $i0;
+
+     label3:
+        $r2 := @caughtexception;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not retrieve value of ");
+
+        $r4 = virtualinvoke $r0.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" field.");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("TextViewCompat", $r4);
+
+        return -1;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label3;
+    }
+
+    public static void setAutoSizeTextTypeUniformWithConfiguration(android.widget.TextView, int, int, int, int) throws java.lang.IllegalArgumentException
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 27 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        interfaceinvoke $r1.<androidx.core.widget.AutoSizeableTextView: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+     label2:
+        return;
+    }
+
+    public static void setAutoSizeTextTypeUniformWithPresetSizes(android.widget.TextView, int[], int) throws java.lang.IllegalArgumentException
+    {
+        android.widget.TextView $r0;
+        int[] $r1;
+        int $i0, $i1;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r2;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 := @parameter1: int[];
+
+        $i0 := @parameter2: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 27 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>($r1, $i0);
+
+        return;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        interfaceinvoke $r2.<androidx.core.widget.AutoSizeableTextView: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>($r1, $i0);
+
+     label2:
+        return;
+    }
+
+    public static void setAutoSizeTextTypeWithDefaults(android.widget.TextView, int)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1;
+        boolean $z0;
+        androidx.core.widget.AutoSizeableTextView $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 27 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setAutoSizeTextTypeWithDefaults(int)>($i0);
+
+        return;
+
+     label1:
+        $z0 = $r0 instanceof androidx.core.widget.AutoSizeableTextView;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = (androidx.core.widget.AutoSizeableTextView) $r0;
+
+        interfaceinvoke $r1.<androidx.core.widget.AutoSizeableTextView: void setAutoSizeTextTypeWithDefaults(int)>($i0);
+
+     label2:
+        return;
+    }
+
+    public static void setCompoundDrawablesRelative(android.widget.TextView, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable)
+    {
+        android.widget.TextView $r0;
+        android.graphics.drawable.Drawable $r1, $r2, $r3, $r4, $r5;
+        int $i0;
+        boolean $z0, $z1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 := @parameter1: android.graphics.drawable.Drawable;
+
+        $r2 := @parameter2: android.graphics.drawable.Drawable;
+
+        $r3 := @parameter3: android.graphics.drawable.Drawable;
+
+        $r4 := @parameter4: android.graphics.drawable.Drawable;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawablesRelative(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r1, $r2, $r3, $r4);
+
+        return;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label8;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getLayoutDirection()>();
+
+        $z0 = 1;
+
+        if $i0 != 1 goto label2;
+
+        goto label3;
+
+     label2:
+        $z0 = 0;
+
+     label3:
+        $z1 = $z0;
+
+        if $z0 == 0 goto label4;
+
+        $r5 = $r3;
+
+        goto label5;
+
+     label4:
+        $r5 = $r1;
+
+     label5:
+        if $z1 == 0 goto label6;
+
+        goto label7;
+
+     label6:
+        $r1 = $r3;
+
+     label7:
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r5, $r2, $r1, $r4);
+
+        return;
+
+     label8:
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r1, $r2, $r3, $r4);
+
+        return;
+    }
+
+    public static void setCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, int, int, int, int)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        boolean $z0, $z1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 18 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawablesRelativeWithIntrinsicBounds(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+
+     label1:
+        $i4 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i4 < 17 goto label8;
+
+        $i4 = virtualinvoke $r0.<android.widget.TextView: int getLayoutDirection()>();
+
+        $z0 = 1;
+
+        if $i4 != 1 goto label2;
+
+        goto label3;
+
+     label2:
+        $z0 = 0;
+
+     label3:
+        $z1 = $z0;
+
+        if $z0 == 0 goto label4;
+
+        $i4 = $i2;
+
+        goto label5;
+
+     label4:
+        $i4 = $i0;
+
+     label5:
+        if $z1 == 0 goto label6;
+
+        goto label7;
+
+     label6:
+        $i0 = $i2;
+
+     label7:
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawablesWithIntrinsicBounds(int,int,int,int)>($i4, $i1, $i0, $i3);
+
+        return;
+
+     label8:
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawablesWithIntrinsicBounds(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public static void setCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable)
+    {
+        android.widget.TextView $r0;
+        android.graphics.drawable.Drawable $r1, $r2, $r3, $r4, $r5;
+        int $i0;
+        boolean $z0, $z1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 := @parameter1: android.graphics.drawable.Drawable;
+
+        $r2 := @parameter2: android.graphics.drawable.Drawable;
+
+        $r3 := @parameter3: android.graphics.drawable.Drawable;
+
+        $r4 := @parameter4: android.graphics.drawable.Drawable;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawablesRelativeWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r1, $r2, $r3, $r4);
+
+        return;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 17 goto label8;
+
+        $i0 = virtualinvoke $r0.<android.widget.TextView: int getLayoutDirection()>();
+
+        $z0 = 1;
+
+        if $i0 != 1 goto label2;
+
+        goto label3;
+
+     label2:
+        $z0 = 0;
+
+     label3:
+        $z1 = $z0;
+
+        if $z0 == 0 goto label4;
+
+        $r5 = $r3;
+
+        goto label5;
+
+     label4:
+        $r5 = $r1;
+
+     label5:
+        if $z1 == 0 goto label6;
+
+        goto label7;
+
+     label6:
+        $r1 = $r3;
+
+     label7:
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawablesWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r5, $r2, $r1, $r4);
+
+        return;
+
+     label8:
+        virtualinvoke $r0.<android.widget.TextView: void setCompoundDrawablesWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($r1, $r2, $r3, $r4);
+
+        return;
+    }
+
+    public static void setCustomSelectionActionModeCallback(android.widget.TextView, android.view.ActionMode$Callback)
+    {
+        android.widget.TextView $r0;
+        android.view.ActionMode$Callback $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 := @parameter1: android.view.ActionMode$Callback;
+
+        $r1 = staticinvoke <androidx.core.widget.TextViewCompat: android.view.ActionMode$Callback wrapCustomSelectionActionModeCallback(android.widget.TextView,android.view.ActionMode$Callback)>($r0, $r1);
+
+        virtualinvoke $r0.<android.widget.TextView: void setCustomSelectionActionModeCallback(android.view.ActionMode$Callback)>($r1);
+
+        return;
+    }
+
+    public static void setFirstBaselineToTopHeight(android.widget.TextView, int)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1, $i2, $i3;
+        android.text.TextPaint $r1;
+        android.graphics.Paint$FontMetricsInt $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <androidx.core.util.Preconditions: int checkArgumentNonnegative(int)>($i0);
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 28 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setFirstBaselineToTopHeight(int)>($i0);
+
+        return;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $r2 = virtualinvoke $r1.<android.text.TextPaint: android.graphics.Paint$FontMetricsInt getFontMetricsInt()>();
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 16 goto label3;
+
+        $z0 = virtualinvoke $r0.<android.widget.TextView: boolean getIncludeFontPadding()>();
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $i1 = $r2.<android.graphics.Paint$FontMetricsInt: int ascent>;
+
+        goto label4;
+
+     label3:
+        $i1 = $r2.<android.graphics.Paint$FontMetricsInt: int top>;
+
+     label4:
+        $i2 = staticinvoke <java.lang.Math: int abs(int)>($i1);
+
+        if $i0 <= $i2 goto label5;
+
+        $i1 = neg $i1;
+
+        $i0 = $i0 - $i1;
+
+        $i1 = virtualinvoke $r0.<android.widget.TextView: int getPaddingLeft()>();
+
+        $i2 = virtualinvoke $r0.<android.widget.TextView: int getPaddingRight()>();
+
+        $i3 = virtualinvoke $r0.<android.widget.TextView: int getPaddingBottom()>();
+
+        virtualinvoke $r0.<android.widget.TextView: void setPadding(int,int,int,int)>($i1, $i0, $i2, $i3);
+
+     label5:
+        return;
+    }
+
+    public static void setLastBaselineToBottomHeight(android.widget.TextView, int)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1, $i2, $i3;
+        android.text.TextPaint $r1;
+        android.graphics.Paint$FontMetricsInt $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <androidx.core.util.Preconditions: int checkArgumentNonnegative(int)>($i0);
+
+        $r1 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $r2 = virtualinvoke $r1.<android.text.TextPaint: android.graphics.Paint$FontMetricsInt getFontMetricsInt()>();
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 16 goto label2;
+
+        $z0 = virtualinvoke $r0.<android.widget.TextView: boolean getIncludeFontPadding()>();
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $i1 = $r2.<android.graphics.Paint$FontMetricsInt: int descent>;
+
+        goto label3;
+
+     label2:
+        $i1 = $r2.<android.graphics.Paint$FontMetricsInt: int bottom>;
+
+     label3:
+        $i2 = staticinvoke <java.lang.Math: int abs(int)>($i1);
+
+        if $i0 <= $i2 goto label4;
+
+        $i0 = $i0 - $i1;
+
+        $i1 = virtualinvoke $r0.<android.widget.TextView: int getPaddingLeft()>();
+
+        $i2 = virtualinvoke $r0.<android.widget.TextView: int getPaddingTop()>();
+
+        $i3 = virtualinvoke $r0.<android.widget.TextView: int getPaddingRight()>();
+
+        virtualinvoke $r0.<android.widget.TextView: void setPadding(int,int,int,int)>($i1, $i2, $i3, $i0);
+
+     label4:
+        return;
+    }
+
+    public static void setLineHeight(android.widget.TextView, int)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1;
+        android.text.TextPaint $r1;
+        float $f0;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <androidx.core.util.Preconditions: int checkArgumentNonnegative(int)>($i0);
+
+        $r1 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $i1 = virtualinvoke $r1.<android.text.TextPaint: int getFontMetricsInt(android.graphics.Paint$FontMetricsInt)>(null);
+
+        if $i0 == $i1 goto label1;
+
+        $i0 = $i0 - $i1;
+
+        $f0 = (float) $i0;
+
+        virtualinvoke $r0.<android.widget.TextView: void setLineSpacing(float,float)>($f0, 1.0F);
+
+     label1:
+        return;
+    }
+
+    public static void setPrecomputedText(android.widget.TextView, androidx.core.text.PrecomputedTextCompat)
+    {
+        android.widget.TextView $r0;
+        androidx.core.text.PrecomputedTextCompat $r1;
+        androidx.core.text.PrecomputedTextCompat$Params $r2, $r3;
+        boolean $z0;
+        java.lang.IllegalArgumentException $r4;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 := @parameter1: androidx.core.text.PrecomputedTextCompat;
+
+        $r2 = staticinvoke <androidx.core.widget.TextViewCompat: androidx.core.text.PrecomputedTextCompat$Params getTextMetricsParams(android.widget.TextView)>($r0);
+
+        $r3 = virtualinvoke $r1.<androidx.core.text.PrecomputedTextCompat: androidx.core.text.PrecomputedTextCompat$Params getParams()>();
+
+        $z0 = virtualinvoke $r2.<androidx.core.text.PrecomputedTextCompat$Params: boolean equalsWithoutTextDirection(androidx.core.text.PrecomputedTextCompat$Params)>($r3);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+        return;
+
+     label1:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Given text can not be applied to TextView.");
+
+        throw $r4;
+    }
+
+    public static void setTextAppearance(android.widget.TextView, int)
+    {
+        android.widget.TextView $r0;
+        int $i0, $i1;
+        android.content.Context $r1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $i0 := @parameter1: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 23 goto label1;
+
+        virtualinvoke $r0.<android.widget.TextView: void setTextAppearance(int)>($i0);
+
+        return;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.widget.TextView: android.content.Context getContext()>();
+
+        virtualinvoke $r0.<android.widget.TextView: void setTextAppearance(android.content.Context,int)>($r1, $i0);
+
+        return;
+    }
+
+    public static void setTextMetricsParams(android.widget.TextView, androidx.core.text.PrecomputedTextCompat$Params)
+    {
+        android.widget.TextView $r0;
+        androidx.core.text.PrecomputedTextCompat$Params $r1;
+        int $i0;
+        android.text.TextDirectionHeuristic $r2;
+        android.text.TextPaint $r3, $r4;
+        float $f0, $f1;
+        byte $b1;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 := @parameter1: androidx.core.text.PrecomputedTextCompat$Params;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 18 goto label1;
+
+        $r2 = virtualinvoke $r1.<androidx.core.text.PrecomputedTextCompat$Params: android.text.TextDirectionHeuristic getTextDirection()>();
+
+        $i0 = staticinvoke <androidx.core.widget.TextViewCompat: int getTextDirection(android.text.TextDirectionHeuristic)>($r2);
+
+        virtualinvoke $r0.<android.widget.TextView: void setTextDirection(int)>($i0);
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 23 goto label3;
+
+        $r3 = virtualinvoke $r1.<androidx.core.text.PrecomputedTextCompat$Params: android.text.TextPaint getTextPaint()>();
+
+        $f0 = virtualinvoke $r3.<android.text.TextPaint: float getTextScaleX()>();
+
+        $r3 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $r4 = virtualinvoke $r1.<androidx.core.text.PrecomputedTextCompat$Params: android.text.TextPaint getTextPaint()>();
+
+        virtualinvoke $r3.<android.text.TextPaint: void set(android.text.TextPaint)>($r4);
+
+        $f1 = virtualinvoke $r0.<android.widget.TextView: float getTextScaleX()>();
+
+        $b1 = $f0 cmpl $f1;
+
+        if $b1 != 0 goto label2;
+
+        $f1 = $f0 / 2.0F;
+
+        $f1 = $f1 + 1.0F;
+
+        virtualinvoke $r0.<android.widget.TextView: void setTextScaleX(float)>($f1);
+
+     label2:
+        virtualinvoke $r0.<android.widget.TextView: void setTextScaleX(float)>($f0);
+
+        return;
+
+     label3:
+        $r3 = virtualinvoke $r0.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $r4 = virtualinvoke $r1.<androidx.core.text.PrecomputedTextCompat$Params: android.text.TextPaint getTextPaint()>();
+
+        virtualinvoke $r3.<android.text.TextPaint: void set(android.text.TextPaint)>($r4);
+
+        $i0 = virtualinvoke $r1.<androidx.core.text.PrecomputedTextCompat$Params: int getBreakStrategy()>();
+
+        virtualinvoke $r0.<android.widget.TextView: void setBreakStrategy(int)>($i0);
+
+        $i0 = virtualinvoke $r1.<androidx.core.text.PrecomputedTextCompat$Params: int getHyphenationFrequency()>();
+
+        virtualinvoke $r0.<android.widget.TextView: void setHyphenationFrequency(int)>($i0);
+
+        return;
+    }
+
+    public static android.view.ActionMode$Callback wrapCustomSelectionActionModeCallback(android.widget.TextView, android.view.ActionMode$Callback)
+    {
+        android.widget.TextView $r0;
+        android.view.ActionMode$Callback $r1;
+        int $i0;
+        boolean $z0;
+        androidx.core.widget.TextViewCompat$OreoCallback $r2;
+
+        $r0 := @parameter0: android.widget.TextView;
+
+        $r1 := @parameter1: android.view.ActionMode$Callback;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label2;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 > 27 goto label2;
+
+        $z0 = $r1 instanceof androidx.core.widget.TextViewCompat$OreoCallback;
+
+        if $z0 == 0 goto label1;
+
+        return $r1;
+
+     label1:
+        $r2 = new androidx.core.widget.TextViewCompat$OreoCallback;
+
+        specialinvoke $r2.<androidx.core.widget.TextViewCompat$OreoCallback: void <init>(android.view.ActionMode$Callback,android.widget.TextView)>($r1, $r0);
+
+        return $r2;
+
+     label2:
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.widget.TextViewCompat: java.lang.String LOG_TAG> = "TextViewCompat";
+
+        <androidx.core.widget.TextViewCompat: int LINES> = 1;
+
+        <androidx.core.widget.TextViewCompat: int AUTO_SIZE_TEXT_TYPE_UNIFORM> = 1;
+
+        <androidx.core.widget.TextViewCompat: int AUTO_SIZE_TEXT_TYPE_NONE> = 0;
+
+        return;
+    }
+}

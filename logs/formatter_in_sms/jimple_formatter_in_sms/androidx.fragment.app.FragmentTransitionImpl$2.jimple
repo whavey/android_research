@@ -1,0 +1,78 @@
+class androidx.fragment.app.FragmentTransitionImpl$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.fragment.app.FragmentTransitionImpl this$0;
+    final java.util.Map val$nameOverrides;
+    final java.util.ArrayList val$sharedElementsIn;
+
+    void <init>(androidx.fragment.app.FragmentTransitionImpl, java.util.ArrayList, java.util.Map)
+    {
+        androidx.fragment.app.FragmentTransitionImpl$2 $r0;
+        androidx.fragment.app.FragmentTransitionImpl $r1;
+        java.util.ArrayList $r2;
+        java.util.Map $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentTransitionImpl$2;
+
+        $r1 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $r2 := @parameter1: java.util.ArrayList;
+
+        $r3 := @parameter2: java.util.Map;
+
+        $r0.<androidx.fragment.app.FragmentTransitionImpl$2: androidx.fragment.app.FragmentTransitionImpl this$0> = $r1;
+
+        $r0.<androidx.fragment.app.FragmentTransitionImpl$2: java.util.ArrayList val$sharedElementsIn> = $r2;
+
+        $r0.<androidx.fragment.app.FragmentTransitionImpl$2: java.util.Map val$nameOverrides> = $r3;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.fragment.app.FragmentTransitionImpl$2 $r0;
+        java.util.ArrayList $r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        android.view.View $r3;
+        java.lang.String $r4;
+        java.util.Map $r5;
+
+        $r0 := @this: androidx.fragment.app.FragmentTransitionImpl$2;
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTransitionImpl$2: java.util.ArrayList val$sharedElementsIn>;
+
+        $i0 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTransitionImpl$2: java.util.ArrayList val$sharedElementsIn>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r3 = (android.view.View) $r2;
+
+        $r4 = staticinvoke <androidx.core.view.ViewCompat: java.lang.String getTransitionName(android.view.View)>($r3);
+
+        if $r4 == null goto label2;
+
+        $r5 = $r0.<androidx.fragment.app.FragmentTransitionImpl$2: java.util.Map val$nameOverrides>;
+
+        $r4 = staticinvoke <androidx.fragment.app.FragmentTransitionImpl: java.lang.String findKeyForValue(java.util.Map,java.lang.String)>($r5, $r4);
+
+        staticinvoke <androidx.core.view.ViewCompat: void setTransitionName(android.view.View,java.lang.String)>($r3, $r4);
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+}

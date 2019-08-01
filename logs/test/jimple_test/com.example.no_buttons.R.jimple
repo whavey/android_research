@@ -1,0 +1,14 @@
+public final class com.example.no_buttons.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.example.no_buttons.R $r0;
+
+        $r0 := @this: com.example.no_buttons.R;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

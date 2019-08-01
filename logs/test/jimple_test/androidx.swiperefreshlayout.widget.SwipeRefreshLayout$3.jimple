@@ -1,0 +1,42 @@
+class androidx.swiperefreshlayout.widget.SwipeRefreshLayout$3 extends android.view.animation.Animation
+{
+    final androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0;
+
+    void <init>(androidx.swiperefreshlayout.widget.SwipeRefreshLayout)
+    {
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout$3 $r0;
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout $r1;
+
+        $r0 := @this: androidx.swiperefreshlayout.widget.SwipeRefreshLayout$3;
+
+        $r1 := @parameter0: androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+        $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$3: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0> = $r1;
+
+        specialinvoke $r0.<android.view.animation.Animation: void <init>()>();
+
+        return;
+    }
+
+    public void applyTransformation(float, android.view.animation.Transformation)
+    {
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout$3 $r0;
+        float $f0;
+        android.view.animation.Transformation $r1;
+        androidx.swiperefreshlayout.widget.SwipeRefreshLayout $r2;
+
+        $r0 := @this: androidx.swiperefreshlayout.widget.SwipeRefreshLayout$3;
+
+        $f0 := @parameter0: float;
+
+        $r1 := @parameter1: android.view.animation.Transformation;
+
+        $r2 = $r0.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout$3: androidx.swiperefreshlayout.widget.SwipeRefreshLayout this$0>;
+
+        $f0 = 1.0F - $f0;
+
+        virtualinvoke $r2.<androidx.swiperefreshlayout.widget.SwipeRefreshLayout: void setAnimationProgress(float)>($f0);
+
+        return;
+    }
+}

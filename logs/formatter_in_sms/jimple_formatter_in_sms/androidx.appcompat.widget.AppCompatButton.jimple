@@ -1,0 +1,702 @@
+public class androidx.appcompat.widget.AppCompatButton extends android.widget.Button implements androidx.core.view.TintableBackgroundView, androidx.core.widget.AutoSizeableTextView
+{
+    private final androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper;
+    private final androidx.appcompat.widget.AppCompatTextHelper mTextHelper;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.content.Context $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatButton: void <init>(android.content.Context,android.util.AttributeSet)>($r1, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 = <androidx.appcompat.R$attr: int buttonStyle>;
+
+        specialinvoke $r0.<androidx.appcompat.widget.AppCompatButton: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r3;
+        androidx.appcompat.widget.AppCompatTextHelper $r4;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        $r1 = staticinvoke <androidx.appcompat.widget.TintContextWrapper: android.content.Context wrap(android.content.Context)>($r1);
+
+        specialinvoke $r0.<android.widget.Button: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        $r3 = new androidx.appcompat.widget.AppCompatBackgroundHelper;
+
+        specialinvoke $r3.<androidx.appcompat.widget.AppCompatBackgroundHelper: void <init>(android.view.View)>($r0);
+
+        $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper> = $r3;
+
+        $r3 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        virtualinvoke $r3.<androidx.appcompat.widget.AppCompatBackgroundHelper: void loadFromAttributes(android.util.AttributeSet,int)>($r2, $i0);
+
+        $r4 = new androidx.appcompat.widget.AppCompatTextHelper;
+
+        specialinvoke $r4.<androidx.appcompat.widget.AppCompatTextHelper: void <init>(android.widget.TextView)>($r0);
+
+        $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper> = $r4;
+
+        $r4 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $r4.<androidx.appcompat.widget.AppCompatTextHelper: void loadFromAttributes(android.util.AttributeSet,int)>($r2, $i0);
+
+        $r4 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $r4.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawablesTints()>();
+
+        return;
+    }
+
+    protected void drawableStateChanged()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r1;
+        androidx.appcompat.widget.AppCompatTextHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        specialinvoke $r0.<android.widget.Button: void drawableStateChanged()>();
+
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.AppCompatBackgroundHelper: void applySupportBackgroundTint()>();
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r2 == null goto label2;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawablesTints()>();
+
+     label2:
+        return;
+    }
+
+    public int getAutoSizeMaxTextSize()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        boolean $z0;
+        int $i0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = specialinvoke $r0.<android.widget.Button: int getAutoSizeMaxTextSize()>();
+
+        return $i0;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeMaxTextSize()>();
+
+        return $i0;
+
+     label2:
+        return -1;
+    }
+
+    public int getAutoSizeMinTextSize()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        boolean $z0;
+        int $i0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = specialinvoke $r0.<android.widget.Button: int getAutoSizeMinTextSize()>();
+
+        return $i0;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeMinTextSize()>();
+
+        return $i0;
+
+     label2:
+        return -1;
+    }
+
+    public int getAutoSizeStepGranularity()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        boolean $z0;
+        int $i0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = specialinvoke $r0.<android.widget.Button: int getAutoSizeStepGranularity()>();
+
+        return $i0;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeStepGranularity()>();
+
+        return $i0;
+
+     label2:
+        return -1;
+    }
+
+    public int[] getAutoSizeTextAvailableSizes()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        boolean $z0;
+        int[] $r1;
+        androidx.appcompat.widget.AppCompatTextHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = specialinvoke $r0.<android.widget.Button: int[] getAutoSizeTextAvailableSizes()>();
+
+        return $r1;
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r2 == null goto label2;
+
+        $r1 = virtualinvoke $r2.<androidx.appcompat.widget.AppCompatTextHelper: int[] getAutoSizeTextAvailableSizes()>();
+
+        return $r1;
+
+     label2:
+        $r1 = newarray (int)[0];
+
+        return $r1;
+    }
+
+    public int getAutoSizeTextType()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        boolean $z0;
+        int $i0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = specialinvoke $r0.<android.widget.Button: int getAutoSizeTextType()>();
+
+        if $i0 != 1 goto label2;
+
+        return 1;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeTextType()>();
+
+        return $i0;
+
+     label2:
+        return 0;
+    }
+
+    public android.content.res.ColorStateList getSupportBackgroundTintList()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.content.res.ColorStateList $r1;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $r2 == null goto label1;
+
+        $r1 = virtualinvoke $r2.<androidx.appcompat.widget.AppCompatBackgroundHelper: android.content.res.ColorStateList getSupportBackgroundTintList()>();
+
+        return $r1;
+
+     label1:
+        return null;
+    }
+
+    public android.graphics.PorterDuff$Mode getSupportBackgroundTintMode()
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.graphics.PorterDuff$Mode $r1;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $r2 == null goto label1;
+
+        $r1 = virtualinvoke $r2.<androidx.appcompat.widget.AppCompatBackgroundHelper: android.graphics.PorterDuff$Mode getSupportBackgroundTintMode()>();
+
+        return $r1;
+
+     label1:
+        return null;
+    }
+
+    public void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.view.accessibility.AccessibilityEvent $r1;
+        java.lang.String $r2;
+        java.lang.Class $r3;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        specialinvoke $r0.<android.widget.Button: void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($r1);
+
+        $r3 = class "Landroid/widget/Button;";
+
+        $r2 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityEvent: void setClassName(java.lang.CharSequence)>($r2);
+
+        return;
+    }
+
+    public void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.view.accessibility.AccessibilityNodeInfo $r1;
+        java.lang.String $r2;
+        java.lang.Class $r3;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.view.accessibility.AccessibilityNodeInfo;
+
+        specialinvoke $r0.<android.widget.Button: void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo)>($r1);
+
+        $r3 = class "Landroid/widget/Button;";
+
+        $r2 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $r1.<android.view.accessibility.AccessibilityNodeInfo: void setClassName(java.lang.CharSequence)>($r2);
+
+        return;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        boolean $z0;
+        int $i0, $i1, $i2, $i3;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        specialinvoke $r0.<android.widget.Button: void onLayout(boolean,int,int,int,int)>($z0, $i0, $i1, $i2, $i3);
+
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: void onLayout(boolean,int,int,int,int)>($z0, $i0, $i1, $i2, $i3);
+
+     label1:
+        return;
+    }
+
+    protected void onTextChanged(java.lang.CharSequence, int, int, int)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        java.lang.CharSequence $r1;
+        int $i0, $i1, $i2;
+        boolean $z0;
+        androidx.appcompat.widget.AppCompatTextHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        specialinvoke $r0.<android.widget.Button: void onTextChanged(java.lang.CharSequence,int,int,int)>($r1, $i0, $i1, $i2);
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r2 == null goto label1;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 != 0 goto label1;
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.widget.AppCompatTextHelper: boolean isAutoSizeEnabled()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatTextHelper: void autoSizeText()>();
+
+     label1:
+        return;
+    }
+
+    public void setAutoSizeTextTypeUniformWithConfiguration(int, int, int, int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        int $i0, $i1, $i2, $i3;
+        boolean $z0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        specialinvoke $r0.<android.widget.Button: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label2;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+     label2:
+        return;
+    }
+
+    public void setAutoSizeTextTypeUniformWithPresetSizes(int[], int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        int[] $r1;
+        int $i0;
+        boolean $z0;
+        androidx.appcompat.widget.AppCompatTextHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: int[];
+
+        $i0 := @parameter1: int;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        specialinvoke $r0.<android.widget.Button: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>($r1, $i0);
+
+        return;
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r2 == null goto label2;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatTextHelper: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>($r1, $i0);
+
+     label2:
+        return;
+    }
+
+    public void setAutoSizeTextTypeWithDefaults(int)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        int $i0;
+        boolean $z0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $i0 := @parameter0: int;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        specialinvoke $r0.<android.widget.Button: void setAutoSizeTextTypeWithDefaults(int)>($i0);
+
+        return;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label2;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: void setAutoSizeTextTypeWithDefaults(int)>($i0);
+
+     label2:
+        return;
+    }
+
+    public void setBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.graphics.drawable.Drawable $r1;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        specialinvoke $r0.<android.widget.Button: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r1);
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatBackgroundHelper: void onSetBackgroundDrawable(android.graphics.drawable.Drawable)>($r1);
+
+     label1:
+        return;
+    }
+
+    public void setBackgroundResource(int)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        int $i0;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke $r0.<android.widget.Button: void setBackgroundResource(int)>($i0);
+
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.AppCompatBackgroundHelper: void onSetBackgroundResource(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public void setCustomSelectionActionModeCallback(android.view.ActionMode$Callback)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.view.ActionMode$Callback $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.view.ActionMode$Callback;
+
+        $r1 = staticinvoke <androidx.core.widget.TextViewCompat: android.view.ActionMode$Callback wrapCustomSelectionActionModeCallback(android.widget.TextView,android.view.ActionMode$Callback)>($r0, $r1);
+
+        specialinvoke $r0.<android.widget.Button: void setCustomSelectionActionModeCallback(android.view.ActionMode$Callback)>($r1);
+
+        return;
+    }
+
+    public void setSupportAllCaps(boolean)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        boolean $z0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: void setAllCaps(boolean)>($z0);
+
+     label1:
+        return;
+    }
+
+    public void setSupportBackgroundTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.content.res.ColorStateList $r1;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.content.res.ColorStateList;
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatBackgroundHelper: void setSupportBackgroundTintList(android.content.res.ColorStateList)>($r1);
+
+     label1:
+        return;
+    }
+
+    public void setSupportBackgroundTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.graphics.PorterDuff$Mode $r1;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatBackgroundHelper: void setSupportBackgroundTintMode(android.graphics.PorterDuff$Mode)>($r1);
+
+     label1:
+        return;
+    }
+
+    public void setTextAppearance(android.content.Context, int)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        android.content.Context $r1;
+        int $i0;
+        androidx.appcompat.widget.AppCompatTextHelper $r2;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke $r0.<android.widget.Button: void setTextAppearance(android.content.Context,int)>($r1, $i0);
+
+        $r2 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatTextHelper: void onSetTextAppearance(android.content.Context,int)>($r1, $i0);
+
+     label1:
+        return;
+    }
+
+    public void setTextSize(int, float)
+    {
+        androidx.appcompat.widget.AppCompatButton $r0;
+        int $i0;
+        float $f0;
+        boolean $z0;
+        androidx.appcompat.widget.AppCompatTextHelper $r1;
+
+        $r0 := @this: androidx.appcompat.widget.AppCompatButton;
+
+        $i0 := @parameter0: int;
+
+        $f0 := @parameter1: float;
+
+        $z0 = <androidx.appcompat.widget.AppCompatButton: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $z0 == 0 goto label1;
+
+        specialinvoke $r0.<android.widget.Button: void setTextSize(int,float)>($i0, $f0);
+
+        return;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.widget.AppCompatButton: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $r1 == null goto label2;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.AppCompatTextHelper: void setTextSize(int,float)>($i0, $f0);
+
+     label2:
+        return;
+    }
+}

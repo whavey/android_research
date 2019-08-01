@@ -1,0 +1,121 @@
+public final class androidx.core.view.inputmethod.EditorInfoCompat extends java.lang.Object
+{
+    private static final java.lang.String CONTENT_MIME_TYPES_KEY;
+    private static final java.lang.String[] EMPTY_STRING_ARRAY;
+    public static final int IME_FLAG_FORCE_ASCII;
+    public static final int IME_FLAG_NO_PERSONALIZED_LEARNING;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        <androidx.core.view.inputmethod.EditorInfoCompat: int IME_FLAG_NO_PERSONALIZED_LEARNING> = 16777216;
+
+        <androidx.core.view.inputmethod.EditorInfoCompat: int IME_FLAG_FORCE_ASCII> = -2147483648;
+
+        <androidx.core.view.inputmethod.EditorInfoCompat: java.lang.String CONTENT_MIME_TYPES_KEY> = "androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES";
+
+        $r0 = newarray (java.lang.String)[0];
+
+        <androidx.core.view.inputmethod.EditorInfoCompat: java.lang.String[] EMPTY_STRING_ARRAY> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.core.view.inputmethod.EditorInfoCompat $r0;
+
+        $r0 := @this: androidx.core.view.inputmethod.EditorInfoCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String[] getContentMimeTypes(android.view.inputmethod.EditorInfo)
+    {
+        android.view.inputmethod.EditorInfo $r0;
+        java.lang.String[] $r1;
+        int $i0;
+        android.os.Bundle $r2;
+
+        $r0 := @parameter0: android.view.inputmethod.EditorInfo;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label2;
+
+        $r1 = $r0.<android.view.inputmethod.EditorInfo: java.lang.String[] contentMimeTypes>;
+
+        if $r1 == null goto label1;
+
+        return $r1;
+
+     label1:
+        $r1 = <androidx.core.view.inputmethod.EditorInfoCompat: java.lang.String[] EMPTY_STRING_ARRAY>;
+
+        return $r1;
+
+     label2:
+        $r2 = $r0.<android.view.inputmethod.EditorInfo: android.os.Bundle extras>;
+
+        if $r2 != null goto label3;
+
+        $r1 = <androidx.core.view.inputmethod.EditorInfoCompat: java.lang.String[] EMPTY_STRING_ARRAY>;
+
+        return $r1;
+
+     label3:
+        $r2 = $r0.<android.view.inputmethod.EditorInfo: android.os.Bundle extras>;
+
+        $r1 = virtualinvoke $r2.<android.os.Bundle: java.lang.String[] getStringArray(java.lang.String)>("androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
+
+        if $r1 == null goto label4;
+
+        return $r1;
+
+     label4:
+        $r1 = <androidx.core.view.inputmethod.EditorInfoCompat: java.lang.String[] EMPTY_STRING_ARRAY>;
+
+        return $r1;
+    }
+
+    public static void setContentMimeTypes(android.view.inputmethod.EditorInfo, java.lang.String[])
+    {
+        android.view.inputmethod.EditorInfo $r0;
+        java.lang.String[] $r1;
+        int $i0;
+        android.os.Bundle $r2;
+
+        $r0 := @parameter0: android.view.inputmethod.EditorInfo;
+
+        $r1 := @parameter1: java.lang.String[];
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r0.<android.view.inputmethod.EditorInfo: java.lang.String[] contentMimeTypes> = $r1;
+
+        return;
+
+     label1:
+        $r2 = $r0.<android.view.inputmethod.EditorInfo: android.os.Bundle extras>;
+
+        if $r2 != null goto label2;
+
+        $r2 = new android.os.Bundle;
+
+        specialinvoke $r2.<android.os.Bundle: void <init>()>();
+
+        $r0.<android.view.inputmethod.EditorInfo: android.os.Bundle extras> = $r2;
+
+     label2:
+        $r2 = $r0.<android.view.inputmethod.EditorInfo: android.os.Bundle extras>;
+
+        virtualinvoke $r2.<android.os.Bundle: void putStringArray(java.lang.String,java.lang.String[])>("androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES", $r1);
+
+        return;
+    }
+}

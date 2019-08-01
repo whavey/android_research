@@ -1,0 +1,22 @@
+public final class androidx.slidingpanelayout.R$integer extends java.lang.Object
+{
+    public static final int status_bar_notification_info_maxnum;
+
+    private void <init>()
+    {
+        androidx.slidingpanelayout.R$integer $r0;
+
+        $r0 := @this: androidx.slidingpanelayout.R$integer;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.slidingpanelayout.R$integer: int status_bar_notification_info_maxnum> = 2131230724;
+
+        return;
+    }
+}

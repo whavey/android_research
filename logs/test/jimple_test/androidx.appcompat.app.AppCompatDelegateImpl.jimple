@@ -1,0 +1,5078 @@
+class androidx.appcompat.app.AppCompatDelegateImpl extends androidx.appcompat.app.AppCompatDelegate implements androidx.appcompat.view.menu.MenuBuilder$Callback, android.view.LayoutInflater$Factory2
+{
+    private static final boolean DEBUG;
+    static final java.lang.String EXCEPTION_HANDLER_MESSAGE_SUFFIX;
+    private static final boolean IS_PRE_LOLLIPOP;
+    private static final java.lang.String KEY_LOCAL_NIGHT_MODE;
+    private static boolean sInstalledExceptionHandler;
+    private static final int[] sWindowBackgroundStyleable;
+    androidx.appcompat.app.ActionBar mActionBar;
+    private androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback mActionMenuPresenterCallback;
+    androidx.appcompat.view.ActionMode mActionMode;
+    android.widget.PopupWindow mActionModePopup;
+    androidx.appcompat.widget.ActionBarContextView mActionModeView;
+    final androidx.appcompat.app.AppCompatCallback mAppCompatCallback;
+    private androidx.appcompat.app.AppCompatViewInflater mAppCompatViewInflater;
+    final android.view.Window$Callback mAppCompatWindowCallback;
+    private boolean mApplyDayNightCalled;
+    private androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager;
+    private boolean mClosingActionMenu;
+    final android.content.Context mContext;
+    private androidx.appcompat.widget.DecorContentParent mDecorContentParent;
+    private boolean mEnableDefaultActionBarUp;
+    androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim;
+    private boolean mFeatureIndeterminateProgress;
+    private boolean mFeatureProgress;
+    private boolean mHandleNativeActionModes;
+    boolean mHasActionBar;
+    int mInvalidatePanelMenuFeatures;
+    boolean mInvalidatePanelMenuPosted;
+    private final java.lang.Runnable mInvalidatePanelMenuRunnable;
+    boolean mIsDestroyed;
+    boolean mIsFloating;
+    private int mLocalNightMode;
+    private boolean mLongPressBackDown;
+    android.view.MenuInflater mMenuInflater;
+    final android.view.Window$Callback mOriginalWindowCallback;
+    boolean mOverlayActionBar;
+    boolean mOverlayActionMode;
+    private androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback mPanelMenuPresenterCallback;
+    private androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] mPanels;
+    private androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel;
+    java.lang.Runnable mShowActionModePopup;
+    private android.view.View mStatusGuard;
+    private android.view.ViewGroup mSubDecor;
+    private boolean mSubDecorInstalled;
+    private android.graphics.Rect mTempRect1;
+    private android.graphics.Rect mTempRect2;
+    private java.lang.CharSequence mTitle;
+    private android.widget.TextView mTitleView;
+    final android.view.Window mWindow;
+    boolean mWindowNoTitle;
+
+    static void <clinit>()
+    {
+        java.lang.Thread$UncaughtExceptionHandler $r0;
+        int $i0;
+        boolean $z0;
+        int[] $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl$1 $r2;
+
+        <androidx.appcompat.app.AppCompatDelegateImpl: java.lang.String KEY_LOCAL_NIGHT_MODE> = "appcompat:local_night_mode";
+
+        <androidx.appcompat.app.AppCompatDelegateImpl: java.lang.String EXCEPTION_HANDLER_MESSAGE_SUFFIX> = ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.";
+
+        <androidx.appcompat.app.AppCompatDelegateImpl: boolean DEBUG> = 0;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 21 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        <androidx.appcompat.app.AppCompatDelegateImpl: boolean IS_PRE_LOLLIPOP> = $z0;
+
+        $r1 = newarray (int)[1];
+
+        $r1[0] = 16842836;
+
+        <androidx.appcompat.app.AppCompatDelegateImpl: int[] sWindowBackgroundStyleable> = $r1;
+
+        $z0 = <androidx.appcompat.app.AppCompatDelegateImpl: boolean IS_PRE_LOLLIPOP>;
+
+        if $z0 == 0 goto label3;
+
+        $z0 = <androidx.appcompat.app.AppCompatDelegateImpl: boolean sInstalledExceptionHandler>;
+
+        if $z0 != 0 goto label3;
+
+        $r0 = staticinvoke <java.lang.Thread: java.lang.Thread$UncaughtExceptionHandler getDefaultUncaughtExceptionHandler()>();
+
+        $r2 = new androidx.appcompat.app.AppCompatDelegateImpl$1;
+
+        specialinvoke $r2.<androidx.appcompat.app.AppCompatDelegateImpl$1: void <init>(java.lang.Thread$UncaughtExceptionHandler)>($r0);
+
+        staticinvoke <java.lang.Thread: void setDefaultUncaughtExceptionHandler(java.lang.Thread$UncaughtExceptionHandler)>($r2);
+
+        <androidx.appcompat.app.AppCompatDelegateImpl: boolean sInstalledExceptionHandler> = 1;
+
+     label3:
+        return;
+    }
+
+    void <init>(android.content.Context, android.view.Window, androidx.appcompat.app.AppCompatCallback)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.content.Context $r1;
+        android.view.Window $r2;
+        androidx.appcompat.app.AppCompatCallback $r3;
+        androidx.appcompat.app.AppCompatDelegateImpl$2 $r4;
+        android.view.Window$Callback $r5;
+        boolean $z0;
+        androidx.appcompat.app.AppCompatDelegateImpl$AppCompatWindowCallback $r6;
+        int[] $r7;
+        androidx.appcompat.widget.TintTypedArray $r8;
+        android.graphics.drawable.Drawable $r9;
+        java.lang.IllegalStateException $r10;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.view.Window;
+
+        $r3 := @parameter2: androidx.appcompat.app.AppCompatCallback;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegate: void <init>()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim> = null;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHandleNativeActionModes> = 1;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mLocalNightMode> = -100;
+
+        $r4 = new androidx.appcompat.app.AppCompatDelegateImpl$2;
+
+        specialinvoke $r4.<androidx.appcompat.app.AppCompatDelegateImpl$2: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mInvalidatePanelMenuRunnable> = $r4;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext> = $r1;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow> = $r2;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatCallback mAppCompatCallback> = $r3;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r5 = virtualinvoke $r2.<android.view.Window: android.view.Window$Callback getCallback()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback> = $r5;
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $z0 = $r5 instanceof androidx.appcompat.app.AppCompatDelegateImpl$AppCompatWindowCallback;
+
+        if $z0 != 0 goto label2;
+
+        $r6 = new androidx.appcompat.app.AppCompatDelegateImpl$AppCompatWindowCallback;
+
+        specialinvoke $r6.<androidx.appcompat.app.AppCompatDelegateImpl$AppCompatWindowCallback: void <init>(androidx.appcompat.app.AppCompatDelegateImpl,android.view.Window$Callback)>($r0, $r5);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mAppCompatWindowCallback> = $r6;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mAppCompatWindowCallback>;
+
+        virtualinvoke $r2.<android.view.Window: void setCallback(android.view.Window$Callback)>($r5);
+
+        $r7 = <androidx.appcompat.app.AppCompatDelegateImpl: int[] sWindowBackgroundStyleable>;
+
+        $r8 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[])>($r1, null, $r7);
+
+        $r9 = virtualinvoke $r8.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawableIfKnown(int)>(0);
+
+        if $r9 == null goto label1;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        virtualinvoke $r2.<android.view.Window: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r9);
+
+     label1:
+        virtualinvoke $r8.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        return;
+
+     label2:
+        $r10 = new java.lang.IllegalStateException;
+
+        specialinvoke $r10.<java.lang.IllegalStateException: void <init>(java.lang.String)>("AppCompat has already installed itself into the Window");
+
+        throw $r10;
+    }
+
+    private void applyFixedSizeWindow()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.ViewGroup $r1;
+        android.view.View $r2;
+        androidx.appcompat.widget.ContentFrameLayout $r3;
+        android.view.Window $r4;
+        int $i0, $i1, $i2, $i3;
+        android.content.Context $r5;
+        int[] $r6;
+        android.content.res.TypedArray $r7;
+        android.util.TypedValue $r8;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        $r2 = virtualinvoke $r1.<android.view.ViewGroup: android.view.View findViewById(int)>(16908290);
+
+        $r3 = (androidx.appcompat.widget.ContentFrameLayout) $r2;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r2 = virtualinvoke $r4.<android.view.Window: android.view.View getDecorView()>();
+
+        $i0 = virtualinvoke $r2.<android.view.View: int getPaddingLeft()>();
+
+        $i1 = virtualinvoke $r2.<android.view.View: int getPaddingTop()>();
+
+        $i2 = virtualinvoke $r2.<android.view.View: int getPaddingRight()>();
+
+        $i3 = virtualinvoke $r2.<android.view.View: int getPaddingBottom()>();
+
+        virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: void setDecorPadding(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r6 = <androidx.appcompat.R$styleable: int[] AppCompatTheme>;
+
+        $r7 = virtualinvoke $r5.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(int[])>($r6);
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowMinWidthMajor>;
+
+        $r8 = virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue getMinWidthMajor()>();
+
+        virtualinvoke $r7.<android.content.res.TypedArray: boolean getValue(int,android.util.TypedValue)>($i0, $r8);
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowMinWidthMinor>;
+
+        $r8 = virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue getMinWidthMinor()>();
+
+        virtualinvoke $r7.<android.content.res.TypedArray: boolean getValue(int,android.util.TypedValue)>($i0, $r8);
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedWidthMajor>;
+
+        $z0 = virtualinvoke $r7.<android.content.res.TypedArray: boolean hasValue(int)>($i0);
+
+        if $z0 == 0 goto label1;
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedWidthMajor>;
+
+        $r8 = virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue getFixedWidthMajor()>();
+
+        virtualinvoke $r7.<android.content.res.TypedArray: boolean getValue(int,android.util.TypedValue)>($i0, $r8);
+
+     label1:
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedWidthMinor>;
+
+        $z0 = virtualinvoke $r7.<android.content.res.TypedArray: boolean hasValue(int)>($i0);
+
+        if $z0 == 0 goto label2;
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedWidthMinor>;
+
+        $r8 = virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue getFixedWidthMinor()>();
+
+        virtualinvoke $r7.<android.content.res.TypedArray: boolean getValue(int,android.util.TypedValue)>($i0, $r8);
+
+     label2:
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedHeightMajor>;
+
+        $z0 = virtualinvoke $r7.<android.content.res.TypedArray: boolean hasValue(int)>($i0);
+
+        if $z0 == 0 goto label3;
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedHeightMajor>;
+
+        $r8 = virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue getFixedHeightMajor()>();
+
+        virtualinvoke $r7.<android.content.res.TypedArray: boolean getValue(int,android.util.TypedValue)>($i0, $r8);
+
+     label3:
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedHeightMinor>;
+
+        $z0 = virtualinvoke $r7.<android.content.res.TypedArray: boolean hasValue(int)>($i0);
+
+        if $z0 == 0 goto label4;
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowFixedHeightMinor>;
+
+        $r8 = virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue getFixedHeightMinor()>();
+
+        virtualinvoke $r7.<android.content.res.TypedArray: boolean getValue(int,android.util.TypedValue)>($i0, $r8);
+
+     label4:
+        virtualinvoke $r7.<android.content.res.TypedArray: void recycle()>();
+
+        virtualinvoke $r3.<androidx.appcompat.widget.ContentFrameLayout: void requestLayout()>();
+
+        return;
+    }
+
+    private android.view.ViewGroup createSubDecor()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.content.Context $r1;
+        int[] $r2;
+        android.content.res.TypedArray $r3;
+        int $i0;
+        boolean $z0;
+        android.view.Window $r4;
+        android.view.LayoutInflater $r5;
+        android.view.ViewGroup $r6, $r16;
+        android.view.View $r7;
+        android.util.TypedValue $r8, r20;
+        android.content.res.Resources$Theme $r9;
+        java.lang.Object $r10;
+        androidx.appcompat.widget.DecorContentParent $r11;
+        android.view.Window$Callback $r12;
+        androidx.appcompat.widget.FitWindowsViewGroup $r13;
+        android.widget.TextView $r14;
+        androidx.appcompat.widget.ContentFrameLayout $r15;
+        android.widget.FrameLayout $r17;
+        java.lang.StringBuilder $r18, r25;
+        java.lang.String $r19;
+        androidx.appcompat.view.ContextThemeWrapper r21;
+        androidx.appcompat.app.AppCompatDelegateImpl$3 r22;
+        androidx.appcompat.app.AppCompatDelegateImpl$4 r23;
+        androidx.appcompat.app.AppCompatDelegateImpl$5 r24;
+        java.lang.IllegalArgumentException r26;
+        java.lang.IllegalStateException r27;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r2 = <androidx.appcompat.R$styleable: int[] AppCompatTheme>;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(int[])>($r2);
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowActionBar>;
+
+        $z0 = virtualinvoke $r3.<android.content.res.TypedArray: boolean hasValue(int)>($i0);
+
+        if $z0 == 0 goto label20;
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowNoTitle>;
+
+        $z0 = virtualinvoke $r3.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($i0, 0);
+
+        if $z0 == 0 goto label01;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean requestWindowFeature(int)>(1);
+
+        goto label02;
+
+     label01:
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowActionBar>;
+
+        $z0 = virtualinvoke $r3.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($i0, 0);
+
+        if $z0 == 0 goto label02;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean requestWindowFeature(int)>(108);
+
+     label02:
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowActionBarOverlay>;
+
+        $z0 = virtualinvoke $r3.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($i0, 0);
+
+        if $z0 == 0 goto label03;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean requestWindowFeature(int)>(109);
+
+     label03:
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_windowActionModeOverlay>;
+
+        $z0 = virtualinvoke $r3.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($i0, 0);
+
+        if $z0 == 0 goto label04;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean requestWindowFeature(int)>(10);
+
+     label04:
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_android_windowIsFloating>;
+
+        $z0 = virtualinvoke $r3.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($i0, 0);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsFloating> = $z0;
+
+        virtualinvoke $r3.<android.content.res.TypedArray: void recycle()>();
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        virtualinvoke $r4.<android.view.Window: android.view.View getDecorView()>();
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r5 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($r1);
+
+        $r6 = null;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mWindowNoTitle>;
+
+        if $z0 != 0 goto label10;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsFloating>;
+
+        if $z0 == 0 goto label05;
+
+        $i0 = <androidx.appcompat.R$layout: int abc_dialog_title_material>;
+
+        $r7 = virtualinvoke $r5.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>($i0, null);
+
+        $r6 = (android.view.ViewGroup) $r7;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionBar> = 0;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar> = 0;
+
+        goto label14;
+
+     label05:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar>;
+
+        if $z0 == 0 goto label14;
+
+        r20 = new android.util.TypedValue;
+
+        $r8 = r20;
+
+        specialinvoke r20.<android.util.TypedValue: void <init>()>();
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r9 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $i0 = <androidx.appcompat.R$attr: int actionBarTheme>;
+
+        virtualinvoke $r9.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r8, 1);
+
+        $i0 = $r8.<android.util.TypedValue: int resourceId>;
+
+        if $i0 == 0 goto label06;
+
+        r21 = new androidx.appcompat.view.ContextThemeWrapper;
+
+        $r10 = r21;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $i0 = $r8.<android.util.TypedValue: int resourceId>;
+
+        specialinvoke r21.<androidx.appcompat.view.ContextThemeWrapper: void <init>(android.content.Context,int)>($r1, $i0);
+
+        goto label07;
+
+     label06:
+        $r10 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+     label07:
+        $r1 = (android.content.Context) $r10;
+
+        $r5 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($r1);
+
+        $i0 = <androidx.appcompat.R$layout: int abc_screen_toolbar>;
+
+        $r7 = virtualinvoke $r5.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>($i0, null);
+
+        $r6 = (android.view.ViewGroup) $r7;
+
+        $i0 = <androidx.appcompat.R$id: int decor_content_parent>;
+
+        $r7 = virtualinvoke $r6.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        $r11 = (androidx.appcompat.widget.DecorContentParent) $r7;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent> = $r11;
+
+        $r11 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        $r12 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback getWindowCallback()>();
+
+        interfaceinvoke $r11.<androidx.appcompat.widget.DecorContentParent: void setWindowCallback(android.view.Window$Callback)>($r12);
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionBar>;
+
+        if $z0 == 0 goto label08;
+
+        $r11 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        interfaceinvoke $r11.<androidx.appcompat.widget.DecorContentParent: void initFeature(int)>(109);
+
+     label08:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mFeatureProgress>;
+
+        if $z0 == 0 goto label09;
+
+        $r11 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        interfaceinvoke $r11.<androidx.appcompat.widget.DecorContentParent: void initFeature(int)>(2);
+
+     label09:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mFeatureIndeterminateProgress>;
+
+        if $z0 == 0 goto label14;
+
+        $r11 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        interfaceinvoke $r11.<androidx.appcompat.widget.DecorContentParent: void initFeature(int)>(5);
+
+        goto label14;
+
+     label10:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionMode>;
+
+        if $z0 == 0 goto label11;
+
+        $i0 = <androidx.appcompat.R$layout: int abc_screen_simple_overlay_action_mode>;
+
+        $r7 = virtualinvoke $r5.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>($i0, null);
+
+        $r6 = (android.view.ViewGroup) $r7;
+
+        goto label12;
+
+     label11:
+        $i0 = <androidx.appcompat.R$layout: int abc_screen_simple>;
+
+        $r7 = virtualinvoke $r5.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>($i0, null);
+
+        $r6 = (android.view.ViewGroup) $r7;
+
+     label12:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 21 goto label13;
+
+        r22 = new androidx.appcompat.app.AppCompatDelegateImpl$3;
+
+        specialinvoke r22.<androidx.appcompat.app.AppCompatDelegateImpl$3: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        staticinvoke <androidx.core.view.ViewCompat: void setOnApplyWindowInsetsListener(android.view.View,androidx.core.view.OnApplyWindowInsetsListener)>($r6, r22);
+
+        goto label14;
+
+     label13:
+        $r13 = (androidx.appcompat.widget.FitWindowsViewGroup) $r6;
+
+        r23 = new androidx.appcompat.app.AppCompatDelegateImpl$4;
+
+        specialinvoke r23.<androidx.appcompat.app.AppCompatDelegateImpl$4: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        interfaceinvoke $r13.<androidx.appcompat.widget.FitWindowsViewGroup: void setOnFitSystemWindowsListener(androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener)>(r23);
+
+     label14:
+        if $r6 == null goto label19;
+
+        $r11 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r11 != null goto label15;
+
+        $i0 = <androidx.appcompat.R$id: int title>;
+
+        $r7 = virtualinvoke $r6.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        $r14 = (android.widget.TextView) $r7;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.TextView mTitleView> = $r14;
+
+     label15:
+        staticinvoke <androidx.appcompat.widget.ViewUtils: void makeOptionalFitsSystemWindows(android.view.View)>($r6);
+
+        $i0 = <androidx.appcompat.R$id: int action_bar_activity_content>;
+
+        $r7 = virtualinvoke $r6.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        $r15 = (androidx.appcompat.widget.ContentFrameLayout) $r7;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r7 = virtualinvoke $r4.<android.view.Window: android.view.View findViewById(int)>(16908290);
+
+        $r16 = (android.view.ViewGroup) $r7;
+
+        if $r16 == null goto label18;
+
+     label16:
+        $i0 = virtualinvoke $r16.<android.view.ViewGroup: int getChildCount()>();
+
+        if $i0 <= 0 goto label17;
+
+        $r7 = virtualinvoke $r16.<android.view.ViewGroup: android.view.View getChildAt(int)>(0);
+
+        virtualinvoke $r16.<android.view.ViewGroup: void removeViewAt(int)>(0);
+
+        virtualinvoke $r15.<androidx.appcompat.widget.ContentFrameLayout: void addView(android.view.View)>($r7);
+
+        goto label16;
+
+     label17:
+        virtualinvoke $r16.<android.view.ViewGroup: void setId(int)>(-1);
+
+        virtualinvoke $r15.<androidx.appcompat.widget.ContentFrameLayout: void setId(int)>(16908290);
+
+        $z0 = $r16 instanceof android.widget.FrameLayout;
+
+        if $z0 == 0 goto label18;
+
+        $r17 = (android.widget.FrameLayout) $r16;
+
+        virtualinvoke $r17.<android.widget.FrameLayout: void setForeground(android.graphics.drawable.Drawable)>(null);
+
+     label18:
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        virtualinvoke $r4.<android.view.Window: void setContentView(android.view.View)>($r6);
+
+        r24 = new androidx.appcompat.app.AppCompatDelegateImpl$5;
+
+        specialinvoke r24.<androidx.appcompat.app.AppCompatDelegateImpl$5: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        virtualinvoke $r15.<androidx.appcompat.widget.ContentFrameLayout: void setAttachListener(androidx.appcompat.widget.ContentFrameLayout$OnAttachListener)>(r24);
+
+        return $r6;
+
+     label19:
+        r26 = new java.lang.IllegalArgumentException;
+
+        r25 = new java.lang.StringBuilder;
+
+        $r18 = r25;
+
+        specialinvoke r25.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AppCompat does not support the current theme features: { windowActionBar: ");
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar>;
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", windowActionBarOverlay: ");
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionBar>;
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", android:windowIsFloating: ");
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsFloating>;
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", windowActionModeOverlay: ");
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionMode>;
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", windowNoTitle: ");
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mWindowNoTitle>;
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" }");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r26.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r19);
+
+        throw r26;
+
+     label20:
+        virtualinvoke $r3.<android.content.res.TypedArray: void recycle()>();
+
+        r27 = new java.lang.IllegalStateException;
+
+        specialinvoke r27.<java.lang.IllegalStateException: void <init>(java.lang.String)>("You need to use a Theme.AppCompat theme (or descendant) with this activity.");
+
+        throw r27;
+    }
+
+    private void ensureAutoNightModeManager()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.TwilightManager $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager $r2;
+        android.content.Context $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r1 = staticinvoke <androidx.appcompat.app.TwilightManager: androidx.appcompat.app.TwilightManager getInstance(android.content.Context)>($r3);
+
+        specialinvoke $r2.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void <init>(androidx.appcompat.app.AppCompatDelegateImpl,androidx.appcompat.app.TwilightManager)>($r0, $r1);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager> = $r2;
+
+     label1:
+        return;
+    }
+
+    private void ensureSubDecor()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+        android.view.ViewGroup $r1;
+        java.lang.CharSequence $r2;
+        androidx.appcompat.widget.DecorContentParent $r3;
+        androidx.appcompat.app.ActionBar $r4;
+        android.widget.TextView $r5;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r6;
+        androidx.appcompat.view.menu.MenuBuilder $r7;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mSubDecorInstalled>;
+
+        if $z0 != 0 goto label5;
+
+        $r1 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup createSubDecor()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor> = $r1;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.CharSequence getTitle()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r2);
+
+        if $z0 != 0 goto label3;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r3 == null goto label1;
+
+        interfaceinvoke $r3.<androidx.appcompat.widget.DecorContentParent: void setWindowTitle(java.lang.CharSequence)>($r2);
+
+        goto label3;
+
+     label1:
+        $r4 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar peekSupportActionBar()>();
+
+        if $r4 == null goto label2;
+
+        $r4 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar peekSupportActionBar()>();
+
+        virtualinvoke $r4.<androidx.appcompat.app.ActionBar: void setWindowTitle(java.lang.CharSequence)>($r2);
+
+        goto label3;
+
+     label2:
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.TextView mTitleView>;
+
+        if $r5 == null goto label3;
+
+        virtualinvoke $r5.<android.widget.TextView: void setText(java.lang.CharSequence)>($r2);
+
+     label3:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void applyFixedSizeWindow()>();
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void onSubDecorInstalled(android.view.ViewGroup)>($r1);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mSubDecorInstalled> = 1;
+
+        $r6 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 0);
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 != 0 goto label5;
+
+        if $r6 == null goto label4;
+
+        $r7 = $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r7 != null goto label5;
+
+     label4:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void invalidatePanelMenu(int)>(108);
+
+     label5:
+        return;
+    }
+
+    private int getNightMode()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mLocalNightMode>;
+
+        if $i0 == -100 goto label1;
+
+        return $i0;
+
+     label1:
+        $i0 = staticinvoke <androidx.appcompat.app.AppCompatDelegateImpl: int getDefaultNightMode()>();
+
+        return $i0;
+    }
+
+    private void initWindowDecorActionBar()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+        androidx.appcompat.app.ActionBar $r1;
+        android.view.Window$Callback $r2;
+        androidx.appcompat.app.WindowDecorActionBar $r3;
+        android.app.Activity $r4;
+        android.app.Dialog $r5;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureSubDecor()>();
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar>;
+
+        if $z0 == 0 goto label4;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar>;
+
+        if $r1 == null goto label1;
+
+        return;
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $z0 = $r2 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label2;
+
+        $r3 = new androidx.appcompat.app.WindowDecorActionBar;
+
+        $r4 = (android.app.Activity) $r2;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionBar>;
+
+        specialinvoke $r3.<androidx.appcompat.app.WindowDecorActionBar: void <init>(android.app.Activity,boolean)>($r4, $z0);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar> = $r3;
+
+        goto label3;
+
+     label2:
+        $z0 = $r2 instanceof android.app.Dialog;
+
+        if $z0 == 0 goto label3;
+
+        $r3 = new androidx.appcompat.app.WindowDecorActionBar;
+
+        $r5 = (android.app.Dialog) $r2;
+
+        specialinvoke $r3.<androidx.appcompat.app.WindowDecorActionBar: void <init>(android.app.Dialog)>($r5);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar> = $r3;
+
+     label3:
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar>;
+
+        if $r1 == null goto label4;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mEnableDefaultActionBarUp>;
+
+        virtualinvoke $r1.<androidx.appcompat.app.ActionBar: void setDefaultDisplayHomeAsUpEnabled(boolean)>($z0);
+
+     label4:
+        return;
+    }
+
+    private boolean initializePanelContent(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+        androidx.appcompat.view.menu.MenuView $r2;
+        android.view.View $r3;
+        androidx.appcompat.view.menu.MenuBuilder $r4;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback $r5;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $r3 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView>;
+
+        if $r3 == null goto label1;
+
+        $r3 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView>;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView> = $r3;
+
+        return 1;
+
+     label1:
+        $r4 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r4 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback mPanelMenuPresenterCallback>;
+
+        if $r5 != null goto label3;
+
+        $r5 = new androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback;
+
+        specialinvoke $r5.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback mPanelMenuPresenterCallback> = $r5;
+
+     label3:
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback mPanelMenuPresenterCallback>;
+
+        $r2 = virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuView getListMenuView(androidx.appcompat.view.menu.MenuPresenter$Callback)>($r5);
+
+        $r3 = (android.view.View) $r2;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView> = $r3;
+
+        $r3 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView>;
+
+        if $r3 == null goto label4;
+
+        return 1;
+
+     label4:
+        return 0;
+    }
+
+    private boolean initializePanelDecor(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+        android.content.Context $r2;
+        androidx.appcompat.app.AppCompatDelegateImpl$ListMenuDecorView $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context getActionBarThemedContext()>();
+
+        virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: void setStyle(android.content.Context)>($r2);
+
+        $r3 = new androidx.appcompat.app.AppCompatDelegateImpl$ListMenuDecorView;
+
+        $r2 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.content.Context listPresenterContext>;
+
+        specialinvoke $r3.<androidx.appcompat.app.AppCompatDelegateImpl$ListMenuDecorView: void <init>(androidx.appcompat.app.AppCompatDelegateImpl,android.content.Context)>($r0, $r2);
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView> = $r3;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int gravity> = 81;
+
+        return 1;
+    }
+
+    private boolean initializePanelMenu(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+        java.lang.Object $r2;
+        int $i0;
+        androidx.appcompat.widget.DecorContentParent $r3;
+        android.util.TypedValue $r4, r11;
+        android.content.res.Resources$Theme $r5, $r6, $r8;
+        android.content.res.Resources $r7;
+        androidx.appcompat.view.ContextThemeWrapper $r9, r12;
+        androidx.appcompat.view.menu.MenuBuilder $r10, r13;
+        android.content.Context r14;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        if $i0 == 0 goto label1;
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        if $i0 != 108 goto label6;
+
+     label1:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r3 == null goto label6;
+
+        r11 = new android.util.TypedValue;
+
+        $r4 = r11;
+
+        specialinvoke r11.<android.util.TypedValue: void <init>()>();
+
+        r14 = (android.content.Context) $r2;
+
+        $r5 = virtualinvoke r14.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $i0 = <androidx.appcompat.R$attr: int actionBarTheme>;
+
+        virtualinvoke $r5.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r4, 1);
+
+        $r6 = null;
+
+        $i0 = $r4.<android.util.TypedValue: int resourceId>;
+
+        if $i0 == 0 goto label2;
+
+        r14 = (android.content.Context) $r2;
+
+        $r7 = virtualinvoke r14.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r8 = virtualinvoke $r7.<android.content.res.Resources: android.content.res.Resources$Theme newTheme()>();
+
+        $r6 = $r8;
+
+        virtualinvoke $r8.<android.content.res.Resources$Theme: void setTo(android.content.res.Resources$Theme)>($r5);
+
+        $i0 = $r4.<android.util.TypedValue: int resourceId>;
+
+        virtualinvoke $r8.<android.content.res.Resources$Theme: void applyStyle(int,boolean)>($i0, 1);
+
+        $i0 = <androidx.appcompat.R$attr: int actionBarWidgetTheme>;
+
+        virtualinvoke $r8.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r4, 1);
+
+        goto label3;
+
+     label2:
+        $i0 = <androidx.appcompat.R$attr: int actionBarWidgetTheme>;
+
+        virtualinvoke $r5.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r4, 1);
+
+     label3:
+        $i0 = $r4.<android.util.TypedValue: int resourceId>;
+
+        if $i0 == 0 goto label5;
+
+        if $r6 != null goto label4;
+
+        r14 = (android.content.Context) $r2;
+
+        $r7 = virtualinvoke r14.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r8 = virtualinvoke $r7.<android.content.res.Resources: android.content.res.Resources$Theme newTheme()>();
+
+        $r6 = $r8;
+
+        virtualinvoke $r8.<android.content.res.Resources$Theme: void setTo(android.content.res.Resources$Theme)>($r5);
+
+     label4:
+        $i0 = $r4.<android.util.TypedValue: int resourceId>;
+
+        virtualinvoke $r6.<android.content.res.Resources$Theme: void applyStyle(int,boolean)>($i0, 1);
+
+     label5:
+        if $r6 == null goto label6;
+
+        r12 = new androidx.appcompat.view.ContextThemeWrapper;
+
+        $r9 = r12;
+
+        r14 = (android.content.Context) $r2;
+
+        specialinvoke r12.<androidx.appcompat.view.ContextThemeWrapper: void <init>(android.content.Context,int)>(r14, 0);
+
+        $r2 = $r9;
+
+        $r5 = virtualinvoke $r9.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        virtualinvoke $r5.<android.content.res.Resources$Theme: void setTo(android.content.res.Resources$Theme)>($r6);
+
+     label6:
+        r13 = new androidx.appcompat.view.menu.MenuBuilder;
+
+        $r10 = r13;
+
+        r14 = (android.content.Context) $r2;
+
+        specialinvoke r13.<androidx.appcompat.view.menu.MenuBuilder: void <init>(android.content.Context)>(r14);
+
+        virtualinvoke $r10.<androidx.appcompat.view.menu.MenuBuilder: void setCallback(androidx.appcompat.view.menu.MenuBuilder$Callback)>($r0);
+
+        virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: void setMenu(androidx.appcompat.view.menu.MenuBuilder)>($r10);
+
+        return 1;
+    }
+
+    private void invalidatePanelMenu(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        android.view.View $r1;
+        boolean $z0;
+        android.view.Window $r2;
+        java.lang.Runnable $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mInvalidatePanelMenuFeatures>;
+
+        $i0 = 1 << $i0;
+
+        $i0 = $i1 | $i0;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mInvalidatePanelMenuFeatures> = $i0;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mInvalidatePanelMenuPosted>;
+
+        if $z0 != 0 goto label1;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r1 = virtualinvoke $r2.<android.view.Window: android.view.View getDecorView()>();
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mInvalidatePanelMenuRunnable>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void postOnAnimation(android.view.View,java.lang.Runnable)>($r1, $r3);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mInvalidatePanelMenuPosted> = 1;
+
+     label1:
+        return;
+    }
+
+    private boolean onKeyDownPanel(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        android.view.KeyEvent $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $i1 = virtualinvoke $r1.<android.view.KeyEvent: int getRepeatCount()>();
+
+        if $i1 != 0 goto label1;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>($i0, 1);
+
+        $z0 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        if $z0 != 0 goto label1;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r2, $r1);
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    private boolean onKeyUpPanel(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        androidx.appcompat.view.ActionMode $r2;
+        boolean $z0, $z1, $z2;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r3;
+        androidx.appcompat.widget.DecorContentParent $r4;
+        android.content.Context $r5;
+        android.view.ViewConfiguration $r6;
+        java.lang.Object $r7;
+        android.media.AudioManager $r8;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        if $r2 == null goto label1;
+
+        return 0;
+
+     label1:
+        $z0 = 0;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>($i0, 1);
+
+        if $i0 != 0 goto label3;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r4 == null goto label3;
+
+        $z1 = interfaceinvoke $r4.<androidx.appcompat.widget.DecorContentParent: boolean canShowOverflowMenu()>();
+
+        if $z1 == 0 goto label3;
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r6 = staticinvoke <android.view.ViewConfiguration: android.view.ViewConfiguration get(android.content.Context)>($r5);
+
+        $z1 = virtualinvoke $r6.<android.view.ViewConfiguration: boolean hasPermanentMenuKey()>();
+
+        if $z1 != 0 goto label3;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        $z1 = interfaceinvoke $r4.<androidx.appcompat.widget.DecorContentParent: boolean isOverflowMenuShowing()>();
+
+        if $z1 != 0 goto label2;
+
+        $z1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z1 != 0 goto label7;
+
+        $z1 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r3, $r1);
+
+        if $z1 == 0 goto label7;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        $z0 = interfaceinvoke $r4.<androidx.appcompat.widget.DecorContentParent: boolean showOverflowMenu()>();
+
+        goto label7;
+
+     label2:
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        $z0 = interfaceinvoke $r4.<androidx.appcompat.widget.DecorContentParent: boolean hideOverflowMenu()>();
+
+        goto label7;
+
+     label3:
+        $z1 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        if $z1 != 0 goto label6;
+
+        $z1 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isHandled>;
+
+        if $z1 == 0 goto label4;
+
+        goto label6;
+
+     label4:
+        $z1 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared>;
+
+        if $z1 == 0 goto label7;
+
+        $z1 = 1;
+
+        $z2 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshMenuContent>;
+
+        if $z2 == 0 goto label5;
+
+        $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared> = 0;
+
+        $z1 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r3, $r1);
+
+     label5:
+        if $z1 == 0 goto label7;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void openPanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r3, $r1);
+
+        $z0 = 1;
+
+        goto label7;
+
+     label6:
+        $z0 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r3, 1);
+
+     label7:
+        if $z0 == 0 goto label9;
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r7 = virtualinvoke $r5.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("audio");
+
+        $r8 = (android.media.AudioManager) $r7;
+
+        if $r8 == null goto label8;
+
+        virtualinvoke $r8.<android.media.AudioManager: void playSoundEffect(int)>(0);
+
+        return $z0;
+
+     label8:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("AppCompatDelegate", "Couldn\'t get audio manager");
+
+     label9:
+        return $z0;
+    }
+
+    private void openPanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+        android.view.KeyEvent $r2;
+        int $i0, $i1;
+        boolean $z0;
+        android.content.Context $r3;
+        android.content.res.Resources $r4;
+        android.content.res.Configuration $r5;
+        android.view.Window$Callback $r6;
+        androidx.appcompat.view.menu.MenuBuilder $r7;
+        java.lang.Object $r8;
+        android.view.WindowManager $r9;
+        byte $b2;
+        android.view.ViewGroup $r10;
+        android.view.View $r11;
+        android.view.ViewGroup$LayoutParams $r12, $r13;
+        android.view.ViewParent $r14;
+        android.view.WindowManager$LayoutParams $r15;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $r2 := @parameter1: android.view.KeyEvent;
+
+        $z0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        if $z0 != 0 goto label17;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        if $i0 != 0 goto label04;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $i0 = $r5.<android.content.res.Configuration: int screenLayout>;
+
+        $i0 = $i0 & 15;
+
+        if $i0 != 4 goto label02;
+
+        $z0 = 1;
+
+        goto label03;
+
+     label02:
+        $z0 = 0;
+
+     label03:
+        if $z0 == 0 goto label04;
+
+        return;
+
+     label04:
+        $r6 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback getWindowCallback()>();
+
+        if $r6 == null goto label05;
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        $r7 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $z0 = interfaceinvoke $r6.<android.view.Window$Callback: boolean onMenuOpened(int,android.view.Menu)>($i0, $r7);
+
+        if $z0 != 0 goto label05;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r1, 1);
+
+        return;
+
+     label05:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r8 = virtualinvoke $r3.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        $r9 = (android.view.WindowManager) $r8;
+
+        if $r9 != null goto label06;
+
+        return;
+
+     label06:
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r1, $r2);
+
+        if $z0 != 0 goto label07;
+
+        return;
+
+     label07:
+        $b2 = -2;
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        if $r10 == null goto label10;
+
+        $z0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshDecorView>;
+
+        if $z0 == 0 goto label08;
+
+        goto label10;
+
+     label08:
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView>;
+
+        if $r11 == null goto label09;
+
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView>;
+
+        $r12 = virtualinvoke $r11.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        if $r12 == null goto label16;
+
+        $i0 = $r12.<android.view.ViewGroup$LayoutParams: int width>;
+
+        if $i0 != -1 goto label16;
+
+        $b2 = -1;
+
+        goto label16;
+
+     label09:
+        goto label16;
+
+     label10:
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        if $r10 != null goto label11;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean initializePanelDecor(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState)>($r1);
+
+        if $z0 == 0 goto label17;
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        if $r10 != null goto label12;
+
+        return;
+
+     label11:
+        $z0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshDecorView>;
+
+        if $z0 == 0 goto label12;
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        $i0 = virtualinvoke $r10.<android.view.ViewGroup: int getChildCount()>();
+
+        if $i0 <= 0 goto label12;
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        virtualinvoke $r10.<android.view.ViewGroup: void removeAllViews()>();
+
+     label12:
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean initializePanelContent(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState)>($r1);
+
+        if $z0 == 0 goto label17;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean hasPanelItems()>();
+
+        if $z0 != 0 goto label13;
+
+        return;
+
+     label13:
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView>;
+
+        $r12 = virtualinvoke $r11.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r13 = $r12;
+
+        if $r12 != null goto label14;
+
+        $r12 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r12.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        $r13 = $r12;
+
+     label14:
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int background>;
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        virtualinvoke $r10.<android.view.ViewGroup: void setBackgroundResource(int)>($i0);
+
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView>;
+
+        $r14 = virtualinvoke $r11.<android.view.View: android.view.ViewParent getParent()>();
+
+        if $r14 == null goto label15;
+
+        $z0 = $r14 instanceof android.view.ViewGroup;
+
+        if $z0 == 0 goto label15;
+
+        $r10 = (android.view.ViewGroup) $r14;
+
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView>;
+
+        virtualinvoke $r10.<android.view.ViewGroup: void removeView(android.view.View)>($r11);
+
+     label15:
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView>;
+
+        virtualinvoke $r10.<android.view.ViewGroup: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r11, $r13);
+
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView>;
+
+        $z0 = virtualinvoke $r11.<android.view.View: boolean hasFocus()>();
+
+        if $z0 != 0 goto label09;
+
+        $r11 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView>;
+
+        virtualinvoke $r11.<android.view.View: boolean requestFocus()>();
+
+        goto label09;
+
+     label16:
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isHandled> = 0;
+
+        $r15 = new android.view.WindowManager$LayoutParams;
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int x>;
+
+        $i1 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int y>;
+
+        specialinvoke $r15.<android.view.WindowManager$LayoutParams: void <init>(int,int,int,int,int,int,int)>($b2, -2, $i0, $i1, 1002, 8519680, -3);
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int gravity>;
+
+        $r15.<android.view.WindowManager$LayoutParams: int gravity> = $i0;
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int windowAnimations>;
+
+        $r15.<android.view.WindowManager$LayoutParams: int windowAnimations> = $i0;
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        interfaceinvoke $r9.<android.view.WindowManager: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r10, $r15);
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen> = 1;
+
+     label17:
+        return;
+    }
+
+    private boolean performPanelShortcut(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState, int, android.view.KeyEvent, int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+        int $i0, $i1;
+        android.view.KeyEvent $r2;
+        boolean $z0, $z1;
+        androidx.appcompat.view.menu.MenuBuilder $r3;
+        androidx.appcompat.widget.DecorContentParent $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.view.KeyEvent;
+
+        $i1 := @parameter3: int;
+
+        $z0 = virtualinvoke $r2.<android.view.KeyEvent: boolean isSystem()>();
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $z0 = 0;
+
+        $z1 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared>;
+
+        if $z1 != 0 goto label2;
+
+        $z1 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r1, $r2);
+
+        if $z1 == 0 goto label3;
+
+     label2:
+        $r3 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r3 == null goto label3;
+
+        $r3 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $z0 = virtualinvoke $r3.<androidx.appcompat.view.menu.MenuBuilder: boolean performShortcut(int,android.view.KeyEvent,int)>($i0, $r2, $i1);
+
+     label3:
+        if $z0 == 0 goto label4;
+
+        $i0 = $i1 & 1;
+
+        if $i0 != 0 goto label4;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r4 != null goto label4;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r1, 1);
+
+     label4:
+        return $z0;
+    }
+
+    private boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1, $r4;
+        android.view.KeyEvent $r2;
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback $r3;
+        boolean $z0, $z1;
+        android.view.Window$Callback $r5;
+        int $i0;
+        android.view.View $r6;
+        androidx.appcompat.widget.DecorContentParent $r7;
+        androidx.appcompat.app.ActionBar $r8;
+        androidx.appcompat.view.menu.MenuBuilder $r9;
+        android.os.Bundle $r10;
+        android.view.KeyCharacterMap $r11;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $r2 := @parameter1: android.view.KeyEvent;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 == 0 goto label01;
+
+        return 0;
+
+     label01:
+        $z0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared>;
+
+        if $z0 == 0 goto label02;
+
+        return 1;
+
+     label02:
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel>;
+
+        if $r4 == null goto label03;
+
+        if $r4 == $r1 goto label03;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r4, 0);
+
+     label03:
+        $r5 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback getWindowCallback()>();
+
+        if $r5 == null goto label04;
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        $r6 = interfaceinvoke $r5.<android.view.Window$Callback: android.view.View onCreatePanelView(int)>($i0);
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView> = $r6;
+
+     label04:
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        if $i0 == 0 goto label06;
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        if $i0 != 108 goto label05;
+
+        goto label06;
+
+     label05:
+        $z0 = 0;
+
+        goto label07;
+
+     label06:
+        $z0 = 1;
+
+     label07:
+        if $z0 == 0 goto label08;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r7 == null goto label08;
+
+        interfaceinvoke $r7.<androidx.appcompat.widget.DecorContentParent: void setMenuPrepared()>();
+
+     label08:
+        $r6 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView>;
+
+        if $r6 != null goto label21;
+
+        if $z0 == 0 goto label09;
+
+        $r8 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar peekSupportActionBar()>();
+
+        $z1 = $r8 instanceof androidx.appcompat.app.ToolbarActionBar;
+
+        if $z1 != 0 goto label21;
+
+     label09:
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r9 == null goto label10;
+
+        $z1 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshMenuContent>;
+
+        if $z1 == 0 goto label15;
+
+     label10:
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r9 != null goto label11;
+
+        $z1 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean initializePanelMenu(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState)>($r1);
+
+        if $z1 == 0 goto label22;
+
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r9 != null goto label11;
+
+        return 0;
+
+     label11:
+        if $z0 == 0 goto label13;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r7 == null goto label13;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback mActionMenuPresenterCallback>;
+
+        if $r3 != null goto label12;
+
+        $r3 = new androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback;
+
+        specialinvoke $r3.<androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback mActionMenuPresenterCallback> = $r3;
+
+     label12:
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback mActionMenuPresenterCallback>;
+
+        interfaceinvoke $r7.<androidx.appcompat.widget.DecorContentParent: void setMenu(android.view.Menu,androidx.appcompat.view.menu.MenuPresenter$Callback)>($r9, $r3);
+
+     label13:
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r9.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+        $i0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $z1 = interfaceinvoke $r5.<android.view.Window$Callback: boolean onCreatePanelMenu(int,android.view.Menu)>($i0, $r9);
+
+        if $z1 != 0 goto label14;
+
+        virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: void setMenu(androidx.appcompat.view.menu.MenuBuilder)>(null);
+
+        if $z0 == 0 goto label22;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r7 == null goto label22;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback mActionMenuPresenterCallback>;
+
+        interfaceinvoke $r7.<androidx.appcompat.widget.DecorContentParent: void setMenu(android.view.Menu,androidx.appcompat.view.menu.MenuPresenter$Callback)>(null, $r3);
+
+        return 0;
+
+     label14:
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshMenuContent> = 0;
+
+     label15:
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r9.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.os.Bundle frozenActionViewState>;
+
+        if $r10 == null goto label16;
+
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $r10 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.os.Bundle frozenActionViewState>;
+
+        virtualinvoke $r9.<androidx.appcompat.view.menu.MenuBuilder: void restoreActionViewStates(android.os.Bundle)>($r10);
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.os.Bundle frozenActionViewState> = null;
+
+     label16:
+        $r6 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView>;
+
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $z1 = interfaceinvoke $r5.<android.view.Window$Callback: boolean onPreparePanel(int,android.view.View,android.view.Menu)>(0, $r6, $r9);
+
+        if $z1 != 0 goto label18;
+
+        if $z0 == 0 goto label17;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r7 == null goto label17;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$ActionMenuPresenterCallback mActionMenuPresenterCallback>;
+
+        interfaceinvoke $r7.<androidx.appcompat.widget.DecorContentParent: void setMenu(android.view.Menu,androidx.appcompat.view.menu.MenuPresenter$Callback)>(null, $r3);
+
+     label17:
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r9.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+        return 0;
+
+     label18:
+        $i0 = -1;
+
+        $r11 = staticinvoke <android.view.KeyCharacterMap: android.view.KeyCharacterMap load(int)>($i0);
+
+        $i0 = virtualinvoke $r11.<android.view.KeyCharacterMap: int getKeyboardType()>();
+
+        if $i0 == 1 goto label19;
+
+        $z0 = 1;
+
+        goto label20;
+
+     label19:
+        $z0 = 0;
+
+     label20:
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean qwertyMode> = $z0;
+
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $z0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean qwertyMode>;
+
+        virtualinvoke $r9.<androidx.appcompat.view.menu.MenuBuilder: void setQwertyMode(boolean)>($z0);
+
+        $r9 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r9.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+     label21:
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared> = 1;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isHandled> = 0;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel> = $r1;
+
+        return 1;
+
+     label22:
+        return 0;
+    }
+
+    private void reopenMenu(androidx.appcompat.view.menu.MenuBuilder, boolean)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        boolean $z0, $z1;
+        androidx.appcompat.widget.DecorContentParent $r2;
+        android.content.Context $r3;
+        android.view.ViewConfiguration $r4;
+        android.view.Window$Callback $r5;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r6;
+        int $i0;
+        android.view.Window $r7;
+        android.view.View $r8;
+        java.lang.Runnable $r9;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r2 == null goto label5;
+
+        $z1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorContentParent: boolean canShowOverflowMenu()>();
+
+        if $z1 == 0 goto label5;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r4 = staticinvoke <android.view.ViewConfiguration: android.view.ViewConfiguration get(android.content.Context)>($r3);
+
+        $z1 = virtualinvoke $r4.<android.view.ViewConfiguration: boolean hasPermanentMenuKey()>();
+
+        if $z1 == 0 goto label1;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        $z1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorContentParent: boolean isOverflowMenuShowPending()>();
+
+        if $z1 == 0 goto label5;
+
+     label1:
+        $r5 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback getWindowCallback()>();
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        $z1 = interfaceinvoke $r2.<androidx.appcompat.widget.DecorContentParent: boolean isOverflowMenuShowing()>();
+
+        if $z1 == 0 goto label3;
+
+        if $z0 != 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorContentParent: boolean hideOverflowMenu()>();
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 != 0 goto label6;
+
+        $r6 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 1);
+
+        $r1 = $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        interfaceinvoke $r5.<android.view.Window$Callback: void onPanelClosed(int,android.view.Menu)>(108, $r1);
+
+        return;
+
+     label3:
+        if $r5 == null goto label6;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 != 0 goto label6;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mInvalidatePanelMenuPosted>;
+
+        if $z0 == 0 goto label4;
+
+        $i0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mInvalidatePanelMenuFeatures>;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label4;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r8 = virtualinvoke $r7.<android.view.Window: android.view.View getDecorView()>();
+
+        $r9 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mInvalidatePanelMenuRunnable>;
+
+        virtualinvoke $r8.<android.view.View: boolean removeCallbacks(java.lang.Runnable)>($r9);
+
+        $r9 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mInvalidatePanelMenuRunnable>;
+
+        interfaceinvoke $r9.<java.lang.Runnable: void run()>();
+
+     label4:
+        $r6 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 1);
+
+        $r1 = $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r1 == null goto label6;
+
+        $z0 = $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshMenuContent>;
+
+        if $z0 != 0 goto label6;
+
+        $r8 = $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View createdPanelView>;
+
+        $r1 = $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        $z0 = interfaceinvoke $r5.<android.view.Window$Callback: boolean onPreparePanel(int,android.view.View,android.view.Menu)>(0, $r8, $r1);
+
+        if $z0 == 0 goto label6;
+
+        $r1 = $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        interfaceinvoke $r5.<android.view.Window$Callback: boolean onMenuOpened(int,android.view.Menu)>(108, $r1);
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorContentParent: boolean showOverflowMenu()>();
+
+        return;
+
+     label5:
+        $r6 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 1);
+
+        $r6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshDecorView> = 1;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r6, 0);
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void openPanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r6, null);
+
+     label6:
+        return;
+    }
+
+    private int sanitizeWindowFeatureId(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 8 goto label1;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AppCompatDelegate", "You should now use the AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR id when requesting this feature.");
+
+        return 108;
+
+     label1:
+        if $i0 != 9 goto label2;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AppCompatDelegate", "You should now use the AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY id when requesting this feature.");
+
+        return 109;
+
+     label2:
+        return $i0;
+    }
+
+    private boolean shouldInheritContext(android.view.ViewParent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.ViewParent $r1;
+        android.view.Window $r2;
+        android.view.View $r3, $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.ViewParent;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r3 = virtualinvoke $r2.<android.view.Window: android.view.View getDecorView()>();
+
+     label2:
+        if $r1 != null goto label3;
+
+        return 1;
+
+     label3:
+        if $r1 == $r3 goto label5;
+
+        $z0 = $r1 instanceof android.view.View;
+
+        if $z0 == 0 goto label5;
+
+        $r4 = (android.view.View) $r1;
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean isAttachedToWindow(android.view.View)>($r4);
+
+        if $z0 == 0 goto label4;
+
+        return 0;
+
+     label4:
+        $r1 = interfaceinvoke $r1.<android.view.ViewParent: android.view.ViewParent getParent()>();
+
+        goto label2;
+
+     label5:
+        return 0;
+    }
+
+    private boolean shouldRecreateOnNightModeChange()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+        android.content.Context $r1, $r4;
+        android.content.pm.PackageManager $r2;
+        android.content.ComponentName $r3;
+        java.lang.Class $r5;
+        android.content.pm.ActivityInfo $r6;
+        int $i0;
+        java.lang.Throwable $r7;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mApplyDayNightCalled>;
+
+        if $z0 == 0 goto label4;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $z0 = $r1 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label4;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r3 = new android.content.ComponentName;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+     label1:
+        $r5 = virtualinvoke $r4.<java.lang.Object: java.lang.Class getClass()>();
+
+        specialinvoke $r3.<android.content.ComponentName: void <init>(android.content.Context,java.lang.Class)>($r1, $r5);
+
+        $r6 = virtualinvoke $r2.<android.content.pm.PackageManager: android.content.pm.ActivityInfo getActivityInfo(android.content.ComponentName,int)>($r3, 0);
+
+     label2:
+        $i0 = $r6.<android.content.pm.ActivityInfo: int configChanges>;
+
+        $i0 = $i0 & 512;
+
+        if $i0 != 0 goto label4;
+
+        return 1;
+
+     label3:
+        $r7 := @caughtexception;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String,java.lang.Throwable)>("AppCompatDelegate", "Exception while getting ActivityInfo", $r7);
+
+        return 1;
+
+     label4:
+        return 0;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label1 to label2 with label3;
+    }
+
+    private void throwFeatureRequestIfSubDecorInstalled()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+        android.util.AndroidRuntimeException $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mSubDecorInstalled>;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = new android.util.AndroidRuntimeException;
+
+        specialinvoke $r1.<android.util.AndroidRuntimeException: void <init>(java.lang.String)>("Window feature must be requested before adding content");
+
+        throw $r1;
+    }
+
+    private boolean updateForNightMode(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        android.content.Context $r1;
+        android.content.res.Resources $r2;
+        android.content.res.Configuration $r3, $r5;
+        byte $b2;
+        boolean $z0;
+        android.app.Activity $r4;
+        android.util.DisplayMetrics $r6;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r3 = virtualinvoke $r2.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $i1 = $r3.<android.content.res.Configuration: int uiMode>;
+
+        $i1 = $i1 & 48;
+
+        if $i0 != 2 goto label1;
+
+        $b2 = 32;
+
+        goto label2;
+
+     label1:
+        $b2 = 16;
+
+     label2:
+        if $i1 == $b2 goto label5;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean shouldRecreateOnNightModeChange()>();
+
+        if $z0 == 0 goto label3;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r4 = (android.app.Activity) $r1;
+
+        virtualinvoke $r4.<android.app.Activity: void recreate()>();
+
+        goto label4;
+
+     label3:
+        $r5 = new android.content.res.Configuration;
+
+        specialinvoke $r5.<android.content.res.Configuration: void <init>(android.content.res.Configuration)>($r3);
+
+        $r6 = virtualinvoke $r2.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $i0 = $r5.<android.content.res.Configuration: int uiMode>;
+
+        $i0 = $i0 & -49;
+
+        $i0 = $i0 | $b2;
+
+        $r5.<android.content.res.Configuration: int uiMode> = $i0;
+
+        virtualinvoke $r2.<android.content.res.Resources: void updateConfiguration(android.content.res.Configuration,android.util.DisplayMetrics)>($r5, $r6);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 26 goto label4;
+
+        staticinvoke <androidx.appcompat.app.ResourcesFlusher: void flush(android.content.res.Resources)>($r2);
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public void addContentView(android.view.View, android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.View $r1, $r3;
+        android.view.ViewGroup$LayoutParams $r2;
+        android.view.ViewGroup $r4;
+        android.view.Window$Callback $r5;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureSubDecor()>();
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        $r3 = virtualinvoke $r4.<android.view.ViewGroup: android.view.View findViewById(int)>(16908290);
+
+        $r4 = (android.view.ViewGroup) $r3;
+
+        virtualinvoke $r4.<android.view.ViewGroup: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r1, $r2);
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        interfaceinvoke $r5.<android.view.Window$Callback: void onContentChanged()>();
+
+        return;
+    }
+
+    public boolean applyDayNight()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+        int $i0, $i1;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $z0 = 0;
+
+        $i0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int getNightMode()>();
+
+        $i1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mapNightMode(int)>($i0);
+
+        if $i1 == -1 goto label1;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean updateForNightMode(int)>($i1);
+
+     label1:
+        if $i0 != 0 goto label2;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureAutoNightModeManager()>();
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager>;
+
+        virtualinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void setup()>();
+
+     label2:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mApplyDayNightCalled> = 1;
+
+        return $z0;
+    }
+
+    void callOnPanelClosed(int, androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState, android.view.Menu)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+        java.lang.Object $r2;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] $r3;
+        boolean $z0;
+        android.view.Window$Callback $r4;
+        android.view.Menu r5;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $r2 := @parameter2: android.view.Menu;
+
+        if $r1 != null goto label1;
+
+        if $i0 < 0 goto label1;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] mPanels>;
+
+        $i1 = lengthof $r3;
+
+        if $i0 >= $i1 goto label1;
+
+        $r1 = $r3[$i0];
+
+     label1:
+        if $r1 == null goto label2;
+
+        $r2 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+     label2:
+        if $r1 == null goto label3;
+
+        $z0 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        if $z0 != 0 goto label3;
+
+        return;
+
+     label3:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 != 0 goto label4;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        r5 = (android.view.Menu) $r2;
+
+        interfaceinvoke $r4.<android.view.Window$Callback: void onPanelClosed(int,android.view.Menu)>($i0, r5);
+
+     label4:
+        return;
+    }
+
+    void checkCloseActionMenu(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        android.view.Window$Callback $r2;
+        boolean $z0;
+        androidx.appcompat.widget.DecorContentParent $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mClosingActionMenu>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mClosingActionMenu> = 1;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        interfaceinvoke $r3.<androidx.appcompat.widget.DecorContentParent: void dismissPopups()>();
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback getWindowCallback()>();
+
+        if $r2 == null goto label2;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 != 0 goto label2;
+
+        interfaceinvoke $r2.<android.view.Window$Callback: void onPanelClosed(int,android.view.Menu)>(108, $r1);
+
+     label2:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mClosingActionMenu> = 0;
+
+        return;
+    }
+
+    void closePanel(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>($i0, 1);
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r1, 1);
+
+        return;
+    }
+
+    void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState, boolean)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1, $r8;
+        boolean $z0, $z1;
+        android.content.Context $r4;
+        java.lang.Object $r5;
+        android.view.WindowManager $r6;
+        android.view.ViewGroup $r7;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        $z0 := @parameter1: boolean;
+
+        goto label1;
+
+     label1:
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r5 = virtualinvoke $r4.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        $r6 = (android.view.WindowManager) $r5;
+
+        if $r6 == null goto label2;
+
+        $z1 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        if $z1 == 0 goto label2;
+
+        $r7 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        if $r7 == null goto label2;
+
+        $r7 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.ViewGroup decorView>;
+
+        interfaceinvoke $r6.<android.view.WindowManager: void removeView(android.view.View)>($r7);
+
+        goto label2;
+
+     label2:
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared> = 0;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isHandled> = 0;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen> = 0;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.view.View shownPanelView> = null;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshDecorView> = 1;
+
+        $r8 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel>;
+
+        if $r8 != $r1 goto label3;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel> = null;
+
+     label3:
+        return;
+    }
+
+    public android.view.View createView(android.view.View, java.lang.String, android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.View $r1;
+        java.lang.String $r2, $r9, $r11;
+        android.content.Context $r3, $r6;
+        android.util.AttributeSet $r4;
+        boolean $z0, $z1, $z2;
+        androidx.appcompat.app.AppCompatViewInflater $r5;
+        int[] $r7;
+        android.content.res.TypedArray $r8;
+        int $i0;
+        java.lang.Class $r10;
+        java.lang.Class[] $r12;
+        java.lang.reflect.Constructor $r13;
+        java.lang.Object[] $r14;
+        java.lang.Object $r15;
+        java.lang.Throwable $r16;
+        java.lang.StringBuilder $r17;
+        org.xmlpull.v1.XmlPullParser $r18;
+        android.view.ViewParent $r19;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.content.Context;
+
+        $r4 := @parameter3: android.util.AttributeSet;
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatViewInflater mAppCompatViewInflater>;
+
+        $z0 = 0;
+
+        if $r5 != null goto label5;
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r7 = <androidx.appcompat.R$styleable: int[] AppCompatTheme>;
+
+        $r8 = virtualinvoke $r6.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(int[])>($r7);
+
+        $i0 = <androidx.appcompat.R$styleable: int AppCompatTheme_viewInflaterClass>;
+
+        $r9 = virtualinvoke $r8.<android.content.res.TypedArray: java.lang.String getString(int)>($i0);
+
+        if $r9 == null goto label4;
+
+        $r10 = class "Landroidx/appcompat/app/AppCompatViewInflater;";
+
+        $r11 = virtualinvoke $r10.<java.lang.Class: java.lang.String getName()>();
+
+        $z1 = virtualinvoke $r11.<java.lang.String: boolean equals(java.lang.Object)>($r9);
+
+        if $z1 == 0 goto label1;
+
+        goto label4;
+
+     label1:
+        $r10 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>($r9);
+
+        $r12 = newarray (java.lang.Class)[0];
+
+        $r13 = virtualinvoke $r10.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>($r12);
+
+        $r14 = newarray (java.lang.Object)[0];
+
+        $r15 = virtualinvoke $r13.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r14);
+
+        $r5 = (androidx.appcompat.app.AppCompatViewInflater) $r15;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatViewInflater mAppCompatViewInflater> = $r5;
+
+     label2:
+        goto label5;
+
+     label3:
+        $r16 := @caughtexception;
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to instantiate custom view inflater ");
+
+        virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". Falling back to default.");
+
+        $r9 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("AppCompatDelegate", $r9, $r16);
+
+        $r5 = new androidx.appcompat.app.AppCompatViewInflater;
+
+        specialinvoke $r5.<androidx.appcompat.app.AppCompatViewInflater: void <init>()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatViewInflater mAppCompatViewInflater> = $r5;
+
+        goto label5;
+
+     label4:
+        $r5 = new androidx.appcompat.app.AppCompatViewInflater;
+
+        specialinvoke $r5.<androidx.appcompat.app.AppCompatViewInflater: void <init>()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatViewInflater mAppCompatViewInflater> = $r5;
+
+     label5:
+        $z1 = 0;
+
+        $z2 = <androidx.appcompat.app.AppCompatDelegateImpl: boolean IS_PRE_LOLLIPOP>;
+
+        if $z2 == 0 goto label8;
+
+        $z1 = $r4 instanceof org.xmlpull.v1.XmlPullParser;
+
+        if $z1 == 0 goto label6;
+
+        $r18 = (org.xmlpull.v1.XmlPullParser) $r4;
+
+        $i0 = interfaceinvoke $r18.<org.xmlpull.v1.XmlPullParser: int getDepth()>();
+
+        if $i0 <= 1 goto label7;
+
+        $z0 = 1;
+
+        goto label7;
+
+     label6:
+        $r19 = (android.view.ViewParent) $r1;
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean shouldInheritContext(android.view.ViewParent)>($r19);
+
+     label7:
+        $z1 = $z0;
+
+     label8:
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatViewInflater mAppCompatViewInflater>;
+
+        $z0 = <androidx.appcompat.app.AppCompatDelegateImpl: boolean IS_PRE_LOLLIPOP>;
+
+        $z2 = staticinvoke <androidx.appcompat.widget.VectorEnabledTintResources: boolean shouldBeUsed()>();
+
+        $r1 = virtualinvoke $r5.<androidx.appcompat.app.AppCompatViewInflater: android.view.View createView(android.view.View,java.lang.String,android.content.Context,android.util.AttributeSet,boolean,boolean,boolean,boolean)>($r1, $r2, $r3, $r4, $z1, $z0, 1, $z2);
+
+        return $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    void dismissPopups()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.widget.DecorContentParent $r1;
+        android.widget.PopupWindow $r2;
+        android.view.Window $r3;
+        android.view.View $r4;
+        java.lang.Runnable $r5;
+        boolean $z0;
+        java.lang.Throwable $r6;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r7;
+        androidx.appcompat.view.menu.MenuBuilder $r8;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r1 == null goto label1;
+
+        interfaceinvoke $r1.<androidx.appcompat.widget.DecorContentParent: void dismissPopups()>();
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        if $r2 == null goto label6;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r4 = virtualinvoke $r3.<android.view.Window: android.view.View getDecorView()>();
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mShowActionModePopup>;
+
+        virtualinvoke $r4.<android.view.View: boolean removeCallbacks(java.lang.Runnable)>($r5);
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        $z0 = virtualinvoke $r2.<android.widget.PopupWindow: boolean isShowing()>();
+
+        if $z0 == 0 goto label5;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+     label2:
+        virtualinvoke $r2.<android.widget.PopupWindow: void dismiss()>();
+
+     label3:
+        goto label5;
+
+     label4:
+        $r6 := @caughtexception;
+
+     label5:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup> = null;
+
+     label6:
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void endOnGoingFadeAnimation()>();
+
+        $r7 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 0);
+
+        if $r7 == null goto label7;
+
+        $r8 = $r7.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r8 == null goto label7;
+
+        $r8 = $r7.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r8.<androidx.appcompat.view.menu.MenuBuilder: void close()>();
+
+     label7:
+        return;
+
+        catch java.lang.IllegalArgumentException from label2 to label3 with label4;
+    }
+
+    boolean dispatchKeyEvent(android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.KeyEvent $r1;
+        android.view.Window$Callback $r2;
+        boolean $z0, $z1;
+        android.view.Window $r3;
+        android.view.View $r4;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.KeyEvent;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $z0 = $r2 instanceof androidx.core.view.KeyEventDispatcher$Component;
+
+        $z1 = 1;
+
+        if $z0 != 0 goto label1;
+
+        $z0 = $r2 instanceof androidx.appcompat.app.AppCompatDialog;
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r4 = virtualinvoke $r3.<android.view.Window: android.view.View getDecorView()>();
+
+        if $r4 == null goto label2;
+
+        $z0 = staticinvoke <androidx.core.view.KeyEventDispatcher: boolean dispatchBeforeHierarchy(android.view.View,android.view.KeyEvent)>($r4, $r1);
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getKeyCode()>();
+
+        if $i0 != 82 goto label3;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $z0 = interfaceinvoke $r2.<android.view.Window$Callback: boolean dispatchKeyEvent(android.view.KeyEvent)>($r1);
+
+        if $z0 == 0 goto label3;
+
+        return 1;
+
+     label3:
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getKeyCode()>();
+
+        $i1 = virtualinvoke $r1.<android.view.KeyEvent: int getAction()>();
+
+        if $i1 != 0 goto label4;
+
+        goto label5;
+
+     label4:
+        $z1 = 0;
+
+     label5:
+        if $z1 == 0 goto label6;
+
+        $z1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean onKeyDown(int,android.view.KeyEvent)>($i0, $r1);
+
+        return $z1;
+
+     label6:
+        $z1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean onKeyUp(int,android.view.KeyEvent)>($i0, $r1);
+
+        return $z1;
+    }
+
+    void doInvalidatePanelMenu(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r1;
+        androidx.appcompat.view.menu.MenuBuilder $r2;
+        android.os.Bundle $r3;
+        androidx.appcompat.widget.DecorContentParent $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>($i0, 1);
+
+        $r2 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r2 == null goto label2;
+
+        $r3 = new android.os.Bundle;
+
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+
+        $r2 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void saveActionViewStates(android.os.Bundle)>($r3);
+
+        $i1 = virtualinvoke $r3.<android.os.Bundle: int size()>();
+
+        if $i1 <= 0 goto label1;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: android.os.Bundle frozenActionViewState> = $r3;
+
+     label1:
+        $r2 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+        $r2 = $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $r2.<androidx.appcompat.view.menu.MenuBuilder: void clear()>();
+
+     label2:
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshMenuContent> = 1;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean refreshDecorView> = 1;
+
+        if $i0 == 108 goto label3;
+
+        if $i0 != 0 goto label4;
+
+     label3:
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r4 == null goto label4;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 0);
+
+        if $r1 == null goto label4;
+
+        $r1.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared> = 0;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r1, null);
+
+     label4:
+        return;
+    }
+
+    void endOnGoingFadeAnimation()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.core.view.ViewPropertyAnimatorCompat $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.core.view.ViewPropertyAnimatorCompat: void cancel()>();
+
+     label1:
+        return;
+    }
+
+    androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState findMenuPanel(android.view.Menu)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.Menu $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] $r2;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r3;
+        androidx.appcompat.view.menu.MenuBuilder $r4;
+        int $i0, $i1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.Menu;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] mPanels>;
+
+        if $r2 == null goto label1;
+
+        $i0 = lengthof $r2;
+
+        goto label2;
+
+     label1:
+        $i0 = 0;
+
+     label2:
+        $i1 = 0;
+
+     label3:
+        if $i1 >= $i0 goto label5;
+
+        $r3 = $r2[$i1];
+
+        if $r3 == null goto label4;
+
+        $r4 = $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        if $r4 != $r1 goto label4;
+
+        return $r3;
+
+     label4:
+        $i1 = $i1 + 1;
+
+        goto label3;
+
+     label5:
+        return null;
+    }
+
+    public android.view.View findViewById(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        android.view.View $r1;
+        android.view.Window $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureSubDecor()>();
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r1 = virtualinvoke $r2.<android.view.Window: android.view.View findViewById(int)>($i0);
+
+        return $r1;
+    }
+
+    final android.content.Context getActionBarThemedContext()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.content.Context $r1;
+        androidx.appcompat.app.ActionBar $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = null;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r2 == null goto label1;
+
+        $r1 = virtualinvoke $r2.<androidx.appcompat.app.ActionBar: android.content.Context getThemedContext()>();
+
+     label1:
+        if $r1 != null goto label2;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+     label2:
+        return $r1;
+    }
+
+    final androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager getAutoNightModeManager()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureAutoNightModeManager()>();
+
+        r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager>;
+
+        return r1;
+    }
+
+    public final androidx.appcompat.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = new androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl;
+
+        specialinvoke $r1.<androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        return $r1;
+    }
+
+    public android.view.MenuInflater getMenuInflater()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.content.Context $r1;
+        android.view.MenuInflater $r2;
+        androidx.appcompat.view.SupportMenuInflater $r3;
+        androidx.appcompat.app.ActionBar $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.MenuInflater mMenuInflater>;
+
+        if $r2 != null goto label3;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void initWindowDecorActionBar()>();
+
+        $r3 = new androidx.appcompat.view.SupportMenuInflater;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar>;
+
+        if $r4 == null goto label1;
+
+        $r1 = virtualinvoke $r4.<androidx.appcompat.app.ActionBar: android.content.Context getThemedContext()>();
+
+        goto label2;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+     label2:
+        specialinvoke $r3.<androidx.appcompat.view.SupportMenuInflater: void <init>(android.content.Context)>($r1);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.MenuInflater mMenuInflater> = $r3;
+
+     label3:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.MenuInflater mMenuInflater>;
+
+        return $r2;
+    }
+
+    protected androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int, boolean)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        boolean $z0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] $r1, $r2, $r3;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] mPanels>;
+
+        $r2 = $r1;
+
+        if $r1 == null goto label1;
+
+        $i1 = lengthof $r1;
+
+        if $i1 > $i0 goto label3;
+
+     label1:
+        $i1 = $i0 + 1;
+
+        $r3 = newarray (androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState)[$i1];
+
+        if $r1 == null goto label2;
+
+        $i1 = lengthof $r1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r1, 0, $r3, 0, $i1);
+
+     label2:
+        $r2 = $r3;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState[] mPanels> = $r3;
+
+     label3:
+        $r4 = $r2[$i0];
+
+        if $r4 != null goto label4;
+
+        $r4 = new androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState;
+
+        specialinvoke $r4.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: void <init>(int)>($i0);
+
+        $r2[$i0] = $r4;
+
+     label4:
+        return $r4;
+    }
+
+    android.view.ViewGroup getSubDecor()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.ViewGroup r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        return r1;
+    }
+
+    public androidx.appcompat.app.ActionBar getSupportActionBar()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.ActionBar r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void initWindowDecorActionBar()>();
+
+        r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar>;
+
+        return r1;
+    }
+
+    final java.lang.CharSequence getTitle()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+        java.lang.CharSequence $r1;
+        android.view.Window$Callback $r2;
+        android.app.Activity $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $z0 = $r2 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = (android.app.Activity) $r2;
+
+        $r1 = virtualinvoke $r3.<android.app.Activity: java.lang.CharSequence getTitle()>();
+
+        return $r1;
+
+     label1:
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.CharSequence mTitle>;
+
+        return $r1;
+    }
+
+    final android.view.Window$Callback getWindowCallback()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.Window$Callback $r1;
+        android.view.Window $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r1 = virtualinvoke $r2.<android.view.Window: android.view.Window$Callback getCallback()>();
+
+        return $r1;
+    }
+
+    public boolean hasWindowFeature(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        boolean $z0;
+        android.view.Window $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $z0 = 0;
+
+        $i1 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int sanitizeWindowFeatureId(int)>($i0);
+
+        if $i1 == 1 goto label6;
+
+        if $i1 == 2 goto label5;
+
+        if $i1 == 5 goto label4;
+
+        if $i1 == 10 goto label3;
+
+        if $i1 == 108 goto label2;
+
+        if $i1 == 109 goto label1;
+
+        goto label7;
+
+     label1:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionBar>;
+
+        goto label7;
+
+     label2:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar>;
+
+        goto label7;
+
+     label3:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionMode>;
+
+        goto label7;
+
+     label4:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mFeatureIndeterminateProgress>;
+
+        goto label7;
+
+     label5:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mFeatureProgress>;
+
+        goto label7;
+
+     label6:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mWindowNoTitle>;
+
+     label7:
+        if $z0 != 0 goto label9;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $z0 = virtualinvoke $r1.<android.view.Window: boolean hasFeature(int)>($i0);
+
+        if $z0 == 0 goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+
+     label9:
+        return 1;
+    }
+
+    public void installViewFactory()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.content.Context $r1;
+        android.view.LayoutInflater $r2;
+        android.view.LayoutInflater$Factory $r3;
+        android.view.LayoutInflater$Factory2 $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r2 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($r1);
+
+        $r3 = virtualinvoke $r2.<android.view.LayoutInflater: android.view.LayoutInflater$Factory getFactory()>();
+
+        if $r3 != null goto label1;
+
+        staticinvoke <androidx.core.view.LayoutInflaterCompat: void setFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2)>($r2, $r0);
+
+        return;
+
+     label1:
+        $r4 = virtualinvoke $r2.<android.view.LayoutInflater: android.view.LayoutInflater$Factory2 getFactory2()>();
+
+        $z0 = $r4 instanceof androidx.appcompat.app.AppCompatDelegateImpl;
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AppCompatDelegate", "The Activity\'s LayoutInflater already has a Factory installed so we can not install AppCompat\'s");
+
+     label2:
+        return;
+    }
+
+    public void invalidateOptionsMenu()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.ActionBar $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.app.ActionBar: boolean invalidateOptionsMenu()>();
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void invalidatePanelMenu(int)>(0);
+
+        return;
+    }
+
+    public boolean isHandleNativeActionModesEnabled()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHandleNativeActionModes>;
+
+        return z0;
+    }
+
+    int mapNightMode(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        android.content.Context $r1;
+        java.lang.Object $r2;
+        android.app.UiModeManager $r3;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        if $i0 == -100 goto label3;
+
+        if $i0 == 0 goto label1;
+
+        return $i0;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label2;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/app/UiModeManager;");
+
+        $r3 = (android.app.UiModeManager) $r2;
+
+        $i0 = virtualinvoke $r3.<android.app.UiModeManager: int getNightMode()>();
+
+        if $i0 != 0 goto label2;
+
+        return -1;
+
+     label2:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureAutoNightModeManager()>();
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager>;
+
+        $i0 = virtualinvoke $r4.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: int getApplyableNightMode()>();
+
+        return $i0;
+
+     label3:
+        return -1;
+    }
+
+    boolean onBackPressed()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.view.ActionMode $r1;
+        androidx.appcompat.app.ActionBar $r2;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.view.ActionMode: void finish()>();
+
+        return 1;
+
+     label1:
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r2 == null goto label2;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.app.ActionBar: boolean collapseActionView()>();
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public void onConfigurationChanged(android.content.res.Configuration)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.content.res.Configuration $r1;
+        android.content.Context $r2;
+        boolean $z0;
+        androidx.appcompat.app.ActionBar $r3;
+        androidx.appcompat.widget.AppCompatDrawableManager $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.content.res.Configuration;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar>;
+
+        if $z0 == 0 goto label1;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mSubDecorInstalled>;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r3 == null goto label1;
+
+        virtualinvoke $r3.<androidx.appcompat.app.ActionBar: void onConfigurationChanged(android.content.res.Configuration)>($r1);
+
+     label1:
+        $r4 = staticinvoke <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager get()>();
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        virtualinvoke $r4.<androidx.appcompat.widget.AppCompatDrawableManager: void onConfigurationChanged(android.content.Context)>($r2);
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean applyDayNight()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.os.Bundle $r1;
+        android.view.Window$Callback $r2;
+        boolean $z0;
+        java.lang.String $r3, $r5;
+        android.app.Activity $r4;
+        java.lang.Throwable $r6;
+        androidx.appcompat.app.ActionBar $r7;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $z0 = $r2 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label6;
+
+        $r3 = null;
+
+        $r4 = (android.app.Activity) $r2;
+
+     label1:
+        $r5 = staticinvoke <androidx.core.app.NavUtils: java.lang.String getParentActivityName(android.app.Activity)>($r4);
+
+     label2:
+        $r3 = $r5;
+
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        if $r3 == null goto label6;
+
+        $r7 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar peekSupportActionBar()>();
+
+        if $r7 != null goto label5;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mEnableDefaultActionBarUp> = 1;
+
+        goto label6;
+
+     label5:
+        virtualinvoke $r7.<androidx.appcompat.app.ActionBar: void setDefaultDisplayHomeAsUpEnabled(boolean)>(1);
+
+     label6:
+        if $r1 == null goto label7;
+
+        $i0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mLocalNightMode>;
+
+        if $i0 != -100 goto label7;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String,int)>("appcompat:local_night_mode", -100);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mLocalNightMode> = $i0;
+
+     label7:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    public final android.view.View onCreateView(android.view.View, java.lang.String, android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.View $r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+        android.util.AttributeSet $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.content.Context;
+
+        $r4 := @parameter3: android.util.AttributeSet;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View createView(android.view.View,java.lang.String,android.content.Context,android.util.AttributeSet)>($r1, $r2, $r3, $r4);
+
+        return $r1;
+    }
+
+    public android.view.View onCreateView(java.lang.String, android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        java.lang.String $r1;
+        android.content.Context $r2;
+        android.util.AttributeSet $r3;
+        android.view.View $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.content.Context;
+
+        $r3 := @parameter2: android.util.AttributeSet;
+
+        $r4 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View onCreateView(android.view.View,java.lang.String,android.content.Context,android.util.AttributeSet)>(null, $r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public void onDestroy()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        java.lang.Runnable $r1;
+        android.view.View $r2;
+        boolean $z0;
+        android.view.Window $r3;
+        androidx.appcompat.app.ActionBar $r4;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager $r5;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mInvalidatePanelMenuPosted>;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r2 = virtualinvoke $r3.<android.view.Window: android.view.View getDecorView()>();
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mInvalidatePanelMenuRunnable>;
+
+        virtualinvoke $r2.<android.view.View: boolean removeCallbacks(java.lang.Runnable)>($r1);
+
+     label1:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed> = 1;
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar>;
+
+        if $r4 == null goto label2;
+
+        virtualinvoke $r4.<androidx.appcompat.app.ActionBar: void onDestroy()>();
+
+     label2:
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager>;
+
+        if $r5 == null goto label3;
+
+        virtualinvoke $r5.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void cleanup()>();
+
+     label3:
+        return;
+    }
+
+    boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $z0 = 1;
+
+        if $i0 == 4 goto label2;
+
+        if $i0 == 82 goto label1;
+
+        return 0;
+
+     label1:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean onKeyDownPanel(int,android.view.KeyEvent)>(0, $r1);
+
+        return 1;
+
+     label2:
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getFlags()>();
+
+        $i0 = $i0 & 128;
+
+        if $i0 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        $z0 = 0;
+
+     label4:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mLongPressBackDown> = $z0;
+
+        return 0;
+    }
+
+    boolean onKeyShortcut(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        androidx.appcompat.app.ActionBar $r2;
+        boolean $z0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r3;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r2 == null goto label1;
+
+        $z0 = virtualinvoke $r2.<androidx.appcompat.app.ActionBar: boolean onKeyShortcut(int,android.view.KeyEvent)>($i0, $r1);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel>;
+
+        if $r3 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getKeyCode()>();
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean performPanelShortcut(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,int,android.view.KeyEvent,int)>($r3, $i0, $r1, 1);
+
+        if $z0 == 0 goto label2;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel>;
+
+        if $r3 == null goto label4;
+
+        $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isHandled> = 1;
+
+        return 1;
+
+     label2:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState mPreparedPanel>;
+
+        if $r3 != null goto label3;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 1);
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean preparePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.KeyEvent)>($r3, $r1);
+
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getKeyCode()>();
+
+        $z0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean performPanelShortcut(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,int,android.view.KeyEvent,int)>($r3, $i0, $r1, 1);
+
+        $r3.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isPrepared> = 0;
+
+        if $z0 == 0 goto label5;
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    boolean onKeyUp(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        boolean $z0, $z1;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        if $i0 == 4 goto label2;
+
+        if $i0 == 82 goto label1;
+
+        return 0;
+
+     label1:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean onKeyUpPanel(int,android.view.KeyEvent)>(0, $r1);
+
+        return 1;
+
+     label2:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mLongPressBackDown>;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mLongPressBackDown> = 0;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>(0, 0);
+
+        if $r2 == null goto label3;
+
+        $z1 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        if $z1 == 0 goto label3;
+
+        if $z0 != 0 goto label5;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r2, 1);
+
+        return 1;
+
+     label3:
+        $z0 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean onBackPressed()>();
+
+        if $z0 == 0 goto label4;
+
+        return 1;
+
+     label4:
+        return 0;
+
+     label5:
+        return 1;
+    }
+
+    public boolean onMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        android.view.MenuItem $r2;
+        android.view.Window$Callback $r3;
+        boolean $z0;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r4;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $r2 := @parameter1: android.view.MenuItem;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback getWindowCallback()>();
+
+        if $r3 == null goto label1;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 != 0 goto label1;
+
+        $r1 = virtualinvoke $r1.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder getRootMenu()>();
+
+        $r4 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState findMenuPanel(android.view.Menu)>($r1);
+
+        if $r4 == null goto label1;
+
+        $i0 = $r4.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        $z0 = interfaceinvoke $r3.<android.view.Window$Callback: boolean onMenuItemSelected(int,android.view.MenuItem)>($i0, $r2);
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public void onMenuModeChange(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void reopenMenu(androidx.appcompat.view.menu.MenuBuilder,boolean)>($r1, 1);
+
+        return;
+    }
+
+    void onMenuOpened(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        androidx.appcompat.app.ActionBar $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 108 goto label1;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.app.ActionBar: void dispatchMenuVisibilityChanged(boolean)>(1);
+
+     label1:
+        return;
+    }
+
+    void onPanelClosed(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        boolean $z0;
+        androidx.appcompat.app.ActionBar $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 108 goto label1;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r1 == null goto label2;
+
+        virtualinvoke $r1.<androidx.appcompat.app.ActionBar: void dispatchMenuVisibilityChanged(boolean)>(0);
+
+        goto label2;
+
+     label1:
+        if $i0 != 0 goto label2;
+
+        $r2 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState getPanelState(int,boolean)>($i0, 1);
+
+        $z0 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: boolean isOpen>;
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($r2, 0);
+
+     label2:
+        return;
+    }
+
+    public void onPostCreate(android.os.Bundle)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.os.Bundle $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureSubDecor()>();
+
+        return;
+    }
+
+    public void onPostResume()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.ActionBar $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.app.ActionBar: void setShowHideAnimationEnabled(boolean)>(1);
+
+     label1:
+        return;
+    }
+
+    public void onSaveInstanceState(android.os.Bundle)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.os.Bundle $r1;
+        int $i0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        $i0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mLocalNightMode>;
+
+        if $i0 == -100 goto label1;
+
+        virtualinvoke $r1.<android.os.Bundle: void putInt(java.lang.String,int)>("appcompat:local_night_mode", $i0);
+
+     label1:
+        return;
+    }
+
+    public void onStart()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean applyDayNight()>();
+
+        return;
+    }
+
+    public void onStop()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.ActionBar $r1;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager $r2;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<androidx.appcompat.app.ActionBar: void setShowHideAnimationEnabled(boolean)>(0);
+
+     label1:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager mAutoNightModeManager>;
+
+        if $r2 == null goto label2;
+
+        virtualinvoke $r2.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void cleanup()>();
+
+     label2:
+        return;
+    }
+
+    void onSubDecorInstalled(android.view.ViewGroup)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.ViewGroup $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.ViewGroup;
+
+        return;
+    }
+
+    final androidx.appcompat.app.ActionBar peekSupportActionBar()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.app.ActionBar r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar>;
+
+        return r1;
+    }
+
+    public boolean requestWindowFeature(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        boolean $z0;
+        android.view.Window $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $i0 = specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int sanitizeWindowFeatureId(int)>($i0);
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mWindowNoTitle>;
+
+        if $z0 == 0 goto label1;
+
+        if $i0 != 108 goto label1;
+
+        return 0;
+
+     label1:
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar>;
+
+        if $z0 == 0 goto label2;
+
+        if $i0 != 1 goto label2;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar> = 0;
+
+     label2:
+        if $i0 == 1 goto label8;
+
+        if $i0 == 2 goto label7;
+
+        if $i0 == 5 goto label6;
+
+        if $i0 == 10 goto label5;
+
+        if $i0 == 108 goto label4;
+
+        if $i0 == 109 goto label3;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $z0 = virtualinvoke $r1.<android.view.Window: boolean requestFeature(int)>($i0);
+
+        return $z0;
+
+     label3:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void throwFeatureRequestIfSubDecorInstalled()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionBar> = 1;
+
+        return 1;
+
+     label4:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void throwFeatureRequestIfSubDecorInstalled()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar> = 1;
+
+        return 1;
+
+     label5:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void throwFeatureRequestIfSubDecorInstalled()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionMode> = 1;
+
+        return 1;
+
+     label6:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void throwFeatureRequestIfSubDecorInstalled()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mFeatureIndeterminateProgress> = 1;
+
+        return 1;
+
+     label7:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void throwFeatureRequestIfSubDecorInstalled()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mFeatureProgress> = 1;
+
+        return 1;
+
+     label8:
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void throwFeatureRequestIfSubDecorInstalled()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mWindowNoTitle> = 1;
+
+        return 1;
+    }
+
+    public void setContentView(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0;
+        android.view.ViewGroup $r1;
+        android.view.View $r2;
+        android.content.Context $r3;
+        android.view.LayoutInflater $r4;
+        android.view.Window$Callback $r5;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureSubDecor()>();
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        $r2 = virtualinvoke $r1.<android.view.ViewGroup: android.view.View findViewById(int)>(16908290);
+
+        $r1 = (android.view.ViewGroup) $r2;
+
+        virtualinvoke $r1.<android.view.ViewGroup: void removeAllViews()>();
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r4 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($r3);
+
+        virtualinvoke $r4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>(2131296284, $r1);
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        interfaceinvoke $r5.<android.view.Window$Callback: void onContentChanged()>();
+
+        return;
+    }
+
+    public void setContentView(android.view.View)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.View $r1, $r2;
+        android.view.ViewGroup $r3;
+        android.view.Window$Callback $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.View;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureSubDecor()>();
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        $r2 = virtualinvoke $r3.<android.view.ViewGroup: android.view.View findViewById(int)>(16908290);
+
+        $r3 = (android.view.ViewGroup) $r2;
+
+        virtualinvoke $r3.<android.view.ViewGroup: void removeAllViews()>();
+
+        virtualinvoke $r3.<android.view.ViewGroup: void addView(android.view.View)>($r1);
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        interfaceinvoke $r4.<android.view.Window$Callback: void onContentChanged()>();
+
+        return;
+    }
+
+    public void setContentView(android.view.View, android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.view.View $r1, $r3;
+        android.view.ViewGroup$LayoutParams $r2;
+        android.view.ViewGroup $r4;
+        android.view.Window$Callback $r5;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void ensureSubDecor()>();
+
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        $r3 = virtualinvoke $r4.<android.view.ViewGroup: android.view.View findViewById(int)>(16908290);
+
+        $r4 = (android.view.ViewGroup) $r3;
+
+        virtualinvoke $r4.<android.view.ViewGroup: void removeAllViews()>();
+
+        virtualinvoke $r4.<android.view.ViewGroup: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r1, $r2);
+
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        interfaceinvoke $r5.<android.view.Window$Callback: void onContentChanged()>();
+
+        return;
+    }
+
+    public void setHandleNativeActionModesEnabled(boolean)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $z0 := @parameter0: boolean;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHandleNativeActionModes> = $z0;
+
+        return;
+    }
+
+    public void setLocalNightMode(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        int $i0, $i1;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        if $i0 == -1 goto label1;
+
+        if $i0 == 0 goto label1;
+
+        if $i0 == 1 goto label1;
+
+        if $i0 == 2 goto label1;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AppCompatDelegate", "setLocalNightMode() called with an unknown mode");
+
+        return;
+
+     label1:
+        $i1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mLocalNightMode>;
+
+        if $i1 == $i0 goto label2;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: int mLocalNightMode> = $i0;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mApplyDayNightCalled>;
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean applyDayNight()>();
+
+     label2:
+        return;
+    }
+
+    public void setSupportActionBar(androidx.appcompat.widget.Toolbar)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.widget.Toolbar $r1;
+        android.view.Window$Callback $r2;
+        boolean $z0;
+        androidx.appcompat.app.ActionBar $r3;
+        androidx.appcompat.app.ToolbarActionBar $r4;
+        android.app.Activity $r5;
+        java.lang.CharSequence $r6;
+        android.view.Window $r7;
+        java.lang.IllegalStateException $r8;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.widget.Toolbar;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $z0 = $r2 instanceof android.app.Activity;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        $z0 = $r3 instanceof androidx.appcompat.app.WindowDecorActionBar;
+
+        if $z0 != 0 goto label5;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.MenuInflater mMenuInflater> = null;
+
+        if $r3 == null goto label2;
+
+        virtualinvoke $r3.<androidx.appcompat.app.ActionBar: void onDestroy()>();
+
+     label2:
+        if $r1 == null goto label3;
+
+        $r4 = new androidx.appcompat.app.ToolbarActionBar;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mOriginalWindowCallback>;
+
+        $r5 = (android.app.Activity) $r2;
+
+        $r6 = virtualinvoke $r5.<android.app.Activity: java.lang.CharSequence getTitle()>();
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mAppCompatWindowCallback>;
+
+        specialinvoke $r4.<androidx.appcompat.app.ToolbarActionBar: void <init>(androidx.appcompat.widget.Toolbar,java.lang.CharSequence,android.view.Window$Callback)>($r1, $r6, $r2);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar> = $r4;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r2 = virtualinvoke $r4.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback getWrappedWindowCallback()>();
+
+        virtualinvoke $r7.<android.view.Window: void setCallback(android.view.Window$Callback)>($r2);
+
+        goto label4;
+
+     label3:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar mActionBar> = null;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback mAppCompatWindowCallback>;
+
+        virtualinvoke $r7.<android.view.Window: void setCallback(android.view.Window$Callback)>($r2);
+
+     label4:
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void invalidateOptionsMenu()>();
+
+        return;
+
+     label5:
+        $r8 = new java.lang.IllegalStateException;
+
+        specialinvoke $r8.<java.lang.IllegalStateException: void <init>(java.lang.String)>("This Activity already has an action bar supplied by the window decor. Do not request Window.FEATURE_SUPPORT_ACTION_BAR and set windowActionBar to false in your theme to use a Toolbar instead.");
+
+        throw $r8;
+    }
+
+    public final void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        java.lang.CharSequence $r1;
+        androidx.appcompat.widget.DecorContentParent $r2;
+        androidx.appcompat.app.ActionBar $r3;
+        android.widget.TextView $r4;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.CharSequence mTitle> = $r1;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.DecorContentParent mDecorContentParent>;
+
+        if $r2 == null goto label1;
+
+        interfaceinvoke $r2.<androidx.appcompat.widget.DecorContentParent: void setWindowTitle(java.lang.CharSequence)>($r1);
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar peekSupportActionBar()>();
+
+        if $r3 == null goto label2;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar peekSupportActionBar()>();
+
+        virtualinvoke $r3.<androidx.appcompat.app.ActionBar: void setWindowTitle(java.lang.CharSequence)>($r1);
+
+        return;
+
+     label2:
+        $r4 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.TextView mTitleView>;
+
+        if $r4 == null goto label3;
+
+        virtualinvoke $r4.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+     label3:
+        return;
+    }
+
+    final boolean shouldAnimateActionModeView()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        boolean $z0;
+        android.view.ViewGroup $r1;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mSubDecorInstalled>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        if $r1 == null goto label1;
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean isLaidOut(android.view.View)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public androidx.appcompat.view.ActionMode startSupportActionMode(androidx.appcompat.view.ActionMode$Callback)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.view.ActionMode$Callback $r1;
+        androidx.appcompat.app.AppCompatCallback $r2;
+        androidx.appcompat.view.ActionMode $r3;
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 $r4;
+        androidx.appcompat.app.ActionBar $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.view.ActionMode$Callback;
+
+        if $r1 == null goto label4;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        if $r3 == null goto label1;
+
+        virtualinvoke $r3.<androidx.appcompat.view.ActionMode: void finish()>();
+
+     label1:
+        $r4 = new androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        specialinvoke $r4.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: void <init>(androidx.appcompat.app.AppCompatDelegateImpl,androidx.appcompat.view.ActionMode$Callback)>($r0, $r1);
+
+        $r5 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        if $r5 == null goto label2;
+
+        $r3 = virtualinvoke $r5.<androidx.appcompat.app.ActionBar: androidx.appcompat.view.ActionMode startActionMode(androidx.appcompat.view.ActionMode$Callback)>($r4);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode> = $r3;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        if $r3 == null goto label2;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatCallback mAppCompatCallback>;
+
+        if $r2 == null goto label2;
+
+        interfaceinvoke $r2.<androidx.appcompat.app.AppCompatCallback: void onSupportActionModeStarted(androidx.appcompat.view.ActionMode)>($r3);
+
+     label2:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        if $r3 != null goto label3;
+
+        $r3 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode startSupportActionModeFromWindow(androidx.appcompat.view.ActionMode$Callback)>($r4);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode> = $r3;
+
+     label3:
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        return $r3;
+
+     label4:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("ActionMode callback can not be null.");
+
+        throw $r6;
+    }
+
+    androidx.appcompat.view.ActionMode startSupportActionModeFromWindow(androidx.appcompat.view.ActionMode$Callback)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        androidx.appcompat.view.ActionMode$Callback $r1;
+        androidx.appcompat.view.ActionMode $r2, $r4;
+        boolean $z0, $z1;
+        androidx.appcompat.app.AppCompatCallback $r3;
+        java.lang.AbstractMethodError $r5;
+        androidx.appcompat.widget.ActionBarContextView $r6, r28;
+        android.util.TypedValue $r7, r26;
+        android.content.Context $r8;
+        android.content.res.Resources$Theme $r9, $r11;
+        int $i0;
+        android.content.res.Resources $r10;
+        java.lang.Object $r12;
+        android.widget.PopupWindow $r13, r29;
+        android.util.DisplayMetrics $r14;
+        android.view.ViewGroup $r15;
+        android.view.View $r16;
+        androidx.appcompat.widget.ViewStubCompat $r17;
+        android.view.LayoutInflater $r18;
+        androidx.appcompat.view.StandaloneActionMode $r19, r31;
+        android.view.Menu $r20;
+        androidx.core.view.ViewPropertyAnimatorCompat $r21;
+        android.view.ViewParent $r22;
+        android.view.Window $r23;
+        java.lang.Runnable $r24;
+        androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9 r25;
+        androidx.appcompat.view.ContextThemeWrapper r27;
+        androidx.appcompat.app.AppCompatDelegateImpl$6 r30;
+        androidx.appcompat.app.AppCompatDelegateImpl$7 r32;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $r1 := @parameter0: androidx.appcompat.view.ActionMode$Callback;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void endOnGoingFadeAnimation()>();
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        if $r2 == null goto label01;
+
+        virtualinvoke $r2.<androidx.appcompat.view.ActionMode: void finish()>();
+
+     label01:
+        $z0 = $r1 instanceof androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        if $z0 != 0 goto label02;
+
+        r25 = new androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9;
+
+        specialinvoke r25.<androidx.appcompat.app.AppCompatDelegateImpl$ActionModeCallbackWrapperV9: void <init>(androidx.appcompat.app.AppCompatDelegateImpl,androidx.appcompat.view.ActionMode$Callback)>($r0, $r1);
+
+        $r1 = r25;
+
+     label02:
+        $r2 = null;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatCallback mAppCompatCallback>;
+
+        if $r3 == null goto label06;
+
+        $z0 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if $z0 != 0 goto label06;
+
+     label03:
+        $r4 = interfaceinvoke $r3.<androidx.appcompat.app.AppCompatCallback: androidx.appcompat.view.ActionMode onWindowStartingSupportActionMode(androidx.appcompat.view.ActionMode$Callback)>($r1);
+
+     label04:
+        $r2 = $r4;
+
+        goto label06;
+
+     label05:
+        $r5 := @caughtexception;
+
+     label06:
+        if $r2 == null goto label07;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode> = $r2;
+
+        goto label17;
+
+     label07:
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $z0 = 1;
+
+        if $r6 != null goto label11;
+
+        $z1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsFloating>;
+
+        if $z1 == 0 goto label10;
+
+        r26 = new android.util.TypedValue;
+
+        $r7 = r26;
+
+        specialinvoke r26.<android.util.TypedValue: void <init>()>();
+
+        $r8 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r9 = virtualinvoke $r8.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $i0 = <androidx.appcompat.R$attr: int actionBarTheme>;
+
+        virtualinvoke $r9.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r7, 1);
+
+        $i0 = $r7.<android.util.TypedValue: int resourceId>;
+
+        if $i0 == 0 goto label08;
+
+        $r8 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r10 = virtualinvoke $r8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r11 = virtualinvoke $r10.<android.content.res.Resources: android.content.res.Resources$Theme newTheme()>();
+
+        virtualinvoke $r11.<android.content.res.Resources$Theme: void setTo(android.content.res.Resources$Theme)>($r9);
+
+        $i0 = $r7.<android.util.TypedValue: int resourceId>;
+
+        virtualinvoke $r11.<android.content.res.Resources$Theme: void applyStyle(int,boolean)>($i0, 1);
+
+        r27 = new androidx.appcompat.view.ContextThemeWrapper;
+
+        $r12 = r27;
+
+        $r8 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        specialinvoke r27.<androidx.appcompat.view.ContextThemeWrapper: void <init>(android.content.Context,int)>($r8, 0);
+
+        $r8 = (android.content.Context) $r12;
+
+        $r9 = virtualinvoke $r8.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        virtualinvoke $r9.<android.content.res.Resources$Theme: void setTo(android.content.res.Resources$Theme)>($r11);
+
+        goto label09;
+
+     label08:
+        $r12 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+     label09:
+        r28 = new androidx.appcompat.widget.ActionBarContextView;
+
+        $r8 = (android.content.Context) $r12;
+
+        specialinvoke r28.<androidx.appcompat.widget.ActionBarContextView: void <init>(android.content.Context)>($r8);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView> = r28;
+
+        r29 = new android.widget.PopupWindow;
+
+        $i0 = <androidx.appcompat.R$attr: int actionModePopupWindowStyle>;
+
+        $r8 = (android.content.Context) $r12;
+
+        specialinvoke r29.<android.widget.PopupWindow: void <init>(android.content.Context,android.util.AttributeSet,int)>($r8, null, $i0);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup> = r29;
+
+        $r13 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        staticinvoke <androidx.core.widget.PopupWindowCompat: void setWindowLayoutType(android.widget.PopupWindow,int)>($r13, 2);
+
+        $r13 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r13.<android.widget.PopupWindow: void setContentView(android.view.View)>($r6);
+
+        $r13 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        virtualinvoke $r13.<android.widget.PopupWindow: void setWidth(int)>(-1);
+
+        $r8 = (android.content.Context) $r12;
+
+        $r11 = virtualinvoke $r8.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $i0 = <androidx.appcompat.R$attr: int actionBarSize>;
+
+        virtualinvoke $r11.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($i0, $r7, 1);
+
+        $i0 = $r7.<android.util.TypedValue: int data>;
+
+        $r8 = (android.content.Context) $r12;
+
+        $r10 = virtualinvoke $r8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r14 = virtualinvoke $r10.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $i0 = staticinvoke <android.util.TypedValue: int complexToDimensionPixelSize(int,android.util.DisplayMetrics)>($i0, $r14);
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: void setContentHeight(int)>($i0);
+
+        $r13 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        virtualinvoke $r13.<android.widget.PopupWindow: void setHeight(int)>(-2);
+
+        r30 = new androidx.appcompat.app.AppCompatDelegateImpl$6;
+
+        specialinvoke r30.<androidx.appcompat.app.AppCompatDelegateImpl$6: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mShowActionModePopup> = r30;
+
+        goto label11;
+
+     label10:
+        $r15 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        $i0 = <androidx.appcompat.R$id: int action_mode_bar_stub>;
+
+        $r16 = virtualinvoke $r15.<android.view.ViewGroup: android.view.View findViewById(int)>($i0);
+
+        $r17 = (androidx.appcompat.widget.ViewStubCompat) $r16;
+
+        if $r17 == null goto label11;
+
+        $r8 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context getActionBarThemedContext()>();
+
+        $r18 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($r8);
+
+        virtualinvoke $r17.<androidx.appcompat.widget.ViewStubCompat: void setLayoutInflater(android.view.LayoutInflater)>($r18);
+
+        $r16 = virtualinvoke $r17.<androidx.appcompat.widget.ViewStubCompat: android.view.View inflate()>();
+
+        $r6 = (androidx.appcompat.widget.ActionBarContextView) $r16;
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView> = $r6;
+
+     label11:
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        if $r6 == null goto label17;
+
+        virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: void endOnGoingFadeAnimation()>();
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: void killMode()>();
+
+        r31 = new androidx.appcompat.view.StandaloneActionMode;
+
+        $r19 = r31;
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r8 = virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r13 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        if $r13 != null goto label12;
+
+        goto label13;
+
+     label12:
+        $z0 = 0;
+
+     label13:
+        specialinvoke r31.<androidx.appcompat.view.StandaloneActionMode: void <init>(android.content.Context,androidx.appcompat.widget.ActionBarContextView,androidx.appcompat.view.ActionMode$Callback,boolean)>($r8, $r6, $r1, $z0);
+
+        $r20 = virtualinvoke $r19.<androidx.appcompat.view.ActionMode: android.view.Menu getMenu()>();
+
+        $z0 = interfaceinvoke $r1.<androidx.appcompat.view.ActionMode$Callback: boolean onCreateActionMode(androidx.appcompat.view.ActionMode,android.view.Menu)>($r19, $r20);
+
+        if $z0 == 0 goto label16;
+
+        virtualinvoke $r19.<androidx.appcompat.view.ActionMode: void invalidate()>();
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: void initForMode(androidx.appcompat.view.ActionMode)>($r19);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode> = $r19;
+
+        $z0 = virtualinvoke $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean shouldAnimateActionModeView()>();
+
+        if $z0 == 0 goto label14;
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: void setAlpha(float)>(0.0F);
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r21 = staticinvoke <androidx.core.view.ViewCompat: androidx.core.view.ViewPropertyAnimatorCompat animate(android.view.View)>($r6);
+
+        $r21 = virtualinvoke $r21.<androidx.core.view.ViewPropertyAnimatorCompat: androidx.core.view.ViewPropertyAnimatorCompat alpha(float)>(1.0F);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim> = $r21;
+
+        $r21 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.core.view.ViewPropertyAnimatorCompat mFadeAnim>;
+
+        r32 = new androidx.appcompat.app.AppCompatDelegateImpl$7;
+
+        specialinvoke r32.<androidx.appcompat.app.AppCompatDelegateImpl$7: void <init>(androidx.appcompat.app.AppCompatDelegateImpl)>($r0);
+
+        virtualinvoke $r21.<androidx.core.view.ViewPropertyAnimatorCompat: androidx.core.view.ViewPropertyAnimatorCompat setListener(androidx.core.view.ViewPropertyAnimatorListener)>(r32);
+
+        goto label15;
+
+     label14:
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: void setAlpha(float)>(1.0F);
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: void setVisibility(int)>(0);
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: void sendAccessibilityEvent(int)>(32);
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r22 = virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: android.view.ViewParent getParent()>();
+
+        $z0 = $r22 instanceof android.view.View;
+
+        if $z0 == 0 goto label15;
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r22 = virtualinvoke $r6.<androidx.appcompat.widget.ActionBarContextView: android.view.ViewParent getParent()>();
+
+        $r16 = (android.view.View) $r22;
+
+        staticinvoke <androidx.core.view.ViewCompat: void requestApplyInsets(android.view.View)>($r16);
+
+     label15:
+        $r13 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.widget.PopupWindow mActionModePopup>;
+
+        if $r13 == null goto label17;
+
+        $r23 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window mWindow>;
+
+        $r16 = virtualinvoke $r23.<android.view.Window: android.view.View getDecorView()>();
+
+        $r24 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: java.lang.Runnable mShowActionModePopup>;
+
+        virtualinvoke $r16.<android.view.View: boolean post(java.lang.Runnable)>($r24);
+
+        goto label17;
+
+     label16:
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode> = null;
+
+     label17:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        if $r2 == null goto label18;
+
+        $r3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatCallback mAppCompatCallback>;
+
+        if $r3 == null goto label18;
+
+        interfaceinvoke $r3.<androidx.appcompat.app.AppCompatCallback: void onSupportActionModeStarted(androidx.appcompat.view.ActionMode)>($r2);
+
+     label18:
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.view.ActionMode mActionMode>;
+
+        return $r2;
+
+        catch java.lang.AbstractMethodError from label03 to label04 with label05;
+    }
+
+    int updateStatusGuard(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl $r0;
+        android.graphics.Rect $r1, $r5;
+        int $i0, $i2, $i3;
+        boolean $z0, $z1, $z2, $z3;
+        androidx.appcompat.widget.ActionBarContextView $r2;
+        byte $b1;
+        android.view.ViewGroup$LayoutParams $r3;
+        android.view.ViewGroup$MarginLayoutParams $r4;
+        android.view.ViewGroup $r6;
+        android.view.View $r7;
+        android.content.Context $r8;
+        android.content.res.Resources $r9;
+
+        $r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        $i0 := @parameter0: int;
+
+        $z0 = 0;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $b1 = 0;
+
+        if $r2 == null goto label11;
+
+        $r3 = virtualinvoke $r2.<androidx.appcompat.widget.ActionBarContextView: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $z1 = $r3 instanceof android.view.ViewGroup$MarginLayoutParams;
+
+        if $z1 == 0 goto label11;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $r3 = virtualinvoke $r2.<androidx.appcompat.widget.ActionBarContextView: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = (android.view.ViewGroup$MarginLayoutParams) $r3;
+
+        $z1 = 0;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        $z2 = virtualinvoke $r2.<androidx.appcompat.widget.ActionBarContextView: boolean isShown()>();
+
+        if $z2 == 0 goto label09;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.graphics.Rect mTempRect1>;
+
+        if $r1 != null goto label01;
+
+        $r1 = new android.graphics.Rect;
+
+        specialinvoke $r1.<android.graphics.Rect: void <init>()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.graphics.Rect mTempRect1> = $r1;
+
+        $r1 = new android.graphics.Rect;
+
+        specialinvoke $r1.<android.graphics.Rect: void <init>()>();
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.graphics.Rect mTempRect2> = $r1;
+
+     label01:
+        $r5 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.graphics.Rect mTempRect1>;
+
+        $r1 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.graphics.Rect mTempRect2>;
+
+        virtualinvoke $r5.<android.graphics.Rect: void set(int,int,int,int)>(0, $i0, 0, 0);
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        staticinvoke <androidx.appcompat.widget.ViewUtils: void computeFitSystemWindows(android.view.View,android.graphics.Rect,android.graphics.Rect)>($r6, $r5, $r1);
+
+        $i2 = $r1.<android.graphics.Rect: int top>;
+
+        if $i2 != 0 goto label02;
+
+        $i2 = $i0;
+
+        goto label03;
+
+     label02:
+        $i2 = 0;
+
+     label03:
+        $i3 = $r4.<android.view.ViewGroup$MarginLayoutParams: int topMargin>;
+
+        if $i3 == $i2 goto label05;
+
+        $z1 = 1;
+
+        $r4.<android.view.ViewGroup$MarginLayoutParams: int topMargin> = $i0;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View mStatusGuard>;
+
+        if $r7 != null goto label04;
+
+        $r7 = new android.view.View;
+
+        $r8 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        specialinvoke $r7.<android.view.View: void <init>(android.content.Context)>($r8);
+
+        $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View mStatusGuard> = $r7;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View mStatusGuard>;
+
+        $r8 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r9 = virtualinvoke $r8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $i2 = <androidx.appcompat.R$color: int abc_input_method_navigation_guard>;
+
+        $i2 = virtualinvoke $r9.<android.content.res.Resources: int getColor(int)>($i2);
+
+        virtualinvoke $r7.<android.view.View: void setBackgroundColor(int)>($i2);
+
+        $r6 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.ViewGroup mSubDecor>;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View mStatusGuard>;
+
+        $r3 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r3.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, $i0);
+
+        virtualinvoke $r6.<android.view.ViewGroup: void addView(android.view.View,int,android.view.ViewGroup$LayoutParams)>($r7, -1, $r3);
+
+        goto label05;
+
+     label04:
+        $r3 = virtualinvoke $r7.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $i2 = $r3.<android.view.ViewGroup$LayoutParams: int height>;
+
+        if $i2 == $i0 goto label05;
+
+        $r3.<android.view.ViewGroup$LayoutParams: int height> = $i0;
+
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View mStatusGuard>;
+
+        virtualinvoke $r7.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r3);
+
+     label05:
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View mStatusGuard>;
+
+        if $r7 == null goto label06;
+
+        $z2 = 1;
+
+        goto label07;
+
+     label06:
+        $z2 = 0;
+
+     label07:
+        $z0 = $z2;
+
+        $z3 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mOverlayActionMode>;
+
+        if $z3 != 0 goto label08;
+
+        if $z2 == 0 goto label08;
+
+        $i0 = 0;
+
+     label08:
+        goto label10;
+
+     label09:
+        $i2 = $r4.<android.view.ViewGroup$MarginLayoutParams: int topMargin>;
+
+        if $i2 == 0 goto label10;
+
+        $z1 = 1;
+
+        $r4.<android.view.ViewGroup$MarginLayoutParams: int topMargin> = 0;
+
+     label10:
+        if $z1 == 0 goto label11;
+
+        $r2 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.widget.ActionBarContextView mActionModeView>;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.ActionBarContextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+     label11:
+        $r7 = $r0.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.View mStatusGuard>;
+
+        if $r7 == null goto label14;
+
+        if $z0 == 0 goto label12;
+
+        goto label13;
+
+     label12:
+        $b1 = 8;
+
+     label13:
+        virtualinvoke $r7.<android.view.View: void setVisibility(int)>($b1);
+
+     label14:
+        return $i0;
+    }
+}

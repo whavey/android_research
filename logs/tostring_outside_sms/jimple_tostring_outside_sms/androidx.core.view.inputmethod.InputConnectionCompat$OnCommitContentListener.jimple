@@ -1,0 +1,5 @@
+public interface  androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener extends java.lang.Object
+{
+
+    public abstract boolean onCommitContent(androidx.core.view.inputmethod.InputContentInfoCompat, int, android.os.Bundle);
+}

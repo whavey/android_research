@@ -1,0 +1,270 @@
+class androidx.core.graphics.TypefaceCompatApi21Impl extends androidx.core.graphics.TypefaceCompatBaseImpl
+{
+    private static final java.lang.String TAG;
+
+    void <init>()
+    {
+        androidx.core.graphics.TypefaceCompatApi21Impl $r0;
+
+        $r0 := @this: androidx.core.graphics.TypefaceCompatApi21Impl;
+
+        specialinvoke $r0.<androidx.core.graphics.TypefaceCompatBaseImpl: void <init>()>();
+
+        return;
+    }
+
+    private java.io.File getFile(android.os.ParcelFileDescriptor)
+    {
+        androidx.core.graphics.TypefaceCompatApi21Impl $r0;
+        android.os.ParcelFileDescriptor $r1;
+        java.lang.StringBuilder $r2;
+        int $i0;
+        java.lang.String $r3;
+        android.system.StructStat $r4;
+        boolean $z0;
+        java.io.File $r5;
+        java.lang.Throwable $r6;
+
+        $r0 := @this: androidx.core.graphics.TypefaceCompatApi21Impl;
+
+        $r1 := @parameter0: android.os.ParcelFileDescriptor;
+
+        $r2 = new java.lang.StringBuilder;
+
+     label1:
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/proc/self/fd/");
+
+        $i0 = virtualinvoke $r1.<android.os.ParcelFileDescriptor: int getFd()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = staticinvoke <android.system.Os: java.lang.String readlink(java.lang.String)>($r3);
+
+        $r4 = staticinvoke <android.system.Os: android.system.StructStat stat(java.lang.String)>($r3);
+
+     label2:
+        $i0 = $r4.<android.system.StructStat: int st_mode>;
+
+     label3:
+        $z0 = staticinvoke <android.system.OsConstants: boolean S_ISREG(int)>($i0);
+
+     label4:
+        if $z0 == 0 goto label7;
+
+        $r5 = new java.io.File;
+
+     label5:
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>($r3);
+
+     label6:
+        return $r5;
+
+     label7:
+        return null;
+
+     label8:
+        $r6 := @caughtexception;
+
+        return null;
+
+        catch android.system.ErrnoException from label1 to label2 with label8;
+        catch android.system.ErrnoException from label3 to label4 with label8;
+        catch android.system.ErrnoException from label5 to label6 with label8;
+    }
+
+    public android.graphics.Typeface createFromFontInfo(android.content.Context, android.os.CancellationSignal, androidx.core.provider.FontsContractCompat$FontInfo[], int)
+    {
+        androidx.core.graphics.TypefaceCompatApi21Impl $r0;
+        android.content.Context $r1;
+        android.os.CancellationSignal $r2;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $r3;
+        int $i0, $i1;
+        java.lang.Throwable $r4, $r13, $r14, $r15, $r16, $r17, $r18;
+        androidx.core.provider.FontsContractCompat$FontInfo $r5;
+        android.content.ContentResolver $r6;
+        android.net.Uri $r7;
+        android.os.ParcelFileDescriptor $r8;
+        java.io.File $r9;
+        boolean $z0;
+        android.graphics.Typeface $r10;
+        java.io.FileInputStream $r11;
+        java.io.FileDescriptor $r12;
+
+        $r0 := @this: androidx.core.graphics.TypefaceCompatApi21Impl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.os.CancellationSignal;
+
+        $r3 := @parameter2: androidx.core.provider.FontsContractCompat$FontInfo[];
+
+        $i0 := @parameter3: int;
+
+        $i1 = lengthof $r3;
+
+        if $i1 >= 1 goto label01;
+
+        return null;
+
+     label01:
+        $r5 = virtualinvoke $r0.<androidx.core.graphics.TypefaceCompatApi21Impl: androidx.core.provider.FontsContractCompat$FontInfo findBestInfo(androidx.core.provider.FontsContractCompat$FontInfo[],int)>($r3, $i0);
+
+        $r6 = virtualinvoke $r1.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+     label02:
+        $r7 = virtualinvoke $r5.<androidx.core.provider.FontsContractCompat$FontInfo: android.net.Uri getUri()>();
+
+        $r8 = virtualinvoke $r6.<android.content.ContentResolver: android.os.ParcelFileDescriptor openFileDescriptor(android.net.Uri,java.lang.String,android.os.CancellationSignal)>($r7, "r", $r2);
+
+     label03:
+        $r9 = specialinvoke $r0.<androidx.core.graphics.TypefaceCompatApi21Impl: java.io.File getFile(android.os.ParcelFileDescriptor)>($r8);
+
+     label04:
+        if $r9 == null goto label11;
+
+     label05:
+        $z0 = virtualinvoke $r9.<java.io.File: boolean canRead()>();
+
+     label06:
+        if $z0 != 0 goto label07;
+
+        goto label11;
+
+     label07:
+        $r10 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface createFromFile(java.io.File)>($r9);
+
+     label08:
+        if $r8 == null goto label38;
+
+     label09:
+        virtualinvoke $r8.<android.os.ParcelFileDescriptor: void close()>();
+
+     label10:
+        return $r10;
+
+     label11:
+        $r11 = new java.io.FileInputStream;
+
+        $r12 = virtualinvoke $r8.<android.os.ParcelFileDescriptor: java.io.FileDescriptor getFileDescriptor()>();
+
+        specialinvoke $r11.<java.io.FileInputStream: void <init>(java.io.FileDescriptor)>($r12);
+
+     label12:
+        $r10 = specialinvoke $r0.<androidx.core.graphics.TypefaceCompatBaseImpl: android.graphics.Typeface createFromInputStream(android.content.Context,java.io.InputStream)>($r1, $r11);
+
+     label13:
+        virtualinvoke $r11.<java.io.FileInputStream: void close()>();
+
+     label14:
+        if $r8 == null goto label38;
+
+     label15:
+        virtualinvoke $r8.<android.os.ParcelFileDescriptor: void close()>();
+
+     label16:
+        return $r10;
+
+     label17:
+        $r13 := @caughtexception;
+
+     label18:
+        throw $r13;
+
+     label19:
+        $r14 := @caughtexception;
+
+        if $r13 == null goto label25;
+
+     label20:
+        virtualinvoke $r11.<java.io.FileInputStream: void close()>();
+
+     label21:
+        goto label26;
+
+     label22:
+        $r4 := @caughtexception;
+
+     label23:
+        virtualinvoke $r13.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>($r4);
+
+     label24:
+        goto label26;
+
+     label25:
+        virtualinvoke $r11.<java.io.FileInputStream: void close()>();
+
+     label26:
+        throw $r14;
+
+     label27:
+        $r15 := @caughtexception;
+
+     label28:
+        throw $r15;
+
+     label29:
+        $r16 := @caughtexception;
+
+        if $r8 == null goto label36;
+
+        if $r15 == null goto label35;
+
+     label30:
+        virtualinvoke $r8.<android.os.ParcelFileDescriptor: void close()>();
+
+     label31:
+        goto label36;
+
+     label32:
+        $r17 := @caughtexception;
+
+     label33:
+        virtualinvoke $r15.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>($r17);
+
+     label34:
+        goto label36;
+
+     label35:
+        virtualinvoke $r8.<android.os.ParcelFileDescriptor: void close()>();
+
+     label36:
+        throw $r16;
+
+     label37:
+        $r18 := @caughtexception;
+
+        return null;
+
+     label38:
+        return $r10;
+
+        catch java.io.IOException from label02 to label03 with label37;
+        catch java.lang.Throwable from label03 to label04 with label27;
+        catch java.lang.Throwable from label05 to label06 with label27;
+        catch java.lang.Throwable from label07 to label08 with label27;
+        catch java.io.IOException from label09 to label10 with label37;
+        catch java.lang.Throwable from label11 to label12 with label27;
+        catch java.lang.Throwable from label12 to label13 with label17;
+        catch java.lang.Throwable from label13 to label14 with label27;
+        catch java.io.IOException from label15 to label16 with label37;
+        catch java.lang.Throwable from label18 to label19 with label19;
+        catch java.lang.Throwable from label20 to label21 with label22;
+        catch java.lang.Throwable from label23 to label24 with label27;
+        catch java.lang.Throwable from label25 to label27 with label27;
+        catch java.lang.Throwable from label28 to label29 with label29;
+        catch java.lang.Throwable from label30 to label31 with label32;
+        catch java.io.IOException from label33 to label34 with label37;
+        catch java.io.IOException from label35 to label37 with label37;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.graphics.TypefaceCompatApi21Impl: java.lang.String TAG> = "TypefaceCompatApi21Impl";
+
+        return;
+    }
+}

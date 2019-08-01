@@ -1,0 +1,65 @@
+class androidx.fragment.app.FragmentManagerImpl$2$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.fragment.app.FragmentManagerImpl$2 this$1;
+
+    void <init>(androidx.fragment.app.FragmentManagerImpl$2)
+    {
+        androidx.fragment.app.FragmentManagerImpl$2$1 $r0;
+        androidx.fragment.app.FragmentManagerImpl$2 $r1;
+
+        $r0 := @this: androidx.fragment.app.FragmentManagerImpl$2$1;
+
+        $r1 := @parameter0: androidx.fragment.app.FragmentManagerImpl$2;
+
+        $r0.<androidx.fragment.app.FragmentManagerImpl$2$1: androidx.fragment.app.FragmentManagerImpl$2 this$1> = $r1;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.fragment.app.FragmentManagerImpl$2$1 $r0;
+        androidx.fragment.app.Fragment $r1, $r5;
+        androidx.fragment.app.FragmentManagerImpl$2 $r2;
+        android.view.View $r3;
+        androidx.fragment.app.FragmentManagerImpl $r4;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.FragmentManagerImpl$2$1;
+
+        $r2 = $r0.<androidx.fragment.app.FragmentManagerImpl$2$1: androidx.fragment.app.FragmentManagerImpl$2 this$1>;
+
+        $r1 = $r2.<androidx.fragment.app.FragmentManagerImpl$2: androidx.fragment.app.Fragment val$fragment>;
+
+        $r3 = virtualinvoke $r1.<androidx.fragment.app.Fragment: android.view.View getAnimatingAway()>();
+
+        if $r3 == null goto label1;
+
+        $r2 = $r0.<androidx.fragment.app.FragmentManagerImpl$2$1: androidx.fragment.app.FragmentManagerImpl$2 this$1>;
+
+        $r1 = $r2.<androidx.fragment.app.FragmentManagerImpl$2: androidx.fragment.app.Fragment val$fragment>;
+
+        virtualinvoke $r1.<androidx.fragment.app.Fragment: void setAnimatingAway(android.view.View)>(null);
+
+        $r2 = $r0.<androidx.fragment.app.FragmentManagerImpl$2$1: androidx.fragment.app.FragmentManagerImpl$2 this$1>;
+
+        $r4 = $r2.<androidx.fragment.app.FragmentManagerImpl$2: androidx.fragment.app.FragmentManagerImpl this$0>;
+
+        $r2 = $r0.<androidx.fragment.app.FragmentManagerImpl$2$1: androidx.fragment.app.FragmentManagerImpl$2 this$1>;
+
+        $r1 = $r2.<androidx.fragment.app.FragmentManagerImpl$2: androidx.fragment.app.Fragment val$fragment>;
+
+        $r2 = $r0.<androidx.fragment.app.FragmentManagerImpl$2$1: androidx.fragment.app.FragmentManagerImpl$2 this$1>;
+
+        $r5 = $r2.<androidx.fragment.app.FragmentManagerImpl$2: androidx.fragment.app.Fragment val$fragment>;
+
+        $i0 = virtualinvoke $r5.<androidx.fragment.app.Fragment: int getStateAfterAnimating()>();
+
+        virtualinvoke $r4.<androidx.fragment.app.FragmentManagerImpl: void moveToState(androidx.fragment.app.Fragment,int,int,int,boolean)>($r1, $i0, 0, 0, 0);
+
+     label1:
+        return;
+    }
+}

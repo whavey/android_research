@@ -1,0 +1,22 @@
+public final class androidx.legacy.coreui.R$integer extends java.lang.Object
+{
+    public static final int status_bar_notification_info_maxnum;
+
+    private void <init>()
+    {
+        androidx.legacy.coreui.R$integer $r0;
+
+        $r0 := @this: androidx.legacy.coreui.R$integer;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.legacy.coreui.R$integer: int status_bar_notification_info_maxnum> = 2131230724;
+
+        return;
+    }
+}

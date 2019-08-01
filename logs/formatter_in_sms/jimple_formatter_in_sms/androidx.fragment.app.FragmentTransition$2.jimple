@@ -1,0 +1,136 @@
+final class androidx.fragment.app.FragmentTransition$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final java.lang.Object val$enterTransition;
+    final java.util.ArrayList val$enteringViews;
+    final java.lang.Object val$exitTransition;
+    final java.util.ArrayList val$exitingViews;
+    final androidx.fragment.app.FragmentTransitionImpl val$impl;
+    final androidx.fragment.app.Fragment val$inFragment;
+    final android.view.View val$nonExistentView;
+    final java.util.ArrayList val$sharedElementsIn;
+
+    void <init>(java.lang.Object, androidx.fragment.app.FragmentTransitionImpl, android.view.View, androidx.fragment.app.Fragment, java.util.ArrayList, java.util.ArrayList, java.util.ArrayList, java.lang.Object)
+    {
+        androidx.fragment.app.FragmentTransition$2 $r0;
+        java.lang.Object $r1, $r8;
+        androidx.fragment.app.FragmentTransitionImpl $r2;
+        android.view.View $r3;
+        androidx.fragment.app.Fragment $r4;
+        java.util.ArrayList $r5, $r6, $r7;
+
+        $r0 := @this: androidx.fragment.app.FragmentTransition$2;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: androidx.fragment.app.FragmentTransitionImpl;
+
+        $r3 := @parameter2: android.view.View;
+
+        $r4 := @parameter3: androidx.fragment.app.Fragment;
+
+        $r5 := @parameter4: java.util.ArrayList;
+
+        $r6 := @parameter5: java.util.ArrayList;
+
+        $r7 := @parameter6: java.util.ArrayList;
+
+        $r8 := @parameter7: java.lang.Object;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: java.lang.Object val$enterTransition> = $r1;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: androidx.fragment.app.FragmentTransitionImpl val$impl> = $r2;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: android.view.View val$nonExistentView> = $r3;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: androidx.fragment.app.Fragment val$inFragment> = $r4;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$sharedElementsIn> = $r5;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$enteringViews> = $r6;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$exitingViews> = $r7;
+
+        $r0.<androidx.fragment.app.FragmentTransition$2: java.lang.Object val$exitTransition> = $r8;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.fragment.app.FragmentTransition$2 $r0;
+        android.view.View $r1;
+        java.util.ArrayList $r2, $r6;
+        java.lang.Object $r3;
+        androidx.fragment.app.FragmentTransitionImpl $r4;
+        androidx.fragment.app.Fragment $r5;
+
+        $r0 := @this: androidx.fragment.app.FragmentTransition$2;
+
+        $r3 = $r0.<androidx.fragment.app.FragmentTransition$2: java.lang.Object val$enterTransition>;
+
+        if $r3 == null goto label1;
+
+        $r4 = $r0.<androidx.fragment.app.FragmentTransition$2: androidx.fragment.app.FragmentTransitionImpl val$impl>;
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTransition$2: android.view.View val$nonExistentView>;
+
+        virtualinvoke $r4.<androidx.fragment.app.FragmentTransitionImpl: void removeTarget(java.lang.Object,android.view.View)>($r3, $r1);
+
+        $r4 = $r0.<androidx.fragment.app.FragmentTransition$2: androidx.fragment.app.FragmentTransitionImpl val$impl>;
+
+        $r3 = $r0.<androidx.fragment.app.FragmentTransition$2: java.lang.Object val$enterTransition>;
+
+        $r5 = $r0.<androidx.fragment.app.FragmentTransition$2: androidx.fragment.app.Fragment val$inFragment>;
+
+        $r2 = $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$sharedElementsIn>;
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTransition$2: android.view.View val$nonExistentView>;
+
+        $r2 = staticinvoke <androidx.fragment.app.FragmentTransition: java.util.ArrayList configureEnteringExitingViews(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,androidx.fragment.app.Fragment,java.util.ArrayList,android.view.View)>($r4, $r3, $r5, $r2, $r1);
+
+        $r6 = $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$enteringViews>;
+
+        virtualinvoke $r6.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r2);
+
+     label1:
+        $r2 = $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$exitingViews>;
+
+        if $r2 == null goto label3;
+
+        $r3 = $r0.<androidx.fragment.app.FragmentTransition$2: java.lang.Object val$exitTransition>;
+
+        if $r3 == null goto label2;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTransition$2: android.view.View val$nonExistentView>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        $r4 = $r0.<androidx.fragment.app.FragmentTransition$2: androidx.fragment.app.FragmentTransitionImpl val$impl>;
+
+        $r3 = $r0.<androidx.fragment.app.FragmentTransition$2: java.lang.Object val$exitTransition>;
+
+        $r6 = $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$exitingViews>;
+
+        virtualinvoke $r4.<androidx.fragment.app.FragmentTransitionImpl: void replaceTargets(java.lang.Object,java.util.ArrayList,java.util.ArrayList)>($r3, $r6, $r2);
+
+     label2:
+        $r2 = $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$exitingViews>;
+
+        virtualinvoke $r2.<java.util.ArrayList: void clear()>();
+
+        $r2 = $r0.<androidx.fragment.app.FragmentTransition$2: java.util.ArrayList val$exitingViews>;
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTransition$2: android.view.View val$nonExistentView>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+     label3:
+        return;
+    }
+}

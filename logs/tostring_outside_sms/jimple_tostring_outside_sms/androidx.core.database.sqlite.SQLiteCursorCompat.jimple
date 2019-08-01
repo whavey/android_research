@@ -1,0 +1,34 @@
+public final class androidx.core.database.sqlite.SQLiteCursorCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.database.sqlite.SQLiteCursorCompat $r0;
+
+        $r0 := @this: androidx.core.database.sqlite.SQLiteCursorCompat;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void setFillWindowForwardOnly(android.database.sqlite.SQLiteCursor, boolean)
+    {
+        android.database.sqlite.SQLiteCursor $r0;
+        boolean $z0;
+        int $i0;
+
+        $r0 := @parameter0: android.database.sqlite.SQLiteCursor;
+
+        $z0 := @parameter1: boolean;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        virtualinvoke $r0.<android.database.sqlite.SQLiteCursor: void setFillWindowForwardOnly(boolean)>($z0);
+
+     label1:
+        return;
+    }
+}

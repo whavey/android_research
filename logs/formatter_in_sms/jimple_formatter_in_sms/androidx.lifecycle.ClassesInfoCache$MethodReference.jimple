@@ -1,0 +1,213 @@
+class androidx.lifecycle.ClassesInfoCache$MethodReference extends java.lang.Object
+{
+    final int mCallType;
+    final java.lang.reflect.Method mMethod;
+
+    void <init>(int, java.lang.reflect.Method)
+    {
+        androidx.lifecycle.ClassesInfoCache$MethodReference $r0;
+        int $i0;
+        java.lang.reflect.Method $r1;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache$MethodReference;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.reflect.Method;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: int mCallType> = $i0;
+
+        $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod> = $r1;
+
+        $r1 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        virtualinvoke $r1.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.lifecycle.ClassesInfoCache$MethodReference $r0, $r4;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+        int $i0, $i1;
+        java.lang.reflect.Method $r5;
+        java.lang.String $r6, $r7;
+        boolean $z0;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache$MethodReference;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 == null goto label4;
+
+        $r2 = virtualinvoke $r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label2;
+
+        return 0;
+
+     label2:
+        $r4 = (androidx.lifecycle.ClassesInfoCache$MethodReference) $r1;
+
+        $i0 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: int mCallType>;
+
+        $i1 = $r4.<androidx.lifecycle.ClassesInfoCache$MethodReference: int mCallType>;
+
+        if $i0 != $i1 goto label3;
+
+        $r5 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        $r6 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        $r5 = $r4.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>($r7);
+
+        if $z0 == 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        return 0;
+    }
+
+    public int hashCode()
+    {
+        androidx.lifecycle.ClassesInfoCache$MethodReference $r0;
+        int $i0, $i1;
+        java.lang.reflect.Method $r1;
+        java.lang.String $r2;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache$MethodReference;
+
+        $i0 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: int mCallType>;
+
+        $i0 = $i0 * 31;
+
+        $r1 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        $r2 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        $i1 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+    }
+
+    void invokeCallback(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event, java.lang.Object)
+    {
+        androidx.lifecycle.ClassesInfoCache$MethodReference $r0;
+        androidx.lifecycle.LifecycleOwner $r1;
+        androidx.lifecycle.Lifecycle$Event $r2;
+        java.lang.Object $r3;
+        java.lang.Throwable $r4, $r7;
+        int $i0;
+        java.lang.reflect.Method $r5;
+        java.lang.Object[] $r6;
+        java.lang.RuntimeException r8;
+        java.lang.reflect.InvocationTargetException r9;
+
+        $r0 := @this: androidx.lifecycle.ClassesInfoCache$MethodReference;
+
+        $r1 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $r2 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $i0 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: int mCallType>;
+
+        if $i0 == 0 goto label07;
+
+        if $i0 == 1 goto label04;
+
+        if $i0 == 2 goto label01;
+
+        goto label09;
+
+     label01:
+        $r5 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        $r6 = newarray (java.lang.Object)[2];
+
+        $r6[0] = $r1;
+
+        $r6[1] = $r2;
+
+     label02:
+        virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r3, $r6);
+
+     label03:
+        goto label09;
+
+     label04:
+        $r5 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r6[0] = $r1;
+
+     label05:
+        virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r3, $r6);
+
+     label06:
+        goto label09;
+
+     label07:
+        $r5 = $r0.<androidx.lifecycle.ClassesInfoCache$MethodReference: java.lang.reflect.Method mMethod>;
+
+        $r6 = newarray (java.lang.Object)[0];
+
+     label08:
+        virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r3, $r6);
+
+     label09:
+        return;
+
+     label10:
+        $r4 := @caughtexception;
+
+        r8 = new java.lang.RuntimeException;
+
+        specialinvoke r8.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r4);
+
+        throw r8;
+
+     label11:
+        $r7 := @caughtexception;
+
+        r8 = new java.lang.RuntimeException;
+
+        r9 = (java.lang.reflect.InvocationTargetException) $r7;
+
+        $r4 = virtualinvoke r9.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        specialinvoke r8.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("Failed to call observer method", $r4);
+
+        throw r8;
+
+        catch java.lang.reflect.InvocationTargetException from label02 to label03 with label11;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label11;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label11;
+        catch java.lang.IllegalAccessException from label02 to label03 with label10;
+        catch java.lang.IllegalAccessException from label05 to label06 with label10;
+        catch java.lang.IllegalAccessException from label08 to label09 with label10;
+    }
+}

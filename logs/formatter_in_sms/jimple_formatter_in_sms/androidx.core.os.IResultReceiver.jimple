@@ -1,0 +1,5 @@
+public interface  androidx.core.os.IResultReceiver extends java.lang.Object implements android.os.IInterface
+{
+
+    public abstract void send(int, android.os.Bundle) throws android.os.RemoteException;
+}

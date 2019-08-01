@@ -1,0 +1,37 @@
+public final class androidx.core.app.NotificationCompatExtras extends java.lang.Object
+{
+    public static final java.lang.String EXTRA_ACTION_EXTRAS;
+    public static final java.lang.String EXTRA_GROUP_KEY;
+    public static final java.lang.String EXTRA_GROUP_SUMMARY;
+    public static final java.lang.String EXTRA_LOCAL_ONLY;
+    public static final java.lang.String EXTRA_REMOTE_INPUTS;
+    public static final java.lang.String EXTRA_SORT_KEY;
+
+    private void <init>()
+    {
+        androidx.core.app.NotificationCompatExtras $r0;
+
+        $r0 := @this: androidx.core.app.NotificationCompatExtras;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.NotificationCompatExtras: java.lang.String EXTRA_SORT_KEY> = "android.support.sortKey";
+
+        <androidx.core.app.NotificationCompatExtras: java.lang.String EXTRA_REMOTE_INPUTS> = "android.support.remoteInputs";
+
+        <androidx.core.app.NotificationCompatExtras: java.lang.String EXTRA_LOCAL_ONLY> = "android.support.localOnly";
+
+        <androidx.core.app.NotificationCompatExtras: java.lang.String EXTRA_GROUP_SUMMARY> = "android.support.isGroupSummary";
+
+        <androidx.core.app.NotificationCompatExtras: java.lang.String EXTRA_GROUP_KEY> = "android.support.groupKey";
+
+        <androidx.core.app.NotificationCompatExtras: java.lang.String EXTRA_ACTION_EXTRAS> = "android.support.actionExtras";
+
+        return;
+    }
+}

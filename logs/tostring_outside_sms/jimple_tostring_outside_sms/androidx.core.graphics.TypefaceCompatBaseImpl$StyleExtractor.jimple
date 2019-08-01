@@ -1,0 +1,7 @@
+interface  androidx.core.graphics.TypefaceCompatBaseImpl$StyleExtractor extends java.lang.Object
+{
+
+    public abstract int getWeight(java.lang.Object);
+
+    public abstract boolean isItalic(java.lang.Object);
+}

@@ -1,0 +1,442 @@
+class androidx.print.PrintHelper$1 extends android.os.AsyncTask
+{
+    final androidx.print.PrintHelper this$0;
+    final android.print.PrintAttributes val$attributes;
+    final android.graphics.Bitmap val$bitmap;
+    final android.os.CancellationSignal val$cancellationSignal;
+    final android.os.ParcelFileDescriptor val$fileDescriptor;
+    final int val$fittingMode;
+    final android.print.PrintAttributes val$pdfAttributes;
+    final android.print.PrintDocumentAdapter$WriteResultCallback val$writeResultCallback;
+
+    void <init>(androidx.print.PrintHelper, android.os.CancellationSignal, android.print.PrintAttributes, android.graphics.Bitmap, android.print.PrintAttributes, int, android.os.ParcelFileDescriptor, android.print.PrintDocumentAdapter$WriteResultCallback)
+    {
+        androidx.print.PrintHelper$1 $r0;
+        androidx.print.PrintHelper $r1;
+        android.os.CancellationSignal $r2;
+        android.print.PrintAttributes $r3, $r5;
+        android.graphics.Bitmap $r4;
+        int $i0;
+        android.os.ParcelFileDescriptor $r6;
+        android.print.PrintDocumentAdapter$WriteResultCallback $r7;
+
+        $r0 := @this: androidx.print.PrintHelper$1;
+
+        $r1 := @parameter0: androidx.print.PrintHelper;
+
+        $r2 := @parameter1: android.os.CancellationSignal;
+
+        $r3 := @parameter2: android.print.PrintAttributes;
+
+        $r4 := @parameter3: android.graphics.Bitmap;
+
+        $r5 := @parameter4: android.print.PrintAttributes;
+
+        $i0 := @parameter5: int;
+
+        $r6 := @parameter6: android.os.ParcelFileDescriptor;
+
+        $r7 := @parameter7: android.print.PrintDocumentAdapter$WriteResultCallback;
+
+        $r0.<androidx.print.PrintHelper$1: androidx.print.PrintHelper this$0> = $r1;
+
+        $r0.<androidx.print.PrintHelper$1: android.os.CancellationSignal val$cancellationSignal> = $r2;
+
+        $r0.<androidx.print.PrintHelper$1: android.print.PrintAttributes val$pdfAttributes> = $r3;
+
+        $r0.<androidx.print.PrintHelper$1: android.graphics.Bitmap val$bitmap> = $r4;
+
+        $r0.<androidx.print.PrintHelper$1: android.print.PrintAttributes val$attributes> = $r5;
+
+        $r0.<androidx.print.PrintHelper$1: int val$fittingMode> = $i0;
+
+        $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor> = $r6;
+
+        $r0.<androidx.print.PrintHelper$1: android.print.PrintDocumentAdapter$WriteResultCallback val$writeResultCallback> = $r7;
+
+        specialinvoke $r0.<android.os.AsyncTask: void <init>()>();
+
+        return;
+    }
+
+    protected volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        androidx.print.PrintHelper$1 $r0;
+        java.lang.Throwable $r1;
+        java.lang.Object[] $r2;
+        java.lang.Void[] $r3;
+
+        $r0 := @this: androidx.print.PrintHelper$1;
+
+        $r2 := @parameter0: java.lang.Object[];
+
+        $r3 = (java.lang.Void[]) $r2;
+
+        $r1 = virtualinvoke $r0.<androidx.print.PrintHelper$1: java.lang.Throwable doInBackground(java.lang.Void[])>($r3);
+
+        return $r1;
+    }
+
+    protected transient java.lang.Throwable doInBackground(java.lang.Void[])
+    {
+        androidx.print.PrintHelper$1 $r0;
+        java.lang.Void[] $r1;
+        android.os.CancellationSignal $r2;
+        boolean $z0;
+        android.print.pdf.PrintedPdfDocument $r3, $r12;
+        androidx.print.PrintHelper $r4;
+        android.content.Context $r5;
+        android.print.PrintAttributes $r6;
+        android.graphics.Bitmap $r7, $r18;
+        int $i0, $i1, $i2;
+        android.graphics.pdf.PdfDocument$Page $r8, $r13;
+        android.graphics.RectF $r9;
+        android.graphics.pdf.PdfDocument$PageInfo $r10;
+        android.graphics.Rect $r11;
+        android.graphics.Matrix $r14;
+        float $f0, $f1;
+        android.graphics.Canvas $r15;
+        android.os.ParcelFileDescriptor $r16;
+        java.lang.Throwable $r17, $r21, $r22, $r23, $r24;
+        java.io.FileOutputStream $r19;
+        java.io.FileDescriptor $r20;
+
+        $r0 := @this: androidx.print.PrintHelper$1;
+
+        $r1 := @parameter0: java.lang.Void[];
+
+     label01:
+        $r2 = $r0.<androidx.print.PrintHelper$1: android.os.CancellationSignal val$cancellationSignal>;
+
+        $z0 = virtualinvoke $r2.<android.os.CancellationSignal: boolean isCanceled()>();
+
+     label02:
+        if $z0 == 0 goto label03;
+
+        return null;
+
+     label03:
+        $r3 = new android.print.pdf.PrintedPdfDocument;
+
+        $r4 = $r0.<androidx.print.PrintHelper$1: androidx.print.PrintHelper this$0>;
+
+        $r5 = $r4.<androidx.print.PrintHelper: android.content.Context mContext>;
+
+        $r6 = $r0.<androidx.print.PrintHelper$1: android.print.PrintAttributes val$pdfAttributes>;
+
+        specialinvoke $r3.<android.print.pdf.PrintedPdfDocument: void <init>(android.content.Context,android.print.PrintAttributes)>($r5, $r6);
+
+        $r7 = $r0.<androidx.print.PrintHelper$1: android.graphics.Bitmap val$bitmap>;
+
+        $r6 = $r0.<androidx.print.PrintHelper$1: android.print.PrintAttributes val$pdfAttributes>;
+
+        $i0 = virtualinvoke $r6.<android.print.PrintAttributes: int getColorMode()>();
+
+        $r7 = staticinvoke <androidx.print.PrintHelper: android.graphics.Bitmap convertBitmapForColorMode(android.graphics.Bitmap,int)>($r7, $i0);
+
+        $r2 = $r0.<androidx.print.PrintHelper$1: android.os.CancellationSignal val$cancellationSignal>;
+
+        $z0 = virtualinvoke $r2.<android.os.CancellationSignal: boolean isCanceled()>();
+
+     label04:
+        if $z0 == 0 goto label05;
+
+        return null;
+
+     label05:
+        $r8 = virtualinvoke $r3.<android.print.pdf.PrintedPdfDocument: android.graphics.pdf.PdfDocument$Page startPage(int)>(1);
+
+        $z0 = <androidx.print.PrintHelper: boolean IS_MIN_MARGINS_HANDLING_CORRECT>;
+
+     label06:
+        if $z0 == 0 goto label09;
+
+     label07:
+        $r9 = new android.graphics.RectF;
+
+        $r10 = virtualinvoke $r8.<android.graphics.pdf.PdfDocument$Page: android.graphics.pdf.PdfDocument$PageInfo getInfo()>();
+
+        $r11 = virtualinvoke $r10.<android.graphics.pdf.PdfDocument$PageInfo: android.graphics.Rect getContentRect()>();
+
+        specialinvoke $r9.<android.graphics.RectF: void <init>(android.graphics.Rect)>($r11);
+
+     label08:
+        goto label10;
+
+     label09:
+        $r12 = new android.print.pdf.PrintedPdfDocument;
+
+        $r4 = $r0.<androidx.print.PrintHelper$1: androidx.print.PrintHelper this$0>;
+
+        $r5 = $r4.<androidx.print.PrintHelper: android.content.Context mContext>;
+
+        $r6 = $r0.<androidx.print.PrintHelper$1: android.print.PrintAttributes val$attributes>;
+
+        specialinvoke $r12.<android.print.pdf.PrintedPdfDocument: void <init>(android.content.Context,android.print.PrintAttributes)>($r5, $r6);
+
+        $r13 = virtualinvoke $r12.<android.print.pdf.PrintedPdfDocument: android.graphics.pdf.PdfDocument$Page startPage(int)>(1);
+
+        $r9 = new android.graphics.RectF;
+
+        $r10 = virtualinvoke $r13.<android.graphics.pdf.PdfDocument$Page: android.graphics.pdf.PdfDocument$PageInfo getInfo()>();
+
+        $r11 = virtualinvoke $r10.<android.graphics.pdf.PdfDocument$PageInfo: android.graphics.Rect getContentRect()>();
+
+        specialinvoke $r9.<android.graphics.RectF: void <init>(android.graphics.Rect)>($r11);
+
+        virtualinvoke $r12.<android.print.pdf.PrintedPdfDocument: void finishPage(android.graphics.pdf.PdfDocument$Page)>($r13);
+
+        virtualinvoke $r12.<android.print.pdf.PrintedPdfDocument: void close()>();
+
+     label10:
+        $i0 = virtualinvoke $r7.<android.graphics.Bitmap: int getWidth()>();
+
+        $i1 = virtualinvoke $r7.<android.graphics.Bitmap: int getHeight()>();
+
+        $i2 = $r0.<androidx.print.PrintHelper$1: int val$fittingMode>;
+
+        $r14 = staticinvoke <androidx.print.PrintHelper: android.graphics.Matrix getMatrix(int,int,android.graphics.RectF,int)>($i0, $i1, $r9, $i2);
+
+        $z0 = <androidx.print.PrintHelper: boolean IS_MIN_MARGINS_HANDLING_CORRECT>;
+
+     label11:
+        if $z0 == 0 goto label12;
+
+        goto label13;
+
+     label12:
+        $f0 = $r9.<android.graphics.RectF: float left>;
+
+        $f1 = $r9.<android.graphics.RectF: float top>;
+
+        virtualinvoke $r14.<android.graphics.Matrix: boolean postTranslate(float,float)>($f0, $f1);
+
+        $r15 = virtualinvoke $r8.<android.graphics.pdf.PdfDocument$Page: android.graphics.Canvas getCanvas()>();
+
+        virtualinvoke $r15.<android.graphics.Canvas: boolean clipRect(android.graphics.RectF)>($r9);
+
+     label13:
+        $r15 = virtualinvoke $r8.<android.graphics.pdf.PdfDocument$Page: android.graphics.Canvas getCanvas()>();
+
+        virtualinvoke $r15.<android.graphics.Canvas: void drawBitmap(android.graphics.Bitmap,android.graphics.Matrix,android.graphics.Paint)>($r7, $r14, null);
+
+        virtualinvoke $r3.<android.print.pdf.PrintedPdfDocument: void finishPage(android.graphics.pdf.PdfDocument$Page)>($r8);
+
+        $r2 = $r0.<androidx.print.PrintHelper$1: android.os.CancellationSignal val$cancellationSignal>;
+
+        $z0 = virtualinvoke $r2.<android.os.CancellationSignal: boolean isCanceled()>();
+
+     label14:
+        if $z0 == 0 goto label25;
+
+     label15:
+        virtualinvoke $r3.<android.print.pdf.PrintedPdfDocument: void close()>();
+
+        $r16 = $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor>;
+
+     label16:
+        if $r16 == null goto label21;
+
+     label17:
+        $r16 = $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor>;
+
+     label18:
+        virtualinvoke $r16.<android.os.ParcelFileDescriptor: void close()>();
+
+     label19:
+        goto label21;
+
+     label20:
+        $r17 := @caughtexception;
+
+     label21:
+        $r18 = $r0.<androidx.print.PrintHelper$1: android.graphics.Bitmap val$bitmap>;
+
+     label22:
+        if $r7 == $r18 goto label48;
+
+     label23:
+        virtualinvoke $r7.<android.graphics.Bitmap: void recycle()>();
+
+     label24:
+        return null;
+
+     label25:
+        $r19 = new java.io.FileOutputStream;
+
+        $r16 = $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor>;
+
+        $r20 = virtualinvoke $r16.<android.os.ParcelFileDescriptor: java.io.FileDescriptor getFileDescriptor()>();
+
+        specialinvoke $r19.<java.io.FileOutputStream: void <init>(java.io.FileDescriptor)>($r20);
+
+        virtualinvoke $r3.<android.print.pdf.PrintedPdfDocument: void writeTo(java.io.OutputStream)>($r19);
+
+     label26:
+        virtualinvoke $r3.<android.print.pdf.PrintedPdfDocument: void close()>();
+
+        $r16 = $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor>;
+
+     label27:
+        if $r16 == null goto label32;
+
+     label28:
+        $r16 = $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor>;
+
+     label29:
+        virtualinvoke $r16.<android.os.ParcelFileDescriptor: void close()>();
+
+     label30:
+        goto label32;
+
+     label31:
+        $r21 := @caughtexception;
+
+     label32:
+        $r18 = $r0.<androidx.print.PrintHelper$1: android.graphics.Bitmap val$bitmap>;
+
+     label33:
+        if $r7 == $r18 goto label48;
+
+     label34:
+        virtualinvoke $r7.<android.graphics.Bitmap: void recycle()>();
+
+     label35:
+        return null;
+
+     label36:
+        $r22 := @caughtexception;
+
+     label37:
+        virtualinvoke $r3.<android.print.pdf.PrintedPdfDocument: void close()>();
+
+        $r16 = $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor>;
+
+     label38:
+        if $r16 == null goto label43;
+
+     label39:
+        $r16 = $r0.<androidx.print.PrintHelper$1: android.os.ParcelFileDescriptor val$fileDescriptor>;
+
+     label40:
+        virtualinvoke $r16.<android.os.ParcelFileDescriptor: void close()>();
+
+     label41:
+        goto label43;
+
+     label42:
+        $r23 := @caughtexception;
+
+     label43:
+        $r18 = $r0.<androidx.print.PrintHelper$1: android.graphics.Bitmap val$bitmap>;
+
+     label44:
+        if $r7 == $r18 goto label46;
+
+     label45:
+        virtualinvoke $r7.<android.graphics.Bitmap: void recycle()>();
+
+     label46:
+        throw $r22;
+
+     label47:
+        $r24 := @caughtexception;
+
+        return $r24;
+
+     label48:
+        return null;
+
+        catch java.lang.Throwable from label01 to label02 with label47;
+        catch java.lang.Throwable from label03 to label04 with label47;
+        catch java.lang.Throwable from label05 to label06 with label36;
+        catch java.lang.Throwable from label07 to label08 with label36;
+        catch java.lang.Throwable from label09 to label10 with label36;
+        catch java.lang.Throwable from label10 to label11 with label36;
+        catch java.lang.Throwable from label12 to label14 with label36;
+        catch java.lang.Throwable from label15 to label16 with label47;
+        catch java.io.IOException from label18 to label19 with label20;
+        catch java.lang.Throwable from label17 to label19 with label47;
+        catch java.lang.Throwable from label21 to label22 with label47;
+        catch java.lang.Throwable from label23 to label24 with label47;
+        catch java.lang.Throwable from label25 to label26 with label36;
+        catch java.lang.Throwable from label26 to label27 with label47;
+        catch java.io.IOException from label29 to label30 with label31;
+        catch java.lang.Throwable from label28 to label30 with label47;
+        catch java.lang.Throwable from label32 to label33 with label47;
+        catch java.lang.Throwable from label34 to label35 with label47;
+        catch java.lang.Throwable from label37 to label38 with label47;
+        catch java.io.IOException from label40 to label41 with label42;
+        catch java.lang.Throwable from label39 to label41 with label47;
+        catch java.lang.Throwable from label43 to label44 with label47;
+        catch java.lang.Throwable from label45 to label47 with label47;
+    }
+
+    protected volatile void onPostExecute(java.lang.Object)
+    {
+        androidx.print.PrintHelper$1 $r0;
+        java.lang.Object $r1;
+        java.lang.Throwable $r2;
+
+        $r0 := @this: androidx.print.PrintHelper$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (java.lang.Throwable) $r1;
+
+        virtualinvoke $r0.<androidx.print.PrintHelper$1: void onPostExecute(java.lang.Throwable)>($r2);
+
+        return;
+    }
+
+    protected void onPostExecute(java.lang.Throwable)
+    {
+        androidx.print.PrintHelper$1 $r0;
+        java.lang.Throwable $r1;
+        android.print.PageRange $r2;
+        boolean $z0;
+        android.os.CancellationSignal $r3;
+        android.print.PrintDocumentAdapter$WriteResultCallback $r4;
+        android.print.PageRange[] $r5;
+
+        $r0 := @this: androidx.print.PrintHelper$1;
+
+        $r1 := @parameter0: java.lang.Throwable;
+
+        $r3 = $r0.<androidx.print.PrintHelper$1: android.os.CancellationSignal val$cancellationSignal>;
+
+        $z0 = virtualinvoke $r3.<android.os.CancellationSignal: boolean isCanceled()>();
+
+        if $z0 == 0 goto label1;
+
+        $r4 = $r0.<androidx.print.PrintHelper$1: android.print.PrintDocumentAdapter$WriteResultCallback val$writeResultCallback>;
+
+        virtualinvoke $r4.<android.print.PrintDocumentAdapter$WriteResultCallback: void onWriteCancelled()>();
+
+        return;
+
+     label1:
+        if $r1 != null goto label2;
+
+        $r4 = $r0.<androidx.print.PrintHelper$1: android.print.PrintDocumentAdapter$WriteResultCallback val$writeResultCallback>;
+
+        $r5 = newarray (android.print.PageRange)[1];
+
+        $r2 = <android.print.PageRange: android.print.PageRange ALL_PAGES>;
+
+        $r5[0] = $r2;
+
+        virtualinvoke $r4.<android.print.PrintDocumentAdapter$WriteResultCallback: void onWriteFinished(android.print.PageRange[])>($r5);
+
+        return;
+
+     label2:
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("PrintHelper", "Error writing printed content", $r1);
+
+        $r4 = $r0.<androidx.print.PrintHelper$1: android.print.PrintDocumentAdapter$WriteResultCallback val$writeResultCallback>;
+
+        virtualinvoke $r4.<android.print.PrintDocumentAdapter$WriteResultCallback: void onWriteFailed(java.lang.CharSequence)>(null);
+
+        return;
+    }
+}

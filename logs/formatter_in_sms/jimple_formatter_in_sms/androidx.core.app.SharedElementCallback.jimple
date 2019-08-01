@@ -1,0 +1,447 @@
+public abstract class androidx.core.app.SharedElementCallback extends java.lang.Object
+{
+    private static final java.lang.String BUNDLE_SNAPSHOT_BITMAP;
+    private static final java.lang.String BUNDLE_SNAPSHOT_IMAGE_MATRIX;
+    private static final java.lang.String BUNDLE_SNAPSHOT_IMAGE_SCALETYPE;
+    private static final int MAX_IMAGE_SIZE;
+    private android.graphics.Matrix mTempMatrix;
+
+    public void <init>()
+    {
+        androidx.core.app.SharedElementCallback $r0;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static android.graphics.Bitmap createDrawableBitmap(android.graphics.drawable.Drawable)
+    {
+        android.graphics.drawable.Drawable $r0;
+        android.graphics.Canvas $r1;
+        int $i0, $i1, $i2, $i3, $i4, $i6;
+        float $f0, $f1;
+        boolean $z0;
+        byte $b5;
+        android.graphics.drawable.BitmapDrawable $r2;
+        android.graphics.Bitmap $r3;
+        android.graphics.Bitmap$Config $r4;
+        android.graphics.Rect $r5;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i4 = virtualinvoke $r0.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        $i0 = virtualinvoke $r0.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        if $i4 <= 0 goto label3;
+
+        if $i0 > 0 goto label1;
+
+        goto label3;
+
+     label1:
+        $i1 = $i4 * $i0;
+
+        $f0 = (float) $i1;
+
+        $f0 = 1048576.0F / $f0;
+
+        $f0 = staticinvoke <java.lang.Math: float min(float,float)>(1.0F, $f0);
+
+        $z0 = $r0 instanceof android.graphics.drawable.BitmapDrawable;
+
+        if $z0 == 0 goto label2;
+
+        $b5 = $f0 cmpl 1.0F;
+
+        if $b5 != 0 goto label2;
+
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        return $r3;
+
+     label2:
+        $f1 = (float) $i4;
+
+        $f1 = $f1 * $f0;
+
+        $i4 = (int) $f1;
+
+        $f1 = (float) $i0;
+
+        $f0 = $f1 * $f0;
+
+        $i6 = (int) $f0;
+
+        $r4 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+        $r3 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>($i4, $i6, $r4);
+
+        $r1 = new android.graphics.Canvas;
+
+        specialinvoke $r1.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>($r3);
+
+        $r5 = virtualinvoke $r0.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        $i0 = $r5.<android.graphics.Rect: int left>;
+
+        $i1 = $r5.<android.graphics.Rect: int top>;
+
+        $i2 = $r5.<android.graphics.Rect: int right>;
+
+        $i3 = $r5.<android.graphics.Rect: int bottom>;
+
+        virtualinvoke $r0.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, $i4, $i6);
+
+        virtualinvoke $r0.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($r1);
+
+        virtualinvoke $r0.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return $r3;
+
+     label3:
+        return null;
+    }
+
+    public android.os.Parcelable onCaptureSharedElementSnapshot(android.view.View, android.graphics.Matrix, android.graphics.RectF)
+    {
+        androidx.core.app.SharedElementCallback $r0;
+        android.view.View $r1;
+        android.graphics.Matrix $r2, $r13;
+        android.graphics.RectF $r3;
+        boolean $z0;
+        android.widget.ImageView $r4;
+        android.graphics.drawable.Drawable $r5, $r6;
+        android.graphics.Bitmap $r7;
+        android.os.Bundle $r8;
+        android.widget.ImageView$ScaleType $r9, $r11;
+        java.lang.String $r10;
+        float[] $r12;
+        float $f0, $f1, $f2;
+        int $i0, $i1, $i2;
+        android.graphics.Bitmap$Config $r14;
+        android.graphics.Canvas $r15;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.graphics.Matrix;
+
+        $r3 := @parameter2: android.graphics.RectF;
+
+        $z0 = $r1 instanceof android.widget.ImageView;
+
+        if $z0 == 0 goto label1;
+
+        $r4 = (android.widget.ImageView) $r1;
+
+        $r5 = virtualinvoke $r4.<android.widget.ImageView: android.graphics.drawable.Drawable getDrawable()>();
+
+        $r6 = virtualinvoke $r4.<android.widget.ImageView: android.graphics.drawable.Drawable getBackground()>();
+
+        if $r5 == null goto label1;
+
+        if $r6 != null goto label1;
+
+        $r7 = staticinvoke <androidx.core.app.SharedElementCallback: android.graphics.Bitmap createDrawableBitmap(android.graphics.drawable.Drawable)>($r5);
+
+        if $r7 == null goto label1;
+
+        $r8 = new android.os.Bundle;
+
+        specialinvoke $r8.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke $r8.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("sharedElement:snapshot:bitmap", $r7);
+
+        $r9 = virtualinvoke $r4.<android.widget.ImageView: android.widget.ImageView$ScaleType getScaleType()>();
+
+        $r10 = virtualinvoke $r9.<android.widget.ImageView$ScaleType: java.lang.String toString()>();
+
+        virtualinvoke $r8.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("sharedElement:snapshot:imageScaleType", $r10);
+
+        $r9 = virtualinvoke $r4.<android.widget.ImageView: android.widget.ImageView$ScaleType getScaleType()>();
+
+        $r11 = <android.widget.ImageView$ScaleType: android.widget.ImageView$ScaleType MATRIX>;
+
+        if $r9 != $r11 goto label3;
+
+        $r2 = virtualinvoke $r4.<android.widget.ImageView: android.graphics.Matrix getImageMatrix()>();
+
+        $r12 = newarray (float)[9];
+
+        virtualinvoke $r2.<android.graphics.Matrix: void getValues(float[])>($r12);
+
+        virtualinvoke $r8.<android.os.Bundle: void putFloatArray(java.lang.String,float[])>("sharedElement:snapshot:imageMatrix", $r12);
+
+        return $r8;
+
+     label1:
+        $f0 = virtualinvoke $r3.<android.graphics.RectF: float width()>();
+
+        $i0 = staticinvoke <java.lang.Math: int round(float)>($f0);
+
+        $f0 = virtualinvoke $r3.<android.graphics.RectF: float height()>();
+
+        $i1 = staticinvoke <java.lang.Math: int round(float)>($f0);
+
+        if $i0 <= 0 goto label4;
+
+        if $i1 <= 0 goto label4;
+
+        $i2 = $i0 * $i1;
+
+        $f0 = (float) $i2;
+
+        $f0 = 1048576.0F / $f0;
+
+        $f0 = staticinvoke <java.lang.Math: float min(float,float)>(1.0F, $f0);
+
+        $f1 = (float) $i0;
+
+        $f1 = $f1 * $f0;
+
+        $i0 = (int) $f1;
+
+        $f1 = (float) $i1;
+
+        $f1 = $f1 * $f0;
+
+        $i1 = (int) $f1;
+
+        $r13 = $r0.<androidx.core.app.SharedElementCallback: android.graphics.Matrix mTempMatrix>;
+
+        if $r13 != null goto label2;
+
+        $r13 = new android.graphics.Matrix;
+
+        specialinvoke $r13.<android.graphics.Matrix: void <init>()>();
+
+        $r0.<androidx.core.app.SharedElementCallback: android.graphics.Matrix mTempMatrix> = $r13;
+
+     label2:
+        $r13 = $r0.<androidx.core.app.SharedElementCallback: android.graphics.Matrix mTempMatrix>;
+
+        virtualinvoke $r13.<android.graphics.Matrix: void set(android.graphics.Matrix)>($r2);
+
+        $r2 = $r0.<androidx.core.app.SharedElementCallback: android.graphics.Matrix mTempMatrix>;
+
+        $f1 = $r3.<android.graphics.RectF: float left>;
+
+        $f1 = neg $f1;
+
+        $f2 = $r3.<android.graphics.RectF: float top>;
+
+        $f2 = neg $f2;
+
+        virtualinvoke $r2.<android.graphics.Matrix: boolean postTranslate(float,float)>($f1, $f2);
+
+        $r2 = $r0.<androidx.core.app.SharedElementCallback: android.graphics.Matrix mTempMatrix>;
+
+        virtualinvoke $r2.<android.graphics.Matrix: boolean postScale(float,float)>($f0, $f0);
+
+        $r14 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+        $r7 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>($i0, $i1, $r14);
+
+        $r15 = new android.graphics.Canvas;
+
+        specialinvoke $r15.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>($r7);
+
+        $r2 = $r0.<androidx.core.app.SharedElementCallback: android.graphics.Matrix mTempMatrix>;
+
+        virtualinvoke $r15.<android.graphics.Canvas: void concat(android.graphics.Matrix)>($r2);
+
+        virtualinvoke $r1.<android.view.View: void draw(android.graphics.Canvas)>($r15);
+
+        return $r7;
+
+     label3:
+        return $r8;
+
+     label4:
+        return null;
+    }
+
+    public android.view.View onCreateSnapshotView(android.content.Context, android.os.Parcelable)
+    {
+        androidx.core.app.SharedElementCallback $r0;
+        android.content.Context $r1;
+        android.os.Parcelable $r2;
+        android.widget.ImageView $r3, $r6;
+        boolean $z0;
+        android.os.Bundle $r4;
+        android.graphics.Bitmap $r5;
+        java.lang.String $r7;
+        android.widget.ImageView$ScaleType $r8, $r9;
+        float[] $r10;
+        android.graphics.Matrix $r11;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.os.Parcelable;
+
+        $r3 = null;
+
+        $z0 = $r2 instanceof android.os.Bundle;
+
+        if $z0 == 0 goto label2;
+
+        $r4 = (android.os.Bundle) $r2;
+
+        $r2 = virtualinvoke $r4.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("sharedElement:snapshot:bitmap");
+
+        $r5 = (android.graphics.Bitmap) $r2;
+
+        if $r5 != null goto label1;
+
+        return null;
+
+     label1:
+        $r6 = new android.widget.ImageView;
+
+        specialinvoke $r6.<android.widget.ImageView: void <init>(android.content.Context)>($r1);
+
+        $r3 = $r6;
+
+        virtualinvoke $r6.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>($r5);
+
+        $r7 = virtualinvoke $r4.<android.os.Bundle: java.lang.String getString(java.lang.String)>("sharedElement:snapshot:imageScaleType");
+
+        $r8 = staticinvoke <android.widget.ImageView$ScaleType: android.widget.ImageView$ScaleType valueOf(java.lang.String)>($r7);
+
+        virtualinvoke $r6.<android.widget.ImageView: void setScaleType(android.widget.ImageView$ScaleType)>($r8);
+
+        $r8 = virtualinvoke $r6.<android.widget.ImageView: android.widget.ImageView$ScaleType getScaleType()>();
+
+        $r9 = <android.widget.ImageView$ScaleType: android.widget.ImageView$ScaleType MATRIX>;
+
+        if $r8 != $r9 goto label3;
+
+        $r10 = virtualinvoke $r4.<android.os.Bundle: float[] getFloatArray(java.lang.String)>("sharedElement:snapshot:imageMatrix");
+
+        $r11 = new android.graphics.Matrix;
+
+        specialinvoke $r11.<android.graphics.Matrix: void <init>()>();
+
+        virtualinvoke $r11.<android.graphics.Matrix: void setValues(float[])>($r10);
+
+        virtualinvoke $r6.<android.widget.ImageView: void setImageMatrix(android.graphics.Matrix)>($r11);
+
+        goto label3;
+
+     label2:
+        $z0 = $r2 instanceof android.graphics.Bitmap;
+
+        if $z0 == 0 goto label3;
+
+        $r5 = (android.graphics.Bitmap) $r2;
+
+        $r3 = new android.widget.ImageView;
+
+        specialinvoke $r3.<android.widget.ImageView: void <init>(android.content.Context)>($r1);
+
+        virtualinvoke $r3.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>($r5);
+
+     label3:
+        return $r3;
+    }
+
+    public void onMapSharedElements(java.util.List, java.util.Map)
+    {
+        androidx.core.app.SharedElementCallback $r0;
+        java.util.List $r1;
+        java.util.Map $r2;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r2 := @parameter1: java.util.Map;
+
+        return;
+    }
+
+    public void onRejectSharedElements(java.util.List)
+    {
+        androidx.core.app.SharedElementCallback $r0;
+        java.util.List $r1;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        $r1 := @parameter0: java.util.List;
+
+        return;
+    }
+
+    public void onSharedElementEnd(java.util.List, java.util.List, java.util.List)
+    {
+        androidx.core.app.SharedElementCallback $r0;
+        java.util.List $r1, $r2, $r3;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r2 := @parameter1: java.util.List;
+
+        $r3 := @parameter2: java.util.List;
+
+        return;
+    }
+
+    public void onSharedElementStart(java.util.List, java.util.List, java.util.List)
+    {
+        androidx.core.app.SharedElementCallback $r0;
+        java.util.List $r1, $r2, $r3;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r2 := @parameter1: java.util.List;
+
+        $r3 := @parameter2: java.util.List;
+
+        return;
+    }
+
+    public void onSharedElementsArrived(java.util.List, java.util.List, androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener)
+    {
+        androidx.core.app.SharedElementCallback $r0;
+        java.util.List $r1, $r2;
+        androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener $r3;
+
+        $r0 := @this: androidx.core.app.SharedElementCallback;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r2 := @parameter1: java.util.List;
+
+        $r3 := @parameter2: androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener;
+
+        interfaceinvoke $r3.<androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener: void onSharedElementsReady()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.SharedElementCallback: int MAX_IMAGE_SIZE> = 1048576;
+
+        <androidx.core.app.SharedElementCallback: java.lang.String BUNDLE_SNAPSHOT_IMAGE_SCALETYPE> = "sharedElement:snapshot:imageScaleType";
+
+        <androidx.core.app.SharedElementCallback: java.lang.String BUNDLE_SNAPSHOT_IMAGE_MATRIX> = "sharedElement:snapshot:imageMatrix";
+
+        <androidx.core.app.SharedElementCallback: java.lang.String BUNDLE_SNAPSHOT_BITMAP> = "sharedElement:snapshot:bitmap";
+
+        return;
+    }
+}

@@ -1,0 +1,731 @@
+public class androidx.fragment.app.FragmentTabHost extends android.widget.TabHost implements android.widget.TabHost$OnTabChangeListener
+{
+    private boolean mAttached;
+    private int mContainerId;
+    private android.content.Context mContext;
+    private androidx.fragment.app.FragmentManager mFragmentManager;
+    private androidx.fragment.app.FragmentTabHost$TabInfo mLastTab;
+    private android.widget.TabHost$OnTabChangeListener mOnTabChangeListener;
+    private android.widget.FrameLayout mRealTabContent;
+    private final java.util.ArrayList mTabs;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.content.Context $r1;
+        java.util.ArrayList $r2;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke $r0.<android.widget.TabHost: void <init>(android.content.Context,android.util.AttributeSet)>($r1, null);
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.fragment.app.FragmentTabHost: java.util.ArrayList mTabs> = $r2;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: void initFragmentTabHost(android.content.Context,android.util.AttributeSet)>($r1, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        java.util.ArrayList $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke $r0.<android.widget.TabHost: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r0.<androidx.fragment.app.FragmentTabHost: java.util.ArrayList mTabs> = $r3;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: void initFragmentTabHost(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        return;
+    }
+
+    private androidx.fragment.app.FragmentTransaction doTabChanged(java.lang.String, androidx.fragment.app.FragmentTransaction)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        java.lang.String $r1;
+        androidx.fragment.app.FragmentTransaction $r2;
+        androidx.fragment.app.FragmentTabHost$TabInfo $r3, $r4;
+        androidx.fragment.app.FragmentManager $r5;
+        androidx.fragment.app.Fragment $r6;
+        android.content.Context $r7;
+        java.lang.Class $r8;
+        android.os.Bundle $r9;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.fragment.app.FragmentTransaction;
+
+        $r3 = specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTabHost$TabInfo getTabInfoForTag(java.lang.String)>($r1);
+
+        $r4 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTabHost$TabInfo mLastTab>;
+
+        if $r4 == $r3 goto label5;
+
+        if $r2 != null goto label1;
+
+        $r5 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $r2 = virtualinvoke $r5.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+     label1:
+        $r4 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTabHost$TabInfo mLastTab>;
+
+        if $r4 == null goto label2;
+
+        $r6 = $r4.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        if $r6 == null goto label2;
+
+        $r4 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTabHost$TabInfo mLastTab>;
+
+        $r6 = $r4.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r2.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction detach(androidx.fragment.app.Fragment)>($r6);
+
+     label2:
+        if $r3 == null goto label4;
+
+        $r6 = $r3.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        if $r6 != null goto label3;
+
+        $r7 = $r0.<androidx.fragment.app.FragmentTabHost: android.content.Context mContext>;
+
+        $r8 = $r3.<androidx.fragment.app.FragmentTabHost$TabInfo: java.lang.Class clss>;
+
+        $r1 = virtualinvoke $r8.<java.lang.Class: java.lang.String getName()>();
+
+        $r9 = $r3.<androidx.fragment.app.FragmentTabHost$TabInfo: android.os.Bundle args>;
+
+        $r6 = staticinvoke <androidx.fragment.app.Fragment: androidx.fragment.app.Fragment instantiate(android.content.Context,java.lang.String,android.os.Bundle)>($r7, $r1, $r9);
+
+        $r3.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment> = $r6;
+
+        $i0 = $r0.<androidx.fragment.app.FragmentTabHost: int mContainerId>;
+
+        $r6 = $r3.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        $r1 = $r3.<androidx.fragment.app.FragmentTabHost$TabInfo: java.lang.String tag>;
+
+        virtualinvoke $r2.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction add(int,androidx.fragment.app.Fragment,java.lang.String)>($i0, $r6, $r1);
+
+        goto label4;
+
+     label3:
+        $r6 = $r3.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r2.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction attach(androidx.fragment.app.Fragment)>($r6);
+
+     label4:
+        $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTabHost$TabInfo mLastTab> = $r3;
+
+     label5:
+        return $r2;
+    }
+
+    private void ensureContent()
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.widget.FrameLayout $r1;
+        int $i0;
+        android.view.View $r2;
+        java.lang.IllegalStateException $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTabHost: android.widget.FrameLayout mRealTabContent>;
+
+        if $r1 != null goto label2;
+
+        $i0 = $r0.<androidx.fragment.app.FragmentTabHost: int mContainerId>;
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: android.view.View findViewById(int)>($i0);
+
+        $r1 = (android.widget.FrameLayout) $r2;
+
+        $r0.<androidx.fragment.app.FragmentTabHost: android.widget.FrameLayout mRealTabContent> = $r1;
+
+        $r1 = $r0.<androidx.fragment.app.FragmentTabHost: android.widget.FrameLayout mRealTabContent>;
+
+        if $r1 == null goto label1;
+
+        return;
+
+     label1:
+        $r3 = new java.lang.IllegalStateException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("No tab content FrameLayout found for id ");
+
+        $i0 = $r0.<androidx.fragment.app.FragmentTabHost: int mContainerId>;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r5);
+
+        throw $r3;
+
+     label2:
+        return;
+    }
+
+    private void ensureHierarchy(android.content.Context)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.content.Context $r1;
+        android.view.View $r2;
+        android.widget.LinearLayout $r3;
+        android.widget.FrameLayout$LayoutParams $r4;
+        android.widget.TabWidget $r5;
+        android.widget.LinearLayout$LayoutParams $r6;
+        android.widget.FrameLayout $r7, $r8;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: android.view.View findViewById(int)>(16908307);
+
+        if $r2 != null goto label1;
+
+        $r3 = new android.widget.LinearLayout;
+
+        specialinvoke $r3.<android.widget.LinearLayout: void <init>(android.content.Context)>($r1);
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void setOrientation(int)>(1);
+
+        $r4 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r3, $r4);
+
+        $r5 = new android.widget.TabWidget;
+
+        specialinvoke $r5.<android.widget.TabWidget: void <init>(android.content.Context)>($r1);
+
+        virtualinvoke $r5.<android.widget.TabWidget: void setId(int)>(16908307);
+
+        virtualinvoke $r5.<android.widget.TabWidget: void setOrientation(int)>(0);
+
+        $r6 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r6.<android.widget.LinearLayout$LayoutParams: void <init>(int,int,float)>(-1, -2, 0.0F);
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r5, $r6);
+
+        $r7 = new android.widget.FrameLayout;
+
+        specialinvoke $r7.<android.widget.FrameLayout: void <init>(android.content.Context)>($r1);
+
+        virtualinvoke $r7.<android.widget.FrameLayout: void setId(int)>(16908305);
+
+        $r6 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r6.<android.widget.LinearLayout$LayoutParams: void <init>(int,int,float)>(0, 0, 0.0F);
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r7, $r6);
+
+        $r7 = new android.widget.FrameLayout;
+
+        specialinvoke $r7.<android.widget.FrameLayout: void <init>(android.content.Context)>($r1);
+
+        $r0.<androidx.fragment.app.FragmentTabHost: android.widget.FrameLayout mRealTabContent> = $r7;
+
+        $r8 = $r0.<androidx.fragment.app.FragmentTabHost: android.widget.FrameLayout mRealTabContent>;
+
+        $i0 = $r0.<androidx.fragment.app.FragmentTabHost: int mContainerId>;
+
+        virtualinvoke $r8.<android.widget.FrameLayout: void setId(int)>($i0);
+
+        $r6 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r6.<android.widget.LinearLayout$LayoutParams: void <init>(int,int,float)>(-1, 0, 1.0F);
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r7, $r6);
+
+     label1:
+        return;
+    }
+
+    private androidx.fragment.app.FragmentTabHost$TabInfo getTabInfoForTag(java.lang.String)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        java.lang.String $r1, $r5;
+        int $i0, $i1;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+        androidx.fragment.app.FragmentTabHost$TabInfo $r4;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = 0;
+
+        $r2 = $r0.<androidx.fragment.app.FragmentTabHost: java.util.ArrayList mTabs>;
+
+        $i1 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label3;
+
+        $r2 = $r0.<androidx.fragment.app.FragmentTabHost: java.util.ArrayList mTabs>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r4 = (androidx.fragment.app.FragmentTabHost$TabInfo) $r3;
+
+        $r5 = $r4.<androidx.fragment.app.FragmentTabHost$TabInfo: java.lang.String tag>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        return $r4;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return null;
+    }
+
+    private void initFragmentTabHost(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int[] $r3;
+        android.content.res.TypedArray $r4;
+        int $i0;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $r3 = newarray (int)[1];
+
+        $r3[0] = 16842995;
+
+        $r4 = virtualinvoke $r1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>($r2, $r3, 0, 0);
+
+        $i0 = virtualinvoke $r4.<android.content.res.TypedArray: int getResourceId(int,int)>(0, 0);
+
+        $r0.<androidx.fragment.app.FragmentTabHost: int mContainerId> = $i0;
+
+        virtualinvoke $r4.<android.content.res.TypedArray: void recycle()>();
+
+        specialinvoke $r0.<android.widget.TabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)>($r0);
+
+        return;
+    }
+
+    public void addTab(android.widget.TabHost$TabSpec, java.lang.Class, android.os.Bundle)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.widget.TabHost$TabSpec $r1;
+        java.lang.Class $r2;
+        android.os.Bundle $r3;
+        androidx.fragment.app.Fragment $r4;
+        androidx.fragment.app.FragmentTabHost$DummyTabFactory $r5;
+        android.content.Context $r6;
+        java.lang.String $r7;
+        androidx.fragment.app.FragmentTabHost$TabInfo $r8;
+        boolean $z0;
+        androidx.fragment.app.FragmentManager $r9;
+        androidx.fragment.app.FragmentTransaction $r10;
+        java.util.ArrayList $r11;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.widget.TabHost$TabSpec;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: android.os.Bundle;
+
+        $r5 = new androidx.fragment.app.FragmentTabHost$DummyTabFactory;
+
+        $r6 = $r0.<androidx.fragment.app.FragmentTabHost: android.content.Context mContext>;
+
+        specialinvoke $r5.<androidx.fragment.app.FragmentTabHost$DummyTabFactory: void <init>(android.content.Context)>($r6);
+
+        virtualinvoke $r1.<android.widget.TabHost$TabSpec: android.widget.TabHost$TabSpec setContent(android.widget.TabHost$TabContentFactory)>($r5);
+
+        $r7 = virtualinvoke $r1.<android.widget.TabHost$TabSpec: java.lang.String getTag()>();
+
+        $r8 = new androidx.fragment.app.FragmentTabHost$TabInfo;
+
+        specialinvoke $r8.<androidx.fragment.app.FragmentTabHost$TabInfo: void <init>(java.lang.String,java.lang.Class,android.os.Bundle)>($r7, $r2, $r3);
+
+        $z0 = $r0.<androidx.fragment.app.FragmentTabHost: boolean mAttached>;
+
+        if $z0 == 0 goto label1;
+
+        $r9 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $r4 = virtualinvoke $r9.<androidx.fragment.app.FragmentManager: androidx.fragment.app.Fragment findFragmentByTag(java.lang.String)>($r7);
+
+        $r8.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment> = $r4;
+
+        $r4 = $r8.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        if $r4 == null goto label1;
+
+        $r4 = $r8.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        $z0 = virtualinvoke $r4.<androidx.fragment.app.Fragment: boolean isDetached()>();
+
+        if $z0 != 0 goto label1;
+
+        $r9 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $r10 = virtualinvoke $r9.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+        $r4 = $r8.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r10.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction detach(androidx.fragment.app.Fragment)>($r4);
+
+        virtualinvoke $r10.<androidx.fragment.app.FragmentTransaction: int commit()>();
+
+     label1:
+        $r11 = $r0.<androidx.fragment.app.FragmentTabHost: java.util.ArrayList mTabs>;
+
+        virtualinvoke $r11.<java.util.ArrayList: boolean add(java.lang.Object)>($r8);
+
+        virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: void addTab(android.widget.TabHost$TabSpec)>($r1);
+
+        return;
+    }
+
+    protected void onAttachedToWindow()
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        java.lang.String $r1, $r2;
+        androidx.fragment.app.FragmentTransaction $r3;
+        int $i0, $i1;
+        java.util.ArrayList $r4;
+        java.lang.Object $r5;
+        androidx.fragment.app.FragmentTabHost$TabInfo $r6;
+        androidx.fragment.app.FragmentManager $r7;
+        androidx.fragment.app.Fragment $r8;
+        boolean $z0;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        specialinvoke $r0.<android.widget.TabHost: void onAttachedToWindow()>();
+
+        $r2 = virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: java.lang.String getCurrentTabTag()>();
+
+        $r3 = null;
+
+        $i0 = 0;
+
+        $r4 = $r0.<androidx.fragment.app.FragmentTabHost: java.util.ArrayList mTabs>;
+
+        $i1 = virtualinvoke $r4.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label5;
+
+        $r4 = $r0.<androidx.fragment.app.FragmentTabHost: java.util.ArrayList mTabs>;
+
+        $r5 = virtualinvoke $r4.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r6 = (androidx.fragment.app.FragmentTabHost$TabInfo) $r5;
+
+        $r7 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $r1 = $r6.<androidx.fragment.app.FragmentTabHost$TabInfo: java.lang.String tag>;
+
+        $r8 = virtualinvoke $r7.<androidx.fragment.app.FragmentManager: androidx.fragment.app.Fragment findFragmentByTag(java.lang.String)>($r1);
+
+        $r6.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment> = $r8;
+
+        $r8 = $r6.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        if $r8 == null goto label4;
+
+        $r8 = $r6.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        $z0 = virtualinvoke $r8.<androidx.fragment.app.Fragment: boolean isDetached()>();
+
+        if $z0 != 0 goto label4;
+
+        $r1 = $r6.<androidx.fragment.app.FragmentTabHost$TabInfo: java.lang.String tag>;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label2;
+
+        $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTabHost$TabInfo mLastTab> = $r6;
+
+        goto label4;
+
+     label2:
+        if $r3 != null goto label3;
+
+        $r7 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $r3 = virtualinvoke $r7.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+     label3:
+        $r8 = $r6.<androidx.fragment.app.FragmentTabHost$TabInfo: androidx.fragment.app.Fragment fragment>;
+
+        virtualinvoke $r3.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction detach(androidx.fragment.app.Fragment)>($r8);
+
+     label4:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label5:
+        $r0.<androidx.fragment.app.FragmentTabHost: boolean mAttached> = 1;
+
+        $r3 = specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTransaction doTabChanged(java.lang.String,androidx.fragment.app.FragmentTransaction)>($r2, $r3);
+
+        if $r3 == null goto label6;
+
+        virtualinvoke $r3.<androidx.fragment.app.FragmentTransaction: int commit()>();
+
+        $r7 = $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        virtualinvoke $r7.<androidx.fragment.app.FragmentManager: boolean executePendingTransactions()>();
+
+     label6:
+        return;
+    }
+
+    protected void onDetachedFromWindow()
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        specialinvoke $r0.<android.widget.TabHost: void onDetachedFromWindow()>();
+
+        $r0.<androidx.fragment.app.FragmentTabHost: boolean mAttached> = 0;
+
+        return;
+    }
+
+    protected void onRestoreInstanceState(android.os.Parcelable)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.os.Parcelable $r1;
+        boolean $z0;
+        androidx.fragment.app.FragmentTabHost$SavedState $r2;
+        java.lang.String $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.os.Parcelable;
+
+        $z0 = $r1 instanceof androidx.fragment.app.FragmentTabHost$SavedState;
+
+        if $z0 != 0 goto label1;
+
+        specialinvoke $r0.<android.widget.TabHost: void onRestoreInstanceState(android.os.Parcelable)>($r1);
+
+        return;
+
+     label1:
+        $r2 = (androidx.fragment.app.FragmentTabHost$SavedState) $r1;
+
+        $r1 = virtualinvoke $r2.<androidx.fragment.app.FragmentTabHost$SavedState: android.os.Parcelable getSuperState()>();
+
+        specialinvoke $r0.<android.widget.TabHost: void onRestoreInstanceState(android.os.Parcelable)>($r1);
+
+        $r3 = $r2.<androidx.fragment.app.FragmentTabHost$SavedState: java.lang.String curTab>;
+
+        virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: void setCurrentTabByTag(java.lang.String)>($r3);
+
+        return;
+    }
+
+    protected android.os.Parcelable onSaveInstanceState()
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        androidx.fragment.app.FragmentTabHost$SavedState $r1;
+        android.os.Parcelable $r2;
+        java.lang.String $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r2 = specialinvoke $r0.<android.widget.TabHost: android.os.Parcelable onSaveInstanceState()>();
+
+        $r1 = new androidx.fragment.app.FragmentTabHost$SavedState;
+
+        specialinvoke $r1.<androidx.fragment.app.FragmentTabHost$SavedState: void <init>(android.os.Parcelable)>($r2);
+
+        $r3 = virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: java.lang.String getCurrentTabTag()>();
+
+        $r1.<androidx.fragment.app.FragmentTabHost$SavedState: java.lang.String curTab> = $r3;
+
+        return $r1;
+    }
+
+    public void onTabChanged(java.lang.String)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        java.lang.String $r1;
+        androidx.fragment.app.FragmentTransaction $r2;
+        boolean $z0;
+        android.widget.TabHost$OnTabChangeListener $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 = $r0.<androidx.fragment.app.FragmentTabHost: boolean mAttached>;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentTransaction doTabChanged(java.lang.String,androidx.fragment.app.FragmentTransaction)>($r1, null);
+
+        if $r2 == null goto label1;
+
+        virtualinvoke $r2.<androidx.fragment.app.FragmentTransaction: int commit()>();
+
+     label1:
+        $r3 = $r0.<androidx.fragment.app.FragmentTabHost: android.widget.TabHost$OnTabChangeListener mOnTabChangeListener>;
+
+        if $r3 == null goto label2;
+
+        interfaceinvoke $r3.<android.widget.TabHost$OnTabChangeListener: void onTabChanged(java.lang.String)>($r1);
+
+     label2:
+        return;
+    }
+
+    public void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.widget.TabHost$OnTabChangeListener $r1;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.widget.TabHost$OnTabChangeListener;
+
+        $r0.<androidx.fragment.app.FragmentTabHost: android.widget.TabHost$OnTabChangeListener mOnTabChangeListener> = $r1;
+
+        return;
+    }
+
+    public void setup()
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        java.lang.IllegalStateException $r1;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Must call setup() that takes a Context and FragmentManager");
+
+        throw $r1;
+    }
+
+    public void setup(android.content.Context, androidx.fragment.app.FragmentManager)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.content.Context $r1;
+        androidx.fragment.app.FragmentManager $r2;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.fragment.app.FragmentManager;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: void ensureHierarchy(android.content.Context)>($r1);
+
+        specialinvoke $r0.<android.widget.TabHost: void setup()>();
+
+        $r0.<androidx.fragment.app.FragmentTabHost: android.content.Context mContext> = $r1;
+
+        $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager> = $r2;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: void ensureContent()>();
+
+        return;
+    }
+
+    public void setup(android.content.Context, androidx.fragment.app.FragmentManager, int)
+    {
+        androidx.fragment.app.FragmentTabHost $r0;
+        android.content.Context $r1;
+        androidx.fragment.app.FragmentManager $r2;
+        int $i0;
+        android.widget.FrameLayout $r3;
+
+        $r0 := @this: androidx.fragment.app.FragmentTabHost;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.fragment.app.FragmentManager;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: void ensureHierarchy(android.content.Context)>($r1);
+
+        specialinvoke $r0.<android.widget.TabHost: void setup()>();
+
+        $r0.<androidx.fragment.app.FragmentTabHost: android.content.Context mContext> = $r1;
+
+        $r0.<androidx.fragment.app.FragmentTabHost: androidx.fragment.app.FragmentManager mFragmentManager> = $r2;
+
+        $r0.<androidx.fragment.app.FragmentTabHost: int mContainerId> = $i0;
+
+        specialinvoke $r0.<androidx.fragment.app.FragmentTabHost: void ensureContent()>();
+
+        $r3 = $r0.<androidx.fragment.app.FragmentTabHost: android.widget.FrameLayout mRealTabContent>;
+
+        virtualinvoke $r3.<android.widget.FrameLayout: void setId(int)>($i0);
+
+        $i0 = virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: int getId()>();
+
+        if $i0 != -1 goto label1;
+
+        virtualinvoke $r0.<androidx.fragment.app.FragmentTabHost: void setId(int)>(16908306);
+
+     label1:
+        return;
+    }
+}

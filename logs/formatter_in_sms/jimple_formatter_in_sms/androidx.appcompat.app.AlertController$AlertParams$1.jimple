@@ -1,0 +1,80 @@
+class androidx.appcompat.app.AlertController$AlertParams$1 extends android.widget.ArrayAdapter
+{
+    final androidx.appcompat.app.AlertController$AlertParams this$0;
+    final androidx.appcompat.app.AlertController$RecycleListView val$listView;
+
+    void <init>(androidx.appcompat.app.AlertController$AlertParams, android.content.Context, int, int, java.lang.CharSequence[], androidx.appcompat.app.AlertController$RecycleListView)
+    {
+        androidx.appcompat.app.AlertController$AlertParams$1 $r0;
+        androidx.appcompat.app.AlertController$AlertParams $r1;
+        android.content.Context $r2;
+        int $i0, $i1;
+        java.lang.CharSequence[] $r3;
+        androidx.appcompat.app.AlertController$RecycleListView $r4;
+
+        $r0 := @this: androidx.appcompat.app.AlertController$AlertParams$1;
+
+        $r1 := @parameter0: androidx.appcompat.app.AlertController$AlertParams;
+
+        $r2 := @parameter1: android.content.Context;
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        $r3 := @parameter4: java.lang.CharSequence[];
+
+        $r4 := @parameter5: androidx.appcompat.app.AlertController$RecycleListView;
+
+        $r0.<androidx.appcompat.app.AlertController$AlertParams$1: androidx.appcompat.app.AlertController$AlertParams this$0> = $r1;
+
+        $r0.<androidx.appcompat.app.AlertController$AlertParams$1: androidx.appcompat.app.AlertController$RecycleListView val$listView> = $r4;
+
+        specialinvoke $r0.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,int,java.lang.Object[])>($r2, $i0, $i1, $r3);
+
+        return;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        androidx.appcompat.app.AlertController$AlertParams$1 $r0;
+        int $i0;
+        android.view.View $r1;
+        android.view.ViewGroup $r2;
+        androidx.appcompat.app.AlertController$RecycleListView $r3;
+        androidx.appcompat.app.AlertController$AlertParams $r4;
+        boolean[] $r5;
+        boolean $z0;
+
+        $r0 := @this: androidx.appcompat.app.AlertController$AlertParams$1;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.View;
+
+        $r2 := @parameter2: android.view.ViewGroup;
+
+        $r1 = specialinvoke $r0.<android.widget.ArrayAdapter: android.view.View getView(int,android.view.View,android.view.ViewGroup)>($i0, $r1, $r2);
+
+        $r4 = $r0.<androidx.appcompat.app.AlertController$AlertParams$1: androidx.appcompat.app.AlertController$AlertParams this$0>;
+
+        $r5 = $r4.<androidx.appcompat.app.AlertController$AlertParams: boolean[] mCheckedItems>;
+
+        if $r5 == null goto label1;
+
+        $r4 = $r0.<androidx.appcompat.app.AlertController$AlertParams$1: androidx.appcompat.app.AlertController$AlertParams this$0>;
+
+        $r5 = $r4.<androidx.appcompat.app.AlertController$AlertParams: boolean[] mCheckedItems>;
+
+        $z0 = $r5[$i0];
+
+        if $z0 == 0 goto label1;
+
+        $r3 = $r0.<androidx.appcompat.app.AlertController$AlertParams$1: androidx.appcompat.app.AlertController$RecycleListView val$listView>;
+
+        virtualinvoke $r3.<androidx.appcompat.app.AlertController$RecycleListView: void setItemChecked(int,boolean)>($i0, 1);
+
+     label1:
+        return $r1;
+    }
+}

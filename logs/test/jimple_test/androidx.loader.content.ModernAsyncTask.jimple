@@ -1,0 +1,529 @@
+abstract class androidx.loader.content.ModernAsyncTask extends java.lang.Object
+{
+    private static final int CORE_POOL_SIZE;
+    private static final int KEEP_ALIVE;
+    private static final java.lang.String LOG_TAG;
+    private static final int MAXIMUM_POOL_SIZE;
+    private static final int MESSAGE_POST_PROGRESS;
+    private static final int MESSAGE_POST_RESULT;
+    public static final java.util.concurrent.Executor THREAD_POOL_EXECUTOR;
+    private static volatile java.util.concurrent.Executor sDefaultExecutor;
+    private static androidx.loader.content.ModernAsyncTask$InternalHandler sHandler;
+    private static final java.util.concurrent.BlockingQueue sPoolWorkQueue;
+    private static final java.util.concurrent.ThreadFactory sThreadFactory;
+    final java.util.concurrent.atomic.AtomicBoolean mCancelled;
+    private final java.util.concurrent.FutureTask mFuture;
+    private volatile androidx.loader.content.ModernAsyncTask$Status mStatus;
+    final java.util.concurrent.atomic.AtomicBoolean mTaskInvoked;
+    private final androidx.loader.content.ModernAsyncTask$WorkerRunnable mWorker;
+
+    static void <clinit>()
+    {
+        java.util.concurrent.TimeUnit $r0;
+        java.util.concurrent.BlockingQueue $r1;
+        java.util.concurrent.ThreadFactory $r2;
+        androidx.loader.content.ModernAsyncTask$1 $r3;
+        java.util.concurrent.LinkedBlockingQueue $r4;
+        java.util.concurrent.ThreadPoolExecutor $r5;
+        java.util.concurrent.Executor $r6;
+
+        <androidx.loader.content.ModernAsyncTask: int MESSAGE_POST_RESULT> = 1;
+
+        <androidx.loader.content.ModernAsyncTask: int MESSAGE_POST_PROGRESS> = 2;
+
+        <androidx.loader.content.ModernAsyncTask: int MAXIMUM_POOL_SIZE> = 128;
+
+        <androidx.loader.content.ModernAsyncTask: java.lang.String LOG_TAG> = "AsyncTask";
+
+        <androidx.loader.content.ModernAsyncTask: int KEEP_ALIVE> = 1;
+
+        <androidx.loader.content.ModernAsyncTask: int CORE_POOL_SIZE> = 5;
+
+        $r3 = new androidx.loader.content.ModernAsyncTask$1;
+
+        specialinvoke $r3.<androidx.loader.content.ModernAsyncTask$1: void <init>()>();
+
+        <androidx.loader.content.ModernAsyncTask: java.util.concurrent.ThreadFactory sThreadFactory> = $r3;
+
+        $r4 = new java.util.concurrent.LinkedBlockingQueue;
+
+        specialinvoke $r4.<java.util.concurrent.LinkedBlockingQueue: void <init>(int)>(10);
+
+        <androidx.loader.content.ModernAsyncTask: java.util.concurrent.BlockingQueue sPoolWorkQueue> = $r4;
+
+        $r5 = new java.util.concurrent.ThreadPoolExecutor;
+
+        $r0 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $r1 = <androidx.loader.content.ModernAsyncTask: java.util.concurrent.BlockingQueue sPoolWorkQueue>;
+
+        $r2 = <androidx.loader.content.ModernAsyncTask: java.util.concurrent.ThreadFactory sThreadFactory>;
+
+        specialinvoke $r5.<java.util.concurrent.ThreadPoolExecutor: void <init>(int,int,long,java.util.concurrent.TimeUnit,java.util.concurrent.BlockingQueue,java.util.concurrent.ThreadFactory)>(5, 128, 1L, $r0, $r1, $r2);
+
+        <androidx.loader.content.ModernAsyncTask: java.util.concurrent.Executor THREAD_POOL_EXECUTOR> = $r5;
+
+        $r6 = <androidx.loader.content.ModernAsyncTask: java.util.concurrent.Executor THREAD_POOL_EXECUTOR>;
+
+        <androidx.loader.content.ModernAsyncTask: java.util.concurrent.Executor sDefaultExecutor> = $r6;
+
+        return;
+    }
+
+    void <init>()
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        androidx.loader.content.ModernAsyncTask$WorkerRunnable $r1;
+        androidx.loader.content.ModernAsyncTask$Status $r2;
+        java.util.concurrent.atomic.AtomicBoolean $r3;
+        androidx.loader.content.ModernAsyncTask$2 $r4;
+        androidx.loader.content.ModernAsyncTask$3 $r5;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r2 = <androidx.loader.content.ModernAsyncTask$Status: androidx.loader.content.ModernAsyncTask$Status PENDING>;
+
+        $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$Status mStatus> = $r2;
+
+        $r3 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r3.<java.util.concurrent.atomic.AtomicBoolean: void <init>()>();
+
+        $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.atomic.AtomicBoolean mCancelled> = $r3;
+
+        $r3 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r3.<java.util.concurrent.atomic.AtomicBoolean: void <init>()>();
+
+        $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.atomic.AtomicBoolean mTaskInvoked> = $r3;
+
+        $r4 = new androidx.loader.content.ModernAsyncTask$2;
+
+        specialinvoke $r4.<androidx.loader.content.ModernAsyncTask$2: void <init>(androidx.loader.content.ModernAsyncTask)>($r0);
+
+        $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$WorkerRunnable mWorker> = $r4;
+
+        $r5 = new androidx.loader.content.ModernAsyncTask$3;
+
+        $r1 = $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$WorkerRunnable mWorker>;
+
+        specialinvoke $r5.<androidx.loader.content.ModernAsyncTask$3: void <init>(androidx.loader.content.ModernAsyncTask,java.util.concurrent.Callable)>($r0, $r1);
+
+        $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.FutureTask mFuture> = $r5;
+
+        return;
+    }
+
+    public static void execute(java.lang.Runnable)
+    {
+        java.lang.Runnable $r0;
+        java.util.concurrent.Executor $r1;
+
+        $r0 := @parameter0: java.lang.Runnable;
+
+        $r1 = <androidx.loader.content.ModernAsyncTask: java.util.concurrent.Executor sDefaultExecutor>;
+
+        interfaceinvoke $r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r0);
+
+        return;
+    }
+
+    private static android.os.Handler getHandler()
+    {
+        androidx.loader.content.ModernAsyncTask$InternalHandler $r0;
+        java.lang.Throwable $r1;
+
+        entermonitor class "Landroidx/loader/content/ModernAsyncTask;";
+
+     label1:
+        $r0 = <androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$InternalHandler sHandler>;
+
+        if $r0 != null goto label2;
+
+        $r0 = new androidx.loader.content.ModernAsyncTask$InternalHandler;
+
+        specialinvoke $r0.<androidx.loader.content.ModernAsyncTask$InternalHandler: void <init>()>();
+
+        <androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$InternalHandler sHandler> = $r0;
+
+     label2:
+        $r0 = <androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$InternalHandler sHandler>;
+
+        exitmonitor class "Landroidx/loader/content/ModernAsyncTask;";
+
+     label3:
+        return $r0;
+
+     label4:
+        $r1 := @caughtexception;
+
+        exitmonitor class "Landroidx/loader/content/ModernAsyncTask;";
+
+     label5:
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public static void setDefaultExecutor(java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r0;
+
+        $r0 := @parameter0: java.util.concurrent.Executor;
+
+        <androidx.loader.content.ModernAsyncTask: java.util.concurrent.Executor sDefaultExecutor> = $r0;
+
+        return;
+    }
+
+    public final boolean cancel(boolean)
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        boolean $z0;
+        java.util.concurrent.atomic.AtomicBoolean $r1;
+        java.util.concurrent.FutureTask $r2;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.atomic.AtomicBoolean mCancelled>;
+
+        virtualinvoke $r1.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(1);
+
+        $r2 = $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.FutureTask mFuture>;
+
+        $z0 = virtualinvoke $r2.<java.util.concurrent.FutureTask: boolean cancel(boolean)>($z0);
+
+        return $z0;
+    }
+
+    protected abstract transient java.lang.Object doInBackground(java.lang.Object[]);
+
+    public final transient androidx.loader.content.ModernAsyncTask execute(java.lang.Object[])
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object[] $r1;
+        java.util.concurrent.Executor $r2;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object[];
+
+        $r2 = <androidx.loader.content.ModernAsyncTask: java.util.concurrent.Executor sDefaultExecutor>;
+
+        $r0 = virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask executeOnExecutor(java.util.concurrent.Executor,java.lang.Object[])>($r2, $r1);
+
+        return $r0;
+    }
+
+    public final transient androidx.loader.content.ModernAsyncTask executeOnExecutor(java.util.concurrent.Executor, java.lang.Object[])
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.util.concurrent.Executor $r1;
+        java.lang.Object[] $r2;
+        int $i0;
+        androidx.loader.content.ModernAsyncTask$Status $r3, $r4;
+        int[] $r5;
+        java.lang.IllegalStateException $r6;
+        androidx.loader.content.ModernAsyncTask$WorkerRunnable $r7;
+        java.util.concurrent.FutureTask $r8;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 := @parameter1: java.lang.Object[];
+
+        $r3 = $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$Status mStatus>;
+
+        $r4 = <androidx.loader.content.ModernAsyncTask$Status: androidx.loader.content.ModernAsyncTask$Status PENDING>;
+
+        if $r3 == $r4 goto label3;
+
+        $r5 = <androidx.loader.content.ModernAsyncTask$4: int[] $SwitchMap$androidx$loader$content$ModernAsyncTask$Status>;
+
+        $r3 = $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$Status mStatus>;
+
+        $i0 = virtualinvoke $r3.<androidx.loader.content.ModernAsyncTask$Status: int ordinal()>();
+
+        $i0 = $r5[$i0];
+
+        if $i0 == 1 goto label2;
+
+        if $i0 == 2 goto label1;
+
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("We should never reach this state");
+
+        throw $r6;
+
+     label1:
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot execute task: the task has already been executed (a task can be executed only once)");
+
+        throw $r6;
+
+     label2:
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot execute task: the task is already running.");
+
+        throw $r6;
+
+     label3:
+        $r3 = <androidx.loader.content.ModernAsyncTask$Status: androidx.loader.content.ModernAsyncTask$Status RUNNING>;
+
+        $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$Status mStatus> = $r3;
+
+        virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: void onPreExecute()>();
+
+        $r7 = $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$WorkerRunnable mWorker>;
+
+        $r7.<androidx.loader.content.ModernAsyncTask$WorkerRunnable: java.lang.Object[] mParams> = $r2;
+
+        $r8 = $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.FutureTask mFuture>;
+
+        interfaceinvoke $r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r8);
+
+        return $r0;
+    }
+
+    void finish(java.lang.Object)
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object $r1;
+        boolean $z0;
+        androidx.loader.content.ModernAsyncTask$Status $r2;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $z0 = virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: boolean isCancelled()>();
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: void onCancelled(java.lang.Object)>($r1);
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: void onPostExecute(java.lang.Object)>($r1);
+
+     label2:
+        $r2 = <androidx.loader.content.ModernAsyncTask$Status: androidx.loader.content.ModernAsyncTask$Status FINISHED>;
+
+        $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$Status mStatus> = $r2;
+
+        return;
+    }
+
+    public final java.lang.Object get() throws java.lang.InterruptedException, java.util.concurrent.ExecutionException
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object $r1;
+        java.util.concurrent.FutureTask $r2;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r2 = $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.FutureTask mFuture>;
+
+        $r1 = virtualinvoke $r2.<java.util.concurrent.FutureTask: java.lang.Object get()>();
+
+        return $r1;
+    }
+
+    public final java.lang.Object get(long, java.util.concurrent.TimeUnit) throws java.lang.InterruptedException, java.util.concurrent.ExecutionException, java.util.concurrent.TimeoutException
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+        java.lang.Object $r2;
+        java.util.concurrent.FutureTask $r3;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $l0 := @parameter0: long;
+
+        $r1 := @parameter1: java.util.concurrent.TimeUnit;
+
+        $r3 = $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.FutureTask mFuture>;
+
+        $r2 = virtualinvoke $r3.<java.util.concurrent.FutureTask: java.lang.Object get(long,java.util.concurrent.TimeUnit)>($l0, $r1);
+
+        return $r2;
+    }
+
+    public final androidx.loader.content.ModernAsyncTask$Status getStatus()
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        androidx.loader.content.ModernAsyncTask$Status r1;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        r1 = $r0.<androidx.loader.content.ModernAsyncTask: androidx.loader.content.ModernAsyncTask$Status mStatus>;
+
+        return r1;
+    }
+
+    public final boolean isCancelled()
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        boolean $z0;
+        java.util.concurrent.atomic.AtomicBoolean $r1;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 = $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.atomic.AtomicBoolean mCancelled>;
+
+        $z0 = virtualinvoke $r1.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        return $z0;
+    }
+
+    protected void onCancelled()
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        return;
+    }
+
+    protected void onCancelled(java.lang.Object)
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object $r1;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: void onCancelled()>();
+
+        return;
+    }
+
+    protected void onPostExecute(java.lang.Object)
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object $r1;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        return;
+    }
+
+    protected void onPreExecute()
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        return;
+    }
+
+    protected transient void onProgressUpdate(java.lang.Object[])
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object[] $r1;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object[];
+
+        return;
+    }
+
+    java.lang.Object postResult(java.lang.Object)
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object $r1;
+        androidx.loader.content.ModernAsyncTask$AsyncTaskResult $r2;
+        java.lang.Object[] $r3;
+        android.os.Handler $r4;
+        android.os.Message $r5;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r4 = staticinvoke <androidx.loader.content.ModernAsyncTask: android.os.Handler getHandler()>();
+
+        $r2 = new androidx.loader.content.ModernAsyncTask$AsyncTaskResult;
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r3[0] = $r1;
+
+        specialinvoke $r2.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: void <init>(androidx.loader.content.ModernAsyncTask,java.lang.Object[])>($r0, $r3);
+
+        $r5 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(1, $r2);
+
+        virtualinvoke $r5.<android.os.Message: void sendToTarget()>();
+
+        return $r1;
+    }
+
+    void postResultIfNotInvoked(java.lang.Object)
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object $r1;
+        boolean $z0;
+        java.util.concurrent.atomic.AtomicBoolean $r2;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.atomic.AtomicBoolean mTaskInvoked>;
+
+        $z0 = virtualinvoke $r2.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: java.lang.Object postResult(java.lang.Object)>($r1);
+
+     label1:
+        return;
+    }
+
+    protected final transient void publishProgress(java.lang.Object[])
+    {
+        androidx.loader.content.ModernAsyncTask $r0;
+        java.lang.Object[] $r1;
+        androidx.loader.content.ModernAsyncTask$AsyncTaskResult $r2;
+        boolean $z0;
+        android.os.Handler $r3;
+        android.os.Message $r4;
+
+        $r0 := @this: androidx.loader.content.ModernAsyncTask;
+
+        $r1 := @parameter0: java.lang.Object[];
+
+        $z0 = virtualinvoke $r0.<androidx.loader.content.ModernAsyncTask: boolean isCancelled()>();
+
+        if $z0 != 0 goto label1;
+
+        $r3 = staticinvoke <androidx.loader.content.ModernAsyncTask: android.os.Handler getHandler()>();
+
+        $r2 = new androidx.loader.content.ModernAsyncTask$AsyncTaskResult;
+
+        specialinvoke $r2.<androidx.loader.content.ModernAsyncTask$AsyncTaskResult: void <init>(androidx.loader.content.ModernAsyncTask,java.lang.Object[])>($r0, $r1);
+
+        $r4 = virtualinvoke $r3.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(2, $r2);
+
+        virtualinvoke $r4.<android.os.Message: void sendToTarget()>();
+
+     label1:
+        return;
+    }
+}

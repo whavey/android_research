@@ -1,0 +1,11 @@
+public interface  androidx.appcompat.view.ActionMode$Callback extends java.lang.Object
+{
+
+    public abstract boolean onActionItemClicked(androidx.appcompat.view.ActionMode, android.view.MenuItem);
+
+    public abstract boolean onCreateActionMode(androidx.appcompat.view.ActionMode, android.view.Menu);
+
+    public abstract void onDestroyActionMode(androidx.appcompat.view.ActionMode);
+
+    public abstract boolean onPrepareActionMode(androidx.appcompat.view.ActionMode, android.view.Menu);
+}

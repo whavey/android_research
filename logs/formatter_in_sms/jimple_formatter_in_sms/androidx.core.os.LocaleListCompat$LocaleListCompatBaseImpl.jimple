@@ -1,0 +1,213 @@
+class androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl extends java.lang.Object implements androidx.core.os.LocaleListInterface
+{
+    private androidx.core.os.LocaleListHelper mLocaleList;
+
+    void <init>()
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        androidx.core.os.LocaleListHelper $r1;
+        java.util.Locale[] $r2;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new androidx.core.os.LocaleListHelper;
+
+        $r2 = newarray (java.util.Locale)[0];
+
+        specialinvoke $r1.<androidx.core.os.LocaleListHelper: void <init>(java.util.Locale[])>($r2);
+
+        $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList> = $r1;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        java.lang.Object $r1;
+        androidx.core.os.LocaleListHelper $r2;
+        androidx.core.os.LocaleListCompat $r3;
+        boolean $z0;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $r3 = (androidx.core.os.LocaleListCompat) $r1;
+
+        $r1 = virtualinvoke $r3.<androidx.core.os.LocaleListCompat: java.lang.Object unwrap()>();
+
+        $z0 = virtualinvoke $r2.<androidx.core.os.LocaleListHelper: boolean equals(java.lang.Object)>($r1);
+
+        return $z0;
+    }
+
+    public java.util.Locale get(int)
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        int $i0;
+        java.util.Locale $r1;
+        androidx.core.os.LocaleListHelper $r2;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $i0 := @parameter0: int;
+
+        $r2 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $r1 = virtualinvoke $r2.<androidx.core.os.LocaleListHelper: java.util.Locale get(int)>($i0);
+
+        return $r1;
+    }
+
+    public java.util.Locale getFirstMatch(java.lang.String[])
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        java.lang.String[] $r1;
+        java.util.Locale $r2;
+        androidx.core.os.LocaleListHelper $r3;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r1 := @parameter0: java.lang.String[];
+
+        $r3 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        if $r3 == null goto label1;
+
+        $r2 = virtualinvoke $r3.<androidx.core.os.LocaleListHelper: java.util.Locale getFirstMatch(java.lang.String[])>($r1);
+
+        return $r2;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.Object getLocaleList()
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        androidx.core.os.LocaleListHelper r1;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        r1 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        return r1;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        int $i0;
+        androidx.core.os.LocaleListHelper $r1;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r1 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $i0 = virtualinvoke $r1.<androidx.core.os.LocaleListHelper: int hashCode()>();
+
+        return $i0;
+    }
+
+    public int indexOf(java.util.Locale)
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        java.util.Locale $r1;
+        int $i0;
+        androidx.core.os.LocaleListHelper $r2;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r1 := @parameter0: java.util.Locale;
+
+        $r2 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $i0 = virtualinvoke $r2.<androidx.core.os.LocaleListHelper: int indexOf(java.util.Locale)>($r1);
+
+        return $i0;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        boolean $z0;
+        androidx.core.os.LocaleListHelper $r1;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r1 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $z0 = virtualinvoke $r1.<androidx.core.os.LocaleListHelper: boolean isEmpty()>();
+
+        return $z0;
+    }
+
+    public transient void setLocaleList(java.util.Locale[])
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        java.util.Locale[] $r1;
+        androidx.core.os.LocaleListHelper $r2;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r1 := @parameter0: java.util.Locale[];
+
+        $r2 = new androidx.core.os.LocaleListHelper;
+
+        specialinvoke $r2.<androidx.core.os.LocaleListHelper: void <init>(java.util.Locale[])>($r1);
+
+        $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList> = $r2;
+
+        return;
+    }
+
+    public int size()
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        int $i0;
+        androidx.core.os.LocaleListHelper $r1;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r1 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $i0 = virtualinvoke $r1.<androidx.core.os.LocaleListHelper: int size()>();
+
+        return $i0;
+    }
+
+    public java.lang.String toLanguageTags()
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        java.lang.String $r1;
+        androidx.core.os.LocaleListHelper $r2;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r2 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $r1 = virtualinvoke $r2.<androidx.core.os.LocaleListHelper: java.lang.String toLanguageTags()>();
+
+        return $r1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl $r0;
+        java.lang.String $r1;
+        androidx.core.os.LocaleListHelper $r2;
+
+        $r0 := @this: androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl;
+
+        $r2 = $r0.<androidx.core.os.LocaleListCompat$LocaleListCompatBaseImpl: androidx.core.os.LocaleListHelper mLocaleList>;
+
+        $r1 = virtualinvoke $r2.<androidx.core.os.LocaleListHelper: java.lang.String toString()>();
+
+        return $r1;
+    }
+}

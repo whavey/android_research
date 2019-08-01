@@ -1,0 +1,22 @@
+final class androidx.constraintlayout.solver.Pools extends java.lang.Object
+{
+    private static final boolean DEBUG;
+
+    private void <init>()
+    {
+        androidx.constraintlayout.solver.Pools $r0;
+
+        $r0 := @this: androidx.constraintlayout.solver.Pools;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.Pools: boolean DEBUG> = 0;
+
+        return;
+    }
+}

@@ -1,0 +1,5 @@
+public interface  androidx.lifecycle.GeneratedAdapter extends java.lang.Object
+{
+
+    public abstract void callMethods(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event, boolean, androidx.lifecycle.MethodCallsLogger);
+}
