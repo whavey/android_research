@@ -35,7 +35,7 @@ class LayoutScanner:
 
     def getTree(self,xml):
         try:
-           tree = ET.parse(xml)
+           tree = ET.parse(os.path.join(self.scan_path,xml))
            root = tree.getroot()
            self.results[xml] = self.walkTree(root)
         except Exception as e:
