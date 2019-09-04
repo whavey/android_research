@@ -1,6 +1,7 @@
 #!/usr/bin/python36
 
 import xml.etree.ElementTree as ET
+import sys
 import os
 import shutil
 import argparse
@@ -10,13 +11,13 @@ import magic
 def parse_args():
     parser = argparse.ArgumentParser(description='Parse Layout Files')
     parser.add_argument('-p','--path', type=str, help='path to layout files')
-    parser.add_argument('-t','--tags', type=str, help='print all xml tags per file')
+    parser.add_argument('-s','--scan_type', type=str, help='print all xml tags per file')
     parser.add_argument('-o','--out', type=str, help='output to file')
     return parser.parse_args()
 
 class LayoutScanner:
     def __init__(self):
-        self.ui_keys = ['Button','EditText','CheckBox']
+        self.ui_keys = ['Button','EditText','CheckBox','RadioButton']
         self.all_elements = []
         self.scan_path = ''
         self.results = {}
@@ -95,9 +96,10 @@ if __name__ == '__main__':
     args = parse_args()
     scanner = LayoutScanner()
     path = args.path if args.path else os.getcwd()
-    if args.tags:
+    if args.scan_type == 'tags':
         scanner.getAllTags(path)
     else:
         scanner.run(path)
+
     scanner.printResults()
 
