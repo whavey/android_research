@@ -16,20 +16,23 @@ args = parse_args()
 
 class LayoutScanner:
     def __init__(self,path):
-        self.ui_keys = ['Button','EditText']
+        self.ui_keys = ['Button','EditText','CheckBox']
         self.results = {}
         self.scan_path = path
-        self.ns = {}
+        self.ns = {'res':'{http://schemas.android.com/apk/res/android}'}
 
     def setUIKeys(self, ui_keys):
         self.ui_keys = ui_keys
+
+    def getUIKeys(self):
+        return self.ui_keys
 
     def walkTree(self,root):
         master_dict = {}
         for ui in self.ui_keys:
             ui_list = []
             for e in root.iter(ui):
-                ui_list.append(e.get('{http://schemas.android.com/apk/res/android}id'))
+                ui_list.append(e.get(f'{self.ns["res"]}id'))
             master_dict[ui] = ui_list
         return master_dict
 
@@ -54,7 +57,13 @@ def main():
     scanner = LayoutScanner(path)
     results = scanner.iteratePath()
     for k in results.keys():
-        print(k,'\n\t',results[k])
+        for key in scanner.getUIKeys():
+            if len(results[k][key]) > 0:
+                print(f'{k}\n\t{key}s:')
+                for i in results[k][key]:
+                    print(f'\t\t{i}')
+
+
 
 
 main()
