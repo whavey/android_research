@@ -34,7 +34,7 @@ class LayoutScanner:
         for ui in self.ui_keys:
             ui_list = []
             for e in root.iter(ui):
-                ui_list.append(e.get(f'{self.ns["res"]}id'))
+                ui_list.append(e.get(f'{self.ns["res"]}onClick'))
             master_dict[ui] = ui_list
         return master_dict
 
