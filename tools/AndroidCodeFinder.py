@@ -31,16 +31,18 @@ class OnClickFinder:
         return self.method_list
 
     def runRegex(self,target):
-        with(open(target,'r')) as searchme:
-            try:
-                results = re.findall(f'.*{self.search_string}.*',searchme.read())
-                if results:
+        with open(target,'r') as searchme:
+            for line_index, line in enumerate(searchme,1):
+                try:
+                    results = re.findall(f'.*{self.search_string}.*',line)
                     if self.debug:
                         print('Ran regex against:',target)
-                    return results
-            except Exception as e:
-                if self.debug:
-                    print('Exception trying to parse:',target,'\nReason:\n',e)
+                    if results:
+                        return [f"lineno: {line_index} :: {x.replace(' ','')}" for x in results]
+
+                except Exception as e:
+                    if self.debug:
+                        print('Exception trying to parse:',target,'\nReason:\n',e)
 
     def searchForMethods(self, path):
         self.search_path = path
