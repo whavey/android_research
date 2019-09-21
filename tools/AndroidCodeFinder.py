@@ -1,6 +1,8 @@
+#!/usr/bin/python3
+
 import argparse
 import os
-#import magic
+import magic
 import re
 #import layout_parser as lp
 
@@ -17,7 +19,7 @@ class OnClickFinder:
         self.method_list = []
         self.search_path = args[0].path
         self.search_string = args[0].search_string
-	
+
     def getPath(self):
         return self.search_path
 
@@ -37,7 +39,8 @@ class OnClickFinder:
                         print('Ran regex against:',target)
                     return results
             except Exception as e:
-                print('Exception trying to parse:',target,'\nReason:\n',e)
+                if self.debug:
+                    print('Exception trying to parse:',target,'\nReason:\n',e)
 
     def searchForMethods(self, path):
         self.search_path = path
@@ -45,12 +48,13 @@ class OnClickFinder:
             for f in os.listdir(path):
                 self.searchForMethods(os.path.join(path,f))
         else:
-            #print(f"type: {magic.from_file(path)}")
-            results = self.runRegex(path)
-            if results:
-                results = [result.replace(' ','') for result in results]
-                self.method_list.append(results)
-        
+            ext = path.split('.')[-1] #type: {magic.from_file(path)[0:3]}")
+            if ext == 'java':
+                results = self.runRegex(path)
+                if results:
+                    results = [result.replace(' ','') for result in results]
+                    self.method_list.append({path: results})
+
 args = parse_args()
 finder = OnClickFinder(args)
 
@@ -58,7 +62,7 @@ searchPath = finder.getPath()
 searchString = finder.getSearchString()
 print(f'searchPath: {searchPath}\nsearchString: {searchString}\nResults:\n========')
 methodList = finder.getMethodList()
-  
+
 if methodList != []:
     for m in methodList:
         print('-',m)
