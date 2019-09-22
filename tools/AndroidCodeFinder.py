@@ -38,7 +38,7 @@ class OnClickFinder:
                     if self.debug:
                         print('Ran regex against:',target)
                     if results:
-                        return [f"lineno: {line_index} :: {x.replace(' ','')}" for x in results]
+                        return [f"{line_index}: {x.replace(' ','')}" for x in results]
 
                 except Exception as e:
                     if self.debug:
