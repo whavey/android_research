@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import argparse
+import json
 import os
 import magic
 import re
@@ -27,34 +28,36 @@ class OnClickFinder:
         return self.search_string
 
     def getMethodList(self):
-        self.searchForMethods(self.search_path)
+        self._searchForMethods(self.search_path)
         return self.method_list
 
-    def runRegex(self,target):
+    def _runRegex(self,target):
         with open(target,'r') as searchme:
+            results = []
             for line_index, line in enumerate(searchme,1):
                 try:
-                    results = re.findall(f'.*{self.search_string}.*',line)
+                    _results = re.findall(f'.*{self.search_string}.*',line)
                     if self.debug:
                         print('Ran regex against:',target)
-                    if results:
-                        return [f"{line_index}: {x.replace(' ','')}" for x in results]
+                    if _results:
+                        results.append({line_index: x.lstrip() for x in _results})
 
                 except Exception as e:
                     if self.debug:
                         print('Exception trying to parse:',target,'\nReason:\n',e)
+            if results:
+                return results 
 
-    def searchForMethods(self, path):
+    def _searchForMethods(self, path):
         self.search_path = path
         if os.path.isdir(path):
             for f in os.listdir(path):
-                self.searchForMethods(os.path.join(path,f))
+                self._searchForMethods(os.path.join(path,f))
         else:
             ext = path.split('.')[-1] #type: {magic.from_file(path)[0:3]}")
             if ext == 'java':
-                results = self.runRegex(path)
+                results = self._runRegex(path)
                 if results:
-                    results = [result.replace(' ','') for result in results]
                     self.method_list.append({path: results})
 
 args = parse_args()
@@ -67,6 +70,6 @@ methodList = finder.getMethodList()
 
 if methodList != []:
     for m in methodList:
-        print('-',m)
+        print(json.dumps(m))
 else:
     print("No methods found for:",searchString)
