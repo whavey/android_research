@@ -12,16 +12,17 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Parse Layout Files')
     parser.add_argument('-p','--path', type=str, help='path to layout files')
     parser.add_argument('-s','--scan_type', type=str, help='print all xml tags per file')
-    parser.add_argument('-o','--out', type=str, help='output to file')
+    parser.add_argument('-d','--debug', type=str, help='toggle debug mode.')
     return parser.parse_args()
 
 class LayoutScanner:
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.ui_keys = ['Button','EditText','CheckBox','RadioButton']
         self.all_elements = []
         self.scan_path = ''
         self.results = {}
         self.ns = {'res':'{http://schemas.android.com/apk/res/android}'}
+        self.debug = args[0].debug
 
     def setUIKeys(self, ui_keys):
         self.ui_keys = ui_keys
@@ -35,6 +36,7 @@ class LayoutScanner:
             ui_list = []
             for e in root.iter(ui):
                 ui_list.append(e.get(f'{self.ns["res"]}onClick'))
+                ui_list.append(e.get(f'{self.ns["res"]}id'))
             master_dict[ui] = ui_list
         return master_dict
 
@@ -46,7 +48,8 @@ class LayoutScanner:
 
     def getTree(self,xml):
         if magic.from_file(xml)[0:3] != 'XML':
-            print("skipping:",xml," => NOT XML")
+            if self.debug:
+                print("skipping:",xml," => NOT XML")
             return
         try:
            tree = ET.parse(xml)
@@ -94,7 +97,7 @@ class LayoutScanner:
 
 if __name__ == '__main__':
     args = parse_args()
-    scanner = LayoutScanner()
+    scanner = LayoutScanner(args)
     path = args.path if args.path else os.getcwd()
     if args.scan_type == 'tags':
         scanner.getAllTags(path)
