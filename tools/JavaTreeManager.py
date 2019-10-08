@@ -18,6 +18,10 @@ class JavaTreeParser:
   # Initializer for this tree parser object
   def __init__(self, tree):
       self.tree = tree
+      self.classDeclarations = []
+      self.methodDeclarations = []
+      self.methodInvocations = []
+      self.fieldDeclarations = []
 
   # Getter for this trees package name.
   def getPackage(self):
@@ -26,13 +30,30 @@ class JavaTreeParser:
   # Getter for method declarations or invocations
   def getMethods(self):
       for k,v in self.tree.types[0]:
+          #print("Type:", v, '\n')
           if type(v) == javalang.tree.ClassDeclaration:
-              print("\tClass:",v.name)
+              #print("\tClass:",v.name)
               for ck,cv in v:
-                  #if type(cv) == javalang.tree.MethodDeclaration:
-                  #    print("\t\tMethod Declaration:",cv.name)
-                  if type(cv) == javalang.tree.MethodInvocation:
-                      print("\t\tMethod Invocation:",cv.member)
+                  if type(cv) == javalang.tree.StatementExpression:
+                      for sk,sv in cv:
+                          if type(sv) == javalang.tree.MethodInvocation:
+                              if sv.member == 'setOnClickListener':
+                                  print("Setting click listener for:",cv.expression.selectors[0].member)
+                          if type(sv) == javalang.tree.Assignment:
+                              for vk,vv in sv.value:
+                                  #print(vv,'\n')
+                                  if type(vv) == javalang.tree.MethodInvocation:
+                                    if vv.member == 'findViewById':
+                                          print("Assigning",vv.arguments[0].member,"UI element to variable:", sv.expressionl.selectors[0].member)
+
+                  #if type(cv) == javalang.tree.MethodInvocation:
+                  #    if cv.member == "findViewById":
+                  #        if cv.arguments[0].member == 'sendButton':
+                  #            print(ck)
+          #        if type(cv) == javalang.tree.MethodDeclaration:
+          #            print("\t\tMethod Declaration:",cv.name)
+          #        if type(cv) == javalang.tree.MethodInvocation:
+          #            print("\t\tMethod Invocation:",cv.member)
 
 # Class for managing all trees found in a searched directory of java files.
 class JavaTreeManager:
