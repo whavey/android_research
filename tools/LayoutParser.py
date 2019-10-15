@@ -1,4 +1,4 @@
-#!/usr/bin/python36
+#!/usr/bin/python3
 
 import xml.etree.ElementTree as ET
 import sys
@@ -124,7 +124,7 @@ def main():
     if args.scan_type == 'tags':
         scanner.getAllTags(path)
     else:
-        scanner.run(path)
+        scanner.getUITags(path)
 
     # Call outputter for resutls
     scanner.printResults()

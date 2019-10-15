@@ -26,6 +26,9 @@ class AndroidCodeFinder:
     def getPath(self):
         return self.search_path
 
+    def setSearchString(self,search_string):
+        self.search_string = search_string
+
     # Getter for search string.
     def getSearchString(self):
         return self.search_string
@@ -39,14 +42,14 @@ class AndroidCodeFinder:
     # Does the actual searching 
     def _runRegex(self,target):
         with open(target,'r') as searchme:
+            if self.debug:
+                print('Running regex against:',target)
             results = [] # local result list initialize
 
             # Search the file one line at a time. Maybe could thread this.
             for line_index, line in enumerate(searchme,1):
                 try:
                     _results = re.findall(f'.*{self.search_string}.*',line)
-                    if self.debug:
-                        print('Ran regex against:',target)
                     if _results:
                         # return dict of line number in file as key and actual line minus leading whitespace as value.
                         results.append({line_index: x.lstrip() for x in _results})
@@ -75,27 +78,27 @@ class AndroidCodeFinder:
 
                 # append each files results to master return list as a dict.
                 if results:
+                    if self.debug:
+                        print('Found specified lines in:',path)
                     self.method_list.append({path: results})
 
+if __name__ == '__main__':
+    # Parse args and create object
+    args = parse_args()
+    finder = AndroidCodeFinder(args)
 
-# TODO: probably want a main method.
+    # Get current path and strings for display
+    # TODO: probably want to format output to a real format like yaml.
+    searchPath = finder.getPath()
+    searchString = finder.getSearchString()
+    print(f'searchPath: {searchPath}\nsearchString: {searchString}\nResults:\n========')
 
-# Parse args and create object
-args = parse_args()
-finder = AndroidCodeFinder(args)
+    # Do the search
+    methodList = finder.getMethodList()
 
-# Get current path and strings for display
-# TODO: probably want to format output to a real format like yaml.
-searchPath = finder.getPath()
-searchString = finder.getSearchString()
-print(f'searchPath: {searchPath}\nsearchString: {searchString}\nResults:\n========')
-
-# Do the search
-methodList = finder.getMethodList()
-
-# Print out json-ified results if exists. 
-if methodList != []:
-    for m in methodList:
-        print(json.dumps(m))
-else:
-    print("No methods found for:",searchString)
+    # Print out json-ified results if exists. 
+    if methodList != []:
+        for m in methodList:
+            print(json.dumps(m))
+    else:
+        print("No methods found for:",searchString)

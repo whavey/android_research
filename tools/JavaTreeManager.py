@@ -22,38 +22,35 @@ class JavaTreeParser:
       self.methodDeclarations = []
       self.methodInvocations = []
       self.fieldDeclarations = []
+      self.path = ""
 
   # Getter for this trees package name.
   def getPackage(self):
       print(self.tree.package.name)
 
-  # Getter for method declarations or invocations
-  def getMethods(self):
-      for k,v in self.tree.types[0]:
-          #print("Type:", v, '\n')
-          if type(v) == javalang.tree.ClassDeclaration:
-              #print("\tClass:",v.name)
-              for ck,cv in v:
-                  if type(cv) == javalang.tree.StatementExpression:
-                      for sk,sv in cv:
-                          if type(sv) == javalang.tree.MethodInvocation:
-                              if sv.member == 'setOnClickListener':
-                                  print("Setting click listener for:",cv.expression.selectors[0].member)
-                          if type(sv) == javalang.tree.Assignment:
-                              for vk,vv in sv.value:
-                                  #print(vv,'\n')
-                                  if type(vv) == javalang.tree.MethodInvocation:
-                                    if vv.member == 'findViewById':
-                                          print("Assigning",vv.arguments[0].member,"UI element to variable:", sv.expressionl.selectors[0].member)
+  def _checkViews(self,tree,parent):
+      try:
+          if tree.member == 'findViewById':
+              print("\nFinding UI element:\n\t",tree,tree.arguments[0].member) #"\n\tParent:\n\t\t",parent)
+          #if tree.member == 'setOnClickListener':
+          #    print("\nSetting click listener for:\n\t",tree)
+      except:
+          #print("\n *Messed up on:\n\t",tree)
+          pass
 
-                  #if type(cv) == javalang.tree.MethodInvocation:
-                  #    if cv.member == "findViewById":
-                  #        if cv.arguments[0].member == 'sendButton':
-                  #            print(ck)
-          #        if type(cv) == javalang.tree.MethodDeclaration:
-          #            print("\t\tMethod Declaration:",cv.name)
-          #        if type(cv) == javalang.tree.MethodInvocation:
-          #            print("\t\tMethod Invocation:",cv.member)
+
+  # Getter for method declarations or invocations
+  def getMethods(self,path):
+      self.path = path
+      for k,v in self.tree.types[0]:
+          self._checkViews(v,k)
+          for ck,cv in v:
+              self._checkViews(cv,ck)
+              for sk,sv in cv:
+                  self._checkViews(sv,sk)
+                  for vk,vv in sv:
+                      self._checkViews(vv,vk)
+
 
 # Class for managing all trees found in a searched directory of java files.
 class JavaTreeManager:
@@ -69,12 +66,14 @@ class JavaTreeManager:
           path = self.path
       if os.path.isdir(path):
           for f in os.listdir(path):
-              self.parseAllTrees(os.path.join(path,f))
+                self.parseAllTrees(os.path.join(path,f))
       else:
-          tree = self.getTree(path)
-          if tree:
-              print("\nResults for:", path, '\n'+'='*len("results for: "+path))
-              JavaTreeParser(tree).getMethods()
+          if path.split('.')[-1] == 'java':
+            tree = self.getTree(path)
+            if tree:
+                JavaTreeParser(tree).getMethods(path)
+          else:
+            print('skipping:',path)
 
     # Getter for java.compilationUnit treelike object
     def getTree(self, target):
@@ -88,8 +87,10 @@ class JavaTreeManager:
             tree = False
         return tree
 
+
+
 # Parse args and initialize object with args.
 args = parse_args()
 jl = JavaTreeManager(args)
-jl.parseAllTrees()
-
+lp = LineParser(args)
+lp.parseLine()
