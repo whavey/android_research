@@ -157,15 +157,24 @@ class AnGrep:
                 _file_count = 0
             self.results[phrase] = {_file_count:_file_list}
 
+def run(target=None):
+    for k in searchPhrases.keys():
+        ag = AnGrep(args)
+        ag.setCategory(k)
+        ag.setSearchPhrases(searchPhrases[k])
+        if target:
+            ag.doGrep(f"../apps/source/{target}")
+        else:
+            ag.doGrep()
+        print("\t",k,"Total Finds:",ag.file_count)
+        for r in ag.results.keys():
+            print("\t\t",r,[k for k in ag.results[r].keys()])
+
 if __name__ == '__main__':
     args = parse_args()
-    for i in os.listdir('../apps/source'):
-        print("Searching:",i)
-        for k in searchPhrases.keys():
-            ag = AnGrep(args)
-            ag.setCategory(k)
-            ag.setSearchPhrases(searchPhrases[k])
-            ag.doGrep(f"../apps/source/{i}")
-            print(k,"Total Finds:",ag.file_count)
-            for r in ag.results.keys():
-                print("\t",r,[k for k in ag.results[r].keys()])
+    if not args.path:
+        for i in os.listdir('../apps/source'):
+            print("Searching:",i,"\n","="*(len(i)+10),)
+            run(i)
+    else:
+        run()
