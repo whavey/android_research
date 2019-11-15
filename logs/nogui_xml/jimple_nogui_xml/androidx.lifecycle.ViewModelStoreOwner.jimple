@@ -1,5 +1,0 @@
-public interface  androidx.lifecycle.ViewModelStoreOwner extends java.lang.Object
-{
-
-    public abstract androidx.lifecycle.ViewModelStore getViewModelStore();
-}

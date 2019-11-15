@@ -1,5 +1,0 @@
-public interface  androidx.core.app.NotificationBuilderWithBuilderAccessor extends java.lang.Object
-{
-
-    public abstract android.app.Notification$Builder getBuilder();
-}

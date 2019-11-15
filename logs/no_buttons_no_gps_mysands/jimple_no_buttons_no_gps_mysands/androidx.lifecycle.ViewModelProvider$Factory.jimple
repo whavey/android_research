@@ -1,5 +1,0 @@
-public interface  androidx.lifecycle.ViewModelProvider$Factory extends java.lang.Object
-{
-
-    public abstract androidx.lifecycle.ViewModel create(java.lang.Class);
-}

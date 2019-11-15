@@ -1,3 +1,0 @@
-public annotation interface  androidx.core.app.NotificationCompat$NotificationVisibility extends java.lang.Object implements java.lang.'annotation'.Annotation
-{
-}

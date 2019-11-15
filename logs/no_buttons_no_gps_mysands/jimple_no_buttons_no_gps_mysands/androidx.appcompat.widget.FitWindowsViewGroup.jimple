@@ -1,5 +1,0 @@
-public interface  androidx.appcompat.widget.FitWindowsViewGroup extends java.lang.Object
-{
-
-    public abstract void setOnFitSystemWindowsListener(androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener);
-}

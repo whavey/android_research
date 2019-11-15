@@ -1,5 +1,0 @@
-public interface  androidx.lifecycle.GenericLifecycleObserver extends java.lang.Object implements androidx.lifecycle.LifecycleObserver
-{
-
-    public abstract void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event);
-}

@@ -1,5 +1,0 @@
-public interface  androidx.arch.core.util.Function extends java.lang.Object
-{
-
-    public abstract java.lang.Object apply(java.lang.Object);
-}

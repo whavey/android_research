@@ -1,3 +1,0 @@
-public annotation interface  androidx.'annotation'.XmlRes extends java.lang.Object implements java.lang.'annotation'.Annotation
-{
-}

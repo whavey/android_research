@@ -1,5 +1,0 @@
-public interface  androidx.core.app.CoreComponentFactory$CompatWrapped extends java.lang.Object
-{
-
-    public abstract java.lang.Object getWrapper();
-}

@@ -1,5 +1,0 @@
-interface  androidx.core.app.NotificationManagerCompat$Task extends java.lang.Object
-{
-
-    public abstract void send(androidx.core.app.INotificationSideChannel) throws android.os.RemoteException;
-}

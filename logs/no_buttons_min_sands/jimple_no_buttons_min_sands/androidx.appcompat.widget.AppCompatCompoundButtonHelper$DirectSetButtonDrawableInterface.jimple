@@ -1,5 +1,0 @@
-interface  androidx.appcompat.widget.AppCompatCompoundButtonHelper$DirectSetButtonDrawableInterface extends java.lang.Object
-{
-
-    public abstract void setButtonDrawable(android.graphics.drawable.Drawable);
-}

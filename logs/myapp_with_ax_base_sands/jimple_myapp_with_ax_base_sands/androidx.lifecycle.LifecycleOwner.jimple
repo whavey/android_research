@@ -1,5 +1,0 @@
-public interface  androidx.lifecycle.LifecycleOwner extends java.lang.Object
-{
-
-    public abstract androidx.lifecycle.Lifecycle getLifecycle();
-}

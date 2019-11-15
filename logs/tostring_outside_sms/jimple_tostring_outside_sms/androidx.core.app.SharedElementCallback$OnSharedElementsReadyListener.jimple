@@ -1,5 +1,0 @@
-public interface  androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener extends java.lang.Object
-{
-
-    public abstract void onSharedElementsReady();
-}

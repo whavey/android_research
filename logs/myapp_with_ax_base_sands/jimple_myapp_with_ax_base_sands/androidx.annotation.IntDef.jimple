@@ -1,7 +1,0 @@
-public annotation interface  androidx.'annotation'.IntDef extends java.lang.Object implements java.lang.'annotation'.Annotation
-{
-
-    public abstract boolean flag();
-
-    public abstract int[] value();
-}

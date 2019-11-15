@@ -1,7 +1,0 @@
-public interface  androidx.appcompat.view.menu.MenuView extends java.lang.Object
-{
-
-    public abstract int getWindowAnimations();
-
-    public abstract void initialize(androidx.appcompat.view.menu.MenuBuilder);
-}

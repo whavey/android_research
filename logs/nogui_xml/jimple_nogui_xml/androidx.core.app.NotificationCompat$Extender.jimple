@@ -1,5 +1,0 @@
-public interface  androidx.core.app.NotificationCompat$Extender extends java.lang.Object
-{
-
-    public abstract androidx.core.app.NotificationCompat$Builder extend(androidx.core.app.NotificationCompat$Builder);
-}

@@ -1,5 +1,0 @@
-public annotation interface  androidx.'annotation'.RequiresPermission$Read extends java.lang.Object implements java.lang.'annotation'.Annotation
-{
-
-    public abstract androidx.'annotation'.RequiresPermission value();
-}

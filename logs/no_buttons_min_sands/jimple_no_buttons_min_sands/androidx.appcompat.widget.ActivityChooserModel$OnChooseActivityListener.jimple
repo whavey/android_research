@@ -1,5 +1,0 @@
-public interface  androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener extends java.lang.Object
-{
-
-    public abstract boolean onChooseActivity(androidx.appcompat.widget.ActivityChooserModel, android.content.Intent);
-}

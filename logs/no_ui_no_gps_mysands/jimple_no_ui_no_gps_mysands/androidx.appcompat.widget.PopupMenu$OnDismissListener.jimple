@@ -1,5 +1,0 @@
-public interface  androidx.appcompat.widget.PopupMenu$OnDismissListener extends java.lang.Object
-{
-
-    public abstract void onDismiss(androidx.appcompat.widget.PopupMenu);
-}
