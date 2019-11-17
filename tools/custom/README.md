@@ -3,7 +3,7 @@
 TODO: threading and general performance tuning
 
 ## AndroidCodeFinder.py*
-### Essentially a fancy grepper to find specific lines of note like "onClickListener".
+##### Essentially a fancy grepper to find specific lines of note like "onClickListener".
 usage: AndroidCodeFinder.py [-h] [-p PATH] [-s SEARCH_STRING] [-d DEBUG]
 
 Parse Layout Files
@@ -17,7 +17,7 @@ optional arguments:
                         Turn on debug mode.
 
 ## AndroidUIMapper.py*
-### Find lines in java code that are UI related
+##### Find lines in java code that are UI related
 usage: AndroidUIMapper.py [-h] [-d DEBUG] [-l LINE] [-p PATH]
                           [-s SEARCH_STRING]
 
@@ -30,7 +30,7 @@ optional arguments:
   -s SEARCH_STRING, --search_string SEARCH_STRING
                         String to search methods for.
 ## JavaTreeManager.py*
-### Get JavaLang tree structure
+##### Get JavaLang tree structure
 usage: JavaTreeManager.py [-h] [-d DEBUG] [-p PATH]
 
 optional arguments:
@@ -40,7 +40,7 @@ optional arguments:
   -p PATH, --path PATH  file to parse.
 
 ## LayoutParser.py*
-### Parse Layout XML Files
+##### Parse Layout XML Files
 usage: LayoutParser.py [-h] [-p PATH] [-s SCAN_TYPE] [-d DEBUG]
 
 optional arguments:
@@ -52,10 +52,10 @@ optional arguments:
                         toggle debug mode.
 
 ## PrivacySimilarity.py
-### Uses NLP to find words similar (semantic and Levenshtein) to a set of privacy related keywords
+##### Uses NLP to find words similar (semantic and Levenshtein) to a set of privacy related keywords
 
 ## LineParser.py*
-### Use JavaLang to tokenize and parse a single line of java code
+##### Use JavaLang to tokenize and parse a single line of java code
 usage: LineParser.py [-h] [-d DEBUG] [-l LINE]
 
 optional arguments:
@@ -65,7 +65,7 @@ optional arguments:
   -l LINE, --line LINE  line to parse.
 
 ## NlpFeeder.py
-### Generate json file of java lines for processing. Includes lines, individual words without syntax bloat, and the file the line was found in.
+##### Generate json file of java lines for processing. Includes lines, individual words without syntax bloat, and the file the line was found in.
 usage: NlpFeeder.py [-h] [-d DEBUG] [-p PATH]
 
 optional arguments:
@@ -75,7 +75,7 @@ optional arguments:
   -p PATH, --path PATH  file to parse.
 
 ## SearchPhrases.py*
-### Search for sensitive phrases.
+##### Search for sensitive phrases.
 usage: SearchPhrases.py [-h] [-d DEBUG] [-p PATH]
 
 optional arguments:

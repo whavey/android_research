@@ -76,7 +76,9 @@ class JavaTreeManager:
             print('skipping:',path)
 
     # Getter for java.compilationUnit treelike object
-    def getTree(self, target):
+    def getTree(self, target=None):
+        if not target:
+            target = self.path
         try:
             with open(target,'r') as _target:
                 tree = javalang.parse.parse(_target.read())
@@ -88,9 +90,9 @@ class JavaTreeManager:
         return tree
 
 
-
-# Parse args and initialize object with args.
-args = parse_args()
-jl = JavaTreeManager(args)
-lp = LineParser(args)
-lp.parseLine()
+if __name__ == "__main__":
+    # Parse args and initialize object with args.
+    args = parse_args()
+    jl = JavaTreeManager(args)
+    lp = LineParser(args)
+    lp.parseLine()
