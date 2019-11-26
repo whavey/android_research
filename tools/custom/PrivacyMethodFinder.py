@@ -4,6 +4,7 @@ import os
 import JavaTreeManager as jtm
 import json
 import argparse
+import javalang
 import sys
 
 def parser():
@@ -31,9 +32,79 @@ class PrivacyMethodFinder:
     def setPath(self,path):
         self.path = path
 
+    def ClassDeclaration(self,e):
+        print("\nHandling Class")
+        print("\tName:",e.name)
+        return True
+
+    def ClassCreator(self,e):
+        print("\nHandling Class Creator")
+        print(f"\tname: {e.type.name}")
+        return True
+
+    def FieldDeclaration(self,e):
+        print("\nHandling Field Declaration")
+        for declarator in e.declarators:
+            print("\tName:",declarator.name)
+        print("\tField Type:",e.type.name)
+        if e.type.sub_type is not None:
+            print("\tSubtype:",e.type.sub_type.name)
+        return True
+
+    def ReferenceType(self,e):
+        print("\nHandling Reference Type")
+        print(f"\tName: {e.name}")
+        if e.sub_type is not None:
+            print(f"\tSubtype Name: {e.sub_type.name}")
+        return True
+
+    def VariableDeclarator(self,e):
+        print("\nHandling Variable Declarator")
+        print(f"\tname: {e.name}")
+        return True
+
+    def ReturnStatement(self,e):
+        print("\nHandling Return Statement")
+        print(f"\tname: {e}")
+        return True
+
+    def MethodInvocation(self,e):
+        print("\nHandling Method Invocation")
+        print(f"\tname: {e.member}")
+        return True
+
+    def MethodDeclaration(self,e):
+        print("\nHandling Method Declaration")
+        print(f"\tname: {e.name}")
+        return True
+
+    def FormalParameter(self,e):
+        print("\nHandling FormalParameter")
+        print(f"\tname: {e.name}")
+        return True
+
+    def StatementExpression(self,e):
+        print("\nHandling Statement Expression")
+        exp = str(type(e.expression)).split('.')[-1][0:-2]
+        if exp in dir(self):
+            getattr(self,exp)(e.expression)
+        else:
+            print(f"Make Handler for: {exp}")
+
     def getMethodsFound(self):
         for i in self.tree.types:
-            print(i,"\n")
+            for j in i:
+                for k in j:
+                    if type(k) == tuple:
+                        continue
+                    javastruct = str(type(k)).split('.')[-1][0:-2]
+                    print(">")
+                    if javastruct in dir(self):
+                        getattr(self,javastruct)(k)
+                    else:
+                        print(f"Make Handler for: {k}")
+                    print("<")
+
         #for k,v in self.tree.types[0]:
         #    print("="*50,"\nK:\n",k,"\nV:\n",v,"\n")
 
@@ -42,7 +113,6 @@ class PrivacyMethodFinder:
 
     def findMethods(self):
         return
-
 
 if __name__ == "__main__":
     parser = parser()
