@@ -28,6 +28,8 @@ class PrivacyMethodFinder:
 
         self.method_count = 0
         self.methods_found = {}
+        self.master_dict = {}
+        self.ignore_structs = ["BasicType","Literal"]
 
     def setPath(self,path):
         self.path = path
@@ -65,7 +67,11 @@ class PrivacyMethodFinder:
 
     def ReturnStatement(self,e):
         print("\nHandling Return Statement")
-        print(f"\tname: {e}")
+        exp = str(type(e.expression)).split('.')[-1][0:-2]
+        if exp in dir(self):
+            getattr(self,exp)(e.expression)
+        else:
+            print(f"Make Handler for: {exp}")
         return True
 
     def MethodInvocation(self,e):
@@ -91,6 +97,51 @@ class PrivacyMethodFinder:
         else:
             print(f"Make Handler for: {exp}")
 
+    def MemberReference(self,e):
+        print("\nHandling MemberReference")
+        print(f"\tname: {e.member}")
+        return True
+
+    def ArrayCreator(self,e):
+        print("\nHandling ArrayCreator")
+        print(f"\nname: {e.type.name}")
+        return True
+
+    def ArrayInitializer(self,e):
+        print("\nHandling ArrayInitializer")
+        for element in e.initializers:
+            jstruct = str(type(element)).split('.')[-1][0:-2]
+            if jstruct in dir(self):
+                getattr(self,jstruct)(element)
+            else:
+                print(f"Make Handler for: {exp}")
+        return True
+
+    def LocalVariableDeclaration(self,e):
+        print("\nHandling LocalVariableDeclaration")
+        print(f"\nname: {e.type.name}")
+        return True
+
+    def This(self,e):
+        print("\nHandling This")
+        selectors = e.selectors
+        if len(selectors) > 0:
+            exp = str(type(selectors[0])).split('.')[-1][0:-2]
+            if exp in dir(self):
+                getattr(self,exp)(selectors[0])
+            else:
+                print(f"Make Handler for: {exp}")
+        return True
+
+    def Cast(self,e):
+        print("\nHandling Cast")
+        exp = str(type(e.expression)).split('.')[-1][0:-2]
+        if exp in dir(self):
+            getattr(self,exp)(e.expression)
+        else:
+            print(f"Make Handler for: {exp}")
+        return True
+
     def getMethodsFound(self):
         for i in self.tree.types:
             for j in i:
@@ -102,6 +153,8 @@ class PrivacyMethodFinder:
                     if javastruct in dir(self):
                         getattr(self,javastruct)(k)
                     else:
+                        if javastruct in self.ignore_structs:
+                            continue
                         print(f"Make Handler for: {k}")
                     print("<")
 
@@ -126,7 +179,7 @@ if __name__ == "__main__":
     pmf = PrivacyMethodFinder(tree)
     methodsFound = pmf.getMethodsFound()
 
-    print("Total:",pmf.getMethodsCount(),"\n")
+    #print("Total:",pmf.getMethodsCount(),"\n")
 
-    for k in methodsFound.keys():
-        print("File:",k,"\n","="*len(k),methodsFound[k],"\n")
+    #for k in methodsFound.keys():
+    #    print("File:",k,"\n","="*len(k),methodsFound[k],"\n")
