@@ -29,7 +29,7 @@ class PrivacyMethodFinder:
         self.method_count = 0
         self.methods_found = {}
         self.master_dict = {}
-        self.ignore_structs = ["BasicType","Literal"]
+        self.ignore_structs = ["BasicType","Literal","ForControl"]
 
     def setPath(self,path):
         self.path = path
@@ -67,12 +67,7 @@ class PrivacyMethodFinder:
 
     def ReturnStatement(self,e):
         print("\nHandling Return Statement")
-        exp = str(type(e.expression)).split('.')[-1][0:-2]
-        if exp in dir(self):
-            getattr(self,exp)(e.expression)
-        else:
-            print(f"Make Handler for: {exp}")
-        return True
+        self.check_and_parse(e.expression)
 
     def MethodInvocation(self,e):
         print("\nHandling Method Invocation")
@@ -91,11 +86,7 @@ class PrivacyMethodFinder:
 
     def StatementExpression(self,e):
         print("\nHandling Statement Expression")
-        exp = str(type(e.expression)).split('.')[-1][0:-2]
-        if exp in dir(self):
-            getattr(self,exp)(e.expression)
-        else:
-            print(f"Make Handler for: {exp}")
+        self.check_and_parse(e.expression)
 
     def MemberReference(self,e):
         print("\nHandling MemberReference")
@@ -110,12 +101,7 @@ class PrivacyMethodFinder:
     def ArrayInitializer(self,e):
         print("\nHandling ArrayInitializer")
         for element in e.initializers:
-            jstruct = str(type(element)).split('.')[-1][0:-2]
-            if jstruct in dir(self):
-                getattr(self,jstruct)(element)
-            else:
-                print(f"Make Handler for: {exp}")
-        return True
+            self.check_and_parse(element)
 
     def LocalVariableDeclaration(self,e):
         print("\nHandling LocalVariableDeclaration")
@@ -126,20 +112,79 @@ class PrivacyMethodFinder:
         print("\nHandling This")
         selectors = e.selectors
         if len(selectors) > 0:
-            exp = str(type(selectors[0])).split('.')[-1][0:-2]
-            if exp in dir(self):
-                getattr(self,exp)(selectors[0])
-            else:
-                print(f"Make Handler for: {exp}")
-        return True
+            for selector in selectors:
+                self.check_and_parse(selector)
 
     def Cast(self,e):
         print("\nHandling Cast")
-        exp = str(type(e.expression)).split('.')[-1][0:-2]
-        if exp in dir(self):
-            getattr(self,exp)(e.expression)
+        self.check_and_parse(e.expression)
+
+    def Assignment(self,e):
+        print("\nHandling Assignment")
+        print("\nAssignee:")
+        self.check_and_parse(e.expressionl)
+        print("\nValue:")
+        self.check_and_parse(e.value)
+
+    def SuperMethodInvocation(self,e):
+        print("\nHandling Super Method Invocation")
+        print(f"\nMember: {e.member}")
+        return True
+
+    def IfStatement(self,e):
+        print("\nHandling If Statement")
+        print("\nParsing Condition")
+        self.check_and_parse(e.condition)
+        print("\nChecking else statement")
+        self.check_and_parse(e.else_statement)
+        print("\nChecking then statement")
+        self.check_and_parse(e.then_statement)
+
+    def BlockStatement(self,e):
+        print("\nHandling Block Statement")
+        statements = e.statements
+        if len(statements) > 0:
+            for statement in statements:
+                self.check_and_parse(statement)
+
+    def BinaryOperation(self,e):
+        print("\nHandling Binary Operation")
+        print("\nleft operand:")
+        self.check_and_parse(e.operandl)
+        print("\nright operand:")
+        self.check_and_parse(e.operandr)
+        print("\nOperator:",e.operator)
+
+    def TypeArgument(self,e):
+        print("\nHandling Type Argument")
+        self.check_and_parse(e.type)
+
+    def VariableDeclaration(self,e):
+        print("\nHandling Variable Declaration")
+        declarators = e.declarators
+        if len(declarators) > 0:
+            for declarator in declarators:
+                self.check_and_parse(declarator)
+
+    def ForStatement(self,e):
+        print("\nHandling For Statement")
+        self.check_and_parse(e.body)
+
+    def ConstructorDeclaration(self,e):
+        print("\nHandling Constructor Declaration")
+        print(f"\nName:{e.name}")
+
+    def check_and_parse(self,structure):
+        if structure is None:
+            print("\nNo structure given")
+            return False
+        struct_type = str(type(structure)).split('.')[-1][0:-2]
+        if struct_type in dir(self):
+            getattr(self,struct_type)(structure)
         else:
-            print(f"Make Handler for: {exp}")
+            if struct_type in self.ignore_structs:
+                return False
+            print(f"Make Handler for: {structure}")
         return True
 
     def getMethodsFound(self):
@@ -148,14 +193,8 @@ class PrivacyMethodFinder:
                 for k in j:
                     if type(k) == tuple:
                         continue
-                    javastruct = str(type(k)).split('.')[-1][0:-2]
                     print(">")
-                    if javastruct in dir(self):
-                        getattr(self,javastruct)(k)
-                    else:
-                        if javastruct in self.ignore_structs:
-                            continue
-                        print(f"Make Handler for: {k}")
+                    self.check_and_parse(k)
                     print("<")
 
         #for k,v in self.tree.types[0]:
