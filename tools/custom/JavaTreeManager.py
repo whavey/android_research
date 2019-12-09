@@ -55,9 +55,11 @@ class JavaTreeParser:
 # Class for managing all trees found in a searched directory of java files.
 class JavaTreeManager:
     # Initialize object with args.
-    def __init__(self, *args, **kwargs):
-        self.debug = args[0].debug
-        self.path = args[0].path
+    def __init__(self, path=None, debug=False):
+        if path:
+            self.path = path
+        else:
+            self.path = os.getcwd()
 
     # Recursively make JavaTreeParser objects for each java tree made.
     # Should be careful with this class as Im not sure how making JavaCodeParser objects for each tree will scale without memory management.
@@ -84,15 +86,13 @@ class JavaTreeManager:
                 tree = javalang.parse.parse(_target.read())
         except Exception as e:
             print("Error with target",target)
-            if self.debug:
-                print(e,'\n====')
+            print(e,'\n====')
             tree = False
         return tree
-
 
 if __name__ == "__main__":
     # Parse args and initialize object with args.
     args = parse_args()
-    jl = JavaTreeManager(args)
+    jl = JavaTreeManager(path=args.path,debug=args.debug)
     lp = LineParser(args)
     lp.parseLine()
