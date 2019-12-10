@@ -2,9 +2,11 @@
 
 import spacy
 import json
-import argparse
+
+# importing the Matcher
 from spacy.matcher import Matcher
 from Levenshtein import *
+
 
 # Loading a model and creating the NLP object
 nlp = spacy.load('en_core_web_lg')
@@ -27,7 +29,7 @@ class PrivacySimilarity:
 
         self.food = food
         # Initialize the matcher with the shared vocab
-        #self.matcher = Matcher(nlp.vocab)
+        self.matcher = Matcher(nlp.vocab)
         self.reservedWords = ['abstract', 'assert', 'boolean',
                          'break', 'byte', 'case',
                          'catch', 'char', 'class',
@@ -46,17 +48,7 @@ class PrivacySimilarity:
                          'throw', 'throws', 'transient',
                          'true', 'try', 'void',
                          'volatile', 'while', 'synthetic',
-                         'lambda', 'intent', 'thread',
-                         'view', 'string', 'toast',
-                         'mainactivity', 'com', 'object',
-                         'alertdialog', 'linearlayout', 'seekbar',
-                         'charsequence', 'onclick', 'oncreate',
-                         'onfinish', 'ontick', 'onactivityresult',
-                         'onbackpressed', 'onprogresschanged', 'ondestroy',
-                         'packagename', 'bundle', 'gradientdrawable',
-                         'dialoginterface', 'str', 'view', 'framelayout',
-                         'object','windowmanager', 'componentname', 'iterator',
-                         'imagebutton', 'activityinfo']
+                         'lambda' ]
 
         self.searchWords = ['username', 'name', 'email',
                    'passwd', 'password', 'pwd',
@@ -84,29 +76,33 @@ class PrivacySimilarity:
 
     def processForSimilarity(self):
 
-        searchWordTokens = nlp(' '.join(self.searchWords))
-        reservedWordTokens = nlp(' '.join(self.reservedWords))
+        # Data object is in the form of a list of dictionaries
+        with open(self.food, "r") as food:
 
-        with open(self.food) as food:
+            searchWordTokens = nlp(' '.join(self.searchWords))
 
-            jsonFood = json.load(food)
+            for line in food:
 
-            for struct in jsonFood.keys():
+                jline = json.loads(line)
+                rawLine = jline['line']
 
-                print(struct)
-                origWords = list(jsonFood[struct].keys())
-                words = origWords.copy()
+                if rawLine[0:2] == '/*':
 
-                for word in origWords:
+                    continue
 
-                    if word.lower() in self.reservedWords:
+                words = jline['words'].copy()
 
-                        words.remove(word)
+                for word in words:
 
+                    if word in reservedWords:
+
+                        jline['words'].remove(word)
+
+                words = jline['words']
                 string = ' '.join(words)
-                structTokens = nlp(string)
+                lineTokens = nlp(string)
 
-                for token1 in structTokens:
+                for token1 in lineTokens:
 
                     for token2 in searchWordTokens:
 
@@ -119,24 +115,11 @@ class PrivacySimilarity:
 
                         if spacy > .5 or lev > .75:
 
-                            print(f"\n\t*Similar words: {token1} - {token2}\n\tSemantic:{spacy}\n\tLevenshtein:{lev}")
+                            print(f"Similar words: {token1} - {token2}\nLine:{rawLine}\nFile:{jline['file']}\nSemantic:{spacy}\nLevenshtein:{lev}\n========\n")
 
-
-                    # For checking similarity to reserved words.
-                    # TODO: make toggleable
-                    # TODO: allow option to add finds to reservedWords ignore list
-                    #for token2 in reservedWordTokens:
-
-                    #    spacy = token1.similarity(token2)
-                    #    lev = ratio(str(token1),str(token2))
-
-                    #    if spacy > .5 or lev > .75:
-
-                    #        print(f"\n\t#Similar to reserved words: \n\t{token1} - {token2}\n\tSemantic:{spacy}\n\tLevenshtein:{lev}")
-
+                        #print(f"{token1} <> {token2}: semantic:{token1.similarity(token2)} | levenshtein:{ratio(str(token1),str(token2))}\n")
 
 def main(path):
-
     psim = PrivacySimilarity(food=path)
     psim.processForSimilarity()
 

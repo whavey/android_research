@@ -20,6 +20,7 @@ class PrivacyCodeFinder:
 
     def __init__(self, *args, **kwargs):
 
+        self.tree = False
         self.processed_files = []
         self.master_dict = {}
         self.ignore_structs = ["BasicType","Literal","ForControl","ArraySelector"]
@@ -394,6 +395,12 @@ def processFile(javaFile,pcfObject):
     if ext == 'java':
 
         tree = jtm.JavaTreeManager(path=javaFile).getTree()
+
+        if not tree:
+
+            print("Error getting javalang tree for:", javaFile)
+            return
+
         pcfObject.setTree(tree)
         nlpCandidates = pcfObject.getNlpCandidates()
 
@@ -413,6 +420,10 @@ def main(path,pcfObject=None):
 
         for dirName, subdirList, fileList in os.walk(path):
 
+            totalFiles = len(fileList)
+
+            currCount = 0
+
             for fname in fileList:
 
                 if fname == "R.java":
@@ -423,22 +434,24 @@ def main(path,pcfObject=None):
                 processFile(f,pcfObject)
                 pcfObject.setProcessedFile(f)
 
-    results = pcfObject.getResults()
-    processed = pcfObject.getProcessedFiles()
+                results = pcfObject.getResults()
+                processed = pcfObject.getProcessedFiles()
 
-    print(f"Processed:\n{'='*len('Processed')}\n")
+                if results:
+
+                    with open('results','w') as fhandle:
+
+                        fhandle.write(json.dumps(results))
+
+                currCount += 1
+
+                print(f"Processed files: {currCount}/{totalFiles}" )
+
+    print(f"\nProcessed:\n{'='*len('Processed')}")
 
     for f in processed:
 
         print(f)
-
-    if results:
-
-        print(json.dumps(results))
-
-    else:
-
-        print("No results.")
 
 
 if __name__ == "__main__":
