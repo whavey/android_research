@@ -124,15 +124,22 @@ class PrivacySimilarity:
 
                     if struct not in self.results.keys():
 
-                        self.results[struct] = dict()
+                        self.results[struct] = list()
 
-                    if str(token) not in self.results[struct].keys():
+                    self.results[struct].append({
+                        "ANDROID_APP_TOKEN": str(token),
+                        "SIMILAR_PRIVACY_RELATED_TOKEN": str(token2),
+                        'SEMANTIC_SIMILARITY_SCORE': str(spacy),
+                        'LEVENSHTEIN_SIMILARITY_SCORE': str(lev)
+                        })
 
-                        self.results[struct] = {f"ANDROID_APP_TOKEN-{str(token)}": [{f"SIMILAR_PRIVACY_RELATED_TOKEN-str(token2)": {'semantic': str(spacy),'levenshtein': str(lev)}}]}
+                    #if str(token) not in self.results[struct].keys():
 
-                    else:
+                    #    self.results[struct] = {f"ANDROID_APP_TOKEN-{str(token)}": [{f"SIMILAR_PRIVACY_RELATED_TOKEN-{str(token2)}": {'semantic': str(spacy),'levenshtein': str(lev)}}]}
 
-                        self.results[struct][f"ANDROID_APP_TOKEN-{str(token)}"].append({f"SIMILAR_PRIVACY_RELATED_TOKEN-str(token2)": {'semantic': str(spacy),'levenshtein': str(lev)}})
+                    #else:
+
+                    #    self.results[struct][f"ANDROID_APP_TOKEN-{str(token)}"].append({f"SIMILAR_PRIVACY_RELATED_TOKEN-{str(token2)}": {'semantic': str(spacy),'levenshtein': str(lev)}})
 
         if self.results:
 
