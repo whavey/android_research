@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 
 import spacy
+import os
 import json
 import argparse
 from spacy.matcher import Matcher
 from Levenshtein import *
+from multiprocessing import Process
+import glob
+import shutil
+from json2table import convert
 
 # Loading a model and creating the NLP object
 nlp = spacy.load('en_core_web_lg')
@@ -19,12 +24,17 @@ def parser():
 
 class PrivacySimilarity:
 
-    def __init__(self, food):
+    def __init__(self, food, lev_threshold = .75, sem_threshold = .5):
 
         if not food:
             print("Feed me a json file to process.")
             return
 
+        self.lev_threshold = lev_threshold
+        self.sem_threshold = sem_threshold
+        self.meta = dict(levenshtein_threshold=lev_threshold,sematic_threshold=sem_threshold)
+        self.results = dict()
+        self.reserved_word_similarity = {}
         self.food = food
         # Initialize the matcher with the shared vocab
         #self.matcher = Matcher(nlp.vocab)
@@ -82,44 +92,121 @@ class PrivacySimilarity:
                    'device_id', 'mac_address', 'serial_num',
                    'service_provider' ]
 
-    def processForSimilarity(self):
+    @property
+    def getResults(self):
+
+        return self.results
+
+
+    def worker(self, jsonFood, struct):
 
         searchWordTokens = nlp(' '.join(self.searchWords))
-        reservedWordTokens = nlp(' '.join(self.reservedWords))
+        origWords = list(jsonFood[struct].keys())
+        words = origWords.copy()
+
+        for word in origWords:
+
+            if word.lower() in self.reservedWords:
+
+                words.remove(word)
+
+        string = ' '.join(words)
+        structTokens = nlp(string)
+
+        for token in structTokens:
+
+            for token2 in searchWordTokens:
+
+                spacy = token.similarity(token2)
+                lev = ratio(str(token),str(token2))
+
+                if spacy > self.sem_threshold or lev > self.lev_threshold:
+
+                    if struct not in self.results.keys():
+
+                        self.results[struct] = dict()
+
+                    if str(token) not in self.results[struct].keys():
+
+                        self.results[struct] = {f"ANDROID_APP_TOKEN-{str(token)}": [{f"SIMILAR_PRIVACY_RELATED_TOKEN-str(token2)": {'semantic': str(spacy),'levenshtein': str(lev)}}]}
+
+                    else:
+
+                        self.results[struct][f"ANDROID_APP_TOKEN-{str(token)}"].append({f"SIMILAR_PRIVACY_RELATED_TOKEN-str(token2)": {'semantic': str(spacy),'levenshtein': str(lev)}})
+
+        if self.results:
+
+            with open(f".struct-results-{struct}.json",'w') as tmpres:
+
+                tmpres.write(json.dumps(self.results))
+
+
+    def writeResults(self):
+
+        results = list()
+
+        for tmpfile in glob.glob('.struct-results*'):
+
+            with open(tmpfile,'r') as structfile:
+
+                results.append(json.load(structfile))
+
+            os.remove(tmpfile)
+
+        outdict = dict(meta=self.meta, results=results)
+
+        with open(f"results{self.food.replace('structmappings','')}",'w') as resultsfile:
+
+            resultsfile.write(json.dumps(outdict))
+
+        print(convert(outdict,build_direction="TOP_TO_BOTTOM",table_attributes={"stle": "width:100%"}))
+
+
+    def processForSimilarity(self):
+
+        #searchWordTokens = nlp(' '.join(self.searchWords))
+        #reservedWordTokens = nlp(' '.join(self.reservedWords))
 
         with open(self.food) as food:
 
             jsonFood = json.load(food)
 
             for struct in jsonFood.keys():
+                p  = Process(target=self.worker, args=(jsonFood, struct,))
+                p.start()
+                p.join()
 
-                print(struct)
-                origWords = list(jsonFood[struct].keys())
-                words = origWords.copy()
+                #print(struct)
+                #origWords = list(jsonFood[struct].keys())
+                #words = origWords.copy()
 
-                for word in origWords:
+                #for word in origWords:
 
-                    if word.lower() in self.reservedWords:
+                #    if word.lower() in self.reservedWords:
 
-                        words.remove(word)
+                #        words.remove(word)
 
-                string = ' '.join(words)
-                structTokens = nlp(string)
+                #string = ' '.join(words)
+                #structTokens = nlp(string)
 
-                for token1 in structTokens:
+                #for token in structTokens:
 
-                    for token2 in searchWordTokens:
+                    #for token2 in searchWordTokens:
 
-                        # Printing the following attributes of each token.  text: the word string, has_vector: if it contains 
-                        # a vector representation in the model,  vector_norm: the algebraic norm of the vector, is_oov: if the word is out of vocabulary. 
-                        #print(token1.text, token1.has_vector, token1.vector_norm, token1.is_oov)
-                        #print(token2.text, token2.has_vector, token2.vector_norm, token2.is_oov)
-                        spacy = token1.similarity(token2)
-                        lev = ratio(str(token1),str(token2))
+                    #    # Printing the following attributes of each token.  text: the word string, has_vector: if it contains 
+                    #    # a vector representation in the model,  vector_norm: the algebraic norm of the vector, is_oov: if the word is out of vocabulary. 
+                    #    #print(token1.text, token1.has_vector, token1.vector_norm, token1.is_oov)
+                    #    #print(token2.text, token2.has_vector, token2.vector_norm, token2.is_oov)
+                    #    spacy = token1.similarity(token2)
+                    #    lev = ratio(str(token1),str(token2))
 
-                        if spacy > .5 or lev > .75:
+                    #    if spacy > .5 or lev > .75:
 
-                            print(f"\n\t*Similar words: {token1} - {token2}\n\tSemantic:{spacy}\n\tLevenshtein:{lev}")
+                    #        self.results[results][token1] = list()
+
+                    #        #print(f"\n\t*Similar words: {token1} - {token2}\n\tSemantic:{spacy}\n\tLevenshtein:{lev}")
+                    #        self.results[results][token1].append(dict(token2=dict(semantic=spacy,levenshtein=lev)))
+
 
 
                     # For checking similarity to reserved words.
@@ -139,6 +226,7 @@ def main(path):
 
     psim = PrivacySimilarity(food=path)
     psim.processForSimilarity()
+    psim.writeResults()
 
 if __name__ == "__main__":
 
