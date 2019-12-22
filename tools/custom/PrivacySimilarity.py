@@ -32,12 +32,11 @@ class PrivacySimilarity:
 
         self.lev_threshold = lev_threshold
         self.sem_threshold = sem_threshold
-        self.meta = dict(levenshtein_threshold=lev_threshold,sematic_threshold=sem_threshold)
+        self.meta = dict(levenshtein_threshold=lev_threshold,sematic_threshold=sem_threshold,total_privacy_score=0,average_privacy_score=0)
         self.results = dict()
+        self.resultsFile = "_results"
         self.reserved_word_similarity = {}
         self.food = food
-        # Initialize the matcher with the shared vocab
-        #self.matcher = Matcher(nlp.vocab)
         self.reservedWords = ['abstract', 'assert', 'boolean',
                          'break', 'byte', 'case',
                          'catch', 'char', 'class',
@@ -68,164 +67,137 @@ class PrivacySimilarity:
                          'object','windowmanager', 'componentname', 'iterator',
                          'imagebutton', 'activityinfo']
 
-        self.searchWords = ['username', 'name', 'email',
-                   'passwd', 'password', 'pwd',
-                   'phone_number', 'phone_num', 'twitter',
-                   'social_media_url', 'wi_ssid', 'ssid',
-                   'ftp', 'smtp', 'facebook',
-                   'nq_account', 'gritsafe', 'exchange',
-                   'adobe', 'username_or_email', 'twitter_passwd',
-                   'wi_passwd', 'gmail_passwd', 'social_media_url',
-                   'wi_ssid', 'ftp_passwd', 'smtp_passwd',
-                   'facebook_passwd', 'nq_account_passwd', 'mint_passwd',
-                   'gritsafe_passwd', 'exchange_passwd', 'adobe_passwd',
-                   'person_name', 'date_of_birth', 'gender',
-                   'company_name', 'person_age', 'person_weight',
-                   'job_title', 'person_height', 'school_name',
-                   'education_info', 'marital_status', 'demographic_info',
-                   'native_language', 'citizenship', 'birth_place',
-                   'marriage_date', 'religion', 'political_affiliation',
-                   'credit_card_info', 'loan_info', 'bank_account_info',
-                   'salary', 'bank_info', 'house_financial_info',
-                   'vehicle_info', 'license_plate', 'vehicle_vin',
-                   'insurance_policy_num', 'vehicle_registration', 'license_expiry_date',
-                   'device_id', 'mac_address', 'serial_num',
-                   'service_provider' ]
+        self.searchWords = {
+                'username':1, 'name':1, 'email':1,
+                'passwd':1, 'password':1, 'pwd':1,
+                'phone_number':1, 'phone_num':1, 'twitter':1,
+                'social_media_url':2, 'wi_ssid':1, 'ssid':1,
+                'ftp':1, 'smtp':1, 'facebook':1,
+                'nq_account':1, 'gritsafe':1, 'exchange':1,
+                'adobe':1, 'username_or_email':1, 'twitter_passwd':1,
+                'wi_passwd':1, 'gmail_passwd':1, 'social_media_url':1,
+                'wi_ssid':1, 'ftp_passwd':1, 'smtp_passwd':1,
+                'facebook_passwd':1, 'nq_account_passwd':1, 'mint_passwd':1,
+                'gritsafe_passwd':1, 'exchange_passwd':1, 'adobe_passwd':1,
+                'person_name':1, 'date_of_birth':2, 'gender':2,
+                'company_name':1, 'person_age':2, 'person_weight':3,
+                'job_title':1, 'person_height':3, 'school_name':1,
+                'education_info':1, 'marital_status':3, 'demographic_info':3,
+                'native_language':3, 'citizenship':1, 'birth_place':2,
+                'marriage_date':2, 'religion':3, 'political_affiliation':3,
+                'credit_card_info':1, 'loan_info':1, 'bank_account_info':1,
+                'salary':2, 'bank_info':1, 'house_financial_info':1,
+                'vehicle_info':1, 'license_plate':3, 'vehicle_vin':3,
+                'insurance_policy_num':2, 'vehicle_registration':2, 'license_expiry_date':2,
+                'device_id':1, 'mac_address':2, 'serial_num':1,
+                'service_provider':2
+                }
 
     @property
     def getResults(self):
-
         return self.results
-
 
     def worker(self, jsonFood, struct):
 
-        searchWordTokens = nlp(' '.join(self.searchWords))
+        os.environ["SPACY_WARNING_IGNORE"] = "W008"
+
+        searchWordTokens = nlp(' '.join(self.searchWords.keys()))
         origWords = list(jsonFood[struct].keys())
         words = origWords.copy()
 
         for word in origWords:
-
             if word.lower() in self.reservedWords:
-
                 words.remove(word)
 
         string = ' '.join(words)
         structTokens = nlp(string)
 
         for token in structTokens:
-
             for token2 in searchWordTokens:
-
                 spacy = token.similarity(token2)
                 lev = ratio(str(token),str(token2))
 
                 if spacy > self.sem_threshold or lev > self.lev_threshold:
-
                     if struct not in self.results.keys():
-
                         self.results[struct] = list()
 
                     self.results[struct].append({
                         "ANDROID_APP_TOKEN": str(token),
                         "SIMILAR_PRIVACY_RELATED_TOKEN": str(token2),
+                        "SENSITIVITY_LEVEL": self.searchWords[str(token2)],
                         'SEMANTIC_SIMILARITY_SCORE': str(spacy),
                         'LEVENSHTEIN_SIMILARITY_SCORE': str(lev)
                         })
 
-                    #if str(token) not in self.results[struct].keys():
-
-                    #    self.results[struct] = {f"ANDROID_APP_TOKEN-{str(token)}": [{f"SIMILAR_PRIVACY_RELATED_TOKEN-{str(token2)}": {'semantic': str(spacy),'levenshtein': str(lev)}}]}
-
-                    #else:
-
-                    #    self.results[struct][f"ANDROID_APP_TOKEN-{str(token)}"].append({f"SIMILAR_PRIVACY_RELATED_TOKEN-{str(token2)}": {'semantic': str(spacy),'levenshtein': str(lev)}})
-
         if self.results:
-
             with open(f".struct-results-{struct}.json",'w') as tmpres:
-
                 tmpres.write(json.dumps(self.results))
+
+
+    def getSensitivityScores(self, results):
+
+        print("Getting Sensitivity Scores.")
+
+        score_aggregate = 0
+        count_total = 0
+
+        for entry in results:
+            for result in entry[list(entry.keys())[0]]:
+                count_total += 1
+                score_aggregate += result["SENSITIVITY_LEVEL"]
+
+        print("entry total:", count_total, "score aggregate:", score_aggregate, "average:", score_aggregate/count_total)
+        self.meta['total_privacy_score'] = score_aggregate
+        self.meta['average_privacy_score'] = score_aggregate / count_total
 
 
     def writeResults(self):
 
+        print("Aggregating and writing results.")
         results = list()
 
         for tmpfile in glob.glob('.struct-results*'):
-
             with open(tmpfile,'r') as structfile:
-
                 results.append(json.load(structfile))
 
             os.remove(tmpfile)
 
+        self.getSensitivityScores(results)
         outdict = dict(meta=self.meta, results=results)
+        self.resultsFile = f"results{self.food.replace('structmappings','')}"
 
-        with open(f"results{self.food.replace('structmappings','')}",'w') as resultsfile:
-
+        with open(self.resultsFile,'w') as resultsfile:
             resultsfile.write(json.dumps(outdict))
 
-        print(convert(outdict,build_direction="TOP_TO_BOTTOM",table_attributes={"stle": "width:100%"}))
+        print("Generating HTML Table:\n", convert(outdict,build_direction="TOP_TO_BOTTOM",table_attributes={"style": "width:100%"}))
 
 
     def processForSimilarity(self):
 
-        #searchWordTokens = nlp(' '.join(self.searchWords))
-        #reservedWordTokens = nlp(' '.join(self.reservedWords))
-
         with open(self.food) as food:
-
             jsonFood = json.load(food)
 
+            jobs = []
             for struct in jsonFood.keys():
                 p  = Process(target=self.worker, args=(jsonFood, struct,))
                 p.start()
-                p.join()
+                jobs.append(p)
 
-                #print(struct)
-                #origWords = list(jsonFood[struct].keys())
-                #words = origWords.copy()
-
-                #for word in origWords:
-
-                #    if word.lower() in self.reservedWords:
-
-                #        words.remove(word)
-
-                #string = ' '.join(words)
-                #structTokens = nlp(string)
-
-                #for token in structTokens:
-
-                    #for token2 in searchWordTokens:
-
-                    #    # Printing the following attributes of each token.  text: the word string, has_vector: if it contains 
-                    #    # a vector representation in the model,  vector_norm: the algebraic norm of the vector, is_oov: if the word is out of vocabulary. 
-                    #    #print(token1.text, token1.has_vector, token1.vector_norm, token1.is_oov)
-                    #    #print(token2.text, token2.has_vector, token2.vector_norm, token2.is_oov)
-                    #    spacy = token1.similarity(token2)
-                    #    lev = ratio(str(token1),str(token2))
-
-                    #    if spacy > .5 or lev > .75:
-
-                    #        self.results[results][token1] = list()
-
-                    #        #print(f"\n\t*Similar words: {token1} - {token2}\n\tSemantic:{spacy}\n\tLevenshtein:{lev}")
-                    #        self.results[results][token1].append(dict(token2=dict(semantic=spacy,levenshtein=lev)))
-
-
+        print("Waiting for all sub processes to finish.")
+        while len(jobs) > 0:
+            _jobs = jobs.copy()
+            for job in _jobs:
+                if not job.is_alive():
+                    jobs.remove(job)
+                    print("Subprocess finished. Remaining:",len(jobs))
 
                     # For checking similarity to reserved words.
                     # TODO: make toggleable
                     # TODO: allow option to add finds to reservedWords ignore list
                     #for token2 in reservedWordTokens:
-
                     #    spacy = token1.similarity(token2)
                     #    lev = ratio(str(token1),str(token2))
-
                     #    if spacy > .5 or lev > .75:
-
                     #        print(f"\n\t#Similar to reserved words: \n\t{token1} - {token2}\n\tSemantic:{spacy}\n\tLevenshtein:{lev}")
 
 
