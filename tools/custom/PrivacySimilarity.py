@@ -35,6 +35,7 @@ class PrivacySimilarity:
         self.meta = dict(levenshtein_threshold=lev_threshold,sematic_threshold=sem_threshold,total_privacy_score=0,average_privacy_score=0)
         self.results = dict()
         self.resultsFile = "_results"
+        self.outputDir = "."
         self.reserved_word_similarity = {}
         self.food = food
         self.reservedWords = ['abstract', 'assert', 'boolean',
@@ -96,6 +97,20 @@ class PrivacySimilarity:
     @property
     def getResults(self):
         return self.results
+
+    @property
+    def getResultsFile(self):
+        return self.resultsFile
+
+    @property
+    def getOutputDir(self):
+        return self.outputDir
+
+    def setOutputDir(self,outputDir):
+        self.outputDir = outputDir
+
+    def setResultsFile(self,resultsFile):
+        self.resultsFile = resultsFile
 
     def worker(self, jsonFood, struct):
 
@@ -164,12 +179,13 @@ class PrivacySimilarity:
 
         self.getSensitivityScores(results)
         outdict = dict(meta=self.meta, results=results)
-        self.resultsFile = f"results{self.food.replace('structmappings','')}"
 
-        with open(self.resultsFile,'w') as resultsfile:
+        with open(os.path.join(self.outputDir,self.resultsFile),'w') as resultsfile:
             resultsfile.write(json.dumps(outdict))
 
-        print("Generating HTML Table:\n", convert(outdict,build_direction="TOP_TO_BOTTOM",table_attributes={"style": "width:100%"}))
+        with open(os.path.join(self.outputDir,self.resultsFile.replace('results','table')),'w') as table:
+            print("Generating HTML Table:\n", )
+            print(convert(outdict,build_direction="TOP_TO_BOTTOM",table_attributes={"style": "width:100%"}), file=table)
 
 
     def processForSimilarity(self):
@@ -204,6 +220,7 @@ class PrivacySimilarity:
 def main(path):
 
     psim = PrivacySimilarity(food=path)
+    psim.setResultsFile(f"results{self.food.replace('structmappings','')}")
     psim.processForSimilarity()
     psim.writeResults()
 

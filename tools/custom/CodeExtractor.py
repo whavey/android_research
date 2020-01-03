@@ -13,6 +13,7 @@ def parser():
     parser = argparse.ArgumentParser(description='Get Java Structure to code mappings.')
     parser.add_argument('-p','--path', type=str, help='path to file(s)')
     parser.add_argument('-d','--debug', type=str, help='toggle debug mode.')
+    parser.add_argument('-o','--output', default='.', type=str, help='output directory')
 
     return parser
 
@@ -405,7 +406,7 @@ def processFile(javaFile,ceObject):
         nlpCandidates = ceObject.getNlpCandidates()
 
 
-def main(path,ceObject=None):
+def main(path,ceObject=None,output_directory='.'):
 
     if not ceObject:
 
@@ -452,7 +453,8 @@ def main(path,ceObject=None):
 
                         resName = path.replace('/','_')
 
-                    with open(f"structmappings-{resName}",'w') as fhandle:
+
+                    with open(f"{output_directory}/structmappings-{resName}",'w') as fhandle:
 
                         fhandle.write(json.dumps(results))
 
@@ -476,4 +478,4 @@ if __name__ == "__main__":
        print(parser.print_help())
        sys.exit()
 
-    main(args.path)
+    main(args.path,None,args.output)
