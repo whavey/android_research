@@ -7,6 +7,9 @@ import argparse
 import javalang
 import sys
 import inspect
+import glob
+import pandas
+from multiprocessing import Process
 
 def parser():
 
@@ -22,6 +25,8 @@ class CodeExtractor:
     def __init__(self, *args, **kwargs):
 
         self.tree = False
+        self.output_directory = '.'
+        self.tree_errors = []
         self.processed_files = []
         self.master_dict = {}
         self.ignore_structs = ["BasicType","Literal","ForControl","ArraySelector"]
@@ -268,9 +273,7 @@ class CodeExtractor:
         statements = e.statements
 
         if len(statements) > 0:
-
             for statement in statements:
-
                 self.check_and_parse(statement)
 
 
@@ -296,9 +299,7 @@ class CodeExtractor:
         declarators = e.declarators
 
         if len(declarators) > 0:
-
             for declarator in declarators:
-
                 self.check_and_parse(declarator)
 
 
@@ -328,40 +329,32 @@ class CodeExtractor:
     def SwitchStatement(self,e):
 
         for case in e.cases:
-
             self.check_and_parse(case)
 
 
     def SwitchStatementCase(self,e):
 
         for statement in e.statements:
-
             self.check_and_parse(statement)
 
 
     def check_and_parse(self,structure):
 
         if structure is None:
-
             #print("\nNo structure given")
             return False
 
         if type(structure) is list:
-
             for struct in structure:
-
                 self.check_and_parse(struct)
 
         struct_type = str(type(structure)).split('.')[-1][0:-2]
 
         if struct_type in dir(self):
-
             getattr(self,struct_type)(structure)
 
         else:
-
             if struct_type in self.ignore_structs:
-
                 return False
 
             self.make_handlers_for.append(structure)
@@ -379,93 +372,124 @@ class CodeExtractor:
             for elemChild in classChild:
 
                 for child in elemChild:
-
                     if type(child) == tuple:
-
                         continue
 
                     self.check_and_parse(child)
 
 
-# Heather: TODO: Needs Threading 
-# Process Single File
-def processFile(javaFile,ceObject):
+    # Process Single File
+    def processFile(self,javaFile):
+    
+        ext = javaFile.split('.')[-1] #type: {magic.from_file(path)[0:3]}")
+    
+        if ext == 'java':
+            tree = jtm.JavaTreeManager(path=javaFile).getTree()
+    
+            if not tree:
+                #print("Error getting javalang tree for:", javaFile)
+                self.tree_errors.append(javaFile)
+                return
+    
+            self.setTree(tree)
+            nlpCandidates = self.getNlpCandidates()
 
-    ext = javaFile.split('.')[-1] #type: {magic.from_file(path)[0:3]}")
+    def getResName(self,path):
 
-    if ext == 'java':
+        potential_names = path.split('/')
+        resName = False
+    
+        for pn in potential_names:
+            if pn[0:3] == ('com' or 'org'):
+                resName = pn
+                break
+    
+        if not resName:
+            resName = path.replace('/','_')
 
-        tree = jtm.JavaTreeManager(path=javaFile).getTree()
+        return resName
 
-        if not tree:
+    def processDir(self,path,subdir):
 
-            print("Error getting javalang tree for:", javaFile)
-            return
+        resName = self.getResName(path)
 
-        ceObject.setTree(tree)
-        nlpCandidates = ceObject.getNlpCandidates()
-
-
-def main(path,ceObject=None,output_directory='.'):
-
-    if not ceObject:
-
-        ceObject = CodeExtractor()
-
-    if not os.path.isdir(path):
-
-        print("File Processing:",path)
-        processFile(path,ceObject)
-
-    else:
-
-        for dirName, subdirList, fileList in os.walk(path):
+        for dirName, subdirList, fileList in os.walk(os.path.join(path,subdir)):
 
             currCount = 0
             totalFiles = len(fileList)
-
+    
             for fname in fileList:
-
                 if fname == "R.java":
-
                     continue
-
+    
                 f = os.path.join(dirName,fname)
-                processFile(f,ceObject)
-                ceObject.setProcessedFile(f)
-
-                results = ceObject.getResults()
-                processed = ceObject.getProcessedFiles()
-
+                self.processFile(f)
+                self.setProcessedFile(f)
+    
+                results = self.getResults()
+                processed = self.getProcessedFiles()
+    
                 if results:
-
-                    potential_names = path.split('/')
-                    resName = False
-
-                    for pn in potential_names:
-
-                        if pn[0:3] == ('com' or 'org'):
-
-                            resName = pn
-                            break
-
-                    if not resName:
-
-                        resName = path.replace('/','_')
-
-
-                    with open(f"{output_directory}/structmappings-{resName}",'w') as fhandle:
-
+    
+                    with open(f"{self.output_directory}/.structmappings-{resName}-{subdir}",'w+') as fhandle:
                         fhandle.write(json.dumps(results))
-
+    
                     currCount += 1
-                    print(f"\tProcessing files: {currCount} / {totalFiles}",end="\r",flush=True )
+                    #print(f"\tProcessing files: {currCount} / {totalFiles}",end="\r",flush=True )
 
-    #print(f"\nProcessed:\n{'='*len('Processed')}")
 
-    #for f in processed:
+    
+    def run(self,path,output_directory='.'):
+    
+        self.output_directory = output_directory
+        if not os.path.isdir(output_directory):
+            os.mkdir(self.output_directory)
 
-    #    print(f)
+        if not os.path.isdir(path):
+            #print("File Processing:",path)
+            processFile(path)
+    
+        else:
+            jobs = []
+            for _, subdirList, _ in os.walk(path):
+
+                for subdir in subdirList:
+                    p  = Process(target=self.processDir, args=(path,subdir,))
+                    p.start()
+                    jobs.append(p)
+
+        print(f"\nWaiting for all {len(jobs)} sub processes to finish.")
+        while len(jobs) > 0:
+            _jobs = jobs.copy()
+            for job in _jobs:
+                if not job.is_alive():
+                    jobs.remove(job)
+                    print("Subprocess finished. Remaining:",len(jobs))
+
+        print("\nAggregating and writing results.")
+        results = list()
+
+        resName = self.getResName(path)
+        for tmpfile in glob.glob(f"{self.output_directory}/.structmappings-{resName}*"):
+            with open(tmpfile,'r') as structfile:
+                results.append(json.load(structfile))
+
+            #os.remove(tmpfile)
+
+        outdict = {}
+        for _dict in results:
+            for k in _dict.keys():
+                if k in outdict.keys():
+                    outdict[k].update(_dict[k])
+                else:
+                    outdict.update(_dict)
+
+        resFile = os.path.join(self.output_directory,f"structmappings-{resName}")
+
+        with open(resFile,'w') as resultsfile:
+            resultsfile.write(json.dumps(outdict))
+
+        return resFile
 
 
 if __name__ == "__main__":
@@ -478,4 +502,5 @@ if __name__ == "__main__":
        print(parser.print_help())
        sys.exit()
 
-    main(args.path,None,args.output)
+    ceObject = CodeExtractor()
+    ceObject.run(args.path,args.output)

@@ -95,6 +95,10 @@ class PrivacySimilarity:
                 }
 
     @property
+    def getFoodFile(self):
+        return self.food
+
+    @property
     def getResults(self):
         return self.results
 
@@ -194,10 +198,11 @@ class PrivacySimilarity:
             jsonFood = json.load(food)
 
             jobs = []
-            for struct in jsonFood.keys():
-                p  = Process(target=self.worker, args=(jsonFood, struct,))
-                p.start()
-                jobs.append(p)
+            for result in jsonFood["results"]:
+                for struct in result.keys():
+                    p  = Process(target=self.worker, args=(jsonFood["results"], struct,))
+                    p.start()
+                    jobs.append(p)
 
         print("Waiting for all sub processes to finish.")
         while len(jobs) > 0:
@@ -220,7 +225,7 @@ class PrivacySimilarity:
 def main(path):
 
     psim = PrivacySimilarity(food=path)
-    psim.setResultsFile(f"results{self.food.replace('structmappings','')}")
+    psim.setResultsFile(f"results{psim.getFoodFile.replace('structmappings','')}")
     psim.processForSimilarity()
     psim.writeResults()
 
