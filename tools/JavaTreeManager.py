@@ -85,8 +85,7 @@ class JavaTreeManager:
             with open(target,'r') as _target:
                 tree = javalang.parse.parse(_target.read())
         except Exception as e:
-            print("Error with target",target)
-            print(e,'\n====')
+            #print("Error with target",target)
             tree = False
         return tree
 

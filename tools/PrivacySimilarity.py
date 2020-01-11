@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import colorama
+from colorama import Fore,Style
 import spacy
 import os
 import json
@@ -118,8 +120,6 @@ class PrivacySimilarity:
 
     def worker(self, jsonFood, struct):
 
-        os.environ["SPACY_WARNING_IGNORE"] = "W008"
-
         searchWordTokens = nlp(' '.join(self.searchWords.keys()))
         origWords = list(jsonFood[struct].keys())
         words = origWords.copy()
@@ -155,24 +155,28 @@ class PrivacySimilarity:
 
     def getSensitivityScores(self, results):
 
-        print("Getting Sensitivity Scores.")
-
         score_aggregate = 0
         count_total = 0
 
-        for entry in results:
-            for result in entry[list(entry.keys())[0]]:
-                count_total += 1
-                score_aggregate += result["SENSITIVITY_LEVEL"]
+        if len(results) > 0:
+            for entry in results:
+                for result in entry[list(entry.keys())[0]]:
+                    count_total += 1
+                    score_aggregate += result["SENSITIVITY_LEVEL"]
 
-        print("entry total:", count_total, "score aggregate:", score_aggregate, "average:", score_aggregate/count_total)
-        self.meta['total_privacy_score'] = score_aggregate
-        self.meta['average_privacy_score'] = score_aggregate / count_total
+            try:
+                print(Fore.BLUE + f"PrivacySimilarity: {self.food}: Entry total for :", count_total, "score aggregate:", score_aggregate, "average:", score_aggregate/count_total)
+
+            except ZeroDivisionError:
+                print("Division by zero for", self.food)
+
+            self.meta['total_privacy_score'] = score_aggregate
+            self.meta['average_privacy_score'] = score_aggregate / count_total
 
 
     def writeResults(self):
 
-        print("Aggregating and writing results.")
+        print(Fore.BLUE + f"PrivacySimilarity: {self.food}: Aggregating and writing results.")
         results = list()
 
         for tmpfile in glob.glob('.struct-results*'):
@@ -184,33 +188,37 @@ class PrivacySimilarity:
         self.getSensitivityScores(results)
         outdict = dict(meta=self.meta, results=results)
 
-        with open(os.path.join(self.outputDir,self.resultsFile),'w') as resultsfile:
+        resfile = os.path.join(self.outputDir,self.resultsFile)
+        with open(resfile, 'w') as resultsfile:
             resultsfile.write(json.dumps(outdict))
 
         with open(os.path.join(self.outputDir,self.resultsFile.replace('results','table')),'w') as table:
-            print("Generating HTML Table:\n", )
             print(convert(outdict,build_direction="TOP_TO_BOTTOM",table_attributes={"style": "width:100%"}), file=table)
+
+        return resfile
 
 
     def processForSimilarity(self):
 
+        print(Fore.BLUE + f"\nPrivacySimilarity: *START*:\n{self.food}")
         with open(self.food) as food:
             jsonFood = json.load(food)
 
             jobs = []
-            for result in jsonFood["results"]:
-                for struct in result.keys():
-                    p  = Process(target=self.worker, args=(jsonFood["results"], struct,))
-                    p.start()
-                    jobs.append(p)
+            for struct in jsonFood.keys():
+                p  = Process(target=self.worker, args=(jsonFood, struct,))
+                p.start()
+                jobs.append(p)
 
-        print("Waiting for all sub processes to finish.")
+        print("\n")
         while len(jobs) > 0:
+            yield "PrivacySimilarity processes still running.Yield."
             _jobs = jobs.copy()
             for job in _jobs:
                 if not job.is_alive():
                     jobs.remove(job)
-                    print("Subprocess finished. Remaining:",len(jobs))
+                    print(Fore.BLUE + f"PrivacySimilarity: {self.food} Subprocess finished. Remaining:",len(jobs),"<--",end='\r',flush=True)
+                    yield
 
                     # For checking similarity to reserved words.
                     # TODO: make toggleable
@@ -221,11 +229,14 @@ class PrivacySimilarity:
                     #    if spacy > .5 or lev > .75:
                     #        print(f"\n\t#Similar to reserved words: \n\t{token1} - {token2}\n\tSemantic:{spacy}\n\tLevenshtein:{lev}")
 
+        resfile = self.writeResults()
+        return resfile
+
 
 def main(path):
 
     psim = PrivacySimilarity(food=path)
-    psim.setResultsFile(f"results{psim.getFoodFile.replace('structmappings','')}")
+    psim.setResultsFile(f"results{path.replace('structmappings','').split('/')[-1]}")
     psim.processForSimilarity()
     psim.writeResults()
 

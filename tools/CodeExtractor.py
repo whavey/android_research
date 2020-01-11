@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import colorama
+from colorama import Fore,Style
 import os
 import JavaTreeManager as jtm
 import json
@@ -9,6 +11,8 @@ import sys
 import inspect
 import glob
 import pandas
+import multiprocessing
+import hashlib
 from multiprocessing import Process
 
 def parser():
@@ -25,46 +29,109 @@ class CodeExtractor:
     def __init__(self, *args, **kwargs):
 
         self.tree = False
+        self.max_processes = 1019# multiprocessing.cpu_count()*8
         self.output_directory = '.'
         self.tree_errors = []
         self.processed_files = []
         self.master_dict = {}
         self.ignore_structs = ["BasicType","Literal","ForControl","ArraySelector"]
         self.make_handlers_for = []
+        self.skipdirs = [
+                'me', 'androidx', 'kotlin', 'javax', 'io', 'bolts',
+                'android', 'fi', 'okhttp3', 'okio', 'defpackage', 'bitter',
+                'cpro', 'retrofit2', 'van', 'developers', 'universal', 'cn',
+                'cz', 'a', 'paperparcel', 'b', 'rx', 'p008do',
+                'p003for', 'p004if', 'kotlinx', 'dagger', 'de', 'jp',
+                'shared', 'plugin', 'network', 'CoronaProvider', 'missing', 'j$',
+                'watevra', 'ca', 'w', 'p', 's', 'h',
+                'timber', 'u', 'x', 'j', 't', 'n',
+                'i', 'q', 'firebase', 'k', 'butterknife', 'v',
+                'o', 'r', 'm', 'l', 'ffimageloading',
+                'xamarin', 'mono',  
+                'opentk', 'opentk_1_0', 
+                'c', 'e', 'd', 'f', 'pub', 'p010if', 'p009for',
+                'p003do', 'g', 'ru', 'hu', 'tv', 'twitter4j',
+                'uk', 'zendesk', 'proguard', 'at', 'bo', 'pl',
+                'retrofit', 'junit', 'freemarker', 'oauth', 'ch', 'name',
+                'cordova', 'nl', 'fr', 'br', 'lib', 'roboguice',
+                'leakcanary', 'se', 'oooooo', 'nnnnnn', 'social', 'googledata',
+                'gen_binder', 'logs', 'siftscience', 'nucleus', 'permissions', 'chirpconnect',
+                'go', 'by', 'scratch', 'in', 'im', 'info',
+                'icepick', 'it', 'z', 'no', 'teads', 'carbon',
+                'eu', 'aa', 'ubermedia', 'main', 'app', 'repackaged',
+                'drinkless', 'avro', 'autovalue', 'video', 'audio', 'haymaker',
+                'kotterknife', 'auto', 'companion', 'blur', 'J', 'tvo',
+                'secondary', 'java', 'eightbitlab', 'mobileads', 'unitydirectionkit', 'okhttp3copy',
+                'spacemadness', 'au', 'retrofit2copy', 'squareup', 'okiocopy', 'p010for',
+                'p000do', 'p011if', 'air', 'Microsoft', 'Ms', 'ly',
+                'microsoft', 'b0', 'g0', 'c0', 'f0', 'a0',
+                'd0', 'h0', 'e0', 'fm', 'y', 'okreplay',
+                'xyz', 'moe', 'xmlwise', 'rx_activity_result2', 'afu', 'libcore',
+                'comms', 'bigo', 'sg', 'es', 'mbanje', 'test',
+                'inshot', 'us', 'mobi', 'arch', 'project', 'flipboard',
+                'ie', 'tdt', 'vdgk', 'pwz', 'qmm', 'snapchat',
+                'sns', 'X', 'v2signature', 'cat', 'beancopy', 'dmt',
+                'gen', 'conan', 'demo', 'toothpick', 'brut', 'theoremreach',
+                'lombok', 'amazon', 'coreplaybackplugin', 'jumio', 'jcifs', 'collections',
+                'cl', 'bb', 'gs', 'be', 'ff', 'ai', 'db', 
+                'md52784b6b6564df579ab09ba8bad5c54dd', 
+                'md56aabda7acd4abaa2b1d1169cd8c7c6ee',
+                'md58432a647068b097f9637064b8985a5e0', 
+                'md51558244f76c53b6aeda52c8a337f2c37', 
+                'md5adcd58131f4046b9abfeb77bd8cc5019',
+                'md583c97a0310bc1a6b1fc391803d3b5925', 
+                'md5dab4f5c7853fd57f3a9c9a523364ac69', 
+                'md513d0258903c37fed2a3d17a14e8551a2', 
+                'md5dcb6eccdc824e0677ffae8ccdde42930', 
+                'md513074be467e0034b6ca192c1689af813',
+                'md52514e982df737db6cefaf8b770e7bf9c', 
+                'md51ced204a8584c6428455006baf22546f', 
+                'md51a661c430a2ff996e6df44cb033f322b', 
+                'md5a649762eb5f39d42f149c3b708a371fd', 
+                'md5bdef51b5d55b03f73ceb6e3f875ee94c',
+                'md55759adc3208eb42caa6ddcbd3000b15e',
+                'md5d630c3d3bfb5f5558520331566132d97',
+                'md5d06a077489831141efe6f537ac3ef2f5',
+                'md5bb098716dd46c8e113564e6b42b7cde9',
+                'md508a116ab629a9168c5f121b9962d8ce6',
+                'md5ee831aaa9224fb6bebbc261c6e557baa',
+                'md5fe8996628db2722b2645843f91097c26', 
+                'md5f92e0daf340890c9667469657ee2ece8', 
+                'md5a0a6d252fe95a949244d2744b3db206e', 
+                'java9', 'kankan', 'gnu', 'rrrrrr', 'android_src', 
+                'generated_rootmodule', 'dalvik', 'hardlight', 'sdk', 'we', 
+                'id', 'hirondelle', 'pb', 'dagger1', 'google', 
+                'hotchemi', 'colorlights',  'mehdi', 'j0', 'i0',  
+                'theme_engine', 'mystickers', 'kin', 'photo']
 
+    def getTreeErrors(self):
+        return self.tree_errors
 
     def setProcessedFile(self,f):
-
         self.processed_files.append(f)
 
 
     def getProcessedFiles(self):
-
         return self.processed_files
 
 
     def setIgnoreStructs(self,ignore_structs):
-
         self.ignore_structs = list(ignore_structs)
 
 
     def getUnhandled(self):
-
         return self.make_handlers_for
 
 
     def getResults(self):
-
         return self.master_dict
 
 
     def setPath(self,path):
-
         self.path = path
 
 
     def setTree(self,tree):
-
         self.tree = tree
 
 
@@ -377,9 +444,27 @@ class CodeExtractor:
 
                     self.check_and_parse(child)
 
+    def getResName(self,path):
 
-    # Process Single File
+        potential_names = path.split('/')
+        resName = False
+    
+        for pn in potential_names:
+            if pn[0:3] == ('com' or 'org' or 'net' or 'edu'):
+                resName = pn
+                break
+    
+        if not resName:
+            resName = path.replace('/','_')
+            resName = hashlib.md5(str.encode(resName)).hexdigest()
+
+        self.setProcessedFile(path)
+
+        return resName
+
     def processFile(self,javaFile):
+
+        resName = self.getResName(javaFile)
     
         ext = javaFile.split('.')[-1] #type: {magic.from_file(path)[0:3]}")
     
@@ -387,100 +472,86 @@ class CodeExtractor:
             tree = jtm.JavaTreeManager(path=javaFile).getTree()
     
             if not tree:
-                #print("Error getting javalang tree for:", javaFile)
                 self.tree_errors.append(javaFile)
                 return
     
             self.setTree(tree)
             nlpCandidates = self.getNlpCandidates()
+            
+        results = self.getResults()
 
-    def getResName(self,path):
+        if results:
+            thisFile = javaFile.split("/")[-1]
 
-        potential_names = path.split('/')
-        resName = False
-    
-        for pn in potential_names:
-            if pn[0:3] == ('com' or 'org'):
-                resName = pn
-                break
-    
-        if not resName:
-            resName = path.replace('/','_')
+            with open(f"{self.output_directory}/.structmappings-{resName}-{thisFile}",'w+') as fhandle:
+                fhandle.write(json.dumps(results))
 
-        return resName
+    def jobCheck(self,jobs):
 
-    def processDir(self,path,subdir):
-
-        resName = self.getResName(path)
-
-        for dirName, subdirList, fileList in os.walk(os.path.join(path,subdir)):
-
-            currCount = 0
-            totalFiles = len(fileList)
-    
-            for fname in fileList:
-                if fname == "R.java":
-                    continue
-    
-                f = os.path.join(dirName,fname)
-                self.processFile(f)
-                self.setProcessedFile(f)
-    
-                results = self.getResults()
-                processed = self.getProcessedFiles()
-    
-                if results:
-    
-                    with open(f"{self.output_directory}/.structmappings-{resName}-{subdir}",'w+') as fhandle:
-                        fhandle.write(json.dumps(results))
-    
-                    currCount += 1
-                    #print(f"\tProcessing files: {currCount} / {totalFiles}",end="\r",flush=True )
-
-
-    
-    def run(self,path,output_directory='.'):
-    
-        self.output_directory = output_directory
-        if not os.path.isdir(output_directory):
-            os.mkdir(self.output_directory)
-
-        if not os.path.isdir(path):
-            #print("File Processing:",path)
-            processFile(path)
-    
-        else:
-            jobs = []
-            for _, subdirList, _ in os.walk(path):
-
-                for subdir in subdirList:
-                    p  = Process(target=self.processDir, args=(path,subdir,))
-                    p.start()
-                    jobs.append(p)
-
-        print(f"\nWaiting for all {len(jobs)} sub processes to finish.")
-        while len(jobs) > 0:
+        deadJobs = 0
+        while deadJobs < multiprocessing.cpu_count():
             _jobs = jobs.copy()
+
             for job in _jobs:
                 if not job.is_alive():
                     jobs.remove(job)
-                    print("Subprocess finished. Remaining:",len(jobs))
+                    deadJobs += 1
+                    yield
+                    if deadJobs >= multiprocessing.cpu_count():
+                        return
 
-        print("\nAggregating and writing results.")
+    def run(self,path,output_directory='.'):
+    
+        self.output_directory = output_directory
+
+        if not os.path.isdir(output_directory):
+            os.mkdir(self.output_directory)
+
+        print(Fore.GREEN + f"\nCodeExtractor: *START*:\n{path}")
+        if os.path.isfile(path):
+            self.processFile(path)
+    
+        else:
+            jobs = []
+
+            for thisDir, subdirList, fileList in os.walk(path):
+                for _file in fileList:
+                    p  = Process(target=self.processFile, args=(os.path.join(thisDir,_file),))
+                    p.start()
+                    jobs.append(p)
+
+                    if len(jobs) >= self.max_processes:
+                        yield
+                        self.jobCheck(jobs)
+
+        print("\n")
+        while len(jobs) > 0:
+            _jobs = jobs.copy()
+
+            for job in _jobs:
+                if not job.is_alive():
+                    jobs.remove(job)
+                    print(Fore.GREEN + f"CodeExtractor: Subprocess finished. Remaining: ",len(jobs),"<--",end='\r',flush=True)
+
+        print(Fore.GREEN + f"\nCodeExtractor: {path}: Aggregating and writing results.")
         results = list()
 
         resName = self.getResName(path)
         for tmpfile in glob.glob(f"{self.output_directory}/.structmappings-{resName}*"):
             with open(tmpfile,'r') as structfile:
-                results.append(json.load(structfile))
+                try:
+                    results.append(json.load(structfile))
+                except:
+                    print("\nProblem appending json results to final structmappings file",tmpfile)
 
-            #os.remove(tmpfile)
+            os.remove(tmpfile)
 
         outdict = {}
         for _dict in results:
             for k in _dict.keys():
                 if k in outdict.keys():
                     outdict[k].update(_dict[k])
+
                 else:
                     outdict.update(_dict)
 
@@ -489,7 +560,16 @@ class CodeExtractor:
         with open(resFile,'w') as resultsfile:
             resultsfile.write(json.dumps(outdict))
 
-        return resFile
+        yield resFile
+
+    def getStats(self):
+        
+        processed = self.getProcessedFiles()
+        treeErrors = self.getTreeErrors()
+        unhandled = self.getUnhandled()
+        print(f"\nProcessed {len(processed)} files.")
+        print(f"\nError getting javalang tree for {len(treeErrors)} files.")
+        print(f"\nCodeExtractor handler not made for {len(unhandled)} java code structures.")
 
 
 if __name__ == "__main__":
