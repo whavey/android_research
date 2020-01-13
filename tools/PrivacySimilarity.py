@@ -237,13 +237,13 @@ class PrivacySimilarity:
 
         print("\n")
         while len(jobs) > 0:
-            #yield "PrivacySimilarity processes still running.Yield."
+            yield "PrivacySimilarity processes still running.Yield."
             _jobs = jobs.copy()
             for job in _jobs:
                 if not job.is_alive():
                     jobs.remove(job)
                     print(Fore.BLUE + f"PrivacySimilarity: {self.food} Subprocess finished. Remaining:",len(jobs),"<--",end='\r',flush=True)
-                    #yield
+                    yield
 
                     # For checking similarity to reserved words.
                     # TODO: make toggleable
