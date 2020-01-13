@@ -10,7 +10,6 @@ import javalang
 import sys
 import inspect
 import glob
-import pandas
 import multiprocessing
 import hashlib
 from multiprocessing import Process
@@ -29,6 +28,7 @@ class CodeExtractor:
     def __init__(self, *args, **kwargs):
 
         self.tree = False
+        self.appname = None
         self.max_processes = 1019# multiprocessing.cpu_count()*8
         self.output_directory = '.'
         self.tree_errors = []
@@ -444,28 +444,31 @@ class CodeExtractor:
 
                     self.check_and_parse(child)
 
-    def getResName(self,path):
+    def getResName(self, path):
 
-        potential_names = path.split('/')
         resName = False
-    
-        for pn in potential_names:
-            if pn[0:3] == ('com' or 'org' or 'net' or 'edu'):
-                resName = pn
-                break
-    
-        if not resName:
-            resName = path.replace('/','_')
-            resName = hashlib.md5(str.encode(resName)).hexdigest()
 
-        self.setProcessedFile(path)
+        if self.appname:
+            resName = self.appname
+
+        else:
+            potential_names = path.split('/')
+    
+            for pn in potential_names:
+                if pn[0:3] == ('com' or 'org' or 'net' or 'edu' or 'cool'):
+                    resName = pn
+                    break
+    
+            if not resName:
+                resName = path.replace('/','_')
+                resName = hashlib.md5(str.encode(resName)).hexdigest()
+
+            self.setProcessedFile(path)
 
         return resName
 
     def processFile(self,javaFile):
 
-        resName = self.getResName(javaFile)
-    
         ext = javaFile.split('.')[-1] #type: {magic.from_file(path)[0:3]}")
     
         if ext == 'java':
@@ -483,7 +486,7 @@ class CodeExtractor:
         if results:
             thisFile = javaFile.split("/")[-1]
 
-            with open(f"{self.output_directory}/.structmappings-{resName}-{thisFile}",'w+') as fhandle:
+            with open(f"{self.output_directory}/.structmappings-{self.getResName(javaFile)}-{thisFile}",'w+') as fhandle:
                 fhandle.write(json.dumps(results))
 
     def jobCheck(self,jobs):
@@ -500,14 +503,17 @@ class CodeExtractor:
                     if deadJobs >= multiprocessing.cpu_count():
                         return
 
-    def run(self,path,output_directory='.'):
+    def run(self, path, app=None, output_directory='.'):
     
+        if app:
+            self.appname = app
+
         self.output_directory = output_directory
 
         if not os.path.isdir(output_directory):
             os.mkdir(self.output_directory)
 
-        print(Fore.GREEN + f"\nCodeExtractor: *START*:\n{path}")
+        print(Fore.GREEN + f"\n\tCodeExtractor: *START*:\n{path}")
         if os.path.isfile(path):
             self.processFile(path)
     

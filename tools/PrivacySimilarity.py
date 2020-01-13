@@ -26,7 +26,7 @@ def parser():
 
 class PrivacySimilarity:
 
-    def __init__(self, food, lev_threshold = .75, sem_threshold = .5):
+    def __init__(self, food, lev_threshold = .85, sem_threshold = .6):
 
         if not food:
             print("Feed me a json file to process.")
@@ -34,7 +34,14 @@ class PrivacySimilarity:
 
         self.lev_threshold = lev_threshold
         self.sem_threshold = sem_threshold
-        self.meta = dict(levenshtein_threshold=lev_threshold,sematic_threshold=sem_threshold,total_privacy_score=0,average_privacy_score=0)
+        self.meta = dict(
+                levenshtein_threshold=lev_threshold,
+                sematic_threshold=sem_threshold,
+                total_privacy_score=0,
+                average_privacy_score=0,
+                highest_sensitivity_score=0,
+                highest_sensitivity_token=None,
+                )
         self.results = dict()
         self.resultsFile = "_results"
         self.outputDir = "."
@@ -71,29 +78,42 @@ class PrivacySimilarity:
                          'imagebutton', 'activityinfo']
 
         self.searchWords = {
-                'username':1, 'name':1, 'email':1,
-                'passwd':1, 'password':1, 'pwd':1,
-                'phone_number':1, 'phone_num':1, 'twitter':1,
-                'social_media_url':2, 'wi_ssid':1, 'ssid':1,
-                'ftp':1, 'smtp':1, 'facebook':1,
-                'nq_account':1, 'gritsafe':1, 'exchange':1,
-                'adobe':1, 'username_or_email':1, 'twitter_passwd':1,
-                'wi_passwd':1, 'gmail_passwd':1, 'social_media_url':1,
-                'wi_ssid':1, 'ftp_passwd':1, 'smtp_passwd':1,
-                'facebook_passwd':1, 'nq_account_passwd':1, 'mint_passwd':1,
-                'gritsafe_passwd':1, 'exchange_passwd':1, 'adobe_passwd':1,
-                'person_name':1, 'date_of_birth':2, 'gender':2,
-                'company_name':1, 'person_age':2, 'person_weight':3,
-                'job_title':1, 'person_height':3, 'school_name':1,
-                'education_info':1, 'marital_status':3, 'demographic_info':3,
-                'native_language':3, 'citizenship':1, 'birth_place':2,
-                'marriage_date':2, 'religion':3, 'political_affiliation':3,
-                'credit_card_info':1, 'loan_info':1, 'bank_account_info':1,
-                'salary':2, 'bank_info':1, 'house_financial_info':1,
-                'vehicle_info':1, 'license_plate':3, 'vehicle_vin':3,
-                'insurance_policy_num':2, 'vehicle_registration':2, 'license_expiry_date':2,
-                'device_id':1, 'mac_address':2, 'serial_num':1,
-                'service_provider':2
+                # Using Schomakers 1-10, using ceiling (example: 9.01 -> 10)
+
+                # High-privacy segment
+                'passwd':10, 'password':10, 'pwd':10, 'twitter_passwd':10, 'wi_passwd':10, 'gmail_passwd':10,
+                'ftp_passwd':10, 'smtp_passwd':10, 'facebook_passwd':10, 'nq_account_passwd':10, 'mint_passwd':10, 'gritsafe_passwd':10,
+                'exchange_passwd':10, 'adobe_passwd':10, 'credit_card_number':10, 'loan_info':10, 'bank_account_number':10, 'bank_info':10,
+                'house_financial_info':10, 'vehicle_info':8, # specifically the registration number
+                'vehicle_vin':8, 'device_id':8, 'mac_address':8, # IP addr are considered 'high', MACs can't be changed as easily
+                'serial_num':8, 'insurance_policy_num':9,
+
+                # the following fields were not in our original list:
+                'drivers_license':9, 'ip_address':8, 'social_security_number':10, 'credit_score':8, 'passport_number':9,
+
+                # the following fields were listed in the paper but seem irrelevant here:
+                'fingerprint':9, 'dna_profile':9, 'digital_signature':9,
+
+                # Med-privacy segment
+                'username':7, 'phone_number':7, 'phone_num':7, 'twitter':7, 'social_media_url':7, 'wi_ssid':7,
+                'ssid':7, 'ftp':7, 'smtp':7, 'facebook':7, 'nq_account':7, 'gritsafe':7,
+                'exchange':7, 'adobe':7, 'username': 7, 'email':7, # note that username is med while email is low
+                'salary':7, 'income':7, 'vehicle_registration':7, 'license_expiry_date':7, 'license_plate':7, 'service_provider':7,
+
+                # the following fields were listed in the papers but not in our original list:
+                'maiden_name':8, 'address':7, 'gps':7, 'location':7, 'medication':9, 'sexual_preference':6,
+
+                # the following fields were listed in the paper but seem irrelevant here:
+                #handwriting sample, voice print, medical history (!), picture of face,
+                #law enforcement files, grievance documentation, browsing history, online dating activities, and survey answers
+
+                # Low-privacy segment
+                'birth_place':6, 'demographic_info':5, 'religion':6, 'person_weight':5, 'person_height':5, 'email':7,
+                'date_of_birth':6, 'person_age':6, # can be determined from date of birth 'zip_code':5,
+                'number_of_children':5, 'political_affiliation':5, 'company_name':5, # occupation info
+                'job_title':5, # occupation info 'person_name':5, 'gender':5, 'school_name':5,
+                'education_info':5, 'marital_status':5, 'native_language':5, 'citizenship':5, 'marriage_date':5, 'pet_name':5, #only german data exists
+                'hair_color':5, #only german data exists 'alcohol_consumption':5, #only german data exists 'signed_ petitions':5,
                 }
 
     @property
@@ -131,6 +151,7 @@ class PrivacySimilarity:
         string = ' '.join(words)
         structTokens = nlp(string)
 
+
         for token in structTokens:
             for token2 in searchWordTokens:
                 spacy = token.similarity(token2)
@@ -144,8 +165,8 @@ class PrivacySimilarity:
                         "ANDROID_APP_TOKEN": str(token),
                         "SIMILAR_PRIVACY_RELATED_TOKEN": str(token2),
                         "SENSITIVITY_LEVEL": self.searchWords[str(token2)],
-                        'SEMANTIC_SIMILARITY_SCORE': str(spacy),
-                        'LEVENSHTEIN_SIMILARITY_SCORE': str(lev)
+                        "SEMANTIC_SIMILARITY_SCORE": str(spacy),
+                        "LEVENSHTEIN_SIMILARITY_SCORE": str(lev)
                         })
 
         if self.results:
@@ -164,11 +185,15 @@ class PrivacySimilarity:
                     count_total += 1
                     score_aggregate += result["SENSITIVITY_LEVEL"]
 
+                    if result["SENSITIVITY_LEVEL"] > self.meta["highest_sensitivity_score"]:
+                        self.meta["highest_sensitivity_score"] = result["SENSITIVITY_LEVEL"]
+                        self.meta["highest_sensitivity_token"] = result["ANDROID_APP_TOKEN"]
+
             try:
                 print(Fore.BLUE + f"PrivacySimilarity: {self.food}: Entry total for :", count_total, "score aggregate:", score_aggregate, "average:", score_aggregate/count_total)
 
             except ZeroDivisionError:
-                print("Division by zero for", self.food)
+                print(Fore.BLUE + "PrivacySimilarity: Division by zero for", self.food)
 
             self.meta['total_privacy_score'] = score_aggregate
             self.meta['average_privacy_score'] = score_aggregate / count_total
@@ -200,7 +225,7 @@ class PrivacySimilarity:
 
     def processForSimilarity(self):
 
-        print(Fore.BLUE + f"\nPrivacySimilarity: *START*:\n{self.food}")
+        print(Fore.BLUE + f"\n\tPrivacySimilarity: *START*:\n{self.food}")
         with open(self.food) as food:
             jsonFood = json.load(food)
 
@@ -212,13 +237,13 @@ class PrivacySimilarity:
 
         print("\n")
         while len(jobs) > 0:
-            yield "PrivacySimilarity processes still running.Yield."
+            #yield "PrivacySimilarity processes still running.Yield."
             _jobs = jobs.copy()
             for job in _jobs:
                 if not job.is_alive():
                     jobs.remove(job)
                     print(Fore.BLUE + f"PrivacySimilarity: {self.food} Subprocess finished. Remaining:",len(jobs),"<--",end='\r',flush=True)
-                    yield
+                    #yield
 
                     # For checking similarity to reserved words.
                     # TODO: make toggleable
