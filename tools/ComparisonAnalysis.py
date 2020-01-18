@@ -194,7 +194,7 @@ print("highest category average:", highest_avg_score[1], "with:",  highest_avg_s
 print("highest category average (NO ZEROS):", highest_avg_score_nz[1], "with:",  highest_avg_score_nz[0])
 print("highest category aggregate:",  highest_agg_score[1], "with:", highest_agg_score[0])
 
-print(json.dumps(analysis_dict), file=open("post_analysis.json", "w"))
+print(json.dumps(analysis_dict), file=open("analysis/post_analysis.json", "w"))
 
 categories = [cat for cat in analysis_dict.keys()]
 
@@ -230,4 +230,4 @@ np_vector_num_results = np.array(vector_num_results)
 np_vectors["np_vector_num_results"] =  np_vector_num_results
 
 for np in np_vectors.keys():
-    scipy.io.savemat(f"{np}.mat", mdict={f"{np}": np_vectors[np]})
+    scipy.io.savemat(f"analysis/{np}.mat", mdict={f"{np}": np_vectors[np]})

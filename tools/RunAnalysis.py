@@ -40,9 +40,6 @@ def main(path, appcount):
     if not os.path.isdir("full_results"):
         os.mkdir("full_results")
 
-    if not os.path.isdir("processed_apks"):
-        os.mkdir("processed_apks")
-
     # Generator for processing across categories
     categories = (category for category in os.listdir(path))
 
