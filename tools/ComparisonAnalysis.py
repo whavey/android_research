@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import os
 import json
+import numpy as np
+import scipy.io
 
 global master_total
 global master_total_no_zeros
@@ -111,9 +113,19 @@ master_dict = {}
 highest_avg_score = (0, None)
 highest_agg_score = (0, None)
 highest_avg_score_nz = (0, None)
+categories = []
 
 for cat in os.listdir("full_results"):
-    resfiles = [f for f in os.listdir(os.path.join("full_results", cat)) if "results-" in f]
+    resfiles = []
+    count = 0
+    for f in os.listdir(os.path.join("full_results", cat)):
+        if count >= 17:
+            break
+
+        if "results-" in f:
+            resfiles.append(f)
+            count += 1
+
     master_dict[cat] = resfiles
     analysis_dict[cat] = {}
     getStats(cat, master_dict[cat])
@@ -170,6 +182,7 @@ analysis_dict["meta"] = {
 
 print("\n\nOverall Analysis")
 print("================")
+print("Total Categories", len(master_dict.keys()))
 print("Total APPs:", app_count)
 print("Overall aggregate score:", master_total)
 print("Overall aggregate score average:", master_total/master_count)
@@ -182,3 +195,39 @@ print("highest category average (NO ZEROS):", highest_avg_score_nz[1], "with:", 
 print("highest category aggregate:",  highest_agg_score[1], "with:", highest_agg_score[0])
 
 print(json.dumps(analysis_dict), file=open("post_analysis.json", "w"))
+
+categories = [cat for cat in analysis_dict.keys()]
+
+vector_avg_nz = [categories, []]
+vector_avg = [categories, []]
+vector_agg = [categories, []]
+vector_agg_nz = [categories, []]
+vector_num_10 = [categories, []]
+vector_num_results = [categories, []]
+
+for cat in list(analysis_dict.keys())[:-1]:
+    vector_avg_nz[1].append(analysis_dict[cat]["meta"]["avg_nz"])
+    vector_avg[1].append(analysis_dict[cat]["meta"]["avg"])
+    vector_agg[1].append(analysis_dict[cat]["meta"]["aggregate"])
+    vector_num_10[1].append(analysis_dict[cat]["meta"]["num10"])
+    vector_num_results[1].append(analysis_dict[cat]["meta"]["num_results"])
+
+np_vectors = {} 
+
+np_vector_avg_nz = np.array(vector_avg_nz),
+np_vectors["np_vector_avg_nz"] =  np_vector_avg_nz
+
+np_vector_avg = np.array(vector_avg),
+np_vectors["np_vector_avg"] =  np_vector_avg
+
+np_vector_agg = np.array(vector_agg)
+np_vectors["np_vector_agg"] =  np_vector_agg
+
+np_vector_num_10 = np.array(vector_num_10),
+np_vectors["np_vector_num_10"] =  np_vector_num_10
+
+np_vector_num_results = np.array(vector_num_results)
+np_vectors["np_vector_num_results"] =  np_vector_num_results
+
+for np in np_vectors.keys():
+    scipy.io.savemat(f"{np}.mat", mdict={f"{np}": np_vectors[np]})

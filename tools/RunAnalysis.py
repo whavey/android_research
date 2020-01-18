@@ -109,6 +109,7 @@ def main(path, appcount):
     rpsGen = None
     count = 0
     cat = next(categories)
+    rceDone = False
 
     while True:
         try:
@@ -116,9 +117,13 @@ def main(path, appcount):
             break
         except StopIteration:
             print("All apps processed in cat",cat)
-            cat = next(categories)
+            try:
+                cat = next(categories)
+            except StopIteration:
+                print("All cats processed")
+                rceDone = True
+                break
 
-    rceDone = False
 
     # Main processing loop
     while True:
