@@ -36,93 +36,155 @@ def runPrivacySimilarity(path,output):
 
 def main(path, appcount):
 
+    # Setup result directories
     if not os.path.isdir("full_results"):
         os.mkdir("full_results")
 
     if not os.path.isdir("processed_apks"):
         os.mkdir("processed_apks")
 
-    master_dict = {}
+    # Generator for processing across categories
     categories = (category for category in os.listdir(path))
 
+    # Dict for tracking what apps to process per cat
+    master_dict = {}
+
+    # Get processed already and print
+    processed = []
+    for cat in os.listdir("full_results"):
+        for _file in os.listdir(os.path.join("full_results",cat)):
+            if "results-" in _file:
+                processed.append(_file.replace("results-",""))
+
+    print(f"\nAlready Processed {len(processed)} apps:")
+    print("------------------------")
+    for apk in processed:
+        print(apk)
+
+    # Get apps where structmaps made
+    structmaps_made = []
+    for cat in os.listdir("full_results"):
+        for _file in os.listdir(os.path.join("full_results",cat)):
+            if "structmappings" in _file:
+                if _file[0] != '.':
+                    structmaps_made.append(_file)
+
+    # Determine if structmaps files already processed
+    unprocessed_struct_files = []
+    for cat in os.listdir("full_results"):
+        for _file in os.listdir(os.path.join("full_results",cat)):
+            if _file in structmaps_made:
+                appname = _file.replace("structmappings-",'')
+                if appname not in processed:
+                    unprocessed_struct_files.append(appname)
+                    smapqueue.put((os.path.join("full_results",cat,_file),appname,os.path.join("full_results",cat)))
+
+    print(f"\nPushing unprocessed already made {len(unprocessed_struct_files)} files to queue:")
+    print("---------------------------------------------------------------------")
+    for un in unprocessed_struct_files:
+        print(un)
+        
+    # Determine apps that still need full processing
+    _apps = []
+    for cat in os.listdir(path):
+        _apps = _apps + [app for app in os.listdir(os.path.join(path,cat)) if (app not in processed) and (f"structmappings-{app}" not in structmaps_made)]
+
+    print(f"\nWill perform full process on {len(_apps)} apps:")
+    print("-----------------------------------")
+    for app in _apps:
+        print(app)
+
+    # Populate master dict with needed processing per cat
     for cat in categories:
-        apps = (app for app in os.listdir(os.path.join(path,cat)))
-        os.mkdir(f"processed_apks/{cat}")
+        apps = (app for app in os.listdir(os.path.join(path,cat)) if (app not in processed) and (f"structmappings-{app}" not in structmaps_made))
+
+        if not os.path.isdir(f"processed_apks/{cat}"):
+            os.mkdir(f"processed_apks/{cat}")
+
         master_dict[cat] = apps
 
+    # Set initial state for generators
     categories = (category for category in os.listdir(path))
     rceGen = None
     rpsGen = None
     count = 0
     cat = next(categories)
-    app = next(master_dict[cat])
-    rceDone = False
 
     while True:
-            resultpath = os.path.join("full_results", cat)
+        try:
+            app = next(master_dict[cat])
+            break
+        except StopIteration:
+            print("All apps processed in cat",cat)
+            cat = next(categories)
 
-            if not rceDone:
-                if not rceGen:
-                    mainpath = "/".join(app.replace(".","/").split("/")[0:-1])
-                    apppath = os.path.join(path, cat, app)
-                    target = os.path.join(apppath, "sources", mainpath)
-                    rceGen = runCodeExtractor(target, app, resultpath)
+    rceDone = False
+
+    # Main processing loop
+    while True:
+        resultpath = os.path.join("full_results", cat)
+
+        if not rceDone:
+            if not rceGen:
+                mainpath = "/".join(app.replace(".","/").split("/")[0:-1])
+                apppath = os.path.join(path, cat, app)
+                target = os.path.join(apppath, "sources", mainpath)
+                rceGen = runCodeExtractor(target, app, resultpath)
+
+            try:
+                extracted = next(rceGen)
+
+            except StopIteration:
+                smapqueue.put((extracted, app, resultpath))
 
                 try:
-                    extracted = next(rceGen)
+                    cat = next(categories)
 
                 except StopIteration:
-                    smapqueue.put((extracted, app, resultpath))
+                    count += 1
+                    
+                    if count == appcount:
+                        print(f"Struct Mappings created for [{appcount}] apps per category. Now just waiting for PrivacySimilarity.")
+                        rceDone = True
 
-                    try:
-                        cat = next(categories)
+                    else:
+                        categories = (category for category in os.listdir(path))
+                        print(f"\nCycling Categories for next iteration of processing: {count}/{appcount}")
 
-                    except StopIteration:
-                        count += 1
-                        
-                        if count == appcount:
-                            print(f"Struct Mappings created for [{appcount}] apps per category. Now just waiting for PrivacySimilarity.")
-                            rceDone = True
+                try:
+                    app = next(master_dict[cat])
 
-                        else:
-                            categories = (category for category in os.listdir(path))
-                            print(f"\nCycling Categories for next iteration of processing: {count}/{appcount}")
+                except StopIteration:
+                    print("No more apps in category:", cat)
 
-                    try:
-                        app = next(master_dict[cat])
+                rceGen = None 
 
-                    except StopIteration:
-                        print("No more apps in category:", cat)
+        if rceDone and smapqueue.empty():
+            break
 
-                    rceGen = None 
+        if rpsGen:
+            try:
+                next(rpsGen)
 
-            if rceDone and smapqueue.empty():
-                break
+            except StopIteration:
+                print("\n*** Finished Processing:", appname)
+                print(f"Remaining Queue: [{list(smapqueue.queue)}]")
 
-            if rpsGen:
+                for i in list(smapqueue.queue):
+                    print(i[1])
+
+                rpsGen = None
+
+        else:
+            if not smapqueue.empty():
+                structmapfile, appname, _resultpath = smapqueue.get()
+                rpsGen = runPrivacySimilarity(structmapfile, _resultpath)
+
                 try:
                     next(rpsGen)
 
                 except StopIteration:
-                    print("\n*** Finished Processing:", appname)
-                    print("Remaining Queue:")
-
-                    for i in list(smapqueue.queue):
-                        print(i[1])
-
-                    shutil.copytree(apppath, f"processed_apks/{_resultpath.split('/')[-1]}/{appname}")
-                    rpsGen = None
-
-            else:
-                if not smapqueue.empty():
-                    structmapfile, appname, _resultpath = smapqueue.get()
-                    rpsGen = runPrivacySimilarity(structmapfile, _resultpath)
-
-                    try:
-                        next(rpsGen)
-
-                    except StopIteration:
-                        print("\nGot stop iteration immediately processing:", structmapfile)
+                    print("\nGot stop iteration immediately processing:", structmapfile)
 
 if __name__ == "__main__":
 
