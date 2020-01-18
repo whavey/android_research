@@ -1,4 +1,5 @@
 apks
 _apks
 other
-__pycache__/*
+__pycache__
+*.tgz
