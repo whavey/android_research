@@ -35,22 +35,26 @@ def getStats(cat, catlist):
         count_no_zeros = 0
         total_avg_no_zeros = 0
         app_dict = {}
+        total_num_results = 0
 
         for f in catlist:
-            app_num_tens = 0
             with open(os.path.join("full_results", cat, f)) as jfile:
                 j = json.loads(jfile.read())
                 _total = j["meta"]["total_privacy_score"]
                 avg = j["meta"]["average_privacy_score"]
+                
+                num_results = 0
+                for entry in j["results"]:
+                    for key in entry.keys():
+                        num_results += len(entry[key])
+                
+                total_num_results += num_results
 
-                analysis_dict[cat][f] = { "agg": _total, "avg": avg }
+                analysis_dict[cat][f] = { "agg": _total, "avg": avg, "num_results": num_results }
 
                 if j["meta"]["highest_sensitivity_score"] == 10:
                     number_of_tens += 1
                     master_number_of_tens += 1
-                    app_num_tens += 1
-
-                app_dict[f] = { "num_tens": app_num_tens }
 
                 if avg != 0:
                     count_no_zeros += 1
@@ -69,6 +73,7 @@ def getStats(cat, catlist):
 
         print(f"\n{cat}:\n{'='*len(cat)}\nAPPS: {len(catlist)}")
         if total != 0:
+            print("total number of results:", total_num_results)
             print("aggregate score:", total)
             print("aggregate average privacy score:", total/count)
             print("average privacy score:", total_avg/count)
@@ -83,6 +88,7 @@ def getStats(cat, catlist):
 
         analysis_dict[cat]["meta"] = {
                 "num_apps": len(catlist),
+                "num_results": total_num_results,
                 "aggregate": total, 
                 "agg_avg": total/count, 
                 "avg": total_avg/count, 
@@ -128,6 +134,9 @@ for cat in os.listdir("full_results"):
     most_diff = (0, None)
     most_diff_nz = (0, None)
     for f in list(analysis_dict[cat].keys())[:-1]:
+        if analysis_dict[cat][f]["num_results"] == 0:
+            continue
+
         diff = analysis_dict[cat][f]["avg"] - analysis_dict[cat]["meta"]["avg"]
         if abs(diff) > most_diff[0]:
             most_diff = (diff, f)
@@ -136,12 +145,13 @@ for cat in os.listdir("full_results"):
         if abs(diff_nz) > most_diff_nz[0]:
             most_diff_nz = (diff_nz, f)
 
+        print(f"\t{f} Number of Results:", analysis_dict[cat][f]["num_results"])
         print(f"\t{f} ({analysis_dict[cat][f]['avg']}):\tdifference from avg:", diff)
         print(f"\t{f} ({analysis_dict[cat][f]['avg']}):\tdifference from avg (NO ZEROS):", diff_nz)
 
         analysis_dict[cat][f].update({"diff_from_avg": diff, "diff_from_avg_nz": diff_nz})
 
-    analysis_dict[cat].update({"most_diff_from_avg": {"app": most_diff[1], "diff": most_diff[0]}, "most_diff_from_avg_nz": {"app": most_diff_nz[1], "diff": most_diff_nz[0]} })
+    analysis_dict[cat]["meta"].update({"most_diff_from_avg": {"app": most_diff[1], "diff": most_diff[0]}, "most_diff_from_avg_nz": {"app": most_diff_nz[1], "diff": most_diff_nz[0]} })
     print(f"\n\t{most_diff[1]} was the APK that differed from category avg the most by: {most_diff[0]}.")
     print(f"\t{most_diff_nz[1]} was the APK that differed from category avg the most (NO ZEROS) by: {most_diff_nz[0]}.")
 
@@ -159,6 +169,7 @@ analysis_dict["meta"] = {
         }
 
 print("\n\nOverall Analysis")
+print("================")
 print("Total APPs:", app_count)
 print("Overall aggregate score:", master_total)
 print("Overall aggregate score average:", master_total/master_count)
