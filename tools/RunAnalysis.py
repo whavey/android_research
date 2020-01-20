@@ -94,10 +94,6 @@ def main(path, appcount):
     # Populate master dict with needed processing per cat
     for cat in categories:
         apps = (app for app in os.listdir(os.path.join(path,cat)) if (app not in processed) and (f"structmappings-{app}" not in structmaps_made))
-
-        if not os.path.isdir(f"processed_apks/{cat}"):
-            os.mkdir(f"processed_apks/{cat}")
-
         master_dict[cat] = apps
 
     # Set initial state for generators
