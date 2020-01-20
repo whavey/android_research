@@ -1,1 +1,0 @@
-{"ClassDeclaration": {"BuildConfig": 1}, "FieldDeclaration": {"APPLICATION_ID": 1, "BUILD_TYPE": 1, "DEBUG": 1, "FLAVOR": 1, "VERSION_CODE": 1, "VERSION_NAME": 1}, "VariableDeclarator": {"APPLICATION_ID": 1, "BUILD_TYPE": 1, "DEBUG": 1, "FLAVOR": 1, "VERSION_CODE": 1, "VERSION_NAME": 1}, "ReferenceType": {"String": 4}}
