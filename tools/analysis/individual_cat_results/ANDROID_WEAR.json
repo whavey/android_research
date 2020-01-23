@@ -1,0 +1,237 @@
+{
+    "meta": {
+        "10tokens": [
+            "Password",
+            "authentication",
+            "userName",
+            "username",
+            "LOGIN",
+            "Auth",
+            "PASSWORD",
+            "userId",
+            "auth",
+            "user",
+            "Username",
+            "hostname",
+            "userID",
+            "login",
+            "password",
+            "USER",
+            "User",
+            "credit_card_number",
+            "Login",
+            "AUTH"
+        ],
+        "agg_avg": 405.6296296296296,
+        "agg_avg_nz": 421.2307692307692,
+        "aggregate": 10952,
+        "avg": 7.039084755647427,
+        "avg_nz": 7.30981878471079,
+        "most_diff_from_avg": {
+            "app": "results-com.calm.android.apk",
+            "diff": 0.9183620528632108,
+            "score": 7.957446808510638
+        },
+        "most_diff_from_avg_nz": {
+            "app": "results-com.calm.android.apk",
+            "diff": 0.6476280237998484,
+            "score": 7.957446808510638
+        },
+        "num10": 171,
+        "num_apps": 27,
+        "num_apps_nz": 26,
+        "num_results": 1220
+    },
+    "results-aplicacion.tiempo.apk": {
+        "agg": 168,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.accuweather.android.apk": {
+        "agg": 234,
+        "avg": 7.3125,
+        "diff_from_avg": 0.2734152443525728,
+        "diff_from_avg_nz": 0.0026812152892103924,
+        "num10": 2,
+        "num_results": 32
+    },
+    "results-com.acorns.android.apk": {
+        "agg": 880,
+        "avg": 7.4576271186440675,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.appgeneration.itunerfree.apk": {
+        "agg": 28,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.apps4you.lighter.apk": {
+        "agg": 28,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.balysv.loop.apk": {
+        "agg": 196,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.callapp.contacts.apk": {
+        "agg": 1253,
+        "avg": 7.242774566473988,
+        "diff_from_avg": 0.20368981082656124,
+        "diff_from_avg_nz": -0.06704421823680118,
+        "num10": 14,
+        "num_results": 173
+    },
+    "results-com.calm.android.apk": {
+        "agg": 748,
+        "avg": 7.957446808510638,
+        "diff_from_avg": 0.9183620528632108,
+        "diff_from_avg_nz": 0.6476280237998484,
+        "num10": 30,
+        "num_results": 94
+    },
+    "results-com.clearchannel.iheartradio.controller.apk": {
+        "agg": 385,
+        "avg": 7.857142857142857,
+        "diff_from_avg": 0.8180581014954296,
+        "diff_from_avg_nz": 0.5473240724320672,
+        "num10": 14,
+        "num_results": 49
+    },
+    "results-com.coffeebeanventures.easyvoicerecorder.apk": {
+        "agg": 0,
+        "avg": 0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.facebook.orca.apk": {
+        "agg": 256,
+        "avg": 7.529411764705882,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.google.android.apps.fitness.apk": {
+        "agg": 35,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.google.android.apps.maps.apk": {
+        "agg": 116,
+        "avg": 7.25,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.google.android.apps.messaging.apk": {
+        "agg": 223,
+        "avg": 7.193548387096774,
+        "diff_from_avg": 0.15446363144934683,
+        "diff_from_avg_nz": -0.11627039761401559,
+        "num10": 2,
+        "num_results": 31
+    },
+    "results-com.google.android.googlequicksearchbox.apk": {
+        "agg": 332,
+        "avg": 7.545454545454546,
+        "diff_from_avg": 0.5063697898071187,
+        "diff_from_avg_nz": 0.23563576074375625,
+        "num10": 6,
+        "num_results": 44
+    },
+    "results-com.google.android.keep.apk": {
+        "agg": 70,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.google.android.music.apk": {
+        "agg": 352,
+        "avg": 7.183673469387755,
+        "diff_from_avg": 0.1445887137403279,
+        "diff_from_avg_nz": -0.12614531532303452,
+        "num10": 3,
+        "num_results": 49
+    },
+    "results-com.google.android.wearable.app.apk": {
+        "agg": 56,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-com.jeremysteckling.facerrel.apk": {
+        "agg": 424,
+        "avg": 7.310344827586207,
+        "diff_from_avg": 0.2712600719387801,
+        "diff_from_avg_nz": 0.0005260428754176871,
+        "num10": 6,
+        "num_results": 58
+    },
+    "results-com.pandora.android.apk": {
+        "agg": 605,
+        "avg": 7.5625,
+        "diff_from_avg": 0.5234152443525728,
+        "diff_from_avg_nz": 0.2526812152892104,
+        "num10": 15,
+        "num_results": 80
+    },
+    "results-com.shazam.android.apk": {
+        "agg": 242,
+        "avg": 7.333333333333333,
+        "diff_from_avg": 0.29424857768590584,
+        "diff_from_avg_nz": 0.02351454862254343,
+        "num10": 3,
+        "num_results": 33
+    },
+    "results-com.spotify.music.apk": {
+        "agg": 459,
+        "avg": 7.65,
+        "diff_from_avg": 0.6109152443525732,
+        "diff_from_avg_nz": 0.34018121528921075,
+        "num10": 13,
+        "num_results": 60
+    },
+    "results-com.strava.apk": {
+        "agg": 909,
+        "avg": 7.390243902439025,
+        "diff_from_avg": 0.35115914679159754,
+        "diff_from_avg_nz": 0.08042511772823513,
+        "num10": 17,
+        "num_results": 123
+    },
+    "results-com.ubercab.apk": {
+        "agg": 1342,
+        "avg": 7.333333333333333,
+        "diff_from_avg": 0.29424857768590584,
+        "diff_from_avg_nz": 0.02351454862254343,
+        "num10": 14,
+        "num_results": 183
+    },
+    "results-com.weather.Weather.apk": {
+        "agg": 629,
+        "avg": 7.313953488372093,
+        "diff_from_avg": 0.2748687327246655,
+        "diff_from_avg_nz": 0.004134703661303085,
+        "num10": 8,
+        "num_results": 86
+    },
+    "results-net.darksky.darksky.apk": {
+        "agg": 28,
+        "avg": 7.0,
+        "num10": 0,
+        "num_results": 0
+    },
+    "results-org.telegram.messenger.apk": {
+        "agg": 954,
+        "avg": 7.632,
+        "diff_from_avg": 0.5929152443525725,
+        "diff_from_avg_nz": 0.32218121528921007,
+        "num10": 24,
+        "num_results": 125
+    }
+}

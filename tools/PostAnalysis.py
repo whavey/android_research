@@ -6,7 +6,7 @@ import scipy.io
  
 class PostAnalysis():
 
-    def __init__(self, applimit = 20):
+    def __init__(self, applimit = 27):
 
         self.categories  = [cat for cat in os.listdir("full_results")]
         self.analysis_dict = {}

@@ -1,0 +1,15 @@
+individual_cat_results: 
+=======================
+some high level aggregation of results on a per category level (probably dont need to look through these too much)
+
+post_analysis.json: 
+===================
+High level aggregation of all results (mostly just json format of what you get in the results.txt)
+
+results.txt: 
+============
+Vector format for matlab processing, descriptions included in file.
+
+table10_tokens.txt: 
+===================
+list of identifiers found with a 10 sensitivity weighting per category.

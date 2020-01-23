@@ -93,5 +93,6 @@ if __name__ == "__main__":
     # Parse args and initialize object with args.
     args = parse_args()
     jl = JavaTreeManager(path=args.path,debug=args.debug)
-    lp = LineParser(args)
-    lp.parseLine()
+    tree = jl.getTree() 
+    #lp = LineParser(args)
+    #lp.parseLine()
