@@ -1,0 +1,11 @@
+{
+    "meta": {
+        "average_privacy_score": 0,
+        "highest_sensitivity_score": 0,
+        "highest_sensitivity_token": null,
+        "levenshtein_threshold": 0.85,
+        "sematic_threshold": 0.6,
+        "total_privacy_score": 0
+    },
+    "results": []
+}

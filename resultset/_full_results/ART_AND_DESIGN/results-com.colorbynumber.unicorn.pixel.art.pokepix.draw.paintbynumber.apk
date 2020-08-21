@@ -1,0 +1,380 @@
+{
+    "meta": {
+        "average_privacy_score": 7.5625,
+        "highest_sensitivity_score": 10,
+        "highest_sensitivity_token": "userId",
+        "levenshtein_threshold": 0.85,
+        "sematic_threshold": 0.6,
+        "total_privacy_score": 363
+    },
+    "results": [
+        {
+            "FormalParameter": [
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6198839",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.42857142857142855",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6182646",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "address"
+                }
+            ]
+        },
+        {
+            "ReferenceType": [
+                {
+                    "ANDROID_APP_TOKEN": "Message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6198839",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "Message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.42857142857142855",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6182646",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "address"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "facebook",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.13333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.84510714",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "twitter"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "facebook",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "1.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "facebook"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "google",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.15384615384615385",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6232912",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "twitter"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "google",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.2857142857142857",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.73055875",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "facebook"
+                }
+            ]
+        },
+        {
+            "LocalVariableDeclaration": [
+                {
+                    "ANDROID_APP_TOKEN": "Message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6198839",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "Message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.42857142857142855",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6182646",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "address"
+                }
+            ]
+        },
+        {
+            "VariableDeclarator": [
+                {
+                    "ANDROID_APP_TOKEN": "userId",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.62599725",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "passwd"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userId",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.5714285714285714",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6918621",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userName",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.25",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.7934678",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "password"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userName",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.875",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "username",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.25",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.7934678",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "password"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "username",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "1.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "IP",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6779018",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "ftp"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6198839",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.42857142857142855",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6182646",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "address"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "send",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.2222222222222222",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.72645724",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "change",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.8571428571428571",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.3887536",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "exchange"
+                }
+            ]
+        },
+        {
+            "ClassCreator": [
+                {
+                    "ANDROID_APP_TOKEN": "Message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6198839",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "Message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.42857142857142855",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6182646",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "address"
+                }
+            ]
+        },
+        {
+            "FieldDeclaration": [
+                {
+                    "ANDROID_APP_TOKEN": "userId",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.62599725",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "passwd"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userId",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.5714285714285714",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6918621",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userName",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.25",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.7934678",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "password"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userName",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.875",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "username",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.25",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.7934678",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "password"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "username",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "1.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "IP",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6779018",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "ftp"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6198839",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.42857142857142855",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6182646",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "address"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "send",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.2222222222222222",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.72645724",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "change",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.8571428571428571",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.3887536",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "exchange"
+                }
+            ]
+        },
+        {
+            "MemberReference": [
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6198839",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "email"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "message",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.42857142857142855",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6182646",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "address"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userId",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.3333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.62599725",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "passwd"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userId",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.5714285714285714",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6918621",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userName",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.25",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.7934678",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "password"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "userName",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.875",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "username",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.25",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.7934678",
+                    "SENSITIVITY_LEVEL": 10,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "password"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "username",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "1.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "username"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "IP",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6779018",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "ftp"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "change",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.8571428571428571",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.3887536",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "exchange"
+                }
+            ]
+        },
+        {
+            "Reference Type Sub Type": [
+                {
+                    "ANDROID_APP_TOKEN": "facebook",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.13333333333333333",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.84510714",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "twitter"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "facebook",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "1.0",
+                    "SEMANTIC_SIMILARITY_SCORE": "1.0",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "facebook"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "google",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.15384615384615385",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.6232912",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "twitter"
+                },
+                {
+                    "ANDROID_APP_TOKEN": "google",
+                    "LEVENSHTEIN_SIMILARITY_SCORE": "0.2857142857142857",
+                    "SEMANTIC_SIMILARITY_SCORE": "0.73055875",
+                    "SENSITIVITY_LEVEL": 7,
+                    "SIMILAR_PRIVACY_RELATED_TOKEN": "facebook"
+                }
+            ]
+        }
+    ]
+}
